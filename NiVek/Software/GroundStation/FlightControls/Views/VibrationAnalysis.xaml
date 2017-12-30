@@ -1,0 +1,182 @@
+﻿<nk:NiVekPage 
+    xmlns:nk="using:NiVek.FlightControls.Views"
+    x:Class="NiVek.FlightControls.Views.VibrationAnalysis"
+    xmlns:Controls="using:NiVek.FlightControls.Controls"               
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NiVek.FlightControls.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="140"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Controls:NiVekHeader Grid.ColumnSpan="2" x:Name="Header" />
+
+        <StackPanel x:Name="ConfigSettings" Grid.Row="1">
+            <Button Content="Pause Chart" x:Name="PauseButton" Click="PauseButton_Click" Width="180"/>
+            <ComboBox x:Name="SensorSelection" SelectionChanged="SensorSelection_SelectionChanged_1"  SelectedIndex="0">
+                <ComboBox.Items>
+                    <ComboBoxItem>Select</ComboBoxItem>
+                    <ComboBoxItem>ADXL345</ComboBoxItem>
+                    <ComboBoxItem>LSM303ACC</ComboBoxItem>
+                    <ComboBoxItem>MPU60x0ACC</ComboBoxItem>
+                    <ComboBoxItem>L3GD20</ComboBoxItem>
+                </ComboBox.Items>
+            </ComboBox>
+
+            <Button Content="Reset StdDev" x:Name="ResetStdDev" Click="ResetStdDev_Click_1" />
+
+            <ComboBox x:Name="AxisSelection" SelectedIndex="0" SelectionChanged="AxisSelection_SelectionChanged_1">
+                <ComboBox.Items>
+                    <ComboBoxItem>X Axis</ComboBoxItem>
+                    <ComboBoxItem>Y Axis</ComboBoxItem>
+                    <ComboBoxItem>Z Azis</ComboBoxItem>
+                </ComboBox.Items>
+            </ComboBox>
+            
+            <StackPanel Orientation="Horizontal">
+                <Button Content="Off" x:Name="PowerOff" Click="PowerOff_Click"/>
+                <Button Content="20%" x:Name="Power20" Click="Power20_Click"/>
+                <Button Content="30%" x:Name="Power30" Click="Power30_Click"/>
+                <Button Content="40%" x:Name="Power40" Click="Power40_Click"/>
+            </StackPanel>
+
+
+            <StackPanel x:Name="ADXL345Sensor" Visibility="Collapsed">
+                <TextBlock Text="ADXL345 Accelerometer" FontSize="32" Width="400" />
+                <TextBlock Text="Enabled" />
+                <ToggleSwitch IsOn="{Binding ADXL345Enabled, Mode=TwoWay}" />
+                <TextBlock Text="Date Rate" />
+                <ComboBox ItemsSource="{Binding ADXL345DataRateCollection, Mode=OneWay}" SelectedValue="{Binding ADXL345BWRate, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                <TextBlock Text="Gain" />
+                <ComboBox ItemsSource="{Binding ADXL345GainCollection, Mode=OneWay}" SelectedValue="{Binding ADXLRange, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                <TextBlock Text="Resolution" />
+                <ComboBox ItemsSource="{Binding ADXLResolutionCollection, Mode=OneWay}" SelectedValue="{Binding ADXLResolution, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                <TextBlock Text="FIFO Enabled" />
+                <ToggleSwitch IsOn="{Binding ADXL345FiFoEnabled, Mode=TwoWay}" />
+                <TextBlock Text="Median Filter" />
+                <ComboBox ItemsSource="{Binding MedianFilterCollection, Mode=OneWay}" SelectedValue="{Binding ADXL345MedianFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                <TextBlock Text="Moving Average Filter" />
+                <ComboBox ItemsSource="{Binding MovingAverageCollection, Mode=OneWay}" SelectedValue="{Binding ADXL345MovingAverageFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                <TextBlock Text="Sample Rate" />
+                <ComboBox ItemsSource="{Binding SampleRateCollection, Mode=OneWay}" SelectedValue="{Binding ADXL345SampleRate, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+            </StackPanel>
+
+            <StackPanel x:Name="LSM303ACCSensor"  Visibility="Collapsed">
+                <TextBlock Text="LSM303 Accelerometer" FontSize="32" Width="400" />
+                <TextBlock Text="Enabled" />
+                <ToggleSwitch IsOn="{Binding LSM303AccEnabled, Mode=TwoWay}" />
+                <TextBlock Text="Power Mode" />
+                <ComboBox ItemsSource="{Binding LSMAccPowerModeCollection, Mode=OneWay}" SelectedValue="{Binding LSM303PowerMode, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                <TextBlock Text="FIFO Enabled" />
+                <ToggleSwitch IsOn="{Binding LSM303FiFoEnable, Mode=TwoWay}" />
+                <TextBlock Text="Data Rate" />
+                <ComboBox ItemsSource="{Binding LSM303AccDataRateCollection, Mode=OneWay}" SelectedValue="{Binding LSM303AccDataRate, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                <TextBlock Text="Full Scale" />
+                <ComboBox ItemsSource="{Binding LSM303AccFullScaleCollection, Mode=OneWay}" SelectedValue="{Binding LSM303AccFullScale, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                <TextBlock Text="High Pass Filter" />
+                <ComboBox ItemsSource="{Binding LSM303AccHighPassFilterCollection, Mode=OneWay}" SelectedValue="{Binding LSM303AccHighPassFilter, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                <TextBlock Text="Median Filter" />
+                <ComboBox ItemsSource="{Binding MedianFilterCollection, Mode=OneWay}" SelectedValue="{Binding LSM303AccMedianFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                <TextBlock Text="Moving Average Filter" />
+                <ComboBox ItemsSource="{Binding MovingAverageCollection, Mode=OneWay}" SelectedValue="{Binding LSM303AccMovingAverageFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                <TextBlock Text="Sample Rate" />
+                <ComboBox ItemsSource="{Binding SampleRateCollection, Mode=OneWay}" SelectedValue="{Binding LSM303AccSampleRate, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+            </StackPanel>
+
+            <StackPanel x:Name="MPU60x0AccSensor"  Visibility="Collapsed">
+                <TextBlock Text="MPU60x0 Acc" FontSize="32" Width="400" />
+                <TextBlock Text="Enabled" />
+                <ToggleSwitch IsOn="{Binding MPU60x0AccEnabled, Mode=TwoWay}" />
+                <TextBlock Text="Sample Rate Divider" />
+                <ComboBox  ItemsSource="{Binding MPU60x0SampleRateCollection, Mode=OneWay}" SelectedValue="{Binding MPU60x0SmpRtDiv, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                <TextBlock Text="Gain" />
+                <ComboBox  ItemsSource="{Binding MPU60x0AccFSGainCollection, Mode=OneWay}" SelectedValue="{Binding MPU60x0AccFS, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                <TextBlock Text="DLPF" />
+                <ComboBox  ItemsSource="{Binding MPU60x0DLPFCollection, Mode=OneWay}" SelectedValue="{Binding MPU60x0Dlpf, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                <TextBlock Text="FIFO Enabled" />
+                <ToggleSwitch IsOn="{Binding MPU60x0FifoEnabled, Mode=TwoWay}" />
+                <TextBlock Text="Median Filter" />
+                <ComboBox ItemsSource="{Binding MedianFilterCollection, Mode=OneWay}" SelectedValue="{Binding MPU60x0AccMedianFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                <TextBlock Text="Moving Average Filter" />
+                <ComboBox ItemsSource="{Binding MovingAverageCollection, Mode=OneWay}" SelectedValue="{Binding MPU60x0AccMovingAverageFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                <TextBlock Text="Sample Rate" />
+                <ComboBox ItemsSource="{Binding SampleRateCollection, Mode=OneWay}" SelectedValue="{Binding MPU60x0AccSmplRt, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+            </StackPanel>
+
+            <StackPanel x:Name="L3GD20Sensor"  Visibility="Collapsed">
+                <TextBlock Text="L3GD20 Gyroscope" FontSize="32" Width="400" />
+                <TextBlock Text="Enabled" />
+                <ToggleSwitch IsOn="{Binding L3GD20Enabled, Mode=TwoWay}" />
+                <TextBlock Text="Date Rate/Cutoff" />
+                <ComboBox ItemsSource="{Binding L3GD20DataRateCuttoffCollection, Mode=OneWay}" SelectedValue="{Binding L3GD20DataRateCuttoff, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                <TextBlock Text="FIFO Enabled" />
+                <ToggleSwitch IsOn="{Binding L3GD20FifoEnable, Mode=TwoWay}" />
+                <TextBlock Text="HPF Cutoff" />
+                <ComboBox ItemsSource="{Binding L3G20HighPassFilterCuttoffCollection, Mode=OneWay}" SelectedValue="{Binding L3GD20HPFCutoff, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                <TextBlock Text="Median Filter" />
+                <ComboBox ItemsSource="{Binding MedianFilterCollection, Mode=OneWay}" SelectedValue="{Binding L3GD20MedianFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                <TextBlock Text="Moving Average Filter" />
+                <ComboBox ItemsSource="{Binding MovingAverageCollection, Mode=OneWay}" SelectedValue="{Binding L3GD20MovingAverageFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                <TextBlock Text="Sample Rate" />
+                <ComboBox ItemsSource="{Binding SampleRateCollection, Mode=OneWay}" SelectedValue="{Binding L3GD20SampleRate, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+            </StackPanel>
+
+
+
+        </StackPanel>
+        <Grid Grid.Column="1" Grid.Row="1" x:Name="ChartGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="0" />
+                <RowDefinition Height="0" />
+                <RowDefinition Height="0" />
+                <RowDefinition Height="0" />
+            </Grid.RowDefinitions>
+
+            <Controls:Chart x:Name="RawYChart" Grid.Row="0" Caption="Y" SegmentWidth="8" >
+                <Controls:Chart.ChartAxis >
+                    <Controls:Axis Label="Value" Color="Green" Scale="15000"  Origin="Center"  FormatString="0"/>
+                </Controls:Chart.ChartAxis>
+            </Controls:Chart>
+            <Controls:Chart x:Name="YChart" Grid.Row="1"  Caption="Y" SegmentWidth="8" >
+                <Controls:Chart.ChartAxis >
+                    <Controls:Axis Label="Value" Color="Green" Scale="100000"  Origin="Center" FormatString="0.0"/>
+                </Controls:Chart.ChartAxis>
+            </Controls:Chart>
+
+            <Controls:Chart x:Name="RawZChart"  Grid.Row="0"  Caption="Z"  SegmentWidth="8" >
+                <Controls:Chart.ChartAxis >
+                    <Controls:Axis Label="Value" Color="Blue" Scale="0.01"  FormatString="0"/>
+                </Controls:Chart.ChartAxis>
+            </Controls:Chart>
+            <Controls:Chart x:Name="ZChart"  Grid.Row="1"  Caption="Z"   SegmentWidth="8" >
+                <Controls:Chart.ChartAxis >
+                    <Controls:Axis Label="Value" Color="Blue" Scale="1" FormatString="0.0"/>
+                </Controls:Chart.ChartAxis>
+            </Controls:Chart>
+
+            <Controls:Chart x:Name="RawXChart"  Caption="X" SegmentWidth="8" >
+                <Controls:Chart.ChartAxis >
+                    <Controls:Axis Label="Value" Color="Red" Scale="1000"  Origin="Center" FormatString="0" />
+                </Controls:Chart.ChartAxis>
+            </Controls:Chart>
+            <Controls:Chart x:Name="XChart" Grid.Row="1"  Caption="X" SegmentWidth="8" >
+                <Controls:Chart.ChartAxis >
+                    <Controls:Axis Label="Value" Color="Red" Scale="90" Origin="Center" FormatString="0.0"/>
+                </Controls:Chart.ChartAxis>
+            </Controls:Chart>
+
+        </Grid>
+    </Grid>
+</nk:NiVekPage>

@@ -1,0 +1,5841 @@
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 3	@ Tag_ABI_HardFP_use
+   4              		.eabi_attribute 28, 1	@ Tag_ABI_VFP_args
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1	@ Tag_ABI_FP_denormal
+   7              		.eabi_attribute 21, 1	@ Tag_ABI_FP_exceptions
+   8              		.eabi_attribute 23, 3	@ Tag_ABI_FP_number_model
+   9              		.eabi_attribute 24, 1	@ Tag_ABI_align8_needed
+  10              		.eabi_attribute 25, 1	@ Tag_ABI_align8_preserved
+  11              		.eabi_attribute 26, 1	@ Tag_ABI_enum_size
+  12              		.eabi_attribute 30, 4	@ Tag_ABI_optimization_goals
+  13              		.eabi_attribute 34, 1	@ Tag_CPU_unaligned_access
+  14              		.eabi_attribute 18, 4	@ Tag_ABI_PCS_wchar_t
+  15              		.file	"twb_config.c"
+  16              	@ GNU C (Sourcery CodeBench Lite 2012.09-63) version 4.7.2 (arm-none-eabi)
+  17              	@	compiled by GNU C version 4.3.2, GMP version 5.0.5, MPFR version 3.1.1-p2, MPC version 1.0.1
+  18              	@ GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+  19              	@ options passed:  -I . -I \STMSPINCDDIR -I .\stm32f4periph\inc
+  20              	@ -I .\CMSIS\Include -I .\inc\commo\usb -I .\inc\commo -I .\inc\common
+  21              	@ -I .\inc -imultilib thumb2
+  22              	@ -iprefix k:\electronics\gcc\bin\../lib/gcc/arm-none-eabi/4.7.2/
+  23              	@ -isysroot k:\electronics\gcc\bin\../arm-none-eabi -MD .\src\twb_config.d
+  24              	@ -MF .dep\twb_config.o.d -MP -MQ .\src\twb_config.o -D__USES_INITFINI__
+  25              	@ -D STM32F0XX -D USE_STDPERIPH_DRIVER -D RUN_FROM_FLASH=1
+  26              	@ -D __CS_SOURCERYGXX_MAJ__=2012 -D __CS_SOURCERYGXX_MIN__=9
+  27              	@ -D __CS_SOURCERYGXX_REV__=63 .\src\twb_config.c -mcpu=cortex-m4
+  28              	@ -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb
+  29              	@ -auxbase-strip .\src\twb_config.o -gdwarf-2 -Os -Wall -Wstrict-prototypes
+  30              	@ -std=gnu99 -fomit-frame-pointer -fverbose-asm
+  31              	@ options enabled:  -fauto-inc-dec -fbranch-count-reg -fcaller-saves
+  32              	@ -fcombine-stack-adjustments -fcommon -fcompare-elim -fcprop-registers
+  33              	@ -fcrossjumping -fcse-follow-jumps -fdebug-types-section -fdefer-pop
+  34              	@ -fdelete-null-pointer-checks -fdevirtualize -fdwarf2-cfi-asm
+  35              	@ -fearly-inlining -feliminate-unused-debug-types -fexpensive-optimizations
+  36              	@ -fextension-elimination -fforward-propagate -ffunction-cse -fgcse
+  37              	@ -fgcse-lm -fgnu-runtime -fguess-branch-probability -fident
+  38              	@ -fif-conversion -fif-conversion2 -findirect-inlining -finline
+  39              	@ -finline-atomics -finline-functions -finline-functions-called-once
+  40              	@ -finline-small-functions -fipa-cp -fipa-profile -fipa-pure-const
+  41              	@ -fipa-reference -fipa-sra -fira-share-save-slots -fira-share-spill-slots
+  42              	@ -fivopts -fkeep-static-consts -fleading-underscore -fmath-errno
+  43              	@ -fmerge-constants -fmerge-debug-strings -fmove-loop-invariants
+  44              	@ -fomit-frame-pointer -foptimize-register-move -foptimize-sibling-calls
+  45              	@ -fpartial-inlining -fpeephole -fpeephole2 -fprefetch-loop-arrays
+  46              	@ -freg-struct-return -fregmove -freorder-blocks -freorder-functions
+  47              	@ -frerun-cse-after-loop -fsched-critical-path-heuristic
+  48              	@ -fsched-dep-count-heuristic -fsched-group-heuristic -fsched-interblock
+  49              	@ -fsched-last-insn-heuristic -fsched-rank-heuristic -fsched-spec
+  50              	@ -fsched-spec-insn-heuristic -fsched-stalled-insns-dep -fschedule-insns2
+  51              	@ -fsection-anchors -fshow-column -fshrink-wrap -fsigned-zeros
+  52              	@ -fsplit-ivs-in-unroller -fsplit-wide-types -fstrict-aliasing
+  53              	@ -fstrict-overflow -fstrict-volatile-bitfields -fthread-jumps
+  54              	@ -ftoplevel-reorder -ftrapping-math -ftree-bit-ccp -ftree-builtin-call-dce
+  55              	@ -ftree-ccp -ftree-ch -ftree-copy-prop -ftree-copyrename -ftree-cselim
+  56              	@ -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
+  57              	@ -ftree-if-to-switch-conversion -ftree-loop-if-convert -ftree-loop-im
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 2
+
+
+  58              	@ -ftree-loop-ivcanon -ftree-loop-optimize -ftree-parallelize-loops=
+  59              	@ -ftree-phiprop -ftree-pre -ftree-pta -ftree-reassoc -ftree-scev-cprop
+  60              	@ -ftree-sink -ftree-slp-vectorize -ftree-sra -ftree-switch-conversion
+  61              	@ -ftree-tail-merge -ftree-ter -ftree-vect-loop-version -ftree-vrp
+  62              	@ -funit-at-a-time -fvar-tracking -fvar-tracking-assignments -fverbose-asm
+  63              	@ -fzero-initialized-in-bss -mlittle-endian -msched-prolog -mthumb
+  64              	@ -munaligned-access -mvectorize-with-neon-quad
+  65              	
+  66              		.text
+  67              	.Ltext0:
+  68              		.cfi_sections	.debug_frame
+  69              		.comm	WiFiIsConnected,1,1
+  70              		.comm	CurrentGPSReading,4,4
+  71              		.comm	HomeGPSReading,4,4
+  72              		.comm	WiFiAux2,1,1
+  73              		.comm	WiFiAux1,1,1
+  74              		.comm	WiFiRoll,1,1
+  75              		.comm	WiFiPitch,1,1
+  76              		.comm	WiFiYaw,1,1
+  77              		.comm	WiFiThrottle,1,1
+  78              		.comm	PIDConstants,4,4
+  79              		.comm	InternalState,4,4
+  80              		.comm	AltitudeData,4,4
+  81              		.comm	PitchPIDDetails,4,4
+  82              		.comm	RollPIDDetails,4,4
+  83              		.comm	PIDSensorData,4,4
+  84              		.comm	Targets,4,4
+  85              		.comm	SystemStatus,4,4
+  86              		.comm	MotorStatus,4,4
+  87              		.comm	SensorConfig,4,4
+  88              		.comm	SensorData,4,4
+  89              		.comm	PIDConstantsConfig,4,4
+  90              		.comm	GPSData,4,4
+  91              		.comm	BatteryCondition,4,4
+  92              		.comm	_commonDiagBuffer,4,4
+  93              		.comm	__errno,2,2
+  94              	.Letext0:
+  95              		.file 1 "k:\\electronics\\gcc\\bin\\../lib/gcc/arm-none-eabi/4.7.2/../../../../arm-none-eabi/inclu
+  96              		.file 2 ".\\inc/twb_config.h"
+  97              		.file 3 ".\\inc/core_cm4.h"
+  98              		.file 4 ".\\src\\twb_config.c"
+  99              		.section	.debug_info,"",%progbits
+ 100              	.Ldebug_info0:
+ 101 0000 3C170000 		.4byte	0x173c
+ 102 0004 0200     		.2byte	0x2
+ 103 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 104 000a 04       		.byte	0x4
+ 105 000b 01       		.uleb128 0x1
+ 106 000c DB050000 		.4byte	.LASF400
+ 107 0010 01       		.byte	0x1
+ 108 0011 27050000 		.4byte	.LASF401
+ 109 0015 280E0000 		.4byte	.LASF402
+ 110 0019 00000000 		.4byte	.Ldebug_line0
+ 111 001d 02       		.uleb128 0x2
+ 112 001e 68050000 		.4byte	.LASF0
+ 113 0022 01       		.byte	0x1
+ 114 0023 29       		.byte	0x29
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 3
+
+
+ 115 0024 28000000 		.4byte	0x28
+ 116 0028 03       		.uleb128 0x3
+ 117 0029 01       		.byte	0x1
+ 118 002a 06       		.byte	0x6
+ 119 002b EF040000 		.4byte	.LASF2
+ 120 002f 02       		.uleb128 0x2
+ 121 0030 8F0B0000 		.4byte	.LASF1
+ 122 0034 01       		.byte	0x1
+ 123 0035 2A       		.byte	0x2a
+ 124 0036 3A000000 		.4byte	0x3a
+ 125 003a 03       		.uleb128 0x3
+ 126 003b 01       		.byte	0x1
+ 127 003c 08       		.byte	0x8
+ 128 003d F5140000 		.4byte	.LASF3
+ 129 0041 02       		.uleb128 0x2
+ 130 0042 71060000 		.4byte	.LASF4
+ 131 0046 01       		.byte	0x1
+ 132 0047 35       		.byte	0x35
+ 133 0048 4C000000 		.4byte	0x4c
+ 134 004c 03       		.uleb128 0x3
+ 135 004d 02       		.byte	0x2
+ 136 004e 05       		.byte	0x5
+ 137 004f 0D110000 		.4byte	.LASF5
+ 138 0053 02       		.uleb128 0x2
+ 139 0054 A00F0000 		.4byte	.LASF6
+ 140 0058 01       		.byte	0x1
+ 141 0059 36       		.byte	0x36
+ 142 005a 5E000000 		.4byte	0x5e
+ 143 005e 03       		.uleb128 0x3
+ 144 005f 02       		.byte	0x2
+ 145 0060 07       		.byte	0x7
+ 146 0061 80170000 		.4byte	.LASF7
+ 147 0065 02       		.uleb128 0x2
+ 148 0066 44140000 		.4byte	.LASF8
+ 149 006a 01       		.byte	0x1
+ 150 006b 4F       		.byte	0x4f
+ 151 006c 70000000 		.4byte	0x70
+ 152 0070 03       		.uleb128 0x3
+ 153 0071 04       		.byte	0x4
+ 154 0072 05       		.byte	0x5
+ 155 0073 20000000 		.4byte	.LASF9
+ 156 0077 03       		.uleb128 0x3
+ 157 0078 04       		.byte	0x4
+ 158 0079 07       		.byte	0x7
+ 159 007a F5130000 		.4byte	.LASF10
+ 160 007e 03       		.uleb128 0x3
+ 161 007f 08       		.byte	0x8
+ 162 0080 05       		.byte	0x5
+ 163 0081 B70C0000 		.4byte	.LASF11
+ 164 0085 03       		.uleb128 0x3
+ 165 0086 08       		.byte	0x8
+ 166 0087 07       		.byte	0x7
+ 167 0088 5A060000 		.4byte	.LASF12
+ 168 008c 04       		.uleb128 0x4
+ 169 008d 04       		.byte	0x4
+ 170 008e 05       		.byte	0x5
+ 171 008f 696E7400 		.ascii	"int\000"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 4
+
+
+ 172 0093 03       		.uleb128 0x3
+ 173 0094 04       		.byte	0x4
+ 174 0095 07       		.byte	0x7
+ 175 0096 2D130000 		.4byte	.LASF13
+ 176 009a 03       		.uleb128 0x3
+ 177 009b 04       		.byte	0x4
+ 178 009c 07       		.byte	0x7
+ 179 009d D9130000 		.4byte	.LASF14
+ 180 00a1 05       		.uleb128 0x5
+ 181 00a2 65000000 		.4byte	0x65
+ 182 00a6 03       		.uleb128 0x3
+ 183 00a7 01       		.byte	0x1
+ 184 00a8 08       		.byte	0x8
+ 185 00a9 210B0000 		.4byte	.LASF15
+ 186 00ad 03       		.uleb128 0x3
+ 187 00ae 08       		.byte	0x8
+ 188 00af 04       		.byte	0x4
+ 189 00b0 93180000 		.4byte	.LASF16
+ 190 00b4 03       		.uleb128 0x3
+ 191 00b5 04       		.byte	0x4
+ 192 00b6 04       		.byte	0x4
+ 193 00b7 F7050000 		.4byte	.LASF17
+ 194 00bb 03       		.uleb128 0x3
+ 195 00bc 08       		.byte	0x8
+ 196 00bd 04       		.byte	0x4
+ 197 00be 940F0000 		.4byte	.LASF18
+ 198 00c2 06       		.uleb128 0x6
+ 199 00c3 01       		.byte	0x1
+ 200 00c4 02       		.byte	0x2
+ 201 00c5 29       		.byte	0x29
+ 202 00c6 D8000000 		.4byte	0xd8
+ 203 00ca 07       		.uleb128 0x7
+ 204 00cb 93050000 		.4byte	.LASF19
+ 205 00cf FF01     		.sleb128 255
+ 206 00d1 07       		.uleb128 0x7
+ 207 00d2 E90D0000 		.4byte	.LASF20
+ 208 00d6 00       		.sleb128 0
+ 209 00d7 00       		.byte	0
+ 210 00d8 02       		.uleb128 0x2
+ 211 00d9 60000000 		.4byte	.LASF21
+ 212 00dd 02       		.byte	0x2
+ 213 00de 2C       		.byte	0x2c
+ 214 00df C2000000 		.4byte	0xc2
+ 215 00e3 06       		.uleb128 0x6
+ 216 00e4 01       		.byte	0x1
+ 217 00e5 02       		.byte	0x2
+ 218 00e6 2E       		.byte	0x2e
+ 219 00e7 17010000 		.4byte	0x117
+ 220 00eb 07       		.uleb128 0x7
+ 221 00ec A0140000 		.4byte	.LASF22
+ 222 00f0 01       		.sleb128 1
+ 223 00f1 07       		.uleb128 0x7
+ 224 00f2 02160000 		.4byte	.LASF23
+ 225 00f6 0A       		.sleb128 10
+ 226 00f7 07       		.uleb128 0x7
+ 227 00f8 9E050000 		.4byte	.LASF24
+ 228 00fc 0B       		.sleb128 11
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 5
+
+
+ 229 00fd 07       		.uleb128 0x7
+ 230 00fe AF050000 		.4byte	.LASF25
+ 231 0102 14       		.sleb128 20
+ 232 0103 07       		.uleb128 0x7
+ 233 0104 FB0A0000 		.4byte	.LASF26
+ 234 0108 1E       		.sleb128 30
+ 235 0109 07       		.uleb128 0x7
+ 236 010a 8B0A0000 		.4byte	.LASF27
+ 237 010e E400     		.sleb128 100
+ 238 0110 07       		.uleb128 0x7
+ 239 0111 420C0000 		.4byte	.LASF28
+ 240 0115 00       		.sleb128 0
+ 241 0116 00       		.byte	0
+ 242 0117 02       		.uleb128 0x2
+ 243 0118 180F0000 		.4byte	.LASF29
+ 244 011c 02       		.byte	0x2
+ 245 011d 36       		.byte	0x36
+ 246 011e E3000000 		.4byte	0xe3
+ 247 0122 06       		.uleb128 0x6
+ 248 0123 01       		.byte	0x1
+ 249 0124 02       		.byte	0x2
+ 250 0125 39       		.byte	0x39
+ 251 0126 CE010000 		.4byte	0x1ce
+ 252 012a 07       		.uleb128 0x7
+ 253 012b 07140000 		.4byte	.LASF30
+ 254 012f 00       		.sleb128 0
+ 255 0130 07       		.uleb128 0x7
+ 256 0131 28040000 		.4byte	.LASF31
+ 257 0135 01       		.sleb128 1
+ 258 0136 07       		.uleb128 0x7
+ 259 0137 57110000 		.4byte	.LASF32
+ 260 013b 02       		.sleb128 2
+ 261 013c 07       		.uleb128 0x7
+ 262 013d 6C120000 		.4byte	.LASF33
+ 263 0141 0B       		.sleb128 11
+ 264 0142 07       		.uleb128 0x7
+ 265 0143 9A010000 		.4byte	.LASF34
+ 266 0147 E400     		.sleb128 100
+ 267 0149 07       		.uleb128 0x7
+ 268 014a 5E130000 		.4byte	.LASF35
+ 269 014e E500     		.sleb128 101
+ 270 0150 07       		.uleb128 0x7
+ 271 0151 46130000 		.4byte	.LASF36
+ 272 0155 E600     		.sleb128 102
+ 273 0157 07       		.uleb128 0x7
+ 274 0158 03070000 		.4byte	.LASF37
+ 275 015c E700     		.sleb128 103
+ 276 015e 07       		.uleb128 0x7
+ 277 015f 39190000 		.4byte	.LASF38
+ 278 0163 E800     		.sleb128 104
+ 279 0165 07       		.uleb128 0x7
+ 280 0166 A8190000 		.4byte	.LASF39
+ 281 016a E900     		.sleb128 105
+ 282 016c 07       		.uleb128 0x7
+ 283 016d DB090000 		.4byte	.LASF40
+ 284 0171 EA00     		.sleb128 106
+ 285 0173 07       		.uleb128 0x7
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 6
+
+
+ 286 0174 BA170000 		.4byte	.LASF41
+ 287 0178 EB00     		.sleb128 107
+ 288 017a 07       		.uleb128 0x7
+ 289 017b 42010000 		.4byte	.LASF42
+ 290 017f EC00     		.sleb128 108
+ 291 0181 07       		.uleb128 0x7
+ 292 0182 00000000 		.4byte	.LASF43
+ 293 0186 01       		.sleb128 1
+ 294 0187 07       		.uleb128 0x7
+ 295 0188 580C0000 		.4byte	.LASF44
+ 296 018c EE00     		.sleb128 110
+ 297 018e 07       		.uleb128 0x7
+ 298 018f B5020000 		.4byte	.LASF45
+ 299 0193 EF00     		.sleb128 111
+ 300 0195 07       		.uleb128 0x7
+ 301 0196 0F0A0000 		.4byte	.LASF46
+ 302 019a F000     		.sleb128 112
+ 303 019c 07       		.uleb128 0x7
+ 304 019d 7B070000 		.4byte	.LASF47
+ 305 01a1 F800     		.sleb128 120
+ 306 01a3 07       		.uleb128 0x7
+ 307 01a4 0B100000 		.4byte	.LASF48
+ 308 01a8 F900     		.sleb128 121
+ 309 01aa 07       		.uleb128 0x7
+ 310 01ab 87020000 		.4byte	.LASF49
+ 311 01af FA00     		.sleb128 122
+ 312 01b1 07       		.uleb128 0x7
+ 313 01b2 79140000 		.4byte	.LASF50
+ 314 01b6 FB00     		.sleb128 123
+ 315 01b8 07       		.uleb128 0x7
+ 316 01b9 C60A0000 		.4byte	.LASF51
+ 317 01bd 8C01     		.sleb128 140
+ 318 01bf 07       		.uleb128 0x7
+ 319 01c0 FC180000 		.4byte	.LASF52
+ 320 01c4 8E01     		.sleb128 142
+ 321 01c6 07       		.uleb128 0x7
+ 322 01c7 520D0000 		.4byte	.LASF53
+ 323 01cb 9601     		.sleb128 150
+ 324 01cd 00       		.byte	0
+ 325 01ce 02       		.uleb128 0x2
+ 326 01cf 5C140000 		.4byte	.LASF54
+ 327 01d3 02       		.byte	0x2
+ 328 01d4 5E       		.byte	0x5e
+ 329 01d5 22010000 		.4byte	0x122
+ 330 01d9 06       		.uleb128 0x6
+ 331 01da 01       		.byte	0x1
+ 332 01db 02       		.byte	0x2
+ 333 01dc 60       		.byte	0x60
+ 334 01dd EE010000 		.4byte	0x1ee
+ 335 01e1 07       		.uleb128 0x7
+ 336 01e2 040D0000 		.4byte	.LASF55
+ 337 01e6 0A       		.sleb128 10
+ 338 01e7 07       		.uleb128 0x7
+ 339 01e8 5D010000 		.4byte	.LASF56
+ 340 01ec 14       		.sleb128 20
+ 341 01ed 00       		.byte	0
+ 342 01ee 02       		.uleb128 0x2
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 7
+
+
+ 343 01ef E1010000 		.4byte	.LASF57
+ 344 01f3 02       		.byte	0x2
+ 345 01f4 63       		.byte	0x63
+ 346 01f5 D9010000 		.4byte	0x1d9
+ 347 01f9 06       		.uleb128 0x6
+ 348 01fa 01       		.byte	0x1
+ 349 01fb 02       		.byte	0x2
+ 350 01fc 65       		.byte	0x65
+ 351 01fd 0F020000 		.4byte	0x20f
+ 352 0201 07       		.uleb128 0x7
+ 353 0202 E40A0000 		.4byte	.LASF58
+ 354 0206 FF01     		.sleb128 255
+ 355 0208 07       		.uleb128 0x7
+ 356 0209 80010000 		.4byte	.LASF59
+ 357 020d 00       		.sleb128 0
+ 358 020e 00       		.byte	0
+ 359 020f 02       		.uleb128 0x2
+ 360 0210 B7060000 		.4byte	.LASF60
+ 361 0214 02       		.byte	0x2
+ 362 0215 68       		.byte	0x68
+ 363 0216 F9010000 		.4byte	0x1f9
+ 364 021a 06       		.uleb128 0x6
+ 365 021b 01       		.byte	0x1
+ 366 021c 02       		.byte	0x2
+ 367 021d 6A       		.byte	0x6a
+ 368 021e 71020000 		.4byte	0x271
+ 369 0222 07       		.uleb128 0x7
+ 370 0223 C8070000 		.4byte	.LASF61
+ 371 0227 00       		.sleb128 0
+ 372 0228 07       		.uleb128 0x7
+ 373 0229 A8100000 		.4byte	.LASF62
+ 374 022d 32       		.sleb128 50
+ 375 022e 07       		.uleb128 0x7
+ 376 022f E7100000 		.4byte	.LASF63
+ 377 0233 33       		.sleb128 51
+ 378 0234 07       		.uleb128 0x7
+ 379 0235 11020000 		.4byte	.LASF64
+ 380 0239 34       		.sleb128 52
+ 381 023a 07       		.uleb128 0x7
+ 382 023b B10A0000 		.4byte	.LASF65
+ 383 023f 35       		.sleb128 53
+ 384 0240 07       		.uleb128 0x7
+ 385 0241 5B150000 		.4byte	.LASF66
+ 386 0245 3C       		.sleb128 60
+ 387 0246 07       		.uleb128 0x7
+ 388 0247 F70D0000 		.4byte	.LASF67
+ 389 024b E400     		.sleb128 100
+ 390 024d 07       		.uleb128 0x7
+ 391 024e 20190000 		.4byte	.LASF68
+ 392 0252 EE00     		.sleb128 110
+ 393 0254 07       		.uleb128 0x7
+ 394 0255 1B0C0000 		.4byte	.LASF69
+ 395 0259 F800     		.sleb128 120
+ 396 025b 07       		.uleb128 0x7
+ 397 025c 7D150000 		.4byte	.LASF70
+ 398 0260 A001     		.sleb128 160
+ 399 0262 07       		.uleb128 0x7
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 8
+
+
+ 400 0263 6E0E0000 		.4byte	.LASF71
+ 401 0267 A101     		.sleb128 161
+ 402 0269 07       		.uleb128 0x7
+ 403 026a 78100000 		.4byte	.LASF72
+ 404 026e A201     		.sleb128 162
+ 405 0270 00       		.byte	0
+ 406 0271 02       		.uleb128 0x2
+ 407 0272 89090000 		.4byte	.LASF73
+ 408 0276 02       		.byte	0x2
+ 409 0277 77       		.byte	0x77
+ 410 0278 1A020000 		.4byte	0x21a
+ 411 027c 06       		.uleb128 0x6
+ 412 027d 01       		.byte	0x1
+ 413 027e 02       		.byte	0x2
+ 414 027f 8C       		.byte	0x8c
+ 415 0280 92020000 		.4byte	0x292
+ 416 0284 07       		.uleb128 0x7
+ 417 0285 D0000000 		.4byte	.LASF74
+ 418 0289 FF01     		.sleb128 255
+ 419 028b 07       		.uleb128 0x7
+ 420 028c 2E120000 		.4byte	.LASF75
+ 421 0290 00       		.sleb128 0
+ 422 0291 00       		.byte	0
+ 423 0292 02       		.uleb128 0x2
+ 424 0293 F8170000 		.4byte	.LASF76
+ 425 0297 02       		.byte	0x2
+ 426 0298 8F       		.byte	0x8f
+ 427 0299 7C020000 		.4byte	0x27c
+ 428 029d 06       		.uleb128 0x6
+ 429 029e 01       		.byte	0x1
+ 430 029f 02       		.byte	0x2
+ 431 02a0 92       		.byte	0x92
+ 432 02a1 B8020000 		.4byte	0x2b8
+ 433 02a5 07       		.uleb128 0x7
+ 434 02a6 7B170000 		.4byte	.LASF77
+ 435 02aa 00       		.sleb128 0
+ 436 02ab 07       		.uleb128 0x7
+ 437 02ac 61100000 		.4byte	.LASF78
+ 438 02b0 14       		.sleb128 20
+ 439 02b1 07       		.uleb128 0x7
+ 440 02b2 D20B0000 		.4byte	.LASF79
+ 441 02b6 28       		.sleb128 40
+ 442 02b7 00       		.byte	0
+ 443 02b8 02       		.uleb128 0x2
+ 444 02b9 160D0000 		.4byte	.LASF80
+ 445 02bd 02       		.byte	0x2
+ 446 02be 96       		.byte	0x96
+ 447 02bf 9D020000 		.4byte	0x29d
+ 448 02c3 06       		.uleb128 0x6
+ 449 02c4 01       		.byte	0x1
+ 450 02c5 02       		.byte	0x2
+ 451 02c6 98       		.byte	0x98
+ 452 02c7 D9020000 		.4byte	0x2d9
+ 453 02cb 07       		.uleb128 0x7
+ 454 02cc FB020000 		.4byte	.LASF81
+ 455 02d0 FF01     		.sleb128 255
+ 456 02d2 07       		.uleb128 0x7
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 9
+
+
+ 457 02d3 B1080000 		.4byte	.LASF82
+ 458 02d7 00       		.sleb128 0
+ 459 02d8 00       		.byte	0
+ 460 02d9 02       		.uleb128 0x2
+ 461 02da 1E140000 		.4byte	.LASF83
+ 462 02de 02       		.byte	0x2
+ 463 02df 9B       		.byte	0x9b
+ 464 02e0 C3020000 		.4byte	0x2c3
+ 465 02e4 06       		.uleb128 0x6
+ 466 02e5 01       		.byte	0x1
+ 467 02e6 02       		.byte	0x2
+ 468 02e7 AC       		.byte	0xac
+ 469 02e8 FF020000 		.4byte	0x2ff
+ 470 02ec 07       		.uleb128 0x7
+ 471 02ed 970A0000 		.4byte	.LASF84
+ 472 02f1 00       		.sleb128 0
+ 473 02f2 07       		.uleb128 0x7
+ 474 02f3 26170000 		.4byte	.LASF85
+ 475 02f7 01       		.sleb128 1
+ 476 02f8 07       		.uleb128 0x7
+ 477 02f9 3A130000 		.4byte	.LASF86
+ 478 02fd 02       		.sleb128 2
+ 479 02fe 00       		.byte	0
+ 480 02ff 02       		.uleb128 0x2
+ 481 0300 A7150000 		.4byte	.LASF87
+ 482 0304 02       		.byte	0x2
+ 483 0305 B0       		.byte	0xb0
+ 484 0306 E4020000 		.4byte	0x2e4
+ 485 030a 06       		.uleb128 0x6
+ 486 030b 01       		.byte	0x1
+ 487 030c 02       		.byte	0x2
+ 488 030d BE       		.byte	0xbe
+ 489 030e 20030000 		.4byte	0x320
+ 490 0312 07       		.uleb128 0x7
+ 491 0313 080F0000 		.4byte	.LASF88
+ 492 0317 FF01     		.sleb128 255
+ 493 0319 07       		.uleb128 0x7
+ 494 031a C50C0000 		.4byte	.LASF89
+ 495 031e 00       		.sleb128 0
+ 496 031f 00       		.byte	0
+ 497 0320 02       		.uleb128 0x2
+ 498 0321 76160000 		.4byte	.LASF90
+ 499 0325 02       		.byte	0x2
+ 500 0326 C1       		.byte	0xc1
+ 501 0327 0A030000 		.4byte	0x30a
+ 502 032b 06       		.uleb128 0x6
+ 503 032c 01       		.byte	0x1
+ 504 032d 02       		.byte	0x2
+ 505 032e C3       		.byte	0xc3
+ 506 032f 7D030000 		.4byte	0x37d
+ 507 0333 07       		.uleb128 0x7
+ 508 0334 CD0F0000 		.4byte	.LASF91
+ 509 0338 00       		.sleb128 0
+ 510 0339 07       		.uleb128 0x7
+ 511 033a CE040000 		.4byte	.LASF92
+ 512 033e 01       		.sleb128 1
+ 513 033f 07       		.uleb128 0x7
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 10
+
+
+ 514 0340 49060000 		.4byte	.LASF93
+ 515 0344 02       		.sleb128 2
+ 516 0345 07       		.uleb128 0x7
+ 517 0346 DF0B0000 		.4byte	.LASF94
+ 518 034a 03       		.sleb128 3
+ 519 034b 07       		.uleb128 0x7
+ 520 034c E7000000 		.4byte	.LASF95
+ 521 0350 04       		.sleb128 4
+ 522 0351 07       		.uleb128 0x7
+ 523 0352 DD0F0000 		.4byte	.LASF96
+ 524 0356 05       		.sleb128 5
+ 525 0357 07       		.uleb128 0x7
+ 526 0358 90160000 		.4byte	.LASF97
+ 527 035c 06       		.sleb128 6
+ 528 035d 07       		.uleb128 0x7
+ 529 035e 32170000 		.4byte	.LASF98
+ 530 0362 07       		.sleb128 7
+ 531 0363 07       		.uleb128 0x7
+ 532 0364 E1080000 		.4byte	.LASF99
+ 533 0368 08       		.sleb128 8
+ 534 0369 07       		.uleb128 0x7
+ 535 036a A7130000 		.4byte	.LASF100
+ 536 036e 09       		.sleb128 9
+ 537 036f 07       		.uleb128 0x7
+ 538 0370 3A050000 		.4byte	.LASF101
+ 539 0374 0A       		.sleb128 10
+ 540 0375 07       		.uleb128 0x7
+ 541 0376 48110000 		.4byte	.LASF102
+ 542 037a FF01     		.sleb128 255
+ 543 037c 00       		.byte	0
+ 544 037d 02       		.uleb128 0x2
+ 545 037e 7C040000 		.4byte	.LASF103
+ 546 0382 02       		.byte	0x2
+ 547 0383 D0       		.byte	0xd0
+ 548 0384 2B030000 		.4byte	0x32b
+ 549 0388 06       		.uleb128 0x6
+ 550 0389 01       		.byte	0x1
+ 551 038a 02       		.byte	0x2
+ 552 038b DB       		.byte	0xdb
+ 553 038c A3030000 		.4byte	0x3a3
+ 554 0390 07       		.uleb128 0x7
+ 555 0391 E6160000 		.4byte	.LASF104
+ 556 0395 00       		.sleb128 0
+ 557 0396 07       		.uleb128 0x7
+ 558 0397 9D150000 		.4byte	.LASF105
+ 559 039b 01       		.sleb128 1
+ 560 039c 07       		.uleb128 0x7
+ 561 039d F30C0000 		.4byte	.LASF106
+ 562 03a1 02       		.sleb128 2
+ 563 03a2 00       		.byte	0
+ 564 03a3 02       		.uleb128 0x2
+ 565 03a4 EB140000 		.4byte	.LASF107
+ 566 03a8 02       		.byte	0x2
+ 567 03a9 DF       		.byte	0xdf
+ 568 03aa 88030000 		.4byte	0x388
+ 569 03ae 06       		.uleb128 0x6
+ 570 03af 01       		.byte	0x1
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 11
+
+
+ 571 03b0 02       		.byte	0x2
+ 572 03b1 E1       		.byte	0xe1
+ 573 03b2 C3030000 		.4byte	0x3c3
+ 574 03b6 07       		.uleb128 0x7
+ 575 03b7 89040000 		.4byte	.LASF108
+ 576 03bb 00       		.sleb128 0
+ 577 03bc 07       		.uleb128 0x7
+ 578 03bd DE170000 		.4byte	.LASF109
+ 579 03c1 01       		.sleb128 1
+ 580 03c2 00       		.byte	0
+ 581 03c3 02       		.uleb128 0x2
+ 582 03c4 70190000 		.4byte	.LASF110
+ 583 03c8 02       		.byte	0x2
+ 584 03c9 E4       		.byte	0xe4
+ 585 03ca AE030000 		.4byte	0x3ae
+ 586 03ce 08       		.uleb128 0x8
+ 587 03cf 0C       		.byte	0xc
+ 588 03d0 02       		.byte	0x2
+ 589 03d1 E6       		.byte	0xe6
+ 590 03d2 63040000 		.4byte	0x463
+ 591 03d6 09       		.uleb128 0x9
+ 592 03d7 98190000 		.4byte	.LASF111
+ 593 03db 02       		.byte	0x2
+ 594 03dc E7       		.byte	0xe7
+ 595 03dd 53000000 		.4byte	0x53
+ 596 03e1 02       		.byte	0x2
+ 597 03e2 23       		.byte	0x23
+ 598 03e3 00       		.uleb128 0
+ 599 03e4 09       		.uleb128 0x9
+ 600 03e5 2B0D0000 		.4byte	.LASF112
+ 601 03e9 02       		.byte	0x2
+ 602 03ea E8       		.byte	0xe8
+ 603 03eb 2F000000 		.4byte	0x2f
+ 604 03ef 02       		.byte	0x2
+ 605 03f0 23       		.byte	0x23
+ 606 03f1 02       		.uleb128 0x2
+ 607 03f2 09       		.uleb128 0x9
+ 608 03f3 40120000 		.4byte	.LASF113
+ 609 03f7 02       		.byte	0x2
+ 610 03f8 E9       		.byte	0xe9
+ 611 03f9 17010000 		.4byte	0x117
+ 612 03fd 02       		.byte	0x2
+ 613 03fe 23       		.byte	0x23
+ 614 03ff 03       		.uleb128 0x3
+ 615 0400 09       		.uleb128 0x9
+ 616 0401 54040000 		.4byte	.LASF114
+ 617 0405 02       		.byte	0x2
+ 618 0406 EA       		.byte	0xea
+ 619 0407 CE010000 		.4byte	0x1ce
+ 620 040b 02       		.byte	0x2
+ 621 040c 23       		.byte	0x23
+ 622 040d 04       		.uleb128 0x4
+ 623 040e 09       		.uleb128 0x9
+ 624 040f 31060000 		.4byte	.LASF115
+ 625 0413 02       		.byte	0x2
+ 626 0414 EB       		.byte	0xeb
+ 627 0415 71020000 		.4byte	0x271
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 12
+
+
+ 628 0419 02       		.byte	0x2
+ 629 041a 23       		.byte	0x23
+ 630 041b 05       		.uleb128 0x5
+ 631 041c 09       		.uleb128 0x9
+ 632 041d BE160000 		.4byte	.LASF116
+ 633 0421 02       		.byte	0x2
+ 634 0422 EC       		.byte	0xec
+ 635 0423 92020000 		.4byte	0x292
+ 636 0427 02       		.byte	0x2
+ 637 0428 23       		.byte	0x23
+ 638 0429 06       		.uleb128 0x6
+ 639 042a 09       		.uleb128 0x9
+ 640 042b 6E040000 		.4byte	.LASF117
+ 641 042f 02       		.byte	0x2
+ 642 0430 ED       		.byte	0xed
+ 643 0431 B8020000 		.4byte	0x2b8
+ 644 0435 02       		.byte	0x2
+ 645 0436 23       		.byte	0x23
+ 646 0437 07       		.uleb128 0x7
+ 647 0438 09       		.uleb128 0x9
+ 648 0439 4D090000 		.4byte	.LASF118
+ 649 043d 02       		.byte	0x2
+ 650 043e EE       		.byte	0xee
+ 651 043f 20030000 		.4byte	0x320
+ 652 0443 02       		.byte	0x2
+ 653 0444 23       		.byte	0x23
+ 654 0445 08       		.uleb128 0x8
+ 655 0446 09       		.uleb128 0x9
+ 656 0447 F3070000 		.4byte	.LASF119
+ 657 044b 02       		.byte	0x2
+ 658 044c EF       		.byte	0xef
+ 659 044d EE010000 		.4byte	0x1ee
+ 660 0451 02       		.byte	0x2
+ 661 0452 23       		.byte	0x23
+ 662 0453 09       		.uleb128 0x9
+ 663 0454 09       		.uleb128 0x9
+ 664 0455 F8000000 		.4byte	.LASF120
+ 665 0459 02       		.byte	0x2
+ 666 045a F0       		.byte	0xf0
+ 667 045b C3030000 		.4byte	0x3c3
+ 668 045f 02       		.byte	0x2
+ 669 0460 23       		.byte	0x23
+ 670 0461 0A       		.uleb128 0xa
+ 671 0462 00       		.byte	0
+ 672 0463 02       		.uleb128 0x2
+ 673 0464 4C0F0000 		.4byte	.LASF121
+ 674 0468 02       		.byte	0x2
+ 675 0469 F2       		.byte	0xf2
+ 676 046a CE030000 		.4byte	0x3ce
+ 677 046e 08       		.uleb128 0x8
+ 678 046f 04       		.byte	0x4
+ 679 0470 02       		.byte	0x2
+ 680 0471 F4       		.byte	0xf4
+ 681 0472 AF040000 		.4byte	0x4af
+ 682 0476 09       		.uleb128 0x9
+ 683 0477 BF190000 		.4byte	.LASF122
+ 684 047b 02       		.byte	0x2
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 13
+
+
+ 685 047c F6       		.byte	0xf6
+ 686 047d 2F000000 		.4byte	0x2f
+ 687 0481 02       		.byte	0x2
+ 688 0482 23       		.byte	0x23
+ 689 0483 00       		.uleb128 0
+ 690 0484 09       		.uleb128 0x9
+ 691 0485 730B0000 		.4byte	.LASF123
+ 692 0489 02       		.byte	0x2
+ 693 048a F7       		.byte	0xf7
+ 694 048b 2F000000 		.4byte	0x2f
+ 695 048f 02       		.byte	0x2
+ 696 0490 23       		.byte	0x23
+ 697 0491 01       		.uleb128 0x1
+ 698 0492 09       		.uleb128 0x9
+ 699 0493 90110000 		.4byte	.LASF124
+ 700 0497 02       		.byte	0x2
+ 701 0498 F8       		.byte	0xf8
+ 702 0499 2F000000 		.4byte	0x2f
+ 703 049d 02       		.byte	0x2
+ 704 049e 23       		.byte	0x23
+ 705 049f 02       		.uleb128 0x2
+ 706 04a0 09       		.uleb128 0x9
+ 707 04a1 2C030000 		.4byte	.LASF125
+ 708 04a5 02       		.byte	0x2
+ 709 04a6 F9       		.byte	0xf9
+ 710 04a7 2F000000 		.4byte	0x2f
+ 711 04ab 02       		.byte	0x2
+ 712 04ac 23       		.byte	0x23
+ 713 04ad 03       		.uleb128 0x3
+ 714 04ae 00       		.byte	0
+ 715 04af 02       		.uleb128 0x2
+ 716 04b0 B0160000 		.4byte	.LASF126
+ 717 04b4 02       		.byte	0x2
+ 718 04b5 FA       		.byte	0xfa
+ 719 04b6 6E040000 		.4byte	0x46e
+ 720 04ba 08       		.uleb128 0x8
+ 721 04bb 08       		.byte	0x8
+ 722 04bc 02       		.byte	0x2
+ 723 04bd FC       		.byte	0xfc
+ 724 04be 1B050000 		.4byte	0x51b
+ 725 04c2 09       		.uleb128 0x9
+ 726 04c3 6B140000 		.4byte	.LASF127
+ 727 04c7 02       		.byte	0x2
+ 728 04c8 FD       		.byte	0xfd
+ 729 04c9 41000000 		.4byte	0x41
+ 730 04cd 02       		.byte	0x2
+ 731 04ce 23       		.byte	0x23
+ 732 04cf 00       		.uleb128 0
+ 733 04d0 09       		.uleb128 0x9
+ 734 04d1 AC0D0000 		.4byte	.LASF128
+ 735 04d5 02       		.byte	0x2
+ 736 04d6 FE       		.byte	0xfe
+ 737 04d7 41000000 		.4byte	0x41
+ 738 04db 02       		.byte	0x2
+ 739 04dc 23       		.byte	0x23
+ 740 04dd 02       		.uleb128 0x2
+ 741 04de 0A       		.uleb128 0xa
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 14
+
+
+ 742 04df EA0E0000 		.4byte	.LASF129
+ 743 04e3 02       		.byte	0x2
+ 744 04e4 0101     		.2byte	0x101
+ 745 04e6 2F000000 		.4byte	0x2f
+ 746 04ea 02       		.byte	0x2
+ 747 04eb 23       		.byte	0x23
+ 748 04ec 04       		.uleb128 0x4
+ 749 04ed 0A       		.uleb128 0xa
+ 750 04ee AB060000 		.4byte	.LASF130
+ 751 04f2 02       		.byte	0x2
+ 752 04f3 0201     		.2byte	0x102
+ 753 04f5 1D000000 		.4byte	0x1d
+ 754 04f9 02       		.byte	0x2
+ 755 04fa 23       		.byte	0x23
+ 756 04fb 05       		.uleb128 0x5
+ 757 04fc 0A       		.uleb128 0xa
+ 758 04fd 1A010000 		.4byte	.LASF131
+ 759 0501 02       		.byte	0x2
+ 760 0502 0301     		.2byte	0x103
+ 761 0504 1D000000 		.4byte	0x1d
+ 762 0508 02       		.byte	0x2
+ 763 0509 23       		.byte	0x23
+ 764 050a 06       		.uleb128 0x6
+ 765 050b 0B       		.uleb128 0xb
+ 766 050c 59617700 		.ascii	"Yaw\000"
+ 767 0510 02       		.byte	0x2
+ 768 0511 0401     		.2byte	0x104
+ 769 0513 1D000000 		.4byte	0x1d
+ 770 0517 02       		.byte	0x2
+ 771 0518 23       		.byte	0x23
+ 772 0519 07       		.uleb128 0x7
+ 773 051a 00       		.byte	0
+ 774 051b 0C       		.uleb128 0xc
+ 775 051c 09180000 		.4byte	.LASF132
+ 776 0520 02       		.byte	0x2
+ 777 0521 0501     		.2byte	0x105
+ 778 0523 BA040000 		.4byte	0x4ba
+ 779 0527 0D       		.uleb128 0xd
+ 780 0528 08       		.byte	0x8
+ 781 0529 02       		.byte	0x2
+ 782 052a 0801     		.2byte	0x108
+ 783 052c 6D050000 		.4byte	0x56d
+ 784 0530 0A       		.uleb128 0xa
+ 785 0531 6C110000 		.4byte	.LASF133
+ 786 0535 02       		.byte	0x2
+ 787 0536 0901     		.2byte	0x109
+ 788 0538 41000000 		.4byte	0x41
+ 789 053c 02       		.byte	0x2
+ 790 053d 23       		.byte	0x23
+ 791 053e 00       		.uleb128 0
+ 792 053f 0A       		.uleb128 0xa
+ 793 0540 D7020000 		.4byte	.LASF134
+ 794 0544 02       		.byte	0x2
+ 795 0545 0A01     		.2byte	0x10a
+ 796 0547 41000000 		.4byte	0x41
+ 797 054b 02       		.byte	0x2
+ 798 054c 23       		.byte	0x23
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 15
+
+
+ 799 054d 02       		.uleb128 0x2
+ 800 054e 0A       		.uleb128 0xa
+ 801 054f 70100000 		.4byte	.LASF135
+ 802 0553 02       		.byte	0x2
+ 803 0554 0B01     		.2byte	0x10b
+ 804 0556 53000000 		.4byte	0x53
+ 805 055a 02       		.byte	0x2
+ 806 055b 23       		.byte	0x23
+ 807 055c 04       		.uleb128 0x4
+ 808 055d 0A       		.uleb128 0xa
+ 809 055e EE170000 		.4byte	.LASF136
+ 810 0562 02       		.byte	0x2
+ 811 0563 0C01     		.2byte	0x10c
+ 812 0565 41000000 		.4byte	0x41
+ 813 0569 02       		.byte	0x2
+ 814 056a 23       		.byte	0x23
+ 815 056b 06       		.uleb128 0x6
+ 816 056c 00       		.byte	0
+ 817 056d 0C       		.uleb128 0xc
+ 818 056e 70150000 		.4byte	.LASF137
+ 819 0572 02       		.byte	0x2
+ 820 0573 0E01     		.2byte	0x10e
+ 821 0575 27050000 		.4byte	0x527
+ 822 0579 0D       		.uleb128 0xd
+ 823 057a 12       		.byte	0x12
+ 824 057b 02       		.byte	0x2
+ 825 057c 1001     		.2byte	0x110
+ 826 057e 37060000 		.4byte	0x637
+ 827 0582 0A       		.uleb128 0xa
+ 828 0583 6C110000 		.4byte	.LASF133
+ 829 0587 02       		.byte	0x2
+ 830 0588 1101     		.2byte	0x111
+ 831 058a 41000000 		.4byte	0x41
+ 832 058e 02       		.byte	0x2
+ 833 058f 23       		.byte	0x23
+ 834 0590 00       		.uleb128 0
+ 835 0591 0A       		.uleb128 0xa
+ 836 0592 D7020000 		.4byte	.LASF134
+ 837 0596 02       		.byte	0x2
+ 838 0597 1201     		.2byte	0x112
+ 839 0599 41000000 		.4byte	0x41
+ 840 059d 02       		.byte	0x2
+ 841 059e 23       		.byte	0x23
+ 842 059f 02       		.uleb128 0x2
+ 843 05a0 0A       		.uleb128 0xa
+ 844 05a1 70100000 		.4byte	.LASF135
+ 845 05a5 02       		.byte	0x2
+ 846 05a6 1301     		.2byte	0x113
+ 847 05a8 53000000 		.4byte	0x53
+ 848 05ac 02       		.byte	0x2
+ 849 05ad 23       		.byte	0x23
+ 850 05ae 04       		.uleb128 0x4
+ 851 05af 0A       		.uleb128 0xa
+ 852 05b0 EE170000 		.4byte	.LASF136
+ 853 05b4 02       		.byte	0x2
+ 854 05b5 1401     		.2byte	0x114
+ 855 05b7 53000000 		.4byte	0x53
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 16
+
+
+ 856 05bb 02       		.byte	0x2
+ 857 05bc 23       		.byte	0x23
+ 858 05bd 06       		.uleb128 0x6
+ 859 05be 0A       		.uleb128 0xa
+ 860 05bf AB060000 		.4byte	.LASF130
+ 861 05c3 02       		.byte	0x2
+ 862 05c4 1601     		.2byte	0x116
+ 863 05c6 1D000000 		.4byte	0x1d
+ 864 05ca 02       		.byte	0x2
+ 865 05cb 23       		.byte	0x23
+ 866 05cc 08       		.uleb128 0x8
+ 867 05cd 0A       		.uleb128 0xa
+ 868 05ce 1A010000 		.4byte	.LASF131
+ 869 05d2 02       		.byte	0x2
+ 870 05d3 1701     		.2byte	0x117
+ 871 05d5 1D000000 		.4byte	0x1d
+ 872 05d9 02       		.byte	0x2
+ 873 05da 23       		.byte	0x23
+ 874 05db 09       		.uleb128 0x9
+ 875 05dc 0A       		.uleb128 0xa
+ 876 05dd 6B140000 		.4byte	.LASF127
+ 877 05e1 02       		.byte	0x2
+ 878 05e2 1801     		.2byte	0x118
+ 879 05e4 41000000 		.4byte	0x41
+ 880 05e8 02       		.byte	0x2
+ 881 05e9 23       		.byte	0x23
+ 882 05ea 0A       		.uleb128 0xa
+ 883 05eb 0A       		.uleb128 0xa
+ 884 05ec AC0D0000 		.4byte	.LASF128
+ 885 05f0 02       		.byte	0x2
+ 886 05f1 1901     		.2byte	0x119
+ 887 05f3 41000000 		.4byte	0x41
+ 888 05f7 02       		.byte	0x2
+ 889 05f8 23       		.byte	0x23
+ 890 05f9 0C       		.uleb128 0xc
+ 891 05fa 0A       		.uleb128 0xa
+ 892 05fb BF190000 		.4byte	.LASF122
+ 893 05ff 02       		.byte	0x2
+ 894 0600 1B01     		.2byte	0x11b
+ 895 0602 2F000000 		.4byte	0x2f
+ 896 0606 02       		.byte	0x2
+ 897 0607 23       		.byte	0x23
+ 898 0608 0E       		.uleb128 0xe
+ 899 0609 0A       		.uleb128 0xa
+ 900 060a 730B0000 		.4byte	.LASF123
+ 901 060e 02       		.byte	0x2
+ 902 060f 1C01     		.2byte	0x11c
+ 903 0611 2F000000 		.4byte	0x2f
+ 904 0615 02       		.byte	0x2
+ 905 0616 23       		.byte	0x23
+ 906 0617 0F       		.uleb128 0xf
+ 907 0618 0A       		.uleb128 0xa
+ 908 0619 90110000 		.4byte	.LASF124
+ 909 061d 02       		.byte	0x2
+ 910 061e 1D01     		.2byte	0x11d
+ 911 0620 2F000000 		.4byte	0x2f
+ 912 0624 02       		.byte	0x2
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 17
+
+
+ 913 0625 23       		.byte	0x23
+ 914 0626 10       		.uleb128 0x10
+ 915 0627 0A       		.uleb128 0xa
+ 916 0628 2C030000 		.4byte	.LASF125
+ 917 062c 02       		.byte	0x2
+ 918 062d 1E01     		.2byte	0x11e
+ 919 062f 2F000000 		.4byte	0x2f
+ 920 0633 02       		.byte	0x2
+ 921 0634 23       		.byte	0x23
+ 922 0635 11       		.uleb128 0x11
+ 923 0636 00       		.byte	0
+ 924 0637 0C       		.uleb128 0xc
+ 925 0638 AC030000 		.4byte	.LASF138
+ 926 063c 02       		.byte	0x2
+ 927 063d 1F01     		.2byte	0x11f
+ 928 063f 79050000 		.4byte	0x579
+ 929 0643 0D       		.uleb128 0xd
+ 930 0644 0A       		.byte	0xa
+ 931 0645 02       		.byte	0x2
+ 932 0646 2101     		.2byte	0x121
+ 933 0648 98060000 		.4byte	0x698
+ 934 064c 0A       		.uleb128 0xa
+ 935 064d 120C0000 		.4byte	.LASF139
+ 936 0651 02       		.byte	0x2
+ 937 0652 2201     		.2byte	0x122
+ 938 0654 41000000 		.4byte	0x41
+ 939 0658 02       		.byte	0x2
+ 940 0659 23       		.byte	0x23
+ 941 065a 00       		.uleb128 0
+ 942 065b 0A       		.uleb128 0xa
+ 943 065c 420B0000 		.4byte	.LASF140
+ 944 0660 02       		.byte	0x2
+ 945 0661 2301     		.2byte	0x123
+ 946 0663 41000000 		.4byte	0x41
+ 947 0667 02       		.byte	0x2
+ 948 0668 23       		.byte	0x23
+ 949 0669 02       		.uleb128 0x2
+ 950 066a 0A       		.uleb128 0xa
+ 951 066b FD0C0000 		.4byte	.LASF141
+ 952 066f 02       		.byte	0x2
+ 953 0670 2401     		.2byte	0x124
+ 954 0672 41000000 		.4byte	0x41
+ 955 0676 02       		.byte	0x2
+ 956 0677 23       		.byte	0x23
+ 957 0678 04       		.uleb128 0x4
+ 958 0679 0A       		.uleb128 0xa
+ 959 067a CB0B0000 		.4byte	.LASF142
+ 960 067e 02       		.byte	0x2
+ 961 067f 2501     		.2byte	0x125
+ 962 0681 41000000 		.4byte	0x41
+ 963 0685 02       		.byte	0x2
+ 964 0686 23       		.byte	0x23
+ 965 0687 06       		.uleb128 0x6
+ 966 0688 0B       		.uleb128 0xb
+ 967 0689 47505300 		.ascii	"GPS\000"
+ 968 068d 02       		.byte	0x2
+ 969 068e 2601     		.2byte	0x126
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 18
+
+
+ 970 0690 41000000 		.4byte	0x41
+ 971 0694 02       		.byte	0x2
+ 972 0695 23       		.byte	0x23
+ 973 0696 08       		.uleb128 0x8
+ 974 0697 00       		.byte	0
+ 975 0698 0C       		.uleb128 0xc
+ 976 0699 1E130000 		.4byte	.LASF143
+ 977 069d 02       		.byte	0x2
+ 978 069e 2701     		.2byte	0x127
+ 979 06a0 43060000 		.4byte	0x643
+ 980 06a4 0D       		.uleb128 0xd
+ 981 06a5 60       		.byte	0x60
+ 982 06a6 02       		.byte	0x2
+ 983 06a7 2901     		.2byte	0x129
+ 984 06a9 16080000 		.4byte	0x816
+ 985 06ad 0A       		.uleb128 0xa
+ 986 06ae 6C110000 		.4byte	.LASF133
+ 987 06b2 02       		.byte	0x2
+ 988 06b3 2A01     		.2byte	0x12a
+ 989 06b5 B4000000 		.4byte	0xb4
+ 990 06b9 02       		.byte	0x2
+ 991 06ba 23       		.byte	0x23
+ 992 06bb 00       		.uleb128 0
+ 993 06bc 0A       		.uleb128 0xa
+ 994 06bd D7020000 		.4byte	.LASF134
+ 995 06c1 02       		.byte	0x2
+ 996 06c2 2C01     		.2byte	0x12c
+ 997 06c4 B4000000 		.4byte	0xb4
+ 998 06c8 02       		.byte	0x2
+ 999 06c9 23       		.byte	0x23
+ 1000 06ca 04       		.uleb128 0x4
+ 1001 06cb 0A       		.uleb128 0xa
+ 1002 06cc 70100000 		.4byte	.LASF135
+ 1003 06d0 02       		.byte	0x2
+ 1004 06d1 2E01     		.2byte	0x12e
+ 1005 06d3 B4000000 		.4byte	0xb4
+ 1006 06d7 02       		.byte	0x2
+ 1007 06d8 23       		.byte	0x23
+ 1008 06d9 08       		.uleb128 0x8
+ 1009 06da 0A       		.uleb128 0xa
+ 1010 06db EE170000 		.4byte	.LASF136
+ 1011 06df 02       		.byte	0x2
+ 1012 06e0 3001     		.2byte	0x130
+ 1013 06e2 B4000000 		.4byte	0xb4
+ 1014 06e6 02       		.byte	0x2
+ 1015 06e7 23       		.byte	0x23
+ 1016 06e8 0C       		.uleb128 0xc
+ 1017 06e9 0A       		.uleb128 0xa
+ 1018 06ea 0D170000 		.4byte	.LASF144
+ 1019 06ee 02       		.byte	0x2
+ 1020 06ef 3201     		.2byte	0x132
+ 1021 06f1 B4000000 		.4byte	0xb4
+ 1022 06f5 02       		.byte	0x2
+ 1023 06f6 23       		.byte	0x23
+ 1024 06f7 10       		.uleb128 0x10
+ 1025 06f8 0A       		.uleb128 0xa
+ 1026 06f9 4C070000 		.4byte	.LASF145
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 19
+
+
+ 1027 06fd 02       		.byte	0x2
+ 1028 06fe 3401     		.2byte	0x134
+ 1029 0700 B4000000 		.4byte	0xb4
+ 1030 0704 02       		.byte	0x2
+ 1031 0705 23       		.byte	0x23
+ 1032 0706 14       		.uleb128 0x14
+ 1033 0707 0A       		.uleb128 0xa
+ 1034 0708 84110000 		.4byte	.LASF146
+ 1035 070c 02       		.byte	0x2
+ 1036 070d 3501     		.2byte	0x135
+ 1037 070f B4000000 		.4byte	0xb4
+ 1038 0713 02       		.byte	0x2
+ 1039 0714 23       		.byte	0x23
+ 1040 0715 18       		.uleb128 0x18
+ 1041 0716 0A       		.uleb128 0xa
+ 1042 0717 55000000 		.4byte	.LASF147
+ 1043 071b 02       		.byte	0x2
+ 1044 071c 3601     		.2byte	0x136
+ 1045 071e B4000000 		.4byte	0xb4
+ 1046 0722 02       		.byte	0x2
+ 1047 0723 23       		.byte	0x23
+ 1048 0724 1C       		.uleb128 0x1c
+ 1049 0725 0A       		.uleb128 0xa
+ 1050 0726 A8020000 		.4byte	.LASF148
+ 1051 072a 02       		.byte	0x2
+ 1052 072b 3701     		.2byte	0x137
+ 1053 072d B4000000 		.4byte	0xb4
+ 1054 0731 02       		.byte	0x2
+ 1055 0732 23       		.byte	0x23
+ 1056 0733 20       		.uleb128 0x20
+ 1057 0734 0A       		.uleb128 0xa
+ 1058 0735 B6110000 		.4byte	.LASF149
+ 1059 0739 02       		.byte	0x2
+ 1060 073a 3901     		.2byte	0x139
+ 1061 073c B4000000 		.4byte	0xb4
+ 1062 0740 02       		.byte	0x2
+ 1063 0741 23       		.byte	0x23
+ 1064 0742 24       		.uleb128 0x24
+ 1065 0743 0A       		.uleb128 0xa
+ 1066 0744 780F0000 		.4byte	.LASF150
+ 1067 0748 02       		.byte	0x2
+ 1068 0749 3A01     		.2byte	0x13a
+ 1069 074b B4000000 		.4byte	0xb4
+ 1070 074f 02       		.byte	0x2
+ 1071 0750 23       		.byte	0x23
+ 1072 0751 28       		.uleb128 0x28
+ 1073 0752 0A       		.uleb128 0xa
+ 1074 0753 EA0E0000 		.4byte	.LASF129
+ 1075 0757 02       		.byte	0x2
+ 1076 0758 3C01     		.2byte	0x13c
+ 1077 075a B4000000 		.4byte	0xb4
+ 1078 075e 02       		.byte	0x2
+ 1079 075f 23       		.byte	0x23
+ 1080 0760 2C       		.uleb128 0x2c
+ 1081 0761 0A       		.uleb128 0xa
+ 1082 0762 AB060000 		.4byte	.LASF130
+ 1083 0766 02       		.byte	0x2
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 20
+
+
+ 1084 0767 3E01     		.2byte	0x13e
+ 1085 0769 B4000000 		.4byte	0xb4
+ 1086 076d 02       		.byte	0x2
+ 1087 076e 23       		.byte	0x23
+ 1088 076f 30       		.uleb128 0x30
+ 1089 0770 0A       		.uleb128 0xa
+ 1090 0771 1A010000 		.4byte	.LASF131
+ 1091 0775 02       		.byte	0x2
+ 1092 0776 3F01     		.2byte	0x13f
+ 1093 0778 B4000000 		.4byte	0xb4
+ 1094 077c 02       		.byte	0x2
+ 1095 077d 23       		.byte	0x23
+ 1096 077e 34       		.uleb128 0x34
+ 1097 077f 0A       		.uleb128 0xa
+ 1098 0780 6B140000 		.4byte	.LASF127
+ 1099 0784 02       		.byte	0x2
+ 1100 0785 4001     		.2byte	0x140
+ 1101 0787 B4000000 		.4byte	0xb4
+ 1102 078b 02       		.byte	0x2
+ 1103 078c 23       		.byte	0x23
+ 1104 078d 38       		.uleb128 0x38
+ 1105 078e 0A       		.uleb128 0xa
+ 1106 078f AC0D0000 		.4byte	.LASF128
+ 1107 0793 02       		.byte	0x2
+ 1108 0794 4101     		.2byte	0x141
+ 1109 0796 B4000000 		.4byte	0xb4
+ 1110 079a 02       		.byte	0x2
+ 1111 079b 23       		.byte	0x23
+ 1112 079c 3C       		.uleb128 0x3c
+ 1113 079d 0A       		.uleb128 0xa
+ 1114 079e 26070000 		.4byte	.LASF151
+ 1115 07a2 02       		.byte	0x2
+ 1116 07a3 4301     		.2byte	0x143
+ 1117 07a5 B4000000 		.4byte	0xb4
+ 1118 07a9 02       		.byte	0x2
+ 1119 07aa 23       		.byte	0x23
+ 1120 07ab 40       		.uleb128 0x40
+ 1121 07ac 0A       		.uleb128 0xa
+ 1122 07ad 02020000 		.4byte	.LASF152
+ 1123 07b1 02       		.byte	0x2
+ 1124 07b2 4401     		.2byte	0x144
+ 1125 07b4 B4000000 		.4byte	0xb4
+ 1126 07b8 02       		.byte	0x2
+ 1127 07b9 23       		.byte	0x23
+ 1128 07ba 44       		.uleb128 0x44
+ 1129 07bb 0A       		.uleb128 0xa
+ 1130 07bc 36080000 		.4byte	.LASF153
+ 1131 07c0 02       		.byte	0x2
+ 1132 07c1 4501     		.2byte	0x145
+ 1133 07c3 B4000000 		.4byte	0xb4
+ 1134 07c7 02       		.byte	0x2
+ 1135 07c8 23       		.byte	0x23
+ 1136 07c9 48       		.uleb128 0x48
+ 1137 07ca 0A       		.uleb128 0xa
+ 1138 07cb 0D060000 		.4byte	.LASF154
+ 1139 07cf 02       		.byte	0x2
+ 1140 07d0 4601     		.2byte	0x146
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 21
+
+
+ 1141 07d2 B4000000 		.4byte	0xb4
+ 1142 07d6 02       		.byte	0x2
+ 1143 07d7 23       		.byte	0x23
+ 1144 07d8 4C       		.uleb128 0x4c
+ 1145 07d9 0A       		.uleb128 0xa
+ 1146 07da BF190000 		.4byte	.LASF122
+ 1147 07de 02       		.byte	0x2
+ 1148 07df 4801     		.2byte	0x148
+ 1149 07e1 B4000000 		.4byte	0xb4
+ 1150 07e5 02       		.byte	0x2
+ 1151 07e6 23       		.byte	0x23
+ 1152 07e7 50       		.uleb128 0x50
+ 1153 07e8 0A       		.uleb128 0xa
+ 1154 07e9 7D190000 		.4byte	.LASF155
+ 1155 07ed 02       		.byte	0x2
+ 1156 07ee 4901     		.2byte	0x149
+ 1157 07f0 B4000000 		.4byte	0xb4
+ 1158 07f4 02       		.byte	0x2
+ 1159 07f5 23       		.byte	0x23
+ 1160 07f6 54       		.uleb128 0x54
+ 1161 07f7 0A       		.uleb128 0xa
+ 1162 07f8 090E0000 		.4byte	.LASF156
+ 1163 07fc 02       		.byte	0x2
+ 1164 07fd 4A01     		.2byte	0x14a
+ 1165 07ff B4000000 		.4byte	0xb4
+ 1166 0803 02       		.byte	0x2
+ 1167 0804 23       		.byte	0x23
+ 1168 0805 58       		.uleb128 0x58
+ 1169 0806 0A       		.uleb128 0xa
+ 1170 0807 2C030000 		.4byte	.LASF125
+ 1171 080b 02       		.byte	0x2
+ 1172 080c 4B01     		.2byte	0x14b
+ 1173 080e B4000000 		.4byte	0xb4
+ 1174 0812 02       		.byte	0x2
+ 1175 0813 23       		.byte	0x23
+ 1176 0814 5C       		.uleb128 0x5c
+ 1177 0815 00       		.byte	0
+ 1178 0816 0C       		.uleb128 0xc
+ 1179 0817 970B0000 		.4byte	.LASF157
+ 1180 081b 02       		.byte	0x2
+ 1181 081c 4C01     		.2byte	0x14c
+ 1182 081e A4060000 		.4byte	0x6a4
+ 1183 0822 0D       		.uleb128 0xd
+ 1184 0823 06       		.byte	0x6
+ 1185 0824 02       		.byte	0x2
+ 1186 0825 4E01     		.2byte	0x14e
+ 1187 0827 59080000 		.4byte	0x859
+ 1188 082b 0A       		.uleb128 0xa
+ 1189 082c FF070000 		.4byte	.LASF158
+ 1190 0830 02       		.byte	0x2
+ 1191 0831 4F01     		.2byte	0x14f
+ 1192 0833 53000000 		.4byte	0x53
+ 1193 0837 02       		.byte	0x2
+ 1194 0838 23       		.byte	0x23
+ 1195 0839 00       		.uleb128 0
+ 1196 083a 0A       		.uleb128 0xa
+ 1197 083b 17110000 		.4byte	.LASF159
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 22
+
+
+ 1198 083f 02       		.byte	0x2
+ 1199 0840 5001     		.2byte	0x150
+ 1200 0842 53000000 		.4byte	0x53
+ 1201 0846 02       		.byte	0x2
+ 1202 0847 23       		.byte	0x23
+ 1203 0848 02       		.uleb128 0x2
+ 1204 0849 0A       		.uleb128 0xa
+ 1205 084a 2D010000 		.4byte	.LASF160
+ 1206 084e 02       		.byte	0x2
+ 1207 084f 5101     		.2byte	0x151
+ 1208 0851 53000000 		.4byte	0x53
+ 1209 0855 02       		.byte	0x2
+ 1210 0856 23       		.byte	0x23
+ 1211 0857 04       		.uleb128 0x4
+ 1212 0858 00       		.byte	0
+ 1213 0859 0C       		.uleb128 0xc
+ 1214 085a 25020000 		.4byte	.LASF161
+ 1215 085e 02       		.byte	0x2
+ 1216 085f 5201     		.2byte	0x152
+ 1217 0861 22080000 		.4byte	0x822
+ 1218 0865 0D       		.uleb128 0xd
+ 1219 0866 5A       		.byte	0x5a
+ 1220 0867 02       		.byte	0x2
+ 1221 0868 5701     		.2byte	0x157
+ 1222 086a 990B0000 		.4byte	0xb99
+ 1223 086e 0A       		.uleb128 0xa
+ 1224 086f EA120000 		.4byte	.LASF162
+ 1225 0873 02       		.byte	0x2
+ 1226 0874 5801     		.2byte	0x158
+ 1227 0876 41000000 		.4byte	0x41
+ 1228 087a 02       		.byte	0x2
+ 1229 087b 23       		.byte	0x23
+ 1230 087c 00       		.uleb128 0
+ 1231 087d 0A       		.uleb128 0xa
+ 1232 087e 24110000 		.4byte	.LASF163
+ 1233 0882 02       		.byte	0x2
+ 1234 0883 5901     		.2byte	0x159
+ 1235 0885 41000000 		.4byte	0x41
+ 1236 0889 02       		.byte	0x2
+ 1237 088a 23       		.byte	0x23
+ 1238 088b 02       		.uleb128 0x2
+ 1239 088c 0A       		.uleb128 0xa
+ 1240 088d FE100000 		.4byte	.LASF164
+ 1241 0891 02       		.byte	0x2
+ 1242 0892 5A01     		.2byte	0x15a
+ 1243 0894 41000000 		.4byte	0x41
+ 1244 0898 02       		.byte	0x2
+ 1245 0899 23       		.byte	0x23
+ 1246 089a 04       		.uleb128 0x4
+ 1247 089b 0A       		.uleb128 0xa
+ 1248 089c 79060000 		.4byte	.LASF165
+ 1249 08a0 02       		.byte	0x2
+ 1250 08a1 5B01     		.2byte	0x15b
+ 1251 08a3 53000000 		.4byte	0x53
+ 1252 08a7 02       		.byte	0x2
+ 1253 08a8 23       		.byte	0x23
+ 1254 08a9 06       		.uleb128 0x6
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 23
+
+
+ 1255 08aa 0A       		.uleb128 0xa
+ 1256 08ab 20060000 		.4byte	.LASF166
+ 1257 08af 02       		.byte	0x2
+ 1258 08b0 5C01     		.2byte	0x15c
+ 1259 08b2 53000000 		.4byte	0x53
+ 1260 08b6 02       		.byte	0x2
+ 1261 08b7 23       		.byte	0x23
+ 1262 08b8 08       		.uleb128 0x8
+ 1263 08b9 0A       		.uleb128 0xa
+ 1264 08ba 1B030000 		.4byte	.LASF167
+ 1265 08be 02       		.byte	0x2
+ 1266 08bf 5D01     		.2byte	0x15d
+ 1267 08c1 41000000 		.4byte	0x41
+ 1268 08c5 02       		.byte	0x2
+ 1269 08c6 23       		.byte	0x23
+ 1270 08c7 0A       		.uleb128 0xa
+ 1271 08c8 0A       		.uleb128 0xa
+ 1272 08c9 DC020000 		.4byte	.LASF168
+ 1273 08cd 02       		.byte	0x2
+ 1274 08ce 5E01     		.2byte	0x15e
+ 1275 08d0 41000000 		.4byte	0x41
+ 1276 08d4 02       		.byte	0x2
+ 1277 08d5 23       		.byte	0x23
+ 1278 08d6 0C       		.uleb128 0xc
+ 1279 08d7 0A       		.uleb128 0xa
+ 1280 08d8 6D0A0000 		.4byte	.LASF169
+ 1281 08dc 02       		.byte	0x2
+ 1282 08dd 5F01     		.2byte	0x15f
+ 1283 08df 53000000 		.4byte	0x53
+ 1284 08e3 02       		.byte	0x2
+ 1285 08e4 23       		.byte	0x23
+ 1286 08e5 0E       		.uleb128 0xe
+ 1287 08e6 0A       		.uleb128 0xa
+ 1288 08e7 130B0000 		.4byte	.LASF170
+ 1289 08eb 02       		.byte	0x2
+ 1290 08ec 6201     		.2byte	0x162
+ 1291 08ee 41000000 		.4byte	0x41
+ 1292 08f2 02       		.byte	0x2
+ 1293 08f3 23       		.byte	0x23
+ 1294 08f4 10       		.uleb128 0x10
+ 1295 08f5 0A       		.uleb128 0xa
+ 1296 08f6 A30A0000 		.4byte	.LASF171
+ 1297 08fa 02       		.byte	0x2
+ 1298 08fb 6301     		.2byte	0x163
+ 1299 08fd 41000000 		.4byte	0x41
+ 1300 0901 02       		.byte	0x2
+ 1301 0902 23       		.byte	0x23
+ 1302 0903 12       		.uleb128 0x12
+ 1303 0904 0A       		.uleb128 0xa
+ 1304 0905 85180000 		.4byte	.LASF172
+ 1305 0909 02       		.byte	0x2
+ 1306 090a 6401     		.2byte	0x164
+ 1307 090c 41000000 		.4byte	0x41
+ 1308 0910 02       		.byte	0x2
+ 1309 0911 23       		.byte	0x23
+ 1310 0912 14       		.uleb128 0x14
+ 1311 0913 0A       		.uleb128 0xa
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 24
+
+
+ 1312 0914 0F040000 		.4byte	.LASF173
+ 1313 0918 02       		.byte	0x2
+ 1314 0919 6501     		.2byte	0x165
+ 1315 091b 53000000 		.4byte	0x53
+ 1316 091f 02       		.byte	0x2
+ 1317 0920 23       		.byte	0x23
+ 1318 0921 16       		.uleb128 0x16
+ 1319 0922 0A       		.uleb128 0xa
+ 1320 0923 6B070000 		.4byte	.LASF174
+ 1321 0927 02       		.byte	0x2
+ 1322 0928 6601     		.2byte	0x166
+ 1323 092a 53000000 		.4byte	0x53
+ 1324 092e 02       		.byte	0x2
+ 1325 092f 23       		.byte	0x23
+ 1326 0930 18       		.uleb128 0x18
+ 1327 0931 0A       		.uleb128 0xa
+ 1328 0932 0B050000 		.4byte	.LASF175
+ 1329 0936 02       		.byte	0x2
+ 1330 0937 6701     		.2byte	0x167
+ 1331 0939 41000000 		.4byte	0x41
+ 1332 093d 02       		.byte	0x2
+ 1333 093e 23       		.byte	0x23
+ 1334 093f 1A       		.uleb128 0x1a
+ 1335 0940 0A       		.uleb128 0xa
+ 1336 0941 A3070000 		.4byte	.LASF176
+ 1337 0945 02       		.byte	0x2
+ 1338 0946 6801     		.2byte	0x168
+ 1339 0948 41000000 		.4byte	0x41
+ 1340 094c 02       		.byte	0x2
+ 1341 094d 23       		.byte	0x23
+ 1342 094e 1C       		.uleb128 0x1c
+ 1343 094f 0A       		.uleb128 0xa
+ 1344 0950 BB0F0000 		.4byte	.LASF177
+ 1345 0954 02       		.byte	0x2
+ 1346 0955 6901     		.2byte	0x169
+ 1347 0957 53000000 		.4byte	0x53
+ 1348 095b 02       		.byte	0x2
+ 1349 095c 23       		.byte	0x23
+ 1350 095d 1E       		.uleb128 0x1e
+ 1351 095e 0A       		.uleb128 0xa
+ 1352 095f D6000000 		.4byte	.LASF178
+ 1353 0963 02       		.byte	0x2
+ 1354 0964 6C01     		.2byte	0x16c
+ 1355 0966 41000000 		.4byte	0x41
+ 1356 096a 02       		.byte	0x2
+ 1357 096b 23       		.byte	0x23
+ 1358 096c 20       		.uleb128 0x20
+ 1359 096d 0A       		.uleb128 0xa
+ 1360 096e AA000000 		.4byte	.LASF179
+ 1361 0972 02       		.byte	0x2
+ 1362 0973 6D01     		.2byte	0x16d
+ 1363 0975 41000000 		.4byte	0x41
+ 1364 0979 02       		.byte	0x2
+ 1365 097a 23       		.byte	0x23
+ 1366 097b 22       		.uleb128 0x22
+ 1367 097c 0A       		.uleb128 0xa
+ 1368 097d 83000000 		.4byte	.LASF180
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 25
+
+
+ 1369 0981 02       		.byte	0x2
+ 1370 0982 6E01     		.2byte	0x16e
+ 1371 0984 41000000 		.4byte	0x41
+ 1372 0988 02       		.byte	0x2
+ 1373 0989 23       		.byte	0x23
+ 1374 098a 24       		.uleb128 0x24
+ 1375 098b 0A       		.uleb128 0xa
+ 1376 098c 8D120000 		.4byte	.LASF181
+ 1377 0990 02       		.byte	0x2
+ 1378 0991 6F01     		.2byte	0x16f
+ 1379 0993 53000000 		.4byte	0x53
+ 1380 0997 02       		.byte	0x2
+ 1381 0998 23       		.byte	0x23
+ 1382 0999 26       		.uleb128 0x26
+ 1383 099a 0A       		.uleb128 0xa
+ 1384 099b E2130000 		.4byte	.LASF182
+ 1385 099f 02       		.byte	0x2
+ 1386 09a0 7001     		.2byte	0x170
+ 1387 09a2 53000000 		.4byte	0x53
+ 1388 09a6 02       		.byte	0x2
+ 1389 09a7 23       		.byte	0x23
+ 1390 09a8 28       		.uleb128 0x28
+ 1391 09a9 0A       		.uleb128 0xa
+ 1392 09aa 7C0B0000 		.4byte	.LASF183
+ 1393 09ae 02       		.byte	0x2
+ 1394 09af 7101     		.2byte	0x171
+ 1395 09b1 41000000 		.4byte	0x41
+ 1396 09b5 02       		.byte	0x2
+ 1397 09b6 23       		.byte	0x23
+ 1398 09b7 2A       		.uleb128 0x2a
+ 1399 09b8 0A       		.uleb128 0xa
+ 1400 09b9 600B0000 		.4byte	.LASF184
+ 1401 09bd 02       		.byte	0x2
+ 1402 09be 7201     		.2byte	0x172
+ 1403 09c0 41000000 		.4byte	0x41
+ 1404 09c4 02       		.byte	0x2
+ 1405 09c5 23       		.byte	0x23
+ 1406 09c6 2C       		.uleb128 0x2c
+ 1407 09c7 0A       		.uleb128 0xa
+ 1408 09c8 580A0000 		.4byte	.LASF185
+ 1409 09cc 02       		.byte	0x2
+ 1410 09cd 7301     		.2byte	0x173
+ 1411 09cf 53000000 		.4byte	0x53
+ 1412 09d3 02       		.byte	0x2
+ 1413 09d4 23       		.byte	0x23
+ 1414 09d5 2E       		.uleb128 0x2e
+ 1415 09d6 0A       		.uleb128 0xa
+ 1416 09d7 67030000 		.4byte	.LASF186
+ 1417 09db 02       		.byte	0x2
+ 1418 09dc 7601     		.2byte	0x176
+ 1419 09de 41000000 		.4byte	0x41
+ 1420 09e2 02       		.byte	0x2
+ 1421 09e3 23       		.byte	0x23
+ 1422 09e4 30       		.uleb128 0x30
+ 1423 09e5 0A       		.uleb128 0xa
+ 1424 09e6 46030000 		.4byte	.LASF187
+ 1425 09ea 02       		.byte	0x2
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 26
+
+
+ 1426 09eb 7701     		.2byte	0x177
+ 1427 09ed 41000000 		.4byte	0x41
+ 1428 09f1 02       		.byte	0x2
+ 1429 09f2 23       		.byte	0x23
+ 1430 09f3 32       		.uleb128 0x32
+ 1431 09f4 0A       		.uleb128 0xa
+ 1432 09f5 09030000 		.4byte	.LASF188
+ 1433 09f9 02       		.byte	0x2
+ 1434 09fa 7801     		.2byte	0x178
+ 1435 09fc 41000000 		.4byte	0x41
+ 1436 0a00 02       		.byte	0x2
+ 1437 0a01 23       		.byte	0x23
+ 1438 0a02 34       		.uleb128 0x34
+ 1439 0a03 0A       		.uleb128 0xa
+ 1440 0a04 00090000 		.4byte	.LASF189
+ 1441 0a08 02       		.byte	0x2
+ 1442 0a09 7901     		.2byte	0x179
+ 1443 0a0b 53000000 		.4byte	0x53
+ 1444 0a0f 02       		.byte	0x2
+ 1445 0a10 23       		.byte	0x23
+ 1446 0a11 36       		.uleb128 0x36
+ 1447 0a12 0A       		.uleb128 0xa
+ 1448 0a13 89080000 		.4byte	.LASF190
+ 1449 0a17 02       		.byte	0x2
+ 1450 0a18 7A01     		.2byte	0x17a
+ 1451 0a1a 53000000 		.4byte	0x53
+ 1452 0a1e 02       		.byte	0x2
+ 1453 0a1f 23       		.byte	0x23
+ 1454 0a20 38       		.uleb128 0x38
+ 1455 0a21 0A       		.uleb128 0xa
+ 1456 0a22 9D080000 		.4byte	.LASF191
+ 1457 0a26 02       		.byte	0x2
+ 1458 0a27 7B01     		.2byte	0x17b
+ 1459 0a29 41000000 		.4byte	0x41
+ 1460 0a2d 02       		.byte	0x2
+ 1461 0a2e 23       		.byte	0x23
+ 1462 0a2f 3A       		.uleb128 0x3a
+ 1463 0a30 0A       		.uleb128 0xa
+ 1464 0a31 7F0D0000 		.4byte	.LASF192
+ 1465 0a35 02       		.byte	0x2
+ 1466 0a36 7C01     		.2byte	0x17c
+ 1467 0a38 41000000 		.4byte	0x41
+ 1468 0a3c 02       		.byte	0x2
+ 1469 0a3d 23       		.byte	0x23
+ 1470 0a3e 3C       		.uleb128 0x3c
+ 1471 0a3f 0A       		.uleb128 0xa
+ 1472 0a40 73090000 		.4byte	.LASF193
+ 1473 0a44 02       		.byte	0x2
+ 1474 0a45 7D01     		.2byte	0x17d
+ 1475 0a47 53000000 		.4byte	0x53
+ 1476 0a4b 02       		.byte	0x2
+ 1477 0a4c 23       		.byte	0x23
+ 1478 0a4d 3E       		.uleb128 0x3e
+ 1479 0a4e 0A       		.uleb128 0xa
+ 1480 0a4f 24150000 		.4byte	.LASF194
+ 1481 0a53 02       		.byte	0x2
+ 1482 0a54 7F01     		.2byte	0x17f
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 27
+
+
+ 1483 0a56 41000000 		.4byte	0x41
+ 1484 0a5a 02       		.byte	0x2
+ 1485 0a5b 23       		.byte	0x23
+ 1486 0a5c 40       		.uleb128 0x40
+ 1487 0a5d 0A       		.uleb128 0xa
+ 1488 0a5e CC020000 		.4byte	.LASF195
+ 1489 0a62 02       		.byte	0x2
+ 1490 0a63 8001     		.2byte	0x180
+ 1491 0a65 41000000 		.4byte	0x41
+ 1492 0a69 02       		.byte	0x2
+ 1493 0a6a 23       		.byte	0x23
+ 1494 0a6b 42       		.uleb128 0x42
+ 1495 0a6c 0A       		.uleb128 0xa
+ 1496 0a6d DA160000 		.4byte	.LASF196
+ 1497 0a71 02       		.byte	0x2
+ 1498 0a72 8101     		.2byte	0x181
+ 1499 0a74 41000000 		.4byte	0x41
+ 1500 0a78 02       		.byte	0x2
+ 1501 0a79 23       		.byte	0x23
+ 1502 0a7a 44       		.uleb128 0x44
+ 1503 0a7b 0A       		.uleb128 0xa
+ 1504 0a7c 30150000 		.4byte	.LASF197
+ 1505 0a80 02       		.byte	0x2
+ 1506 0a81 8201     		.2byte	0x182
+ 1507 0a83 41000000 		.4byte	0x41
+ 1508 0a87 02       		.byte	0x2
+ 1509 0a88 23       		.byte	0x23
+ 1510 0a89 46       		.uleb128 0x46
+ 1511 0a8a 0A       		.uleb128 0xa
+ 1512 0a8b 2C090000 		.4byte	.LASF198
+ 1513 0a8f 02       		.byte	0x2
+ 1514 0a90 8401     		.2byte	0x184
+ 1515 0a92 2F000000 		.4byte	0x2f
+ 1516 0a96 02       		.byte	0x2
+ 1517 0a97 23       		.byte	0x23
+ 1518 0a98 48       		.uleb128 0x48
+ 1519 0a99 0A       		.uleb128 0xa
+ 1520 0a9a D1060000 		.4byte	.LASF199
+ 1521 0a9e 02       		.byte	0x2
+ 1522 0a9f 8601     		.2byte	0x186
+ 1523 0aa1 2F000000 		.4byte	0x2f
+ 1524 0aa5 02       		.byte	0x2
+ 1525 0aa6 23       		.byte	0x23
+ 1526 0aa7 49       		.uleb128 0x49
+ 1527 0aa8 0A       		.uleb128 0xa
+ 1528 0aa9 BC120000 		.4byte	.LASF200
+ 1529 0aad 02       		.byte	0x2
+ 1530 0aae 8701     		.2byte	0x187
+ 1531 0ab0 2F000000 		.4byte	0x2f
+ 1532 0ab4 02       		.byte	0x2
+ 1533 0ab5 23       		.byte	0x23
+ 1534 0ab6 4A       		.uleb128 0x4a
+ 1535 0ab7 0A       		.uleb128 0xa
+ 1536 0ab8 D6150000 		.4byte	.LASF201
+ 1537 0abc 02       		.byte	0x2
+ 1538 0abd 8801     		.2byte	0x188
+ 1539 0abf 2F000000 		.4byte	0x2f
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 28
+
+
+ 1540 0ac3 02       		.byte	0x2
+ 1541 0ac4 23       		.byte	0x23
+ 1542 0ac5 4B       		.uleb128 0x4b
+ 1543 0ac6 0A       		.uleb128 0xa
+ 1544 0ac7 A9120000 		.4byte	.LASF202
+ 1545 0acb 02       		.byte	0x2
+ 1546 0acc 8901     		.2byte	0x189
+ 1547 0ace 2F000000 		.4byte	0x2f
+ 1548 0ad2 02       		.byte	0x2
+ 1549 0ad3 23       		.byte	0x23
+ 1550 0ad4 4C       		.uleb128 0x4c
+ 1551 0ad5 0A       		.uleb128 0xa
+ 1552 0ad6 38020000 		.4byte	.LASF203
+ 1553 0ada 02       		.byte	0x2
+ 1554 0adb 8B01     		.2byte	0x18b
+ 1555 0add 2F000000 		.4byte	0x2f
+ 1556 0ae1 02       		.byte	0x2
+ 1557 0ae2 23       		.byte	0x23
+ 1558 0ae3 4D       		.uleb128 0x4d
+ 1559 0ae4 0A       		.uleb128 0xa
+ 1560 0ae5 170E0000 		.4byte	.LASF204
+ 1561 0ae9 02       		.byte	0x2
+ 1562 0aea 8D01     		.2byte	0x18d
+ 1563 0aec 1D000000 		.4byte	0x1d
+ 1564 0af0 02       		.byte	0x2
+ 1565 0af1 23       		.byte	0x23
+ 1566 0af2 4E       		.uleb128 0x4e
+ 1567 0af3 0A       		.uleb128 0xa
+ 1568 0af4 16170000 		.4byte	.LASF205
+ 1569 0af8 02       		.byte	0x2
+ 1570 0af9 8E01     		.2byte	0x18e
+ 1571 0afb 1D000000 		.4byte	0x1d
+ 1572 0aff 02       		.byte	0x2
+ 1573 0b00 23       		.byte	0x23
+ 1574 0b01 4F       		.uleb128 0x4f
+ 1575 0b02 0A       		.uleb128 0xa
+ 1576 0b03 A1180000 		.4byte	.LASF206
+ 1577 0b07 02       		.byte	0x2
+ 1578 0b08 8F01     		.2byte	0x18f
+ 1579 0b0a 1D000000 		.4byte	0x1d
+ 1580 0b0e 02       		.byte	0x2
+ 1581 0b0f 23       		.byte	0x23
+ 1582 0b10 50       		.uleb128 0x50
+ 1583 0b11 0A       		.uleb128 0xa
+ 1584 0b12 58030000 		.4byte	.LASF207
+ 1585 0b16 02       		.byte	0x2
+ 1586 0b17 9101     		.2byte	0x191
+ 1587 0b19 2F000000 		.4byte	0x2f
+ 1588 0b1d 02       		.byte	0x2
+ 1589 0b1e 23       		.byte	0x23
+ 1590 0b1f 51       		.uleb128 0x51
+ 1591 0b20 0A       		.uleb128 0xa
+ 1592 0b21 ED020000 		.4byte	.LASF208
+ 1593 0b25 02       		.byte	0x2
+ 1594 0b26 9201     		.2byte	0x192
+ 1595 0b28 2F000000 		.4byte	0x2f
+ 1596 0b2c 02       		.byte	0x2
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 29
+
+
+ 1597 0b2d 23       		.byte	0x23
+ 1598 0b2e 52       		.uleb128 0x52
+ 1599 0b2f 0A       		.uleb128 0xa
+ 1600 0b30 FE090000 		.4byte	.LASF209
+ 1601 0b34 02       		.byte	0x2
+ 1602 0b35 9301     		.2byte	0x193
+ 1603 0b37 2F000000 		.4byte	0x2f
+ 1604 0b3b 02       		.byte	0x2
+ 1605 0b3c 23       		.byte	0x23
+ 1606 0b3d 53       		.uleb128 0x53
+ 1607 0b3e 0A       		.uleb128 0xa
+ 1608 0b3f 72110000 		.4byte	.LASF210
+ 1609 0b43 02       		.byte	0x2
+ 1610 0b44 9401     		.2byte	0x194
+ 1611 0b46 2F000000 		.4byte	0x2f
+ 1612 0b4a 02       		.byte	0x2
+ 1613 0b4b 23       		.byte	0x23
+ 1614 0b4c 54       		.uleb128 0x54
+ 1615 0b4d 0A       		.uleb128 0xa
+ 1616 0b4e F3070000 		.4byte	.LASF119
+ 1617 0b52 02       		.byte	0x2
+ 1618 0b53 9501     		.2byte	0x195
+ 1619 0b55 EE010000 		.4byte	0x1ee
+ 1620 0b59 02       		.byte	0x2
+ 1621 0b5a 23       		.byte	0x23
+ 1622 0b5b 55       		.uleb128 0x55
+ 1623 0b5c 0A       		.uleb128 0xa
+ 1624 0b5d 29000000 		.4byte	.LASF211
+ 1625 0b61 02       		.byte	0x2
+ 1626 0b62 9701     		.2byte	0x197
+ 1627 0b64 2F000000 		.4byte	0x2f
+ 1628 0b68 02       		.byte	0x2
+ 1629 0b69 23       		.byte	0x23
+ 1630 0b6a 56       		.uleb128 0x56
+ 1631 0b6b 0A       		.uleb128 0xa
+ 1632 0b6c C0140000 		.4byte	.LASF212
+ 1633 0b70 02       		.byte	0x2
+ 1634 0b71 9801     		.2byte	0x198
+ 1635 0b73 2F000000 		.4byte	0x2f
+ 1636 0b77 02       		.byte	0x2
+ 1637 0b78 23       		.byte	0x23
+ 1638 0b79 57       		.uleb128 0x57
+ 1639 0b7a 0A       		.uleb128 0xa
+ 1640 0b7b 520E0000 		.4byte	.LASF213
+ 1641 0b7f 02       		.byte	0x2
+ 1642 0b80 9A01     		.2byte	0x19a
+ 1643 0b82 7D030000 		.4byte	0x37d
+ 1644 0b86 02       		.byte	0x2
+ 1645 0b87 23       		.byte	0x23
+ 1646 0b88 58       		.uleb128 0x58
+ 1647 0b89 0A       		.uleb128 0xa
+ 1648 0b8a 640F0000 		.4byte	.LASF214
+ 1649 0b8e 02       		.byte	0x2
+ 1650 0b8f 9C01     		.2byte	0x19c
+ 1651 0b91 0F020000 		.4byte	0x20f
+ 1652 0b95 02       		.byte	0x2
+ 1653 0b96 23       		.byte	0x23
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 30
+
+
+ 1654 0b97 59       		.uleb128 0x59
+ 1655 0b98 00       		.byte	0
+ 1656 0b99 0C       		.uleb128 0xc
+ 1657 0b9a 6B010000 		.4byte	.LASF215
+ 1658 0b9e 02       		.byte	0x2
+ 1659 0b9f 9E01     		.2byte	0x19e
+ 1660 0ba1 65080000 		.4byte	0x865
+ 1661 0ba5 0D       		.uleb128 0xd
+ 1662 0ba6 2C       		.byte	0x2c
+ 1663 0ba7 02       		.byte	0x2
+ 1664 0ba8 A301     		.2byte	0x1a3
+ 1665 0baa 540C0000 		.4byte	0xc54
+ 1666 0bae 0A       		.uleb128 0xa
+ 1667 0baf CC020000 		.4byte	.LASF195
+ 1668 0bb3 02       		.byte	0x2
+ 1669 0bb4 A401     		.2byte	0x1a4
+ 1670 0bb6 B4000000 		.4byte	0xb4
+ 1671 0bba 02       		.byte	0x2
+ 1672 0bbb 23       		.byte	0x23
+ 1673 0bbc 00       		.uleb128 0
+ 1674 0bbd 0A       		.uleb128 0xa
+ 1675 0bbe DA160000 		.4byte	.LASF196
+ 1676 0bc2 02       		.byte	0x2
+ 1677 0bc3 A501     		.2byte	0x1a5
+ 1678 0bc5 B4000000 		.4byte	0xb4
+ 1679 0bc9 02       		.byte	0x2
+ 1680 0bca 23       		.byte	0x23
+ 1681 0bcb 04       		.uleb128 0x4
+ 1682 0bcc 0A       		.uleb128 0xa
+ 1683 0bcd 24150000 		.4byte	.LASF194
+ 1684 0bd1 02       		.byte	0x2
+ 1685 0bd2 A601     		.2byte	0x1a6
+ 1686 0bd4 B4000000 		.4byte	0xb4
+ 1687 0bd8 02       		.byte	0x2
+ 1688 0bd9 23       		.byte	0x23
+ 1689 0bda 08       		.uleb128 0x8
+ 1690 0bdb 0A       		.uleb128 0xa
+ 1691 0bdc 30150000 		.4byte	.LASF197
+ 1692 0be0 02       		.byte	0x2
+ 1693 0be1 A701     		.2byte	0x1a7
+ 1694 0be3 B4000000 		.4byte	0xb4
+ 1695 0be7 02       		.byte	0x2
+ 1696 0be8 23       		.byte	0x23
+ 1697 0be9 0C       		.uleb128 0xc
+ 1698 0bea 0A       		.uleb128 0xa
+ 1699 0beb D1060000 		.4byte	.LASF199
+ 1700 0bef 02       		.byte	0x2
+ 1701 0bf0 A901     		.2byte	0x1a9
+ 1702 0bf2 B4000000 		.4byte	0xb4
+ 1703 0bf6 02       		.byte	0x2
+ 1704 0bf7 23       		.byte	0x23
+ 1705 0bf8 10       		.uleb128 0x10
+ 1706 0bf9 0A       		.uleb128 0xa
+ 1707 0bfa BC120000 		.4byte	.LASF200
+ 1708 0bfe 02       		.byte	0x2
+ 1709 0bff AA01     		.2byte	0x1aa
+ 1710 0c01 B4000000 		.4byte	0xb4
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 31
+
+
+ 1711 0c05 02       		.byte	0x2
+ 1712 0c06 23       		.byte	0x23
+ 1713 0c07 14       		.uleb128 0x14
+ 1714 0c08 0A       		.uleb128 0xa
+ 1715 0c09 D6150000 		.4byte	.LASF201
+ 1716 0c0d 02       		.byte	0x2
+ 1717 0c0e AB01     		.2byte	0x1ab
+ 1718 0c10 B4000000 		.4byte	0xb4
+ 1719 0c14 02       		.byte	0x2
+ 1720 0c15 23       		.byte	0x23
+ 1721 0c16 18       		.uleb128 0x18
+ 1722 0c17 0A       		.uleb128 0xa
+ 1723 0c18 A9120000 		.4byte	.LASF202
+ 1724 0c1c 02       		.byte	0x2
+ 1725 0c1d AC01     		.2byte	0x1ac
+ 1726 0c1f B4000000 		.4byte	0xb4
+ 1727 0c23 02       		.byte	0x2
+ 1728 0c24 23       		.byte	0x23
+ 1729 0c25 1C       		.uleb128 0x1c
+ 1730 0c26 0A       		.uleb128 0xa
+ 1731 0c27 170E0000 		.4byte	.LASF204
+ 1732 0c2b 02       		.byte	0x2
+ 1733 0c2c AE01     		.2byte	0x1ae
+ 1734 0c2e B4000000 		.4byte	0xb4
+ 1735 0c32 02       		.byte	0x2
+ 1736 0c33 23       		.byte	0x23
+ 1737 0c34 20       		.uleb128 0x20
+ 1738 0c35 0A       		.uleb128 0xa
+ 1739 0c36 16170000 		.4byte	.LASF205
+ 1740 0c3a 02       		.byte	0x2
+ 1741 0c3b AF01     		.2byte	0x1af
+ 1742 0c3d B4000000 		.4byte	0xb4
+ 1743 0c41 02       		.byte	0x2
+ 1744 0c42 23       		.byte	0x23
+ 1745 0c43 24       		.uleb128 0x24
+ 1746 0c44 0A       		.uleb128 0xa
+ 1747 0c45 A1180000 		.4byte	.LASF206
+ 1748 0c49 02       		.byte	0x2
+ 1749 0c4a B001     		.2byte	0x1b0
+ 1750 0c4c B4000000 		.4byte	0xb4
+ 1751 0c50 02       		.byte	0x2
+ 1752 0c51 23       		.byte	0x23
+ 1753 0c52 28       		.uleb128 0x28
+ 1754 0c53 00       		.byte	0
+ 1755 0c54 0C       		.uleb128 0xc
+ 1756 0c55 39000000 		.4byte	.LASF216
+ 1757 0c59 02       		.byte	0x2
+ 1758 0c5a B201     		.2byte	0x1b2
+ 1759 0c5c A50B0000 		.4byte	0xba5
+ 1760 0c60 0D       		.uleb128 0xd
+ 1761 0c61 1E       		.byte	0x1e
+ 1762 0c62 02       		.byte	0x2
+ 1763 0c63 B401     		.2byte	0x1b4
+ 1764 0c65 E20C0000 		.4byte	0xce2
+ 1765 0c69 0A       		.uleb128 0xa
+ 1766 0c6a 9A070000 		.4byte	.LASF217
+ 1767 0c6e 02       		.byte	0x2
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 32
+
+
+ 1768 0c6f B501     		.2byte	0x1b5
+ 1769 0c71 E20C0000 		.4byte	0xce2
+ 1770 0c75 02       		.byte	0x2
+ 1771 0c76 23       		.byte	0x23
+ 1772 0c77 00       		.uleb128 0
+ 1773 0c78 0A       		.uleb128 0xa
+ 1774 0c79 5E160000 		.4byte	.LASF218
+ 1775 0c7d 02       		.byte	0x2
+ 1776 0c7e B601     		.2byte	0x1b6
+ 1777 0c80 2F000000 		.4byte	0x2f
+ 1778 0c84 02       		.byte	0x2
+ 1779 0c85 23       		.byte	0x23
+ 1780 0c86 0A       		.uleb128 0xa
+ 1781 0c87 0A       		.uleb128 0xa
+ 1782 0c88 2C0A0000 		.4byte	.LASF219
+ 1783 0c8c 02       		.byte	0x2
+ 1784 0c8d B701     		.2byte	0x1b7
+ 1785 0c8f E20C0000 		.4byte	0xce2
+ 1786 0c93 02       		.byte	0x2
+ 1787 0c94 23       		.byte	0x23
+ 1788 0c95 0B       		.uleb128 0xb
+ 1789 0c96 0A       		.uleb128 0xa
+ 1790 0c97 12120000 		.4byte	.LASF220
+ 1791 0c9b 02       		.byte	0x2
+ 1792 0c9c B801     		.2byte	0x1b8
+ 1793 0c9e 2F000000 		.4byte	0x2f
+ 1794 0ca2 02       		.byte	0x2
+ 1795 0ca3 23       		.byte	0x23
+ 1796 0ca4 15       		.uleb128 0x15
+ 1797 0ca5 0A       		.uleb128 0xa
+ 1798 0ca6 47160000 		.4byte	.LASF221
+ 1799 0caa 02       		.byte	0x2
+ 1800 0cab B901     		.2byte	0x1b9
+ 1801 0cad F20C0000 		.4byte	0xcf2
+ 1802 0cb1 02       		.byte	0x2
+ 1803 0cb2 23       		.byte	0x23
+ 1804 0cb3 16       		.uleb128 0x16
+ 1805 0cb4 0A       		.uleb128 0xa
+ 1806 0cb5 17000000 		.4byte	.LASF222
+ 1807 0cb9 02       		.byte	0x2
+ 1808 0cba BA01     		.2byte	0x1ba
+ 1809 0cbc 2F000000 		.4byte	0x2f
+ 1810 0cc0 02       		.byte	0x2
+ 1811 0cc1 23       		.byte	0x23
+ 1812 0cc2 18       		.uleb128 0x18
+ 1813 0cc3 0A       		.uleb128 0xa
+ 1814 0cc4 04040000 		.4byte	.LASF223
+ 1815 0cc8 02       		.byte	0x2
+ 1816 0cc9 BB01     		.2byte	0x1bb
+ 1817 0ccb 53000000 		.4byte	0x53
+ 1818 0ccf 02       		.byte	0x2
+ 1819 0cd0 23       		.byte	0x23
+ 1820 0cd1 1A       		.uleb128 0x1a
+ 1821 0cd2 0A       		.uleb128 0xa
+ 1822 0cd3 120C0000 		.4byte	.LASF139
+ 1823 0cd7 02       		.byte	0x2
+ 1824 0cd8 BC01     		.2byte	0x1bc
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 33
+
+
+ 1825 0cda 41000000 		.4byte	0x41
+ 1826 0cde 02       		.byte	0x2
+ 1827 0cdf 23       		.byte	0x23
+ 1828 0ce0 1C       		.uleb128 0x1c
+ 1829 0ce1 00       		.byte	0
+ 1830 0ce2 0E       		.uleb128 0xe
+ 1831 0ce3 A6000000 		.4byte	0xa6
+ 1832 0ce7 F20C0000 		.4byte	0xcf2
+ 1833 0ceb 0F       		.uleb128 0xf
+ 1834 0cec 9A000000 		.4byte	0x9a
+ 1835 0cf0 09       		.byte	0x9
+ 1836 0cf1 00       		.byte	0
+ 1837 0cf2 0E       		.uleb128 0xe
+ 1838 0cf3 A6000000 		.4byte	0xa6
+ 1839 0cf7 020D0000 		.4byte	0xd02
+ 1840 0cfb 0F       		.uleb128 0xf
+ 1841 0cfc 9A000000 		.4byte	0x9a
+ 1842 0d00 01       		.byte	0x1
+ 1843 0d01 00       		.byte	0
+ 1844 0d02 0C       		.uleb128 0xc
+ 1845 0d03 52140000 		.4byte	.LASF224
+ 1846 0d07 02       		.byte	0x2
+ 1847 0d08 BE01     		.2byte	0x1be
+ 1848 0d0a 600C0000 		.4byte	0xc60
+ 1849 0d0e 0D       		.uleb128 0xd
+ 1850 0d0f 20       		.byte	0x20
+ 1851 0d10 02       		.byte	0x2
+ 1852 0d11 C001     		.2byte	0x1c0
+ 1853 0d13 900D0000 		.4byte	0xd90
+ 1854 0d17 0A       		.uleb128 0xa
+ 1855 0d18 9A070000 		.4byte	.LASF217
+ 1856 0d1c 02       		.byte	0x2
+ 1857 0d1d C101     		.2byte	0x1c1
+ 1858 0d1f B4000000 		.4byte	0xb4
+ 1859 0d23 02       		.byte	0x2
+ 1860 0d24 23       		.byte	0x23
+ 1861 0d25 00       		.uleb128 0
+ 1862 0d26 0A       		.uleb128 0xa
+ 1863 0d27 2C0A0000 		.4byte	.LASF219
+ 1864 0d2b 02       		.byte	0x2
+ 1865 0d2c C201     		.2byte	0x1c2
+ 1866 0d2e B4000000 		.4byte	0xb4
+ 1867 0d32 02       		.byte	0x2
+ 1868 0d33 23       		.byte	0x23
+ 1869 0d34 04       		.uleb128 0x4
+ 1870 0d35 0A       		.uleb128 0xa
+ 1871 0d36 47160000 		.4byte	.LASF221
+ 1872 0d3a 02       		.byte	0x2
+ 1873 0d3b C301     		.2byte	0x1c3
+ 1874 0d3d 2F000000 		.4byte	0x2f
+ 1875 0d41 02       		.byte	0x2
+ 1876 0d42 23       		.byte	0x23
+ 1877 0d43 08       		.uleb128 0x8
+ 1878 0d44 0A       		.uleb128 0xa
+ 1879 0d45 DD070000 		.4byte	.LASF225
+ 1880 0d49 02       		.byte	0x2
+ 1881 0d4a C401     		.2byte	0x1c4
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 34
+
+
+ 1882 0d4c B4000000 		.4byte	0xb4
+ 1883 0d50 02       		.byte	0x2
+ 1884 0d51 23       		.byte	0x23
+ 1885 0d52 0C       		.uleb128 0xc
+ 1886 0d53 0A       		.uleb128 0xa
+ 1887 0d54 56160000 		.4byte	.LASF226
+ 1888 0d58 02       		.byte	0x2
+ 1889 0d59 C501     		.2byte	0x1c5
+ 1890 0d5b A3030000 		.4byte	0x3a3
+ 1891 0d5f 02       		.byte	0x2
+ 1892 0d60 23       		.byte	0x23
+ 1893 0d61 10       		.uleb128 0x10
+ 1894 0d62 0A       		.uleb128 0xa
+ 1895 0d63 70100000 		.4byte	.LASF135
+ 1896 0d67 02       		.byte	0x2
+ 1897 0d68 C601     		.2byte	0x1c6
+ 1898 0d6a B4000000 		.4byte	0xb4
+ 1899 0d6e 02       		.byte	0x2
+ 1900 0d6f 23       		.byte	0x23
+ 1901 0d70 14       		.uleb128 0x14
+ 1902 0d71 0A       		.uleb128 0xa
+ 1903 0d72 EE170000 		.4byte	.LASF136
+ 1904 0d76 02       		.byte	0x2
+ 1905 0d77 C701     		.2byte	0x1c7
+ 1906 0d79 B4000000 		.4byte	0xb4
+ 1907 0d7d 02       		.byte	0x2
+ 1908 0d7e 23       		.byte	0x23
+ 1909 0d7f 18       		.uleb128 0x18
+ 1910 0d80 0A       		.uleb128 0xa
+ 1911 0d81 890E0000 		.4byte	.LASF227
+ 1912 0d85 02       		.byte	0x2
+ 1913 0d86 C801     		.2byte	0x1c8
+ 1914 0d88 B4000000 		.4byte	0xb4
+ 1915 0d8c 02       		.byte	0x2
+ 1916 0d8d 23       		.byte	0x23
+ 1917 0d8e 1C       		.uleb128 0x1c
+ 1918 0d8f 00       		.byte	0
+ 1919 0d90 0C       		.uleb128 0xc
+ 1920 0d91 3B150000 		.4byte	.LASF228
+ 1921 0d95 02       		.byte	0x2
+ 1922 0d96 C901     		.2byte	0x1c9
+ 1923 0d98 0E0D0000 		.4byte	0xd0e
+ 1924 0d9c 10       		.uleb128 0x10
+ 1925 0d9d 01       		.byte	0x1
+ 1926 0d9e 02       		.byte	0x2
+ 1927 0d9f EA01     		.2byte	0x1ea
+ 1928 0da1 B80D0000 		.4byte	0xdb8
+ 1929 0da5 07       		.uleb128 0x7
+ 1930 0da6 5A090000 		.4byte	.LASF229
+ 1931 0daa 00       		.sleb128 0
+ 1932 0dab 07       		.uleb128 0x7
+ 1933 0dac F9120000 		.4byte	.LASF230
+ 1934 0db0 01       		.sleb128 1
+ 1935 0db1 07       		.uleb128 0x7
+ 1936 0db2 800A0000 		.4byte	.LASF231
+ 1937 0db6 02       		.sleb128 2
+ 1938 0db7 00       		.byte	0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 35
+
+
+ 1939 0db8 0C       		.uleb128 0xc
+ 1940 0db9 E8150000 		.4byte	.LASF232
+ 1941 0dbd 02       		.byte	0x2
+ 1942 0dbe EE01     		.2byte	0x1ee
+ 1943 0dc0 9C0D0000 		.4byte	0xd9c
+ 1944 0dc4 10       		.uleb128 0x10
+ 1945 0dc5 01       		.byte	0x1
+ 1946 0dc6 02       		.byte	0x2
+ 1947 0dc7 F001     		.2byte	0x1f0
+ 1948 0dc9 340E0000 		.4byte	0xe34
+ 1949 0dcd 07       		.uleb128 0x7
+ 1950 0dce 5B120000 		.4byte	.LASF233
+ 1951 0dd2 00       		.sleb128 0
+ 1952 0dd3 07       		.uleb128 0x7
+ 1953 0dd4 6A020000 		.4byte	.LASF234
+ 1954 0dd8 01       		.sleb128 1
+ 1955 0dd9 07       		.uleb128 0x7
+ 1956 0dda 67080000 		.4byte	.LASF235
+ 1957 0dde 02       		.sleb128 2
+ 1958 0ddf 07       		.uleb128 0x7
+ 1959 0de0 310B0000 		.4byte	.LASF236
+ 1960 0de4 03       		.sleb128 3
+ 1961 0de5 07       		.uleb128 0x7
+ 1962 0de6 35030000 		.4byte	.LASF237
+ 1963 0dea 04       		.sleb128 4
+ 1964 0deb 07       		.uleb128 0x7
+ 1965 0dec 78080000 		.4byte	.LASF238
+ 1966 0df0 05       		.sleb128 5
+ 1967 0df1 07       		.uleb128 0x7
+ 1968 0df2 8A130000 		.4byte	.LASF239
+ 1969 0df6 06       		.sleb128 6
+ 1970 0df7 07       		.uleb128 0x7
+ 1971 0df8 63090000 		.4byte	.LASF240
+ 1972 0dfc 07       		.sleb128 7
+ 1973 0dfd 07       		.uleb128 0x7
+ 1974 0dfe FD050000 		.4byte	.LASF241
+ 1975 0e02 08       		.sleb128 8
+ 1976 0e03 07       		.uleb128 0x7
+ 1977 0e04 29100000 		.4byte	.LASF242
+ 1978 0e08 09       		.sleb128 9
+ 1979 0e09 07       		.uleb128 0x7
+ 1980 0e0a C7010000 		.4byte	.LASF243
+ 1981 0e0e 0A       		.sleb128 10
+ 1982 0e0f 07       		.uleb128 0x7
+ 1983 0e10 F00B0000 		.4byte	.LASF244
+ 1984 0e14 0B       		.sleb128 11
+ 1985 0e15 07       		.uleb128 0x7
+ 1986 0e16 840C0000 		.4byte	.LASF245
+ 1987 0e1a 0C       		.sleb128 12
+ 1988 0e1b 07       		.uleb128 0x7
+ 1989 0e1c 5E040000 		.4byte	.LASF246
+ 1990 0e20 0D       		.sleb128 13
+ 1991 0e21 07       		.uleb128 0x7
+ 1992 0e22 6B170000 		.4byte	.LASF247
+ 1993 0e26 0E       		.sleb128 14
+ 1994 0e27 07       		.uleb128 0x7
+ 1995 0e28 340D0000 		.4byte	.LASF248
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 36
+
+
+ 1996 0e2c 0F       		.sleb128 15
+ 1997 0e2d 07       		.uleb128 0x7
+ 1998 0e2e A7110000 		.4byte	.LASF249
+ 1999 0e32 10       		.sleb128 16
+ 2000 0e33 00       		.byte	0
+ 2001 0e34 0C       		.uleb128 0xc
+ 2002 0e35 33120000 		.4byte	.LASF250
+ 2003 0e39 02       		.byte	0x2
+ 2004 0e3a 0202     		.2byte	0x202
+ 2005 0e3c C40D0000 		.4byte	0xdc4
+ 2006 0e40 10       		.uleb128 0x10
+ 2007 0e41 01       		.byte	0x1
+ 2008 0e42 02       		.byte	0x2
+ 2009 0e43 1B02     		.2byte	0x21b
+ 2010 0e45 CE0E0000 		.4byte	0xece
+ 2011 0e49 07       		.uleb128 0x7
+ 2012 0e4a B3150000 		.4byte	.LASF251
+ 2013 0e4e 00       		.sleb128 0
+ 2014 0e4f 07       		.uleb128 0x7
+ 2015 0e50 E6060000 		.4byte	.LASF252
+ 2016 0e54 01       		.sleb128 1
+ 2017 0e55 07       		.uleb128 0x7
+ 2018 0e56 0C1A0000 		.4byte	.LASF253
+ 2019 0e5a 02       		.sleb128 2
+ 2020 0e5b 07       		.uleb128 0x7
+ 2021 0e5c 01130000 		.4byte	.LASF254
+ 2022 0e60 03       		.sleb128 3
+ 2023 0e61 07       		.uleb128 0x7
+ 2024 0e62 D60C0000 		.4byte	.LASF255
+ 2025 0e66 04       		.sleb128 4
+ 2026 0e67 07       		.uleb128 0x7
+ 2027 0e68 03150000 		.4byte	.LASF256
+ 2028 0e6c 10       		.sleb128 16
+ 2029 0e6d 07       		.uleb128 0x7
+ 2030 0e6e CA0E0000 		.4byte	.LASF257
+ 2031 0e72 20       		.sleb128 32
+ 2032 0e73 07       		.uleb128 0x7
+ 2033 0e74 D6110000 		.4byte	.LASF258
+ 2034 0e78 30       		.sleb128 48
+ 2035 0e79 07       		.uleb128 0x7
+ 2036 0e7a F4110000 		.4byte	.LASF259
+ 2037 0e7e C000     		.sleb128 64
+ 2038 0e80 07       		.uleb128 0x7
+ 2039 0e81 ED0F0000 		.4byte	.LASF260
+ 2040 0e85 D000     		.sleb128 80
+ 2041 0e87 07       		.uleb128 0x7
+ 2042 0e88 1E160000 		.4byte	.LASF261
+ 2043 0e8c E000     		.sleb128 96
+ 2044 0e8e 07       		.uleb128 0x7
+ 2045 0e8f CB120000 		.4byte	.LASF262
+ 2046 0e93 F000     		.sleb128 112
+ 2047 0e95 07       		.uleb128 0x7
+ 2048 0e96 3E180000 		.4byte	.LASF263
+ 2049 0e9a 8001     		.sleb128 128
+ 2050 0e9c 07       		.uleb128 0x7
+ 2051 0e9d ED190000 		.4byte	.LASF264
+ 2052 0ea1 9001     		.sleb128 144
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 37
+
+
+ 2053 0ea3 07       		.uleb128 0x7
+ 2054 0ea4 BC030000 		.4byte	.LASF265
+ 2055 0ea8 A001     		.sleb128 160
+ 2056 0eaa 07       		.uleb128 0x7
+ 2057 0eab 48080000 		.4byte	.LASF266
+ 2058 0eaf B001     		.sleb128 176
+ 2059 0eb1 07       		.uleb128 0x7
+ 2060 0eb2 49050000 		.4byte	.LASF267
+ 2061 0eb6 C001     		.sleb128 192
+ 2062 0eb8 07       		.uleb128 0x7
+ 2063 0eb9 970E0000 		.4byte	.LASF268
+ 2064 0ebd D001     		.sleb128 208
+ 2065 0ebf 07       		.uleb128 0x7
+ 2066 0ec0 C2080000 		.4byte	.LASF269
+ 2067 0ec4 E001     		.sleb128 224
+ 2068 0ec6 07       		.uleb128 0x7
+ 2069 0ec7 51190000 		.4byte	.LASF270
+ 2070 0ecb F001     		.sleb128 240
+ 2071 0ecd 00       		.byte	0
+ 2072 0ece 0C       		.uleb128 0xc
+ 2073 0ecf B6130000 		.4byte	.LASF271
+ 2074 0ed3 02       		.byte	0x2
+ 2075 0ed4 3002     		.2byte	0x230
+ 2076 0ed6 400E0000 		.4byte	0xe40
+ 2077 0eda 10       		.uleb128 0x10
+ 2078 0edb 01       		.byte	0x1
+ 2079 0edc 02       		.byte	0x2
+ 2080 0edd 3202     		.2byte	0x232
+ 2081 0edf F10E0000 		.4byte	0xef1
+ 2082 0ee3 07       		.uleb128 0x7
+ 2083 0ee4 E3140000 		.4byte	.LASF272
+ 2084 0ee8 FF01     		.sleb128 255
+ 2085 0eea 07       		.uleb128 0x7
+ 2086 0eeb DE100000 		.4byte	.LASF273
+ 2087 0eef 00       		.sleb128 0
+ 2088 0ef0 00       		.byte	0
+ 2089 0ef1 0C       		.uleb128 0xc
+ 2090 0ef2 3D160000 		.4byte	.LASF274
+ 2091 0ef6 02       		.byte	0x2
+ 2092 0ef7 3502     		.2byte	0x235
+ 2093 0ef9 DA0E0000 		.4byte	0xeda
+ 2094 0efd 0D       		.uleb128 0xd
+ 2095 0efe 50       		.byte	0x50
+ 2096 0eff 02       		.byte	0x2
+ 2097 0f00 3702     		.2byte	0x237
+ 2098 0f02 B7130000 		.4byte	0x13b7
+ 2099 0f06 0A       		.uleb128 0xa
+ 2100 0f07 93060000 		.4byte	.LASF275
+ 2101 0f0b 02       		.byte	0x2
+ 2102 0f0c 3802     		.2byte	0x238
+ 2103 0f0e 340E0000 		.4byte	0xe34
+ 2104 0f12 02       		.byte	0x2
+ 2105 0f13 23       		.byte	0x23
+ 2106 0f14 00       		.uleb128 0
+ 2107 0f15 0A       		.uleb128 0xa
+ 2108 0f16 C6130000 		.4byte	.LASF276
+ 2109 0f1a 02       		.byte	0x2
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 38
+
+
+ 2110 0f1b 3A02     		.2byte	0x23a
+ 2111 0f1d 7D030000 		.4byte	0x37d
+ 2112 0f21 02       		.byte	0x2
+ 2113 0f22 23       		.byte	0x23
+ 2114 0f23 01       		.uleb128 0x1
+ 2115 0f24 0A       		.uleb128 0xa
+ 2116 0f25 BB100000 		.4byte	.LASF277
+ 2117 0f29 02       		.byte	0x2
+ 2118 0f2a 3B02     		.2byte	0x23b
+ 2119 0f2c 7D030000 		.4byte	0x37d
+ 2120 0f30 02       		.byte	0x2
+ 2121 0f31 23       		.byte	0x23
+ 2122 0f32 02       		.uleb128 0x2
+ 2123 0f33 0A       		.uleb128 0xa
+ 2124 0f34 B60E0000 		.4byte	.LASF278
+ 2125 0f38 02       		.byte	0x2
+ 2126 0f39 3C02     		.2byte	0x23c
+ 2127 0f3b 7D030000 		.4byte	0x37d
+ 2128 0f3f 02       		.byte	0x2
+ 2129 0f40 23       		.byte	0x23
+ 2130 0f41 03       		.uleb128 0x3
+ 2131 0f42 0A       		.uleb128 0xa
+ 2132 0f43 48150000 		.4byte	.LASF279
+ 2133 0f47 02       		.byte	0x2
+ 2134 0f48 3D02     		.2byte	0x23d
+ 2135 0f4a 7D030000 		.4byte	0x37d
+ 2136 0f4e 02       		.byte	0x2
+ 2137 0f4f 23       		.byte	0x23
+ 2138 0f50 04       		.uleb128 0x4
+ 2139 0f51 0A       		.uleb128 0xa
+ 2140 0f52 6F000000 		.4byte	.LASF280
+ 2141 0f56 02       		.byte	0x2
+ 2142 0f57 3E02     		.2byte	0x23e
+ 2143 0f59 7D030000 		.4byte	0x37d
+ 2144 0f5d 02       		.byte	0x2
+ 2145 0f5e 23       		.byte	0x23
+ 2146 0f5f 05       		.uleb128 0x5
+ 2147 0f60 0A       		.uleb128 0xa
+ 2148 0f61 39100000 		.4byte	.LASF281
+ 2149 0f65 02       		.byte	0x2
+ 2150 0f66 3F02     		.2byte	0x23f
+ 2151 0f68 7D030000 		.4byte	0x37d
+ 2152 0f6c 02       		.byte	0x2
+ 2153 0f6d 23       		.byte	0x23
+ 2154 0f6e 06       		.uleb128 0x6
+ 2155 0f6f 0A       		.uleb128 0xa
+ 2156 0f70 B3070000 		.4byte	.LASF282
+ 2157 0f74 02       		.byte	0x2
+ 2158 0f75 4002     		.2byte	0x240
+ 2159 0f77 7D030000 		.4byte	0x37d
+ 2160 0f7b 02       		.byte	0x2
+ 2161 0f7c 23       		.byte	0x23
+ 2162 0f7d 07       		.uleb128 0x7
+ 2163 0f7e 0A       		.uleb128 0xa
+ 2164 0f7f BB0D0000 		.4byte	.LASF283
+ 2165 0f83 02       		.byte	0x2
+ 2166 0f84 4202     		.2byte	0x242
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 39
+
+
+ 2167 0f86 F10E0000 		.4byte	0xef1
+ 2168 0f8a 02       		.byte	0x2
+ 2169 0f8b 23       		.byte	0x23
+ 2170 0f8c 08       		.uleb128 0x8
+ 2171 0f8d 0A       		.uleb128 0xa
+ 2172 0f8e DD190000 		.4byte	.LASF284
+ 2173 0f92 02       		.byte	0x2
+ 2174 0f93 4302     		.2byte	0x243
+ 2175 0f95 2F000000 		.4byte	0x2f
+ 2176 0f99 02       		.byte	0x2
+ 2177 0f9a 23       		.byte	0x23
+ 2178 0f9b 09       		.uleb128 0x9
+ 2179 0f9c 0A       		.uleb128 0xa
+ 2180 0f9d C3110000 		.4byte	.LASF285
+ 2181 0fa1 02       		.byte	0x2
+ 2182 0fa2 4402     		.2byte	0x244
+ 2183 0fa4 2F000000 		.4byte	0x2f
+ 2184 0fa8 02       		.byte	0x2
+ 2185 0fa9 23       		.byte	0x23
+ 2186 0faa 0A       		.uleb128 0xa
+ 2187 0fab 0A       		.uleb128 0xa
+ 2188 0fac 33110000 		.4byte	.LASF286
+ 2189 0fb0 02       		.byte	0x2
+ 2190 0fb1 4502     		.2byte	0x245
+ 2191 0fb3 CE0E0000 		.4byte	0xece
+ 2192 0fb7 02       		.byte	0x2
+ 2193 0fb8 23       		.byte	0x23
+ 2194 0fb9 0B       		.uleb128 0xb
+ 2195 0fba 0A       		.uleb128 0xa
+ 2196 0fbb 3A090000 		.4byte	.LASF287
+ 2197 0fbf 02       		.byte	0x2
+ 2198 0fc0 4602     		.2byte	0x246
+ 2199 0fc2 7D030000 		.4byte	0x37d
+ 2200 0fc6 02       		.byte	0x2
+ 2201 0fc7 23       		.byte	0x23
+ 2202 0fc8 0C       		.uleb128 0xc
+ 2203 0fc9 0A       		.uleb128 0xa
+ 2204 0fca 4C100000 		.4byte	.LASF288
+ 2205 0fce 02       		.byte	0x2
+ 2206 0fcf 4802     		.2byte	0x248
+ 2207 0fd1 F10E0000 		.4byte	0xef1
+ 2208 0fd5 02       		.byte	0x2
+ 2209 0fd6 23       		.byte	0x23
+ 2210 0fd7 0D       		.uleb128 0xd
+ 2211 0fd8 0A       		.uleb128 0xa
+ 2212 0fd9 5D180000 		.4byte	.LASF289
+ 2213 0fdd 02       		.byte	0x2
+ 2214 0fde 4902     		.2byte	0x249
+ 2215 0fe0 F10E0000 		.4byte	0xef1
+ 2216 0fe4 02       		.byte	0x2
+ 2217 0fe5 23       		.byte	0x23
+ 2218 0fe6 0E       		.uleb128 0xe
+ 2219 0fe7 0A       		.uleb128 0xa
+ 2220 0fe8 BB000000 		.4byte	.LASF290
+ 2221 0fec 02       		.byte	0x2
+ 2222 0fed 4B02     		.2byte	0x24b
+ 2223 0fef 2F000000 		.4byte	0x2f
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 40
+
+
+ 2224 0ff3 02       		.byte	0x2
+ 2225 0ff4 23       		.byte	0x23
+ 2226 0ff5 0F       		.uleb128 0xf
+ 2227 0ff6 0A       		.uleb128 0xa
+ 2228 0ff7 42170000 		.4byte	.LASF291
+ 2229 0ffb 02       		.byte	0x2
+ 2230 0ffc 4C02     		.2byte	0x24c
+ 2231 0ffe 2F000000 		.4byte	0x2f
+ 2232 1002 02       		.byte	0x2
+ 2233 1003 23       		.byte	0x23
+ 2234 1004 10       		.uleb128 0x10
+ 2235 1005 0A       		.uleb128 0xa
+ 2236 1006 83050000 		.4byte	.LASF292
+ 2237 100a 02       		.byte	0x2
+ 2238 100b 4D02     		.2byte	0x24d
+ 2239 100d 2F000000 		.4byte	0x2f
+ 2240 1011 02       		.byte	0x2
+ 2241 1012 23       		.byte	0x23
+ 2242 1013 11       		.uleb128 0x11
+ 2243 1014 0A       		.uleb128 0xa
+ 2244 1015 F1080000 		.4byte	.LASF293
+ 2245 1019 02       		.byte	0x2
+ 2246 101a 4E02     		.2byte	0x24e
+ 2247 101c 2F000000 		.4byte	0x2f
+ 2248 1020 02       		.byte	0x2
+ 2249 1021 23       		.byte	0x23
+ 2250 1022 12       		.uleb128 0x12
+ 2251 1023 0A       		.uleb128 0xa
+ 2252 1024 6F050000 		.4byte	.LASF294
+ 2253 1028 02       		.byte	0x2
+ 2254 1029 4F02     		.2byte	0x24f
+ 2255 102b F10E0000 		.4byte	0xef1
+ 2256 102f 02       		.byte	0x2
+ 2257 1030 23       		.byte	0x23
+ 2258 1031 13       		.uleb128 0x13
+ 2259 1032 0A       		.uleb128 0xa
+ 2260 1033 B20B0000 		.4byte	.LASF295
+ 2261 1037 02       		.byte	0x2
+ 2262 1038 5102     		.2byte	0x251
+ 2263 103a CE0E0000 		.4byte	0xece
+ 2264 103e 02       		.byte	0x2
+ 2265 103f 23       		.byte	0x23
+ 2266 1040 14       		.uleb128 0x14
+ 2267 1041 0A       		.uleb128 0xa
+ 2268 1042 270F0000 		.4byte	.LASF296
+ 2269 1046 02       		.byte	0x2
+ 2270 1047 5202     		.2byte	0x252
+ 2271 1049 CE0E0000 		.4byte	0xece
+ 2272 104d 02       		.byte	0x2
+ 2273 104e 23       		.byte	0x23
+ 2274 104f 15       		.uleb128 0x15
+ 2275 1050 0A       		.uleb128 0xa
+ 2276 1051 03010000 		.4byte	.LASF297
+ 2277 1055 02       		.byte	0x2
+ 2278 1056 5302     		.2byte	0x253
+ 2279 1058 7D030000 		.4byte	0x37d
+ 2280 105c 02       		.byte	0x2
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 41
+
+
+ 2281 105d 23       		.byte	0x23
+ 2282 105e 16       		.uleb128 0x16
+ 2283 105f 0A       		.uleb128 0xa
+ 2284 1060 0C080000 		.4byte	.LASF298
+ 2285 1064 02       		.byte	0x2
+ 2286 1065 5402     		.2byte	0x254
+ 2287 1067 7D030000 		.4byte	0x37d
+ 2288 106b 02       		.byte	0x2
+ 2289 106c 23       		.byte	0x23
+ 2290 106d 17       		.uleb128 0x17
+ 2291 106e 0A       		.uleb128 0xa
+ 2292 106f 79030000 		.4byte	.LASF299
+ 2293 1073 02       		.byte	0x2
+ 2294 1074 5602     		.2byte	0x256
+ 2295 1076 F10E0000 		.4byte	0xef1
+ 2296 107a 02       		.byte	0x2
+ 2297 107b 23       		.byte	0x23
+ 2298 107c 18       		.uleb128 0x18
+ 2299 107d 0A       		.uleb128 0xa
+ 2300 107e A0160000 		.4byte	.LASF300
+ 2301 1082 02       		.byte	0x2
+ 2302 1083 5702     		.2byte	0x257
+ 2303 1085 2F000000 		.4byte	0x2f
+ 2304 1089 02       		.byte	0x2
+ 2305 108a 23       		.byte	0x23
+ 2306 108b 19       		.uleb128 0x19
+ 2307 108c 0A       		.uleb128 0xa
+ 2308 108d DF040000 		.4byte	.LASF301
+ 2309 1091 02       		.byte	0x2
+ 2310 1092 5802     		.2byte	0x258
+ 2311 1094 2F000000 		.4byte	0x2f
+ 2312 1098 02       		.byte	0x2
+ 2313 1099 23       		.byte	0x23
+ 2314 109a 1A       		.uleb128 0x1a
+ 2315 109b 0A       		.uleb128 0xa
+ 2316 109c 320C0000 		.4byte	.LASF302
+ 2317 10a0 02       		.byte	0x2
+ 2318 10a1 5902     		.2byte	0x259
+ 2319 10a3 2F000000 		.4byte	0x2f
+ 2320 10a7 02       		.byte	0x2
+ 2321 10a8 23       		.byte	0x23
+ 2322 10a9 1B       		.uleb128 0x1b
+ 2323 10aa 0A       		.uleb128 0xa
+ 2324 10ab CA160000 		.4byte	.LASF303
+ 2325 10af 02       		.byte	0x2
+ 2326 10b0 5A02     		.2byte	0x25a
+ 2327 10b2 2F000000 		.4byte	0x2f
+ 2328 10b6 02       		.byte	0x2
+ 2329 10b7 23       		.byte	0x23
+ 2330 10b8 1C       		.uleb128 0x1c
+ 2331 10b9 0A       		.uleb128 0xa
+ 2332 10ba 8C030000 		.4byte	.LASF304
+ 2333 10be 02       		.byte	0x2
+ 2334 10bf 5B02     		.2byte	0x25b
+ 2335 10c1 F10E0000 		.4byte	0xef1
+ 2336 10c5 02       		.byte	0x2
+ 2337 10c6 23       		.byte	0x23
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 42
+
+
+ 2338 10c7 1D       		.uleb128 0x1d
+ 2339 10c8 0A       		.uleb128 0xa
+ 2340 10c9 6C0C0000 		.4byte	.LASF305
+ 2341 10cd 02       		.byte	0x2
+ 2342 10ce 5C02     		.2byte	0x25c
+ 2343 10d0 CE0E0000 		.4byte	0xece
+ 2344 10d4 02       		.byte	0x2
+ 2345 10d5 23       		.byte	0x23
+ 2346 10d6 1E       		.uleb128 0x1e
+ 2347 10d7 0A       		.uleb128 0xa
+ 2348 10d8 94000000 		.4byte	.LASF306
+ 2349 10dc 02       		.byte	0x2
+ 2350 10dd 5D02     		.2byte	0x25d
+ 2351 10df 7D030000 		.4byte	0x37d
+ 2352 10e3 02       		.byte	0x2
+ 2353 10e4 23       		.byte	0x23
+ 2354 10e5 1F       		.uleb128 0x1f
+ 2355 10e6 0A       		.uleb128 0xa
+ 2356 10e7 D0140000 		.4byte	.LASF307
+ 2357 10eb 02       		.byte	0x2
+ 2358 10ec 5F02     		.2byte	0x25f
+ 2359 10ee F10E0000 		.4byte	0xef1
+ 2360 10f2 02       		.byte	0x2
+ 2361 10f3 23       		.byte	0x23
+ 2362 10f4 20       		.uleb128 0x20
+ 2363 10f5 0A       		.uleb128 0xa
+ 2364 10f6 BD050000 		.4byte	.LASF308
+ 2365 10fa 02       		.byte	0x2
+ 2366 10fb 6002     		.2byte	0x260
+ 2367 10fd 2F000000 		.4byte	0x2f
+ 2368 1101 02       		.byte	0x2
+ 2369 1102 23       		.byte	0x23
+ 2370 1103 21       		.uleb128 0x21
+ 2371 1104 0A       		.uleb128 0xa
+ 2372 1105 CC050000 		.4byte	.LASF309
+ 2373 1109 02       		.byte	0x2
+ 2374 110a 6102     		.2byte	0x261
+ 2375 110c 2F000000 		.4byte	0x2f
+ 2376 1110 02       		.byte	0x2
+ 2377 1111 23       		.byte	0x23
+ 2378 1112 22       		.uleb128 0x22
+ 2379 1113 0A       		.uleb128 0xa
+ 2380 1114 D0170000 		.4byte	.LASF310
+ 2381 1118 02       		.byte	0x2
+ 2382 1119 6202     		.2byte	0x262
+ 2383 111b 2F000000 		.4byte	0x2f
+ 2384 111f 02       		.byte	0x2
+ 2385 1120 23       		.byte	0x23
+ 2386 1121 23       		.uleb128 0x23
+ 2387 1122 0A       		.uleb128 0xa
+ 2388 1123 480B0000 		.4byte	.LASF311
+ 2389 1127 02       		.byte	0x2
+ 2390 1128 6302     		.2byte	0x263
+ 2391 112a CE0E0000 		.4byte	0xece
+ 2392 112e 02       		.byte	0x2
+ 2393 112f 23       		.byte	0x23
+ 2394 1130 24       		.uleb128 0x24
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 43
+
+
+ 2395 1131 0A       		.uleb128 0xa
+ 2396 1132 36070000 		.4byte	.LASF312
+ 2397 1136 02       		.byte	0x2
+ 2398 1137 6402     		.2byte	0x264
+ 2399 1139 7D030000 		.4byte	0x37d
+ 2400 113d 02       		.byte	0x2
+ 2401 113e 23       		.byte	0x23
+ 2402 113f 25       		.uleb128 0x25
+ 2403 1140 0A       		.uleb128 0xa
+ 2404 1141 2E140000 		.4byte	.LASF313
+ 2405 1145 02       		.byte	0x2
+ 2406 1146 6502     		.2byte	0x265
+ 2407 1148 D8000000 		.4byte	0xd8
+ 2408 114c 02       		.byte	0x2
+ 2409 114d 23       		.byte	0x23
+ 2410 114e 26       		.uleb128 0x26
+ 2411 114f 0A       		.uleb128 0xa
+ 2412 1150 C3180000 		.4byte	.LASF314
+ 2413 1154 02       		.byte	0x2
+ 2414 1155 6702     		.2byte	0x267
+ 2415 1157 F10E0000 		.4byte	0xef1
+ 2416 115b 02       		.byte	0x2
+ 2417 115c 23       		.byte	0x23
+ 2418 115d 27       		.uleb128 0x27
+ 2419 115e 0A       		.uleb128 0xa
+ 2420 115f 46020000 		.4byte	.LASF315
+ 2421 1163 02       		.byte	0x2
+ 2422 1164 6802     		.2byte	0x268
+ 2423 1166 2F000000 		.4byte	0x2f
+ 2424 116a 02       		.byte	0x2
+ 2425 116b 23       		.byte	0x23
+ 2426 116c 28       		.uleb128 0x28
+ 2427 116d 0A       		.uleb128 0xa
+ 2428 116e 52020000 		.4byte	.LASF316
+ 2429 1172 02       		.byte	0x2
+ 2430 1173 6902     		.2byte	0x269
+ 2431 1175 2F000000 		.4byte	0x2f
+ 2432 1179 02       		.byte	0x2
+ 2433 117a 23       		.byte	0x23
+ 2434 117b 29       		.uleb128 0x29
+ 2435 117c 0A       		.uleb128 0xa
+ 2436 117d 5E020000 		.4byte	.LASF317
+ 2437 1181 02       		.byte	0x2
+ 2438 1182 6A02     		.2byte	0x26a
+ 2439 1184 2F000000 		.4byte	0x2f
+ 2440 1188 02       		.byte	0x2
+ 2441 1189 23       		.byte	0x23
+ 2442 118a 2A       		.uleb128 0x2a
+ 2443 118b 0A       		.uleb128 0xa
+ 2444 118c 9B130000 		.4byte	.LASF318
+ 2445 1190 02       		.byte	0x2
+ 2446 1191 6B02     		.2byte	0x26b
+ 2447 1193 2F000000 		.4byte	0x2f
+ 2448 1197 02       		.byte	0x2
+ 2449 1198 23       		.byte	0x23
+ 2450 1199 2B       		.uleb128 0x2b
+ 2451 119a 0A       		.uleb128 0xa
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 44
+
+
+ 2452 119b 7B020000 		.4byte	.LASF319
+ 2453 119f 02       		.byte	0x2
+ 2454 11a0 6C02     		.2byte	0x26c
+ 2455 11a2 2F000000 		.4byte	0x2f
+ 2456 11a6 02       		.byte	0x2
+ 2457 11a7 23       		.byte	0x23
+ 2458 11a8 2C       		.uleb128 0x2c
+ 2459 11a9 0A       		.uleb128 0xa
+ 2460 11aa B0180000 		.4byte	.LASF320
+ 2461 11ae 02       		.byte	0x2
+ 2462 11af 6D02     		.2byte	0x26d
+ 2463 11b1 F10E0000 		.4byte	0xef1
+ 2464 11b5 02       		.byte	0x2
+ 2465 11b6 23       		.byte	0x23
+ 2466 11b7 2D       		.uleb128 0x2d
+ 2467 11b8 0A       		.uleb128 0xa
+ 2468 11b9 71180000 		.4byte	.LASF321
+ 2469 11bd 02       		.byte	0x2
+ 2470 11be 6E02     		.2byte	0x26e
+ 2471 11c0 CE0E0000 		.4byte	0xece
+ 2472 11c4 02       		.byte	0x2
+ 2473 11c5 23       		.byte	0x23
+ 2474 11c6 2E       		.uleb128 0x2e
+ 2475 11c7 0A       		.uleb128 0xa
+ 2476 11c8 CB0D0000 		.4byte	.LASF322
+ 2477 11cc 02       		.byte	0x2
+ 2478 11cd 6F02     		.2byte	0x26f
+ 2479 11cf 7D030000 		.4byte	0x37d
+ 2480 11d3 02       		.byte	0x2
+ 2481 11d4 23       		.byte	0x23
+ 2482 11d5 2F       		.uleb128 0x2f
+ 2483 11d6 0A       		.uleb128 0xa
+ 2484 11d7 420E0000 		.4byte	.LASF323
+ 2485 11db 02       		.byte	0x2
+ 2486 11dc 7102     		.2byte	0x271
+ 2487 11de F10E0000 		.4byte	0xef1
+ 2488 11e2 02       		.byte	0x2
+ 2489 11e3 23       		.byte	0x23
+ 2490 11e4 30       		.uleb128 0x30
+ 2491 11e5 0A       		.uleb128 0xa
+ 2492 11e6 E3070000 		.4byte	.LASF324
+ 2493 11ea 02       		.byte	0x2
+ 2494 11eb 7202     		.2byte	0x272
+ 2495 11ed 2F000000 		.4byte	0x2f
+ 2496 11f1 02       		.byte	0x2
+ 2497 11f2 23       		.byte	0x23
+ 2498 11f3 31       		.uleb128 0x31
+ 2499 11f4 0A       		.uleb128 0xa
+ 2500 11f5 360A0000 		.4byte	.LASF325
+ 2501 11f9 02       		.byte	0x2
+ 2502 11fa 7302     		.2byte	0x273
+ 2503 11fc 2F000000 		.4byte	0x2f
+ 2504 1200 02       		.byte	0x2
+ 2505 1201 23       		.byte	0x23
+ 2506 1202 32       		.uleb128 0x32
+ 2507 1203 0A       		.uleb128 0xa
+ 2508 1204 22080000 		.4byte	.LASF326
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 45
+
+
+ 2509 1208 02       		.byte	0x2
+ 2510 1209 7402     		.2byte	0x274
+ 2511 120b F10E0000 		.4byte	0xef1
+ 2512 120f 02       		.byte	0x2
+ 2513 1210 23       		.byte	0x23
+ 2514 1211 33       		.uleb128 0x33
+ 2515 1212 0A       		.uleb128 0xa
+ 2516 1213 B2010000 		.4byte	.LASF327
+ 2517 1217 02       		.byte	0x2
+ 2518 1218 7502     		.2byte	0x275
+ 2519 121a CE0E0000 		.4byte	0xece
+ 2520 121e 02       		.byte	0x2
+ 2521 121f 23       		.byte	0x23
+ 2522 1220 34       		.uleb128 0x34
+ 2523 1221 0A       		.uleb128 0xa
+ 2524 1222 CB100000 		.4byte	.LASF328
+ 2525 1226 02       		.byte	0x2
+ 2526 1227 7602     		.2byte	0x276
+ 2527 1229 7D030000 		.4byte	0x37d
+ 2528 122d 02       		.byte	0x2
+ 2529 122e 23       		.byte	0x23
+ 2530 122f 35       		.uleb128 0x35
+ 2531 1230 0A       		.uleb128 0xa
+ 2532 1231 AC040000 		.4byte	.LASF329
+ 2533 1235 02       		.byte	0x2
+ 2534 1236 7802     		.2byte	0x278
+ 2535 1238 F10E0000 		.4byte	0xef1
+ 2536 123c 02       		.byte	0x2
+ 2537 123d 23       		.byte	0x23
+ 2538 123e 36       		.uleb128 0x36
+ 2539 123f 0A       		.uleb128 0xa
+ 2540 1240 E5180000 		.4byte	.LASF330
+ 2541 1244 02       		.byte	0x2
+ 2542 1245 7902     		.2byte	0x279
+ 2543 1247 2F000000 		.4byte	0x2f
+ 2544 124b 02       		.byte	0x2
+ 2545 124c 23       		.byte	0x23
+ 2546 124d 37       		.uleb128 0x37
+ 2547 124e 0A       		.uleb128 0xa
+ 2548 124f F2090000 		.4byte	.LASF331
+ 2549 1253 02       		.byte	0x2
+ 2550 1254 7A02     		.2byte	0x27a
+ 2551 1256 2F000000 		.4byte	0x2f
+ 2552 125a 02       		.byte	0x2
+ 2553 125b 23       		.byte	0x23
+ 2554 125c 38       		.uleb128 0x38
+ 2555 125d 0A       		.uleb128 0xa
+ 2556 125e 69160000 		.4byte	.LASF332
+ 2557 1262 02       		.byte	0x2
+ 2558 1263 7B02     		.2byte	0x27b
+ 2559 1265 2F000000 		.4byte	0x2f
+ 2560 1269 02       		.byte	0x2
+ 2561 126a 23       		.byte	0x23
+ 2562 126b 39       		.uleb128 0x39
+ 2563 126c 0A       		.uleb128 0xa
+ 2564 126d F30E0000 		.4byte	.LASF333
+ 2565 1271 02       		.byte	0x2
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 46
+
+
+ 2566 1272 7C02     		.2byte	0x27c
+ 2567 1274 CE0E0000 		.4byte	0xece
+ 2568 1278 02       		.byte	0x2
+ 2569 1279 23       		.byte	0x23
+ 2570 127a 3A       		.uleb128 0x3a
+ 2571 127b 0A       		.uleb128 0xa
+ 2572 127c 17180000 		.4byte	.LASF334
+ 2573 1280 02       		.byte	0x2
+ 2574 1281 7D02     		.2byte	0x27d
+ 2575 1283 7D030000 		.4byte	0x37d
+ 2576 1287 02       		.byte	0x2
+ 2577 1288 23       		.byte	0x23
+ 2578 1289 3B       		.uleb128 0x3b
+ 2579 128a 0A       		.uleb128 0xa
+ 2580 128b EF010000 		.4byte	.LASF335
+ 2581 128f 02       		.byte	0x2
+ 2582 1290 7E02     		.2byte	0x27e
+ 2583 1292 D8000000 		.4byte	0xd8
+ 2584 1296 02       		.byte	0x2
+ 2585 1297 23       		.byte	0x23
+ 2586 1298 3C       		.uleb128 0x3c
+ 2587 1299 0A       		.uleb128 0xa
+ 2588 129a F4150000 		.4byte	.LASF336
+ 2589 129e 02       		.byte	0x2
+ 2590 129f 8002     		.2byte	0x280
+ 2591 12a1 F10E0000 		.4byte	0xef1
+ 2592 12a5 02       		.byte	0x2
+ 2593 12a6 23       		.byte	0x23
+ 2594 12a7 3D       		.uleb128 0x3d
+ 2595 12a8 0A       		.uleb128 0xa
+ 2596 12a9 F1180000 		.4byte	.LASF337
+ 2597 12ad 02       		.byte	0x2
+ 2598 12ae 8102     		.2byte	0x281
+ 2599 12b0 B80D0000 		.4byte	0xdb8
+ 2600 12b4 02       		.byte	0x2
+ 2601 12b5 23       		.byte	0x23
+ 2602 12b6 3E       		.uleb128 0x3e
+ 2603 12b7 0A       		.uleb128 0xa
+ 2604 12b8 D2180000 		.4byte	.LASF338
+ 2605 12bc 02       		.byte	0x2
+ 2606 12bd 8202     		.2byte	0x282
+ 2607 12bf CE0E0000 		.4byte	0xece
+ 2608 12c3 02       		.byte	0x2
+ 2609 12c4 23       		.byte	0x23
+ 2610 12c5 3F       		.uleb128 0x3f
+ 2611 12c6 0A       		.uleb128 0xa
+ 2612 12c7 93170000 		.4byte	.LASF339
+ 2613 12cb 02       		.byte	0x2
+ 2614 12cc 8302     		.2byte	0x283
+ 2615 12ce 7D030000 		.4byte	0x37d
+ 2616 12d2 02       		.byte	0x2
+ 2617 12d3 23       		.byte	0x23
+ 2618 12d4 40       		.uleb128 0x40
+ 2619 12d5 0A       		.uleb128 0xa
+ 2620 12d6 CC090000 		.4byte	.LASF340
+ 2621 12da 02       		.byte	0x2
+ 2622 12db 8502     		.2byte	0x285
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 47
+
+
+ 2623 12dd F10E0000 		.4byte	0xef1
+ 2624 12e1 02       		.byte	0x2
+ 2625 12e2 23       		.byte	0x23
+ 2626 12e3 41       		.uleb128 0x41
+ 2627 12e4 0A       		.uleb128 0xa
+ 2628 12e5 940C0000 		.4byte	.LASF341
+ 2629 12e9 02       		.byte	0x2
+ 2630 12ea 8602     		.2byte	0x286
+ 2631 12ec 2F000000 		.4byte	0x2f
+ 2632 12f0 02       		.byte	0x2
+ 2633 12f1 23       		.byte	0x23
+ 2634 12f2 42       		.uleb128 0x42
+ 2635 12f3 0A       		.uleb128 0xa
+ 2636 12f4 9C090000 		.4byte	.LASF342
+ 2637 12f8 02       		.byte	0x2
+ 2638 12f9 8702     		.2byte	0x287
+ 2639 12fb 2F000000 		.4byte	0x2f
+ 2640 12ff 02       		.byte	0x2
+ 2641 1300 23       		.byte	0x23
+ 2642 1301 43       		.uleb128 0x43
+ 2643 1302 0A       		.uleb128 0xa
+ 2644 1303 6B0D0000 		.4byte	.LASF343
+ 2645 1307 02       		.byte	0x2
+ 2646 1308 8802     		.2byte	0x288
+ 2647 130a CE0E0000 		.4byte	0xece
+ 2648 130e 02       		.byte	0x2
+ 2649 130f 23       		.byte	0x23
+ 2650 1310 44       		.uleb128 0x44
+ 2651 1311 0A       		.uleb128 0xa
+ 2652 1312 59170000 		.4byte	.LASF344
+ 2653 1316 02       		.byte	0x2
+ 2654 1317 8902     		.2byte	0x289
+ 2655 1319 7D030000 		.4byte	0x37d
+ 2656 131d 02       		.byte	0x2
+ 2657 131e 23       		.byte	0x23
+ 2658 131f 45       		.uleb128 0x45
+ 2659 1320 0A       		.uleb128 0xa
+ 2660 1321 B1140000 		.4byte	.LASF345
+ 2661 1325 02       		.byte	0x2
+ 2662 1326 8B02     		.2byte	0x28b
+ 2663 1328 F10E0000 		.4byte	0xef1
+ 2664 132c 02       		.byte	0x2
+ 2665 132d 23       		.byte	0x23
+ 2666 132e 46       		.uleb128 0x46
+ 2667 132f 0A       		.uleb128 0xa
+ 2668 1330 B4090000 		.4byte	.LASF346
+ 2669 1334 02       		.byte	0x2
+ 2670 1335 8C02     		.2byte	0x28c
+ 2671 1337 2F000000 		.4byte	0x2f
+ 2672 133b 02       		.byte	0x2
+ 2673 133c 23       		.byte	0x23
+ 2674 133d 47       		.uleb128 0x47
+ 2675 133e 0A       		.uleb128 0xa
+ 2676 133f 2A180000 		.4byte	.LASF347
+ 2677 1343 02       		.byte	0x2
+ 2678 1344 8D02     		.2byte	0x28d
+ 2679 1346 CE0E0000 		.4byte	0xece
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 48
+
+
+ 2680 134a 02       		.byte	0x2
+ 2681 134b 23       		.byte	0x23
+ 2682 134c 48       		.uleb128 0x48
+ 2683 134d 0A       		.uleb128 0xa
+ 2684 134e 96100000 		.4byte	.LASF348
+ 2685 1352 02       		.byte	0x2
+ 2686 1353 8E02     		.2byte	0x28e
+ 2687 1355 7D030000 		.4byte	0x37d
+ 2688 1359 02       		.byte	0x2
+ 2689 135a 23       		.byte	0x23
+ 2690 135b 49       		.uleb128 0x49
+ 2691 135c 0A       		.uleb128 0xa
+ 2692 135d F7030000 		.4byte	.LASF349
+ 2693 1361 02       		.byte	0x2
+ 2694 1362 9002     		.2byte	0x290
+ 2695 1364 FF020000 		.4byte	0x2ff
+ 2696 1368 02       		.byte	0x2
+ 2697 1369 23       		.byte	0x23
+ 2698 136a 4A       		.uleb128 0x4a
+ 2699 136b 0A       		.uleb128 0xa
+ 2700 136c 9B0D0000 		.4byte	.LASF350
+ 2701 1370 02       		.byte	0x2
+ 2702 1371 9202     		.2byte	0x292
+ 2703 1373 F10E0000 		.4byte	0xef1
+ 2704 1377 02       		.byte	0x2
+ 2705 1378 23       		.byte	0x23
+ 2706 1379 4B       		.uleb128 0x4b
+ 2707 137a 0A       		.uleb128 0xa
+ 2708 137b A4170000 		.4byte	.LASF351
+ 2709 137f 02       		.byte	0x2
+ 2710 1380 9302     		.2byte	0x293
+ 2711 1382 CE0E0000 		.4byte	0xece
+ 2712 1386 02       		.byte	0x2
+ 2713 1387 23       		.byte	0x23
+ 2714 1388 4C       		.uleb128 0x4c
+ 2715 1389 0A       		.uleb128 0xa
+ 2716 138a C9190000 		.4byte	.LASF352
+ 2717 138e 02       		.byte	0x2
+ 2718 138f 9402     		.2byte	0x294
+ 2719 1391 7D030000 		.4byte	0x37d
+ 2720 1395 02       		.byte	0x2
+ 2721 1396 23       		.byte	0x23
+ 2722 1397 4D       		.uleb128 0x4d
+ 2723 1398 0A       		.uleb128 0xa
+ 2724 1399 4C120000 		.4byte	.LASF353
+ 2725 139d 02       		.byte	0x2
+ 2726 139e 9602     		.2byte	0x296
+ 2727 13a0 F10E0000 		.4byte	0xef1
+ 2728 13a4 02       		.byte	0x2
+ 2729 13a5 23       		.byte	0x23
+ 2730 13a6 4E       		.uleb128 0x4e
+ 2731 13a7 0A       		.uleb128 0xa
+ 2732 13a8 A90F0000 		.4byte	.LASF354
+ 2733 13ac 02       		.byte	0x2
+ 2734 13ad 9702     		.2byte	0x297
+ 2735 13af 7D030000 		.4byte	0x37d
+ 2736 13b3 02       		.byte	0x2
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 49
+
+
+ 2737 13b4 23       		.byte	0x23
+ 2738 13b5 4F       		.uleb128 0x4f
+ 2739 13b6 00       		.byte	0
+ 2740 13b7 0C       		.uleb128 0xc
+ 2741 13b8 430D0000 		.4byte	.LASF355
+ 2742 13bc 02       		.byte	0x2
+ 2743 13bd 9902     		.2byte	0x299
+ 2744 13bf FD0E0000 		.4byte	0xefd
+ 2745 13c3 0D       		.uleb128 0xd
+ 2746 13c4 0E       		.byte	0xe
+ 2747 13c5 02       		.byte	0x2
+ 2748 13c6 1003     		.2byte	0x310
+ 2749 13c8 30140000 		.4byte	0x1430
+ 2750 13cc 0A       		.uleb128 0xa
+ 2751 13cd CC060000 		.4byte	.LASF356
+ 2752 13d1 02       		.byte	0x2
+ 2753 13d2 1103     		.2byte	0x311
+ 2754 13d4 41000000 		.4byte	0x41
+ 2755 13d8 02       		.byte	0x2
+ 2756 13d9 23       		.byte	0x23
+ 2757 13da 00       		.uleb128 0
+ 2758 13db 0A       		.uleb128 0xa
+ 2759 13dc 9B140000 		.4byte	.LASF357
+ 2760 13e0 02       		.byte	0x2
+ 2761 13e1 1203     		.2byte	0x312
+ 2762 13e3 41000000 		.4byte	0x41
+ 2763 13e7 02       		.byte	0x2
+ 2764 13e8 23       		.byte	0x23
+ 2765 13e9 02       		.uleb128 0x2
+ 2766 13ea 0A       		.uleb128 0xa
+ 2767 13eb E1060000 		.4byte	.LASF358
+ 2768 13ef 02       		.byte	0x2
+ 2769 13f0 1303     		.2byte	0x313
+ 2770 13f2 41000000 		.4byte	0x41
+ 2771 13f6 02       		.byte	0x2
+ 2772 13f7 23       		.byte	0x23
+ 2773 13f8 04       		.uleb128 0x4
+ 2774 13f9 0B       		.uleb128 0xb
+ 2775 13fa 5800     		.ascii	"X\000"
+ 2776 13fc 02       		.byte	0x2
+ 2777 13fd 1503     		.2byte	0x315
+ 2778 13ff 41000000 		.4byte	0x41
+ 2779 1403 02       		.byte	0x2
+ 2780 1404 23       		.byte	0x23
+ 2781 1405 06       		.uleb128 0x6
+ 2782 1406 0B       		.uleb128 0xb
+ 2783 1407 5900     		.ascii	"Y\000"
+ 2784 1409 02       		.byte	0x2
+ 2785 140a 1603     		.2byte	0x316
+ 2786 140c 41000000 		.4byte	0x41
+ 2787 1410 02       		.byte	0x2
+ 2788 1411 23       		.byte	0x23
+ 2789 1412 08       		.uleb128 0x8
+ 2790 1413 0B       		.uleb128 0xb
+ 2791 1414 5A00     		.ascii	"Z\000"
+ 2792 1416 02       		.byte	0x2
+ 2793 1417 1703     		.2byte	0x317
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 50
+
+
+ 2794 1419 41000000 		.4byte	0x41
+ 2795 141d 02       		.byte	0x2
+ 2796 141e 23       		.byte	0x23
+ 2797 141f 0A       		.uleb128 0xa
+ 2798 1420 0A       		.uleb128 0xa
+ 2799 1421 5B0F0000 		.4byte	.LASF359
+ 2800 1425 02       		.byte	0x2
+ 2801 1426 1903     		.2byte	0x319
+ 2802 1428 2F000000 		.4byte	0x2f
+ 2803 142c 02       		.byte	0x2
+ 2804 142d 23       		.byte	0x23
+ 2805 142e 0C       		.uleb128 0xc
+ 2806 142f 00       		.byte	0
+ 2807 1430 0C       		.uleb128 0xc
+ 2808 1431 C5150000 		.4byte	.LASF360
+ 2809 1435 02       		.byte	0x2
+ 2810 1436 1B03     		.2byte	0x31b
+ 2811 1438 C3130000 		.4byte	0x13c3
+ 2812 143c 0D       		.uleb128 0xd
+ 2813 143d 16       		.byte	0x16
+ 2814 143e 02       		.byte	0x2
+ 2815 143f 1D03     		.2byte	0x31d
+ 2816 1441 09150000 		.4byte	0x1509
+ 2817 1445 0A       		.uleb128 0xa
+ 2818 1446 A70B0000 		.4byte	.LASF361
+ 2819 144a 02       		.byte	0x2
+ 2820 144b 1E03     		.2byte	0x31e
+ 2821 144d 41000000 		.4byte	0x41
+ 2822 1451 02       		.byte	0x2
+ 2823 1452 23       		.byte	0x23
+ 2824 1453 00       		.uleb128 0
+ 2825 1454 0A       		.uleb128 0xa
+ 2826 1455 260B0000 		.4byte	.LASF362
+ 2827 1459 02       		.byte	0x2
+ 2828 145a 2003     		.2byte	0x320
+ 2829 145c 41000000 		.4byte	0x41
+ 2830 1460 02       		.byte	0x2
+ 2831 1461 23       		.byte	0x23
+ 2832 1462 02       		.uleb128 0x2
+ 2833 1463 0A       		.uleb128 0xa
+ 2834 1464 86190000 		.4byte	.LASF363
+ 2835 1468 02       		.byte	0x2
+ 2836 1469 2203     		.2byte	0x322
+ 2837 146b 41000000 		.4byte	0x41
+ 2838 146f 02       		.byte	0x2
+ 2839 1470 23       		.byte	0x23
+ 2840 1471 04       		.uleb128 0x4
+ 2841 1472 0A       		.uleb128 0xa
+ 2842 1473 BC040000 		.4byte	.LASF364
+ 2843 1477 02       		.byte	0x2
+ 2844 1478 2303     		.2byte	0x323
+ 2845 147a 41000000 		.4byte	0x41
+ 2846 147e 02       		.byte	0x2
+ 2847 147f 23       		.byte	0x23
+ 2848 1480 06       		.uleb128 0x6
+ 2849 1481 0A       		.uleb128 0xa
+ 2850 1482 E7050000 		.4byte	.LASF365
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 51
+
+
+ 2851 1486 02       		.byte	0x2
+ 2852 1487 2503     		.2byte	0x325
+ 2853 1489 41000000 		.4byte	0x41
+ 2854 148d 02       		.byte	0x2
+ 2855 148e 23       		.byte	0x23
+ 2856 148f 08       		.uleb128 0x8
+ 2857 1490 0A       		.uleb128 0xa
+ 2858 1491 840F0000 		.4byte	.LASF366
+ 2859 1495 02       		.byte	0x2
+ 2860 1496 2603     		.2byte	0x326
+ 2861 1498 41000000 		.4byte	0x41
+ 2862 149c 02       		.byte	0x2
+ 2863 149d 23       		.byte	0x23
+ 2864 149e 0A       		.uleb128 0xa
+ 2865 149f 0A       		.uleb128 0xa
+ 2866 14a0 FD160000 		.4byte	.LASF367
+ 2867 14a4 02       		.byte	0x2
+ 2868 14a5 2703     		.2byte	0x327
+ 2869 14a7 41000000 		.4byte	0x41
+ 2870 14ab 02       		.byte	0x2
+ 2871 14ac 23       		.byte	0x23
+ 2872 14ad 0C       		.uleb128 0xc
+ 2873 14ae 0A       		.uleb128 0xa
+ 2874 14af 4C140000 		.4byte	.LASF368
+ 2875 14b3 02       		.byte	0x2
+ 2876 14b4 2803     		.2byte	0x328
+ 2877 14b6 41000000 		.4byte	0x41
+ 2878 14ba 02       		.byte	0x2
+ 2879 14bb 23       		.byte	0x23
+ 2880 14bc 0E       		.uleb128 0xe
+ 2881 14bd 0A       		.uleb128 0xa
+ 2882 14be 9A180000 		.4byte	.LASF369
+ 2883 14c2 02       		.byte	0x2
+ 2884 14c3 2A03     		.2byte	0x32a
+ 2885 14c5 1D000000 		.4byte	0x1d
+ 2886 14c9 02       		.byte	0x2
+ 2887 14ca 23       		.byte	0x23
+ 2888 14cb 10       		.uleb128 0x10
+ 2889 14cc 0A       		.uleb128 0xa
+ 2890 14cd EA0E0000 		.4byte	.LASF129
+ 2891 14d1 02       		.byte	0x2
+ 2892 14d2 2B03     		.2byte	0x32b
+ 2893 14d4 2F000000 		.4byte	0x2f
+ 2894 14d8 02       		.byte	0x2
+ 2895 14d9 23       		.byte	0x23
+ 2896 14da 11       		.uleb128 0x11
+ 2897 14db 0A       		.uleb128 0xa
+ 2898 14dc A90C0000 		.4byte	.LASF370
+ 2899 14e0 02       		.byte	0x2
+ 2900 14e1 2D03     		.2byte	0x32d
+ 2901 14e3 2F000000 		.4byte	0x2f
+ 2902 14e7 02       		.byte	0x2
+ 2903 14e8 23       		.byte	0x23
+ 2904 14e9 12       		.uleb128 0x12
+ 2905 14ea 0A       		.uleb128 0xa
+ 2906 14eb B00C0000 		.4byte	.LASF371
+ 2907 14ef 02       		.byte	0x2
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 52
+
+
+ 2908 14f0 2E03     		.2byte	0x32e
+ 2909 14f2 2F000000 		.4byte	0x2f
+ 2910 14f6 02       		.byte	0x2
+ 2911 14f7 23       		.byte	0x23
+ 2912 14f8 13       		.uleb128 0x13
+ 2913 14f9 0A       		.uleb128 0xa
+ 2914 14fa 930D0000 		.4byte	.LASF372
+ 2915 14fe 02       		.byte	0x2
+ 2916 14ff 3003     		.2byte	0x330
+ 2917 1501 2F000000 		.4byte	0x2f
+ 2918 1505 02       		.byte	0x2
+ 2919 1506 23       		.byte	0x23
+ 2920 1507 14       		.uleb128 0x14
+ 2921 1508 00       		.byte	0
+ 2922 1509 0C       		.uleb128 0xc
+ 2923 150a 1B050000 		.4byte	.LASF373
+ 2924 150e 02       		.byte	0x2
+ 2925 150f 3203     		.2byte	0x332
+ 2926 1511 3C140000 		.4byte	0x143c
+ 2927 1515 11       		.uleb128 0x11
+ 2928 1516 9A110000 		.4byte	.LASF374
+ 2929 151a 03       		.byte	0x3
+ 2930 151b 1A05     		.2byte	0x51a
+ 2931 151d A1000000 		.4byte	0xa1
+ 2932 1521 01       		.byte	0x1
+ 2933 1522 01       		.byte	0x1
+ 2934 1523 12       		.uleb128 0x12
+ 2935 1524 000C0000 		.4byte	.LASF375
+ 2936 1528 04       		.byte	0x4
+ 2937 1529 0D       		.byte	0xd
+ 2938 152a 35150000 		.4byte	0x1535
+ 2939 152e 01       		.byte	0x1
+ 2940 152f 05       		.byte	0x5
+ 2941 1530 03       		.byte	0x3
+ 2942 1531 00000000 		.4byte	_commonDiagBuffer
+ 2943 1535 13       		.uleb128 0x13
+ 2944 1536 04       		.byte	0x4
+ 2945 1537 30140000 		.4byte	0x1430
+ 2946 153b 12       		.uleb128 0x12
+ 2947 153c 9B040000 		.4byte	.LASF376
+ 2948 1540 04       		.byte	0x4
+ 2949 1541 0F       		.byte	0xf
+ 2950 1542 4D150000 		.4byte	0x154d
+ 2951 1546 01       		.byte	0x1
+ 2952 1547 05       		.byte	0x5
+ 2953 1548 03       		.byte	0x3
+ 2954 1549 00000000 		.4byte	BatteryCondition
+ 2955 154d 13       		.uleb128 0x13
+ 2956 154e 04       		.byte	0x4
+ 2957 154f 59080000 		.4byte	0x859
+ 2958 1553 12       		.uleb128 0x12
+ 2959 1554 25010000 		.4byte	.LASF377
+ 2960 1558 04       		.byte	0x4
+ 2961 1559 10       		.byte	0x10
+ 2962 155a 65150000 		.4byte	0x1565
+ 2963 155e 01       		.byte	0x1
+ 2964 155f 05       		.byte	0x5
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 53
+
+
+ 2965 1560 03       		.byte	0x3
+ 2966 1561 00000000 		.4byte	GPSData
+ 2967 1565 13       		.uleb128 0x13
+ 2968 1566 04       		.byte	0x4
+ 2969 1567 020D0000 		.4byte	0xd02
+ 2970 156b 12       		.uleb128 0x12
+ 2971 156c 1B120000 		.4byte	.LASF378
+ 2972 1570 04       		.byte	0x4
+ 2973 1571 11       		.byte	0x11
+ 2974 1572 7D150000 		.4byte	0x157d
+ 2975 1576 01       		.byte	0x1
+ 2976 1577 05       		.byte	0x5
+ 2977 1578 03       		.byte	0x3
+ 2978 1579 00000000 		.4byte	PIDConstantsConfig
+ 2979 157d 13       		.uleb128 0x13
+ 2980 157e 04       		.byte	0x4
+ 2981 157f 990B0000 		.4byte	0xb99
+ 2982 1583 12       		.uleb128 0x12
+ 2983 1584 85160000 		.4byte	.LASF379
+ 2984 1588 04       		.byte	0x4
+ 2985 1589 12       		.byte	0x12
+ 2986 158a 95150000 		.4byte	0x1595
+ 2987 158e 01       		.byte	0x1
+ 2988 158f 05       		.byte	0x5
+ 2989 1590 03       		.byte	0x3
+ 2990 1591 00000000 		.4byte	SensorData
+ 2991 1595 13       		.uleb128 0x13
+ 2992 1596 04       		.byte	0x4
+ 2993 1597 6D050000 		.4byte	0x56d
+ 2994 159b 12       		.uleb128 0x12
+ 2995 159c DD0D0000 		.4byte	.LASF380
+ 2996 15a0 04       		.byte	0x4
+ 2997 15a1 14       		.byte	0x14
+ 2998 15a2 AD150000 		.4byte	0x15ad
+ 2999 15a6 01       		.byte	0x1
+ 3000 15a7 05       		.byte	0x5
+ 3001 15a8 03       		.byte	0x3
+ 3002 15a9 00000000 		.4byte	MotorStatus
+ 3003 15ad 13       		.uleb128 0x13
+ 3004 15ae 04       		.byte	0x4
+ 3005 15af AF040000 		.4byte	0x4af
+ 3006 15b3 12       		.uleb128 0x12
+ 3007 15b4 F0160000 		.4byte	.LASF381
+ 3008 15b8 04       		.byte	0x4
+ 3009 15b9 15       		.byte	0x15
+ 3010 15ba C5150000 		.4byte	0x15c5
+ 3011 15be 01       		.byte	0x1
+ 3012 15bf 05       		.byte	0x5
+ 3013 15c0 03       		.byte	0x3
+ 3014 15c1 00000000 		.4byte	SystemStatus
+ 3015 15c5 13       		.uleb128 0x13
+ 3016 15c6 04       		.byte	0x4
+ 3017 15c7 63040000 		.4byte	0x463
+ 3018 15cb 12       		.uleb128 0x12
+ 3019 15cc 3F0F0000 		.4byte	.LASF382
+ 3020 15d0 04       		.byte	0x4
+ 3021 15d1 13       		.byte	0x13
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 54
+
+
+ 3022 15d2 DD150000 		.4byte	0x15dd
+ 3023 15d6 01       		.byte	0x1
+ 3024 15d7 05       		.byte	0x5
+ 3025 15d8 03       		.byte	0x3
+ 3026 15d9 00000000 		.4byte	SensorConfig
+ 3027 15dd 13       		.uleb128 0x13
+ 3028 15de 04       		.byte	0x4
+ 3029 15df B7130000 		.4byte	0x13b7
+ 3030 15e3 12       		.uleb128 0x12
+ 3031 15e4 500C0000 		.4byte	.LASF383
+ 3032 15e8 04       		.byte	0x4
+ 3033 15e9 16       		.byte	0x16
+ 3034 15ea F5150000 		.4byte	0x15f5
+ 3035 15ee 01       		.byte	0x1
+ 3036 15ef 05       		.byte	0x5
+ 3037 15f0 03       		.byte	0x3
+ 3038 15f1 00000000 		.4byte	Targets
+ 3039 15f5 13       		.uleb128 0x13
+ 3040 15f6 04       		.byte	0x4
+ 3041 15f7 1B050000 		.4byte	0x51b
+ 3042 15fb 12       		.uleb128 0x12
+ 3043 15fc 3B060000 		.4byte	.LASF384
+ 3044 1600 04       		.byte	0x4
+ 3045 1601 1E       		.byte	0x1e
+ 3046 1602 0D160000 		.4byte	0x160d
+ 3047 1606 01       		.byte	0x1
+ 3048 1607 05       		.byte	0x5
+ 3049 1608 03       		.byte	0x3
+ 3050 1609 00000000 		.4byte	InternalState
+ 3051 160d 13       		.uleb128 0x13
+ 3052 160e 04       		.byte	0x4
+ 3053 160f 16080000 		.4byte	0x816
+ 3054 1613 12       		.uleb128 0x12
+ 3055 1614 EA030000 		.4byte	.LASF385
+ 3056 1618 04       		.byte	0x4
+ 3057 1619 1F       		.byte	0x1f
+ 3058 161a 25160000 		.4byte	0x1625
+ 3059 161e 01       		.byte	0x1
+ 3060 161f 05       		.byte	0x5
+ 3061 1620 03       		.byte	0x3
+ 3062 1621 00000000 		.4byte	PIDConstants
+ 3063 1625 13       		.uleb128 0x13
+ 3064 1626 04       		.byte	0x4
+ 3065 1627 540C0000 		.4byte	0xc54
+ 3066 162b 12       		.uleb128 0x12
+ 3067 162c 4A0A0000 		.4byte	.LASF386
+ 3068 1630 04       		.byte	0x4
+ 3069 1631 17       		.byte	0x17
+ 3070 1632 3D160000 		.4byte	0x163d
+ 3071 1636 01       		.byte	0x1
+ 3072 1637 05       		.byte	0x5
+ 3073 1638 03       		.byte	0x3
+ 3074 1639 00000000 		.4byte	PIDSensorData
+ 3075 163d 13       		.uleb128 0x13
+ 3076 163e 04       		.byte	0x4
+ 3077 163f 37060000 		.4byte	0x637
+ 3078 1643 12       		.uleb128 0x12
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 55
+
+
+ 3079 1644 1D090000 		.4byte	.LASF387
+ 3080 1648 04       		.byte	0x4
+ 3081 1649 29       		.byte	0x29
+ 3082 164a 55160000 		.4byte	0x1655
+ 3083 164e 01       		.byte	0x1
+ 3084 164f 05       		.byte	0x5
+ 3085 1650 03       		.byte	0x3
+ 3086 1651 00000000 		.4byte	HomeGPSReading
+ 3087 1655 13       		.uleb128 0x13
+ 3088 1656 04       		.byte	0x4
+ 3089 1657 900D0000 		.4byte	0xd90
+ 3090 165b 12       		.uleb128 0x12
+ 3091 165c 78130000 		.4byte	.LASF388
+ 3092 1660 04       		.byte	0x4
+ 3093 1661 2A       		.byte	0x2a
+ 3094 1662 55160000 		.4byte	0x1655
+ 3095 1666 01       		.byte	0x1
+ 3096 1667 05       		.byte	0x5
+ 3097 1668 03       		.byte	0x3
+ 3098 1669 00000000 		.4byte	CurrentGPSReading
+ 3099 166d 12       		.uleb128 0x12
+ 3100 166e 48000000 		.4byte	.LASF389
+ 3101 1672 04       		.byte	0x4
+ 3102 1673 1C       		.byte	0x1c
+ 3103 1674 7F160000 		.4byte	0x167f
+ 3104 1678 01       		.byte	0x1
+ 3105 1679 05       		.byte	0x5
+ 3106 167a 03       		.byte	0x3
+ 3107 167b 00000000 		.4byte	AltitudeData
+ 3108 167f 13       		.uleb128 0x13
+ 3109 1680 04       		.byte	0x4
+ 3110 1681 98060000 		.4byte	0x698
+ 3111 1685 12       		.uleb128 0x12
+ 3112 1686 DB030000 		.4byte	.LASF390
+ 3113 168a 04       		.byte	0x4
+ 3114 168b 19       		.byte	0x19
+ 3115 168c 97160000 		.4byte	0x1697
+ 3116 1690 01       		.byte	0x1
+ 3117 1691 05       		.byte	0x5
+ 3118 1692 03       		.byte	0x3
+ 3119 1693 00000000 		.4byte	RollPIDDetails
+ 3120 1697 13       		.uleb128 0x13
+ 3121 1698 04       		.byte	0x4
+ 3122 1699 09150000 		.4byte	0x1509
+ 3123 169d 12       		.uleb128 0x12
+ 3124 169e FB040000 		.4byte	.LASF391
+ 3125 16a2 04       		.byte	0x4
+ 3126 16a3 1A       		.byte	0x1a
+ 3127 16a4 97160000 		.4byte	0x1697
+ 3128 16a8 01       		.byte	0x1
+ 3129 16a9 05       		.byte	0x5
+ 3130 16aa 03       		.byte	0x3
+ 3131 16ab 00000000 		.4byte	PitchPIDDetails
+ 3132 16af 12       		.uleb128 0x12
+ 3133 16b0 19070000 		.4byte	.LASF392
+ 3134 16b4 04       		.byte	0x4
+ 3135 16b5 21       		.byte	0x21
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 56
+
+
+ 3136 16b6 2F000000 		.4byte	0x2f
+ 3137 16ba 01       		.byte	0x1
+ 3138 16bb 05       		.byte	0x5
+ 3139 16bc 03       		.byte	0x3
+ 3140 16bd 00000000 		.4byte	WiFiThrottle
+ 3141 16c1 12       		.uleb128 0x12
+ 3142 16c2 660E0000 		.4byte	.LASF393
+ 3143 16c6 04       		.byte	0x4
+ 3144 16c7 22       		.byte	0x22
+ 3145 16c8 1D000000 		.4byte	0x1d
+ 3146 16cc 01       		.byte	0x1
+ 3147 16cd 05       		.byte	0x5
+ 3148 16ce 03       		.byte	0x3
+ 3149 16cf 00000000 		.4byte	WiFiYaw
+ 3150 16d3 12       		.uleb128 0x12
+ 3151 16d4 D7010000 		.4byte	.LASF394
+ 3152 16d8 04       		.byte	0x4
+ 3153 16d9 23       		.byte	0x23
+ 3154 16da 1D000000 		.4byte	0x1d
+ 3155 16de 01       		.byte	0x1
+ 3156 16df 05       		.byte	0x5
+ 3157 16e0 03       		.byte	0x3
+ 3158 16e1 00000000 		.4byte	WiFiPitch
+ 3159 16e5 12       		.uleb128 0x12
+ 3160 16e6 A3030000 		.4byte	.LASF395
+ 3161 16ea 04       		.byte	0x4
+ 3162 16eb 24       		.byte	0x24
+ 3163 16ec 1D000000 		.4byte	0x1d
+ 3164 16f0 01       		.byte	0x1
+ 3165 16f1 05       		.byte	0x5
+ 3166 16f2 03       		.byte	0x3
+ 3167 16f3 00000000 		.4byte	WiFiRoll
+ 3168 16f7 12       		.uleb128 0x12
+ 3169 16f8 44040000 		.4byte	.LASF396
+ 3170 16fc 04       		.byte	0x4
+ 3171 16fd 2E       		.byte	0x2e
+ 3172 16fe D9020000 		.4byte	0x2d9
+ 3173 1702 01       		.byte	0x1
+ 3174 1703 05       		.byte	0x5
+ 3175 1704 03       		.byte	0x3
+ 3176 1705 00000000 		.4byte	WiFiIsConnected
+ 3177 1709 12       		.uleb128 0x12
+ 3178 170a 3A010000 		.4byte	.LASF397
+ 3179 170e 04       		.byte	0x4
+ 3180 170f 0B       		.byte	0xb
+ 3181 1710 53000000 		.4byte	0x53
+ 3182 1714 01       		.byte	0x1
+ 3183 1715 05       		.byte	0x5
+ 3184 1716 03       		.byte	0x3
+ 3185 1717 00000000 		.4byte	__errno
+ 3186 171b 12       		.uleb128 0x12
+ 3187 171c 59070000 		.4byte	.LASF398
+ 3188 1720 04       		.byte	0x4
+ 3189 1721 26       		.byte	0x26
+ 3190 1722 1D000000 		.4byte	0x1d
+ 3191 1726 01       		.byte	0x1
+ 3192 1727 05       		.byte	0x5
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 57
+
+
+ 3193 1728 03       		.byte	0x3
+ 3194 1729 00000000 		.4byte	WiFiAux1
+ 3195 172d 12       		.uleb128 0x12
+ 3196 172e 62070000 		.4byte	.LASF399
+ 3197 1732 04       		.byte	0x4
+ 3198 1733 27       		.byte	0x27
+ 3199 1734 1D000000 		.4byte	0x1d
+ 3200 1738 01       		.byte	0x1
+ 3201 1739 05       		.byte	0x5
+ 3202 173a 03       		.byte	0x3
+ 3203 173b 00000000 		.4byte	WiFiAux2
+ 3204 173f 00       		.byte	0
+ 3205              		.section	.debug_abbrev,"",%progbits
+ 3206              	.Ldebug_abbrev0:
+ 3207 0000 01       		.uleb128 0x1
+ 3208 0001 11       		.uleb128 0x11
+ 3209 0002 01       		.byte	0x1
+ 3210 0003 25       		.uleb128 0x25
+ 3211 0004 0E       		.uleb128 0xe
+ 3212 0005 13       		.uleb128 0x13
+ 3213 0006 0B       		.uleb128 0xb
+ 3214 0007 03       		.uleb128 0x3
+ 3215 0008 0E       		.uleb128 0xe
+ 3216 0009 1B       		.uleb128 0x1b
+ 3217 000a 0E       		.uleb128 0xe
+ 3218 000b 10       		.uleb128 0x10
+ 3219 000c 06       		.uleb128 0x6
+ 3220 000d 00       		.byte	0
+ 3221 000e 00       		.byte	0
+ 3222 000f 02       		.uleb128 0x2
+ 3223 0010 16       		.uleb128 0x16
+ 3224 0011 00       		.byte	0
+ 3225 0012 03       		.uleb128 0x3
+ 3226 0013 0E       		.uleb128 0xe
+ 3227 0014 3A       		.uleb128 0x3a
+ 3228 0015 0B       		.uleb128 0xb
+ 3229 0016 3B       		.uleb128 0x3b
+ 3230 0017 0B       		.uleb128 0xb
+ 3231 0018 49       		.uleb128 0x49
+ 3232 0019 13       		.uleb128 0x13
+ 3233 001a 00       		.byte	0
+ 3234 001b 00       		.byte	0
+ 3235 001c 03       		.uleb128 0x3
+ 3236 001d 24       		.uleb128 0x24
+ 3237 001e 00       		.byte	0
+ 3238 001f 0B       		.uleb128 0xb
+ 3239 0020 0B       		.uleb128 0xb
+ 3240 0021 3E       		.uleb128 0x3e
+ 3241 0022 0B       		.uleb128 0xb
+ 3242 0023 03       		.uleb128 0x3
+ 3243 0024 0E       		.uleb128 0xe
+ 3244 0025 00       		.byte	0
+ 3245 0026 00       		.byte	0
+ 3246 0027 04       		.uleb128 0x4
+ 3247 0028 24       		.uleb128 0x24
+ 3248 0029 00       		.byte	0
+ 3249 002a 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 58
+
+
+ 3250 002b 0B       		.uleb128 0xb
+ 3251 002c 3E       		.uleb128 0x3e
+ 3252 002d 0B       		.uleb128 0xb
+ 3253 002e 03       		.uleb128 0x3
+ 3254 002f 08       		.uleb128 0x8
+ 3255 0030 00       		.byte	0
+ 3256 0031 00       		.byte	0
+ 3257 0032 05       		.uleb128 0x5
+ 3258 0033 35       		.uleb128 0x35
+ 3259 0034 00       		.byte	0
+ 3260 0035 49       		.uleb128 0x49
+ 3261 0036 13       		.uleb128 0x13
+ 3262 0037 00       		.byte	0
+ 3263 0038 00       		.byte	0
+ 3264 0039 06       		.uleb128 0x6
+ 3265 003a 04       		.uleb128 0x4
+ 3266 003b 01       		.byte	0x1
+ 3267 003c 0B       		.uleb128 0xb
+ 3268 003d 0B       		.uleb128 0xb
+ 3269 003e 3A       		.uleb128 0x3a
+ 3270 003f 0B       		.uleb128 0xb
+ 3271 0040 3B       		.uleb128 0x3b
+ 3272 0041 0B       		.uleb128 0xb
+ 3273 0042 01       		.uleb128 0x1
+ 3274 0043 13       		.uleb128 0x13
+ 3275 0044 00       		.byte	0
+ 3276 0045 00       		.byte	0
+ 3277 0046 07       		.uleb128 0x7
+ 3278 0047 28       		.uleb128 0x28
+ 3279 0048 00       		.byte	0
+ 3280 0049 03       		.uleb128 0x3
+ 3281 004a 0E       		.uleb128 0xe
+ 3282 004b 1C       		.uleb128 0x1c
+ 3283 004c 0D       		.uleb128 0xd
+ 3284 004d 00       		.byte	0
+ 3285 004e 00       		.byte	0
+ 3286 004f 08       		.uleb128 0x8
+ 3287 0050 13       		.uleb128 0x13
+ 3288 0051 01       		.byte	0x1
+ 3289 0052 0B       		.uleb128 0xb
+ 3290 0053 0B       		.uleb128 0xb
+ 3291 0054 3A       		.uleb128 0x3a
+ 3292 0055 0B       		.uleb128 0xb
+ 3293 0056 3B       		.uleb128 0x3b
+ 3294 0057 0B       		.uleb128 0xb
+ 3295 0058 01       		.uleb128 0x1
+ 3296 0059 13       		.uleb128 0x13
+ 3297 005a 00       		.byte	0
+ 3298 005b 00       		.byte	0
+ 3299 005c 09       		.uleb128 0x9
+ 3300 005d 0D       		.uleb128 0xd
+ 3301 005e 00       		.byte	0
+ 3302 005f 03       		.uleb128 0x3
+ 3303 0060 0E       		.uleb128 0xe
+ 3304 0061 3A       		.uleb128 0x3a
+ 3305 0062 0B       		.uleb128 0xb
+ 3306 0063 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 59
+
+
+ 3307 0064 0B       		.uleb128 0xb
+ 3308 0065 49       		.uleb128 0x49
+ 3309 0066 13       		.uleb128 0x13
+ 3310 0067 38       		.uleb128 0x38
+ 3311 0068 0A       		.uleb128 0xa
+ 3312 0069 00       		.byte	0
+ 3313 006a 00       		.byte	0
+ 3314 006b 0A       		.uleb128 0xa
+ 3315 006c 0D       		.uleb128 0xd
+ 3316 006d 00       		.byte	0
+ 3317 006e 03       		.uleb128 0x3
+ 3318 006f 0E       		.uleb128 0xe
+ 3319 0070 3A       		.uleb128 0x3a
+ 3320 0071 0B       		.uleb128 0xb
+ 3321 0072 3B       		.uleb128 0x3b
+ 3322 0073 05       		.uleb128 0x5
+ 3323 0074 49       		.uleb128 0x49
+ 3324 0075 13       		.uleb128 0x13
+ 3325 0076 38       		.uleb128 0x38
+ 3326 0077 0A       		.uleb128 0xa
+ 3327 0078 00       		.byte	0
+ 3328 0079 00       		.byte	0
+ 3329 007a 0B       		.uleb128 0xb
+ 3330 007b 0D       		.uleb128 0xd
+ 3331 007c 00       		.byte	0
+ 3332 007d 03       		.uleb128 0x3
+ 3333 007e 08       		.uleb128 0x8
+ 3334 007f 3A       		.uleb128 0x3a
+ 3335 0080 0B       		.uleb128 0xb
+ 3336 0081 3B       		.uleb128 0x3b
+ 3337 0082 05       		.uleb128 0x5
+ 3338 0083 49       		.uleb128 0x49
+ 3339 0084 13       		.uleb128 0x13
+ 3340 0085 38       		.uleb128 0x38
+ 3341 0086 0A       		.uleb128 0xa
+ 3342 0087 00       		.byte	0
+ 3343 0088 00       		.byte	0
+ 3344 0089 0C       		.uleb128 0xc
+ 3345 008a 16       		.uleb128 0x16
+ 3346 008b 00       		.byte	0
+ 3347 008c 03       		.uleb128 0x3
+ 3348 008d 0E       		.uleb128 0xe
+ 3349 008e 3A       		.uleb128 0x3a
+ 3350 008f 0B       		.uleb128 0xb
+ 3351 0090 3B       		.uleb128 0x3b
+ 3352 0091 05       		.uleb128 0x5
+ 3353 0092 49       		.uleb128 0x49
+ 3354 0093 13       		.uleb128 0x13
+ 3355 0094 00       		.byte	0
+ 3356 0095 00       		.byte	0
+ 3357 0096 0D       		.uleb128 0xd
+ 3358 0097 13       		.uleb128 0x13
+ 3359 0098 01       		.byte	0x1
+ 3360 0099 0B       		.uleb128 0xb
+ 3361 009a 0B       		.uleb128 0xb
+ 3362 009b 3A       		.uleb128 0x3a
+ 3363 009c 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 60
+
+
+ 3364 009d 3B       		.uleb128 0x3b
+ 3365 009e 05       		.uleb128 0x5
+ 3366 009f 01       		.uleb128 0x1
+ 3367 00a0 13       		.uleb128 0x13
+ 3368 00a1 00       		.byte	0
+ 3369 00a2 00       		.byte	0
+ 3370 00a3 0E       		.uleb128 0xe
+ 3371 00a4 01       		.uleb128 0x1
+ 3372 00a5 01       		.byte	0x1
+ 3373 00a6 49       		.uleb128 0x49
+ 3374 00a7 13       		.uleb128 0x13
+ 3375 00a8 01       		.uleb128 0x1
+ 3376 00a9 13       		.uleb128 0x13
+ 3377 00aa 00       		.byte	0
+ 3378 00ab 00       		.byte	0
+ 3379 00ac 0F       		.uleb128 0xf
+ 3380 00ad 21       		.uleb128 0x21
+ 3381 00ae 00       		.byte	0
+ 3382 00af 49       		.uleb128 0x49
+ 3383 00b0 13       		.uleb128 0x13
+ 3384 00b1 2F       		.uleb128 0x2f
+ 3385 00b2 0B       		.uleb128 0xb
+ 3386 00b3 00       		.byte	0
+ 3387 00b4 00       		.byte	0
+ 3388 00b5 10       		.uleb128 0x10
+ 3389 00b6 04       		.uleb128 0x4
+ 3390 00b7 01       		.byte	0x1
+ 3391 00b8 0B       		.uleb128 0xb
+ 3392 00b9 0B       		.uleb128 0xb
+ 3393 00ba 3A       		.uleb128 0x3a
+ 3394 00bb 0B       		.uleb128 0xb
+ 3395 00bc 3B       		.uleb128 0x3b
+ 3396 00bd 05       		.uleb128 0x5
+ 3397 00be 01       		.uleb128 0x1
+ 3398 00bf 13       		.uleb128 0x13
+ 3399 00c0 00       		.byte	0
+ 3400 00c1 00       		.byte	0
+ 3401 00c2 11       		.uleb128 0x11
+ 3402 00c3 34       		.uleb128 0x34
+ 3403 00c4 00       		.byte	0
+ 3404 00c5 03       		.uleb128 0x3
+ 3405 00c6 0E       		.uleb128 0xe
+ 3406 00c7 3A       		.uleb128 0x3a
+ 3407 00c8 0B       		.uleb128 0xb
+ 3408 00c9 3B       		.uleb128 0x3b
+ 3409 00ca 05       		.uleb128 0x5
+ 3410 00cb 49       		.uleb128 0x49
+ 3411 00cc 13       		.uleb128 0x13
+ 3412 00cd 3F       		.uleb128 0x3f
+ 3413 00ce 0C       		.uleb128 0xc
+ 3414 00cf 3C       		.uleb128 0x3c
+ 3415 00d0 0C       		.uleb128 0xc
+ 3416 00d1 00       		.byte	0
+ 3417 00d2 00       		.byte	0
+ 3418 00d3 12       		.uleb128 0x12
+ 3419 00d4 34       		.uleb128 0x34
+ 3420 00d5 00       		.byte	0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 61
+
+
+ 3421 00d6 03       		.uleb128 0x3
+ 3422 00d7 0E       		.uleb128 0xe
+ 3423 00d8 3A       		.uleb128 0x3a
+ 3424 00d9 0B       		.uleb128 0xb
+ 3425 00da 3B       		.uleb128 0x3b
+ 3426 00db 0B       		.uleb128 0xb
+ 3427 00dc 49       		.uleb128 0x49
+ 3428 00dd 13       		.uleb128 0x13
+ 3429 00de 3F       		.uleb128 0x3f
+ 3430 00df 0C       		.uleb128 0xc
+ 3431 00e0 02       		.uleb128 0x2
+ 3432 00e1 0A       		.uleb128 0xa
+ 3433 00e2 00       		.byte	0
+ 3434 00e3 00       		.byte	0
+ 3435 00e4 13       		.uleb128 0x13
+ 3436 00e5 0F       		.uleb128 0xf
+ 3437 00e6 00       		.byte	0
+ 3438 00e7 0B       		.uleb128 0xb
+ 3439 00e8 0B       		.uleb128 0xb
+ 3440 00e9 49       		.uleb128 0x49
+ 3441 00ea 13       		.uleb128 0x13
+ 3442 00eb 00       		.byte	0
+ 3443 00ec 00       		.byte	0
+ 3444 00ed 00       		.byte	0
+ 3445              		.section	.debug_aranges,"",%progbits
+ 3446 0000 14000000 		.4byte	0x14
+ 3447 0004 0200     		.2byte	0x2
+ 3448 0006 00000000 		.4byte	.Ldebug_info0
+ 3449 000a 04       		.byte	0x4
+ 3450 000b 00       		.byte	0
+ 3451 000c 0000     		.2byte	0
+ 3452 000e 0000     		.2byte	0
+ 3453 0010 00000000 		.4byte	0
+ 3454 0014 00000000 		.4byte	0
+ 3455              		.section	.debug_line,"",%progbits
+ 3456              	.Ldebug_line0:
+ 3457 0000 B7000000 		.section	.debug_str,"MS",%progbits,1
+ 3457      0200B100 
+ 3457      00000201 
+ 3457      FB0E0D00 
+ 3457      01010101 
+ 3458              	.LASF43:
+ 3459 0000 53656E73 		.ascii	"SensorAppState_Failure\000"
+ 3459      6F724170 
+ 3459      70537461 
+ 3459      74655F46 
+ 3459      61696C75 
+ 3460              	.LASF222:
+ 3461 0017 56616C69 		.ascii	"ValidFix\000"
+ 3461      64466978 
+ 3461      00
+ 3462              	.LASF9:
+ 3463 0020 6C6F6E67 		.ascii	"long int\000"
+ 3463      20696E74 
+ 3463      00
+ 3464              	.LASF211:
+ 3465 0029 496E6974 		.ascii	"InitialThrottle\000"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 62
+
+
+ 3465      69616C54 
+ 3465      68726F74 
+ 3465      746C6500 
+ 3466              	.LASF216:
+ 3467 0039 50494443 		.ascii	"PIDConstants_t\000"
+ 3467      6F6E7374 
+ 3467      616E7473 
+ 3467      5F7400
+ 3468              	.LASF389:
+ 3469 0048 416C7469 		.ascii	"AltitudeData\000"
+ 3469      74756465 
+ 3469      44617461 
+ 3469      00
+ 3470              	.LASF147:
+ 3471 0055 59617752 		.ascii	"YawRateDPS\000"
+ 3471      61746544 
+ 3471      505300
+ 3472              	.LASF21:
+ 3473 0060 49734361 		.ascii	"IsCalibrated_t\000"
+ 3473      6C696272 
+ 3473      61746564 
+ 3473      5F7400
+ 3474              	.LASF280:
+ 3475 006f 54617267 		.ascii	"TargetsSendDataRate\000"
+ 3475      65747353 
+ 3475      656E6444 
+ 3475      61746152 
+ 3475      61746500 
+ 3476              	.LASF180:
+ 3477 0083 6B5F6865 		.ascii	"k_heading_rate_d\000"
+ 3477      6164696E 
+ 3477      675F7261 
+ 3477      74655F64 
+ 3477      00
+ 3478              	.LASF306:
+ 3479 0094 4C534D33 		.ascii	"LSM303_ACC_SampleRate\000"
+ 3479      30335F41 
+ 3479      43435F53 
+ 3479      616D706C 
+ 3479      65526174 
+ 3480              	.LASF179:
+ 3481 00aa 6B5F6865 		.ascii	"k_heading_rate_i\000"
+ 3481      6164696E 
+ 3481      675F7261 
+ 3481      74655F69 
+ 3481      00
+ 3482              	.LASF290:
+ 3483 00bb 4D505536 		.ascii	"MPU60x0_ACC_GYR_DLPF\000"
+ 3483      3078305F 
+ 3483      4143435F 
+ 3483      4759525F 
+ 3483      444C5046 
+ 3484              	.LASF74:
+ 3485 00d0 41726D65 		.ascii	"Armed\000"
+ 3485      6400
+ 3486              	.LASF178:
+ 3487 00d6 6B5F6865 		.ascii	"k_heading_rate_p\000"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 63
+
+
+ 3487      6164696E 
+ 3487      675F7261 
+ 3487      74655F70 
+ 3487      00
+ 3488              	.LASF95:
+ 3489 00e7 53616D70 		.ascii	"SampleRate_100Hz\000"
+ 3489      6C655261 
+ 3489      74655F31 
+ 3489      3030487A 
+ 3489      00
+ 3490              	.LASF120:
+ 3491 00f8 466C6967 		.ascii	"FlightMode\000"
+ 3491      68744D6F 
+ 3491      646500
+ 3492              	.LASF297:
+ 3493 0103 4D505536 		.ascii	"MPU60x0_GyroSampleRate\000"
+ 3493      3078305F 
+ 3493      4779726F 
+ 3493      53616D70 
+ 3493      6C655261 
+ 3494              	.LASF131:
+ 3495 011a 54617267 		.ascii	"TargetRoll\000"
+ 3495      6574526F 
+ 3495      6C6C00
+ 3496              	.LASF377:
+ 3497 0125 47505344 		.ascii	"GPSData\000"
+ 3497      61746100 
+ 3498              	.LASF160:
+ 3499 012d 43656C6C 		.ascii	"Cell3Battery\000"
+ 3499      33426174 
+ 3499      74657279 
+ 3499      00
+ 3500              	.LASF397:
+ 3501 013a 5F5F6572 		.ascii	"__errno\000"
+ 3501      726E6F00 
+ 3502              	.LASF42:
+ 3503 0142 53656E73 		.ascii	"SensorAppState_Diagnostics\000"
+ 3503      6F724170 
+ 3503      70537461 
+ 3503      74655F44 
+ 3503      6961676E 
+ 3504              	.LASF56:
+ 3505 015d 4672616D 		.ascii	"FrameConfig_X\000"
+ 3505      65436F6E 
+ 3505      6669675F 
+ 3505      5800
+ 3506              	.LASF215:
+ 3507 016b 50494443 		.ascii	"PIDConstantsConfig_t\000"
+ 3507      6F6E7374 
+ 3507      616E7473 
+ 3507      436F6E66 
+ 3507      69675F74 
+ 3508              	.LASF59:
+ 3509 0180 50697463 		.ascii	"PitchDoesNotFollowRollPID\000"
+ 3509      68446F65 
+ 3509      734E6F74 
+ 3509      466F6C6C 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 64
+
+
+ 3509      6F77526F 
+ 3510              	.LASF34:
+ 3511 019a 53656E73 		.ascii	"SensorAppState_Starting\000"
+ 3511      6F724170 
+ 3511      70537461 
+ 3511      74655F53 
+ 3511      74617274 
+ 3512              	.LASF327:
+ 3513 01b2 4144584C 		.ascii	"ADXL345_FilterOption\000"
+ 3513      3334355F 
+ 3513      46696C74 
+ 3513      65724F70 
+ 3513      74696F6E 
+ 3514              	.LASF243:
+ 3515 01c7 55706461 		.ascii	"UpdateRate_30Hz\000"
+ 3515      74655261 
+ 3515      74655F33 
+ 3515      30487A00 
+ 3516              	.LASF394:
+ 3517 01d7 57694669 		.ascii	"WiFiPitch\000"
+ 3517      50697463 
+ 3517      6800
+ 3518              	.LASF57:
+ 3519 01e1 4672616D 		.ascii	"FrameConfig_e\000"
+ 3519      65436F6E 
+ 3519      6669675F 
+ 3519      6500
+ 3520              	.LASF335:
+ 3521 01ef 484D4335 		.ascii	"HMC5883_Calibrated\000"
+ 3521      3838335F 
+ 3521      43616C69 
+ 3521      62726174 
+ 3521      656400
+ 3522              	.LASF152:
+ 3523 0202 54617267 		.ascii	"TargetRollRate\000"
+ 3523      6574526F 
+ 3523      6C6C5261 
+ 3523      746500
+ 3524              	.LASF64:
+ 3525 0211 4750494F 		.ascii	"GPIOAppState_Flying\000"
+ 3525      41707053 
+ 3525      74617465 
+ 3525      5F466C79 
+ 3525      696E6700 
+ 3526              	.LASF161:
+ 3527 0225 42617474 		.ascii	"BatteryCondition_t\000"
+ 3527      65727943 
+ 3527      6F6E6469 
+ 3527      74696F6E 
+ 3527      5F7400
+ 3528              	.LASF203:
+ 3529 0238 50494453 		.ascii	"PIDSampleRate\000"
+ 3529      616D706C 
+ 3529      65526174 
+ 3529      6500
+ 3530              	.LASF315:
+ 3531 0246 4C334744 		.ascii	"L3GD20_REG1\000"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 65
+
+
+ 3531      32305F52 
+ 3531      45473100 
+ 3532              	.LASF316:
+ 3533 0252 4C334744 		.ascii	"L3GD20_REG2\000"
+ 3533      32305F52 
+ 3533      45473200 
+ 3534              	.LASF317:
+ 3535 025e 4C334744 		.ascii	"L3GD20_REG3\000"
+ 3535      32305F52 
+ 3535      45473300 
+ 3536              	.LASF234:
+ 3537 026a 55706461 		.ascii	"UpdateRate_300Hz\000"
+ 3537      74655261 
+ 3537      74655F33 
+ 3537      3030487A 
+ 3537      00
+ 3538              	.LASF319:
+ 3539 027b 4C334744 		.ascii	"L3GD20_REG5\000"
+ 3539      32305F52 
+ 3539      45473500 
+ 3540              	.LASF49:
+ 3541 0287 53656E73 		.ascii	"SensorAppState_SnsrFusionHeading\000"
+ 3541      6F724170 
+ 3541      70537461 
+ 3541      74655F53 
+ 3541      6E737246 
+ 3542              	.LASF148:
+ 3543 02a8 416C7469 		.ascii	"AltitudeRate\000"
+ 3543      74756465 
+ 3543      52617465 
+ 3543      00
+ 3544              	.LASF45:
+ 3545 02b5 53656E73 		.ascii	"SensorAppState_Zeroing\000"
+ 3545      6F724170 
+ 3545      70537461 
+ 3545      74655F5A 
+ 3545      65726F69 
+ 3546              	.LASF195:
+ 3547 02cc 6B5F6573 		.ascii	"k_esc_left\000"
+ 3547      635F6C65 
+ 3547      667400
+ 3548              	.LASF134:
+ 3549 02d7 526F6C6C 		.ascii	"Roll\000"
+ 3549      00
+ 3550              	.LASF168:
+ 3551 02dc 6B5F7069 		.ascii	"k_pitch_steady_i\000"
+ 3551      7463685F 
+ 3551      73746561 
+ 3551      64795F69 
+ 3551      00
+ 3552              	.LASF208:
+ 3553 02ed 726F6C6C 		.ascii	"roll_filter_d\000"
+ 3553      5F66696C 
+ 3553      7465725F 
+ 3553      6400
+ 3554              	.LASF81:
+ 3555 02fb 57694669 		.ascii	"WiFiConnected\000"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 66
+
+
+ 3555      436F6E6E 
+ 3555      65637465 
+ 3555      6400
+ 3556              	.LASF188:
+ 3557 0309 6B5F616C 		.ascii	"k_altitude_rate_d\000"
+ 3557      74697475 
+ 3557      64655F72 
+ 3557      6174655F 
+ 3557      6400
+ 3558              	.LASF167:
+ 3559 031b 6B5F7069 		.ascii	"k_pitch_steady_p\000"
+ 3559      7463685F 
+ 3559      73746561 
+ 3559      64795F70 
+ 3559      00
+ 3560              	.LASF125:
+ 3561 032c 4553435F 		.ascii	"ESC_Rear\000"
+ 3561      52656172 
+ 3561      00
+ 3562              	.LASF237:
+ 3563 0335 55647061 		.ascii	"UdpateRate_150Hz\000"
+ 3563      74655261 
+ 3563      74655F31 
+ 3563      3530487A 
+ 3563      00
+ 3564              	.LASF187:
+ 3565 0346 6B5F616C 		.ascii	"k_altitude_rate_i\000"
+ 3565      74697475 
+ 3565      64655F72 
+ 3565      6174655F 
+ 3565      6900
+ 3566              	.LASF207:
+ 3567 0358 70697463 		.ascii	"pitch_filter_d\000"
+ 3567      685F6669 
+ 3567      6C746572 
+ 3567      5F6400
+ 3568              	.LASF186:
+ 3569 0367 6B5F616C 		.ascii	"k_altitude_rate_p\000"
+ 3569      74697475 
+ 3569      64655F72 
+ 3569      6174655F 
+ 3569      7000
+ 3570              	.LASF299:
+ 3571 0379 4C534D33 		.ascii	"LSM303_ACC_Enabled\000"
+ 3571      30335F41 
+ 3571      43435F45 
+ 3571      6E61626C 
+ 3571      656400
+ 3572              	.LASF304:
+ 3573 038c 4C534D33 		.ascii	"LSM303_ACC_FIFO_Enable\000"
+ 3573      30335F41 
+ 3573      43435F46 
+ 3573      49464F5F 
+ 3573      456E6162 
+ 3574              	.LASF395:
+ 3575 03a3 57694669 		.ascii	"WiFiRoll\000"
+ 3575      526F6C6C 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 67
+
+
+ 3575      00
+ 3576              	.LASF138:
+ 3577 03ac 50494453 		.ascii	"PIDSensorData_t\000"
+ 3577      656E736F 
+ 3577      72446174 
+ 3577      615F7400 
+ 3578              	.LASF265:
+ 3579 03bc 46696C74 		.ascii	"FilterOption_Moving_Average_40\000"
+ 3579      65724F70 
+ 3579      74696F6E 
+ 3579      5F4D6F76 
+ 3579      696E675F 
+ 3580              	.LASF390:
+ 3581 03db 526F6C6C 		.ascii	"RollPIDDetails\000"
+ 3581      50494444 
+ 3581      65746169 
+ 3581      6C7300
+ 3582              	.LASF385:
+ 3583 03ea 50494443 		.ascii	"PIDConstants\000"
+ 3583      6F6E7374 
+ 3583      616E7473 
+ 3583      00
+ 3584              	.LASF349:
+ 3585 03f7 4750535F 		.ascii	"GPS_DGPSMode\000"
+ 3585      44475053 
+ 3585      4D6F6465 
+ 3585      00
+ 3586              	.LASF223:
+ 3587 0404 47707348 		.ascii	"GpsHeading\000"
+ 3587      65616469 
+ 3587      6E6700
+ 3588              	.LASF173:
+ 3589 040f 726F6C6C 		.ascii	"roll_rate_i_decay_factor\000"
+ 3589      5F726174 
+ 3589      655F695F 
+ 3589      64656361 
+ 3589      795F6661 
+ 3590              	.LASF31:
+ 3591 0428 53656E73 		.ascii	"SensorAppState_Initializing\000"
+ 3591      6F724170 
+ 3591      70537461 
+ 3591      74655F49 
+ 3591      6E697469 
+ 3592              	.LASF396:
+ 3593 0444 57694669 		.ascii	"WiFiIsConnected\000"
+ 3593      4973436F 
+ 3593      6E6E6563 
+ 3593      74656400 
+ 3594              	.LASF114:
+ 3595 0454 536E7372 		.ascii	"SnsrState\000"
+ 3595      53746174 
+ 3595      6500
+ 3596              	.LASF246:
+ 3597 045e 55706461 		.ascii	"UpdateRate_15Hz\000"
+ 3597      74655261 
+ 3597      74655F31 
+ 3597      35487A00 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 68
+
+
+ 3598              	.LASF117:
+ 3599 046e 436F6E74 		.ascii	"ControlMethod\000"
+ 3599      726F6C4D 
+ 3599      6574686F 
+ 3599      6400
+ 3600              	.LASF103:
+ 3601 047c 53616D70 		.ascii	"SampleRate_t\000"
+ 3601      6C655261 
+ 3601      74655F74 
+ 3601      00
+ 3602              	.LASF108:
+ 3603 0489 466C6967 		.ascii	"FlightMode_Stable\000"
+ 3603      68744D6F 
+ 3603      64655F53 
+ 3603      7461626C 
+ 3603      6500
+ 3604              	.LASF376:
+ 3605 049b 42617474 		.ascii	"BatteryCondition\000"
+ 3605      65727943 
+ 3605      6F6E6469 
+ 3605      74696F6E 
+ 3605      00
+ 3606              	.LASF329:
+ 3607 04ac 484D4335 		.ascii	"HMC5883_Enabled\000"
+ 3607      3838335F 
+ 3607      456E6162 
+ 3607      6C656400 
+ 3608              	.LASF364:
+ 3609 04bc 495F5374 		.ascii	"I_SteadyComponent\000"
+ 3609      65616479 
+ 3609      436F6D70 
+ 3609      6F6E656E 
+ 3609      7400
+ 3610              	.LASF92:
+ 3611 04ce 53616D70 		.ascii	"SampleRate_500Hz\000"
+ 3611      6C655261 
+ 3611      74655F35 
+ 3611      3030487A 
+ 3611      00
+ 3612              	.LASF301:
+ 3613 04df 4C534D33 		.ascii	"LSM303_ACC_REG2\000"
+ 3613      30335F41 
+ 3613      43435F52 
+ 3613      45473200 
+ 3614              	.LASF2:
+ 3615 04ef 7369676E 		.ascii	"signed char\000"
+ 3615      65642063 
+ 3615      68617200 
+ 3616              	.LASF391:
+ 3617 04fb 50697463 		.ascii	"PitchPIDDetails\000"
+ 3617      68504944 
+ 3617      44657461 
+ 3617      696C7300 
+ 3618              	.LASF175:
+ 3619 050b 6B5F726F 		.ascii	"k_roll_steady_p\000"
+ 3619      6C6C5F73 
+ 3619      74656164 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 69
+
+
+ 3619      795F7000 
+ 3620              	.LASF373:
+ 3621 051b 50494454 		.ascii	"PIDTuning_t\000"
+ 3621      756E696E 
+ 3621      675F7400 
+ 3622              	.LASF401:
+ 3623 0527 2E5C7372 		.ascii	".\\src\\twb_config.c\000"
+ 3623      635C7477 
+ 3623      625F636F 
+ 3623      6E666967 
+ 3623      2E6300
+ 3624              	.LASF101:
+ 3625 053a 53616D70 		.ascii	"SampleRate_1Hz\000"
+ 3625      6C655261 
+ 3625      74655F31 
+ 3625      487A00
+ 3626              	.LASF267:
+ 3627 0549 46696C74 		.ascii	"FilterOption_Moving_Average_60\000"
+ 3627      65724F70 
+ 3627      74696F6E 
+ 3627      5F4D6F76 
+ 3627      696E675F 
+ 3628              	.LASF0:
+ 3629 0568 696E7438 		.ascii	"int8_t\000"
+ 3629      5F7400
+ 3630              	.LASF294:
+ 3631 056f 4D505536 		.ascii	"MPU60x0_FIFO_Enable\000"
+ 3631      3078305F 
+ 3631      4649464F 
+ 3631      5F456E61 
+ 3631      626C6500 
+ 3632              	.LASF292:
+ 3633 0583 4D505536 		.ascii	"MPU60x0_GYRO_FS\000"
+ 3633      3078305F 
+ 3633      4759524F 
+ 3633      5F465300 
+ 3634              	.LASF19:
+ 3635 0593 43616C69 		.ascii	"Calibrated\000"
+ 3635      62726174 
+ 3635      656400
+ 3636              	.LASF24:
+ 3637 059e 53797374 		.ascii	"SystemRestarting\000"
+ 3637      656D5265 
+ 3637      73746172 
+ 3637      74696E67 
+ 3637      00
+ 3638              	.LASF25:
+ 3639 05af 53797374 		.ascii	"SystemZeroing\000"
+ 3639      656D5A65 
+ 3639      726F696E 
+ 3639      6700
+ 3640              	.LASF308:
+ 3641 05bd 4C534D33 		.ascii	"LSM303_MAG_CRA\000"
+ 3641      30335F4D 
+ 3641      41475F43 
+ 3641      524100
+ 3642              	.LASF309:
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 70
+
+
+ 3643 05cc 4C534D33 		.ascii	"LSM303_MAG_CRB\000"
+ 3643      30335F4D 
+ 3643      41475F43 
+ 3643      524200
+ 3644              	.LASF400:
+ 3645 05db 474E5520 		.ascii	"GNU C 4.7.2\000"
+ 3645      4320342E 
+ 3645      372E3200 
+ 3646              	.LASF365:
+ 3647 05e7 505F5261 		.ascii	"P_RateComponent\000"
+ 3647      7465436F 
+ 3647      6D706F6E 
+ 3647      656E7400 
+ 3648              	.LASF17:
+ 3649 05f7 666C6F61 		.ascii	"float\000"
+ 3649      7400
+ 3650              	.LASF241:
+ 3651 05fd 55706461 		.ascii	"UpdateRate_50Hz\000"
+ 3651      74655261 
+ 3651      74655F35 
+ 3651      30487A00 
+ 3652              	.LASF154:
+ 3653 060d 54617267 		.ascii	"TargetAltitudeRate\000"
+ 3653      6574416C 
+ 3653      74697475 
+ 3653      64655261 
+ 3653      746500
+ 3654              	.LASF166:
+ 3655 0620 70697463 		.ascii	"pitch_rate_max_i\000"
+ 3655      685F7261 
+ 3655      74655F6D 
+ 3655      61785F69 
+ 3655      00
+ 3656              	.LASF115:
+ 3657 0631 4750494F 		.ascii	"GPIOState\000"
+ 3657      53746174 
+ 3657      6500
+ 3658              	.LASF384:
+ 3659 063b 496E7465 		.ascii	"InternalState\000"
+ 3659      726E616C 
+ 3659      53746174 
+ 3659      6500
+ 3660              	.LASF93:
+ 3661 0649 53616D70 		.ascii	"SampleRate_200Hz\000"
+ 3661      6C655261 
+ 3661      74655F32 
+ 3661      3030487A 
+ 3661      00
+ 3662              	.LASF12:
+ 3663 065a 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 3663      206C6F6E 
+ 3663      6720756E 
+ 3663      7369676E 
+ 3663      65642069 
+ 3664              	.LASF4:
+ 3665 0671 696E7431 		.ascii	"int16_t\000"
+ 3665      365F7400 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 71
+
+
+ 3666              	.LASF165:
+ 3667 0679 70697463 		.ascii	"pitch_rate_i_decay_factor\000"
+ 3667      685F7261 
+ 3667      74655F69 
+ 3667      5F646563 
+ 3667      61795F66 
+ 3668              	.LASF275:
+ 3669 0693 436F6E74 		.ascii	"ControlLoopUpdateRateHz\000"
+ 3669      726F6C4C 
+ 3669      6F6F7055 
+ 3669      70646174 
+ 3669      65526174 
+ 3670              	.LASF130:
+ 3671 06ab 54617267 		.ascii	"TargetPitch\000"
+ 3671      65745069 
+ 3671      74636800 
+ 3672              	.LASF60:
+ 3673 06b7 50697463 		.ascii	"PitchFollowRollPID_e\000"
+ 3673      68466F6C 
+ 3673      6C6F7752 
+ 3673      6F6C6C50 
+ 3673      49445F65 
+ 3674              	.LASF356:
+ 3675 06cc 52617758 		.ascii	"RawX\000"
+ 3675      00
+ 3676              	.LASF199:
+ 3677 06d1 50697463 		.ascii	"PitchStableBand\000"
+ 3677      68537461 
+ 3677      626C6542 
+ 3677      616E6400 
+ 3678              	.LASF358:
+ 3679 06e1 5261775A 		.ascii	"RawZ\000"
+ 3679      00
+ 3680              	.LASF252:
+ 3681 06e6 46696C74 		.ascii	"FilterOption_Median_3_Sample\000"
+ 3681      65724F70 
+ 3681      74696F6E 
+ 3681      5F4D6564 
+ 3681      69616E5F 
+ 3682              	.LASF37:
+ 3683 0703 53656E73 		.ascii	"SensorAppState_Online\000"
+ 3683      6F724170 
+ 3683      70537461 
+ 3683      74655F4F 
+ 3683      6E6C696E 
+ 3684              	.LASF392:
+ 3685 0719 57694669 		.ascii	"WiFiThrottle\000"
+ 3685      5468726F 
+ 3685      74746C65 
+ 3685      00
+ 3686              	.LASF151:
+ 3687 0726 54617267 		.ascii	"TargetPitchRate\000"
+ 3687      65745069 
+ 3687      74636852 
+ 3687      61746500 
+ 3688              	.LASF312:
+ 3689 0736 4C534D33 		.ascii	"LSM303_MAG_SampleRate\000"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 72
+
+
+ 3689      30335F4D 
+ 3689      41475F53 
+ 3689      616D706C 
+ 3689      65526174 
+ 3690              	.LASF145:
+ 3691 074c 50697463 		.ascii	"PitchRateDPS\000"
+ 3691      68526174 
+ 3691      65445053 
+ 3691      00
+ 3692              	.LASF398:
+ 3693 0759 57694669 		.ascii	"WiFiAux1\000"
+ 3693      41757831 
+ 3693      00
+ 3694              	.LASF399:
+ 3695 0762 57694669 		.ascii	"WiFiAux2\000"
+ 3695      41757832 
+ 3695      00
+ 3696              	.LASF174:
+ 3697 076b 726F6C6C 		.ascii	"roll_rate_max_i\000"
+ 3697      5F726174 
+ 3697      655F6D61 
+ 3697      785F6900 
+ 3698              	.LASF47:
+ 3699 077b 53656E73 		.ascii	"SensorAppState_SnsrFusionPitch\000"
+ 3699      6F724170 
+ 3699      70537461 
+ 3699      74655F53 
+ 3699      6E737246 
+ 3700              	.LASF217:
+ 3701 079a 4C617469 		.ascii	"Latitude\000"
+ 3701      74756465 
+ 3701      00
+ 3702              	.LASF176:
+ 3703 07a3 6B5F726F 		.ascii	"k_roll_steady_i\000"
+ 3703      6C6C5F73 
+ 3703      74656164 
+ 3703      795F6900 
+ 3704              	.LASF282:
+ 3705 07b3 416C7469 		.ascii	"AltitudeSendDataRate\000"
+ 3705      74756465 
+ 3705      53656E64 
+ 3705      44617461 
+ 3705      52617465 
+ 3706              	.LASF61:
+ 3707 07c8 4750494F 		.ascii	"GPIOAppState_Startup\000"
+ 3707      41707053 
+ 3707      74617465 
+ 3707      5F537461 
+ 3707      72747570 
+ 3708              	.LASF225:
+ 3709 07dd 4572726F 		.ascii	"Error\000"
+ 3709      7200
+ 3710              	.LASF324:
+ 3711 07e3 4144584C 		.ascii	"ADXL345_BW_RATE\000"
+ 3711      3334355F 
+ 3711      42575F52 
+ 3711      41544500 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 73
+
+
+ 3712              	.LASF119:
+ 3713 07f3 4672616D 		.ascii	"FrameConfig\000"
+ 3713      65436F6E 
+ 3713      66696700 
+ 3714              	.LASF158:
+ 3715 07ff 43656C6C 		.ascii	"Cell1Battery\000"
+ 3715      31426174 
+ 3715      74657279 
+ 3715      00
+ 3716              	.LASF298:
+ 3717 080c 4D505536 		.ascii	"MPU60x0_AccSampleRate\000"
+ 3717      3078305F 
+ 3717      41636353 
+ 3717      616D706C 
+ 3717      65526174 
+ 3718              	.LASF326:
+ 3719 0822 4144584C 		.ascii	"ADXL345_FIFO_Enable\000"
+ 3719      3334355F 
+ 3719      4649464F 
+ 3719      5F456E61 
+ 3719      626C6500 
+ 3720              	.LASF153:
+ 3721 0836 54617267 		.ascii	"TargetHeadingRate\000"
+ 3721      65744865 
+ 3721      6164696E 
+ 3721      67526174 
+ 3721      6500
+ 3722              	.LASF266:
+ 3723 0848 46696C74 		.ascii	"FilterOption_Moving_Average_50\000"
+ 3723      65724F70 
+ 3723      74696F6E 
+ 3723      5F4D6F76 
+ 3723      696E675F 
+ 3724              	.LASF235:
+ 3725 0867 55706461 		.ascii	"UpdateRate_250Hz\000"
+ 3725      74655261 
+ 3725      74655F32 
+ 3725      3530487A 
+ 3725      00
+ 3726              	.LASF238:
+ 3727 0878 55706461 		.ascii	"UpdateRate_125Hz\000"
+ 3727      74655261 
+ 3727      74655F31 
+ 3727      3235487A 
+ 3727      00
+ 3728              	.LASF190:
+ 3729 0889 616C7469 		.ascii	"altitude_rate_max_i\000"
+ 3729      74756465 
+ 3729      5F726174 
+ 3729      655F6D61 
+ 3729      785F6900 
+ 3730              	.LASF191:
+ 3731 089d 6B5F616C 		.ascii	"k_altitude_steady_p\000"
+ 3731      74697475 
+ 3731      64655F73 
+ 3731      74656164 
+ 3731      795F7000 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 74
+
+
+ 3732              	.LASF82:
+ 3733 08b1 57694669 		.ascii	"WiFiDisconnected\000"
+ 3733      44697363 
+ 3733      6F6E6E65 
+ 3733      63746564 
+ 3733      00
+ 3734              	.LASF269:
+ 3735 08c2 46696C74 		.ascii	"FilterOption_Moving_Average_80\000"
+ 3735      65724F70 
+ 3735      74696F6E 
+ 3735      5F4D6F76 
+ 3735      696E675F 
+ 3736              	.LASF99:
+ 3737 08e1 53616D70 		.ascii	"SampleRate_10Hz\000"
+ 3737      6C655261 
+ 3737      74655F31 
+ 3737      30487A00 
+ 3738              	.LASF293:
+ 3739 08f1 4D505536 		.ascii	"MPU60x0_ACC_FS\000"
+ 3739      3078305F 
+ 3739      4143435F 
+ 3739      465300
+ 3740              	.LASF189:
+ 3741 0900 616C7469 		.ascii	"altitude_rate_i_decay_factor\000"
+ 3741      74756465 
+ 3741      5F726174 
+ 3741      655F695F 
+ 3741      64656361 
+ 3742              	.LASF387:
+ 3743 091d 486F6D65 		.ascii	"HomeGPSReading\000"
+ 3743      47505352 
+ 3743      65616469 
+ 3743      6E6700
+ 3744              	.LASF198:
+ 3745 092c 45534355 		.ascii	"ESCUpdateRate\000"
+ 3745      70646174 
+ 3745      65526174 
+ 3745      6500
+ 3746              	.LASF287:
+ 3747 093a 49544733 		.ascii	"ITG3200_SampleRate\000"
+ 3747      3230305F 
+ 3747      53616D70 
+ 3747      6C655261 
+ 3747      746500
+ 3748              	.LASF118:
+ 3749 094d 416C7469 		.ascii	"AltitudeHold\000"
+ 3749      74756465 
+ 3749      486F6C64 
+ 3749      00
+ 3750              	.LASF229:
+ 3751 095a 4E4F5F53 		.ascii	"NO_SONAR\000"
+ 3751      4F4E4152 
+ 3751      00
+ 3752              	.LASF240:
+ 3753 0963 55706461 		.ascii	"UpdateRate_75Hz\000"
+ 3753      74655261 
+ 3753      74655F37 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 75
+
+
+ 3753      35487A00 
+ 3754              	.LASF193:
+ 3755 0973 616C7469 		.ascii	"altitude_steady_max_i\000"
+ 3755      74756465 
+ 3755      5F737465 
+ 3755      6164795F 
+ 3755      6D61785F 
+ 3756              	.LASF73:
+ 3757 0989 466C6967 		.ascii	"FlightCtrlStates_e\000"
+ 3757      68744374 
+ 3757      726C5374 
+ 3757      61746573 
+ 3757      5F6500
+ 3758              	.LASF342:
+ 3759 099c 424D5030 		.ascii	"BMP085_OverSamplingRate\000"
+ 3759      38355F4F 
+ 3759      76657253 
+ 3759      616D706C 
+ 3759      696E6752 
+ 3760              	.LASF346:
+ 3761 09b4 4D533536 		.ascii	"MS5611_OverSamplingRate\000"
+ 3761      31315F4F 
+ 3761      76657253 
+ 3761      616D706C 
+ 3761      696E6752 
+ 3762              	.LASF340:
+ 3763 09cc 424D5030 		.ascii	"BMP085_Enabled\000"
+ 3763      38355F45 
+ 3763      6E61626C 
+ 3763      656400
+ 3764              	.LASF40:
+ 3765 09db 53656E73 		.ascii	"SensorAppState_Pausing\000"
+ 3765      6F724170 
+ 3765      70537461 
+ 3765      74655F50 
+ 3765      61757369 
+ 3766              	.LASF331:
+ 3767 09f2 484D4335 		.ascii	"HMC5883_CRB\000"
+ 3767      3838335F 
+ 3767      43524200 
+ 3768              	.LASF209:
+ 3769 09fe 68656164 		.ascii	"heading_filter_d\000"
+ 3769      696E675F 
+ 3769      66696C74 
+ 3769      65725F64 
+ 3769      00
+ 3770              	.LASF46:
+ 3771 0a0f 53656E73 		.ascii	"SensorAppState_ZeroCompleted\000"
+ 3771      6F724170 
+ 3771      70537461 
+ 3771      74655F5A 
+ 3771      65726F43 
+ 3772              	.LASF219:
+ 3773 0a2c 4C6F6E67 		.ascii	"Longitude\000"
+ 3773      69747564 
+ 3773      6500
+ 3774              	.LASF325:
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 76
+
+
+ 3775 0a36 4144584C 		.ascii	"ADXL345_DATA_FORMAT\000"
+ 3775      3334355F 
+ 3775      44415441 
+ 3775      5F464F52 
+ 3775      4D415400 
+ 3776              	.LASF386:
+ 3777 0a4a 50494453 		.ascii	"PIDSensorData\000"
+ 3777      656E736F 
+ 3777      72446174 
+ 3777      6100
+ 3778              	.LASF185:
+ 3779 0a58 68656164 		.ascii	"heading_steady_max_i\000"
+ 3779      696E675F 
+ 3779      73746561 
+ 3779      64795F6D 
+ 3779      61785F69 
+ 3780              	.LASF169:
+ 3781 0a6d 70697463 		.ascii	"pitch_steady_max_i\000"
+ 3781      685F7374 
+ 3781      65616479 
+ 3781      5F6D6178 
+ 3781      5F6900
+ 3782              	.LASF231:
+ 3783 0a80 4D423130 		.ascii	"MB1030_EZ3\000"
+ 3783      33305F45 
+ 3783      5A3300
+ 3784              	.LASF27:
+ 3785 0a8b 53797374 		.ascii	"SystemReady\000"
+ 3785      656D5265 
+ 3785      61647900 
+ 3786              	.LASF84:
+ 3787 0a97 44475053 		.ascii	"DGPS_None_0\000"
+ 3787      5F4E6F6E 
+ 3787      655F3000 
+ 3788              	.LASF171:
+ 3789 0aa3 6B5F726F 		.ascii	"k_roll_rate_i\000"
+ 3789      6C6C5F72 
+ 3789      6174655F 
+ 3789      6900
+ 3790              	.LASF65:
+ 3791 0ab1 4750494F 		.ascii	"GPIOAppState_Landing\000"
+ 3791      41707053 
+ 3791      74617465 
+ 3791      5F4C616E 
+ 3791      64696E67 
+ 3792              	.LASF51:
+ 3793 0ac6 53656E73 		.ascii	"SensorAppState_MagCalibration\000"
+ 3793      6F724170 
+ 3793      70537461 
+ 3793      74655F4D 
+ 3793      61674361 
+ 3794              	.LASF58:
+ 3795 0ae4 50697463 		.ascii	"PitchDoesFollowRollPID\000"
+ 3795      68446F65 
+ 3795      73466F6C 
+ 3795      6C6F7752 
+ 3795      6F6C6C50 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 77
+
+
+ 3796              	.LASF26:
+ 3797 0afb 53797374 		.ascii	"SystemResettingDefaults\000"
+ 3797      656D5265 
+ 3797      73657474 
+ 3797      696E6744 
+ 3797      65666175 
+ 3798              	.LASF170:
+ 3799 0b13 6B5F726F 		.ascii	"k_roll_rate_p\000"
+ 3799      6C6C5F72 
+ 3799      6174655F 
+ 3799      7000
+ 3800              	.LASF15:
+ 3801 0b21 63686172 		.ascii	"char\000"
+ 3801      00
+ 3802              	.LASF362:
+ 3803 0b26 44657269 		.ascii	"Derivative\000"
+ 3803      76617469 
+ 3803      766500
+ 3804              	.LASF236:
+ 3805 0b31 55706461 		.ascii	"UpdateRate_200Hz\000"
+ 3805      74655261 
+ 3805      74655F32 
+ 3805      3030487A 
+ 3805      00
+ 3806              	.LASF140:
+ 3807 0b42 536F6E61 		.ascii	"Sonar\000"
+ 3807      7200
+ 3808              	.LASF311:
+ 3809 0b48 4C534D33 		.ascii	"LSM303_MAG_FilterOption\000"
+ 3809      30335F4D 
+ 3809      41475F46 
+ 3809      696C7465 
+ 3809      724F7074 
+ 3810              	.LASF184:
+ 3811 0b60 6B5F6865 		.ascii	"k_heading_steady_i\000"
+ 3811      6164696E 
+ 3811      675F7374 
+ 3811      65616479 
+ 3811      5F6900
+ 3812              	.LASF123:
+ 3813 0b73 4553435F 		.ascii	"ESC_Left\000"
+ 3813      4C656674 
+ 3813      00
+ 3814              	.LASF183:
+ 3815 0b7c 6B5F6865 		.ascii	"k_heading_steady_p\000"
+ 3815      6164696E 
+ 3815      675F7374 
+ 3815      65616479 
+ 3815      5F7000
+ 3816              	.LASF1:
+ 3817 0b8f 75696E74 		.ascii	"uint8_t\000"
+ 3817      385F7400 
+ 3818              	.LASF157:
+ 3819 0b97 496E7465 		.ascii	"InternalState_t\000"
+ 3819      726E616C 
+ 3819      53746174 
+ 3819      655F7400 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 78
+
+
+ 3820              	.LASF361:
+ 3821 0ba7 4572726F 		.ascii	"ErrorSigma\000"
+ 3821      72536967 
+ 3821      6D6100
+ 3822              	.LASF295:
+ 3823 0bb2 4D505536 		.ascii	"MPU60x0_GyroFilterOption\000"
+ 3823      3078305F 
+ 3823      4779726F 
+ 3823      46696C74 
+ 3823      65724F70 
+ 3824              	.LASF142:
+ 3825 0bcb 4D533536 		.ascii	"MS5611\000"
+ 3825      313100
+ 3826              	.LASF79:
+ 3827 0bd2 5243436F 		.ascii	"RCControlled\000"
+ 3827      6E74726F 
+ 3827      6C6C6564 
+ 3827      00
+ 3828              	.LASF94:
+ 3829 0bdf 53616D70 		.ascii	"SampleRate_150Hz\000"
+ 3829      6C655261 
+ 3829      74655F31 
+ 3829      3530487A 
+ 3829      00
+ 3830              	.LASF244:
+ 3831 0bf0 55706461 		.ascii	"UpdateRate_25Hz\000"
+ 3831      74655261 
+ 3831      74655F32 
+ 3831      35487A00 
+ 3832              	.LASF375:
+ 3833 0c00 5F636F6D 		.ascii	"_commonDiagBuffer\000"
+ 3833      6D6F6E44 
+ 3833      69616742 
+ 3833      75666665 
+ 3833      7200
+ 3834              	.LASF139:
+ 3835 0c12 416C7469 		.ascii	"Altitude\000"
+ 3835      74756465 
+ 3835      00
+ 3836              	.LASF69:
+ 3837 0c1b 4750494F 		.ascii	"GPIOAppState_PIDConfig\000"
+ 3837      41707053 
+ 3837      74617465 
+ 3837      5F504944 
+ 3837      436F6E66 
+ 3838              	.LASF302:
+ 3839 0c32 4C534D33 		.ascii	"LSM303_ACC_REG3\000"
+ 3839      30335F41 
+ 3839      43435F52 
+ 3839      45473300 
+ 3840              	.LASF28:
+ 3841 0c42 53797374 		.ascii	"SystemFailure\000"
+ 3841      656D4661 
+ 3841      696C7572 
+ 3841      6500
+ 3842              	.LASF383:
+ 3843 0c50 54617267 		.ascii	"Targets\000"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 79
+
+
+ 3843      65747300 
+ 3844              	.LASF44:
+ 3845 0c58 53656E73 		.ascii	"SensorAppState_Zero\000"
+ 3845      6F724170 
+ 3845      70537461 
+ 3845      74655F5A 
+ 3845      65726F00 
+ 3846              	.LASF305:
+ 3847 0c6c 4C534D33 		.ascii	"LSM303_ACC_FilterOption\000"
+ 3847      30335F41 
+ 3847      43435F46 
+ 3847      696C7465 
+ 3847      724F7074 
+ 3848              	.LASF245:
+ 3849 0c84 55706461 		.ascii	"UpdateRate_20Hz\000"
+ 3849      74655261 
+ 3849      74655F32 
+ 3849      30487A00 
+ 3850              	.LASF341:
+ 3851 0c94 424D5030 		.ascii	"BMP085_NumberSamples\000"
+ 3851      38355F4E 
+ 3851      756D6265 
+ 3851      7253616D 
+ 3851      706C6573 
+ 3852              	.LASF370:
+ 3853 0ca9 506F7765 		.ascii	"Power1\000"
+ 3853      723100
+ 3854              	.LASF371:
+ 3855 0cb0 506F7765 		.ascii	"Power2\000"
+ 3855      723200
+ 3856              	.LASF11:
+ 3857 0cb7 6C6F6E67 		.ascii	"long long int\000"
+ 3857      206C6F6E 
+ 3857      6720696E 
+ 3857      7400
+ 3858              	.LASF89:
+ 3859 0cc5 416C7469 		.ascii	"AltitudeHold_Off\000"
+ 3859      74756465 
+ 3859      486F6C64 
+ 3859      5F4F6666 
+ 3859      00
+ 3860              	.LASF255:
+ 3861 0cd6 46696C74 		.ascii	"FilterOption_Median_9_Sample\000"
+ 3861      65724F70 
+ 3861      74696F6E 
+ 3861      5F4D6564 
+ 3861      69616E5F 
+ 3862              	.LASF106:
+ 3863 0cf3 4750535F 		.ascii	"GPS_3DFix\000"
+ 3863      33444669 
+ 3863      7800
+ 3864              	.LASF141:
+ 3865 0cfd 424D5030 		.ascii	"BMP085\000"
+ 3865      383500
+ 3866              	.LASF55:
+ 3867 0d04 4672616D 		.ascii	"FrameConfig_Cross\000"
+ 3867      65436F6E 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 80
+
+
+ 3867      6669675F 
+ 3867      43726F73 
+ 3867      7300
+ 3868              	.LASF80:
+ 3869 0d16 436F6E74 		.ascii	"ControlMethodState_e\000"
+ 3869      726F6C4D 
+ 3869      6574686F 
+ 3869      64537461 
+ 3869      74655F65 
+ 3870              	.LASF112:
+ 3871 0d2b 506C6174 		.ascii	"Platform\000"
+ 3871      666F726D 
+ 3871      00
+ 3872              	.LASF248:
+ 3873 0d34 55706461 		.ascii	"UpdateRate_5Hz\000"
+ 3873      74655261 
+ 3873      74655F35 
+ 3873      487A00
+ 3874              	.LASF355:
+ 3875 0d43 53656E73 		.ascii	"SensorConfig_t\000"
+ 3875      6F72436F 
+ 3875      6E666967 
+ 3875      5F7400
+ 3876              	.LASF53:
+ 3877 0d52 53656E73 		.ascii	"SensorAppState_PIDConfig\000"
+ 3877      6F724170 
+ 3877      70537461 
+ 3877      74655F50 
+ 3877      4944436F 
+ 3878              	.LASF343:
+ 3879 0d6b 424D5030 		.ascii	"BMP085_FilterOption\000"
+ 3879      38355F46 
+ 3879      696C7465 
+ 3879      724F7074 
+ 3879      696F6E00 
+ 3880              	.LASF192:
+ 3881 0d7f 6B5F616C 		.ascii	"k_altitude_steady_i\000"
+ 3881      74697475 
+ 3881      64655F73 
+ 3881      74656164 
+ 3881      795F6900 
+ 3882              	.LASF372:
+ 3883 0d93 466F7252 		.ascii	"ForRoll\000"
+ 3883      6F6C6C00 
+ 3884              	.LASF350:
+ 3885 0d9b 4C49504F 		.ascii	"LIPO_ADC_Enabled\000"
+ 3885      5F414443 
+ 3885      5F456E61 
+ 3885      626C6564 
+ 3885      00
+ 3886              	.LASF128:
+ 3887 0dac 54617267 		.ascii	"TargetAltitude\000"
+ 3887      6574416C 
+ 3887      74697475 
+ 3887      646500
+ 3888              	.LASF283:
+ 3889 0dbb 49544733 		.ascii	"ITG3200_Enabled\000"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 81
+
+
+ 3889      3230305F 
+ 3889      456E6162 
+ 3889      6C656400 
+ 3890              	.LASF322:
+ 3891 0dcb 4C334744 		.ascii	"L3GD20_SampleRate\000"
+ 3891      32305F53 
+ 3891      616D706C 
+ 3891      65526174 
+ 3891      6500
+ 3892              	.LASF380:
+ 3893 0ddd 4D6F746F 		.ascii	"MotorStatus\000"
+ 3893      72537461 
+ 3893      74757300 
+ 3894              	.LASF20:
+ 3895 0de9 4E6F7443 		.ascii	"NotCalibrated\000"
+ 3895      616C6962 
+ 3895      72617465 
+ 3895      6400
+ 3896              	.LASF67:
+ 3897 0df7 4750494F 		.ascii	"GPIOAppState_Idle\000"
+ 3897      41707053 
+ 3897      74617465 
+ 3897      5F49646C 
+ 3897      6500
+ 3898              	.LASF156:
+ 3899 0e09 4553435F 		.ascii	"ESC_Starboard\000"
+ 3899      53746172 
+ 3899      626F6172 
+ 3899      6400
+ 3900              	.LASF204:
+ 3901 0e17 50697463 		.ascii	"PitchSensitivity\000"
+ 3901      6853656E 
+ 3901      73697469 
+ 3901      76697479 
+ 3901      00
+ 3902              	.LASF402:
+ 3903 0e28 443A5C4E 		.ascii	"D:\\NiVek\\Firmware\\NiVek32\000"
+ 3903      6956656B 
+ 3903      5C466972 
+ 3903      6D776172 
+ 3903      655C4E69 
+ 3904              	.LASF323:
+ 3905 0e42 4144584C 		.ascii	"ADXL345_Enabled\000"
+ 3905      3334355F 
+ 3905      456E6162 
+ 3905      6C656400 
+ 3906              	.LASF213:
+ 3907 0e52 4175746F 		.ascii	"AutoPilotSampleRate\000"
+ 3907      50696C6F 
+ 3907      7453616D 
+ 3907      706C6552 
+ 3907      61746500 
+ 3908              	.LASF393:
+ 3909 0e66 57694669 		.ascii	"WiFiYaw\000"
+ 3909      59617700 
+ 3910              	.LASF71:
+ 3911 0e6e 4750494F 		.ascii	"GPIOAppState_RCCalibration\000"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 82
+
+
+ 3911      41707053 
+ 3911      74617465 
+ 3911      5F524343 
+ 3911      616C6962 
+ 3912              	.LASF227:
+ 3913 0e89 47726F75 		.ascii	"GroundSpeedMS\000"
+ 3913      6E645370 
+ 3913      6565644D 
+ 3913      5300
+ 3914              	.LASF268:
+ 3915 0e97 46696C74 		.ascii	"FilterOption_Moving_Average_70\000"
+ 3915      65724F70 
+ 3915      74696F6E 
+ 3915      5F4D6F76 
+ 3915      696E675F 
+ 3916              	.LASF278:
+ 3917 0eb6 42617474 		.ascii	"BatterySendDataRate\000"
+ 3917      65727953 
+ 3917      656E6444 
+ 3917      61746152 
+ 3917      61746500 
+ 3918              	.LASF257:
+ 3919 0eca 46696C74 		.ascii	"FilterOption_Moving_Average_0_1\000"
+ 3919      65724F70 
+ 3919      74696F6E 
+ 3919      5F4D6F76 
+ 3919      696E675F 
+ 3920              	.LASF129:
+ 3921 0eea 5468726F 		.ascii	"Throttle\000"
+ 3921      74746C65 
+ 3921      00
+ 3922              	.LASF333:
+ 3923 0ef3 484D4335 		.ascii	"HMC5883_FilterOption\000"
+ 3923      3838335F 
+ 3923      46696C74 
+ 3923      65724F70 
+ 3923      74696F6E 
+ 3924              	.LASF88:
+ 3925 0f08 416C7469 		.ascii	"AltitudeHold_On\000"
+ 3925      74756465 
+ 3925      486F6C64 
+ 3925      5F4F6E00 
+ 3926              	.LASF29:
+ 3927 0f18 53797374 		.ascii	"SystemStatus_e\000"
+ 3927      656D5374 
+ 3927      61747573 
+ 3927      5F6500
+ 3928              	.LASF296:
+ 3929 0f27 4D505536 		.ascii	"MPU60x0_AccFilterOption\000"
+ 3929      3078305F 
+ 3929      41636346 
+ 3929      696C7465 
+ 3929      724F7074 
+ 3930              	.LASF382:
+ 3931 0f3f 53656E73 		.ascii	"SensorConfig\000"
+ 3931      6F72436F 
+ 3931      6E666967 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 83
+
+
+ 3931      00
+ 3932              	.LASF121:
+ 3933 0f4c 53797374 		.ascii	"SystemStatus_t\000"
+ 3933      656D5374 
+ 3933      61747573 
+ 3933      5F7400
+ 3934              	.LASF359:
+ 3935 0f5b 53656E73 		.ascii	"SensorId\000"
+ 3935      6F724964 
+ 3935      00
+ 3936              	.LASF214:
+ 3937 0f64 50697463 		.ascii	"PitchFollowsRollPID\000"
+ 3937      68466F6C 
+ 3937      6C6F7773 
+ 3937      526F6C6C 
+ 3937      50494400 
+ 3938              	.LASF150:
+ 3939 0f78 54656D70 		.ascii	"Temperature\000"
+ 3939      65726174 
+ 3939      75726500 
+ 3940              	.LASF366:
+ 3941 0f84 495F5261 		.ascii	"I_RateComponent\000"
+ 3941      7465436F 
+ 3941      6D706F6E 
+ 3941      656E7400 
+ 3942              	.LASF18:
+ 3943 0f94 6C6F6E67 		.ascii	"long double\000"
+ 3943      20646F75 
+ 3943      626C6500 
+ 3944              	.LASF6:
+ 3945 0fa0 75696E74 		.ascii	"uint16_t\000"
+ 3945      31365F74 
+ 3945      00
+ 3946              	.LASF354:
+ 3947 0fa9 4B616C6D 		.ascii	"Kalman_SampleRate\000"
+ 3947      616E5F53 
+ 3947      616D706C 
+ 3947      65526174 
+ 3947      6500
+ 3948              	.LASF177:
+ 3949 0fbb 726F6C6C 		.ascii	"roll_steady_max_i\000"
+ 3949      5F737465 
+ 3949      6164795F 
+ 3949      6D61785F 
+ 3949      6900
+ 3950              	.LASF91:
+ 3951 0fcd 53616D70 		.ascii	"SampleRate_1KHz\000"
+ 3951      6C655261 
+ 3951      74655F31 
+ 3951      4B487A00 
+ 3952              	.LASF96:
+ 3953 0fdd 53616D70 		.ascii	"SampleRate_50Hz\000"
+ 3953      6C655261 
+ 3953      74655F35 
+ 3953      30487A00 
+ 3954              	.LASF260:
+ 3955 0fed 46696C74 		.ascii	"FilterOption_Moving_Average_5\000"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 84
+
+
+ 3955      65724F70 
+ 3955      74696F6E 
+ 3955      5F4D6F76 
+ 3955      696E675F 
+ 3956              	.LASF48:
+ 3957 100b 53656E73 		.ascii	"SensorAppState_SnsrFusionRoll\000"
+ 3957      6F724170 
+ 3957      70537461 
+ 3957      74655F53 
+ 3957      6E737246 
+ 3958              	.LASF242:
+ 3959 1029 55706461 		.ascii	"UpdateRate_40Hz\000"
+ 3959      74655261 
+ 3959      74655F34 
+ 3959      30487A00 
+ 3960              	.LASF281:
+ 3961 1039 4D6F746F 		.ascii	"MotorsSendDataRate\000"
+ 3961      72735365 
+ 3961      6E644461 
+ 3961      74615261 
+ 3961      746500
+ 3962              	.LASF288:
+ 3963 104c 4D505536 		.ascii	"MPU60x0_Gyro_Enabled\000"
+ 3963      3078305F 
+ 3963      4779726F 
+ 3963      5F456E61 
+ 3963      626C6564 
+ 3964              	.LASF78:
+ 3965 1061 57694669 		.ascii	"WiFiControlled\000"
+ 3965      436F6E74 
+ 3965      726F6C6C 
+ 3965      656400
+ 3966              	.LASF135:
+ 3967 1070 48656164 		.ascii	"Heading\000"
+ 3967      696E6700 
+ 3968              	.LASF72:
+ 3969 1078 4750494F 		.ascii	"GPIOAppState_RCEndCalibration\000"
+ 3969      41707053 
+ 3969      74617465 
+ 3969      5F524345 
+ 3969      6E644361 
+ 3970              	.LASF348:
+ 3971 1096 4D533536 		.ascii	"MS5611_SampleRate\000"
+ 3971      31315F53 
+ 3971      616D706C 
+ 3971      65526174 
+ 3971      6500
+ 3972              	.LASF62:
+ 3973 10a8 4750494F 		.ascii	"GPIOAppState_Ready\000"
+ 3973      41707053 
+ 3973      74617465 
+ 3973      5F526561 
+ 3973      647900
+ 3974              	.LASF277:
+ 3975 10bb 47505353 		.ascii	"GPSSendDataRate\000"
+ 3975      656E6444 
+ 3975      61746152 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 85
+
+
+ 3975      61746500 
+ 3976              	.LASF328:
+ 3977 10cb 4144584C 		.ascii	"ADXL345_SampleRate\000"
+ 3977      3334355F 
+ 3977      53616D70 
+ 3977      6C655261 
+ 3977      746500
+ 3978              	.LASF273:
+ 3979 10de 44697361 		.ascii	"Disabled\000"
+ 3979      626C6564 
+ 3979      00
+ 3980              	.LASF63:
+ 3981 10e7 4750494F 		.ascii	"GPIOAppState_Launching\000"
+ 3981      41707053 
+ 3981      74617465 
+ 3981      5F4C6175 
+ 3981      6E636869 
+ 3982              	.LASF164:
+ 3983 10fe 6B5F7069 		.ascii	"k_pitch_rate_d\000"
+ 3983      7463685F 
+ 3983      72617465 
+ 3983      5F6400
+ 3984              	.LASF5:
+ 3985 110d 73686F72 		.ascii	"short int\000"
+ 3985      7420696E 
+ 3985      7400
+ 3986              	.LASF159:
+ 3987 1117 43656C6C 		.ascii	"Cell2Battery\000"
+ 3987      32426174 
+ 3987      74657279 
+ 3987      00
+ 3988              	.LASF163:
+ 3989 1124 6B5F7069 		.ascii	"k_pitch_rate_i\000"
+ 3989      7463685F 
+ 3989      72617465 
+ 3989      5F6900
+ 3990              	.LASF286:
+ 3991 1133 49544733 		.ascii	"ITG3200_FilterOption\000"
+ 3991      3230305F 
+ 3991      46696C74 
+ 3991      65724F70 
+ 3991      74696F6E 
+ 3992              	.LASF102:
+ 3993 1148 53616D70 		.ascii	"SampleRate_IRQ\000"
+ 3993      6C655261 
+ 3993      74655F49 
+ 3993      525100
+ 3994              	.LASF32:
+ 3995 1157 53656E73 		.ascii	"SensorAppState_Ready\000"
+ 3995      6F724170 
+ 3995      70537461 
+ 3995      74655F52 
+ 3995      65616479 
+ 3996              	.LASF133:
+ 3997 116c 50697463 		.ascii	"Pitch\000"
+ 3997      6800
+ 3998              	.LASF210:
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 86
+
+
+ 3999 1172 616C7469 		.ascii	"altitude_filter_d\000"
+ 3999      74756465 
+ 3999      5F66696C 
+ 3999      7465725F 
+ 3999      6400
+ 4000              	.LASF146:
+ 4001 1184 526F6C6C 		.ascii	"RollRateDPS\000"
+ 4001      52617465 
+ 4001      44505300 
+ 4002              	.LASF124:
+ 4003 1190 4553435F 		.ascii	"ESC_Right\000"
+ 4003      52696768 
+ 4003      7400
+ 4004              	.LASF374:
+ 4005 119a 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 4005      52784275 
+ 4005      66666572 
+ 4005      00
+ 4006              	.LASF249:
+ 4007 11a7 55706461 		.ascii	"UpdateRate_1Hz\000"
+ 4007      74655261 
+ 4007      74655F31 
+ 4007      487A00
+ 4008              	.LASF149:
+ 4009 11b6 50726573 		.ascii	"Pressure_hPa\000"
+ 4009      73757265 
+ 4009      5F685061 
+ 4009      00
+ 4010              	.LASF285:
+ 4011 11c3 49544733 		.ascii	"ITG3200_SMPLRT_DIV\000"
+ 4011      3230305F 
+ 4011      534D504C 
+ 4011      52545F44 
+ 4011      495600
+ 4012              	.LASF258:
+ 4013 11d6 46696C74 		.ascii	"FilterOption_Moving_Average_1\000"
+ 4013      65724F70 
+ 4013      74696F6E 
+ 4013      5F4D6F76 
+ 4013      696E675F 
+ 4014              	.LASF259:
+ 4015 11f4 46696C74 		.ascii	"FilterOption_Moving_Average_2\000"
+ 4015      65724F70 
+ 4015      74696F6E 
+ 4015      5F4D6F76 
+ 4015      696E675F 
+ 4016              	.LASF220:
+ 4017 1212 45617374 		.ascii	"EastWest\000"
+ 4017      57657374 
+ 4017      00
+ 4018              	.LASF378:
+ 4019 121b 50494443 		.ascii	"PIDConstantsConfig\000"
+ 4019      6F6E7374 
+ 4019      616E7473 
+ 4019      436F6E66 
+ 4019      696700
+ 4020              	.LASF75:
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 87
+
+
+ 4021 122e 53616665 		.ascii	"Safe\000"
+ 4021      00
+ 4022              	.LASF250:
+ 4023 1233 55706461 		.ascii	"UpdateRate_e\000"
+ 4023      74655261 
+ 4023      74655F65 
+ 4023      00
+ 4024              	.LASF113:
+ 4025 1240 53797374 		.ascii	"SystemState\000"
+ 4025      656D5374 
+ 4025      61746500 
+ 4026              	.LASF353:
+ 4027 124c 4B616C6D 		.ascii	"Kalman_Enabled\000"
+ 4027      616E5F45 
+ 4027      6E61626C 
+ 4027      656400
+ 4028              	.LASF233:
+ 4029 125b 55706461 		.ascii	"UpdateRate_400Hz\000"
+ 4029      74655261 
+ 4029      74655F34 
+ 4029      3030487A 
+ 4029      00
+ 4030              	.LASF33:
+ 4031 126c 53656E73 		.ascii	"SensorAppState_ResettingDefaults\000"
+ 4031      6F724170 
+ 4031      70537461 
+ 4031      74655F52 
+ 4031      65736574 
+ 4032              	.LASF181:
+ 4033 128d 68656164 		.ascii	"heading_rate_i_decay_factor\000"
+ 4033      696E675F 
+ 4033      72617465 
+ 4033      5F695F64 
+ 4033      65636179 
+ 4034              	.LASF202:
+ 4035 12a9 416C7469 		.ascii	"AltitudeStableBand\000"
+ 4035      74756465 
+ 4035      53746162 
+ 4035      6C654261 
+ 4035      6E6400
+ 4036              	.LASF200:
+ 4037 12bc 526F6C6C 		.ascii	"RollStableBand\000"
+ 4037      53746162 
+ 4037      6C654261 
+ 4037      6E6400
+ 4038              	.LASF262:
+ 4039 12cb 46696C74 		.ascii	"FilterOption_Moving_Average_15\000"
+ 4039      65724F70 
+ 4039      74696F6E 
+ 4039      5F4D6F76 
+ 4039      696E675F 
+ 4040              	.LASF162:
+ 4041 12ea 6B5F7069 		.ascii	"k_pitch_rate_p\000"
+ 4041      7463685F 
+ 4041      72617465 
+ 4041      5F7000
+ 4042              	.LASF230:
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 88
+
+
+ 4043 12f9 48435F53 		.ascii	"HC_SR04\000"
+ 4043      52303400 
+ 4044              	.LASF254:
+ 4045 1301 46696C74 		.ascii	"FilterOption_Median_7_Sample\000"
+ 4045      65724F70 
+ 4045      74696F6E 
+ 4045      5F4D6564 
+ 4045      69616E5F 
+ 4046              	.LASF143:
+ 4047 131e 416C7469 		.ascii	"AltitudeData_t\000"
+ 4047      74756465 
+ 4047      44617461 
+ 4047      5F7400
+ 4048              	.LASF13:
+ 4049 132d 756E7369 		.ascii	"unsigned int\000"
+ 4049      676E6564 
+ 4049      20696E74 
+ 4049      00
+ 4050              	.LASF86:
+ 4051 133a 44475053 		.ascii	"DGPS_WAAS_2\000"
+ 4051      5F574141 
+ 4051      535F3200 
+ 4052              	.LASF36:
+ 4053 1346 53656E73 		.ascii	"SensorAppState_Resuming\000"
+ 4053      6F724170 
+ 4053      70537461 
+ 4053      74655F52 
+ 4053      6573756D 
+ 4054              	.LASF35:
+ 4055 135e 53656E73 		.ascii	"SensorAppState_Restarting\000"
+ 4055      6F724170 
+ 4055      70537461 
+ 4055      74655F52 
+ 4055      65737461 
+ 4056              	.LASF388:
+ 4057 1378 43757272 		.ascii	"CurrentGPSReading\000"
+ 4057      656E7447 
+ 4057      50535265 
+ 4057      6164696E 
+ 4057      6700
+ 4058              	.LASF239:
+ 4059 138a 55706461 		.ascii	"UpdateRate_100Hz\000"
+ 4059      74655261 
+ 4059      74655F31 
+ 4059      3030487A 
+ 4059      00
+ 4060              	.LASF318:
+ 4061 139b 4C334744 		.ascii	"L3GD20_REG4\000"
+ 4061      32305F52 
+ 4061      45473400 
+ 4062              	.LASF100:
+ 4063 13a7 53616D70 		.ascii	"SampleRate_5Hz\000"
+ 4063      6C655261 
+ 4063      74655F35 
+ 4063      487A00
+ 4064              	.LASF271:
+ 4065 13b6 46696C74 		.ascii	"FilterOptions_t\000"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 89
+
+
+ 4065      65724F70 
+ 4065      74696F6E 
+ 4065      735F7400 
+ 4066              	.LASF276:
+ 4067 13c6 53746174 		.ascii	"StatusSendDataRate\000"
+ 4067      75735365 
+ 4067      6E644461 
+ 4067      74615261 
+ 4067      746500
+ 4068              	.LASF14:
+ 4069 13d9 73697A65 		.ascii	"sizetype\000"
+ 4069      74797065 
+ 4069      00
+ 4070              	.LASF182:
+ 4071 13e2 68656164 		.ascii	"heading_rate_max_i\000"
+ 4071      696E675F 
+ 4071      72617465 
+ 4071      5F6D6178 
+ 4071      5F6900
+ 4072              	.LASF10:
+ 4073 13f5 6C6F6E67 		.ascii	"long unsigned int\000"
+ 4073      20756E73 
+ 4073      69676E65 
+ 4073      6420696E 
+ 4073      7400
+ 4074              	.LASF30:
+ 4075 1407 53656E73 		.ascii	"SensorAppState_Startup\000"
+ 4075      6F724170 
+ 4075      70537461 
+ 4075      74655F53 
+ 4075      74617274 
+ 4076              	.LASF83:
+ 4077 141e 57694669 		.ascii	"WiFiConnected_t\000"
+ 4077      436F6E6E 
+ 4077      65637465 
+ 4077      645F7400 
+ 4078              	.LASF313:
+ 4079 142e 4C534D33 		.ascii	"LSM303_MAG_Calibrated\000"
+ 4079      30335F4D 
+ 4079      41475F43 
+ 4079      616C6962 
+ 4079      72617465 
+ 4080              	.LASF8:
+ 4081 1444 696E7433 		.ascii	"int32_t\000"
+ 4081      325F7400 
+ 4082              	.LASF368:
+ 4083 144c 416E676C 		.ascii	"Angle\000"
+ 4083      6500
+ 4084              	.LASF224:
+ 4085 1452 47505344 		.ascii	"GPSData_t\000"
+ 4085      6174615F 
+ 4085      7400
+ 4086              	.LASF54:
+ 4087 145c 53656E73 		.ascii	"SensorStates_e\000"
+ 4087      6F725374 
+ 4087      61746573 
+ 4087      5F6500
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 90
+
+
+ 4088              	.LASF127:
+ 4089 146b 54617267 		.ascii	"TargetHeading\000"
+ 4089      65744865 
+ 4089      6164696E 
+ 4089      6700
+ 4090              	.LASF50:
+ 4091 1479 53656E73 		.ascii	"SensorAppState_SnsrFusionAltitude\000"
+ 4091      6F724170 
+ 4091      70537461 
+ 4091      74655F53 
+ 4091      6E737246 
+ 4092              	.LASF357:
+ 4093 149b 52617759 		.ascii	"RawY\000"
+ 4093      00
+ 4094              	.LASF22:
+ 4095 14a0 53797374 		.ascii	"SystemStartingUp\000"
+ 4095      656D5374 
+ 4095      61727469 
+ 4095      6E675570 
+ 4095      00
+ 4096              	.LASF345:
+ 4097 14b1 4D533536 		.ascii	"MS5611_Enabled\000"
+ 4097      31315F45 
+ 4097      6E61626C 
+ 4097      656400
+ 4098              	.LASF212:
+ 4099 14c0 496E6974 		.ascii	"InitialAltitude\000"
+ 4099      69616C41 
+ 4099      6C746974 
+ 4099      75646500 
+ 4100              	.LASF307:
+ 4101 14d0 4C534D33 		.ascii	"LSM303_MAG_Enabled\000"
+ 4101      30335F4D 
+ 4101      41475F45 
+ 4101      6E61626C 
+ 4101      656400
+ 4102              	.LASF272:
+ 4103 14e3 456E6162 		.ascii	"Enabled\000"
+ 4103      6C656400 
+ 4104              	.LASF107:
+ 4105 14eb 46697854 		.ascii	"FixType_e\000"
+ 4105      7970655F 
+ 4105      6500
+ 4106              	.LASF3:
+ 4107 14f5 756E7369 		.ascii	"unsigned char\000"
+ 4107      676E6564 
+ 4107      20636861 
+ 4107      7200
+ 4108              	.LASF256:
+ 4109 1503 46696C74 		.ascii	"FilterOption_Moving_Average_0_01\000"
+ 4109      65724F70 
+ 4109      74696F6E 
+ 4109      5F4D6F76 
+ 4109      696E675F 
+ 4110              	.LASF194:
+ 4111 1524 6B5F6573 		.ascii	"k_esc_front\000"
+ 4111      635F6672 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 91
+
+
+ 4111      6F6E7400 
+ 4112              	.LASF197:
+ 4113 1530 6B5F6573 		.ascii	"k_esc_rear\000"
+ 4113      635F7265 
+ 4113      617200
+ 4114              	.LASF228:
+ 4115 153b 47505352 		.ascii	"GPSReading_t\000"
+ 4115      65616469 
+ 4115      6E675F74 
+ 4115      00
+ 4116              	.LASF279:
+ 4117 1548 53656E73 		.ascii	"SensorSendDataRate\000"
+ 4117      6F725365 
+ 4117      6E644461 
+ 4117      74615261 
+ 4117      746500
+ 4118              	.LASF66:
+ 4119 155b 4750494F 		.ascii	"GPIOAppState_Crashed\000"
+ 4119      41707053 
+ 4119      74617465 
+ 4119      5F437261 
+ 4119      73686564 
+ 4120              	.LASF137:
+ 4121 1570 53656E73 		.ascii	"SensorData_t\000"
+ 4121      6F724461 
+ 4121      74615F74 
+ 4121      00
+ 4122              	.LASF70:
+ 4123 157d 4750494F 		.ascii	"GPIOAppState_RCStartCalibration\000"
+ 4123      41707053 
+ 4123      74617465 
+ 4123      5F524353 
+ 4123      74617274 
+ 4124              	.LASF105:
+ 4125 159d 4750535F 		.ascii	"GPS_2DFix\000"
+ 4125      32444669 
+ 4125      7800
+ 4126              	.LASF87:
+ 4127 15a7 44475053 		.ascii	"DGPSModes_e\000"
+ 4127      4D6F6465 
+ 4127      735F6500 
+ 4128              	.LASF251:
+ 4129 15b3 46696C74 		.ascii	"FilterOption_None\000"
+ 4129      65724F70 
+ 4129      74696F6E 
+ 4129      5F4E6F6E 
+ 4129      6500
+ 4130              	.LASF360:
+ 4131 15c5 53656E73 		.ascii	"SensorDiagData_t\000"
+ 4131      6F724469 
+ 4131      61674461 
+ 4131      74615F74 
+ 4131      00
+ 4132              	.LASF201:
+ 4133 15d6 48656164 		.ascii	"HeadingStableBand\000"
+ 4133      696E6753 
+ 4133      7461626C 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 92
+
+
+ 4133      6542616E 
+ 4133      6400
+ 4134              	.LASF232:
+ 4135 15e8 536F6E61 		.ascii	"SonarType_e\000"
+ 4135      72547970 
+ 4135      655F6500 
+ 4136              	.LASF336:
+ 4137 15f4 536F6E61 		.ascii	"Sonar_Enabled\000"
+ 4137      725F456E 
+ 4137      61626C65 
+ 4137      6400
+ 4138              	.LASF23:
+ 4139 1602 53797374 		.ascii	"SystemSensorRestartRequired\000"
+ 4139      656D5365 
+ 4139      6E736F72 
+ 4139      52657374 
+ 4139      61727452 
+ 4140              	.LASF261:
+ 4141 161e 46696C74 		.ascii	"FilterOption_Moving_Average_10\000"
+ 4141      65724F70 
+ 4141      74696F6E 
+ 4141      5F4D6F76 
+ 4141      696E675F 
+ 4142              	.LASF274:
+ 4143 163d 456E6162 		.ascii	"Enabled_t\000"
+ 4143      6C65645F 
+ 4143      7400
+ 4144              	.LASF221:
+ 4145 1647 53617465 		.ascii	"SatellitesUsed\000"
+ 4145      6C6C6974 
+ 4145      65735573 
+ 4145      656400
+ 4146              	.LASF226:
+ 4147 1656 46697854 		.ascii	"FixType\000"
+ 4147      79706500 
+ 4148              	.LASF218:
+ 4149 165e 4E6F7274 		.ascii	"NorthSouth\000"
+ 4149      68536F75 
+ 4149      746800
+ 4150              	.LASF332:
+ 4151 1669 484D4335 		.ascii	"HMC5883_MODE\000"
+ 4151      3838335F 
+ 4151      4D4F4445 
+ 4151      00
+ 4152              	.LASF90:
+ 4153 1676 416C7469 		.ascii	"AltitudeHold_e\000"
+ 4153      74756465 
+ 4153      486F6C64 
+ 4153      5F6500
+ 4154              	.LASF379:
+ 4155 1685 53656E73 		.ascii	"SensorData\000"
+ 4155      6F724461 
+ 4155      746100
+ 4156              	.LASF97:
+ 4157 1690 53616D70 		.ascii	"SampleRate_25Hz\000"
+ 4157      6C655261 
+ 4157      74655F32 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 93
+
+
+ 4157      35487A00 
+ 4158              	.LASF300:
+ 4159 16a0 4C534D33 		.ascii	"LSM303_ACC_REG1\000"
+ 4159      30335F41 
+ 4159      43435F52 
+ 4159      45473100 
+ 4160              	.LASF126:
+ 4161 16b0 4D6F746F 		.ascii	"MotorStatus_t\000"
+ 4161      72537461 
+ 4161      7475735F 
+ 4161      7400
+ 4162              	.LASF116:
+ 4163 16be 41726D65 		.ascii	"ArmedStatus\000"
+ 4163      64537461 
+ 4163      74757300 
+ 4164              	.LASF303:
+ 4165 16ca 4C534D33 		.ascii	"LSM303_ACC_REG4\000"
+ 4165      30335F41 
+ 4165      43435F52 
+ 4165      45473400 
+ 4166              	.LASF196:
+ 4167 16da 6B5F6573 		.ascii	"k_esc_right\000"
+ 4167      635F7269 
+ 4167      67687400 
+ 4168              	.LASF104:
+ 4169 16e6 4750535F 		.ascii	"GPS_NoFix\000"
+ 4169      4E6F4669 
+ 4169      7800
+ 4170              	.LASF381:
+ 4171 16f0 53797374 		.ascii	"SystemStatus\000"
+ 4171      656D5374 
+ 4171      61747573 
+ 4171      00
+ 4172              	.LASF367:
+ 4173 16fd 445F5261 		.ascii	"D_RateComponent\000"
+ 4173      7465436F 
+ 4173      6D706F6E 
+ 4173      656E7400 
+ 4174              	.LASF144:
+ 4175 170d 416C7444 		.ascii	"AltDelta\000"
+ 4175      656C7461 
+ 4175      00
+ 4176              	.LASF205:
+ 4177 1716 526F6C6C 		.ascii	"RollSensitivity\000"
+ 4177      53656E73 
+ 4177      69746976 
+ 4177      69747900 
+ 4178              	.LASF85:
+ 4179 1726 44475053 		.ascii	"DGPS_RTCM_1\000"
+ 4179      5F525443 
+ 4179      4D5F3100 
+ 4180              	.LASF98:
+ 4181 1732 53616D70 		.ascii	"SampleRate_20Hz\000"
+ 4181      6C655261 
+ 4181      74655F32 
+ 4181      30487A00 
+ 4182              	.LASF291:
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 94
+
+
+ 4183 1742 4D505536 		.ascii	"MPU60x0_GYR_SMPLRT_DIV\000"
+ 4183      3078305F 
+ 4183      4759525F 
+ 4183      534D504C 
+ 4183      52545F44 
+ 4184              	.LASF344:
+ 4185 1759 424D5030 		.ascii	"BMP085_SampleRate\000"
+ 4185      38355F53 
+ 4185      616D706C 
+ 4185      65526174 
+ 4185      6500
+ 4186              	.LASF247:
+ 4187 176b 55706461 		.ascii	"UpdateRate_10Hz\000"
+ 4187      74655261 
+ 4187      74655F31 
+ 4187      30487A00 
+ 4188              	.LASF77:
+ 4189 177b 4E6F6E65 		.ascii	"None\000"
+ 4189      00
+ 4190              	.LASF7:
+ 4191 1780 73686F72 		.ascii	"short unsigned int\000"
+ 4191      7420756E 
+ 4191      7369676E 
+ 4191      65642069 
+ 4191      6E7400
+ 4192              	.LASF339:
+ 4193 1793 536F6E61 		.ascii	"Sonar_SampleRate\000"
+ 4193      725F5361 
+ 4193      6D706C65 
+ 4193      52617465 
+ 4193      00
+ 4194              	.LASF351:
+ 4195 17a4 4C49504F 		.ascii	"LIPO_ADC_FilterOption\000"
+ 4195      5F414443 
+ 4195      5F46696C 
+ 4195      7465724F 
+ 4195      7074696F 
+ 4196              	.LASF41:
+ 4197 17ba 53656E73 		.ascii	"SensorAppState_Paused\000"
+ 4197      6F724170 
+ 4197      70537461 
+ 4197      74655F50 
+ 4197      61757365 
+ 4198              	.LASF310:
+ 4199 17d0 4C534D33 		.ascii	"LSM303_MAG_MR\000"
+ 4199      30335F4D 
+ 4199      41475F4D 
+ 4199      5200
+ 4200              	.LASF109:
+ 4201 17de 466C6967 		.ascii	"FlightMode_Acro\000"
+ 4201      68744D6F 
+ 4201      64655F41 
+ 4201      63726F00 
+ 4202              	.LASF136:
+ 4203 17ee 416C7469 		.ascii	"AltitudeM\000"
+ 4203      74756465 
+ 4203      4D00
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 95
+
+
+ 4204              	.LASF76:
+ 4205 17f8 4750494F 		.ascii	"GPIOArmedState_e\000"
+ 4205      41726D65 
+ 4205      64537461 
+ 4205      74655F65 
+ 4205      00
+ 4206              	.LASF132:
+ 4207 1809 54617267 		.ascii	"TargetsData_t\000"
+ 4207      65747344 
+ 4207      6174615F 
+ 4207      7400
+ 4208              	.LASF334:
+ 4209 1817 484D4335 		.ascii	"HMC5883_SampleRate\000"
+ 4209      3838335F 
+ 4209      53616D70 
+ 4209      6C655261 
+ 4209      746500
+ 4210              	.LASF347:
+ 4211 182a 4D533536 		.ascii	"MS5611_FilterOption\000"
+ 4211      31315F46 
+ 4211      696C7465 
+ 4211      724F7074 
+ 4211      696F6E00 
+ 4212              	.LASF263:
+ 4213 183e 46696C74 		.ascii	"FilterOption_Moving_Average_20\000"
+ 4213      65724F70 
+ 4213      74696F6E 
+ 4213      5F4D6F76 
+ 4213      696E675F 
+ 4214              	.LASF289:
+ 4215 185d 4D505536 		.ascii	"MPU60x0_Acc_Enabled\000"
+ 4215      3078305F 
+ 4215      4163635F 
+ 4215      456E6162 
+ 4215      6C656400 
+ 4216              	.LASF321:
+ 4217 1871 4C334744 		.ascii	"L3GD20_FilterOption\000"
+ 4217      32305F46 
+ 4217      696C7465 
+ 4217      724F7074 
+ 4217      696F6E00 
+ 4218              	.LASF172:
+ 4219 1885 6B5F726F 		.ascii	"k_roll_rate_d\000"
+ 4219      6C6C5F72 
+ 4219      6174655F 
+ 4219      6400
+ 4220              	.LASF16:
+ 4221 1893 646F7562 		.ascii	"double\000"
+ 4221      6C6500
+ 4222              	.LASF369:
+ 4223 189a 54617267 		.ascii	"Target\000"
+ 4223      657400
+ 4224              	.LASF206:
+ 4225 18a1 59617753 		.ascii	"YawSensitivity\000"
+ 4225      656E7369 
+ 4225      74697669 
+ 4225      747900
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 96
+
+
+ 4226              	.LASF320:
+ 4227 18b0 4C334744 		.ascii	"L3GD20_FIFO_Enable\000"
+ 4227      32305F46 
+ 4227      49464F5F 
+ 4227      456E6162 
+ 4227      6C6500
+ 4228              	.LASF314:
+ 4229 18c3 4C334744 		.ascii	"L3GD20_Enabled\000"
+ 4229      32305F45 
+ 4229      6E61626C 
+ 4229      656400
+ 4230              	.LASF338:
+ 4231 18d2 536F6E61 		.ascii	"Sonar_FilterOption\000"
+ 4231      725F4669 
+ 4231      6C746572 
+ 4231      4F707469 
+ 4231      6F6E00
+ 4232              	.LASF330:
+ 4233 18e5 484D4335 		.ascii	"HMC5883_CRA\000"
+ 4233      3838335F 
+ 4233      43524100 
+ 4234              	.LASF337:
+ 4235 18f1 536F6E61 		.ascii	"Sonar_Type\000"
+ 4235      725F5479 
+ 4235      706500
+ 4236              	.LASF52:
+ 4237 18fc 53656E73 		.ascii	"SensorAppState_FinishingCalibration\000"
+ 4237      6F724170 
+ 4237      70537461 
+ 4237      74655F46 
+ 4237      696E6973 
+ 4238              	.LASF68:
+ 4239 1920 4750494F 		.ascii	"GPIOAppState_MotorConfig\000"
+ 4239      41707053 
+ 4239      74617465 
+ 4239      5F4D6F74 
+ 4239      6F72436F 
+ 4240              	.LASF38:
+ 4241 1939 53656E73 		.ascii	"SensorAppState_Stopping\000"
+ 4241      6F724170 
+ 4241      70537461 
+ 4241      74655F53 
+ 4241      746F7070 
+ 4242              	.LASF270:
+ 4243 1951 46696C74 		.ascii	"FilterOption_Moving_Average_90\000"
+ 4243      65724F70 
+ 4243      74696F6E 
+ 4243      5F4D6F76 
+ 4243      696E675F 
+ 4244              	.LASF110:
+ 4245 1970 466C6967 		.ascii	"FlightMode_e\000"
+ 4245      68744D6F 
+ 4245      64655F65 
+ 4245      00
+ 4246              	.LASF155:
+ 4247 197d 4553435F 		.ascii	"ESC_Port\000"
+ 4247      506F7274 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 97
+
+
+ 4247      00
+ 4248              	.LASF363:
+ 4249 1986 505F5374 		.ascii	"P_SteadyComponent\000"
+ 4249      65616479 
+ 4249      436F6D70 
+ 4249      6F6E656E 
+ 4249      7400
+ 4250              	.LASF111:
+ 4251 1998 4669726D 		.ascii	"FirmwareVersion\000"
+ 4251      77617265 
+ 4251      56657273 
+ 4251      696F6E00 
+ 4252              	.LASF39:
+ 4253 19a8 53656E73 		.ascii	"SensorAppState_Offline\000"
+ 4253      6F724170 
+ 4253      70537461 
+ 4253      74655F4F 
+ 4253      66666C69 
+ 4254              	.LASF122:
+ 4255 19bf 4553435F 		.ascii	"ESC_Front\000"
+ 4255      46726F6E 
+ 4255      7400
+ 4256              	.LASF352:
+ 4257 19c9 4C49504F 		.ascii	"LIPO_ADC_SampleRate\000"
+ 4257      5F414443 
+ 4257      5F53616D 
+ 4257      706C6552 
+ 4257      61746500 
+ 4258              	.LASF284:
+ 4259 19dd 49544733 		.ascii	"ITG3200_DLPF_FS\000"
+ 4259      3230305F 
+ 4259      444C5046 
+ 4259      5F465300 
+ 4260              	.LASF264:
+ 4261 19ed 46696C74 		.ascii	"FilterOption_Moving_Average_30\000"
+ 4261      65724F70 
+ 4261      74696F6E 
+ 4261      5F4D6F76 
+ 4261      696E675F 
+ 4262              	.LASF253:
+ 4263 1a0c 46696C74 		.ascii	"FilterOption_Median_5_Sample\000"
+ 4263      65724F70 
+ 4263      74696F6E 
+ 4263      5F4D6564 
+ 4263      69616E5F 
+ 4264              		.ident	"GCC: (Sourcery CodeBench Lite 2012.09-63) 4.7.2"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBzdi9D.s 			page 98
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 twb_config.c
+                            *COM*:00000001 WiFiIsConnected
+                            *COM*:00000004 CurrentGPSReading
+                            *COM*:00000004 HomeGPSReading
+                            *COM*:00000001 WiFiAux2
+                            *COM*:00000001 WiFiAux1
+                            *COM*:00000001 WiFiRoll
+                            *COM*:00000001 WiFiPitch
+                            *COM*:00000001 WiFiYaw
+                            *COM*:00000001 WiFiThrottle
+                            *COM*:00000004 PIDConstants
+                            *COM*:00000004 InternalState
+                            *COM*:00000004 AltitudeData
+                            *COM*:00000004 PitchPIDDetails
+                            *COM*:00000004 RollPIDDetails
+                            *COM*:00000004 PIDSensorData
+                            *COM*:00000004 Targets
+                            *COM*:00000004 SystemStatus
+                            *COM*:00000004 MotorStatus
+                            *COM*:00000004 SensorConfig
+                            *COM*:00000004 SensorData
+                            *COM*:00000004 PIDConstantsConfig
+                            *COM*:00000004 GPSData
+                            *COM*:00000004 BatteryCondition
+                            *COM*:00000004 _commonDiagBuffer
+                            *COM*:00000002 __errno
+
+NO UNDEFINED SYMBOLS

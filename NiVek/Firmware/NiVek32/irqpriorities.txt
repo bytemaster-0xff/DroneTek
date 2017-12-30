@@ -1,0 +1,27 @@
+To support a very fast response rate and the potential of eventually putting a NETMF front end on top
+of the app, almost everything in the app is IRQ driven in one way or another.
+
+This document will show the IRQ priorities as well as expected maximum times per handler.
+
+SysTick - 1ms calibrated IRQ
+
+Primary control loop kicked off by timer
+- Duration is 100uSeconds
+- TIM7 -> IRQ Priority 2
+
+- ADC Conversion Priority 8
+
+Periperal Based IRQ's
+- I2C Master
+- SPI Slave
+- USART - Telemetry (Min. 57.6K baud)
+- USART - GPS (9600 baud)
+
+EXTI Based IRQ Lines
+- IRQ For Data Ready on Sensors
+  - L3GD20
+  - LSM303
+  - BMP085
+  - MPU6050
+- IRQ For Sonar
+- IRQ For reading PWM inputs

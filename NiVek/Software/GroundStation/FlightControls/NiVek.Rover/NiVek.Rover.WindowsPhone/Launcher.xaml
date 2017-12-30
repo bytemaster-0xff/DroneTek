@@ -1,0 +1,59 @@
+﻿<Page xmlns:Controls="using:NiVek.Rover.Controls" 
+    x:Class="NiVek.Rover.Launcher"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NiVek.Rover"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="#0077FF" 
+    >
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <Grid.Resources>
+            <Style TargetType="Button">
+                <Setter Property="BorderBrush" Value="Transparent" />
+                <Setter Property="HorizontalAlignment" Value="Center" />
+                <Setter Property="Height" Value="76" />
+                <Setter Property="Width" Value="76" />
+            </Style>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="36" />
+            </Style>
+        </Grid.Resources>
+        <Grid Row="0" >
+            <StackPanel Orientation="Vertical">
+                <Button x:Name="ConnectButton"  Click="Connect_Click" VerticalAlignment="Top" >
+                    <Image Source="/Images/Connect.png" />
+                </Button>
+                <TextBlock Text="{Binding Drone.Channel.ConnectionState}" FontSize="14" />
+                <Rectangle Width="50" Height="50" Fill="{Binding Drone.Channel.ConnectionColor, Converter={StaticResource ColorConverter}}" Stroke="White" StrokeThickness="1" HorizontalAlignment="Left" />
+            </StackPanel>
+        </Grid>
+        <Grid x:Name="RoverSensors"  Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" >
+            <Controls:Rover />
+        </Grid>
+        <Pivot Grid.Row="2" Grid.ColumnSpan="2">
+            <PivotItem Header="drive">
+                <Controls:Drive />
+            </PivotItem>
+            <PivotItem Header="turret">
+                <Controls:Turret />
+            </PivotItem>
+            <PivotItem Header="range">
+                <Controls:Ranging x:Name="Ranging" />
+            </PivotItem>
+            <PivotItem Header="settings">
+                <Controls:Settings />
+            </PivotItem>
+        </Pivot>
+    </Grid>
+</Page>

@@ -1,0 +1,3777 @@
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 3	@ Tag_ABI_HardFP_use
+   4              		.eabi_attribute 28, 1	@ Tag_ABI_VFP_args
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1	@ Tag_ABI_FP_denormal
+   7              		.eabi_attribute 21, 1	@ Tag_ABI_FP_exceptions
+   8              		.eabi_attribute 23, 3	@ Tag_ABI_FP_number_model
+   9              		.eabi_attribute 24, 1	@ Tag_ABI_align8_needed
+  10              		.eabi_attribute 25, 1	@ Tag_ABI_align8_preserved
+  11              		.eabi_attribute 26, 1	@ Tag_ABI_enum_size
+  12              		.eabi_attribute 30, 4	@ Tag_ABI_optimization_goals
+  13              		.eabi_attribute 34, 1	@ Tag_CPU_unaligned_access
+  14              		.eabi_attribute 18, 4	@ Tag_ABI_PCS_wchar_t
+  15              		.file	"stm32f4xx_gpio.c"
+  16              	@ GNU C (Sourcery CodeBench Lite 2012.09-63) version 4.7.2 (arm-none-eabi)
+  17              	@	compiled by GNU C version 4.3.2, GMP version 5.0.5, MPFR version 3.1.1-p2, MPC version 1.0.1
+  18              	@ GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+  19              	@ options passed:  -I . -I \STMSPINCDDIR -I .\stm32f4periph\inc
+  20              	@ -I .\CMSIS\Include -I .\inc\commo\usb -I .\inc\commo -I .\inc\common
+  21              	@ -I .\inc -imultilib thumb2
+  22              	@ -iprefix k:\electronics\gcc\bin\../lib/gcc/arm-none-eabi/4.7.2/
+  23              	@ -isysroot k:\electronics\gcc\bin\../arm-none-eabi
+  24              	@ -MD .\stm32f4periph\src\stm32f4xx_gpio.d -MF .dep\stm32f4xx_gpio.o.d -MP
+  25              	@ -MQ .\stm32f4periph\src\stm32f4xx_gpio.o -D__USES_INITFINI__ -D STM32F0XX
+  26              	@ -D USE_STDPERIPH_DRIVER -D RUN_FROM_FLASH=1
+  27              	@ -D __CS_SOURCERYGXX_MAJ__=2012 -D __CS_SOURCERYGXX_MIN__=9
+  28              	@ -D __CS_SOURCERYGXX_REV__=63 .\stm32f4periph\src\stm32f4xx_gpio.c
+  29              	@ -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb
+  30              	@ -auxbase-strip .\stm32f4periph\src\stm32f4xx_gpio.o -gdwarf-2 -Os -Wall
+  31              	@ -Wstrict-prototypes -std=gnu99 -fomit-frame-pointer -fverbose-asm
+  32              	@ options enabled:  -fauto-inc-dec -fbranch-count-reg -fcaller-saves
+  33              	@ -fcombine-stack-adjustments -fcommon -fcompare-elim -fcprop-registers
+  34              	@ -fcrossjumping -fcse-follow-jumps -fdebug-types-section -fdefer-pop
+  35              	@ -fdelete-null-pointer-checks -fdevirtualize -fdwarf2-cfi-asm
+  36              	@ -fearly-inlining -feliminate-unused-debug-types -fexpensive-optimizations
+  37              	@ -fextension-elimination -fforward-propagate -ffunction-cse -fgcse
+  38              	@ -fgcse-lm -fgnu-runtime -fguess-branch-probability -fident
+  39              	@ -fif-conversion -fif-conversion2 -findirect-inlining -finline
+  40              	@ -finline-atomics -finline-functions -finline-functions-called-once
+  41              	@ -finline-small-functions -fipa-cp -fipa-profile -fipa-pure-const
+  42              	@ -fipa-reference -fipa-sra -fira-share-save-slots -fira-share-spill-slots
+  43              	@ -fivopts -fkeep-static-consts -fleading-underscore -fmath-errno
+  44              	@ -fmerge-constants -fmerge-debug-strings -fmove-loop-invariants
+  45              	@ -fomit-frame-pointer -foptimize-register-move -foptimize-sibling-calls
+  46              	@ -fpartial-inlining -fpeephole -fpeephole2 -fprefetch-loop-arrays
+  47              	@ -freg-struct-return -fregmove -freorder-blocks -freorder-functions
+  48              	@ -frerun-cse-after-loop -fsched-critical-path-heuristic
+  49              	@ -fsched-dep-count-heuristic -fsched-group-heuristic -fsched-interblock
+  50              	@ -fsched-last-insn-heuristic -fsched-rank-heuristic -fsched-spec
+  51              	@ -fsched-spec-insn-heuristic -fsched-stalled-insns-dep -fschedule-insns2
+  52              	@ -fsection-anchors -fshow-column -fshrink-wrap -fsigned-zeros
+  53              	@ -fsplit-ivs-in-unroller -fsplit-wide-types -fstrict-aliasing
+  54              	@ -fstrict-overflow -fstrict-volatile-bitfields -fthread-jumps
+  55              	@ -ftoplevel-reorder -ftrapping-math -ftree-bit-ccp -ftree-builtin-call-dce
+  56              	@ -ftree-ccp -ftree-ch -ftree-copy-prop -ftree-copyrename -ftree-cselim
+  57              	@ -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 2
+
+
+  58              	@ -ftree-if-to-switch-conversion -ftree-loop-if-convert -ftree-loop-im
+  59              	@ -ftree-loop-ivcanon -ftree-loop-optimize -ftree-parallelize-loops=
+  60              	@ -ftree-phiprop -ftree-pre -ftree-pta -ftree-reassoc -ftree-scev-cprop
+  61              	@ -ftree-sink -ftree-slp-vectorize -ftree-sra -ftree-switch-conversion
+  62              	@ -ftree-tail-merge -ftree-ter -ftree-vect-loop-version -ftree-vrp
+  63              	@ -funit-at-a-time -fvar-tracking -fvar-tracking-assignments -fverbose-asm
+  64              	@ -fzero-initialized-in-bss -mlittle-endian -msched-prolog -mthumb
+  65              	@ -munaligned-access -mvectorize-with-neon-quad
+  66              	
+  67              		.text
+  68              	.Ltext0:
+  69              		.cfi_sections	.debug_frame
+  70              		.align	1
+  71              		.global	GPIO_DeInit
+  72              		.thumb
+  73              		.thumb_func
+  74              		.type	GPIO_DeInit, %function
+  75              	GPIO_DeInit:
+  76              	.LFB110:
+  77              		.file 1 ".\\stm32f4periph\\src\\stm32f4xx_gpio.c"
+   1:.\stm32f4periph\src/stm32f4xx_gpio.c **** /**
+   2:.\stm32f4periph\src/stm32f4xx_gpio.c ****   ******************************************************************************
+   3:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @file    stm32f4xx_gpio.c
+   4:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @author  MCD Application Team
+   5:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @version V1.0.2
+   6:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @date    05-March-2012
+   7:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @brief   This file provides firmware functions to manage the following 
+   8:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *          functionalities of the GPIO peripheral:           
+   9:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *           - Initialization and Configuration
+  10:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *           - GPIO Read and Write
+  11:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *           - GPIO Alternate functions configuration
+  12:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * 
+  13:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *  @verbatim
+  14:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *
+  15:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *          ===================================================================
+  16:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *                                 How to use this driver
+  17:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *          ===================================================================       
+  18:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *           1. Enable the GPIO AHB clock using the following function
+  19:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *                RCC_AHB1PeriphClockCmd(RCC_AHB1Periph_GPIOx, ENABLE);
+  20:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *             
+  21:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *           2. Configure the GPIO pin(s) using GPIO_Init()
+  22:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *              Four possible configuration are available for each pin:
+  23:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *                - Input: Floating, Pull-up, Pull-down.
+  24:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *                - Output: Push-Pull (Pull-up, Pull-down or no Pull)
+  25:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *                          Open Drain (Pull-up, Pull-down or no Pull).
+  26:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *                  In output mode, the speed is configurable: 2 MHz, 25 MHz,
+  27:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *                  50 MHz or 100 MHz.
+  28:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *                - Alternate Function: Push-Pull (Pull-up, Pull-down or no Pull)
+  29:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *                                      Open Drain (Pull-up, Pull-down or no Pull).
+  30:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *                - Analog: required mode when a pin is to be used as ADC channel
+  31:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *                          or DAC output.
+  32:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * 
+  33:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *          3- Peripherals alternate function:
+  34:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *              - For ADC and DAC, configure the desired pin in analog mode using 
+  35:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *                  GPIO_InitStruct->GPIO_Mode = GPIO_Mode_AN;
+  36:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *              - For other peripherals (TIM, USART...):
+  37:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *                 - Connect the pin to the desired peripherals' Alternate 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 3
+
+
+  38:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *                   Function (AF) using GPIO_PinAFConfig() function
+  39:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *                 - Configure the desired pin in alternate function mode using
+  40:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *                   GPIO_InitStruct->GPIO_Mode = GPIO_Mode_AF
+  41:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *                 - Select the type, pull-up/pull-down and output speed via 
+  42:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *                   GPIO_PuPd, GPIO_OType and GPIO_Speed members
+  43:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *                 - Call GPIO_Init() function
+  44:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *        
+  45:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *          4. To get the level of a pin configured in input mode use GPIO_ReadInputDataBit()
+  46:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *          
+  47:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *          5. To set/reset the level of a pin configured in output mode use
+  48:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *             GPIO_SetBits()/GPIO_ResetBits()
+  49:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *               
+  50:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *          6. During and just after reset, the alternate functions are not 
+  51:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *             active and the GPIO pins are configured in input floating mode
+  52:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *             (except JTAG pins).
+  53:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *
+  54:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *          7. The LSE oscillator pins OSC32_IN and OSC32_OUT can be used as 
+  55:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *             general-purpose (PC14 and PC15, respectively) when the LSE
+  56:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *             oscillator is off. The LSE has priority over the GPIO function.
+  57:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *
+  58:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *          8. The HSE oscillator pins OSC_IN/OSC_OUT can be used as 
+  59:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *             general-purpose PH0 and PH1, respectively, when the HSE 
+  60:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *             oscillator is off. The HSE has priority over the GPIO function.
+  61:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *             
+  62:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *  @endverbatim        
+  63:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *
+  64:.\stm32f4periph\src/stm32f4xx_gpio.c ****   ******************************************************************************
+  65:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @attention
+  66:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *
+  67:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * <h2><center>&copy; COPYRIGHT 2012 STMicroelectronics</center></h2>
+  68:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *
+  69:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+  70:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * You may not use this file except in compliance with the License.
+  71:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * You may obtain a copy of the License at:
+  72:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *
+  73:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *        http://www.st.com/software_license_agreement_liberty_v2
+  74:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *
+  75:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * Unless required by applicable law or agreed to in writing, software 
+  76:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * distributed under the License is distributed on an "AS IS" BASIS, 
+  77:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  78:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * See the License for the specific language governing permissions and
+  79:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * limitations under the License.
+  80:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *
+  81:.\stm32f4periph\src/stm32f4xx_gpio.c ****   ******************************************************************************
+  82:.\stm32f4periph\src/stm32f4xx_gpio.c ****   */
+  83:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+  84:.\stm32f4periph\src/stm32f4xx_gpio.c **** /* Includes ------------------------------------------------------------------*/
+  85:.\stm32f4periph\src/stm32f4xx_gpio.c **** #include "stm32f4xx_gpio.h"
+  86:.\stm32f4periph\src/stm32f4xx_gpio.c **** #include "stm32f4xx_rcc.h"
+  87:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+  88:.\stm32f4periph\src/stm32f4xx_gpio.c **** #define assert_param(expr) ((void)0)
+  89:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+  90:.\stm32f4periph\src/stm32f4xx_gpio.c **** /** @addtogroup STM32F4xx_StdPeriph_Driver
+  91:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @{
+  92:.\stm32f4periph\src/stm32f4xx_gpio.c ****   */
+  93:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+  94:.\stm32f4periph\src/stm32f4xx_gpio.c **** /** @defgroup GPIO 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 4
+
+
+  95:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @brief GPIO driver modules
+  96:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @{
+  97:.\stm32f4periph\src/stm32f4xx_gpio.c ****   */ 
+  98:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+  99:.\stm32f4periph\src/stm32f4xx_gpio.c **** /* Private typedef -----------------------------------------------------------*/
+ 100:.\stm32f4periph\src/stm32f4xx_gpio.c **** /* Private define ------------------------------------------------------------*/
+ 101:.\stm32f4periph\src/stm32f4xx_gpio.c **** /* Private macro -------------------------------------------------------------*/
+ 102:.\stm32f4periph\src/stm32f4xx_gpio.c **** /* Private variables ---------------------------------------------------------*/
+ 103:.\stm32f4periph\src/stm32f4xx_gpio.c **** /* Private function prototypes -----------------------------------------------*/
+ 104:.\stm32f4periph\src/stm32f4xx_gpio.c **** /* Private functions ---------------------------------------------------------*/
+ 105:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 106:.\stm32f4periph\src/stm32f4xx_gpio.c **** /** @defgroup GPIO_Private_Functions
+ 107:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @{
+ 108:.\stm32f4periph\src/stm32f4xx_gpio.c ****   */ 
+ 109:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 110:.\stm32f4periph\src/stm32f4xx_gpio.c **** /** @defgroup GPIO_Group1 Initialization and Configuration
+ 111:.\stm32f4periph\src/stm32f4xx_gpio.c ****  *  @brief   Initialization and Configuration
+ 112:.\stm32f4periph\src/stm32f4xx_gpio.c ****  *
+ 113:.\stm32f4periph\src/stm32f4xx_gpio.c **** @verbatim   
+ 114:.\stm32f4periph\src/stm32f4xx_gpio.c ****  ===============================================================================
+ 115:.\stm32f4periph\src/stm32f4xx_gpio.c ****                         Initialization and Configuration
+ 116:.\stm32f4periph\src/stm32f4xx_gpio.c ****  ===============================================================================  
+ 117:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 118:.\stm32f4periph\src/stm32f4xx_gpio.c **** @endverbatim
+ 119:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @{
+ 120:.\stm32f4periph\src/stm32f4xx_gpio.c ****   */
+ 121:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 122:.\stm32f4periph\src/stm32f4xx_gpio.c **** /**
+ 123:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @brief  Deinitializes the GPIOx peripheral registers to their default reset values.
+ 124:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @note   By default, The GPIO pins are configured in input floating mode (except JTAG pins).
+ 125:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIOx: where x can be (A..I) to select the GPIO peripheral.
+ 126:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @retval None
+ 127:.\stm32f4periph\src/stm32f4xx_gpio.c ****   */
+ 128:.\stm32f4periph\src/stm32f4xx_gpio.c **** void GPIO_DeInit(GPIO_TypeDef* GPIOx)
+ 129:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+  78              		.loc 1 129 0
+  79              		.cfi_startproc
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82              	.LVL0:
+  83 0000 08B5     		push	{r3, lr}	@
+  84              	.LCFI0:
+  85              		.cfi_def_cfa_offset 8
+  86              		.cfi_offset 3, -8
+  87              		.cfi_offset 14, -4
+ 130:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 131:.\stm32f4periph\src/stm32f4xx_gpio.c ****   if (GPIOx == GPIOA)
+  88              		.loc 1 131 0
+  89 0002 2C4B     		ldr	r3, .L12	@ tmp135,
+  90 0004 9842     		cmp	r0, r3	@ GPIOx, tmp135
+  91 0006 05D1     		bne	.L2	@,
+ 132:.\stm32f4periph\src/stm32f4xx_gpio.c ****   {
+ 133:.\stm32f4periph\src/stm32f4xx_gpio.c ****     RCC_AHB1PeriphResetCmd(RCC_AHB1Periph_GPIOA, ENABLE);
+  92              		.loc 1 133 0
+  93 0008 0120     		movs	r0, #1	@,
+  94              	.LVL1:
+  95 000a 0146     		mov	r1, r0	@,
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 5
+
+
+  96 000c FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd	@
+  97              	.LVL2:
+ 134:.\stm32f4periph\src/stm32f4xx_gpio.c ****     RCC_AHB1PeriphResetCmd(RCC_AHB1Periph_GPIOA, DISABLE);
+  98              		.loc 1 134 0
+  99 0010 0120     		movs	r0, #1	@,
+ 100 0012 48E0     		b	.L11	@
+ 101              	.LVL3:
+ 102              	.L2:
+ 135:.\stm32f4periph\src/stm32f4xx_gpio.c ****   }
+ 136:.\stm32f4periph\src/stm32f4xx_gpio.c ****   else if (GPIOx == GPIOB)
+ 103              		.loc 1 136 0
+ 104 0014 284B     		ldr	r3, .L12+4	@ tmp136,
+ 105 0016 9842     		cmp	r0, r3	@ GPIOx, tmp136
+ 106 0018 05D1     		bne	.L3	@,
+ 137:.\stm32f4periph\src/stm32f4xx_gpio.c ****   {
+ 138:.\stm32f4periph\src/stm32f4xx_gpio.c ****     RCC_AHB1PeriphResetCmd(RCC_AHB1Periph_GPIOB, ENABLE);
+ 107              		.loc 1 138 0
+ 108 001a 0220     		movs	r0, #2	@,
+ 109              	.LVL4:
+ 110 001c 0121     		movs	r1, #1	@,
+ 111 001e FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd	@
+ 112              	.LVL5:
+ 139:.\stm32f4periph\src/stm32f4xx_gpio.c ****     RCC_AHB1PeriphResetCmd(RCC_AHB1Periph_GPIOB, DISABLE);
+ 113              		.loc 1 139 0
+ 114 0022 0220     		movs	r0, #2	@,
+ 115 0024 3FE0     		b	.L11	@
+ 116              	.LVL6:
+ 117              	.L3:
+ 140:.\stm32f4periph\src/stm32f4xx_gpio.c ****   }
+ 141:.\stm32f4periph\src/stm32f4xx_gpio.c ****   else if (GPIOx == GPIOC)
+ 118              		.loc 1 141 0
+ 119 0026 254B     		ldr	r3, .L12+8	@ tmp137,
+ 120 0028 9842     		cmp	r0, r3	@ GPIOx, tmp137
+ 121 002a 05D1     		bne	.L4	@,
+ 142:.\stm32f4periph\src/stm32f4xx_gpio.c ****   {
+ 143:.\stm32f4periph\src/stm32f4xx_gpio.c ****     RCC_AHB1PeriphResetCmd(RCC_AHB1Periph_GPIOC, ENABLE);
+ 122              		.loc 1 143 0
+ 123 002c 0420     		movs	r0, #4	@,
+ 124              	.LVL7:
+ 125 002e 0121     		movs	r1, #1	@,
+ 126 0030 FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd	@
+ 127              	.LVL8:
+ 144:.\stm32f4periph\src/stm32f4xx_gpio.c ****     RCC_AHB1PeriphResetCmd(RCC_AHB1Periph_GPIOC, DISABLE);
+ 128              		.loc 1 144 0
+ 129 0034 0420     		movs	r0, #4	@,
+ 130 0036 36E0     		b	.L11	@
+ 131              	.LVL9:
+ 132              	.L4:
+ 145:.\stm32f4periph\src/stm32f4xx_gpio.c ****   }
+ 146:.\stm32f4periph\src/stm32f4xx_gpio.c ****   else if (GPIOx == GPIOD)
+ 133              		.loc 1 146 0
+ 134 0038 214B     		ldr	r3, .L12+12	@ tmp138,
+ 135 003a 9842     		cmp	r0, r3	@ GPIOx, tmp138
+ 136 003c 05D1     		bne	.L5	@,
+ 147:.\stm32f4periph\src/stm32f4xx_gpio.c ****   {
+ 148:.\stm32f4periph\src/stm32f4xx_gpio.c ****     RCC_AHB1PeriphResetCmd(RCC_AHB1Periph_GPIOD, ENABLE);
+ 137              		.loc 1 148 0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 6
+
+
+ 138 003e 0820     		movs	r0, #8	@,
+ 139              	.LVL10:
+ 140 0040 0121     		movs	r1, #1	@,
+ 141 0042 FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd	@
+ 142              	.LVL11:
+ 149:.\stm32f4periph\src/stm32f4xx_gpio.c ****     RCC_AHB1PeriphResetCmd(RCC_AHB1Periph_GPIOD, DISABLE);
+ 143              		.loc 1 149 0
+ 144 0046 0820     		movs	r0, #8	@,
+ 145 0048 2DE0     		b	.L11	@
+ 146              	.LVL12:
+ 147              	.L5:
+ 150:.\stm32f4periph\src/stm32f4xx_gpio.c ****   }
+ 151:.\stm32f4periph\src/stm32f4xx_gpio.c ****   else if (GPIOx == GPIOE)
+ 148              		.loc 1 151 0
+ 149 004a 1E4B     		ldr	r3, .L12+16	@ tmp139,
+ 150 004c 9842     		cmp	r0, r3	@ GPIOx, tmp139
+ 151 004e 05D1     		bne	.L6	@,
+ 152:.\stm32f4periph\src/stm32f4xx_gpio.c ****   {
+ 153:.\stm32f4periph\src/stm32f4xx_gpio.c ****     RCC_AHB1PeriphResetCmd(RCC_AHB1Periph_GPIOE, ENABLE);
+ 152              		.loc 1 153 0
+ 153 0050 1020     		movs	r0, #16	@,
+ 154              	.LVL13:
+ 155 0052 0121     		movs	r1, #1	@,
+ 156 0054 FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd	@
+ 157              	.LVL14:
+ 154:.\stm32f4periph\src/stm32f4xx_gpio.c ****     RCC_AHB1PeriphResetCmd(RCC_AHB1Periph_GPIOE, DISABLE);
+ 158              		.loc 1 154 0
+ 159 0058 1020     		movs	r0, #16	@,
+ 160 005a 24E0     		b	.L11	@
+ 161              	.LVL15:
+ 162              	.L6:
+ 155:.\stm32f4periph\src/stm32f4xx_gpio.c ****   }
+ 156:.\stm32f4periph\src/stm32f4xx_gpio.c ****   else if (GPIOx == GPIOF)
+ 163              		.loc 1 156 0
+ 164 005c 1A4B     		ldr	r3, .L12+20	@ tmp140,
+ 165 005e 9842     		cmp	r0, r3	@ GPIOx, tmp140
+ 166 0060 05D1     		bne	.L7	@,
+ 157:.\stm32f4periph\src/stm32f4xx_gpio.c ****   {
+ 158:.\stm32f4periph\src/stm32f4xx_gpio.c ****     RCC_AHB1PeriphResetCmd(RCC_AHB1Periph_GPIOF, ENABLE);
+ 167              		.loc 1 158 0
+ 168 0062 2020     		movs	r0, #32	@,
+ 169              	.LVL16:
+ 170 0064 0121     		movs	r1, #1	@,
+ 171 0066 FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd	@
+ 172              	.LVL17:
+ 159:.\stm32f4periph\src/stm32f4xx_gpio.c ****     RCC_AHB1PeriphResetCmd(RCC_AHB1Periph_GPIOF, DISABLE);
+ 173              		.loc 1 159 0
+ 174 006a 2020     		movs	r0, #32	@,
+ 175 006c 1BE0     		b	.L11	@
+ 176              	.LVL18:
+ 177              	.L7:
+ 160:.\stm32f4periph\src/stm32f4xx_gpio.c ****   }
+ 161:.\stm32f4periph\src/stm32f4xx_gpio.c ****   else if (GPIOx == GPIOG)
+ 178              		.loc 1 161 0
+ 179 006e 174B     		ldr	r3, .L12+24	@ tmp141,
+ 180 0070 9842     		cmp	r0, r3	@ GPIOx, tmp141
+ 181 0072 05D1     		bne	.L8	@,
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 7
+
+
+ 162:.\stm32f4periph\src/stm32f4xx_gpio.c ****   {
+ 163:.\stm32f4periph\src/stm32f4xx_gpio.c ****     RCC_AHB1PeriphResetCmd(RCC_AHB1Periph_GPIOG, ENABLE);
+ 182              		.loc 1 163 0
+ 183 0074 4020     		movs	r0, #64	@,
+ 184              	.LVL19:
+ 185 0076 0121     		movs	r1, #1	@,
+ 186 0078 FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd	@
+ 187              	.LVL20:
+ 164:.\stm32f4periph\src/stm32f4xx_gpio.c ****     RCC_AHB1PeriphResetCmd(RCC_AHB1Periph_GPIOG, DISABLE);
+ 188              		.loc 1 164 0
+ 189 007c 4020     		movs	r0, #64	@,
+ 190 007e 12E0     		b	.L11	@
+ 191              	.LVL21:
+ 192              	.L8:
+ 165:.\stm32f4periph\src/stm32f4xx_gpio.c ****   }
+ 166:.\stm32f4periph\src/stm32f4xx_gpio.c ****   else if (GPIOx == GPIOH)
+ 193              		.loc 1 166 0
+ 194 0080 134B     		ldr	r3, .L12+28	@ tmp142,
+ 195 0082 9842     		cmp	r0, r3	@ GPIOx, tmp142
+ 196 0084 05D1     		bne	.L9	@,
+ 167:.\stm32f4periph\src/stm32f4xx_gpio.c ****   {
+ 168:.\stm32f4periph\src/stm32f4xx_gpio.c ****     RCC_AHB1PeriphResetCmd(RCC_AHB1Periph_GPIOH, ENABLE);
+ 197              		.loc 1 168 0
+ 198 0086 8020     		movs	r0, #128	@,
+ 199              	.LVL22:
+ 200 0088 0121     		movs	r1, #1	@,
+ 201 008a FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd	@
+ 202              	.LVL23:
+ 169:.\stm32f4periph\src/stm32f4xx_gpio.c ****     RCC_AHB1PeriphResetCmd(RCC_AHB1Periph_GPIOH, DISABLE);
+ 203              		.loc 1 169 0
+ 204 008e 8020     		movs	r0, #128	@,
+ 205 0090 09E0     		b	.L11	@
+ 206              	.LVL24:
+ 207              	.L9:
+ 170:.\stm32f4periph\src/stm32f4xx_gpio.c ****   }
+ 171:.\stm32f4periph\src/stm32f4xx_gpio.c ****   else
+ 172:.\stm32f4periph\src/stm32f4xx_gpio.c ****   {
+ 173:.\stm32f4periph\src/stm32f4xx_gpio.c ****     if (GPIOx == GPIOI)
+ 208              		.loc 1 173 0
+ 209 0092 104B     		ldr	r3, .L12+32	@ tmp143,
+ 210 0094 9842     		cmp	r0, r3	@ GPIOx, tmp143
+ 211 0096 0BD1     		bne	.L1	@,
+ 174:.\stm32f4periph\src/stm32f4xx_gpio.c ****     {
+ 175:.\stm32f4periph\src/stm32f4xx_gpio.c ****       RCC_AHB1PeriphResetCmd(RCC_AHB1Periph_GPIOI, ENABLE);
+ 212              		.loc 1 175 0
+ 213 0098 4FF48070 		mov	r0, #256	@,
+ 214              	.LVL25:
+ 215 009c 0121     		movs	r1, #1	@,
+ 216 009e FFF7FEFF 		bl	RCC_AHB1PeriphResetCmd	@
+ 217              	.LVL26:
+ 176:.\stm32f4periph\src/stm32f4xx_gpio.c ****       RCC_AHB1PeriphResetCmd(RCC_AHB1Periph_GPIOI, DISABLE);
+ 218              		.loc 1 176 0
+ 219 00a2 4FF48070 		mov	r0, #256	@,
+ 220              	.L11:
+ 221 00a6 0021     		movs	r1, #0	@,
+ 177:.\stm32f4periph\src/stm32f4xx_gpio.c ****     }
+ 178:.\stm32f4periph\src/stm32f4xx_gpio.c ****   }
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 8
+
+
+ 179:.\stm32f4periph\src/stm32f4xx_gpio.c **** }
+ 222              		.loc 1 179 0
+ 223 00a8 BDE80840 		pop	{r3, lr}	@
+ 176:.\stm32f4periph\src/stm32f4xx_gpio.c ****       RCC_AHB1PeriphResetCmd(RCC_AHB1Periph_GPIOI, DISABLE);
+ 224              		.loc 1 176 0
+ 225 00ac FFF7FEBF 		b	RCC_AHB1PeriphResetCmd	@
+ 226              	.LVL27:
+ 227              	.L1:
+ 228 00b0 08BD     		pop	{r3, pc}	@
+ 229              	.L13:
+ 230 00b2 00BF     		.align	2
+ 231              	.L12:
+ 232 00b4 00000240 		.word	1073872896
+ 233 00b8 00040240 		.word	1073873920
+ 234 00bc 00080240 		.word	1073874944
+ 235 00c0 000C0240 		.word	1073875968
+ 236 00c4 00100240 		.word	1073876992
+ 237 00c8 00140240 		.word	1073878016
+ 238 00cc 00180240 		.word	1073879040
+ 239 00d0 001C0240 		.word	1073880064
+ 240 00d4 00200240 		.word	1073881088
+ 241              		.cfi_endproc
+ 242              	.LFE110:
+ 243              		.size	GPIO_DeInit, .-GPIO_DeInit
+ 244              		.align	1
+ 245              		.global	GPIO_Init
+ 246              		.thumb
+ 247              		.thumb_func
+ 248              		.type	GPIO_Init, %function
+ 249              	GPIO_Init:
+ 250              	.LFB111:
+ 180:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 181:.\stm32f4periph\src/stm32f4xx_gpio.c **** /**
+ 182:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @brief  Initializes the GPIOx peripheral according to the specified parameters in the GPIO_Init
+ 183:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIOx: where x can be (A..I) to select the GPIO peripheral.
+ 184:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIO_InitStruct: pointer to a GPIO_InitTypeDef structure that contains
+ 185:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *         the configuration information for the specified GPIO peripheral.
+ 186:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @retval None
+ 187:.\stm32f4periph\src/stm32f4xx_gpio.c ****   */
+ 188:.\stm32f4periph\src/stm32f4xx_gpio.c **** void GPIO_Init(GPIO_TypeDef* GPIOx, GPIO_InitTypeDef* GPIO_InitStruct)
+ 189:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 251              		.loc 1 189 0
+ 252              		.cfi_startproc
+ 253              		@ args = 0, pretend = 0, frame = 0
+ 254              		@ frame_needed = 0, uses_anonymous_args = 0
+ 255              	.LVL28:
+ 256 00d8 2DE9F047 		push	{r4, r5, r6, r7, r8, r9, sl, lr}	@
+ 257              	.LCFI1:
+ 258              		.cfi_def_cfa_offset 32
+ 259              		.cfi_offset 4, -32
+ 260              		.cfi_offset 5, -28
+ 261              		.cfi_offset 6, -24
+ 262              		.cfi_offset 7, -20
+ 263              		.cfi_offset 8, -16
+ 264              		.cfi_offset 9, -12
+ 265              		.cfi_offset 10, -8
+ 266              		.cfi_offset 14, -4
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 9
+
+
+ 190:.\stm32f4periph\src/stm32f4xx_gpio.c ****   uint32_t pinpos = 0x00, pos = 0x00 , currentpin = 0x00;
+ 191:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 192:.\stm32f4periph\src/stm32f4xx_gpio.c ****   /* -------------------------Configure the port pins---------------- */
+ 193:.\stm32f4periph\src/stm32f4xx_gpio.c ****   /*-- GPIO Mode Configuration --*/
+ 194:.\stm32f4periph\src/stm32f4xx_gpio.c ****   for (pinpos = 0x00; pinpos < 0x10; pinpos++)
+ 195:.\stm32f4periph\src/stm32f4xx_gpio.c ****   {
+ 196:.\stm32f4periph\src/stm32f4xx_gpio.c ****     pos = ((uint32_t)0x01) << pinpos;
+ 197:.\stm32f4periph\src/stm32f4xx_gpio.c ****     /* Get the port pins position */
+ 198:.\stm32f4periph\src/stm32f4xx_gpio.c ****     currentpin = (GPIO_InitStruct->GPIO_Pin) & pos;
+ 267              		.loc 1 198 0
+ 268 00dc 0F68     		ldr	r7, [r1, #0]	@ D.7414, GPIO_InitStruct_8(D)->GPIO_Pin
+ 194:.\stm32f4periph\src/stm32f4xx_gpio.c ****   for (pinpos = 0x00; pinpos < 0x10; pinpos++)
+ 269              		.loc 1 194 0
+ 270 00de 0023     		movs	r3, #0	@ pinpos,
+ 196:.\stm32f4periph\src/stm32f4xx_gpio.c ****     pos = ((uint32_t)0x01) << pinpos;
+ 271              		.loc 1 196 0
+ 272 00e0 4FF0010C 		mov	ip, #1	@ tmp199,
+ 199:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 200:.\stm32f4periph\src/stm32f4xx_gpio.c ****     if (currentpin == pos)
+ 201:.\stm32f4periph\src/stm32f4xx_gpio.c ****     {
+ 202:.\stm32f4periph\src/stm32f4xx_gpio.c ****       GPIOx->MODER  &= ~(GPIO_MODER_MODER0 << (pinpos * 2));
+ 273              		.loc 1 202 0
+ 274 00e4 4FF00308 		mov	r8, #3	@ tmp200,
+ 275              	.LVL29:
+ 276              	.L17:
+ 196:.\stm32f4periph\src/stm32f4xx_gpio.c ****     pos = ((uint32_t)0x01) << pinpos;
+ 277              		.loc 1 196 0
+ 278 00e8 0CFA03F2 		lsl	r2, ip, r3	@ pos, tmp199, pinpos
+ 279              	.LVL30:
+ 198:.\stm32f4periph\src/stm32f4xx_gpio.c ****     currentpin = (GPIO_InitStruct->GPIO_Pin) & pos;
+ 280              		.loc 1 198 0
+ 281 00ec 02EA0705 		and	r5, r2, r7	@ currentpin, pos, D.7414
+ 282              	.LVL31:
+ 200:.\stm32f4periph\src/stm32f4xx_gpio.c ****     if (currentpin == pos)
+ 283              		.loc 1 200 0
+ 284 00f0 9542     		cmp	r5, r2	@ currentpin, pos
+ 285 00f2 31D1     		bne	.L15	@,
+ 188:.\stm32f4periph\src/stm32f4xx_gpio.c **** void GPIO_Init(GPIO_TypeDef* GPIOx, GPIO_InitTypeDef* GPIO_InitStruct)
+ 286              		.loc 1 188 0
+ 287 00f4 5A00     		lsls	r2, r3, #1	@ D.7538, pinpos,
+ 288              	.LVL32:
+ 289              		.loc 1 202 0
+ 290 00f6 0668     		ldr	r6, [r0, #0]	@ D.7417, GPIOx_11(D)->MODER
+ 291 00f8 08FA02F4 		lsl	r4, r8, r2	@ tmp185, tmp200, D.7538
+ 292 00fc E443     		mvns	r4, r4	@ D.7421, tmp185
+ 293 00fe 2640     		ands	r6, r6, r4	@, D.7422, D.7417, D.7421
+ 294 0100 0660     		str	r6, [r0, #0]	@ D.7422, GPIOx_11(D)->MODER
+ 203:.\stm32f4periph\src/stm32f4xx_gpio.c ****       GPIOx->MODER |= (((uint32_t)GPIO_InitStruct->GPIO_Mode) << (pinpos * 2));
+ 295              		.loc 1 203 0
+ 296 0102 0E79     		ldrb	r6, [r1, #4]	@ zero_extendqisi2	@ D.7424, GPIO_InitStruct_8(D)->GPIO_Mode
+ 297 0104 D0F80090 		ldr	r9, [r0, #0]	@ D.7423, GPIOx_11(D)->MODER
+ 298 0108 06FA02FA 		lsl	sl, r6, r2	@ tmp187, D.7424, D.7538
+ 204:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 205:.\stm32f4periph\src/stm32f4xx_gpio.c ****       if ((GPIO_InitStruct->GPIO_Mode == GPIO_Mode_OUT) || (GPIO_InitStruct->GPIO_Mode == GPIO_Mode
+ 299              		.loc 1 205 0
+ 300 010c 013E     		subs	r6, r6, #1	@ tmp189, D.7424,
+ 203:.\stm32f4periph\src/stm32f4xx_gpio.c ****       GPIOx->MODER |= (((uint32_t)GPIO_InitStruct->GPIO_Mode) << (pinpos * 2));
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 10
+
+
+ 301              		.loc 1 203 0
+ 302 010e 4AEA0909 		orr	r9, sl, r9	@ D.7427, tmp187, D.7423
+ 303              		.loc 1 205 0
+ 304 0112 012E     		cmp	r6, #1	@ tmp189,
+ 203:.\stm32f4periph\src/stm32f4xx_gpio.c ****       GPIOx->MODER |= (((uint32_t)GPIO_InitStruct->GPIO_Mode) << (pinpos * 2));
+ 305              		.loc 1 203 0
+ 306 0114 C0F80090 		str	r9, [r0, #0]	@ D.7427, GPIOx_11(D)->MODER
+ 307              		.loc 1 205 0
+ 308 0118 15D8     		bhi	.L16	@,
+ 206:.\stm32f4periph\src/stm32f4xx_gpio.c ****       {
+ 207:.\stm32f4periph\src/stm32f4xx_gpio.c ****         /* Speed mode configuration */
+ 208:.\stm32f4periph\src/stm32f4xx_gpio.c ****         GPIOx->OSPEEDR &= ~(GPIO_OSPEEDER_OSPEEDR0 << (pinpos * 2));
+ 309              		.loc 1 208 0
+ 310 011a 8668     		ldr	r6, [r0, #8]	@ D.7431, GPIOx_11(D)->OSPEEDR
+ 209:.\stm32f4periph\src/stm32f4xx_gpio.c ****         GPIOx->OSPEEDR |= ((uint32_t)(GPIO_InitStruct->GPIO_Speed) << (pinpos * 2));
+ 311              		.loc 1 209 0
+ 312 011c 91F80590 		ldrb	r9, [r1, #5]	@ zero_extendqisi2	@ GPIO_InitStruct_8(D)->GPIO_Speed, GPIO_InitStruct_8(D)->GPI
+ 208:.\stm32f4periph\src/stm32f4xx_gpio.c ****         GPIOx->OSPEEDR &= ~(GPIO_OSPEEDER_OSPEEDR0 << (pinpos * 2));
+ 313              		.loc 1 208 0
+ 314 0120 2640     		ands	r6, r6, r4	@, D.7432, D.7431, D.7421
+ 315 0122 8660     		str	r6, [r0, #8]	@ D.7432, GPIOx_11(D)->OSPEEDR
+ 316              		.loc 1 209 0
+ 317 0124 8668     		ldr	r6, [r0, #8]	@ D.7433, GPIOx_11(D)->OSPEEDR
+ 318 0126 09FA02F9 		lsl	r9, r9, r2	@ tmp191, GPIO_InitStruct_8(D)->GPIO_Speed, D.7538
+ 319 012a 49EA0606 		orr	r6, r9, r6	@ D.7437, tmp191, D.7433
+ 320 012e 8660     		str	r6, [r0, #8]	@ D.7437, GPIOx_11(D)->OSPEEDR
+ 210:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 211:.\stm32f4periph\src/stm32f4xx_gpio.c ****         /* Output mode configuration*/
+ 212:.\stm32f4periph\src/stm32f4xx_gpio.c ****         GPIOx->OTYPER  &= ~((GPIO_OTYPER_OT_0) << ((uint16_t)pinpos)) ;
+ 321              		.loc 1 212 0
+ 322 0130 4668     		ldr	r6, [r0, #4]	@ D.7438, GPIOx_11(D)->OTYPER
+ 323 0132 26EA0505 		bic	r5, r6, r5	@ D.7443, D.7438, currentpin
+ 324              	.LVL33:
+ 325 0136 4560     		str	r5, [r0, #4]	@ D.7443, GPIOx_11(D)->OTYPER
+ 213:.\stm32f4periph\src/stm32f4xx_gpio.c ****         GPIOx->OTYPER |= (uint16_t)(((uint16_t)GPIO_InitStruct->GPIO_OType) << ((uint16_t)pinpos));
+ 326              		.loc 1 213 0
+ 327 0138 8D79     		ldrb	r5, [r1, #6]	@ zero_extendqisi2	@ GPIO_InitStruct_8(D)->GPIO_OType, GPIO_InitStruct_8(D)->GPI
+ 328 013a 4668     		ldr	r6, [r0, #4]	@ D.7444, GPIOx_11(D)->OTYPER
+ 329 013c 05FA03F5 		lsl	r5, r5, r3	@ tmp194, GPIO_InitStruct_8(D)->GPIO_OType, pinpos
+ 214:.\stm32f4periph\src/stm32f4xx_gpio.c ****       }
+ 215:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 216:.\stm32f4periph\src/stm32f4xx_gpio.c ****       /* Pull-up Pull down resistor configuration*/
+ 217:.\stm32f4periph\src/stm32f4xx_gpio.c ****       GPIOx->PUPDR &= ~(GPIO_PUPDR_PUPDR0 << ((uint16_t)pinpos * 2));
+ 218:.\stm32f4periph\src/stm32f4xx_gpio.c ****       GPIOx->PUPDR |= (((uint32_t)GPIO_InitStruct->GPIO_PuPd) << (pinpos * 2));
+ 219:.\stm32f4periph\src/stm32f4xx_gpio.c ****     }
+ 220:.\stm32f4periph\src/stm32f4xx_gpio.c ****   }
+ 221:.\stm32f4periph\src/stm32f4xx_gpio.c **** }
+ 222:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 223:.\stm32f4periph\src/stm32f4xx_gpio.c **** /**
+ 224:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @brief  Fills each GPIO_InitStruct member with its default value.
+ 225:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIO_InitStruct : pointer to a GPIO_InitTypeDef structure which will be initialized.
+ 226:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @retval None
+ 227:.\stm32f4periph\src/stm32f4xx_gpio.c ****   */
+ 228:.\stm32f4periph\src/stm32f4xx_gpio.c **** void GPIO_StructInit(GPIO_InitTypeDef* GPIO_InitStruct)
+ 229:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 230:.\stm32f4periph\src/stm32f4xx_gpio.c ****   /* Reset GPIO init structure parameters values */
+ 231:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIO_InitStruct->GPIO_Pin  = GPIO_Pin_All;
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 11
+
+
+ 232:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIO_InitStruct->GPIO_Mode = GPIO_Mode_IN;
+ 233:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIO_InitStruct->GPIO_Speed = GPIO_Speed_2MHz;
+ 234:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIO_InitStruct->GPIO_OType = GPIO_OType_PP;
+ 235:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIO_InitStruct->GPIO_PuPd = GPIO_PuPd_NOPULL;
+ 236:.\stm32f4periph\src/stm32f4xx_gpio.c **** }
+ 237:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 238:.\stm32f4periph\src/stm32f4xx_gpio.c **** /**
+ 239:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @brief  Locks GPIO Pins configuration registers.
+ 240:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @note   The locked registers are GPIOx_MODER, GPIOx_OTYPER, GPIOx_OSPEEDR,
+ 241:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *         GPIOx_PUPDR, GPIOx_AFRL and GPIOx_AFRH.
+ 242:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @note   The configuration of the locked GPIO pins can no longer be modified
+ 243:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *         until the next reset.
+ 244:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIOx: where x can be (A..I) to select the GPIO peripheral.
+ 245:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIO_Pin: specifies the port bit to be locked.
+ 246:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *          This parameter can be any combination of GPIO_Pin_x where x can be (0..15).
+ 247:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @retval None
+ 248:.\stm32f4periph\src/stm32f4xx_gpio.c ****   */
+ 249:.\stm32f4periph\src/stm32f4xx_gpio.c **** void GPIO_PinLockConfig(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+ 250:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 251:.\stm32f4periph\src/stm32f4xx_gpio.c ****   __IO uint32_t tmp = 0x00010000;
+ 252:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 253:.\stm32f4periph\src/stm32f4xx_gpio.c ****   /* Check the parameters */
+ 254:.\stm32f4periph\src/stm32f4xx_gpio.c ****   assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+ 255:.\stm32f4periph\src/stm32f4xx_gpio.c ****   assert_param(IS_GPIO_PIN(GPIO_Pin));
+ 256:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 257:.\stm32f4periph\src/stm32f4xx_gpio.c ****   tmp |= GPIO_Pin;
+ 258:.\stm32f4periph\src/stm32f4xx_gpio.c ****   /* Set LCKK bit */
+ 259:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIOx->LCKR = tmp;
+ 260:.\stm32f4periph\src/stm32f4xx_gpio.c ****   /* Reset LCKK bit */
+ 261:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIOx->LCKR =  GPIO_Pin;
+ 262:.\stm32f4periph\src/stm32f4xx_gpio.c ****   /* Set LCKK bit */
+ 263:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIOx->LCKR = tmp;
+ 264:.\stm32f4periph\src/stm32f4xx_gpio.c ****   /* Read LCKK bit*/
+ 265:.\stm32f4periph\src/stm32f4xx_gpio.c ****   tmp = GPIOx->LCKR;
+ 266:.\stm32f4periph\src/stm32f4xx_gpio.c ****   /* Read LCKK bit*/
+ 267:.\stm32f4periph\src/stm32f4xx_gpio.c ****   tmp = GPIOx->LCKR;
+ 268:.\stm32f4periph\src/stm32f4xx_gpio.c **** }
+ 269:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 270:.\stm32f4periph\src/stm32f4xx_gpio.c **** /**
+ 271:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @}
+ 272:.\stm32f4periph\src/stm32f4xx_gpio.c ****   */
+ 273:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 274:.\stm32f4periph\src/stm32f4xx_gpio.c **** /** @defgroup GPIO_Group2 GPIO Read and Write
+ 275:.\stm32f4periph\src/stm32f4xx_gpio.c ****  *  @brief   GPIO Read and Write
+ 276:.\stm32f4periph\src/stm32f4xx_gpio.c ****  *
+ 277:.\stm32f4periph\src/stm32f4xx_gpio.c **** @verbatim   
+ 278:.\stm32f4periph\src/stm32f4xx_gpio.c ****  ===============================================================================
+ 279:.\stm32f4periph\src/stm32f4xx_gpio.c ****                               GPIO Read and Write
+ 280:.\stm32f4periph\src/stm32f4xx_gpio.c ****  ===============================================================================  
+ 281:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 282:.\stm32f4periph\src/stm32f4xx_gpio.c **** @endverbatim
+ 283:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @{
+ 284:.\stm32f4periph\src/stm32f4xx_gpio.c ****   */
+ 285:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 286:.\stm32f4periph\src/stm32f4xx_gpio.c **** /**
+ 287:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @brief  Reads the specified input port pin.
+ 288:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIOx: where x can be (A..I) to select the GPIO peripheral.
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 12
+
+
+ 289:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIO_Pin: specifies the port bit to read.
+ 290:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *         This parameter can be GPIO_Pin_x where x can be (0..15).
+ 291:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @retval The input port pin value.
+ 292:.\stm32f4periph\src/stm32f4xx_gpio.c ****   */
+ 293:.\stm32f4periph\src/stm32f4xx_gpio.c **** uint8_t GPIO_ReadInputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+ 294:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 295:.\stm32f4periph\src/stm32f4xx_gpio.c ****   uint8_t bitstatus = 0x00;
+ 296:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 297:.\stm32f4periph\src/stm32f4xx_gpio.c ****   if ((GPIOx->IDR & GPIO_Pin) != (uint32_t)Bit_RESET)
+ 298:.\stm32f4periph\src/stm32f4xx_gpio.c ****   {
+ 299:.\stm32f4periph\src/stm32f4xx_gpio.c ****     bitstatus = (uint8_t)Bit_SET;
+ 300:.\stm32f4periph\src/stm32f4xx_gpio.c ****   }
+ 301:.\stm32f4periph\src/stm32f4xx_gpio.c ****   else
+ 302:.\stm32f4periph\src/stm32f4xx_gpio.c ****   {
+ 303:.\stm32f4periph\src/stm32f4xx_gpio.c ****     bitstatus = (uint8_t)Bit_RESET;
+ 304:.\stm32f4periph\src/stm32f4xx_gpio.c ****   }
+ 305:.\stm32f4periph\src/stm32f4xx_gpio.c ****   return bitstatus;
+ 306:.\stm32f4periph\src/stm32f4xx_gpio.c **** }
+ 307:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 308:.\stm32f4periph\src/stm32f4xx_gpio.c **** /**
+ 309:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @brief  Reads the specified GPIO input data port.
+ 310:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIOx: where x can be (A..I) to select the GPIO peripheral.
+ 311:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @retval GPIO input data port value.
+ 312:.\stm32f4periph\src/stm32f4xx_gpio.c ****   */
+ 313:.\stm32f4periph\src/stm32f4xx_gpio.c **** uint16_t GPIO_ReadInputData(GPIO_TypeDef* GPIOx)
+ 314:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 315:.\stm32f4periph\src/stm32f4xx_gpio.c ****   return ((uint16_t)GPIOx->IDR);
+ 316:.\stm32f4periph\src/stm32f4xx_gpio.c **** }
+ 317:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 318:.\stm32f4periph\src/stm32f4xx_gpio.c **** /**
+ 319:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @brief  Reads the specified output data port bit.
+ 320:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIOx: where x can be (A..I) to select the GPIO peripheral.
+ 321:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIO_Pin: specifies the port bit to read.
+ 322:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *          This parameter can be GPIO_Pin_x where x can be (0..15).
+ 323:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @retval The output port pin value.
+ 324:.\stm32f4periph\src/stm32f4xx_gpio.c ****   */
+ 325:.\stm32f4periph\src/stm32f4xx_gpio.c **** uint8_t GPIO_ReadOutputDataBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+ 326:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 327:.\stm32f4periph\src/stm32f4xx_gpio.c ****   uint8_t bitstatus = 0x00;
+ 328:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 329:.\stm32f4periph\src/stm32f4xx_gpio.c ****   if ((GPIOx->ODR & GPIO_Pin) != (uint32_t)Bit_RESET)
+ 330:.\stm32f4periph\src/stm32f4xx_gpio.c ****   {
+ 331:.\stm32f4periph\src/stm32f4xx_gpio.c ****     bitstatus = (uint8_t)Bit_SET;
+ 332:.\stm32f4periph\src/stm32f4xx_gpio.c ****   }
+ 333:.\stm32f4periph\src/stm32f4xx_gpio.c ****   else
+ 334:.\stm32f4periph\src/stm32f4xx_gpio.c ****   {
+ 335:.\stm32f4periph\src/stm32f4xx_gpio.c ****     bitstatus = (uint8_t)Bit_RESET;
+ 336:.\stm32f4periph\src/stm32f4xx_gpio.c ****   }
+ 337:.\stm32f4periph\src/stm32f4xx_gpio.c ****   return bitstatus;
+ 338:.\stm32f4periph\src/stm32f4xx_gpio.c **** }
+ 339:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 340:.\stm32f4periph\src/stm32f4xx_gpio.c **** /**
+ 341:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @brief  Reads the specified GPIO output data port.
+ 342:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIOx: where x can be (A..I) to select the GPIO peripheral.
+ 343:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @retval GPIO output data port value.
+ 344:.\stm32f4periph\src/stm32f4xx_gpio.c ****   */
+ 345:.\stm32f4periph\src/stm32f4xx_gpio.c **** uint16_t GPIO_ReadOutputData(GPIO_TypeDef* GPIOx)
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 13
+
+
+ 346:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 347:.\stm32f4periph\src/stm32f4xx_gpio.c ****   /* Check the parameters */
+ 348:.\stm32f4periph\src/stm32f4xx_gpio.c ****   assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+ 349:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 350:.\stm32f4periph\src/stm32f4xx_gpio.c ****   return ((uint16_t)GPIOx->ODR);
+ 351:.\stm32f4periph\src/stm32f4xx_gpio.c **** }
+ 352:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 353:.\stm32f4periph\src/stm32f4xx_gpio.c **** /**
+ 354:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @brief  Sets the selected data port bits.
+ 355:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @note   This functions uses GPIOx_BSRR register to allow atomic read/modify 
+ 356:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *         accesses. In this way, there is no risk of an IRQ occurring between
+ 357:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *         the read and the modify access.
+ 358:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIOx: where x can be (A..I) to select the GPIO peripheral.
+ 359:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIO_Pin: specifies the port bits to be written.
+ 360:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *          This parameter can be any combination of GPIO_Pin_x where x can be (0..15).
+ 361:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @retval None
+ 362:.\stm32f4periph\src/stm32f4xx_gpio.c ****   */
+ 363:.\stm32f4periph\src/stm32f4xx_gpio.c **** void GPIO_SetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+ 364:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 365:.\stm32f4periph\src/stm32f4xx_gpio.c ****   /* Check the parameters */
+ 366:.\stm32f4periph\src/stm32f4xx_gpio.c ****   assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+ 367:.\stm32f4periph\src/stm32f4xx_gpio.c ****   assert_param(IS_GPIO_PIN(GPIO_Pin));
+ 368:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 369:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIOx->BSRRL = GPIO_Pin;
+ 370:.\stm32f4periph\src/stm32f4xx_gpio.c **** }
+ 371:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 372:.\stm32f4periph\src/stm32f4xx_gpio.c **** /**
+ 373:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @brief  Clears the selected data port bits.
+ 374:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @note   This functions uses GPIOx_BSRR register to allow atomic read/modify 
+ 375:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *         accesses. In this way, there is no risk of an IRQ occurring between
+ 376:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *         the read and the modify access.
+ 377:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIOx: where x can be (A..I) to select the GPIO peripheral.
+ 378:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIO_Pin: specifies the port bits to be written.
+ 379:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *          This parameter can be any combination of GPIO_Pin_x where x can be (0..15).
+ 380:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @retval None
+ 381:.\stm32f4periph\src/stm32f4xx_gpio.c ****   */
+ 382:.\stm32f4periph\src/stm32f4xx_gpio.c **** void GPIO_ResetBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+ 383:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 384:.\stm32f4periph\src/stm32f4xx_gpio.c ****   /* Check the parameters */
+ 385:.\stm32f4periph\src/stm32f4xx_gpio.c ****   assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+ 386:.\stm32f4periph\src/stm32f4xx_gpio.c ****   assert_param(IS_GPIO_PIN(GPIO_Pin));
+ 387:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 388:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIOx->BSRRH = GPIO_Pin;
+ 389:.\stm32f4periph\src/stm32f4xx_gpio.c **** }
+ 390:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 391:.\stm32f4periph\src/stm32f4xx_gpio.c **** /**
+ 392:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @brief  Sets or clears the selected data port bit.
+ 393:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIOx: where x can be (A..I) to select the GPIO peripheral.
+ 394:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIO_Pin: specifies the port bit to be written.
+ 395:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *          This parameter can be one of GPIO_Pin_x where x can be (0..15).
+ 396:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  BitVal: specifies the value to be written to the selected bit.
+ 397:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *          This parameter can be one of the BitAction enum values:
+ 398:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg Bit_RESET: to clear the port pin
+ 399:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg Bit_SET: to set the port pin
+ 400:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @retval None
+ 401:.\stm32f4periph\src/stm32f4xx_gpio.c ****   */
+ 402:.\stm32f4periph\src/stm32f4xx_gpio.c **** void GPIO_WriteBit(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin, BitAction BitVal)
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 14
+
+
+ 403:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 404:.\stm32f4periph\src/stm32f4xx_gpio.c ****   if (BitVal != Bit_RESET)
+ 405:.\stm32f4periph\src/stm32f4xx_gpio.c ****   {
+ 406:.\stm32f4periph\src/stm32f4xx_gpio.c ****     GPIOx->BSRRL = GPIO_Pin;
+ 407:.\stm32f4periph\src/stm32f4xx_gpio.c ****   }
+ 408:.\stm32f4periph\src/stm32f4xx_gpio.c ****   else
+ 409:.\stm32f4periph\src/stm32f4xx_gpio.c ****   {
+ 410:.\stm32f4periph\src/stm32f4xx_gpio.c ****     GPIOx->BSRRH = GPIO_Pin ;
+ 411:.\stm32f4periph\src/stm32f4xx_gpio.c ****   }
+ 412:.\stm32f4periph\src/stm32f4xx_gpio.c **** }
+ 413:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 414:.\stm32f4periph\src/stm32f4xx_gpio.c **** /**
+ 415:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @brief  Writes data to the specified GPIO data port.
+ 416:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIOx: where x can be (A..I) to select the GPIO peripheral.
+ 417:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  PortVal: specifies the value to be written to the port output data register.
+ 418:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @retval None
+ 419:.\stm32f4periph\src/stm32f4xx_gpio.c ****   */
+ 420:.\stm32f4periph\src/stm32f4xx_gpio.c **** void GPIO_Write(GPIO_TypeDef* GPIOx, uint16_t PortVal)
+ 421:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 422:.\stm32f4periph\src/stm32f4xx_gpio.c ****   /* Check the parameters */
+ 423:.\stm32f4periph\src/stm32f4xx_gpio.c ****   assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+ 424:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 425:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIOx->ODR = PortVal;
+ 426:.\stm32f4periph\src/stm32f4xx_gpio.c **** }
+ 427:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 428:.\stm32f4periph\src/stm32f4xx_gpio.c **** /**
+ 429:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @brief  Toggles the specified GPIO pins..
+ 430:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIOx: where x can be (A..I) to select the GPIO peripheral.
+ 431:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIO_Pin: Specifies the pins to be toggled.
+ 432:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @retval None
+ 433:.\stm32f4periph\src/stm32f4xx_gpio.c ****   */
+ 434:.\stm32f4periph\src/stm32f4xx_gpio.c **** void GPIO_ToggleBits(GPIO_TypeDef* GPIOx, uint16_t GPIO_Pin)
+ 435:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 436:.\stm32f4periph\src/stm32f4xx_gpio.c ****   /* Check the parameters */
+ 437:.\stm32f4periph\src/stm32f4xx_gpio.c ****   assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+ 438:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 439:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIOx->ODR ^= GPIO_Pin;
+ 440:.\stm32f4periph\src/stm32f4xx_gpio.c **** }
+ 441:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 442:.\stm32f4periph\src/stm32f4xx_gpio.c **** /**
+ 443:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @}
+ 444:.\stm32f4periph\src/stm32f4xx_gpio.c ****   */
+ 445:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 446:.\stm32f4periph\src/stm32f4xx_gpio.c **** /** @defgroup GPIO_Group3 GPIO Alternate functions configuration function
+ 447:.\stm32f4periph\src/stm32f4xx_gpio.c ****  *  @brief   GPIO Alternate functions configuration function
+ 448:.\stm32f4periph\src/stm32f4xx_gpio.c ****  *
+ 449:.\stm32f4periph\src/stm32f4xx_gpio.c **** @verbatim   
+ 450:.\stm32f4periph\src/stm32f4xx_gpio.c ****  ===============================================================================
+ 451:.\stm32f4periph\src/stm32f4xx_gpio.c ****                GPIO Alternate functions configuration function
+ 452:.\stm32f4periph\src/stm32f4xx_gpio.c ****  ===============================================================================  
+ 453:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 454:.\stm32f4periph\src/stm32f4xx_gpio.c **** @endverbatim
+ 455:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @{
+ 456:.\stm32f4periph\src/stm32f4xx_gpio.c ****   */
+ 457:.\stm32f4periph\src/stm32f4xx_gpio.c **** 
+ 458:.\stm32f4periph\src/stm32f4xx_gpio.c **** /**
+ 459:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @brief  Changes the mapping of the specified pin.
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 15
+
+
+ 460:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIOx: where x can be (A..I) to select the GPIO peripheral.
+ 461:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIO_PinSource: specifies the pin for the Alternate function.
+ 462:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *         This parameter can be GPIO_PinSourcex where x can be (0..15).
+ 463:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @param  GPIO_AFSelection: selects the pin to used as Alternate function.
+ 464:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *          This parameter can be one of the following values:
+ 465:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_RTC_50Hz: Connect RTC_50Hz pin to AF0 (default after reset) 
+ 466:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_MCO: Connect MCO pin (MCO1 and MCO2) to AF0 (default after reset) 
+ 467:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_TAMPER: Connect TAMPER pins (TAMPER_1 and TAMPER_2) to AF0 (default aft
+ 468:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_SWJ: Connect SWJ pins (SWD and JTAG)to AF0 (default after reset) 
+ 469:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_TRACE: Connect TRACE pins to AF0 (default after reset)
+ 470:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_TIM1: Connect TIM1 pins to AF1
+ 471:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_TIM2: Connect TIM2 pins to AF1
+ 472:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_TIM3: Connect TIM3 pins to AF2
+ 473:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_TIM4: Connect TIM4 pins to AF2
+ 474:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_TIM5: Connect TIM5 pins to AF2
+ 475:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_TIM8: Connect TIM8 pins to AF3
+ 476:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_TIM9: Connect TIM9 pins to AF3
+ 477:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_TIM10: Connect TIM10 pins to AF3
+ 478:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_TIM11: Connect TIM11 pins to AF3
+ 479:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_I2C1: Connect I2C1 pins to AF4
+ 480:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_I2C2: Connect I2C2 pins to AF4
+ 481:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_I2C3: Connect I2C3 pins to AF4
+ 482:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_SPI1: Connect SPI1 pins to AF5
+ 483:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_SPI2: Connect SPI2/I2S2 pins to AF5
+ 484:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_SPI3: Connect SPI3/I2S3 pins to AF6
+ 485:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_I2S3ext: Connect I2S3ext pins to AF7
+ 486:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_USART1: Connect USART1 pins to AF7
+ 487:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_USART2: Connect USART2 pins to AF7
+ 488:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_USART3: Connect USART3 pins to AF7
+ 489:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_UART4: Connect UART4 pins to AF8
+ 490:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_UART5: Connect UART5 pins to AF8
+ 491:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_USART6: Connect USART6 pins to AF8
+ 492:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_CAN1: Connect CAN1 pins to AF9
+ 493:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_CAN2: Connect CAN2 pins to AF9
+ 494:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_TIM12: Connect TIM12 pins to AF9
+ 495:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_TIM13: Connect TIM13 pins to AF9
+ 496:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_TIM14: Connect TIM14 pins to AF9
+ 497:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_OTG_FS: Connect OTG_FS pins to AF10
+ 498:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_OTG_HS: Connect OTG_HS pins to AF10
+ 499:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_ETH: Connect ETHERNET pins to AF11
+ 500:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_FSMC: Connect FSMC pins to AF12
+ 501:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_OTG_HS_FS: Connect OTG HS (configured in FS) pins to AF12
+ 502:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_SDIO: Connect SDIO pins to AF12
+ 503:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_DCMI: Connect DCMI pins to AF13
+ 504:.\stm32f4periph\src/stm32f4xx_gpio.c ****   *            @arg GPIO_AF_EVENTOUT: Connect EVENTOUT pins to AF15
+ 505:.\stm32f4periph\src/stm32f4xx_gpio.c ****   * @retval None
+ 506:.\stm32f4periph\src/stm32f4xx_gpio.c ****   */
+ 507:.\stm32f4periph\src/stm32f4xx_gpio.c **** void GPIO_PinAFConfig(GPIO_TypeDef* GPIOx, uint16_t GPIO_PinSource, uint8_t GPIO_AF)
+ 508:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 509:.\stm32f4periph\src/stm32f4xx_gpio.c ****   uint32_t temp = 0x00;
+ 510:.\stm32f4periph\src/stm32f4xx_gpio.c ****   uint32_t temp_2 = 0x00;
+ 511:.\stm32f4periph\src/stm32f4xx_gpio.c ****   
+ 512:.\stm32f4periph\src/stm32f4xx_gpio.c ****   /* Check the parameters */
+ 513:.\stm32f4periph\src/stm32f4xx_gpio.c ****   assert_param(IS_GPIO_ALL_PERIPH(GPIOx));
+ 514:.\stm32f4periph\src/stm32f4xx_gpio.c ****   assert_param(IS_GPIO_PIN_SOURCE(GPIO_PinSource));
+ 515:.\stm32f4periph\src/stm32f4xx_gpio.c ****   assert_param(IS_GPIO_AF(GPIO_AF));
+ 516:.\stm32f4periph\src/stm32f4xx_gpio.c ****   
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 16
+
+
+ 517:.\stm32f4periph\src/stm32f4xx_gpio.c ****   temp = ((uint32_t)(GPIO_AF) << ((uint32_t)((uint32_t)GPIO_PinSource & (uint32_t)0x07) * 4)) ;
+ 518:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIOx->AFR[GPIO_PinSource >> 0x03] &= ~((uint32_t)0xF << ((uint32_t)((uint32_t)GPIO_PinSource & (
+ 519:.\stm32f4periph\src/stm32f4xx_gpio.c ****   temp_2 = GPIOx->AFR[GPIO_PinSource >> 0x03] | temp;
+ 520:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIOx->AFR[GPIO_PinSource >> 0x03] = temp_2;
+ 521:.\stm32f4periph\src/stm32f4xx_gpio.c **** }
+ 330              		.loc 1 521 0
+ 331 0140 ADB2     		uxth	r5, r5	@ tmp195, tmp194
+ 213:.\stm32f4periph\src/stm32f4xx_gpio.c ****         GPIOx->OTYPER |= (uint16_t)(((uint16_t)GPIO_InitStruct->GPIO_OType) << ((uint16_t)pinpos));
+ 332              		.loc 1 213 0
+ 333 0142 3543     		orrs	r5, r5, r6	@, D.7450, tmp195, D.7444
+ 334 0144 4560     		str	r5, [r0, #4]	@ D.7450, GPIOx_11(D)->OTYPER
+ 335              	.L16:
+ 217:.\stm32f4periph\src/stm32f4xx_gpio.c ****       GPIOx->PUPDR &= ~(GPIO_PUPDR_PUPDR0 << ((uint16_t)pinpos * 2));
+ 336              		.loc 1 217 0
+ 337 0146 C568     		ldr	r5, [r0, #12]	@ D.7451, GPIOx_11(D)->PUPDR
+ 338 0148 2C40     		ands	r4, r4, r5	@, D.7455, D.7421, D.7451
+ 339 014a C460     		str	r4, [r0, #12]	@ D.7455, GPIOx_11(D)->PUPDR
+ 218:.\stm32f4periph\src/stm32f4xx_gpio.c ****       GPIOx->PUPDR |= (((uint32_t)GPIO_InitStruct->GPIO_PuPd) << (pinpos * 2));
+ 340              		.loc 1 218 0
+ 341 014c CD79     		ldrb	r5, [r1, #7]	@ zero_extendqisi2	@ GPIO_InitStruct_8(D)->GPIO_PuPd, GPIO_InitStruct_8(D)->GPIO
+ 342 014e C468     		ldr	r4, [r0, #12]	@ D.7456, GPIOx_11(D)->PUPDR
+ 343 0150 05FA02F2 		lsl	r2, r5, r2	@ tmp198, GPIO_InitStruct_8(D)->GPIO_PuPd, D.7538
+ 344 0154 2243     		orrs	r2, r2, r4	@, D.7460, tmp198, D.7456
+ 345 0156 C260     		str	r2, [r0, #12]	@ D.7460, GPIOx_11(D)->PUPDR
+ 346              	.L15:
+ 194:.\stm32f4periph\src/stm32f4xx_gpio.c ****   for (pinpos = 0x00; pinpos < 0x10; pinpos++)
+ 347              		.loc 1 194 0
+ 348 0158 0133     		adds	r3, r3, #1	@ pinpos, pinpos,
+ 349              	.LVL34:
+ 350 015a 102B     		cmp	r3, #16	@ pinpos,
+ 351 015c C4D1     		bne	.L17	@,
+ 221:.\stm32f4periph\src/stm32f4xx_gpio.c **** }
+ 352              		.loc 1 221 0
+ 353 015e BDE8F087 		pop	{r4, r5, r6, r7, r8, r9, sl, pc}	@
+ 354              		.cfi_endproc
+ 355              	.LFE111:
+ 356              		.size	GPIO_Init, .-GPIO_Init
+ 357              		.align	1
+ 358              		.global	GPIO_StructInit
+ 359              		.thumb
+ 360              		.thumb_func
+ 361              		.type	GPIO_StructInit, %function
+ 362              	GPIO_StructInit:
+ 363              	.LFB112:
+ 229:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 364              		.loc 1 229 0
+ 365              		.cfi_startproc
+ 366              		@ args = 0, pretend = 0, frame = 0
+ 367              		@ frame_needed = 0, uses_anonymous_args = 0
+ 368              		@ link register save eliminated.
+ 369              	.LVL35:
+ 231:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIO_InitStruct->GPIO_Pin  = GPIO_Pin_All;
+ 370              		.loc 1 231 0
+ 371 0162 4FF6FF73 		movw	r3, #65535	@ tmp135,
+ 372 0166 0360     		str	r3, [r0, #0]	@ tmp135, GPIO_InitStruct_1(D)->GPIO_Pin
+ 232:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIO_InitStruct->GPIO_Mode = GPIO_Mode_IN;
+ 373              		.loc 1 232 0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 17
+
+
+ 374 0168 0023     		movs	r3, #0	@ tmp136,
+ 375 016a 0371     		strb	r3, [r0, #4]	@ tmp136, GPIO_InitStruct_1(D)->GPIO_Mode
+ 233:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIO_InitStruct->GPIO_Speed = GPIO_Speed_2MHz;
+ 376              		.loc 1 233 0
+ 377 016c 4371     		strb	r3, [r0, #5]	@ tmp136, GPIO_InitStruct_1(D)->GPIO_Speed
+ 234:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIO_InitStruct->GPIO_OType = GPIO_OType_PP;
+ 378              		.loc 1 234 0
+ 379 016e 8371     		strb	r3, [r0, #6]	@ tmp136, GPIO_InitStruct_1(D)->GPIO_OType
+ 235:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIO_InitStruct->GPIO_PuPd = GPIO_PuPd_NOPULL;
+ 380              		.loc 1 235 0
+ 381 0170 C371     		strb	r3, [r0, #7]	@ tmp136, GPIO_InitStruct_1(D)->GPIO_PuPd
+ 382 0172 7047     		bx	lr	@
+ 383              		.cfi_endproc
+ 384              	.LFE112:
+ 385              		.size	GPIO_StructInit, .-GPIO_StructInit
+ 386              		.align	1
+ 387              		.global	GPIO_PinLockConfig
+ 388              		.thumb
+ 389              		.thumb_func
+ 390              		.type	GPIO_PinLockConfig, %function
+ 391              	GPIO_PinLockConfig:
+ 392              	.LFB113:
+ 250:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 393              		.loc 1 250 0
+ 394              		.cfi_startproc
+ 395              		@ args = 0, pretend = 0, frame = 8
+ 396              		@ frame_needed = 0, uses_anonymous_args = 0
+ 397              		@ link register save eliminated.
+ 398              	.LVL36:
+ 399 0174 82B0     		sub	sp, sp, #8	@,,
+ 400              	.LCFI2:
+ 401              		.cfi_def_cfa_offset 8
+ 251:.\stm32f4periph\src/stm32f4xx_gpio.c ****   __IO uint32_t tmp = 0x00010000;
+ 402              		.loc 1 251 0
+ 403 0176 4FF48033 		mov	r3, #65536	@ tmp143,
+ 404 017a 0193     		str	r3, [sp, #4]	@ tmp143, tmp
+ 405              	.LVL37:
+ 257:.\stm32f4periph\src/stm32f4xx_gpio.c ****   tmp |= GPIO_Pin;
+ 406              		.loc 1 257 0
+ 407 017c 019B     		ldr	r3, [sp, #4]	@ tmp.0, tmp
+ 408 017e 0B43     		orrs	r3, r3, r1	@, tmp.1, tmp.0, GPIO_Pin
+ 409              	.LVL38:
+ 410 0180 0193     		str	r3, [sp, #4]	@ tmp.1, tmp
+ 411              	.LVL39:
+ 259:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIOx->LCKR = tmp;
+ 412              		.loc 1 259 0
+ 413 0182 019B     		ldr	r3, [sp, #4]	@ tmp.2, tmp
+ 414              	.LVL40:
+ 415 0184 C361     		str	r3, [r0, #28]	@ tmp.2, GPIOx_6(D)->LCKR
+ 261:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIOx->LCKR =  GPIO_Pin;
+ 416              		.loc 1 261 0
+ 417 0186 C161     		str	r1, [r0, #28]	@ GPIO_Pin, GPIOx_6(D)->LCKR
+ 263:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIOx->LCKR = tmp;
+ 418              		.loc 1 263 0
+ 419 0188 019B     		ldr	r3, [sp, #4]	@ tmp.3, tmp
+ 420 018a C361     		str	r3, [r0, #28]	@ tmp.3, GPIOx_6(D)->LCKR
+ 265:.\stm32f4periph\src/stm32f4xx_gpio.c ****   tmp = GPIOx->LCKR;
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 18
+
+
+ 421              		.loc 1 265 0
+ 422 018c C369     		ldr	r3, [r0, #28]	@ tmp.4, GPIOx_6(D)->LCKR
+ 423              	.LVL41:
+ 424 018e 0193     		str	r3, [sp, #4]	@ tmp.4, tmp
+ 267:.\stm32f4periph\src/stm32f4xx_gpio.c ****   tmp = GPIOx->LCKR;
+ 425              		.loc 1 267 0
+ 426 0190 C369     		ldr	r3, [r0, #28]	@ tmp.5, GPIOx_6(D)->LCKR
+ 427 0192 0193     		str	r3, [sp, #4]	@ tmp.5, tmp
+ 268:.\stm32f4periph\src/stm32f4xx_gpio.c **** }
+ 428              		.loc 1 268 0
+ 429 0194 02B0     		add	sp, sp, #8	@,,
+ 430 0196 7047     		bx	lr
+ 431              		.cfi_endproc
+ 432              	.LFE113:
+ 433              		.size	GPIO_PinLockConfig, .-GPIO_PinLockConfig
+ 434              		.align	1
+ 435              		.global	GPIO_ReadInputDataBit
+ 436              		.thumb
+ 437              		.thumb_func
+ 438              		.type	GPIO_ReadInputDataBit, %function
+ 439              	GPIO_ReadInputDataBit:
+ 440              	.LFB114:
+ 294:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 441              		.loc 1 294 0
+ 442              		.cfi_startproc
+ 443              		@ args = 0, pretend = 0, frame = 0
+ 444              		@ frame_needed = 0, uses_anonymous_args = 0
+ 445              		@ link register save eliminated.
+ 446              	.LVL42:
+ 297:.\stm32f4periph\src/stm32f4xx_gpio.c ****   if ((GPIOx->IDR & GPIO_Pin) != (uint32_t)Bit_RESET)
+ 447              		.loc 1 297 0
+ 448 0198 0369     		ldr	r3, [r0, #16]	@ D.7397, GPIOx_3(D)->IDR
+ 449              	.LVL43:
+ 450 019a 1942     		tst	r1, r3	@ GPIO_Pin, D.7397
+ 306:.\stm32f4periph\src/stm32f4xx_gpio.c **** }
+ 451              		.loc 1 306 0
+ 452 019c 0CBF     		ite	eq	@
+ 453 019e 0020     		moveq	r0, #0	@,
+ 454 01a0 0120     		movne	r0, #1	@,
+ 455              	.LVL44:
+ 456 01a2 7047     		bx	lr	@
+ 457              		.cfi_endproc
+ 458              	.LFE114:
+ 459              		.size	GPIO_ReadInputDataBit, .-GPIO_ReadInputDataBit
+ 460              		.align	1
+ 461              		.global	GPIO_ReadInputData
+ 462              		.thumb
+ 463              		.thumb_func
+ 464              		.type	GPIO_ReadInputData, %function
+ 465              	GPIO_ReadInputData:
+ 466              	.LFB115:
+ 314:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 467              		.loc 1 314 0
+ 468              		.cfi_startproc
+ 469              		@ args = 0, pretend = 0, frame = 0
+ 470              		@ frame_needed = 0, uses_anonymous_args = 0
+ 471              		@ link register save eliminated.
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 19
+
+
+ 472              	.LVL45:
+ 315:.\stm32f4periph\src/stm32f4xx_gpio.c ****   return ((uint16_t)GPIOx->IDR);
+ 473              		.loc 1 315 0
+ 474 01a4 0069     		ldr	r0, [r0, #16]	@ D.7395, GPIOx_1(D)->IDR
+ 475              	.LVL46:
+ 316:.\stm32f4periph\src/stm32f4xx_gpio.c **** }
+ 476              		.loc 1 316 0
+ 477 01a6 80B2     		uxth	r0, r0	@, D.7395
+ 478 01a8 7047     		bx	lr	@
+ 479              		.cfi_endproc
+ 480              	.LFE115:
+ 481              		.size	GPIO_ReadInputData, .-GPIO_ReadInputData
+ 482              		.align	1
+ 483              		.global	GPIO_ReadOutputDataBit
+ 484              		.thumb
+ 485              		.thumb_func
+ 486              		.type	GPIO_ReadOutputDataBit, %function
+ 487              	GPIO_ReadOutputDataBit:
+ 488              	.LFB116:
+ 326:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 489              		.loc 1 326 0
+ 490              		.cfi_startproc
+ 491              		@ args = 0, pretend = 0, frame = 0
+ 492              		@ frame_needed = 0, uses_anonymous_args = 0
+ 493              		@ link register save eliminated.
+ 494              	.LVL47:
+ 329:.\stm32f4periph\src/stm32f4xx_gpio.c ****   if ((GPIOx->ODR & GPIO_Pin) != (uint32_t)Bit_RESET)
+ 495              		.loc 1 329 0
+ 496 01aa 4369     		ldr	r3, [r0, #20]	@ D.7386, GPIOx_3(D)->ODR
+ 497              	.LVL48:
+ 498 01ac 1942     		tst	r1, r3	@ GPIO_Pin, D.7386
+ 338:.\stm32f4periph\src/stm32f4xx_gpio.c **** }
+ 499              		.loc 1 338 0
+ 500 01ae 0CBF     		ite	eq	@
+ 501 01b0 0020     		moveq	r0, #0	@,
+ 502 01b2 0120     		movne	r0, #1	@,
+ 503              	.LVL49:
+ 504 01b4 7047     		bx	lr	@
+ 505              		.cfi_endproc
+ 506              	.LFE116:
+ 507              		.size	GPIO_ReadOutputDataBit, .-GPIO_ReadOutputDataBit
+ 508              		.align	1
+ 509              		.global	GPIO_ReadOutputData
+ 510              		.thumb
+ 511              		.thumb_func
+ 512              		.type	GPIO_ReadOutputData, %function
+ 513              	GPIO_ReadOutputData:
+ 514              	.LFB117:
+ 346:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 515              		.loc 1 346 0
+ 516              		.cfi_startproc
+ 517              		@ args = 0, pretend = 0, frame = 0
+ 518              		@ frame_needed = 0, uses_anonymous_args = 0
+ 519              		@ link register save eliminated.
+ 520              	.LVL50:
+ 350:.\stm32f4periph\src/stm32f4xx_gpio.c ****   return ((uint16_t)GPIOx->ODR);
+ 521              		.loc 1 350 0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 20
+
+
+ 522 01b6 4069     		ldr	r0, [r0, #20]	@ D.7384, GPIOx_1(D)->ODR
+ 523              	.LVL51:
+ 351:.\stm32f4periph\src/stm32f4xx_gpio.c **** }
+ 524              		.loc 1 351 0
+ 525 01b8 80B2     		uxth	r0, r0	@, D.7384
+ 526 01ba 7047     		bx	lr	@
+ 527              		.cfi_endproc
+ 528              	.LFE117:
+ 529              		.size	GPIO_ReadOutputData, .-GPIO_ReadOutputData
+ 530              		.align	1
+ 531              		.global	GPIO_SetBits
+ 532              		.thumb
+ 533              		.thumb_func
+ 534              		.type	GPIO_SetBits, %function
+ 535              	GPIO_SetBits:
+ 536              	.LFB118:
+ 364:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 537              		.loc 1 364 0
+ 538              		.cfi_startproc
+ 539              		@ args = 0, pretend = 0, frame = 0
+ 540              		@ frame_needed = 0, uses_anonymous_args = 0
+ 541              		@ link register save eliminated.
+ 542              	.LVL52:
+ 369:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIOx->BSRRL = GPIO_Pin;
+ 543              		.loc 1 369 0
+ 544 01bc 0183     		strh	r1, [r0, #24]	@ movhi	@ GPIO_Pin, GPIOx_1(D)->BSRRL
+ 545 01be 7047     		bx	lr	@
+ 546              		.cfi_endproc
+ 547              	.LFE118:
+ 548              		.size	GPIO_SetBits, .-GPIO_SetBits
+ 549              		.align	1
+ 550              		.global	GPIO_ResetBits
+ 551              		.thumb
+ 552              		.thumb_func
+ 553              		.type	GPIO_ResetBits, %function
+ 554              	GPIO_ResetBits:
+ 555              	.LFB119:
+ 383:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 556              		.loc 1 383 0
+ 557              		.cfi_startproc
+ 558              		@ args = 0, pretend = 0, frame = 0
+ 559              		@ frame_needed = 0, uses_anonymous_args = 0
+ 560              		@ link register save eliminated.
+ 561              	.LVL53:
+ 388:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIOx->BSRRH = GPIO_Pin;
+ 562              		.loc 1 388 0
+ 563 01c0 4183     		strh	r1, [r0, #26]	@ movhi	@ GPIO_Pin, GPIOx_1(D)->BSRRH
+ 564 01c2 7047     		bx	lr	@
+ 565              		.cfi_endproc
+ 566              	.LFE119:
+ 567              		.size	GPIO_ResetBits, .-GPIO_ResetBits
+ 568              		.align	1
+ 569              		.global	GPIO_WriteBit
+ 570              		.thumb
+ 571              		.thumb_func
+ 572              		.type	GPIO_WriteBit, %function
+ 573              	GPIO_WriteBit:
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 21
+
+
+ 574              	.LFB120:
+ 403:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 575              		.loc 1 403 0
+ 576              		.cfi_startproc
+ 577              		@ args = 0, pretend = 0, frame = 0
+ 578              		@ frame_needed = 0, uses_anonymous_args = 0
+ 579              		@ link register save eliminated.
+ 580              	.LVL54:
+ 404:.\stm32f4periph\src/stm32f4xx_gpio.c ****   if (BitVal != Bit_RESET)
+ 581              		.loc 1 404 0
+ 582 01c4 0AB1     		cbz	r2, .L28	@ BitVal,
+ 406:.\stm32f4periph\src/stm32f4xx_gpio.c ****     GPIOx->BSRRL = GPIO_Pin;
+ 583              		.loc 1 406 0
+ 584 01c6 0183     		strh	r1, [r0, #24]	@ movhi	@ GPIO_Pin, GPIOx_2(D)->BSRRL
+ 585 01c8 7047     		bx	lr	@
+ 586              	.L28:
+ 410:.\stm32f4periph\src/stm32f4xx_gpio.c ****     GPIOx->BSRRH = GPIO_Pin ;
+ 587              		.loc 1 410 0
+ 588 01ca 4183     		strh	r1, [r0, #26]	@ movhi	@ GPIO_Pin, GPIOx_2(D)->BSRRH
+ 589 01cc 7047     		bx	lr	@
+ 590              		.cfi_endproc
+ 591              	.LFE120:
+ 592              		.size	GPIO_WriteBit, .-GPIO_WriteBit
+ 593              		.align	1
+ 594              		.global	GPIO_Write
+ 595              		.thumb
+ 596              		.thumb_func
+ 597              		.type	GPIO_Write, %function
+ 598              	GPIO_Write:
+ 599              	.LFB121:
+ 421:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 600              		.loc 1 421 0
+ 601              		.cfi_startproc
+ 602              		@ args = 0, pretend = 0, frame = 0
+ 603              		@ frame_needed = 0, uses_anonymous_args = 0
+ 604              		@ link register save eliminated.
+ 605              	.LVL55:
+ 425:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIOx->ODR = PortVal;
+ 606              		.loc 1 425 0
+ 607 01ce 4161     		str	r1, [r0, #20]	@ PortVal, GPIOx_3(D)->ODR
+ 608 01d0 7047     		bx	lr	@
+ 609              		.cfi_endproc
+ 610              	.LFE121:
+ 611              		.size	GPIO_Write, .-GPIO_Write
+ 612              		.align	1
+ 613              		.global	GPIO_ToggleBits
+ 614              		.thumb
+ 615              		.thumb_func
+ 616              		.type	GPIO_ToggleBits, %function
+ 617              	GPIO_ToggleBits:
+ 618              	.LFB122:
+ 435:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 619              		.loc 1 435 0
+ 620              		.cfi_startproc
+ 621              		@ args = 0, pretend = 0, frame = 0
+ 622              		@ frame_needed = 0, uses_anonymous_args = 0
+ 623              		@ link register save eliminated.
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 22
+
+
+ 624              	.LVL56:
+ 439:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIOx->ODR ^= GPIO_Pin;
+ 625              		.loc 1 439 0
+ 626 01d2 4369     		ldr	r3, [r0, #20]	@ D.7376, GPIOx_1(D)->ODR
+ 627 01d4 5940     		eors	r1, r1, r3	@, D.7378, GPIO_Pin, D.7376
+ 628              	.LVL57:
+ 629 01d6 4161     		str	r1, [r0, #20]	@ D.7378, GPIOx_1(D)->ODR
+ 630 01d8 7047     		bx	lr	@
+ 631              		.cfi_endproc
+ 632              	.LFE122:
+ 633              		.size	GPIO_ToggleBits, .-GPIO_ToggleBits
+ 634              		.align	1
+ 635              		.global	GPIO_PinAFConfig
+ 636              		.thumb
+ 637              		.thumb_func
+ 638              		.type	GPIO_PinAFConfig, %function
+ 639              	GPIO_PinAFConfig:
+ 640              	.LFB123:
+ 508:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 641              		.loc 1 508 0
+ 642              		.cfi_startproc
+ 643              		@ args = 0, pretend = 0, frame = 0
+ 644              		@ frame_needed = 0, uses_anonymous_args = 0
+ 645              	.LVL58:
+ 517:.\stm32f4periph\src/stm32f4xx_gpio.c ****   temp = ((uint32_t)(GPIO_AF) << ((uint32_t)((uint32_t)GPIO_PinSource & (uint32_t)0x07) * 4)) ;
+ 646              		.loc 1 517 0
+ 647 01da 01F00703 		and	r3, r1, #7	@ tmp152, GPIO_PinSource,
+ 518:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIOx->AFR[GPIO_PinSource >> 0x03] &= ~((uint32_t)0xF << ((uint32_t)((uint32_t)GPIO_PinSource & (
+ 648              		.loc 1 518 0
+ 649 01de C908     		lsrs	r1, r1, #3	@ D.7370, GPIO_PinSource,
+ 650              	.LVL59:
+ 651 01e0 0831     		adds	r1, r1, #8	@ tmp154, D.7370,
+ 508:.\stm32f4periph\src/stm32f4xx_gpio.c **** {
+ 652              		.loc 1 508 0
+ 653 01e2 30B5     		push	{r4, r5, lr}	@
+ 654              	.LCFI3:
+ 655              		.cfi_def_cfa_offset 12
+ 656              		.cfi_offset 4, -12
+ 657              		.cfi_offset 5, -8
+ 658              		.cfi_offset 14, -4
+ 517:.\stm32f4periph\src/stm32f4xx_gpio.c ****   temp = ((uint32_t)(GPIO_AF) << ((uint32_t)((uint32_t)GPIO_PinSource & (uint32_t)0x07) * 4)) ;
+ 659              		.loc 1 517 0
+ 660 01e4 9B00     		lsls	r3, r3, #2	@ D.7368, tmp152,
+ 661              	.LVL60:
+ 518:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIOx->AFR[GPIO_PinSource >> 0x03] &= ~((uint32_t)0xF << ((uint32_t)((uint32_t)GPIO_PinSource & (
+ 662              		.loc 1 518 0
+ 663 01e6 50F82150 		ldr	r5, [r0, r1, lsl #2]	@ D.7371, GPIOx_15(D)->AFR
+ 664 01ea 0F24     		movs	r4, #15	@ tmp156,
+ 665 01ec 04FA03F4 		lsl	r4, r4, r3	@ tmp155, tmp156, D.7368
+ 666 01f0 25EA0404 		bic	r4, r5, r4	@ D.7374, D.7371, tmp155
+ 667 01f4 40F82140 		str	r4, [r0, r1, lsl #2]	@ D.7374, GPIOx_15(D)->AFR
+ 519:.\stm32f4periph\src/stm32f4xx_gpio.c ****   temp_2 = GPIOx->AFR[GPIO_PinSource >> 0x03] | temp;
+ 668              		.loc 1 519 0
+ 669 01f8 50F82140 		ldr	r4, [r0, r1, lsl #2]	@ D.7375, GPIOx_15(D)->AFR
+ 517:.\stm32f4periph\src/stm32f4xx_gpio.c ****   temp = ((uint32_t)(GPIO_AF) << ((uint32_t)((uint32_t)GPIO_PinSource & (uint32_t)0x07) * 4)) ;
+ 670              		.loc 1 517 0
+ 671 01fc 02FA03F2 		lsl	r2, r2, r3	@ tmp160, GPIO_AF, D.7368
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 23
+
+
+ 672              	.LVL61:
+ 519:.\stm32f4periph\src/stm32f4xx_gpio.c ****   temp_2 = GPIOx->AFR[GPIO_PinSource >> 0x03] | temp;
+ 673              		.loc 1 519 0
+ 674 0200 1443     		orrs	r4, r4, r2	@, temp_2, D.7375, tmp160
+ 675              	.LVL62:
+ 520:.\stm32f4periph\src/stm32f4xx_gpio.c ****   GPIOx->AFR[GPIO_PinSource >> 0x03] = temp_2;
+ 676              		.loc 1 520 0
+ 677 0202 40F82140 		str	r4, [r0, r1, lsl #2]	@ temp_2, GPIOx_15(D)->AFR
+ 678 0206 30BD     		pop	{r4, r5, pc}	@
+ 679              		.cfi_endproc
+ 680              	.LFE123:
+ 681              		.size	GPIO_PinAFConfig, .-GPIO_PinAFConfig
+ 682              	.Letext0:
+ 683              		.file 2 "k:\\electronics\\gcc\\bin\\../lib/gcc/arm-none-eabi/4.7.2/../../../../arm-none-eabi/inclu
+ 684              		.file 3 ".\\inc/stm32f4xx.h"
+ 685              		.file 4 ".\\stm32f4periph\\inc/stm32f4xx_gpio.h"
+ 686              		.file 5 ".\\inc/core_cm4.h"
+ 687              		.file 6 ".\\stm32f4periph\\inc/stm32f4xx_rcc.h"
+ 688              		.section	.debug_info,"",%progbits
+ 689              	.Ldebug_info0:
+ 690 0000 3E070000 		.4byte	0x73e
+ 691 0004 0200     		.2byte	0x2
+ 692 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 693 000a 04       		.byte	0x4
+ 694 000b 01       		.uleb128 0x1
+ 695 000c 5A020000 		.4byte	.LASF76
+ 696 0010 01       		.byte	0x1
+ 697 0011 88020000 		.4byte	.LASF77
+ 698 0015 EA030000 		.4byte	.LASF78
+ 699 0019 00000000 		.4byte	.Ltext0
+ 700 001d 08020000 		.4byte	.Letext0
+ 701 0021 00000000 		.4byte	.Ldebug_line0
+ 702 0025 02       		.uleb128 0x2
+ 703 0026 01       		.byte	0x1
+ 704 0027 06       		.byte	0x6
+ 705 0028 08020000 		.4byte	.LASF0
+ 706 002c 03       		.uleb128 0x3
+ 707 002d 92030000 		.4byte	.LASF3
+ 708 0031 02       		.byte	0x2
+ 709 0032 2A       		.byte	0x2a
+ 710 0033 37000000 		.4byte	0x37
+ 711 0037 02       		.uleb128 0x2
+ 712 0038 01       		.byte	0x1
+ 713 0039 08       		.byte	0x8
+ 714 003a C9010000 		.4byte	.LASF1
+ 715 003e 02       		.uleb128 0x2
+ 716 003f 02       		.byte	0x2
+ 717 0040 05       		.byte	0x5
+ 718 0041 68000000 		.4byte	.LASF2
+ 719 0045 03       		.uleb128 0x3
+ 720 0046 51020000 		.4byte	.LASF4
+ 721 004a 02       		.byte	0x2
+ 722 004b 36       		.byte	0x36
+ 723 004c 50000000 		.4byte	0x50
+ 724 0050 02       		.uleb128 0x2
+ 725 0051 02       		.byte	0x2
+ 726 0052 07       		.byte	0x7
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 24
+
+
+ 727 0053 D0020000 		.4byte	.LASF5
+ 728 0057 03       		.uleb128 0x3
+ 729 0058 B5020000 		.4byte	.LASF6
+ 730 005c 02       		.byte	0x2
+ 731 005d 4F       		.byte	0x4f
+ 732 005e 62000000 		.4byte	0x62
+ 733 0062 02       		.uleb128 0x2
+ 734 0063 04       		.byte	0x4
+ 735 0064 05       		.byte	0x5
+ 736 0065 67010000 		.4byte	.LASF7
+ 737 0069 03       		.uleb128 0x3
+ 738 006a 2B020000 		.4byte	.LASF8
+ 739 006e 02       		.byte	0x2
+ 740 006f 50       		.byte	0x50
+ 741 0070 74000000 		.4byte	0x74
+ 742 0074 02       		.uleb128 0x2
+ 743 0075 04       		.byte	0x4
+ 744 0076 07       		.byte	0x7
+ 745 0077 13030000 		.4byte	.LASF9
+ 746 007b 02       		.uleb128 0x2
+ 747 007c 08       		.byte	0x8
+ 748 007d 05       		.byte	0x5
+ 749 007e 45010000 		.4byte	.LASF10
+ 750 0082 02       		.uleb128 0x2
+ 751 0083 08       		.byte	0x8
+ 752 0084 07       		.byte	0x7
+ 753 0085 14020000 		.4byte	.LASF11
+ 754 0089 04       		.uleb128 0x4
+ 755 008a 04       		.byte	0x4
+ 756 008b 05       		.byte	0x5
+ 757 008c 696E7400 		.ascii	"int\000"
+ 758 0090 02       		.uleb128 0x2
+ 759 0091 04       		.byte	0x4
+ 760 0092 07       		.byte	0x7
+ 761 0093 44020000 		.4byte	.LASF12
+ 762 0097 02       		.uleb128 0x2
+ 763 0098 04       		.byte	0x4
+ 764 0099 07       		.byte	0x7
+ 765 009a 82000000 		.4byte	.LASF13
+ 766 009e 05       		.uleb128 0x5
+ 767 009f 69000000 		.4byte	0x69
+ 768 00a3 06       		.uleb128 0x6
+ 769 00a4 69000000 		.4byte	0x69
+ 770 00a8 B3000000 		.4byte	0xb3
+ 771 00ac 07       		.uleb128 0x7
+ 772 00ad 97000000 		.4byte	0x97
+ 773 00b1 01       		.byte	0x1
+ 774 00b2 00       		.byte	0
+ 775 00b3 05       		.uleb128 0x5
+ 776 00b4 45000000 		.4byte	0x45
+ 777 00b8 05       		.uleb128 0x5
+ 778 00b9 57000000 		.4byte	0x57
+ 779 00bd 08       		.uleb128 0x8
+ 780 00be 01       		.byte	0x1
+ 781 00bf 03       		.byte	0x3
+ 782 00c0 2001     		.2byte	0x120
+ 783 00c2 D3000000 		.4byte	0xd3
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 25
+
+
+ 784 00c6 09       		.uleb128 0x9
+ 785 00c7 AD020000 		.4byte	.LASF14
+ 786 00cb 00       		.sleb128 0
+ 787 00cc 09       		.uleb128 0x9
+ 788 00cd DD000000 		.4byte	.LASF15
+ 789 00d1 01       		.sleb128 1
+ 790 00d2 00       		.byte	0
+ 791 00d3 0A       		.uleb128 0xa
+ 792 00d4 DA030000 		.4byte	.LASF16
+ 793 00d8 03       		.byte	0x3
+ 794 00d9 2001     		.2byte	0x120
+ 795 00db BD000000 		.4byte	0xbd
+ 796 00df 0B       		.uleb128 0xb
+ 797 00e0 28       		.byte	0x28
+ 798 00e1 03       		.byte	0x3
+ 799 00e2 8F02     		.2byte	0x28f
+ 800 00e4 7F010000 		.4byte	0x17f
+ 801 00e8 0C       		.uleb128 0xc
+ 802 00e9 8F010000 		.4byte	.LASF17
+ 803 00ed 03       		.byte	0x3
+ 804 00ee 9102     		.2byte	0x291
+ 805 00f0 9E000000 		.4byte	0x9e
+ 806 00f4 02       		.byte	0x2
+ 807 00f5 23       		.byte	0x23
+ 808 00f6 00       		.uleb128 0
+ 809 00f7 0C       		.uleb128 0xc
+ 810 00f8 3E010000 		.4byte	.LASF18
+ 811 00fc 03       		.byte	0x3
+ 812 00fd 9202     		.2byte	0x292
+ 813 00ff 9E000000 		.4byte	0x9e
+ 814 0103 02       		.byte	0x2
+ 815 0104 23       		.byte	0x23
+ 816 0105 04       		.uleb128 0x4
+ 817 0106 0C       		.uleb128 0xc
+ 818 0107 0B030000 		.4byte	.LASF19
+ 819 010b 03       		.byte	0x3
+ 820 010c 9302     		.2byte	0x293
+ 821 010e 9E000000 		.4byte	0x9e
+ 822 0112 02       		.byte	0x2
+ 823 0113 23       		.byte	0x23
+ 824 0114 08       		.uleb128 0x8
+ 825 0115 0C       		.uleb128 0xc
+ 826 0116 61010000 		.4byte	.LASF20
+ 827 011a 03       		.byte	0x3
+ 828 011b 9402     		.2byte	0x294
+ 829 011d 9E000000 		.4byte	0x9e
+ 830 0121 02       		.byte	0x2
+ 831 0122 23       		.byte	0x23
+ 832 0123 0C       		.uleb128 0xc
+ 833 0124 0D       		.uleb128 0xd
+ 834 0125 49445200 		.ascii	"IDR\000"
+ 835 0129 03       		.byte	0x3
+ 836 012a 9502     		.2byte	0x295
+ 837 012c 9E000000 		.4byte	0x9e
+ 838 0130 02       		.byte	0x2
+ 839 0131 23       		.byte	0x23
+ 840 0132 10       		.uleb128 0x10
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 26
+
+
+ 841 0133 0D       		.uleb128 0xd
+ 842 0134 4F445200 		.ascii	"ODR\000"
+ 843 0138 03       		.byte	0x3
+ 844 0139 9602     		.2byte	0x296
+ 845 013b 9E000000 		.4byte	0x9e
+ 846 013f 02       		.byte	0x2
+ 847 0140 23       		.byte	0x23
+ 848 0141 14       		.uleb128 0x14
+ 849 0142 0C       		.uleb128 0xc
+ 850 0143 95010000 		.4byte	.LASF21
+ 851 0147 03       		.byte	0x3
+ 852 0148 9702     		.2byte	0x297
+ 853 014a B3000000 		.4byte	0xb3
+ 854 014e 02       		.byte	0x2
+ 855 014f 23       		.byte	0x23
+ 856 0150 18       		.uleb128 0x18
+ 857 0151 0C       		.uleb128 0xc
+ 858 0152 89010000 		.4byte	.LASF22
+ 859 0156 03       		.byte	0x3
+ 860 0157 9802     		.2byte	0x298
+ 861 0159 B3000000 		.4byte	0xb3
+ 862 015d 02       		.byte	0x2
+ 863 015e 23       		.byte	0x23
+ 864 015f 1A       		.uleb128 0x1a
+ 865 0160 0C       		.uleb128 0xc
+ 866 0161 15010000 		.4byte	.LASF23
+ 867 0165 03       		.byte	0x3
+ 868 0166 9902     		.2byte	0x299
+ 869 0168 9E000000 		.4byte	0x9e
+ 870 016c 02       		.byte	0x2
+ 871 016d 23       		.byte	0x23
+ 872 016e 1C       		.uleb128 0x1c
+ 873 016f 0D       		.uleb128 0xd
+ 874 0170 41465200 		.ascii	"AFR\000"
+ 875 0174 03       		.byte	0x3
+ 876 0175 9A02     		.2byte	0x29a
+ 877 0177 7F010000 		.4byte	0x17f
+ 878 017b 02       		.byte	0x2
+ 879 017c 23       		.byte	0x23
+ 880 017d 20       		.uleb128 0x20
+ 881 017e 00       		.byte	0
+ 882 017f 05       		.uleb128 0x5
+ 883 0180 A3000000 		.4byte	0xa3
+ 884 0184 0A       		.uleb128 0xa
+ 885 0185 00000000 		.4byte	.LASF24
+ 886 0189 03       		.byte	0x3
+ 887 018a 9B02     		.2byte	0x29b
+ 888 018c DF000000 		.4byte	0xdf
+ 889 0190 0E       		.uleb128 0xe
+ 890 0191 01       		.byte	0x1
+ 891 0192 04       		.byte	0x4
+ 892 0193 40       		.byte	0x40
+ 893 0194 B1010000 		.4byte	0x1b1
+ 894 0198 09       		.uleb128 0x9
+ 895 0199 70010000 		.4byte	.LASF25
+ 896 019d 00       		.sleb128 0
+ 897 019e 09       		.uleb128 0x9
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 27
+
+
+ 898 019f 53010000 		.4byte	.LASF26
+ 899 01a3 01       		.sleb128 1
+ 900 01a4 09       		.uleb128 0x9
+ 901 01a5 C3000000 		.4byte	.LASF27
+ 902 01a9 02       		.sleb128 2
+ 903 01aa 09       		.uleb128 0x9
+ 904 01ab F9000000 		.4byte	.LASF28
+ 905 01af 03       		.sleb128 3
+ 906 01b0 00       		.byte	0
+ 907 01b1 03       		.uleb128 0x3
+ 908 01b2 39000000 		.4byte	.LASF29
+ 909 01b6 04       		.byte	0x4
+ 910 01b7 45       		.byte	0x45
+ 911 01b8 90010000 		.4byte	0x190
+ 912 01bc 0E       		.uleb128 0xe
+ 913 01bd 01       		.byte	0x1
+ 914 01be 04       		.byte	0x4
+ 915 01bf 4D       		.byte	0x4d
+ 916 01c0 D1010000 		.4byte	0x1d1
+ 917 01c4 09       		.uleb128 0x9
+ 918 01c5 B1010000 		.4byte	.LASF30
+ 919 01c9 00       		.sleb128 0
+ 920 01ca 09       		.uleb128 0x9
+ 921 01cb 92000000 		.4byte	.LASF31
+ 922 01cf 01       		.sleb128 1
+ 923 01d0 00       		.byte	0
+ 924 01d1 03       		.uleb128 0x3
+ 925 01d2 2C010000 		.4byte	.LASF32
+ 926 01d6 04       		.byte	0x4
+ 927 01d7 50       		.byte	0x50
+ 928 01d8 BC010000 		.4byte	0x1bc
+ 929 01dc 0E       		.uleb128 0xe
+ 930 01dd 01       		.byte	0x1
+ 931 01de 04       		.byte	0x4
+ 932 01df 58       		.byte	0x58
+ 933 01e0 FD010000 		.4byte	0x1fd
+ 934 01e4 09       		.uleb128 0x9
+ 935 01e5 F8010000 		.4byte	.LASF33
+ 936 01e9 00       		.sleb128 0
+ 937 01ea 09       		.uleb128 0x9
+ 938 01eb 52000000 		.4byte	.LASF34
+ 939 01ef 01       		.sleb128 1
+ 940 01f0 09       		.uleb128 0x9
+ 941 01f1 81030000 		.4byte	.LASF35
+ 942 01f5 02       		.sleb128 2
+ 943 01f6 09       		.uleb128 0x9
+ 944 01f7 1A010000 		.4byte	.LASF36
+ 945 01fb 03       		.sleb128 3
+ 946 01fc 00       		.byte	0
+ 947 01fd 03       		.uleb128 0x3
+ 948 01fe 2B030000 		.4byte	.LASF37
+ 949 0202 04       		.byte	0x4
+ 950 0203 5D       		.byte	0x5d
+ 951 0204 DC010000 		.4byte	0x1dc
+ 952 0208 0E       		.uleb128 0xe
+ 953 0209 01       		.byte	0x1
+ 954 020a 04       		.byte	0x4
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 28
+
+
+ 955 020b 65       		.byte	0x65
+ 956 020c 23020000 		.4byte	0x223
+ 957 0210 09       		.uleb128 0x9
+ 958 0211 59030000 		.4byte	.LASF38
+ 959 0215 00       		.sleb128 0
+ 960 0216 09       		.uleb128 0x9
+ 961 0217 BC030000 		.4byte	.LASF39
+ 962 021b 01       		.sleb128 1
+ 963 021c 09       		.uleb128 0x9
+ 964 021d 3D030000 		.4byte	.LASF40
+ 965 0221 02       		.sleb128 2
+ 966 0222 00       		.byte	0
+ 967 0223 03       		.uleb128 0x3
+ 968 0224 AB030000 		.4byte	.LASF41
+ 969 0228 04       		.byte	0x4
+ 970 0229 69       		.byte	0x69
+ 971 022a 08020000 		.4byte	0x208
+ 972 022e 0E       		.uleb128 0xe
+ 973 022f 01       		.byte	0x1
+ 974 0230 04       		.byte	0x4
+ 975 0231 71       		.byte	0x71
+ 976 0232 43020000 		.4byte	0x243
+ 977 0236 09       		.uleb128 0x9
+ 978 0237 A0000000 		.4byte	.LASF42
+ 979 023b 00       		.sleb128 0
+ 980 023c 09       		.uleb128 0x9
+ 981 023d 1D000000 		.4byte	.LASF43
+ 982 0241 01       		.sleb128 1
+ 983 0242 00       		.byte	0
+ 984 0243 03       		.uleb128 0x3
+ 985 0244 E3020000 		.4byte	.LASF44
+ 986 0248 04       		.byte	0x4
+ 987 0249 74       		.byte	0x74
+ 988 024a 2E020000 		.4byte	0x22e
+ 989 024e 0F       		.uleb128 0xf
+ 990 024f 08       		.byte	0x8
+ 991 0250 04       		.byte	0x4
+ 992 0251 7B       		.byte	0x7b
+ 993 0252 9D020000 		.4byte	0x29d
+ 994 0256 10       		.uleb128 0x10
+ 995 0257 14000000 		.4byte	.LASF45
+ 996 025b 04       		.byte	0x4
+ 997 025c 7D       		.byte	0x7d
+ 998 025d 69000000 		.4byte	0x69
+ 999 0261 02       		.byte	0x2
+ 1000 0262 23       		.byte	0x23
+ 1001 0263 00       		.uleb128 0
+ 1002 0264 10       		.uleb128 0x10
+ 1003 0265 1B040000 		.4byte	.LASF46
+ 1004 0269 04       		.byte	0x4
+ 1005 026a 80       		.byte	0x80
+ 1006 026b B1010000 		.4byte	0x1b1
+ 1007 026f 02       		.byte	0x2
+ 1008 0270 23       		.byte	0x23
+ 1009 0271 04       		.uleb128 0x4
+ 1010 0272 10       		.uleb128 0x10
+ 1011 0273 E4000000 		.4byte	.LASF47
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 29
+
+
+ 1012 0277 04       		.byte	0x4
+ 1013 0278 83       		.byte	0x83
+ 1014 0279 FD010000 		.4byte	0x1fd
+ 1015 027d 02       		.byte	0x2
+ 1016 027e 23       		.byte	0x23
+ 1017 027f 05       		.uleb128 0x5
+ 1018 0280 10       		.uleb128 0x10
+ 1019 0281 B8000000 		.4byte	.LASF48
+ 1020 0285 04       		.byte	0x4
+ 1021 0286 86       		.byte	0x86
+ 1022 0287 D1010000 		.4byte	0x1d1
+ 1023 028b 02       		.byte	0x2
+ 1024 028c 23       		.byte	0x23
+ 1025 028d 06       		.uleb128 0x6
+ 1026 028e 10       		.uleb128 0x10
+ 1027 028f EE010000 		.4byte	.LASF49
+ 1028 0293 04       		.byte	0x4
+ 1029 0294 89       		.byte	0x89
+ 1030 0295 23020000 		.4byte	0x223
+ 1031 0299 02       		.byte	0x2
+ 1032 029a 23       		.byte	0x23
+ 1033 029b 07       		.uleb128 0x7
+ 1034 029c 00       		.byte	0
+ 1035 029d 03       		.uleb128 0x3
+ 1036 029e 9A030000 		.4byte	.LASF50
+ 1037 02a2 04       		.byte	0x4
+ 1038 02a3 8B       		.byte	0x8b
+ 1039 02a4 4E020000 		.4byte	0x24e
+ 1040 02a8 11       		.uleb128 0x11
+ 1041 02a9 01       		.byte	0x1
+ 1042 02aa 7D010000 		.4byte	.LASF51
+ 1043 02ae 01       		.byte	0x1
+ 1044 02af 80       		.byte	0x80
+ 1045 02b0 01       		.byte	0x1
+ 1046 02b1 00000000 		.4byte	.LFB110
+ 1047 02b5 D8000000 		.4byte	.LFE110
+ 1048 02b9 00000000 		.4byte	.LLST0
+ 1049 02bd 01       		.byte	0x1
+ 1050 02be BF030000 		.4byte	0x3bf
+ 1051 02c2 12       		.uleb128 0x12
+ 1052 02c3 25030000 		.4byte	.LASF53
+ 1053 02c7 01       		.byte	0x1
+ 1054 02c8 80       		.byte	0x80
+ 1055 02c9 BF030000 		.4byte	0x3bf
+ 1056 02cd 20000000 		.4byte	.LLST1
+ 1057 02d1 13       		.uleb128 0x13
+ 1058 02d2 10000000 		.4byte	.LVL2
+ 1059 02d6 2B070000 		.4byte	0x72b
+ 1060 02da E9020000 		.4byte	0x2e9
+ 1061 02de 14       		.uleb128 0x14
+ 1062 02df 01       		.byte	0x1
+ 1063 02e0 51       		.byte	0x51
+ 1064 02e1 01       		.byte	0x1
+ 1065 02e2 31       		.byte	0x31
+ 1066 02e3 14       		.uleb128 0x14
+ 1067 02e4 01       		.byte	0x1
+ 1068 02e5 50       		.byte	0x50
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 30
+
+
+ 1069 02e6 01       		.byte	0x1
+ 1070 02e7 31       		.byte	0x31
+ 1071 02e8 00       		.byte	0
+ 1072 02e9 13       		.uleb128 0x13
+ 1073 02ea 22000000 		.4byte	.LVL5
+ 1074 02ee 2B070000 		.4byte	0x72b
+ 1075 02f2 01030000 		.4byte	0x301
+ 1076 02f6 14       		.uleb128 0x14
+ 1077 02f7 01       		.byte	0x1
+ 1078 02f8 51       		.byte	0x51
+ 1079 02f9 01       		.byte	0x1
+ 1080 02fa 31       		.byte	0x31
+ 1081 02fb 14       		.uleb128 0x14
+ 1082 02fc 01       		.byte	0x1
+ 1083 02fd 50       		.byte	0x50
+ 1084 02fe 01       		.byte	0x1
+ 1085 02ff 32       		.byte	0x32
+ 1086 0300 00       		.byte	0
+ 1087 0301 13       		.uleb128 0x13
+ 1088 0302 34000000 		.4byte	.LVL8
+ 1089 0306 2B070000 		.4byte	0x72b
+ 1090 030a 19030000 		.4byte	0x319
+ 1091 030e 14       		.uleb128 0x14
+ 1092 030f 01       		.byte	0x1
+ 1093 0310 51       		.byte	0x51
+ 1094 0311 01       		.byte	0x1
+ 1095 0312 31       		.byte	0x31
+ 1096 0313 14       		.uleb128 0x14
+ 1097 0314 01       		.byte	0x1
+ 1098 0315 50       		.byte	0x50
+ 1099 0316 01       		.byte	0x1
+ 1100 0317 34       		.byte	0x34
+ 1101 0318 00       		.byte	0
+ 1102 0319 13       		.uleb128 0x13
+ 1103 031a 46000000 		.4byte	.LVL11
+ 1104 031e 2B070000 		.4byte	0x72b
+ 1105 0322 31030000 		.4byte	0x331
+ 1106 0326 14       		.uleb128 0x14
+ 1107 0327 01       		.byte	0x1
+ 1108 0328 51       		.byte	0x51
+ 1109 0329 01       		.byte	0x1
+ 1110 032a 31       		.byte	0x31
+ 1111 032b 14       		.uleb128 0x14
+ 1112 032c 01       		.byte	0x1
+ 1113 032d 50       		.byte	0x50
+ 1114 032e 01       		.byte	0x1
+ 1115 032f 38       		.byte	0x38
+ 1116 0330 00       		.byte	0
+ 1117 0331 13       		.uleb128 0x13
+ 1118 0332 58000000 		.4byte	.LVL14
+ 1119 0336 2B070000 		.4byte	0x72b
+ 1120 033a 49030000 		.4byte	0x349
+ 1121 033e 14       		.uleb128 0x14
+ 1122 033f 01       		.byte	0x1
+ 1123 0340 51       		.byte	0x51
+ 1124 0341 01       		.byte	0x1
+ 1125 0342 31       		.byte	0x31
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 31
+
+
+ 1126 0343 14       		.uleb128 0x14
+ 1127 0344 01       		.byte	0x1
+ 1128 0345 50       		.byte	0x50
+ 1129 0346 01       		.byte	0x1
+ 1130 0347 40       		.byte	0x40
+ 1131 0348 00       		.byte	0
+ 1132 0349 13       		.uleb128 0x13
+ 1133 034a 6A000000 		.4byte	.LVL17
+ 1134 034e 2B070000 		.4byte	0x72b
+ 1135 0352 62030000 		.4byte	0x362
+ 1136 0356 14       		.uleb128 0x14
+ 1137 0357 01       		.byte	0x1
+ 1138 0358 51       		.byte	0x51
+ 1139 0359 01       		.byte	0x1
+ 1140 035a 31       		.byte	0x31
+ 1141 035b 14       		.uleb128 0x14
+ 1142 035c 01       		.byte	0x1
+ 1143 035d 50       		.byte	0x50
+ 1144 035e 02       		.byte	0x2
+ 1145 035f 08       		.byte	0x8
+ 1146 0360 20       		.byte	0x20
+ 1147 0361 00       		.byte	0
+ 1148 0362 13       		.uleb128 0x13
+ 1149 0363 7C000000 		.4byte	.LVL20
+ 1150 0367 2B070000 		.4byte	0x72b
+ 1151 036b 7B030000 		.4byte	0x37b
+ 1152 036f 14       		.uleb128 0x14
+ 1153 0370 01       		.byte	0x1
+ 1154 0371 51       		.byte	0x51
+ 1155 0372 01       		.byte	0x1
+ 1156 0373 31       		.byte	0x31
+ 1157 0374 14       		.uleb128 0x14
+ 1158 0375 01       		.byte	0x1
+ 1159 0376 50       		.byte	0x50
+ 1160 0377 02       		.byte	0x2
+ 1161 0378 08       		.byte	0x8
+ 1162 0379 40       		.byte	0x40
+ 1163 037a 00       		.byte	0
+ 1164 037b 13       		.uleb128 0x13
+ 1165 037c 8E000000 		.4byte	.LVL23
+ 1166 0380 2B070000 		.4byte	0x72b
+ 1167 0384 94030000 		.4byte	0x394
+ 1168 0388 14       		.uleb128 0x14
+ 1169 0389 01       		.byte	0x1
+ 1170 038a 51       		.byte	0x51
+ 1171 038b 01       		.byte	0x1
+ 1172 038c 31       		.byte	0x31
+ 1173 038d 14       		.uleb128 0x14
+ 1174 038e 01       		.byte	0x1
+ 1175 038f 50       		.byte	0x50
+ 1176 0390 02       		.byte	0x2
+ 1177 0391 08       		.byte	0x8
+ 1178 0392 80       		.byte	0x80
+ 1179 0393 00       		.byte	0
+ 1180 0394 13       		.uleb128 0x13
+ 1181 0395 A2000000 		.4byte	.LVL26
+ 1182 0399 2B070000 		.4byte	0x72b
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 32
+
+
+ 1183 039d AE030000 		.4byte	0x3ae
+ 1184 03a1 14       		.uleb128 0x14
+ 1185 03a2 01       		.byte	0x1
+ 1186 03a3 51       		.byte	0x51
+ 1187 03a4 01       		.byte	0x1
+ 1188 03a5 31       		.byte	0x31
+ 1189 03a6 14       		.uleb128 0x14
+ 1190 03a7 01       		.byte	0x1
+ 1191 03a8 50       		.byte	0x50
+ 1192 03a9 03       		.byte	0x3
+ 1193 03aa 0A       		.byte	0xa
+ 1194 03ab 0001     		.2byte	0x100
+ 1195 03ad 00       		.byte	0
+ 1196 03ae 15       		.uleb128 0x15
+ 1197 03af B0000000 		.4byte	.LVL27
+ 1198 03b3 01       		.byte	0x1
+ 1199 03b4 2B070000 		.4byte	0x72b
+ 1200 03b8 14       		.uleb128 0x14
+ 1201 03b9 01       		.byte	0x1
+ 1202 03ba 51       		.byte	0x51
+ 1203 03bb 01       		.byte	0x1
+ 1204 03bc 30       		.byte	0x30
+ 1205 03bd 00       		.byte	0
+ 1206 03be 00       		.byte	0
+ 1207 03bf 16       		.uleb128 0x16
+ 1208 03c0 04       		.byte	0x4
+ 1209 03c1 84010000 		.4byte	0x184
+ 1210 03c5 11       		.uleb128 0x11
+ 1211 03c6 01       		.byte	0x1
+ 1212 03c7 EF000000 		.4byte	.LASF52
+ 1213 03cb 01       		.byte	0x1
+ 1214 03cc BC       		.byte	0xbc
+ 1215 03cd 01       		.byte	0x1
+ 1216 03ce D8000000 		.4byte	.LFB111
+ 1217 03d2 62010000 		.4byte	.LFE111
+ 1218 03d6 14010000 		.4byte	.LLST2
+ 1219 03da 01       		.byte	0x1
+ 1220 03db 27040000 		.4byte	0x427
+ 1221 03df 17       		.uleb128 0x17
+ 1222 03e0 25030000 		.4byte	.LASF53
+ 1223 03e4 01       		.byte	0x1
+ 1224 03e5 BC       		.byte	0xbc
+ 1225 03e6 BF030000 		.4byte	0x3bf
+ 1226 03ea 01       		.byte	0x1
+ 1227 03eb 50       		.byte	0x50
+ 1228 03ec 17       		.uleb128 0x17
+ 1229 03ed 34020000 		.4byte	.LASF54
+ 1230 03f1 01       		.byte	0x1
+ 1231 03f2 BC       		.byte	0xbc
+ 1232 03f3 27040000 		.4byte	0x427
+ 1233 03f7 01       		.byte	0x1
+ 1234 03f8 51       		.byte	0x51
+ 1235 03f9 18       		.uleb128 0x18
+ 1236 03fa 0D000000 		.4byte	.LASF55
+ 1237 03fe 01       		.byte	0x1
+ 1238 03ff BE       		.byte	0xbe
+ 1239 0400 69000000 		.4byte	0x69
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 33
+
+
+ 1240 0404 34010000 		.4byte	.LLST3
+ 1241 0408 19       		.uleb128 0x19
+ 1242 0409 706F7300 		.ascii	"pos\000"
+ 1243 040d 01       		.byte	0x1
+ 1244 040e BE       		.byte	0xbe
+ 1245 040f 69000000 		.4byte	0x69
+ 1246 0413 53010000 		.4byte	.LLST4
+ 1247 0417 18       		.uleb128 0x18
+ 1248 0418 ED020000 		.4byte	.LASF56
+ 1249 041c 01       		.byte	0x1
+ 1250 041d BE       		.byte	0xbe
+ 1251 041e 69000000 		.4byte	0x69
+ 1252 0422 92010000 		.4byte	.LLST5
+ 1253 0426 00       		.byte	0
+ 1254 0427 16       		.uleb128 0x16
+ 1255 0428 04       		.byte	0x4
+ 1256 0429 9D020000 		.4byte	0x29d
+ 1257 042d 1A       		.uleb128 0x1a
+ 1258 042e 01       		.byte	0x1
+ 1259 042f 72000000 		.4byte	.LASF57
+ 1260 0433 01       		.byte	0x1
+ 1261 0434 E4       		.byte	0xe4
+ 1262 0435 01       		.byte	0x1
+ 1263 0436 62010000 		.4byte	.LFB112
+ 1264 043a 74010000 		.4byte	.LFE112
+ 1265 043e 02       		.byte	0x2
+ 1266 043f 7D       		.byte	0x7d
+ 1267 0440 00       		.sleb128 0
+ 1268 0441 01       		.byte	0x1
+ 1269 0442 54040000 		.4byte	0x454
+ 1270 0446 17       		.uleb128 0x17
+ 1271 0447 34020000 		.4byte	.LASF54
+ 1272 044b 01       		.byte	0x1
+ 1273 044c E4       		.byte	0xe4
+ 1274 044d 27040000 		.4byte	0x427
+ 1275 0451 01       		.byte	0x1
+ 1276 0452 50       		.byte	0x50
+ 1277 0453 00       		.byte	0
+ 1278 0454 11       		.uleb128 0x11
+ 1279 0455 01       		.byte	0x1
+ 1280 0456 BD020000 		.4byte	.LASF58
+ 1281 045a 01       		.byte	0x1
+ 1282 045b F9       		.byte	0xf9
+ 1283 045c 01       		.byte	0x1
+ 1284 045d 74010000 		.4byte	.LFB113
+ 1285 0461 98010000 		.4byte	.LFE113
+ 1286 0465 D7010000 		.4byte	.LLST6
+ 1287 0469 01       		.byte	0x1
+ 1288 046a 98040000 		.4byte	0x498
+ 1289 046e 17       		.uleb128 0x17
+ 1290 046f 25030000 		.4byte	.LASF53
+ 1291 0473 01       		.byte	0x1
+ 1292 0474 F9       		.byte	0xf9
+ 1293 0475 BF030000 		.4byte	0x3bf
+ 1294 0479 01       		.byte	0x1
+ 1295 047a 50       		.byte	0x50
+ 1296 047b 17       		.uleb128 0x17
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 34
+
+
+ 1297 047c 14000000 		.4byte	.LASF45
+ 1298 0480 01       		.byte	0x1
+ 1299 0481 F9       		.byte	0xf9
+ 1300 0482 45000000 		.4byte	0x45
+ 1301 0486 01       		.byte	0x1
+ 1302 0487 51       		.byte	0x51
+ 1303 0488 19       		.uleb128 0x19
+ 1304 0489 746D7000 		.ascii	"tmp\000"
+ 1305 048d 01       		.byte	0x1
+ 1306 048e FB       		.byte	0xfb
+ 1307 048f 9E000000 		.4byte	0x9e
+ 1308 0493 F7010000 		.4byte	.LLST7
+ 1309 0497 00       		.byte	0
+ 1310 0498 1B       		.uleb128 0x1b
+ 1311 0499 01       		.byte	0x1
+ 1312 049a 9B010000 		.4byte	.LASF60
+ 1313 049e 01       		.byte	0x1
+ 1314 049f 2501     		.2byte	0x125
+ 1315 04a1 01       		.byte	0x1
+ 1316 04a2 2C000000 		.4byte	0x2c
+ 1317 04a6 98010000 		.4byte	.LFB114
+ 1318 04aa A4010000 		.4byte	.LFE114
+ 1319 04ae 02       		.byte	0x2
+ 1320 04af 7D       		.byte	0x7d
+ 1321 04b0 00       		.sleb128 0
+ 1322 04b1 01       		.byte	0x1
+ 1323 04b2 E5040000 		.4byte	0x4e5
+ 1324 04b6 1C       		.uleb128 0x1c
+ 1325 04b7 25030000 		.4byte	.LASF53
+ 1326 04bb 01       		.byte	0x1
+ 1327 04bc 2501     		.2byte	0x125
+ 1328 04be BF030000 		.4byte	0x3bf
+ 1329 04c2 2D020000 		.4byte	.LLST8
+ 1330 04c6 1D       		.uleb128 0x1d
+ 1331 04c7 14000000 		.4byte	.LASF45
+ 1332 04cb 01       		.byte	0x1
+ 1333 04cc 2501     		.2byte	0x125
+ 1334 04ce 45000000 		.4byte	0x45
+ 1335 04d2 01       		.byte	0x1
+ 1336 04d3 51       		.byte	0x51
+ 1337 04d4 1E       		.uleb128 0x1e
+ 1338 04d5 BF010000 		.4byte	.LASF59
+ 1339 04d9 01       		.byte	0x1
+ 1340 04da 2701     		.2byte	0x127
+ 1341 04dc 2C000000 		.4byte	0x2c
+ 1342 04e0 4E020000 		.4byte	.LLST9
+ 1343 04e4 00       		.byte	0
+ 1344 04e5 1B       		.uleb128 0x1b
+ 1345 04e6 01       		.byte	0x1
+ 1346 04e7 75020000 		.4byte	.LASF61
+ 1347 04eb 01       		.byte	0x1
+ 1348 04ec 3901     		.2byte	0x139
+ 1349 04ee 01       		.byte	0x1
+ 1350 04ef 45000000 		.4byte	0x45
+ 1351 04f3 A4010000 		.4byte	.LFB115
+ 1352 04f7 AA010000 		.4byte	.LFE115
+ 1353 04fb 02       		.byte	0x2
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 35
+
+
+ 1354 04fc 7D       		.byte	0x7d
+ 1355 04fd 00       		.sleb128 0
+ 1356 04fe 01       		.byte	0x1
+ 1357 04ff 14050000 		.4byte	0x514
+ 1358 0503 1C       		.uleb128 0x1c
+ 1359 0504 25030000 		.4byte	.LASF53
+ 1360 0508 01       		.byte	0x1
+ 1361 0509 3901     		.2byte	0x139
+ 1362 050b BF030000 		.4byte	0x3bf
+ 1363 050f 78020000 		.4byte	.LLST10
+ 1364 0513 00       		.byte	0
+ 1365 0514 1B       		.uleb128 0x1b
+ 1366 0515 01       		.byte	0x1
+ 1367 0516 04040000 		.4byte	.LASF62
+ 1368 051a 01       		.byte	0x1
+ 1369 051b 4501     		.2byte	0x145
+ 1370 051d 01       		.byte	0x1
+ 1371 051e 2C000000 		.4byte	0x2c
+ 1372 0522 AA010000 		.4byte	.LFB116
+ 1373 0526 B6010000 		.4byte	.LFE116
+ 1374 052a 02       		.byte	0x2
+ 1375 052b 7D       		.byte	0x7d
+ 1376 052c 00       		.sleb128 0
+ 1377 052d 01       		.byte	0x1
+ 1378 052e 61050000 		.4byte	0x561
+ 1379 0532 1C       		.uleb128 0x1c
+ 1380 0533 25030000 		.4byte	.LASF53
+ 1381 0537 01       		.byte	0x1
+ 1382 0538 4501     		.2byte	0x145
+ 1383 053a BF030000 		.4byte	0x3bf
+ 1384 053e 99020000 		.4byte	.LLST11
+ 1385 0542 1D       		.uleb128 0x1d
+ 1386 0543 14000000 		.4byte	.LASF45
+ 1387 0547 01       		.byte	0x1
+ 1388 0548 4501     		.2byte	0x145
+ 1389 054a 45000000 		.4byte	0x45
+ 1390 054e 01       		.byte	0x1
+ 1391 054f 51       		.byte	0x51
+ 1392 0550 1E       		.uleb128 0x1e
+ 1393 0551 BF010000 		.4byte	.LASF59
+ 1394 0555 01       		.byte	0x1
+ 1395 0556 4701     		.2byte	0x147
+ 1396 0558 2C000000 		.4byte	0x2c
+ 1397 055c BA020000 		.4byte	.LLST12
+ 1398 0560 00       		.byte	0
+ 1399 0561 1B       		.uleb128 0x1b
+ 1400 0562 01       		.byte	0x1
+ 1401 0563 25000000 		.4byte	.LASF63
+ 1402 0567 01       		.byte	0x1
+ 1403 0568 5901     		.2byte	0x159
+ 1404 056a 01       		.byte	0x1
+ 1405 056b 45000000 		.4byte	0x45
+ 1406 056f B6010000 		.4byte	.LFB117
+ 1407 0573 BC010000 		.4byte	.LFE117
+ 1408 0577 02       		.byte	0x2
+ 1409 0578 7D       		.byte	0x7d
+ 1410 0579 00       		.sleb128 0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 36
+
+
+ 1411 057a 01       		.byte	0x1
+ 1412 057b 90050000 		.4byte	0x590
+ 1413 057f 1C       		.uleb128 0x1c
+ 1414 0580 25030000 		.4byte	.LASF53
+ 1415 0584 01       		.byte	0x1
+ 1416 0585 5901     		.2byte	0x159
+ 1417 0587 BF030000 		.4byte	0x3bf
+ 1418 058b E4020000 		.4byte	.LLST13
+ 1419 058f 00       		.byte	0
+ 1420 0590 1F       		.uleb128 0x1f
+ 1421 0591 01       		.byte	0x1
+ 1422 0592 D0000000 		.4byte	.LASF64
+ 1423 0596 01       		.byte	0x1
+ 1424 0597 6B01     		.2byte	0x16b
+ 1425 0599 01       		.byte	0x1
+ 1426 059a BC010000 		.4byte	.LFB118
+ 1427 059e C0010000 		.4byte	.LFE118
+ 1428 05a2 02       		.byte	0x2
+ 1429 05a3 7D       		.byte	0x7d
+ 1430 05a4 00       		.sleb128 0
+ 1431 05a5 01       		.byte	0x1
+ 1432 05a6 C7050000 		.4byte	0x5c7
+ 1433 05aa 1D       		.uleb128 0x1d
+ 1434 05ab 25030000 		.4byte	.LASF53
+ 1435 05af 01       		.byte	0x1
+ 1436 05b0 6B01     		.2byte	0x16b
+ 1437 05b2 BF030000 		.4byte	0x3bf
+ 1438 05b6 01       		.byte	0x1
+ 1439 05b7 50       		.byte	0x50
+ 1440 05b8 1D       		.uleb128 0x1d
+ 1441 05b9 14000000 		.4byte	.LASF45
+ 1442 05bd 01       		.byte	0x1
+ 1443 05be 6B01     		.2byte	0x16b
+ 1444 05c0 45000000 		.4byte	0x45
+ 1445 05c4 01       		.byte	0x1
+ 1446 05c5 51       		.byte	0x51
+ 1447 05c6 00       		.byte	0
+ 1448 05c7 1F       		.uleb128 0x1f
+ 1449 05c8 01       		.byte	0x1
+ 1450 05c9 06010000 		.4byte	.LASF65
+ 1451 05cd 01       		.byte	0x1
+ 1452 05ce 7E01     		.2byte	0x17e
+ 1453 05d0 01       		.byte	0x1
+ 1454 05d1 C0010000 		.4byte	.LFB119
+ 1455 05d5 C4010000 		.4byte	.LFE119
+ 1456 05d9 02       		.byte	0x2
+ 1457 05da 7D       		.byte	0x7d
+ 1458 05db 00       		.sleb128 0
+ 1459 05dc 01       		.byte	0x1
+ 1460 05dd FE050000 		.4byte	0x5fe
+ 1461 05e1 1D       		.uleb128 0x1d
+ 1462 05e2 25030000 		.4byte	.LASF53
+ 1463 05e6 01       		.byte	0x1
+ 1464 05e7 7E01     		.2byte	0x17e
+ 1465 05e9 BF030000 		.4byte	0x3bf
+ 1466 05ed 01       		.byte	0x1
+ 1467 05ee 50       		.byte	0x50
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 37
+
+
+ 1468 05ef 1D       		.uleb128 0x1d
+ 1469 05f0 14000000 		.4byte	.LASF45
+ 1470 05f4 01       		.byte	0x1
+ 1471 05f5 7E01     		.2byte	0x17e
+ 1472 05f7 45000000 		.4byte	0x45
+ 1473 05fb 01       		.byte	0x1
+ 1474 05fc 51       		.byte	0x51
+ 1475 05fd 00       		.byte	0
+ 1476 05fe 1F       		.uleb128 0x1f
+ 1477 05ff 01       		.byte	0x1
+ 1478 0600 AA000000 		.4byte	.LASF66
+ 1479 0604 01       		.byte	0x1
+ 1480 0605 9201     		.2byte	0x192
+ 1481 0607 01       		.byte	0x1
+ 1482 0608 C4010000 		.4byte	.LFB120
+ 1483 060c CE010000 		.4byte	.LFE120
+ 1484 0610 02       		.byte	0x2
+ 1485 0611 7D       		.byte	0x7d
+ 1486 0612 00       		.sleb128 0
+ 1487 0613 01       		.byte	0x1
+ 1488 0614 43060000 		.4byte	0x643
+ 1489 0618 1D       		.uleb128 0x1d
+ 1490 0619 25030000 		.4byte	.LASF53
+ 1491 061d 01       		.byte	0x1
+ 1492 061e 9201     		.2byte	0x192
+ 1493 0620 BF030000 		.4byte	0x3bf
+ 1494 0624 01       		.byte	0x1
+ 1495 0625 50       		.byte	0x50
+ 1496 0626 1D       		.uleb128 0x1d
+ 1497 0627 14000000 		.4byte	.LASF45
+ 1498 062b 01       		.byte	0x1
+ 1499 062c 9201     		.2byte	0x192
+ 1500 062e 45000000 		.4byte	0x45
+ 1501 0632 01       		.byte	0x1
+ 1502 0633 51       		.byte	0x51
+ 1503 0634 1D       		.uleb128 0x1d
+ 1504 0635 8B000000 		.4byte	.LASF67
+ 1505 0639 01       		.byte	0x1
+ 1506 063a 9201     		.2byte	0x192
+ 1507 063c 43020000 		.4byte	0x243
+ 1508 0640 01       		.byte	0x1
+ 1509 0641 52       		.byte	0x52
+ 1510 0642 00       		.byte	0
+ 1511 0643 1F       		.uleb128 0x1f
+ 1512 0644 01       		.byte	0x1
+ 1513 0645 F8020000 		.4byte	.LASF68
+ 1514 0649 01       		.byte	0x1
+ 1515 064a A401     		.2byte	0x1a4
+ 1516 064c 01       		.byte	0x1
+ 1517 064d CE010000 		.4byte	.LFB121
+ 1518 0651 D2010000 		.4byte	.LFE121
+ 1519 0655 02       		.byte	0x2
+ 1520 0656 7D       		.byte	0x7d
+ 1521 0657 00       		.sleb128 0
+ 1522 0658 01       		.byte	0x1
+ 1523 0659 7A060000 		.4byte	0x67a
+ 1524 065d 1D       		.uleb128 0x1d
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 38
+
+
+ 1525 065e 25030000 		.4byte	.LASF53
+ 1526 0662 01       		.byte	0x1
+ 1527 0663 A401     		.2byte	0x1a4
+ 1528 0665 BF030000 		.4byte	0x3bf
+ 1529 0669 01       		.byte	0x1
+ 1530 066a 50       		.byte	0x50
+ 1531 066b 1D       		.uleb128 0x1d
+ 1532 066c 03030000 		.4byte	.LASF69
+ 1533 0670 01       		.byte	0x1
+ 1534 0671 A401     		.2byte	0x1a4
+ 1535 0673 45000000 		.4byte	0x45
+ 1536 0677 01       		.byte	0x1
+ 1537 0678 51       		.byte	0x51
+ 1538 0679 00       		.byte	0
+ 1539 067a 1F       		.uleb128 0x1f
+ 1540 067b 01       		.byte	0x1
+ 1541 067c 6A030000 		.4byte	.LASF70
+ 1542 0680 01       		.byte	0x1
+ 1543 0681 B201     		.2byte	0x1b2
+ 1544 0683 01       		.byte	0x1
+ 1545 0684 D2010000 		.4byte	.LFB122
+ 1546 0688 DA010000 		.4byte	.LFE122
+ 1547 068c 02       		.byte	0x2
+ 1548 068d 7D       		.byte	0x7d
+ 1549 068e 00       		.sleb128 0
+ 1550 068f 01       		.byte	0x1
+ 1551 0690 B3060000 		.4byte	0x6b3
+ 1552 0694 1D       		.uleb128 0x1d
+ 1553 0695 25030000 		.4byte	.LASF53
+ 1554 0699 01       		.byte	0x1
+ 1555 069a B201     		.2byte	0x1b2
+ 1556 069c BF030000 		.4byte	0x3bf
+ 1557 06a0 01       		.byte	0x1
+ 1558 06a1 50       		.byte	0x50
+ 1559 06a2 1C       		.uleb128 0x1c
+ 1560 06a3 14000000 		.4byte	.LASF45
+ 1561 06a7 01       		.byte	0x1
+ 1562 06a8 B201     		.2byte	0x1b2
+ 1563 06aa 45000000 		.4byte	0x45
+ 1564 06ae 05030000 		.4byte	.LLST14
+ 1565 06b2 00       		.byte	0
+ 1566 06b3 20       		.uleb128 0x20
+ 1567 06b4 01       		.byte	0x1
+ 1568 06b5 C9030000 		.4byte	.LASF71
+ 1569 06b9 01       		.byte	0x1
+ 1570 06ba FB01     		.2byte	0x1fb
+ 1571 06bc 01       		.byte	0x1
+ 1572 06bd DA010000 		.4byte	.LFB123
+ 1573 06c1 08020000 		.4byte	.LFE123
+ 1574 06c5 26030000 		.4byte	.LLST15
+ 1575 06c9 01       		.byte	0x1
+ 1576 06ca 1D070000 		.4byte	0x71d
+ 1577 06ce 1D       		.uleb128 0x1d
+ 1578 06cf 25030000 		.4byte	.LASF53
+ 1579 06d3 01       		.byte	0x1
+ 1580 06d4 FB01     		.2byte	0x1fb
+ 1581 06d6 BF030000 		.4byte	0x3bf
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 39
+
+
+ 1582 06da 01       		.byte	0x1
+ 1583 06db 50       		.byte	0x50
+ 1584 06dc 1C       		.uleb128 0x1c
+ 1585 06dd 66020000 		.4byte	.LASF72
+ 1586 06e1 01       		.byte	0x1
+ 1587 06e2 FB01     		.2byte	0x1fb
+ 1588 06e4 45000000 		.4byte	0x45
+ 1589 06e8 46030000 		.4byte	.LLST16
+ 1590 06ec 1C       		.uleb128 0x1c
+ 1591 06ed 4A000000 		.4byte	.LASF73
+ 1592 06f1 01       		.byte	0x1
+ 1593 06f2 FB01     		.2byte	0x1fb
+ 1594 06f4 2C000000 		.4byte	0x2c
+ 1595 06f8 67030000 		.4byte	.LLST17
+ 1596 06fc 1E       		.uleb128 0x1e
+ 1597 06fd 63000000 		.4byte	.LASF74
+ 1598 0701 01       		.byte	0x1
+ 1599 0702 FD01     		.2byte	0x1fd
+ 1600 0704 69000000 		.4byte	0x69
+ 1601 0708 88030000 		.4byte	.LLST18
+ 1602 070c 1E       		.uleb128 0x1e
+ 1603 070d 7A030000 		.4byte	.LASF75
+ 1604 0711 01       		.byte	0x1
+ 1605 0712 FE01     		.2byte	0x1fe
+ 1606 0714 69000000 		.4byte	0x69
+ 1607 0718 C3030000 		.4byte	.LLST19
+ 1608 071c 00       		.byte	0
+ 1609 071d 21       		.uleb128 0x21
+ 1610 071e 4C030000 		.4byte	.LASF79
+ 1611 0722 05       		.byte	0x5
+ 1612 0723 1A05     		.2byte	0x51a
+ 1613 0725 B8000000 		.4byte	0xb8
+ 1614 0729 01       		.byte	0x1
+ 1615 072a 01       		.byte	0x1
+ 1616 072b 22       		.uleb128 0x22
+ 1617 072c 01       		.byte	0x1
+ 1618 072d D7010000 		.4byte	.LASF80
+ 1619 0731 06       		.byte	0x6
+ 1620 0732 E301     		.2byte	0x1e3
+ 1621 0734 01       		.byte	0x1
+ 1622 0735 01       		.byte	0x1
+ 1623 0736 23       		.uleb128 0x23
+ 1624 0737 69000000 		.4byte	0x69
+ 1625 073b 23       		.uleb128 0x23
+ 1626 073c D3000000 		.4byte	0xd3
+ 1627 0740 00       		.byte	0
+ 1628 0741 00       		.byte	0
+ 1629              		.section	.debug_abbrev,"",%progbits
+ 1630              	.Ldebug_abbrev0:
+ 1631 0000 01       		.uleb128 0x1
+ 1632 0001 11       		.uleb128 0x11
+ 1633 0002 01       		.byte	0x1
+ 1634 0003 25       		.uleb128 0x25
+ 1635 0004 0E       		.uleb128 0xe
+ 1636 0005 13       		.uleb128 0x13
+ 1637 0006 0B       		.uleb128 0xb
+ 1638 0007 03       		.uleb128 0x3
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 40
+
+
+ 1639 0008 0E       		.uleb128 0xe
+ 1640 0009 1B       		.uleb128 0x1b
+ 1641 000a 0E       		.uleb128 0xe
+ 1642 000b 11       		.uleb128 0x11
+ 1643 000c 01       		.uleb128 0x1
+ 1644 000d 12       		.uleb128 0x12
+ 1645 000e 01       		.uleb128 0x1
+ 1646 000f 10       		.uleb128 0x10
+ 1647 0010 06       		.uleb128 0x6
+ 1648 0011 00       		.byte	0
+ 1649 0012 00       		.byte	0
+ 1650 0013 02       		.uleb128 0x2
+ 1651 0014 24       		.uleb128 0x24
+ 1652 0015 00       		.byte	0
+ 1653 0016 0B       		.uleb128 0xb
+ 1654 0017 0B       		.uleb128 0xb
+ 1655 0018 3E       		.uleb128 0x3e
+ 1656 0019 0B       		.uleb128 0xb
+ 1657 001a 03       		.uleb128 0x3
+ 1658 001b 0E       		.uleb128 0xe
+ 1659 001c 00       		.byte	0
+ 1660 001d 00       		.byte	0
+ 1661 001e 03       		.uleb128 0x3
+ 1662 001f 16       		.uleb128 0x16
+ 1663 0020 00       		.byte	0
+ 1664 0021 03       		.uleb128 0x3
+ 1665 0022 0E       		.uleb128 0xe
+ 1666 0023 3A       		.uleb128 0x3a
+ 1667 0024 0B       		.uleb128 0xb
+ 1668 0025 3B       		.uleb128 0x3b
+ 1669 0026 0B       		.uleb128 0xb
+ 1670 0027 49       		.uleb128 0x49
+ 1671 0028 13       		.uleb128 0x13
+ 1672 0029 00       		.byte	0
+ 1673 002a 00       		.byte	0
+ 1674 002b 04       		.uleb128 0x4
+ 1675 002c 24       		.uleb128 0x24
+ 1676 002d 00       		.byte	0
+ 1677 002e 0B       		.uleb128 0xb
+ 1678 002f 0B       		.uleb128 0xb
+ 1679 0030 3E       		.uleb128 0x3e
+ 1680 0031 0B       		.uleb128 0xb
+ 1681 0032 03       		.uleb128 0x3
+ 1682 0033 08       		.uleb128 0x8
+ 1683 0034 00       		.byte	0
+ 1684 0035 00       		.byte	0
+ 1685 0036 05       		.uleb128 0x5
+ 1686 0037 35       		.uleb128 0x35
+ 1687 0038 00       		.byte	0
+ 1688 0039 49       		.uleb128 0x49
+ 1689 003a 13       		.uleb128 0x13
+ 1690 003b 00       		.byte	0
+ 1691 003c 00       		.byte	0
+ 1692 003d 06       		.uleb128 0x6
+ 1693 003e 01       		.uleb128 0x1
+ 1694 003f 01       		.byte	0x1
+ 1695 0040 49       		.uleb128 0x49
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 41
+
+
+ 1696 0041 13       		.uleb128 0x13
+ 1697 0042 01       		.uleb128 0x1
+ 1698 0043 13       		.uleb128 0x13
+ 1699 0044 00       		.byte	0
+ 1700 0045 00       		.byte	0
+ 1701 0046 07       		.uleb128 0x7
+ 1702 0047 21       		.uleb128 0x21
+ 1703 0048 00       		.byte	0
+ 1704 0049 49       		.uleb128 0x49
+ 1705 004a 13       		.uleb128 0x13
+ 1706 004b 2F       		.uleb128 0x2f
+ 1707 004c 0B       		.uleb128 0xb
+ 1708 004d 00       		.byte	0
+ 1709 004e 00       		.byte	0
+ 1710 004f 08       		.uleb128 0x8
+ 1711 0050 04       		.uleb128 0x4
+ 1712 0051 01       		.byte	0x1
+ 1713 0052 0B       		.uleb128 0xb
+ 1714 0053 0B       		.uleb128 0xb
+ 1715 0054 3A       		.uleb128 0x3a
+ 1716 0055 0B       		.uleb128 0xb
+ 1717 0056 3B       		.uleb128 0x3b
+ 1718 0057 05       		.uleb128 0x5
+ 1719 0058 01       		.uleb128 0x1
+ 1720 0059 13       		.uleb128 0x13
+ 1721 005a 00       		.byte	0
+ 1722 005b 00       		.byte	0
+ 1723 005c 09       		.uleb128 0x9
+ 1724 005d 28       		.uleb128 0x28
+ 1725 005e 00       		.byte	0
+ 1726 005f 03       		.uleb128 0x3
+ 1727 0060 0E       		.uleb128 0xe
+ 1728 0061 1C       		.uleb128 0x1c
+ 1729 0062 0D       		.uleb128 0xd
+ 1730 0063 00       		.byte	0
+ 1731 0064 00       		.byte	0
+ 1732 0065 0A       		.uleb128 0xa
+ 1733 0066 16       		.uleb128 0x16
+ 1734 0067 00       		.byte	0
+ 1735 0068 03       		.uleb128 0x3
+ 1736 0069 0E       		.uleb128 0xe
+ 1737 006a 3A       		.uleb128 0x3a
+ 1738 006b 0B       		.uleb128 0xb
+ 1739 006c 3B       		.uleb128 0x3b
+ 1740 006d 05       		.uleb128 0x5
+ 1741 006e 49       		.uleb128 0x49
+ 1742 006f 13       		.uleb128 0x13
+ 1743 0070 00       		.byte	0
+ 1744 0071 00       		.byte	0
+ 1745 0072 0B       		.uleb128 0xb
+ 1746 0073 13       		.uleb128 0x13
+ 1747 0074 01       		.byte	0x1
+ 1748 0075 0B       		.uleb128 0xb
+ 1749 0076 0B       		.uleb128 0xb
+ 1750 0077 3A       		.uleb128 0x3a
+ 1751 0078 0B       		.uleb128 0xb
+ 1752 0079 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 42
+
+
+ 1753 007a 05       		.uleb128 0x5
+ 1754 007b 01       		.uleb128 0x1
+ 1755 007c 13       		.uleb128 0x13
+ 1756 007d 00       		.byte	0
+ 1757 007e 00       		.byte	0
+ 1758 007f 0C       		.uleb128 0xc
+ 1759 0080 0D       		.uleb128 0xd
+ 1760 0081 00       		.byte	0
+ 1761 0082 03       		.uleb128 0x3
+ 1762 0083 0E       		.uleb128 0xe
+ 1763 0084 3A       		.uleb128 0x3a
+ 1764 0085 0B       		.uleb128 0xb
+ 1765 0086 3B       		.uleb128 0x3b
+ 1766 0087 05       		.uleb128 0x5
+ 1767 0088 49       		.uleb128 0x49
+ 1768 0089 13       		.uleb128 0x13
+ 1769 008a 38       		.uleb128 0x38
+ 1770 008b 0A       		.uleb128 0xa
+ 1771 008c 00       		.byte	0
+ 1772 008d 00       		.byte	0
+ 1773 008e 0D       		.uleb128 0xd
+ 1774 008f 0D       		.uleb128 0xd
+ 1775 0090 00       		.byte	0
+ 1776 0091 03       		.uleb128 0x3
+ 1777 0092 08       		.uleb128 0x8
+ 1778 0093 3A       		.uleb128 0x3a
+ 1779 0094 0B       		.uleb128 0xb
+ 1780 0095 3B       		.uleb128 0x3b
+ 1781 0096 05       		.uleb128 0x5
+ 1782 0097 49       		.uleb128 0x49
+ 1783 0098 13       		.uleb128 0x13
+ 1784 0099 38       		.uleb128 0x38
+ 1785 009a 0A       		.uleb128 0xa
+ 1786 009b 00       		.byte	0
+ 1787 009c 00       		.byte	0
+ 1788 009d 0E       		.uleb128 0xe
+ 1789 009e 04       		.uleb128 0x4
+ 1790 009f 01       		.byte	0x1
+ 1791 00a0 0B       		.uleb128 0xb
+ 1792 00a1 0B       		.uleb128 0xb
+ 1793 00a2 3A       		.uleb128 0x3a
+ 1794 00a3 0B       		.uleb128 0xb
+ 1795 00a4 3B       		.uleb128 0x3b
+ 1796 00a5 0B       		.uleb128 0xb
+ 1797 00a6 01       		.uleb128 0x1
+ 1798 00a7 13       		.uleb128 0x13
+ 1799 00a8 00       		.byte	0
+ 1800 00a9 00       		.byte	0
+ 1801 00aa 0F       		.uleb128 0xf
+ 1802 00ab 13       		.uleb128 0x13
+ 1803 00ac 01       		.byte	0x1
+ 1804 00ad 0B       		.uleb128 0xb
+ 1805 00ae 0B       		.uleb128 0xb
+ 1806 00af 3A       		.uleb128 0x3a
+ 1807 00b0 0B       		.uleb128 0xb
+ 1808 00b1 3B       		.uleb128 0x3b
+ 1809 00b2 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 43
+
+
+ 1810 00b3 01       		.uleb128 0x1
+ 1811 00b4 13       		.uleb128 0x13
+ 1812 00b5 00       		.byte	0
+ 1813 00b6 00       		.byte	0
+ 1814 00b7 10       		.uleb128 0x10
+ 1815 00b8 0D       		.uleb128 0xd
+ 1816 00b9 00       		.byte	0
+ 1817 00ba 03       		.uleb128 0x3
+ 1818 00bb 0E       		.uleb128 0xe
+ 1819 00bc 3A       		.uleb128 0x3a
+ 1820 00bd 0B       		.uleb128 0xb
+ 1821 00be 3B       		.uleb128 0x3b
+ 1822 00bf 0B       		.uleb128 0xb
+ 1823 00c0 49       		.uleb128 0x49
+ 1824 00c1 13       		.uleb128 0x13
+ 1825 00c2 38       		.uleb128 0x38
+ 1826 00c3 0A       		.uleb128 0xa
+ 1827 00c4 00       		.byte	0
+ 1828 00c5 00       		.byte	0
+ 1829 00c6 11       		.uleb128 0x11
+ 1830 00c7 2E       		.uleb128 0x2e
+ 1831 00c8 01       		.byte	0x1
+ 1832 00c9 3F       		.uleb128 0x3f
+ 1833 00ca 0C       		.uleb128 0xc
+ 1834 00cb 03       		.uleb128 0x3
+ 1835 00cc 0E       		.uleb128 0xe
+ 1836 00cd 3A       		.uleb128 0x3a
+ 1837 00ce 0B       		.uleb128 0xb
+ 1838 00cf 3B       		.uleb128 0x3b
+ 1839 00d0 0B       		.uleb128 0xb
+ 1840 00d1 27       		.uleb128 0x27
+ 1841 00d2 0C       		.uleb128 0xc
+ 1842 00d3 11       		.uleb128 0x11
+ 1843 00d4 01       		.uleb128 0x1
+ 1844 00d5 12       		.uleb128 0x12
+ 1845 00d6 01       		.uleb128 0x1
+ 1846 00d7 40       		.uleb128 0x40
+ 1847 00d8 06       		.uleb128 0x6
+ 1848 00d9 9742     		.uleb128 0x2117
+ 1849 00db 0C       		.uleb128 0xc
+ 1850 00dc 01       		.uleb128 0x1
+ 1851 00dd 13       		.uleb128 0x13
+ 1852 00de 00       		.byte	0
+ 1853 00df 00       		.byte	0
+ 1854 00e0 12       		.uleb128 0x12
+ 1855 00e1 05       		.uleb128 0x5
+ 1856 00e2 00       		.byte	0
+ 1857 00e3 03       		.uleb128 0x3
+ 1858 00e4 0E       		.uleb128 0xe
+ 1859 00e5 3A       		.uleb128 0x3a
+ 1860 00e6 0B       		.uleb128 0xb
+ 1861 00e7 3B       		.uleb128 0x3b
+ 1862 00e8 0B       		.uleb128 0xb
+ 1863 00e9 49       		.uleb128 0x49
+ 1864 00ea 13       		.uleb128 0x13
+ 1865 00eb 02       		.uleb128 0x2
+ 1866 00ec 06       		.uleb128 0x6
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 44
+
+
+ 1867 00ed 00       		.byte	0
+ 1868 00ee 00       		.byte	0
+ 1869 00ef 13       		.uleb128 0x13
+ 1870 00f0 898201   		.uleb128 0x4109
+ 1871 00f3 01       		.byte	0x1
+ 1872 00f4 11       		.uleb128 0x11
+ 1873 00f5 01       		.uleb128 0x1
+ 1874 00f6 31       		.uleb128 0x31
+ 1875 00f7 13       		.uleb128 0x13
+ 1876 00f8 01       		.uleb128 0x1
+ 1877 00f9 13       		.uleb128 0x13
+ 1878 00fa 00       		.byte	0
+ 1879 00fb 00       		.byte	0
+ 1880 00fc 14       		.uleb128 0x14
+ 1881 00fd 8A8201   		.uleb128 0x410a
+ 1882 0100 00       		.byte	0
+ 1883 0101 02       		.uleb128 0x2
+ 1884 0102 0A       		.uleb128 0xa
+ 1885 0103 9142     		.uleb128 0x2111
+ 1886 0105 0A       		.uleb128 0xa
+ 1887 0106 00       		.byte	0
+ 1888 0107 00       		.byte	0
+ 1889 0108 15       		.uleb128 0x15
+ 1890 0109 898201   		.uleb128 0x4109
+ 1891 010c 01       		.byte	0x1
+ 1892 010d 11       		.uleb128 0x11
+ 1893 010e 01       		.uleb128 0x1
+ 1894 010f 9542     		.uleb128 0x2115
+ 1895 0111 0C       		.uleb128 0xc
+ 1896 0112 31       		.uleb128 0x31
+ 1897 0113 13       		.uleb128 0x13
+ 1898 0114 00       		.byte	0
+ 1899 0115 00       		.byte	0
+ 1900 0116 16       		.uleb128 0x16
+ 1901 0117 0F       		.uleb128 0xf
+ 1902 0118 00       		.byte	0
+ 1903 0119 0B       		.uleb128 0xb
+ 1904 011a 0B       		.uleb128 0xb
+ 1905 011b 49       		.uleb128 0x49
+ 1906 011c 13       		.uleb128 0x13
+ 1907 011d 00       		.byte	0
+ 1908 011e 00       		.byte	0
+ 1909 011f 17       		.uleb128 0x17
+ 1910 0120 05       		.uleb128 0x5
+ 1911 0121 00       		.byte	0
+ 1912 0122 03       		.uleb128 0x3
+ 1913 0123 0E       		.uleb128 0xe
+ 1914 0124 3A       		.uleb128 0x3a
+ 1915 0125 0B       		.uleb128 0xb
+ 1916 0126 3B       		.uleb128 0x3b
+ 1917 0127 0B       		.uleb128 0xb
+ 1918 0128 49       		.uleb128 0x49
+ 1919 0129 13       		.uleb128 0x13
+ 1920 012a 02       		.uleb128 0x2
+ 1921 012b 0A       		.uleb128 0xa
+ 1922 012c 00       		.byte	0
+ 1923 012d 00       		.byte	0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 45
+
+
+ 1924 012e 18       		.uleb128 0x18
+ 1925 012f 34       		.uleb128 0x34
+ 1926 0130 00       		.byte	0
+ 1927 0131 03       		.uleb128 0x3
+ 1928 0132 0E       		.uleb128 0xe
+ 1929 0133 3A       		.uleb128 0x3a
+ 1930 0134 0B       		.uleb128 0xb
+ 1931 0135 3B       		.uleb128 0x3b
+ 1932 0136 0B       		.uleb128 0xb
+ 1933 0137 49       		.uleb128 0x49
+ 1934 0138 13       		.uleb128 0x13
+ 1935 0139 02       		.uleb128 0x2
+ 1936 013a 06       		.uleb128 0x6
+ 1937 013b 00       		.byte	0
+ 1938 013c 00       		.byte	0
+ 1939 013d 19       		.uleb128 0x19
+ 1940 013e 34       		.uleb128 0x34
+ 1941 013f 00       		.byte	0
+ 1942 0140 03       		.uleb128 0x3
+ 1943 0141 08       		.uleb128 0x8
+ 1944 0142 3A       		.uleb128 0x3a
+ 1945 0143 0B       		.uleb128 0xb
+ 1946 0144 3B       		.uleb128 0x3b
+ 1947 0145 0B       		.uleb128 0xb
+ 1948 0146 49       		.uleb128 0x49
+ 1949 0147 13       		.uleb128 0x13
+ 1950 0148 02       		.uleb128 0x2
+ 1951 0149 06       		.uleb128 0x6
+ 1952 014a 00       		.byte	0
+ 1953 014b 00       		.byte	0
+ 1954 014c 1A       		.uleb128 0x1a
+ 1955 014d 2E       		.uleb128 0x2e
+ 1956 014e 01       		.byte	0x1
+ 1957 014f 3F       		.uleb128 0x3f
+ 1958 0150 0C       		.uleb128 0xc
+ 1959 0151 03       		.uleb128 0x3
+ 1960 0152 0E       		.uleb128 0xe
+ 1961 0153 3A       		.uleb128 0x3a
+ 1962 0154 0B       		.uleb128 0xb
+ 1963 0155 3B       		.uleb128 0x3b
+ 1964 0156 0B       		.uleb128 0xb
+ 1965 0157 27       		.uleb128 0x27
+ 1966 0158 0C       		.uleb128 0xc
+ 1967 0159 11       		.uleb128 0x11
+ 1968 015a 01       		.uleb128 0x1
+ 1969 015b 12       		.uleb128 0x12
+ 1970 015c 01       		.uleb128 0x1
+ 1971 015d 40       		.uleb128 0x40
+ 1972 015e 0A       		.uleb128 0xa
+ 1973 015f 9742     		.uleb128 0x2117
+ 1974 0161 0C       		.uleb128 0xc
+ 1975 0162 01       		.uleb128 0x1
+ 1976 0163 13       		.uleb128 0x13
+ 1977 0164 00       		.byte	0
+ 1978 0165 00       		.byte	0
+ 1979 0166 1B       		.uleb128 0x1b
+ 1980 0167 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 46
+
+
+ 1981 0168 01       		.byte	0x1
+ 1982 0169 3F       		.uleb128 0x3f
+ 1983 016a 0C       		.uleb128 0xc
+ 1984 016b 03       		.uleb128 0x3
+ 1985 016c 0E       		.uleb128 0xe
+ 1986 016d 3A       		.uleb128 0x3a
+ 1987 016e 0B       		.uleb128 0xb
+ 1988 016f 3B       		.uleb128 0x3b
+ 1989 0170 05       		.uleb128 0x5
+ 1990 0171 27       		.uleb128 0x27
+ 1991 0172 0C       		.uleb128 0xc
+ 1992 0173 49       		.uleb128 0x49
+ 1993 0174 13       		.uleb128 0x13
+ 1994 0175 11       		.uleb128 0x11
+ 1995 0176 01       		.uleb128 0x1
+ 1996 0177 12       		.uleb128 0x12
+ 1997 0178 01       		.uleb128 0x1
+ 1998 0179 40       		.uleb128 0x40
+ 1999 017a 0A       		.uleb128 0xa
+ 2000 017b 9742     		.uleb128 0x2117
+ 2001 017d 0C       		.uleb128 0xc
+ 2002 017e 01       		.uleb128 0x1
+ 2003 017f 13       		.uleb128 0x13
+ 2004 0180 00       		.byte	0
+ 2005 0181 00       		.byte	0
+ 2006 0182 1C       		.uleb128 0x1c
+ 2007 0183 05       		.uleb128 0x5
+ 2008 0184 00       		.byte	0
+ 2009 0185 03       		.uleb128 0x3
+ 2010 0186 0E       		.uleb128 0xe
+ 2011 0187 3A       		.uleb128 0x3a
+ 2012 0188 0B       		.uleb128 0xb
+ 2013 0189 3B       		.uleb128 0x3b
+ 2014 018a 05       		.uleb128 0x5
+ 2015 018b 49       		.uleb128 0x49
+ 2016 018c 13       		.uleb128 0x13
+ 2017 018d 02       		.uleb128 0x2
+ 2018 018e 06       		.uleb128 0x6
+ 2019 018f 00       		.byte	0
+ 2020 0190 00       		.byte	0
+ 2021 0191 1D       		.uleb128 0x1d
+ 2022 0192 05       		.uleb128 0x5
+ 2023 0193 00       		.byte	0
+ 2024 0194 03       		.uleb128 0x3
+ 2025 0195 0E       		.uleb128 0xe
+ 2026 0196 3A       		.uleb128 0x3a
+ 2027 0197 0B       		.uleb128 0xb
+ 2028 0198 3B       		.uleb128 0x3b
+ 2029 0199 05       		.uleb128 0x5
+ 2030 019a 49       		.uleb128 0x49
+ 2031 019b 13       		.uleb128 0x13
+ 2032 019c 02       		.uleb128 0x2
+ 2033 019d 0A       		.uleb128 0xa
+ 2034 019e 00       		.byte	0
+ 2035 019f 00       		.byte	0
+ 2036 01a0 1E       		.uleb128 0x1e
+ 2037 01a1 34       		.uleb128 0x34
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 47
+
+
+ 2038 01a2 00       		.byte	0
+ 2039 01a3 03       		.uleb128 0x3
+ 2040 01a4 0E       		.uleb128 0xe
+ 2041 01a5 3A       		.uleb128 0x3a
+ 2042 01a6 0B       		.uleb128 0xb
+ 2043 01a7 3B       		.uleb128 0x3b
+ 2044 01a8 05       		.uleb128 0x5
+ 2045 01a9 49       		.uleb128 0x49
+ 2046 01aa 13       		.uleb128 0x13
+ 2047 01ab 02       		.uleb128 0x2
+ 2048 01ac 06       		.uleb128 0x6
+ 2049 01ad 00       		.byte	0
+ 2050 01ae 00       		.byte	0
+ 2051 01af 1F       		.uleb128 0x1f
+ 2052 01b0 2E       		.uleb128 0x2e
+ 2053 01b1 01       		.byte	0x1
+ 2054 01b2 3F       		.uleb128 0x3f
+ 2055 01b3 0C       		.uleb128 0xc
+ 2056 01b4 03       		.uleb128 0x3
+ 2057 01b5 0E       		.uleb128 0xe
+ 2058 01b6 3A       		.uleb128 0x3a
+ 2059 01b7 0B       		.uleb128 0xb
+ 2060 01b8 3B       		.uleb128 0x3b
+ 2061 01b9 05       		.uleb128 0x5
+ 2062 01ba 27       		.uleb128 0x27
+ 2063 01bb 0C       		.uleb128 0xc
+ 2064 01bc 11       		.uleb128 0x11
+ 2065 01bd 01       		.uleb128 0x1
+ 2066 01be 12       		.uleb128 0x12
+ 2067 01bf 01       		.uleb128 0x1
+ 2068 01c0 40       		.uleb128 0x40
+ 2069 01c1 0A       		.uleb128 0xa
+ 2070 01c2 9742     		.uleb128 0x2117
+ 2071 01c4 0C       		.uleb128 0xc
+ 2072 01c5 01       		.uleb128 0x1
+ 2073 01c6 13       		.uleb128 0x13
+ 2074 01c7 00       		.byte	0
+ 2075 01c8 00       		.byte	0
+ 2076 01c9 20       		.uleb128 0x20
+ 2077 01ca 2E       		.uleb128 0x2e
+ 2078 01cb 01       		.byte	0x1
+ 2079 01cc 3F       		.uleb128 0x3f
+ 2080 01cd 0C       		.uleb128 0xc
+ 2081 01ce 03       		.uleb128 0x3
+ 2082 01cf 0E       		.uleb128 0xe
+ 2083 01d0 3A       		.uleb128 0x3a
+ 2084 01d1 0B       		.uleb128 0xb
+ 2085 01d2 3B       		.uleb128 0x3b
+ 2086 01d3 05       		.uleb128 0x5
+ 2087 01d4 27       		.uleb128 0x27
+ 2088 01d5 0C       		.uleb128 0xc
+ 2089 01d6 11       		.uleb128 0x11
+ 2090 01d7 01       		.uleb128 0x1
+ 2091 01d8 12       		.uleb128 0x12
+ 2092 01d9 01       		.uleb128 0x1
+ 2093 01da 40       		.uleb128 0x40
+ 2094 01db 06       		.uleb128 0x6
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 48
+
+
+ 2095 01dc 9742     		.uleb128 0x2117
+ 2096 01de 0C       		.uleb128 0xc
+ 2097 01df 01       		.uleb128 0x1
+ 2098 01e0 13       		.uleb128 0x13
+ 2099 01e1 00       		.byte	0
+ 2100 01e2 00       		.byte	0
+ 2101 01e3 21       		.uleb128 0x21
+ 2102 01e4 34       		.uleb128 0x34
+ 2103 01e5 00       		.byte	0
+ 2104 01e6 03       		.uleb128 0x3
+ 2105 01e7 0E       		.uleb128 0xe
+ 2106 01e8 3A       		.uleb128 0x3a
+ 2107 01e9 0B       		.uleb128 0xb
+ 2108 01ea 3B       		.uleb128 0x3b
+ 2109 01eb 05       		.uleb128 0x5
+ 2110 01ec 49       		.uleb128 0x49
+ 2111 01ed 13       		.uleb128 0x13
+ 2112 01ee 3F       		.uleb128 0x3f
+ 2113 01ef 0C       		.uleb128 0xc
+ 2114 01f0 3C       		.uleb128 0x3c
+ 2115 01f1 0C       		.uleb128 0xc
+ 2116 01f2 00       		.byte	0
+ 2117 01f3 00       		.byte	0
+ 2118 01f4 22       		.uleb128 0x22
+ 2119 01f5 2E       		.uleb128 0x2e
+ 2120 01f6 01       		.byte	0x1
+ 2121 01f7 3F       		.uleb128 0x3f
+ 2122 01f8 0C       		.uleb128 0xc
+ 2123 01f9 03       		.uleb128 0x3
+ 2124 01fa 0E       		.uleb128 0xe
+ 2125 01fb 3A       		.uleb128 0x3a
+ 2126 01fc 0B       		.uleb128 0xb
+ 2127 01fd 3B       		.uleb128 0x3b
+ 2128 01fe 05       		.uleb128 0x5
+ 2129 01ff 27       		.uleb128 0x27
+ 2130 0200 0C       		.uleb128 0xc
+ 2131 0201 3C       		.uleb128 0x3c
+ 2132 0202 0C       		.uleb128 0xc
+ 2133 0203 00       		.byte	0
+ 2134 0204 00       		.byte	0
+ 2135 0205 23       		.uleb128 0x23
+ 2136 0206 05       		.uleb128 0x5
+ 2137 0207 00       		.byte	0
+ 2138 0208 49       		.uleb128 0x49
+ 2139 0209 13       		.uleb128 0x13
+ 2140 020a 00       		.byte	0
+ 2141 020b 00       		.byte	0
+ 2142 020c 00       		.byte	0
+ 2143              		.section	.debug_loc,"",%progbits
+ 2144              	.Ldebug_loc0:
+ 2145              	.LLST0:
+ 2146 0000 00000000 		.4byte	.LFB110-.Ltext0
+ 2147 0004 02000000 		.4byte	.LCFI0-.Ltext0
+ 2148 0008 0200     		.2byte	0x2
+ 2149 000a 7D       		.byte	0x7d
+ 2150 000b 00       		.sleb128 0
+ 2151 000c 02000000 		.4byte	.LCFI0-.Ltext0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 49
+
+
+ 2152 0010 D8000000 		.4byte	.LFE110-.Ltext0
+ 2153 0014 0200     		.2byte	0x2
+ 2154 0016 7D       		.byte	0x7d
+ 2155 0017 08       		.sleb128 8
+ 2156 0018 00000000 		.4byte	0
+ 2157 001c 00000000 		.4byte	0
+ 2158              	.LLST1:
+ 2159 0020 00000000 		.4byte	.LVL0-.Ltext0
+ 2160 0024 0A000000 		.4byte	.LVL1-.Ltext0
+ 2161 0028 0100     		.2byte	0x1
+ 2162 002a 50       		.byte	0x50
+ 2163 002b 0A000000 		.4byte	.LVL1-.Ltext0
+ 2164 002f 14000000 		.4byte	.LVL3-.Ltext0
+ 2165 0033 0400     		.2byte	0x4
+ 2166 0035 F3       		.byte	0xf3
+ 2167 0036 01       		.uleb128 0x1
+ 2168 0037 50       		.byte	0x50
+ 2169 0038 9F       		.byte	0x9f
+ 2170 0039 14000000 		.4byte	.LVL3-.Ltext0
+ 2171 003d 1C000000 		.4byte	.LVL4-.Ltext0
+ 2172 0041 0100     		.2byte	0x1
+ 2173 0043 50       		.byte	0x50
+ 2174 0044 1C000000 		.4byte	.LVL4-.Ltext0
+ 2175 0048 26000000 		.4byte	.LVL6-.Ltext0
+ 2176 004c 0400     		.2byte	0x4
+ 2177 004e F3       		.byte	0xf3
+ 2178 004f 01       		.uleb128 0x1
+ 2179 0050 50       		.byte	0x50
+ 2180 0051 9F       		.byte	0x9f
+ 2181 0052 26000000 		.4byte	.LVL6-.Ltext0
+ 2182 0056 2E000000 		.4byte	.LVL7-.Ltext0
+ 2183 005a 0100     		.2byte	0x1
+ 2184 005c 50       		.byte	0x50
+ 2185 005d 2E000000 		.4byte	.LVL7-.Ltext0
+ 2186 0061 38000000 		.4byte	.LVL9-.Ltext0
+ 2187 0065 0400     		.2byte	0x4
+ 2188 0067 F3       		.byte	0xf3
+ 2189 0068 01       		.uleb128 0x1
+ 2190 0069 50       		.byte	0x50
+ 2191 006a 9F       		.byte	0x9f
+ 2192 006b 38000000 		.4byte	.LVL9-.Ltext0
+ 2193 006f 40000000 		.4byte	.LVL10-.Ltext0
+ 2194 0073 0100     		.2byte	0x1
+ 2195 0075 50       		.byte	0x50
+ 2196 0076 40000000 		.4byte	.LVL10-.Ltext0
+ 2197 007a 4A000000 		.4byte	.LVL12-.Ltext0
+ 2198 007e 0400     		.2byte	0x4
+ 2199 0080 F3       		.byte	0xf3
+ 2200 0081 01       		.uleb128 0x1
+ 2201 0082 50       		.byte	0x50
+ 2202 0083 9F       		.byte	0x9f
+ 2203 0084 4A000000 		.4byte	.LVL12-.Ltext0
+ 2204 0088 52000000 		.4byte	.LVL13-.Ltext0
+ 2205 008c 0100     		.2byte	0x1
+ 2206 008e 50       		.byte	0x50
+ 2207 008f 52000000 		.4byte	.LVL13-.Ltext0
+ 2208 0093 5C000000 		.4byte	.LVL15-.Ltext0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 50
+
+
+ 2209 0097 0400     		.2byte	0x4
+ 2210 0099 F3       		.byte	0xf3
+ 2211 009a 01       		.uleb128 0x1
+ 2212 009b 50       		.byte	0x50
+ 2213 009c 9F       		.byte	0x9f
+ 2214 009d 5C000000 		.4byte	.LVL15-.Ltext0
+ 2215 00a1 64000000 		.4byte	.LVL16-.Ltext0
+ 2216 00a5 0100     		.2byte	0x1
+ 2217 00a7 50       		.byte	0x50
+ 2218 00a8 64000000 		.4byte	.LVL16-.Ltext0
+ 2219 00ac 6E000000 		.4byte	.LVL18-.Ltext0
+ 2220 00b0 0400     		.2byte	0x4
+ 2221 00b2 F3       		.byte	0xf3
+ 2222 00b3 01       		.uleb128 0x1
+ 2223 00b4 50       		.byte	0x50
+ 2224 00b5 9F       		.byte	0x9f
+ 2225 00b6 6E000000 		.4byte	.LVL18-.Ltext0
+ 2226 00ba 76000000 		.4byte	.LVL19-.Ltext0
+ 2227 00be 0100     		.2byte	0x1
+ 2228 00c0 50       		.byte	0x50
+ 2229 00c1 76000000 		.4byte	.LVL19-.Ltext0
+ 2230 00c5 80000000 		.4byte	.LVL21-.Ltext0
+ 2231 00c9 0400     		.2byte	0x4
+ 2232 00cb F3       		.byte	0xf3
+ 2233 00cc 01       		.uleb128 0x1
+ 2234 00cd 50       		.byte	0x50
+ 2235 00ce 9F       		.byte	0x9f
+ 2236 00cf 80000000 		.4byte	.LVL21-.Ltext0
+ 2237 00d3 88000000 		.4byte	.LVL22-.Ltext0
+ 2238 00d7 0100     		.2byte	0x1
+ 2239 00d9 50       		.byte	0x50
+ 2240 00da 88000000 		.4byte	.LVL22-.Ltext0
+ 2241 00de 92000000 		.4byte	.LVL24-.Ltext0
+ 2242 00e2 0400     		.2byte	0x4
+ 2243 00e4 F3       		.byte	0xf3
+ 2244 00e5 01       		.uleb128 0x1
+ 2245 00e6 50       		.byte	0x50
+ 2246 00e7 9F       		.byte	0x9f
+ 2247 00e8 92000000 		.4byte	.LVL24-.Ltext0
+ 2248 00ec 9C000000 		.4byte	.LVL25-.Ltext0
+ 2249 00f0 0100     		.2byte	0x1
+ 2250 00f2 50       		.byte	0x50
+ 2251 00f3 9C000000 		.4byte	.LVL25-.Ltext0
+ 2252 00f7 B0000000 		.4byte	.LVL27-.Ltext0
+ 2253 00fb 0400     		.2byte	0x4
+ 2254 00fd F3       		.byte	0xf3
+ 2255 00fe 01       		.uleb128 0x1
+ 2256 00ff 50       		.byte	0x50
+ 2257 0100 9F       		.byte	0x9f
+ 2258 0101 B0000000 		.4byte	.LVL27-.Ltext0
+ 2259 0105 D8000000 		.4byte	.LFE110-.Ltext0
+ 2260 0109 0100     		.2byte	0x1
+ 2261 010b 50       		.byte	0x50
+ 2262 010c 00000000 		.4byte	0
+ 2263 0110 00000000 		.4byte	0
+ 2264              	.LLST2:
+ 2265 0114 D8000000 		.4byte	.LFB111-.Ltext0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 51
+
+
+ 2266 0118 DC000000 		.4byte	.LCFI1-.Ltext0
+ 2267 011c 0200     		.2byte	0x2
+ 2268 011e 7D       		.byte	0x7d
+ 2269 011f 00       		.sleb128 0
+ 2270 0120 DC000000 		.4byte	.LCFI1-.Ltext0
+ 2271 0124 62010000 		.4byte	.LFE111-.Ltext0
+ 2272 0128 0200     		.2byte	0x2
+ 2273 012a 7D       		.byte	0x7d
+ 2274 012b 20       		.sleb128 32
+ 2275 012c 00000000 		.4byte	0
+ 2276 0130 00000000 		.4byte	0
+ 2277              	.LLST3:
+ 2278 0134 D8000000 		.4byte	.LVL28-.Ltext0
+ 2279 0138 E8000000 		.4byte	.LVL29-.Ltext0
+ 2280 013c 0200     		.2byte	0x2
+ 2281 013e 30       		.byte	0x30
+ 2282 013f 9F       		.byte	0x9f
+ 2283 0140 5A010000 		.4byte	.LVL34-.Ltext0
+ 2284 0144 62010000 		.4byte	.LFE111-.Ltext0
+ 2285 0148 0100     		.2byte	0x1
+ 2286 014a 53       		.byte	0x53
+ 2287 014b 00000000 		.4byte	0
+ 2288 014f 00000000 		.4byte	0
+ 2289              	.LLST4:
+ 2290 0153 D8000000 		.4byte	.LVL28-.Ltext0
+ 2291 0157 E8000000 		.4byte	.LVL29-.Ltext0
+ 2292 015b 0200     		.2byte	0x2
+ 2293 015d 30       		.byte	0x30
+ 2294 015e 9F       		.byte	0x9f
+ 2295 015f EC000000 		.4byte	.LVL30-.Ltext0
+ 2296 0163 F6000000 		.4byte	.LVL32-.Ltext0
+ 2297 0167 0100     		.2byte	0x1
+ 2298 0169 52       		.byte	0x52
+ 2299 016a F6000000 		.4byte	.LVL32-.Ltext0
+ 2300 016e 5A010000 		.4byte	.LVL34-.Ltext0
+ 2301 0172 0600     		.2byte	0x6
+ 2302 0174 7C       		.byte	0x7c
+ 2303 0175 00       		.sleb128 0
+ 2304 0176 73       		.byte	0x73
+ 2305 0177 00       		.sleb128 0
+ 2306 0178 24       		.byte	0x24
+ 2307 0179 9F       		.byte	0x9f
+ 2308 017a 5A010000 		.4byte	.LVL34-.Ltext0
+ 2309 017e 62010000 		.4byte	.LFE111-.Ltext0
+ 2310 0182 0600     		.2byte	0x6
+ 2311 0184 7C       		.byte	0x7c
+ 2312 0185 00       		.sleb128 0
+ 2313 0186 73       		.byte	0x73
+ 2314 0187 7F       		.sleb128 -1
+ 2315 0188 24       		.byte	0x24
+ 2316 0189 9F       		.byte	0x9f
+ 2317 018a 00000000 		.4byte	0
+ 2318 018e 00000000 		.4byte	0
+ 2319              	.LLST5:
+ 2320 0192 D8000000 		.4byte	.LVL28-.Ltext0
+ 2321 0196 E8000000 		.4byte	.LVL29-.Ltext0
+ 2322 019a 0200     		.2byte	0x2
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 52
+
+
+ 2323 019c 30       		.byte	0x30
+ 2324 019d 9F       		.byte	0x9f
+ 2325 019e F0000000 		.4byte	.LVL31-.Ltext0
+ 2326 01a2 36010000 		.4byte	.LVL33-.Ltext0
+ 2327 01a6 0100     		.2byte	0x1
+ 2328 01a8 55       		.byte	0x55
+ 2329 01a9 36010000 		.4byte	.LVL33-.Ltext0
+ 2330 01ad 5A010000 		.4byte	.LVL34-.Ltext0
+ 2331 01b1 0900     		.2byte	0x9
+ 2332 01b3 7C       		.byte	0x7c
+ 2333 01b4 00       		.sleb128 0
+ 2334 01b5 73       		.byte	0x73
+ 2335 01b6 00       		.sleb128 0
+ 2336 01b7 24       		.byte	0x24
+ 2337 01b8 77       		.byte	0x77
+ 2338 01b9 00       		.sleb128 0
+ 2339 01ba 1A       		.byte	0x1a
+ 2340 01bb 9F       		.byte	0x9f
+ 2341 01bc 5A010000 		.4byte	.LVL34-.Ltext0
+ 2342 01c0 62010000 		.4byte	.LFE111-.Ltext0
+ 2343 01c4 0900     		.2byte	0x9
+ 2344 01c6 7C       		.byte	0x7c
+ 2345 01c7 00       		.sleb128 0
+ 2346 01c8 73       		.byte	0x73
+ 2347 01c9 7F       		.sleb128 -1
+ 2348 01ca 24       		.byte	0x24
+ 2349 01cb 77       		.byte	0x77
+ 2350 01cc 00       		.sleb128 0
+ 2351 01cd 1A       		.byte	0x1a
+ 2352 01ce 9F       		.byte	0x9f
+ 2353 01cf 00000000 		.4byte	0
+ 2354 01d3 00000000 		.4byte	0
+ 2355              	.LLST6:
+ 2356 01d7 74010000 		.4byte	.LFB113-.Ltext0
+ 2357 01db 76010000 		.4byte	.LCFI2-.Ltext0
+ 2358 01df 0200     		.2byte	0x2
+ 2359 01e1 7D       		.byte	0x7d
+ 2360 01e2 00       		.sleb128 0
+ 2361 01e3 76010000 		.4byte	.LCFI2-.Ltext0
+ 2362 01e7 98010000 		.4byte	.LFE113-.Ltext0
+ 2363 01eb 0200     		.2byte	0x2
+ 2364 01ed 7D       		.byte	0x7d
+ 2365 01ee 08       		.sleb128 8
+ 2366 01ef 00000000 		.4byte	0
+ 2367 01f3 00000000 		.4byte	0
+ 2368              	.LLST7:
+ 2369 01f7 7C010000 		.4byte	.LVL37-.Ltext0
+ 2370 01fb 80010000 		.4byte	.LVL38-.Ltext0
+ 2371 01ff 0200     		.2byte	0x2
+ 2372 0201 91       		.byte	0x91
+ 2373 0202 7C       		.sleb128 -4
+ 2374 0203 82010000 		.4byte	.LVL39-.Ltext0
+ 2375 0207 84010000 		.4byte	.LVL40-.Ltext0
+ 2376 020b 0100     		.2byte	0x1
+ 2377 020d 53       		.byte	0x53
+ 2378 020e 84010000 		.4byte	.LVL40-.Ltext0
+ 2379 0212 8E010000 		.4byte	.LVL41-.Ltext0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 53
+
+
+ 2380 0216 0200     		.2byte	0x2
+ 2381 0218 91       		.byte	0x91
+ 2382 0219 7C       		.sleb128 -4
+ 2383 021a 8E010000 		.4byte	.LVL41-.Ltext0
+ 2384 021e 98010000 		.4byte	.LFE113-.Ltext0
+ 2385 0222 0100     		.2byte	0x1
+ 2386 0224 53       		.byte	0x53
+ 2387 0225 00000000 		.4byte	0
+ 2388 0229 00000000 		.4byte	0
+ 2389              	.LLST8:
+ 2390 022d 98010000 		.4byte	.LVL42-.Ltext0
+ 2391 0231 A2010000 		.4byte	.LVL44-.Ltext0
+ 2392 0235 0100     		.2byte	0x1
+ 2393 0237 50       		.byte	0x50
+ 2394 0238 A2010000 		.4byte	.LVL44-.Ltext0
+ 2395 023c A4010000 		.4byte	.LFE114-.Ltext0
+ 2396 0240 0400     		.2byte	0x4
+ 2397 0242 F3       		.byte	0xf3
+ 2398 0243 01       		.uleb128 0x1
+ 2399 0244 50       		.byte	0x50
+ 2400 0245 9F       		.byte	0x9f
+ 2401 0246 00000000 		.4byte	0
+ 2402 024a 00000000 		.4byte	0
+ 2403              	.LLST9:
+ 2404 024e 98010000 		.4byte	.LVL42-.Ltext0
+ 2405 0252 9A010000 		.4byte	.LVL43-.Ltext0
+ 2406 0256 0200     		.2byte	0x2
+ 2407 0258 30       		.byte	0x30
+ 2408 0259 9F       		.byte	0x9f
+ 2409 025a 9A010000 		.4byte	.LVL43-.Ltext0
+ 2410 025e A4010000 		.4byte	.LFE114-.Ltext0
+ 2411 0262 0C00     		.2byte	0xc
+ 2412 0264 71       		.byte	0x71
+ 2413 0265 00       		.sleb128 0
+ 2414 0266 0A       		.byte	0xa
+ 2415 0267 FFFF     		.2byte	0xffff
+ 2416 0269 1A       		.byte	0x1a
+ 2417 026a 73       		.byte	0x73
+ 2418 026b 00       		.sleb128 0
+ 2419 026c 1A       		.byte	0x1a
+ 2420 026d 30       		.byte	0x30
+ 2421 026e 2E       		.byte	0x2e
+ 2422 026f 9F       		.byte	0x9f
+ 2423 0270 00000000 		.4byte	0
+ 2424 0274 00000000 		.4byte	0
+ 2425              	.LLST10:
+ 2426 0278 A4010000 		.4byte	.LVL45-.Ltext0
+ 2427 027c A6010000 		.4byte	.LVL46-.Ltext0
+ 2428 0280 0100     		.2byte	0x1
+ 2429 0282 50       		.byte	0x50
+ 2430 0283 A6010000 		.4byte	.LVL46-.Ltext0
+ 2431 0287 AA010000 		.4byte	.LFE115-.Ltext0
+ 2432 028b 0400     		.2byte	0x4
+ 2433 028d F3       		.byte	0xf3
+ 2434 028e 01       		.uleb128 0x1
+ 2435 028f 50       		.byte	0x50
+ 2436 0290 9F       		.byte	0x9f
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 54
+
+
+ 2437 0291 00000000 		.4byte	0
+ 2438 0295 00000000 		.4byte	0
+ 2439              	.LLST11:
+ 2440 0299 AA010000 		.4byte	.LVL47-.Ltext0
+ 2441 029d B4010000 		.4byte	.LVL49-.Ltext0
+ 2442 02a1 0100     		.2byte	0x1
+ 2443 02a3 50       		.byte	0x50
+ 2444 02a4 B4010000 		.4byte	.LVL49-.Ltext0
+ 2445 02a8 B6010000 		.4byte	.LFE116-.Ltext0
+ 2446 02ac 0400     		.2byte	0x4
+ 2447 02ae F3       		.byte	0xf3
+ 2448 02af 01       		.uleb128 0x1
+ 2449 02b0 50       		.byte	0x50
+ 2450 02b1 9F       		.byte	0x9f
+ 2451 02b2 00000000 		.4byte	0
+ 2452 02b6 00000000 		.4byte	0
+ 2453              	.LLST12:
+ 2454 02ba AA010000 		.4byte	.LVL47-.Ltext0
+ 2455 02be AC010000 		.4byte	.LVL48-.Ltext0
+ 2456 02c2 0200     		.2byte	0x2
+ 2457 02c4 30       		.byte	0x30
+ 2458 02c5 9F       		.byte	0x9f
+ 2459 02c6 AC010000 		.4byte	.LVL48-.Ltext0
+ 2460 02ca B6010000 		.4byte	.LFE116-.Ltext0
+ 2461 02ce 0C00     		.2byte	0xc
+ 2462 02d0 71       		.byte	0x71
+ 2463 02d1 00       		.sleb128 0
+ 2464 02d2 0A       		.byte	0xa
+ 2465 02d3 FFFF     		.2byte	0xffff
+ 2466 02d5 1A       		.byte	0x1a
+ 2467 02d6 73       		.byte	0x73
+ 2468 02d7 00       		.sleb128 0
+ 2469 02d8 1A       		.byte	0x1a
+ 2470 02d9 30       		.byte	0x30
+ 2471 02da 2E       		.byte	0x2e
+ 2472 02db 9F       		.byte	0x9f
+ 2473 02dc 00000000 		.4byte	0
+ 2474 02e0 00000000 		.4byte	0
+ 2475              	.LLST13:
+ 2476 02e4 B6010000 		.4byte	.LVL50-.Ltext0
+ 2477 02e8 B8010000 		.4byte	.LVL51-.Ltext0
+ 2478 02ec 0100     		.2byte	0x1
+ 2479 02ee 50       		.byte	0x50
+ 2480 02ef B8010000 		.4byte	.LVL51-.Ltext0
+ 2481 02f3 BC010000 		.4byte	.LFE117-.Ltext0
+ 2482 02f7 0400     		.2byte	0x4
+ 2483 02f9 F3       		.byte	0xf3
+ 2484 02fa 01       		.uleb128 0x1
+ 2485 02fb 50       		.byte	0x50
+ 2486 02fc 9F       		.byte	0x9f
+ 2487 02fd 00000000 		.4byte	0
+ 2488 0301 00000000 		.4byte	0
+ 2489              	.LLST14:
+ 2490 0305 D2010000 		.4byte	.LVL56-.Ltext0
+ 2491 0309 D6010000 		.4byte	.LVL57-.Ltext0
+ 2492 030d 0100     		.2byte	0x1
+ 2493 030f 51       		.byte	0x51
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 55
+
+
+ 2494 0310 D6010000 		.4byte	.LVL57-.Ltext0
+ 2495 0314 DA010000 		.4byte	.LFE122-.Ltext0
+ 2496 0318 0400     		.2byte	0x4
+ 2497 031a F3       		.byte	0xf3
+ 2498 031b 01       		.uleb128 0x1
+ 2499 031c 51       		.byte	0x51
+ 2500 031d 9F       		.byte	0x9f
+ 2501 031e 00000000 		.4byte	0
+ 2502 0322 00000000 		.4byte	0
+ 2503              	.LLST15:
+ 2504 0326 DA010000 		.4byte	.LFB123-.Ltext0
+ 2505 032a E4010000 		.4byte	.LCFI3-.Ltext0
+ 2506 032e 0200     		.2byte	0x2
+ 2507 0330 7D       		.byte	0x7d
+ 2508 0331 00       		.sleb128 0
+ 2509 0332 E4010000 		.4byte	.LCFI3-.Ltext0
+ 2510 0336 08020000 		.4byte	.LFE123-.Ltext0
+ 2511 033a 0200     		.2byte	0x2
+ 2512 033c 7D       		.byte	0x7d
+ 2513 033d 0C       		.sleb128 12
+ 2514 033e 00000000 		.4byte	0
+ 2515 0342 00000000 		.4byte	0
+ 2516              	.LLST16:
+ 2517 0346 DA010000 		.4byte	.LVL58-.Ltext0
+ 2518 034a E0010000 		.4byte	.LVL59-.Ltext0
+ 2519 034e 0100     		.2byte	0x1
+ 2520 0350 51       		.byte	0x51
+ 2521 0351 E0010000 		.4byte	.LVL59-.Ltext0
+ 2522 0355 08020000 		.4byte	.LFE123-.Ltext0
+ 2523 0359 0400     		.2byte	0x4
+ 2524 035b F3       		.byte	0xf3
+ 2525 035c 01       		.uleb128 0x1
+ 2526 035d 51       		.byte	0x51
+ 2527 035e 9F       		.byte	0x9f
+ 2528 035f 00000000 		.4byte	0
+ 2529 0363 00000000 		.4byte	0
+ 2530              	.LLST17:
+ 2531 0367 DA010000 		.4byte	.LVL58-.Ltext0
+ 2532 036b 00020000 		.4byte	.LVL61-.Ltext0
+ 2533 036f 0100     		.2byte	0x1
+ 2534 0371 52       		.byte	0x52
+ 2535 0372 00020000 		.4byte	.LVL61-.Ltext0
+ 2536 0376 08020000 		.4byte	.LFE123-.Ltext0
+ 2537 037a 0400     		.2byte	0x4
+ 2538 037c F3       		.byte	0xf3
+ 2539 037d 01       		.uleb128 0x1
+ 2540 037e 52       		.byte	0x52
+ 2541 037f 9F       		.byte	0x9f
+ 2542 0380 00000000 		.4byte	0
+ 2543 0384 00000000 		.4byte	0
+ 2544              	.LLST18:
+ 2545 0388 DA010000 		.4byte	.LVL58-.Ltext0
+ 2546 038c E6010000 		.4byte	.LVL60-.Ltext0
+ 2547 0390 0200     		.2byte	0x2
+ 2548 0392 30       		.byte	0x30
+ 2549 0393 9F       		.byte	0x9f
+ 2550 0394 E6010000 		.4byte	.LVL60-.Ltext0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 56
+
+
+ 2551 0398 00020000 		.4byte	.LVL61-.Ltext0
+ 2552 039c 0900     		.2byte	0x9
+ 2553 039e 72       		.byte	0x72
+ 2554 039f 00       		.sleb128 0
+ 2555 03a0 08       		.byte	0x8
+ 2556 03a1 FF       		.byte	0xff
+ 2557 03a2 1A       		.byte	0x1a
+ 2558 03a3 73       		.byte	0x73
+ 2559 03a4 00       		.sleb128 0
+ 2560 03a5 24       		.byte	0x24
+ 2561 03a6 9F       		.byte	0x9f
+ 2562 03a7 00020000 		.4byte	.LVL61-.Ltext0
+ 2563 03ab 08020000 		.4byte	.LFE123-.Ltext0
+ 2564 03af 0A00     		.2byte	0xa
+ 2565 03b1 F3       		.byte	0xf3
+ 2566 03b2 01       		.uleb128 0x1
+ 2567 03b3 52       		.byte	0x52
+ 2568 03b4 08       		.byte	0x8
+ 2569 03b5 FF       		.byte	0xff
+ 2570 03b6 1A       		.byte	0x1a
+ 2571 03b7 73       		.byte	0x73
+ 2572 03b8 00       		.sleb128 0
+ 2573 03b9 24       		.byte	0x24
+ 2574 03ba 9F       		.byte	0x9f
+ 2575 03bb 00000000 		.4byte	0
+ 2576 03bf 00000000 		.4byte	0
+ 2577              	.LLST19:
+ 2578 03c3 DA010000 		.4byte	.LVL58-.Ltext0
+ 2579 03c7 02020000 		.4byte	.LVL62-.Ltext0
+ 2580 03cb 0200     		.2byte	0x2
+ 2581 03cd 30       		.byte	0x30
+ 2582 03ce 9F       		.byte	0x9f
+ 2583 03cf 02020000 		.4byte	.LVL62-.Ltext0
+ 2584 03d3 08020000 		.4byte	.LFE123-.Ltext0
+ 2585 03d7 0100     		.2byte	0x1
+ 2586 03d9 54       		.byte	0x54
+ 2587 03da 00000000 		.4byte	0
+ 2588 03de 00000000 		.4byte	0
+ 2589              		.section	.debug_aranges,"",%progbits
+ 2590 0000 1C000000 		.4byte	0x1c
+ 2591 0004 0200     		.2byte	0x2
+ 2592 0006 00000000 		.4byte	.Ldebug_info0
+ 2593 000a 04       		.byte	0x4
+ 2594 000b 00       		.byte	0
+ 2595 000c 0000     		.2byte	0
+ 2596 000e 0000     		.2byte	0
+ 2597 0010 00000000 		.4byte	.Ltext0
+ 2598 0014 08020000 		.4byte	.Letext0-.Ltext0
+ 2599 0018 00000000 		.4byte	0
+ 2600 001c 00000000 		.4byte	0
+ 2601              		.section	.debug_line,"",%progbits
+ 2602              	.Ldebug_line0:
+ 2603 0000 AF010000 		.section	.debug_str,"MS",%progbits,1
+ 2603      0200FD00 
+ 2603      00000201 
+ 2603      FB0E0D00 
+ 2603      01010101 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 57
+
+
+ 2604              	.LASF24:
+ 2605 0000 4750494F 		.ascii	"GPIO_TypeDef\000"
+ 2605      5F547970 
+ 2605      65446566 
+ 2605      00
+ 2606              	.LASF55:
+ 2607 000d 70696E70 		.ascii	"pinpos\000"
+ 2607      6F7300
+ 2608              	.LASF45:
+ 2609 0014 4750494F 		.ascii	"GPIO_Pin\000"
+ 2609      5F50696E 
+ 2609      00
+ 2610              	.LASF43:
+ 2611 001d 4269745F 		.ascii	"Bit_SET\000"
+ 2611      53455400 
+ 2612              	.LASF63:
+ 2613 0025 4750494F 		.ascii	"GPIO_ReadOutputData\000"
+ 2613      5F526561 
+ 2613      644F7574 
+ 2613      70757444 
+ 2613      61746100 
+ 2614              	.LASF29:
+ 2615 0039 4750494F 		.ascii	"GPIOMode_TypeDef\000"
+ 2615      4D6F6465 
+ 2615      5F547970 
+ 2615      65446566 
+ 2615      00
+ 2616              	.LASF73:
+ 2617 004a 4750494F 		.ascii	"GPIO_AF\000"
+ 2617      5F414600 
+ 2618              	.LASF34:
+ 2619 0052 4750494F 		.ascii	"GPIO_Speed_25MHz\000"
+ 2619      5F537065 
+ 2619      65645F32 
+ 2619      354D487A 
+ 2619      00
+ 2620              	.LASF74:
+ 2621 0063 74656D70 		.ascii	"temp\000"
+ 2621      00
+ 2622              	.LASF2:
+ 2623 0068 73686F72 		.ascii	"short int\000"
+ 2623      7420696E 
+ 2623      7400
+ 2624              	.LASF57:
+ 2625 0072 4750494F 		.ascii	"GPIO_StructInit\000"
+ 2625      5F537472 
+ 2625      75637449 
+ 2625      6E697400 
+ 2626              	.LASF13:
+ 2627 0082 73697A65 		.ascii	"sizetype\000"
+ 2627      74797065 
+ 2627      00
+ 2628              	.LASF67:
+ 2629 008b 42697456 		.ascii	"BitVal\000"
+ 2629      616C00
+ 2630              	.LASF31:
+ 2631 0092 4750494F 		.ascii	"GPIO_OType_OD\000"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 58
+
+
+ 2631      5F4F5479 
+ 2631      70655F4F 
+ 2631      4400
+ 2632              	.LASF42:
+ 2633 00a0 4269745F 		.ascii	"Bit_RESET\000"
+ 2633      52455345 
+ 2633      5400
+ 2634              	.LASF66:
+ 2635 00aa 4750494F 		.ascii	"GPIO_WriteBit\000"
+ 2635      5F577269 
+ 2635      74654269 
+ 2635      7400
+ 2636              	.LASF48:
+ 2637 00b8 4750494F 		.ascii	"GPIO_OType\000"
+ 2637      5F4F5479 
+ 2637      706500
+ 2638              	.LASF27:
+ 2639 00c3 4750494F 		.ascii	"GPIO_Mode_AF\000"
+ 2639      5F4D6F64 
+ 2639      655F4146 
+ 2639      00
+ 2640              	.LASF64:
+ 2641 00d0 4750494F 		.ascii	"GPIO_SetBits\000"
+ 2641      5F536574 
+ 2641      42697473 
+ 2641      00
+ 2642              	.LASF15:
+ 2643 00dd 454E4142 		.ascii	"ENABLE\000"
+ 2643      4C4500
+ 2644              	.LASF47:
+ 2645 00e4 4750494F 		.ascii	"GPIO_Speed\000"
+ 2645      5F537065 
+ 2645      656400
+ 2646              	.LASF52:
+ 2647 00ef 4750494F 		.ascii	"GPIO_Init\000"
+ 2647      5F496E69 
+ 2647      7400
+ 2648              	.LASF28:
+ 2649 00f9 4750494F 		.ascii	"GPIO_Mode_AN\000"
+ 2649      5F4D6F64 
+ 2649      655F414E 
+ 2649      00
+ 2650              	.LASF65:
+ 2651 0106 4750494F 		.ascii	"GPIO_ResetBits\000"
+ 2651      5F526573 
+ 2651      65744269 
+ 2651      747300
+ 2652              	.LASF23:
+ 2653 0115 4C434B52 		.ascii	"LCKR\000"
+ 2653      00
+ 2654              	.LASF36:
+ 2655 011a 4750494F 		.ascii	"GPIO_Speed_100MHz\000"
+ 2655      5F537065 
+ 2655      65645F31 
+ 2655      30304D48 
+ 2655      7A00
+ 2656              	.LASF32:
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 59
+
+
+ 2657 012c 4750494F 		.ascii	"GPIOOType_TypeDef\000"
+ 2657      4F547970 
+ 2657      655F5479 
+ 2657      70654465 
+ 2657      6600
+ 2658              	.LASF18:
+ 2659 013e 4F545950 		.ascii	"OTYPER\000"
+ 2659      455200
+ 2660              	.LASF10:
+ 2661 0145 6C6F6E67 		.ascii	"long long int\000"
+ 2661      206C6F6E 
+ 2661      6720696E 
+ 2661      7400
+ 2662              	.LASF26:
+ 2663 0153 4750494F 		.ascii	"GPIO_Mode_OUT\000"
+ 2663      5F4D6F64 
+ 2663      655F4F55 
+ 2663      5400
+ 2664              	.LASF20:
+ 2665 0161 50555044 		.ascii	"PUPDR\000"
+ 2665      5200
+ 2666              	.LASF7:
+ 2667 0167 6C6F6E67 		.ascii	"long int\000"
+ 2667      20696E74 
+ 2667      00
+ 2668              	.LASF25:
+ 2669 0170 4750494F 		.ascii	"GPIO_Mode_IN\000"
+ 2669      5F4D6F64 
+ 2669      655F494E 
+ 2669      00
+ 2670              	.LASF51:
+ 2671 017d 4750494F 		.ascii	"GPIO_DeInit\000"
+ 2671      5F446549 
+ 2671      6E697400 
+ 2672              	.LASF22:
+ 2673 0189 42535252 		.ascii	"BSRRH\000"
+ 2673      4800
+ 2674              	.LASF17:
+ 2675 018f 4D4F4445 		.ascii	"MODER\000"
+ 2675      5200
+ 2676              	.LASF21:
+ 2677 0195 42535252 		.ascii	"BSRRL\000"
+ 2677      4C00
+ 2678              	.LASF60:
+ 2679 019b 4750494F 		.ascii	"GPIO_ReadInputDataBit\000"
+ 2679      5F526561 
+ 2679      64496E70 
+ 2679      75744461 
+ 2679      74614269 
+ 2680              	.LASF30:
+ 2681 01b1 4750494F 		.ascii	"GPIO_OType_PP\000"
+ 2681      5F4F5479 
+ 2681      70655F50 
+ 2681      5000
+ 2682              	.LASF59:
+ 2683 01bf 62697473 		.ascii	"bitstatus\000"
+ 2683      74617475 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 60
+
+
+ 2683      7300
+ 2684              	.LASF1:
+ 2685 01c9 756E7369 		.ascii	"unsigned char\000"
+ 2685      676E6564 
+ 2685      20636861 
+ 2685      7200
+ 2686              	.LASF80:
+ 2687 01d7 5243435F 		.ascii	"RCC_AHB1PeriphResetCmd\000"
+ 2687      41484231 
+ 2687      50657269 
+ 2687      70685265 
+ 2687      73657443 
+ 2688              	.LASF49:
+ 2689 01ee 4750494F 		.ascii	"GPIO_PuPd\000"
+ 2689      5F507550 
+ 2689      6400
+ 2690              	.LASF33:
+ 2691 01f8 4750494F 		.ascii	"GPIO_Speed_2MHz\000"
+ 2691      5F537065 
+ 2691      65645F32 
+ 2691      4D487A00 
+ 2692              	.LASF0:
+ 2693 0208 7369676E 		.ascii	"signed char\000"
+ 2693      65642063 
+ 2693      68617200 
+ 2694              	.LASF11:
+ 2695 0214 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2695      206C6F6E 
+ 2695      6720756E 
+ 2695      7369676E 
+ 2695      65642069 
+ 2696              	.LASF8:
+ 2697 022b 75696E74 		.ascii	"uint32_t\000"
+ 2697      33325F74 
+ 2697      00
+ 2698              	.LASF54:
+ 2699 0234 4750494F 		.ascii	"GPIO_InitStruct\000"
+ 2699      5F496E69 
+ 2699      74537472 
+ 2699      75637400 
+ 2700              	.LASF12:
+ 2701 0244 756E7369 		.ascii	"unsigned int\000"
+ 2701      676E6564 
+ 2701      20696E74 
+ 2701      00
+ 2702              	.LASF4:
+ 2703 0251 75696E74 		.ascii	"uint16_t\000"
+ 2703      31365F74 
+ 2703      00
+ 2704              	.LASF76:
+ 2705 025a 474E5520 		.ascii	"GNU C 4.7.2\000"
+ 2705      4320342E 
+ 2705      372E3200 
+ 2706              	.LASF72:
+ 2707 0266 4750494F 		.ascii	"GPIO_PinSource\000"
+ 2707      5F50696E 
+ 2707      536F7572 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 61
+
+
+ 2707      636500
+ 2708              	.LASF61:
+ 2709 0275 4750494F 		.ascii	"GPIO_ReadInputData\000"
+ 2709      5F526561 
+ 2709      64496E70 
+ 2709      75744461 
+ 2709      746100
+ 2710              	.LASF77:
+ 2711 0288 2E5C7374 		.ascii	".\\stm32f4periph\\src\\stm32f4xx_gpio.c\000"
+ 2711      6D333266 
+ 2711      34706572 
+ 2711      6970685C 
+ 2711      7372635C 
+ 2712              	.LASF14:
+ 2713 02ad 44495341 		.ascii	"DISABLE\000"
+ 2713      424C4500 
+ 2714              	.LASF6:
+ 2715 02b5 696E7433 		.ascii	"int32_t\000"
+ 2715      325F7400 
+ 2716              	.LASF58:
+ 2717 02bd 4750494F 		.ascii	"GPIO_PinLockConfig\000"
+ 2717      5F50696E 
+ 2717      4C6F636B 
+ 2717      436F6E66 
+ 2717      696700
+ 2718              	.LASF5:
+ 2719 02d0 73686F72 		.ascii	"short unsigned int\000"
+ 2719      7420756E 
+ 2719      7369676E 
+ 2719      65642069 
+ 2719      6E7400
+ 2720              	.LASF44:
+ 2721 02e3 42697441 		.ascii	"BitAction\000"
+ 2721      6374696F 
+ 2721      6E00
+ 2722              	.LASF56:
+ 2723 02ed 63757272 		.ascii	"currentpin\000"
+ 2723      656E7470 
+ 2723      696E00
+ 2724              	.LASF68:
+ 2725 02f8 4750494F 		.ascii	"GPIO_Write\000"
+ 2725      5F577269 
+ 2725      746500
+ 2726              	.LASF69:
+ 2727 0303 506F7274 		.ascii	"PortVal\000"
+ 2727      56616C00 
+ 2728              	.LASF19:
+ 2729 030b 4F535045 		.ascii	"OSPEEDR\000"
+ 2729      45445200 
+ 2730              	.LASF9:
+ 2731 0313 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2731      20756E73 
+ 2731      69676E65 
+ 2731      6420696E 
+ 2731      7400
+ 2732              	.LASF53:
+ 2733 0325 4750494F 		.ascii	"GPIOx\000"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 62
+
+
+ 2733      7800
+ 2734              	.LASF37:
+ 2735 032b 4750494F 		.ascii	"GPIOSpeed_TypeDef\000"
+ 2735      53706565 
+ 2735      645F5479 
+ 2735      70654465 
+ 2735      6600
+ 2736              	.LASF40:
+ 2737 033d 4750494F 		.ascii	"GPIO_PuPd_DOWN\000"
+ 2737      5F507550 
+ 2737      645F444F 
+ 2737      574E00
+ 2738              	.LASF79:
+ 2739 034c 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2739      52784275 
+ 2739      66666572 
+ 2739      00
+ 2740              	.LASF38:
+ 2741 0359 4750494F 		.ascii	"GPIO_PuPd_NOPULL\000"
+ 2741      5F507550 
+ 2741      645F4E4F 
+ 2741      50554C4C 
+ 2741      00
+ 2742              	.LASF70:
+ 2743 036a 4750494F 		.ascii	"GPIO_ToggleBits\000"
+ 2743      5F546F67 
+ 2743      676C6542 
+ 2743      69747300 
+ 2744              	.LASF75:
+ 2745 037a 74656D70 		.ascii	"temp_2\000"
+ 2745      5F3200
+ 2746              	.LASF35:
+ 2747 0381 4750494F 		.ascii	"GPIO_Speed_50MHz\000"
+ 2747      5F537065 
+ 2747      65645F35 
+ 2747      304D487A 
+ 2747      00
+ 2748              	.LASF3:
+ 2749 0392 75696E74 		.ascii	"uint8_t\000"
+ 2749      385F7400 
+ 2750              	.LASF50:
+ 2751 039a 4750494F 		.ascii	"GPIO_InitTypeDef\000"
+ 2751      5F496E69 
+ 2751      74547970 
+ 2751      65446566 
+ 2751      00
+ 2752              	.LASF41:
+ 2753 03ab 4750494F 		.ascii	"GPIOPuPd_TypeDef\000"
+ 2753      50755064 
+ 2753      5F547970 
+ 2753      65446566 
+ 2753      00
+ 2754              	.LASF39:
+ 2755 03bc 4750494F 		.ascii	"GPIO_PuPd_UP\000"
+ 2755      5F507550 
+ 2755      645F5550 
+ 2755      00
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 63
+
+
+ 2756              	.LASF71:
+ 2757 03c9 4750494F 		.ascii	"GPIO_PinAFConfig\000"
+ 2757      5F50696E 
+ 2757      4146436F 
+ 2757      6E666967 
+ 2757      00
+ 2758              	.LASF16:
+ 2759 03da 46756E63 		.ascii	"FunctionalState\000"
+ 2759      74696F6E 
+ 2759      616C5374 
+ 2759      61746500 
+ 2760              	.LASF78:
+ 2761 03ea 443A5C4E 		.ascii	"D:\\NiVek\\Firmware\\NiVek32\000"
+ 2761      6956656B 
+ 2761      5C466972 
+ 2761      6D776172 
+ 2761      655C4E69 
+ 2762              	.LASF62:
+ 2763 0404 4750494F 		.ascii	"GPIO_ReadOutputDataBit\000"
+ 2763      5F526561 
+ 2763      644F7574 
+ 2763      70757444 
+ 2763      61746142 
+ 2764              	.LASF46:
+ 2765 041b 4750494F 		.ascii	"GPIO_Mode\000"
+ 2765      5F4D6F64 
+ 2765      6500
+ 2766              		.ident	"GCC: (Sourcery CodeBench Lite 2012.09-63) 4.7.2"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s 			page 64
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_gpio.c
+C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s:70     .text:00000000 $t
+C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s:75     .text:00000000 GPIO_DeInit
+C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s:232    .text:000000b4 $d
+C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s:244    .text:000000d8 $t
+C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s:249    .text:000000d8 GPIO_Init
+C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s:362    .text:00000162 GPIO_StructInit
+C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s:391    .text:00000174 GPIO_PinLockConfig
+C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s:439    .text:00000198 GPIO_ReadInputDataBit
+C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s:465    .text:000001a4 GPIO_ReadInputData
+C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s:487    .text:000001aa GPIO_ReadOutputDataBit
+C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s:513    .text:000001b6 GPIO_ReadOutputData
+C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s:535    .text:000001bc GPIO_SetBits
+C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s:554    .text:000001c0 GPIO_ResetBits
+C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s:573    .text:000001c4 GPIO_WriteBit
+C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s:598    .text:000001ce GPIO_Write
+C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s:617    .text:000001d2 GPIO_ToggleBits
+C:\Users\Kevin\AppData\Local\Temp\ccOnAjoV.s:639    .text:000001da GPIO_PinAFConfig
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+RCC_AHB1PeriphResetCmd

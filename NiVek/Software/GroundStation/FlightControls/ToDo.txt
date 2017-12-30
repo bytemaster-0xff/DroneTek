@@ -1,0 +1,20 @@
+
+
+1) Drone Hub
+- Pull and list all the drones that have been associated/commissioned.
+
+2) Drone Addressing/Commissioning
+- Drone Name
+- Drone ID
+- Drone Serial Number
+
+2) Drone Console
+- Used for commissioning
+- Used for creating/setting comm settings
+
+3) View Model Base
+
+4) Cloud
+
+5) Firmware
+- Need to add Drone Serial Number as two bytes

@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Rover", "Rover.vcxproj", "{5CD71A4C-A67E-444A-9A8F-FAB3B4701454}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{3E2F60A3-51E5-4685-BA56-067C47C364B8}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5CD71A4C-A67E-444A-9A8F-FAB3B4701454}.Debug|Win32.ActiveCfg = Debug|Win32
+		{5CD71A4C-A67E-444A-9A8F-FAB3B4701454}.Debug|Win32.Build.0 = Debug|Win32
+		{5CD71A4C-A67E-444A-9A8F-FAB3B4701454}.Debug|Win32.Deploy.0 = Debug|Win32
+		{5CD71A4C-A67E-444A-9A8F-FAB3B4701454}.Release|Win32.ActiveCfg = Release|Win32
+		{5CD71A4C-A67E-444A-9A8F-FAB3B4701454}.Release|Win32.Build.0 = Release|Win32
+		{5CD71A4C-A67E-444A-9A8F-FAB3B4701454}.Release|Win32.Deploy.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

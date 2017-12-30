@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>ed56d517-af4b-46df-b391-1a8210ed06a2</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>NiVek.Rover</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml">
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Drive.xaml.cs">
+      <DependentUpon>Drive.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Ranging.xaml.cs">
+      <DependentUpon>Ranging.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Rover.xaml.cs">
+      <DependentUpon>Rover.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Controls\Turret.xaml.cs">
+      <DependentUpon>Turret.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Services\UIThread.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\Drive.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\Ranging.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\Rover.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\Settings.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Controls\Turret.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Resources\LocalResources.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="$(MSBuildThisFileDirectory)Images\Center.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Compass.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Connect.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Down.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\DownLeft.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\DownRight.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Left.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Pan.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Right.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\SpinLeft.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\SpinRight.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Stop.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\Up.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\UpLeft.png" />
+    <Content Include="$(MSBuildThisFileDirectory)Images\UpRight.png" />
+  </ItemGroup>
+</Project>

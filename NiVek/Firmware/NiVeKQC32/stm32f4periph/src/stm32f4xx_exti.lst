@@ -1,0 +1,2214 @@
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 3	@ Tag_ABI_HardFP_use
+   4              		.eabi_attribute 28, 1	@ Tag_ABI_VFP_args
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1	@ Tag_ABI_FP_denormal
+   7              		.eabi_attribute 21, 1	@ Tag_ABI_FP_exceptions
+   8              		.eabi_attribute 23, 3	@ Tag_ABI_FP_number_model
+   9              		.eabi_attribute 24, 1	@ Tag_ABI_align8_needed
+  10              		.eabi_attribute 25, 1	@ Tag_ABI_align8_preserved
+  11              		.eabi_attribute 26, 1	@ Tag_ABI_enum_size
+  12              		.eabi_attribute 30, 4	@ Tag_ABI_optimization_goals
+  13              		.eabi_attribute 34, 1	@ Tag_CPU_unaligned_access
+  14              		.eabi_attribute 18, 4	@ Tag_ABI_PCS_wchar_t
+  15              		.file	"stm32f4xx_exti.c"
+  16              	@ GNU C (Sourcery CodeBench Lite 2012.09-63) version 4.7.2 (arm-none-eabi)
+  17              	@	compiled by GNU C version 4.3.2, GMP version 5.0.5, MPFR version 3.1.1-p2, MPC version 1.0.1
+  18              	@ GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+  19              	@ options passed:  -I . -I \STMSPINCDDIR -I .\stm32f4periph\inc
+  20              	@ -I .\CMSIS\Include -I .\inc\commo\usb -I .\inc\commo -I .\inc\common
+  21              	@ -I .\inc -imultilib thumb2
+  22              	@ -iprefix k:\electronics\gcc\bin\../lib/gcc/arm-none-eabi/4.7.2/
+  23              	@ -isysroot k:\electronics\gcc\bin\../arm-none-eabi
+  24              	@ -MD .\stm32f4periph\src\stm32f4xx_exti.d -MF .dep\stm32f4xx_exti.o.d -MP
+  25              	@ -MQ .\stm32f4periph\src\stm32f4xx_exti.o -D__USES_INITFINI__ -D STM32F0XX
+  26              	@ -D USE_STDPERIPH_DRIVER -D RUN_FROM_FLASH=1
+  27              	@ -D __CS_SOURCERYGXX_MAJ__=2012 -D __CS_SOURCERYGXX_MIN__=9
+  28              	@ -D __CS_SOURCERYGXX_REV__=63 .\stm32f4periph\src\stm32f4xx_exti.c
+  29              	@ -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb
+  30              	@ -auxbase-strip .\stm32f4periph\src\stm32f4xx_exti.o -gdwarf-2 -Os -Wall
+  31              	@ -Wstrict-prototypes -std=gnu99 -fomit-frame-pointer -fverbose-asm
+  32              	@ options enabled:  -fauto-inc-dec -fbranch-count-reg -fcaller-saves
+  33              	@ -fcombine-stack-adjustments -fcommon -fcompare-elim -fcprop-registers
+  34              	@ -fcrossjumping -fcse-follow-jumps -fdebug-types-section -fdefer-pop
+  35              	@ -fdelete-null-pointer-checks -fdevirtualize -fdwarf2-cfi-asm
+  36              	@ -fearly-inlining -feliminate-unused-debug-types -fexpensive-optimizations
+  37              	@ -fextension-elimination -fforward-propagate -ffunction-cse -fgcse
+  38              	@ -fgcse-lm -fgnu-runtime -fguess-branch-probability -fident
+  39              	@ -fif-conversion -fif-conversion2 -findirect-inlining -finline
+  40              	@ -finline-atomics -finline-functions -finline-functions-called-once
+  41              	@ -finline-small-functions -fipa-cp -fipa-profile -fipa-pure-const
+  42              	@ -fipa-reference -fipa-sra -fira-share-save-slots -fira-share-spill-slots
+  43              	@ -fivopts -fkeep-static-consts -fleading-underscore -fmath-errno
+  44              	@ -fmerge-constants -fmerge-debug-strings -fmove-loop-invariants
+  45              	@ -fomit-frame-pointer -foptimize-register-move -foptimize-sibling-calls
+  46              	@ -fpartial-inlining -fpeephole -fpeephole2 -fprefetch-loop-arrays
+  47              	@ -freg-struct-return -fregmove -freorder-blocks -freorder-functions
+  48              	@ -frerun-cse-after-loop -fsched-critical-path-heuristic
+  49              	@ -fsched-dep-count-heuristic -fsched-group-heuristic -fsched-interblock
+  50              	@ -fsched-last-insn-heuristic -fsched-rank-heuristic -fsched-spec
+  51              	@ -fsched-spec-insn-heuristic -fsched-stalled-insns-dep -fschedule-insns2
+  52              	@ -fsection-anchors -fshow-column -fshrink-wrap -fsigned-zeros
+  53              	@ -fsplit-ivs-in-unroller -fsplit-wide-types -fstrict-aliasing
+  54              	@ -fstrict-overflow -fstrict-volatile-bitfields -fthread-jumps
+  55              	@ -ftoplevel-reorder -ftrapping-math -ftree-bit-ccp -ftree-builtin-call-dce
+  56              	@ -ftree-ccp -ftree-ch -ftree-copy-prop -ftree-copyrename -ftree-cselim
+  57              	@ -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 2
+
+
+  58              	@ -ftree-if-to-switch-conversion -ftree-loop-if-convert -ftree-loop-im
+  59              	@ -ftree-loop-ivcanon -ftree-loop-optimize -ftree-parallelize-loops=
+  60              	@ -ftree-phiprop -ftree-pre -ftree-pta -ftree-reassoc -ftree-scev-cprop
+  61              	@ -ftree-sink -ftree-slp-vectorize -ftree-sra -ftree-switch-conversion
+  62              	@ -ftree-tail-merge -ftree-ter -ftree-vect-loop-version -ftree-vrp
+  63              	@ -funit-at-a-time -fvar-tracking -fvar-tracking-assignments -fverbose-asm
+  64              	@ -fzero-initialized-in-bss -mlittle-endian -msched-prolog -mthumb
+  65              	@ -munaligned-access -mvectorize-with-neon-quad
+  66              	
+  67              		.text
+  68              	.Ltext0:
+  69              		.cfi_sections	.debug_frame
+  70              		.align	1
+  71              		.global	EXTI_DeInit
+  72              		.thumb
+  73              		.thumb_func
+  74              		.type	EXTI_DeInit, %function
+  75              	EXTI_DeInit:
+  76              	.LFB110:
+  77              		.file 1 ".\\stm32f4periph\\src\\stm32f4xx_exti.c"
+   1:.\stm32f4periph\src/stm32f4xx_exti.c **** /**
+   2:.\stm32f4periph\src/stm32f4xx_exti.c ****   ******************************************************************************
+   3:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @file    stm32f4xx_exti.c
+   4:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @author  MCD Application Team
+   5:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @version V1.0.2
+   6:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @date    05-March-2012
+   7:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @brief   This file provides firmware functions to manage the following 
+   8:.\stm32f4periph\src/stm32f4xx_exti.c ****   *          functionalities of the EXTI peripheral:           
+   9:.\stm32f4periph\src/stm32f4xx_exti.c ****   *           - Initialization and Configuration
+  10:.\stm32f4periph\src/stm32f4xx_exti.c ****   *           - Interrupts and flags management
+  11:.\stm32f4periph\src/stm32f4xx_exti.c ****   *
+  12:.\stm32f4periph\src/stm32f4xx_exti.c ****   *  @verbatim  
+  13:.\stm32f4periph\src/stm32f4xx_exti.c ****   *  
+  14:.\stm32f4periph\src/stm32f4xx_exti.c ****   *          ===================================================================
+  15:.\stm32f4periph\src/stm32f4xx_exti.c ****   *                                     EXTI features
+  16:.\stm32f4periph\src/stm32f4xx_exti.c ****   *          ===================================================================
+  17:.\stm32f4periph\src/stm32f4xx_exti.c ****   *    
+  18:.\stm32f4periph\src/stm32f4xx_exti.c ****   *          External interrupt/event lines are mapped as following:
+  19:.\stm32f4periph\src/stm32f4xx_exti.c ****   *            1- All available GPIO pins are connected to the 16 external 
+  20:.\stm32f4periph\src/stm32f4xx_exti.c ****   *               interrupt/event lines from EXTI0 to EXTI15.
+  21:.\stm32f4periph\src/stm32f4xx_exti.c ****   *            2- EXTI line 16 is connected to the PVD Output
+  22:.\stm32f4periph\src/stm32f4xx_exti.c ****   *            3- EXTI line 17 is connected to the RTC Alarm event
+  23:.\stm32f4periph\src/stm32f4xx_exti.c ****   *            4- EXTI line 18 is connected to the USB OTG FS Wakeup from suspend event            
+  24:.\stm32f4periph\src/stm32f4xx_exti.c ****   *            5- EXTI line 19 is connected to the Ethernet Wakeup event
+  25:.\stm32f4periph\src/stm32f4xx_exti.c ****   *            6- EXTI line 20 is connected to the USB OTG HS (configured in FS) Wakeup event 
+  26:.\stm32f4periph\src/stm32f4xx_exti.c ****   *            7- EXTI line 21 is connected to the RTC Tamper and Time Stamp events                
+  27:.\stm32f4periph\src/stm32f4xx_exti.c ****   *            8- EXTI line 22 is connected to the RTC Wakeup event
+  28:.\stm32f4periph\src/stm32f4xx_exti.c ****   *        
+  29:.\stm32f4periph\src/stm32f4xx_exti.c ****   *          ===================================================================
+  30:.\stm32f4periph\src/stm32f4xx_exti.c ****   *                                 How to use this driver
+  31:.\stm32f4periph\src/stm32f4xx_exti.c ****   *          ===================================================================  
+  32:.\stm32f4periph\src/stm32f4xx_exti.c ****   *              
+  33:.\stm32f4periph\src/stm32f4xx_exti.c ****   *          In order to use an I/O pin as an external interrupt source, follow
+  34:.\stm32f4periph\src/stm32f4xx_exti.c ****   *          steps below:
+  35:.\stm32f4periph\src/stm32f4xx_exti.c ****   *            1- Configure the I/O in input mode using GPIO_Init()
+  36:.\stm32f4periph\src/stm32f4xx_exti.c ****   *            2- Select the input source pin for the EXTI line using SYSCFG_EXTILineConfig()
+  37:.\stm32f4periph\src/stm32f4xx_exti.c ****   *            3- Select the mode(interrupt, event) and configure the trigger 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 3
+
+
+  38:.\stm32f4periph\src/stm32f4xx_exti.c ****   *               selection (Rising, falling or both) using EXTI_Init()
+  39:.\stm32f4periph\src/stm32f4xx_exti.c ****   *            4- Configure NVIC IRQ channel mapped to the EXTI line using NVIC_Init()
+  40:.\stm32f4periph\src/stm32f4xx_exti.c ****   *   
+  41:.\stm32f4periph\src/stm32f4xx_exti.c ****   *  @note  SYSCFG APB clock must be enabled to get write access to SYSCFG_EXTICRx
+  42:.\stm32f4periph\src/stm32f4xx_exti.c ****   *         registers using RCC_APB2PeriphClockCmd(RCC_APB2Periph_SYSCFG, ENABLE);
+  43:.\stm32f4periph\src/stm32f4xx_exti.c ****   *          
+  44:.\stm32f4periph\src/stm32f4xx_exti.c ****   *  @endverbatim                  
+  45:.\stm32f4periph\src/stm32f4xx_exti.c ****   *
+  46:.\stm32f4periph\src/stm32f4xx_exti.c ****   ******************************************************************************
+  47:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @attention
+  48:.\stm32f4periph\src/stm32f4xx_exti.c ****   *
+  49:.\stm32f4periph\src/stm32f4xx_exti.c ****   * <h2><center>&copy; COPYRIGHT 2012 STMicroelectronics</center></h2>
+  50:.\stm32f4periph\src/stm32f4xx_exti.c ****   *
+  51:.\stm32f4periph\src/stm32f4xx_exti.c ****   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+  52:.\stm32f4periph\src/stm32f4xx_exti.c ****   * You may not use this file except in compliance with the License.
+  53:.\stm32f4periph\src/stm32f4xx_exti.c ****   * You may obtain a copy of the License at:
+  54:.\stm32f4periph\src/stm32f4xx_exti.c ****   *
+  55:.\stm32f4periph\src/stm32f4xx_exti.c ****   *        http://www.st.com/software_license_agreement_liberty_v2
+  56:.\stm32f4periph\src/stm32f4xx_exti.c ****   *
+  57:.\stm32f4periph\src/stm32f4xx_exti.c ****   * Unless required by applicable law or agreed to in writing, software 
+  58:.\stm32f4periph\src/stm32f4xx_exti.c ****   * distributed under the License is distributed on an "AS IS" BASIS, 
+  59:.\stm32f4periph\src/stm32f4xx_exti.c ****   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  60:.\stm32f4periph\src/stm32f4xx_exti.c ****   * See the License for the specific language governing permissions and
+  61:.\stm32f4periph\src/stm32f4xx_exti.c ****   * limitations under the License.
+  62:.\stm32f4periph\src/stm32f4xx_exti.c ****   *
+  63:.\stm32f4periph\src/stm32f4xx_exti.c ****   ******************************************************************************
+  64:.\stm32f4periph\src/stm32f4xx_exti.c ****   */
+  65:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+  66:.\stm32f4periph\src/stm32f4xx_exti.c **** /* Includes ------------------------------------------------------------------*/
+  67:.\stm32f4periph\src/stm32f4xx_exti.c **** #include "stm32f4xx_exti.h"
+  68:.\stm32f4periph\src/stm32f4xx_exti.c **** #define assert_param(expr) ((void)0)
+  69:.\stm32f4periph\src/stm32f4xx_exti.c **** /** @addtogroup STM32F4xx_StdPeriph_Driver
+  70:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @{
+  71:.\stm32f4periph\src/stm32f4xx_exti.c ****   */
+  72:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+  73:.\stm32f4periph\src/stm32f4xx_exti.c **** /** @defgroup EXTI 
+  74:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @brief EXTI driver modules
+  75:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @{
+  76:.\stm32f4periph\src/stm32f4xx_exti.c ****   */
+  77:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+  78:.\stm32f4periph\src/stm32f4xx_exti.c **** /* Private typedef -----------------------------------------------------------*/
+  79:.\stm32f4periph\src/stm32f4xx_exti.c **** /* Private define ------------------------------------------------------------*/
+  80:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+  81:.\stm32f4periph\src/stm32f4xx_exti.c **** #define EXTI_LINENONE    ((uint32_t)0x00000)  /* No interrupt selected */
+  82:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+  83:.\stm32f4periph\src/stm32f4xx_exti.c **** /* Private macro -------------------------------------------------------------*/
+  84:.\stm32f4periph\src/stm32f4xx_exti.c **** /* Private variables ---------------------------------------------------------*/
+  85:.\stm32f4periph\src/stm32f4xx_exti.c **** /* Private function prototypes -----------------------------------------------*/
+  86:.\stm32f4periph\src/stm32f4xx_exti.c **** /* Private functions ---------------------------------------------------------*/
+  87:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+  88:.\stm32f4periph\src/stm32f4xx_exti.c **** /** @defgroup EXTI_Private_Functions
+  89:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @{
+  90:.\stm32f4periph\src/stm32f4xx_exti.c ****   */
+  91:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+  92:.\stm32f4periph\src/stm32f4xx_exti.c **** /** @defgroup EXTI_Group1 Initialization and Configuration functions
+  93:.\stm32f4periph\src/stm32f4xx_exti.c ****  *  @brief   Initialization and Configuration functions 
+  94:.\stm32f4periph\src/stm32f4xx_exti.c ****  *
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 4
+
+
+  95:.\stm32f4periph\src/stm32f4xx_exti.c **** @verbatim   
+  96:.\stm32f4periph\src/stm32f4xx_exti.c ****  ===============================================================================
+  97:.\stm32f4periph\src/stm32f4xx_exti.c ****                   Initialization and Configuration functions
+  98:.\stm32f4periph\src/stm32f4xx_exti.c ****  ===============================================================================  
+  99:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+ 100:.\stm32f4periph\src/stm32f4xx_exti.c **** @endverbatim
+ 101:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @{
+ 102:.\stm32f4periph\src/stm32f4xx_exti.c ****   */
+ 103:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+ 104:.\stm32f4periph\src/stm32f4xx_exti.c **** /**
+ 105:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @brief  Deinitializes the EXTI peripheral registers to their default reset values.
+ 106:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @param  None
+ 107:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @retval None
+ 108:.\stm32f4periph\src/stm32f4xx_exti.c ****   */
+ 109:.\stm32f4periph\src/stm32f4xx_exti.c **** void EXTI_DeInit(void)
+ 110:.\stm32f4periph\src/stm32f4xx_exti.c **** {
+  78              		.loc 1 110 0
+  79              		.cfi_startproc
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82              		@ link register save eliminated.
+ 111:.\stm32f4periph\src/stm32f4xx_exti.c ****   EXTI->IMR = 0x00000000;
+  83              		.loc 1 111 0
+  84 0000 044B     		ldr	r3, .L2	@ tmp134,
+  85 0002 0022     		movs	r2, #0	@ tmp135,
+  86 0004 1A60     		str	r2, [r3, #0]	@ tmp135, MEM[(struct EXTI_TypeDef *)1073822720B].IMR
+ 112:.\stm32f4periph\src/stm32f4xx_exti.c ****   EXTI->EMR = 0x00000000;
+  87              		.loc 1 112 0
+  88 0006 5A60     		str	r2, [r3, #4]	@ tmp135, MEM[(struct EXTI_TypeDef *)1073822720B].EMR
+ 113:.\stm32f4periph\src/stm32f4xx_exti.c ****   EXTI->RTSR = 0x00000000;
+  89              		.loc 1 113 0
+  90 0008 9A60     		str	r2, [r3, #8]	@ tmp135, MEM[(struct EXTI_TypeDef *)1073822720B].RTSR
+ 114:.\stm32f4periph\src/stm32f4xx_exti.c ****   EXTI->FTSR = 0x00000000;
+  91              		.loc 1 114 0
+  92 000a DA60     		str	r2, [r3, #12]	@ tmp135, MEM[(struct EXTI_TypeDef *)1073822720B].FTSR
+ 115:.\stm32f4periph\src/stm32f4xx_exti.c ****   EXTI->PR = 0x007FFFFF;
+  93              		.loc 1 115 0
+  94 000c 024A     		ldr	r2, .L2+4	@ tmp143,
+  95 000e 5A61     		str	r2, [r3, #20]	@ tmp143, MEM[(struct EXTI_TypeDef *)1073822720B].PR
+  96 0010 7047     		bx	lr	@
+  97              	.L3:
+  98 0012 00BF     		.align	2
+  99              	.L2:
+ 100 0014 003C0140 		.word	1073822720
+ 101 0018 FFFF7F00 		.word	8388607
+ 102              		.cfi_endproc
+ 103              	.LFE110:
+ 104              		.size	EXTI_DeInit, .-EXTI_DeInit
+ 105              		.align	1
+ 106              		.global	EXTI_Init
+ 107              		.thumb
+ 108              		.thumb_func
+ 109              		.type	EXTI_Init, %function
+ 110              	EXTI_Init:
+ 111              	.LFB111:
+ 116:.\stm32f4periph\src/stm32f4xx_exti.c **** }
+ 117:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 5
+
+
+ 118:.\stm32f4periph\src/stm32f4xx_exti.c **** /**
+ 119:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @brief  Initializes the EXTI peripheral according to the specified
+ 120:.\stm32f4periph\src/stm32f4xx_exti.c ****   *         parameters in the EXTI_InitStruct.
+ 121:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @param  EXTI_InitStruct: pointer to a EXTI_InitTypeDef structure
+ 122:.\stm32f4periph\src/stm32f4xx_exti.c ****   *         that contains the configuration information for the EXTI peripheral.
+ 123:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @retval None
+ 124:.\stm32f4periph\src/stm32f4xx_exti.c ****   */
+ 125:.\stm32f4periph\src/stm32f4xx_exti.c **** void EXTI_Init(EXTI_InitTypeDef* EXTI_InitStruct)
+ 126:.\stm32f4periph\src/stm32f4xx_exti.c **** {
+ 112              		.loc 1 126 0
+ 113              		.cfi_startproc
+ 114              		@ args = 0, pretend = 0, frame = 0
+ 115              		@ frame_needed = 0, uses_anonymous_args = 0
+ 116              	.LVL0:
+ 127:.\stm32f4periph\src/stm32f4xx_exti.c ****   uint32_t tmp = 0;
+ 128:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+ 129:.\stm32f4periph\src/stm32f4xx_exti.c ****   /* Check the parameters */
+ 130:.\stm32f4periph\src/stm32f4xx_exti.c ****   assert_param(IS_EXTI_MODE(EXTI_InitStruct->EXTI_Mode));
+ 131:.\stm32f4periph\src/stm32f4xx_exti.c ****   assert_param(IS_EXTI_TRIGGER(EXTI_InitStruct->EXTI_Trigger));
+ 132:.\stm32f4periph\src/stm32f4xx_exti.c ****   assert_param(IS_EXTI_LINE(EXTI_InitStruct->EXTI_Line));  
+ 133:.\stm32f4periph\src/stm32f4xx_exti.c ****   assert_param(IS_FUNCTIONAL_STATE(EXTI_InitStruct->EXTI_LineCmd));
+ 134:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+ 135:.\stm32f4periph\src/stm32f4xx_exti.c ****   tmp = (uint32_t)EXTI_BASE;
+ 136:.\stm32f4periph\src/stm32f4xx_exti.c ****      
+ 137:.\stm32f4periph\src/stm32f4xx_exti.c ****   if (EXTI_InitStruct->EXTI_LineCmd != DISABLE)
+ 117              		.loc 1 137 0
+ 118 001c 8379     		ldrb	r3, [r0, #6]	@ zero_extendqisi2	@ EXTI_InitStruct_3(D)->EXTI_LineCmd, EXTI_InitStruct_3(D)->E
+ 126:.\stm32f4periph\src/stm32f4xx_exti.c **** {
+ 119              		.loc 1 126 0
+ 120 001e 10B5     		push	{r4, lr}	@
+ 121              	.LCFI0:
+ 122              		.cfi_def_cfa_offset 8
+ 123              		.cfi_offset 4, -8
+ 124              		.cfi_offset 14, -4
+ 125              		.loc 1 137 0
+ 126 0020 002B     		cmp	r3, #0	@ EXTI_InitStruct_3(D)->EXTI_LineCmd
+ 127 0022 29D0     		beq	.L5	@
+ 138:.\stm32f4periph\src/stm32f4xx_exti.c ****   {
+ 139:.\stm32f4periph\src/stm32f4xx_exti.c ****     /* Clear EXTI line configuration */
+ 140:.\stm32f4periph\src/stm32f4xx_exti.c ****     EXTI->IMR &= ~EXTI_InitStruct->EXTI_Line;
+ 128              		.loc 1 140 0
+ 129 0024 1A4B     		ldr	r3, .L9	@ tmp173,
+ 130 0026 0168     		ldr	r1, [r0, #0]	@ D.7355, EXTI_InitStruct_3(D)->EXTI_Line
+ 131 0028 1C68     		ldr	r4, [r3, #0]	@ D.7354, MEM[(struct EXTI_TypeDef *)1073822720B].IMR
+ 132 002a CA43     		mvns	r2, r1	@ D.7356, D.7355
+ 133 002c 1440     		ands	r4, r4, r2	@, D.7357, D.7354, D.7356
+ 134 002e 1C60     		str	r4, [r3, #0]	@ D.7357, MEM[(struct EXTI_TypeDef *)1073822720B].IMR
+ 141:.\stm32f4periph\src/stm32f4xx_exti.c ****     EXTI->EMR &= ~EXTI_InitStruct->EXTI_Line;
+ 135              		.loc 1 141 0
+ 136 0030 5C68     		ldr	r4, [r3, #4]	@ D.7358, MEM[(struct EXTI_TypeDef *)1073822720B].EMR
+ 137 0032 2240     		ands	r2, r2, r4	@, D.7359, D.7356, D.7358
+ 138 0034 5A60     		str	r2, [r3, #4]	@ D.7359, MEM[(struct EXTI_TypeDef *)1073822720B].EMR
+ 139              	.LVL1:
+ 142:.\stm32f4periph\src/stm32f4xx_exti.c ****     
+ 143:.\stm32f4periph\src/stm32f4xx_exti.c ****     tmp += EXTI_InitStruct->EXTI_Mode;
+ 140              		.loc 1 143 0
+ 141 0036 0279     		ldrb	r2, [r0, #4]	@ zero_extendqisi2	@ EXTI_InitStruct_3(D)->EXTI_Mode, EXTI_InitStruct_3(D)->EXTI
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 6
+
+
+ 142 0038 02F18042 		add	r2, r2, #1073741824	@ tmp178, EXTI_InitStruct_3(D)->EXTI_Mode,
+ 143 003c 02F59E32 		add	r2, r2, #80896	@ tmp.0, tmp178,
+ 144:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+ 145:.\stm32f4periph\src/stm32f4xx_exti.c ****     *(__IO uint32_t *) tmp |= EXTI_InitStruct->EXTI_Line;
+ 144              		.loc 1 145 0
+ 145 0040 1468     		ldr	r4, [r2, #0]	@ D.7363, *tmp.0_21
+ 146 0042 2143     		orrs	r1, r1, r4	@, D.7364, D.7355, D.7363
+ 147 0044 1160     		str	r1, [r2, #0]	@ D.7364, *tmp.0_21
+ 146:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+ 147:.\stm32f4periph\src/stm32f4xx_exti.c ****     /* Clear Rising Falling edge configuration */
+ 148:.\stm32f4periph\src/stm32f4xx_exti.c ****     EXTI->RTSR &= ~EXTI_InitStruct->EXTI_Line;
+ 148              		.loc 1 148 0
+ 149 0046 0268     		ldr	r2, [r0, #0]	@ D.7355, EXTI_InitStruct_3(D)->EXTI_Line
+ 150 0048 9C68     		ldr	r4, [r3, #8]	@ D.7365, MEM[(struct EXTI_TypeDef *)1073822720B].RTSR
+ 151 004a D143     		mvns	r1, r2	@ D.7356, D.7355
+ 152 004c 0C40     		ands	r4, r4, r1	@, D.7366, D.7365, D.7356
+ 153 004e 9C60     		str	r4, [r3, #8]	@ D.7366, MEM[(struct EXTI_TypeDef *)1073822720B].RTSR
+ 149:.\stm32f4periph\src/stm32f4xx_exti.c ****     EXTI->FTSR &= ~EXTI_InitStruct->EXTI_Line;
+ 154              		.loc 1 149 0
+ 155 0050 DC68     		ldr	r4, [r3, #12]	@ D.7367, MEM[(struct EXTI_TypeDef *)1073822720B].FTSR
+ 156 0052 2140     		ands	r1, r1, r4	@, D.7368, D.7356, D.7367
+ 157 0054 D960     		str	r1, [r3, #12]	@ D.7368, MEM[(struct EXTI_TypeDef *)1073822720B].FTSR
+ 150:.\stm32f4periph\src/stm32f4xx_exti.c ****     
+ 151:.\stm32f4periph\src/stm32f4xx_exti.c ****     /* Select the trigger for the selected external interrupts */
+ 152:.\stm32f4periph\src/stm32f4xx_exti.c ****     if (EXTI_InitStruct->EXTI_Trigger == EXTI_Trigger_Rising_Falling)
+ 158              		.loc 1 152 0
+ 159 0056 4179     		ldrb	r1, [r0, #5]	@ zero_extendqisi2	@ D.7369, EXTI_InitStruct_3(D)->EXTI_Trigger
+ 160 0058 1029     		cmp	r1, #16	@ D.7369,
+ 161 005a 06D1     		bne	.L6	@,
+ 153:.\stm32f4periph\src/stm32f4xx_exti.c ****     {
+ 154:.\stm32f4periph\src/stm32f4xx_exti.c ****       /* Rising Falling edge */
+ 155:.\stm32f4periph\src/stm32f4xx_exti.c ****       EXTI->RTSR |= EXTI_InitStruct->EXTI_Line;
+ 162              		.loc 1 155 0
+ 163 005c 9968     		ldr	r1, [r3, #8]	@ D.7372, MEM[(struct EXTI_TypeDef *)1073822720B].RTSR
+ 164 005e 1143     		orrs	r1, r1, r2	@, D.7373, D.7372, D.7355
+ 165 0060 9960     		str	r1, [r3, #8]	@ D.7373, MEM[(struct EXTI_TypeDef *)1073822720B].RTSR
+ 156:.\stm32f4periph\src/stm32f4xx_exti.c ****       EXTI->FTSR |= EXTI_InitStruct->EXTI_Line;
+ 166              		.loc 1 156 0
+ 167 0062 D968     		ldr	r1, [r3, #12]	@ D.7374, MEM[(struct EXTI_TypeDef *)1073822720B].FTSR
+ 168 0064 0A43     		orrs	r2, r2, r1	@, D.7375, D.7355, D.7374
+ 169 0066 DA60     		str	r2, [r3, #12]	@ D.7375, MEM[(struct EXTI_TypeDef *)1073822720B].FTSR
+ 170 0068 10BD     		pop	{r4, pc}	@
+ 171              	.L6:
+ 172              	.LVL2:
+ 157:.\stm32f4periph\src/stm32f4xx_exti.c ****     }
+ 158:.\stm32f4periph\src/stm32f4xx_exti.c ****     else
+ 159:.\stm32f4periph\src/stm32f4xx_exti.c ****     {
+ 160:.\stm32f4periph\src/stm32f4xx_exti.c ****       tmp = (uint32_t)EXTI_BASE;
+ 161:.\stm32f4periph\src/stm32f4xx_exti.c ****       tmp += EXTI_InitStruct->EXTI_Trigger;
+ 173              		.loc 1 161 0
+ 174 006a 01F18043 		add	r3, r1, #1073741824	@ tmp187, D.7369,
+ 175 006e 03F59E33 		add	r3, r3, #80896	@ tmp.0, tmp187,
+ 162:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+ 163:.\stm32f4periph\src/stm32f4xx_exti.c ****       *(__IO uint32_t *) tmp |= EXTI_InitStruct->EXTI_Line;
+ 176              		.loc 1 163 0
+ 177 0072 1968     		ldr	r1, [r3, #0]	@ D.7378, *tmp.0_53
+ 178              	.LVL3:
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 7
+
+
+ 179 0074 0A43     		orrs	r2, r2, r1	@, D.7379, D.7355, D.7378
+ 180 0076 08E0     		b	.L8	@
+ 181              	.LVL4:
+ 182              	.L5:
+ 164:.\stm32f4periph\src/stm32f4xx_exti.c ****     }
+ 165:.\stm32f4periph\src/stm32f4xx_exti.c ****   }
+ 166:.\stm32f4periph\src/stm32f4xx_exti.c ****   else
+ 167:.\stm32f4periph\src/stm32f4xx_exti.c ****   {
+ 168:.\stm32f4periph\src/stm32f4xx_exti.c ****     tmp += EXTI_InitStruct->EXTI_Mode;
+ 183              		.loc 1 168 0
+ 184 0078 0379     		ldrb	r3, [r0, #4]	@ zero_extendqisi2	@ EXTI_InitStruct_3(D)->EXTI_Mode, EXTI_InitStruct_3(D)->EXTI
+ 169:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+ 170:.\stm32f4periph\src/stm32f4xx_exti.c ****     /* Disable the selected external lines */
+ 171:.\stm32f4periph\src/stm32f4xx_exti.c ****     *(__IO uint32_t *) tmp &= ~EXTI_InitStruct->EXTI_Line;
+ 185              		.loc 1 171 0
+ 186 007a 0168     		ldr	r1, [r0, #0]	@ EXTI_InitStruct_3(D)->EXTI_Line, EXTI_InitStruct_3(D)->EXTI_Line
+ 168:.\stm32f4periph\src/stm32f4xx_exti.c ****     tmp += EXTI_InitStruct->EXTI_Mode;
+ 187              		.loc 1 168 0
+ 188 007c 03F18043 		add	r3, r3, #1073741824	@ tmp189, EXTI_InitStruct_3(D)->EXTI_Mode,
+ 189 0080 03F59E33 		add	r3, r3, #80896	@ tmp.0, tmp189,
+ 190              		.loc 1 171 0
+ 191 0084 1A68     		ldr	r2, [r3, #0]	@ D.7381, *tmp.0_61
+ 192 0086 22EA0102 		bic	r2, r2, r1	@ D.7382, D.7381, EXTI_InitStruct_3(D)->EXTI_Line
+ 193              	.LVL5:
+ 194              	.L8:
+ 195 008a 1A60     		str	r2, [r3, #0]	@ D.7382,* tmp.0
+ 196 008c 10BD     		pop	{r4, pc}	@
+ 197              	.L10:
+ 198 008e 00BF     		.align	2
+ 199              	.L9:
+ 200 0090 003C0140 		.word	1073822720
+ 201              		.cfi_endproc
+ 202              	.LFE111:
+ 203              		.size	EXTI_Init, .-EXTI_Init
+ 204              		.align	1
+ 205              		.global	EXTI_StructInit
+ 206              		.thumb
+ 207              		.thumb_func
+ 208              		.type	EXTI_StructInit, %function
+ 209              	EXTI_StructInit:
+ 210              	.LFB112:
+ 172:.\stm32f4periph\src/stm32f4xx_exti.c ****   }
+ 173:.\stm32f4periph\src/stm32f4xx_exti.c **** }
+ 174:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+ 175:.\stm32f4periph\src/stm32f4xx_exti.c **** /**
+ 176:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @brief  Fills each EXTI_InitStruct member with its reset value.
+ 177:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @param  EXTI_InitStruct: pointer to a EXTI_InitTypeDef structure which will
+ 178:.\stm32f4periph\src/stm32f4xx_exti.c ****   *         be initialized.
+ 179:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @retval None
+ 180:.\stm32f4periph\src/stm32f4xx_exti.c ****   */
+ 181:.\stm32f4periph\src/stm32f4xx_exti.c **** void EXTI_StructInit(EXTI_InitTypeDef* EXTI_InitStruct)
+ 182:.\stm32f4periph\src/stm32f4xx_exti.c **** {
+ 211              		.loc 1 182 0
+ 212              		.cfi_startproc
+ 213              		@ args = 0, pretend = 0, frame = 0
+ 214              		@ frame_needed = 0, uses_anonymous_args = 0
+ 215              		@ link register save eliminated.
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 8
+
+
+ 216              	.LVL6:
+ 183:.\stm32f4periph\src/stm32f4xx_exti.c ****   EXTI_InitStruct->EXTI_Line = EXTI_LINENONE;
+ 217              		.loc 1 183 0
+ 218 0094 0023     		movs	r3, #0	@ tmp135,
+ 184:.\stm32f4periph\src/stm32f4xx_exti.c ****   EXTI_InitStruct->EXTI_Mode = EXTI_Mode_Interrupt;
+ 185:.\stm32f4periph\src/stm32f4xx_exti.c ****   EXTI_InitStruct->EXTI_Trigger = EXTI_Trigger_Falling;
+ 219              		.loc 1 185 0
+ 220 0096 0C22     		movs	r2, #12	@ tmp138,
+ 183:.\stm32f4periph\src/stm32f4xx_exti.c ****   EXTI_InitStruct->EXTI_Line = EXTI_LINENONE;
+ 221              		.loc 1 183 0
+ 222 0098 0360     		str	r3, [r0, #0]	@ tmp135, EXTI_InitStruct_1(D)->EXTI_Line
+ 184:.\stm32f4periph\src/stm32f4xx_exti.c ****   EXTI_InitStruct->EXTI_Mode = EXTI_Mode_Interrupt;
+ 223              		.loc 1 184 0
+ 224 009a 0371     		strb	r3, [r0, #4]	@ tmp135, EXTI_InitStruct_1(D)->EXTI_Mode
+ 225              		.loc 1 185 0
+ 226 009c 4271     		strb	r2, [r0, #5]	@ tmp138, EXTI_InitStruct_1(D)->EXTI_Trigger
+ 186:.\stm32f4periph\src/stm32f4xx_exti.c ****   EXTI_InitStruct->EXTI_LineCmd = DISABLE;
+ 227              		.loc 1 186 0
+ 228 009e 8371     		strb	r3, [r0, #6]	@ tmp135, EXTI_InitStruct_1(D)->EXTI_LineCmd
+ 229 00a0 7047     		bx	lr	@
+ 230              		.cfi_endproc
+ 231              	.LFE112:
+ 232              		.size	EXTI_StructInit, .-EXTI_StructInit
+ 233              		.align	1
+ 234              		.global	EXTI_GenerateSWInterrupt
+ 235              		.thumb
+ 236              		.thumb_func
+ 237              		.type	EXTI_GenerateSWInterrupt, %function
+ 238              	EXTI_GenerateSWInterrupt:
+ 239              	.LFB113:
+ 187:.\stm32f4periph\src/stm32f4xx_exti.c **** }
+ 188:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+ 189:.\stm32f4periph\src/stm32f4xx_exti.c **** /**
+ 190:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @brief  Generates a Software interrupt on selected EXTI line.
+ 191:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @param  EXTI_Line: specifies the EXTI line on which the software interrupt
+ 192:.\stm32f4periph\src/stm32f4xx_exti.c ****   *         will be generated.
+ 193:.\stm32f4periph\src/stm32f4xx_exti.c ****   *         This parameter can be any combination of EXTI_Linex where x can be (0..22)
+ 194:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @retval None
+ 195:.\stm32f4periph\src/stm32f4xx_exti.c ****   */
+ 196:.\stm32f4periph\src/stm32f4xx_exti.c **** void EXTI_GenerateSWInterrupt(uint32_t EXTI_Line)
+ 197:.\stm32f4periph\src/stm32f4xx_exti.c **** {
+ 240              		.loc 1 197 0
+ 241              		.cfi_startproc
+ 242              		@ args = 0, pretend = 0, frame = 0
+ 243              		@ frame_needed = 0, uses_anonymous_args = 0
+ 244              		@ link register save eliminated.
+ 245              	.LVL7:
+ 198:.\stm32f4periph\src/stm32f4xx_exti.c ****   /* Check the parameters */
+ 199:.\stm32f4periph\src/stm32f4xx_exti.c ****   assert_param(IS_EXTI_LINE(EXTI_Line));
+ 200:.\stm32f4periph\src/stm32f4xx_exti.c ****   
+ 201:.\stm32f4periph\src/stm32f4xx_exti.c ****   EXTI->SWIER |= EXTI_Line;
+ 246              		.loc 1 201 0
+ 247 00a2 024B     		ldr	r3, .L13	@ tmp137,
+ 248 00a4 1A69     		ldr	r2, [r3, #16]	@ D.7348, MEM[(struct EXTI_TypeDef *)1073822720B].SWIER
+ 249 00a6 1043     		orrs	r0, r0, r2	@, D.7349, EXTI_Line, D.7348
+ 250              	.LVL8:
+ 251 00a8 1861     		str	r0, [r3, #16]	@ D.7349, MEM[(struct EXTI_TypeDef *)1073822720B].SWIER
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 9
+
+
+ 252 00aa 7047     		bx	lr	@
+ 253              	.L14:
+ 254              		.align	2
+ 255              	.L13:
+ 256 00ac 003C0140 		.word	1073822720
+ 257              		.cfi_endproc
+ 258              	.LFE113:
+ 259              		.size	EXTI_GenerateSWInterrupt, .-EXTI_GenerateSWInterrupt
+ 260              		.align	1
+ 261              		.global	EXTI_GetFlagStatus
+ 262              		.thumb
+ 263              		.thumb_func
+ 264              		.type	EXTI_GetFlagStatus, %function
+ 265              	EXTI_GetFlagStatus:
+ 266              	.LFB114:
+ 202:.\stm32f4periph\src/stm32f4xx_exti.c **** }
+ 203:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+ 204:.\stm32f4periph\src/stm32f4xx_exti.c **** /**
+ 205:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @}
+ 206:.\stm32f4periph\src/stm32f4xx_exti.c ****   */
+ 207:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+ 208:.\stm32f4periph\src/stm32f4xx_exti.c **** /** @defgroup EXTI_Group2 Interrupts and flags management functions
+ 209:.\stm32f4periph\src/stm32f4xx_exti.c ****  *  @brief   Interrupts and flags management functions 
+ 210:.\stm32f4periph\src/stm32f4xx_exti.c ****  *
+ 211:.\stm32f4periph\src/stm32f4xx_exti.c **** @verbatim   
+ 212:.\stm32f4periph\src/stm32f4xx_exti.c ****  ===============================================================================
+ 213:.\stm32f4periph\src/stm32f4xx_exti.c ****                   Interrupts and flags management functions
+ 214:.\stm32f4periph\src/stm32f4xx_exti.c ****  ===============================================================================  
+ 215:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+ 216:.\stm32f4periph\src/stm32f4xx_exti.c **** @endverbatim
+ 217:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @{
+ 218:.\stm32f4periph\src/stm32f4xx_exti.c ****   */
+ 219:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+ 220:.\stm32f4periph\src/stm32f4xx_exti.c **** /**
+ 221:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @brief  Checks whether the specified EXTI line flag is set or not.
+ 222:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @param  EXTI_Line: specifies the EXTI line flag to check.
+ 223:.\stm32f4periph\src/stm32f4xx_exti.c ****   *          This parameter can be EXTI_Linex where x can be(0..22)
+ 224:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @retval The new state of EXTI_Line (SET or RESET).
+ 225:.\stm32f4periph\src/stm32f4xx_exti.c ****   */
+ 226:.\stm32f4periph\src/stm32f4xx_exti.c **** FlagStatus EXTI_GetFlagStatus(uint32_t EXTI_Line)
+ 227:.\stm32f4periph\src/stm32f4xx_exti.c **** {
+ 267              		.loc 1 227 0
+ 268              		.cfi_startproc
+ 269              		@ args = 0, pretend = 0, frame = 0
+ 270              		@ frame_needed = 0, uses_anonymous_args = 0
+ 271              		@ link register save eliminated.
+ 272              	.LVL9:
+ 228:.\stm32f4periph\src/stm32f4xx_exti.c ****   FlagStatus bitstatus = RESET;
+ 229:.\stm32f4periph\src/stm32f4xx_exti.c ****   /* Check the parameters */
+ 230:.\stm32f4periph\src/stm32f4xx_exti.c ****   assert_param(IS_GET_EXTI_LINE(EXTI_Line));
+ 231:.\stm32f4periph\src/stm32f4xx_exti.c ****   
+ 232:.\stm32f4periph\src/stm32f4xx_exti.c ****   if ((EXTI->PR & EXTI_Line) != (uint32_t)RESET)
+ 273              		.loc 1 232 0
+ 274 00b0 034B     		ldr	r3, .L16	@ tmp140,
+ 275 00b2 5B69     		ldr	r3, [r3, #20]	@ D.7340, MEM[(struct EXTI_TypeDef *)1073822720B].PR
+ 276              	.LVL10:
+ 277 00b4 1842     		tst	r0, r3	@ EXTI_Line, D.7340
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 10
+
+
+ 233:.\stm32f4periph\src/stm32f4xx_exti.c ****   {
+ 234:.\stm32f4periph\src/stm32f4xx_exti.c ****     bitstatus = SET;
+ 235:.\stm32f4periph\src/stm32f4xx_exti.c ****   }
+ 236:.\stm32f4periph\src/stm32f4xx_exti.c ****   else
+ 237:.\stm32f4periph\src/stm32f4xx_exti.c ****   {
+ 238:.\stm32f4periph\src/stm32f4xx_exti.c ****     bitstatus = RESET;
+ 239:.\stm32f4periph\src/stm32f4xx_exti.c ****   }
+ 240:.\stm32f4periph\src/stm32f4xx_exti.c ****   return bitstatus;
+ 241:.\stm32f4periph\src/stm32f4xx_exti.c **** }
+ 278              		.loc 1 241 0
+ 279 00b6 0CBF     		ite	eq	@
+ 280 00b8 0020     		moveq	r0, #0	@,
+ 281 00ba 0120     		movne	r0, #1	@,
+ 282              	.LVL11:
+ 283 00bc 7047     		bx	lr	@
+ 284              	.L17:
+ 285 00be 00BF     		.align	2
+ 286              	.L16:
+ 287 00c0 003C0140 		.word	1073822720
+ 288              		.cfi_endproc
+ 289              	.LFE114:
+ 290              		.size	EXTI_GetFlagStatus, .-EXTI_GetFlagStatus
+ 291              		.align	1
+ 292              		.global	EXTI_ClearFlag
+ 293              		.thumb
+ 294              		.thumb_func
+ 295              		.type	EXTI_ClearFlag, %function
+ 296              	EXTI_ClearFlag:
+ 297              	.LFB115:
+ 242:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+ 243:.\stm32f4periph\src/stm32f4xx_exti.c **** /**
+ 244:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @brief  Clears the EXTI's line pending flags.
+ 245:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @param  EXTI_Line: specifies the EXTI lines flags to clear.
+ 246:.\stm32f4periph\src/stm32f4xx_exti.c ****   *          This parameter can be any combination of EXTI_Linex where x can be (0..22)
+ 247:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @retval None
+ 248:.\stm32f4periph\src/stm32f4xx_exti.c ****   */
+ 249:.\stm32f4periph\src/stm32f4xx_exti.c **** void EXTI_ClearFlag(uint32_t EXTI_Line)
+ 250:.\stm32f4periph\src/stm32f4xx_exti.c **** {
+ 298              		.loc 1 250 0
+ 299              		.cfi_startproc
+ 300              		@ args = 0, pretend = 0, frame = 0
+ 301              		@ frame_needed = 0, uses_anonymous_args = 0
+ 302              		@ link register save eliminated.
+ 303              	.LVL12:
+ 251:.\stm32f4periph\src/stm32f4xx_exti.c ****   /* Check the parameters */
+ 252:.\stm32f4periph\src/stm32f4xx_exti.c ****   assert_param(IS_EXTI_LINE(EXTI_Line));
+ 253:.\stm32f4periph\src/stm32f4xx_exti.c ****   
+ 254:.\stm32f4periph\src/stm32f4xx_exti.c ****   EXTI->PR = EXTI_Line;
+ 304              		.loc 1 254 0
+ 305 00c4 014B     		ldr	r3, .L19	@ tmp135,
+ 306 00c6 5861     		str	r0, [r3, #20]	@ EXTI_Line, MEM[(struct EXTI_TypeDef *)1073822720B].PR
+ 307 00c8 7047     		bx	lr	@
+ 308              	.L20:
+ 309 00ca 00BF     		.align	2
+ 310              	.L19:
+ 311 00cc 003C0140 		.word	1073822720
+ 312              		.cfi_endproc
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 11
+
+
+ 313              	.LFE115:
+ 314              		.size	EXTI_ClearFlag, .-EXTI_ClearFlag
+ 315              		.align	1
+ 316              		.global	EXTI_GetITStatus
+ 317              		.thumb
+ 318              		.thumb_func
+ 319              		.type	EXTI_GetITStatus, %function
+ 320              	EXTI_GetITStatus:
+ 321              	.LFB116:
+ 255:.\stm32f4periph\src/stm32f4xx_exti.c **** }
+ 256:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+ 257:.\stm32f4periph\src/stm32f4xx_exti.c **** /**
+ 258:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @brief  Checks whether the specified EXTI line is asserted or not.
+ 259:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @param  EXTI_Line: specifies the EXTI line to check.
+ 260:.\stm32f4periph\src/stm32f4xx_exti.c ****   *          This parameter can be EXTI_Linex where x can be(0..22)
+ 261:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @retval The new state of EXTI_Line (SET or RESET).
+ 262:.\stm32f4periph\src/stm32f4xx_exti.c ****   */
+ 263:.\stm32f4periph\src/stm32f4xx_exti.c **** ITStatus EXTI_GetITStatus(uint32_t EXTI_Line)
+ 264:.\stm32f4periph\src/stm32f4xx_exti.c **** {
+ 322              		.loc 1 264 0
+ 323              		.cfi_startproc
+ 324              		@ args = 0, pretend = 0, frame = 0
+ 325              		@ frame_needed = 0, uses_anonymous_args = 0
+ 326              		@ link register save eliminated.
+ 327              	.LVL13:
+ 265:.\stm32f4periph\src/stm32f4xx_exti.c ****   ITStatus bitstatus = RESET;
+ 266:.\stm32f4periph\src/stm32f4xx_exti.c ****   uint32_t enablestatus = 0;
+ 267:.\stm32f4periph\src/stm32f4xx_exti.c ****   /* Check the parameters */
+ 268:.\stm32f4periph\src/stm32f4xx_exti.c ****   assert_param(IS_GET_EXTI_LINE(EXTI_Line));
+ 269:.\stm32f4periph\src/stm32f4xx_exti.c ****   
+ 270:.\stm32f4periph\src/stm32f4xx_exti.c ****   enablestatus =  EXTI->IMR & EXTI_Line;
+ 328              		.loc 1 270 0
+ 329 00d0 054B     		ldr	r3, .L24	@ tmp142,
+ 330 00d2 1A68     		ldr	r2, [r3, #0]	@ D.7329, MEM[(struct EXTI_TypeDef *)1073822720B].IMR
+ 331              	.LVL14:
+ 271:.\stm32f4periph\src/stm32f4xx_exti.c ****   if (((EXTI->PR & EXTI_Line) != (uint32_t)RESET) && (enablestatus != (uint32_t)RESET))
+ 332              		.loc 1 271 0
+ 333 00d4 5B69     		ldr	r3, [r3, #20]	@ D.7332, MEM[(struct EXTI_TypeDef *)1073822720B].PR
+ 334 00d6 0340     		ands	r3, r0, r3	@ tmp144, EXTI_Line, D.7332
+ 335 00d8 04D0     		beq	.L23	@,
+ 336              		.loc 1 271 0 is_stmt 0 discriminator 1
+ 337 00da 1042     		tst	r0, r2	@ EXTI_Line, D.7329
+ 272:.\stm32f4periph\src/stm32f4xx_exti.c ****   {
+ 273:.\stm32f4periph\src/stm32f4xx_exti.c ****     bitstatus = SET;
+ 338              		.loc 1 273 0 is_stmt 1 discriminator 1
+ 339 00dc 0CBF     		ite	eq	@
+ 340 00de 0020     		moveq	r0, #0	@, bitstatus
+ 341 00e0 0120     		movne	r0, #1	@, bitstatus
+ 342              	.LVL15:
+ 343 00e2 7047     		bx	lr	@
+ 344              	.LVL16:
+ 345              	.L23:
+ 274:.\stm32f4periph\src/stm32f4xx_exti.c ****   }
+ 275:.\stm32f4periph\src/stm32f4xx_exti.c ****   else
+ 276:.\stm32f4periph\src/stm32f4xx_exti.c ****   {
+ 277:.\stm32f4periph\src/stm32f4xx_exti.c ****     bitstatus = RESET;
+ 346              		.loc 1 277 0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 12
+
+
+ 347 00e4 1846     		mov	r0, r3	@ bitstatus, tmp144
+ 348              	.LVL17:
+ 278:.\stm32f4periph\src/stm32f4xx_exti.c ****   }
+ 279:.\stm32f4periph\src/stm32f4xx_exti.c ****   return bitstatus;
+ 280:.\stm32f4periph\src/stm32f4xx_exti.c **** }
+ 349              		.loc 1 280 0
+ 350 00e6 7047     		bx	lr	@
+ 351              	.L25:
+ 352              		.align	2
+ 353              	.L24:
+ 354 00e8 003C0140 		.word	1073822720
+ 355              		.cfi_endproc
+ 356              	.LFE116:
+ 357              		.size	EXTI_GetITStatus, .-EXTI_GetITStatus
+ 358              		.align	1
+ 359              		.global	EXTI_ClearITPendingBit
+ 360              		.thumb
+ 361              		.thumb_func
+ 362              		.type	EXTI_ClearITPendingBit, %function
+ 363              	EXTI_ClearITPendingBit:
+ 364              	.LFB117:
+ 281:.\stm32f4periph\src/stm32f4xx_exti.c **** 
+ 282:.\stm32f4periph\src/stm32f4xx_exti.c **** /**
+ 283:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @brief  Clears the EXTI's line pending bits.
+ 284:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @param  EXTI_Line: specifies the EXTI lines to clear.
+ 285:.\stm32f4periph\src/stm32f4xx_exti.c ****   *          This parameter can be any combination of EXTI_Linex where x can be (0..22)
+ 286:.\stm32f4periph\src/stm32f4xx_exti.c ****   * @retval None
+ 287:.\stm32f4periph\src/stm32f4xx_exti.c ****   */
+ 288:.\stm32f4periph\src/stm32f4xx_exti.c **** void EXTI_ClearITPendingBit(uint32_t EXTI_Line)
+ 289:.\stm32f4periph\src/stm32f4xx_exti.c **** {
+ 365              		.loc 1 289 0
+ 366              		.cfi_startproc
+ 367              		@ args = 0, pretend = 0, frame = 0
+ 368              		@ frame_needed = 0, uses_anonymous_args = 0
+ 369              		@ link register save eliminated.
+ 370              	.LVL18:
+ 290:.\stm32f4periph\src/stm32f4xx_exti.c ****   /* Check the parameters */
+ 291:.\stm32f4periph\src/stm32f4xx_exti.c ****   assert_param(IS_EXTI_LINE(EXTI_Line));
+ 292:.\stm32f4periph\src/stm32f4xx_exti.c ****   
+ 293:.\stm32f4periph\src/stm32f4xx_exti.c ****   EXTI->PR = EXTI_Line;
+ 371              		.loc 1 293 0
+ 372 00ec 014B     		ldr	r3, .L27	@ tmp135,
+ 373 00ee 5861     		str	r0, [r3, #20]	@ EXTI_Line, MEM[(struct EXTI_TypeDef *)1073822720B].PR
+ 374 00f0 7047     		bx	lr	@
+ 375              	.L28:
+ 376 00f2 00BF     		.align	2
+ 377              	.L27:
+ 378 00f4 003C0140 		.word	1073822720
+ 379              		.cfi_endproc
+ 380              	.LFE117:
+ 381              		.size	EXTI_ClearITPendingBit, .-EXTI_ClearITPendingBit
+ 382              	.Letext0:
+ 383              		.file 2 "k:\\electronics\\gcc\\bin\\../lib/gcc/arm-none-eabi/4.7.2/../../../../arm-none-eabi/inclu
+ 384              		.file 3 ".\\inc/stm32f4xx.h"
+ 385              		.file 4 ".\\stm32f4periph\\inc/stm32f4xx_exti.h"
+ 386              		.file 5 ".\\inc/core_cm4.h"
+ 387              		.section	.debug_info,"",%progbits
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 13
+
+
+ 388              	.Ldebug_info0:
+ 389 0000 6B030000 		.4byte	0x36b
+ 390 0004 0200     		.2byte	0x2
+ 391 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 392 000a 04       		.byte	0x4
+ 393 000b 01       		.uleb128 0x1
+ 394 000c 31020000 		.4byte	.LASF44
+ 395 0010 01       		.byte	0x1
+ 396 0011 9C010000 		.4byte	.LASF45
+ 397 0015 6F020000 		.4byte	.LASF46
+ 398 0019 00000000 		.4byte	.Ltext0
+ 399 001d F8000000 		.4byte	.Letext0
+ 400 0021 00000000 		.4byte	.Ldebug_line0
+ 401 0025 02       		.uleb128 0x2
+ 402 0026 01       		.byte	0x1
+ 403 0027 06       		.byte	0x6
+ 404 0028 97020000 		.4byte	.LASF0
+ 405 002c 02       		.uleb128 0x2
+ 406 002d 01       		.byte	0x1
+ 407 002e 08       		.byte	0x8
+ 408 002f EB000000 		.4byte	.LASF1
+ 409 0033 02       		.uleb128 0x2
+ 410 0034 02       		.byte	0x2
+ 411 0035 05       		.byte	0x5
+ 412 0036 65020000 		.4byte	.LASF2
+ 413 003a 02       		.uleb128 0x2
+ 414 003b 02       		.byte	0x2
+ 415 003c 07       		.byte	0x7
+ 416 003d 69000000 		.4byte	.LASF3
+ 417 0041 03       		.uleb128 0x3
+ 418 0042 12020000 		.4byte	.LASF5
+ 419 0046 02       		.byte	0x2
+ 420 0047 4F       		.byte	0x4f
+ 421 0048 4C000000 		.4byte	0x4c
+ 422 004c 02       		.uleb128 0x2
+ 423 004d 04       		.byte	0x4
+ 424 004e 05       		.byte	0x5
+ 425 004f 8E020000 		.4byte	.LASF4
+ 426 0053 03       		.uleb128 0x3
+ 427 0054 63010000 		.4byte	.LASF6
+ 428 0058 02       		.byte	0x2
+ 429 0059 50       		.byte	0x50
+ 430 005a 5E000000 		.4byte	0x5e
+ 431 005e 02       		.uleb128 0x2
+ 432 005f 04       		.byte	0x4
+ 433 0060 07       		.byte	0x7
+ 434 0061 13010000 		.4byte	.LASF7
+ 435 0065 02       		.uleb128 0x2
+ 436 0066 08       		.byte	0x8
+ 437 0067 05       		.byte	0x5
+ 438 0068 23020000 		.4byte	.LASF8
+ 439 006c 02       		.uleb128 0x2
+ 440 006d 08       		.byte	0x8
+ 441 006e 07       		.byte	0x7
+ 442 006f EB010000 		.4byte	.LASF9
+ 443 0073 04       		.uleb128 0x4
+ 444 0074 04       		.byte	0x4
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 14
+
+
+ 445 0075 05       		.byte	0x5
+ 446 0076 696E7400 		.ascii	"int\000"
+ 447 007a 02       		.uleb128 0x2
+ 448 007b 04       		.byte	0x4
+ 449 007c 07       		.byte	0x7
+ 450 007d C1010000 		.4byte	.LASF10
+ 451 0081 02       		.uleb128 0x2
+ 452 0082 04       		.byte	0x4
+ 453 0083 07       		.byte	0x7
+ 454 0084 1A020000 		.4byte	.LASF11
+ 455 0088 05       		.uleb128 0x5
+ 456 0089 53000000 		.4byte	0x53
+ 457 008d 05       		.uleb128 0x5
+ 458 008e 41000000 		.4byte	0x41
+ 459 0092 06       		.uleb128 0x6
+ 460 0093 01       		.byte	0x1
+ 461 0094 03       		.byte	0x3
+ 462 0095 1E01     		.2byte	0x11e
+ 463 0097 A8000000 		.4byte	0xa8
+ 464 009b 07       		.uleb128 0x7
+ 465 009c 25010000 		.4byte	.LASF12
+ 466 00a0 00       		.sleb128 0
+ 467 00a1 08       		.uleb128 0x8
+ 468 00a2 53455400 		.ascii	"SET\000"
+ 469 00a6 01       		.sleb128 1
+ 470 00a7 00       		.byte	0
+ 471 00a8 09       		.uleb128 0x9
+ 472 00a9 F9000000 		.4byte	.LASF13
+ 473 00ad 03       		.byte	0x3
+ 474 00ae 1E01     		.2byte	0x11e
+ 475 00b0 92000000 		.4byte	0x92
+ 476 00b4 09       		.uleb128 0x9
+ 477 00b5 14000000 		.4byte	.LASF14
+ 478 00b9 03       		.byte	0x3
+ 479 00ba 1E01     		.2byte	0x11e
+ 480 00bc 92000000 		.4byte	0x92
+ 481 00c0 06       		.uleb128 0x6
+ 482 00c1 01       		.byte	0x1
+ 483 00c2 03       		.byte	0x3
+ 484 00c3 2001     		.2byte	0x120
+ 485 00c5 D6000000 		.4byte	0xd6
+ 486 00c9 07       		.uleb128 0x7
+ 487 00ca 49010000 		.4byte	.LASF15
+ 488 00ce 00       		.sleb128 0
+ 489 00cf 07       		.uleb128 0x7
+ 490 00d0 D0000000 		.4byte	.LASF16
+ 491 00d4 01       		.sleb128 1
+ 492 00d5 00       		.byte	0
+ 493 00d6 09       		.uleb128 0x9
+ 494 00d7 7C000000 		.4byte	.LASF17
+ 495 00db 03       		.byte	0x3
+ 496 00dc 2001     		.2byte	0x120
+ 497 00de C0000000 		.4byte	0xc0
+ 498 00e2 0A       		.uleb128 0xa
+ 499 00e3 18       		.byte	0x18
+ 500 00e4 03       		.byte	0x3
+ 501 00e5 3802     		.2byte	0x238
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 15
+
+
+ 502 00e7 45010000 		.4byte	0x145
+ 503 00eb 0B       		.uleb128 0xb
+ 504 00ec 494D5200 		.ascii	"IMR\000"
+ 505 00f0 03       		.byte	0x3
+ 506 00f1 3A02     		.2byte	0x23a
+ 507 00f3 88000000 		.4byte	0x88
+ 508 00f7 02       		.byte	0x2
+ 509 00f8 23       		.byte	0x23
+ 510 00f9 00       		.uleb128 0
+ 511 00fa 0B       		.uleb128 0xb
+ 512 00fb 454D5200 		.ascii	"EMR\000"
+ 513 00ff 03       		.byte	0x3
+ 514 0100 3B02     		.2byte	0x23b
+ 515 0102 88000000 		.4byte	0x88
+ 516 0106 02       		.byte	0x2
+ 517 0107 23       		.byte	0x23
+ 518 0108 04       		.uleb128 0x4
+ 519 0109 0C       		.uleb128 0xc
+ 520 010a 5E010000 		.4byte	.LASF18
+ 521 010e 03       		.byte	0x3
+ 522 010f 3C02     		.2byte	0x23c
+ 523 0111 88000000 		.4byte	0x88
+ 524 0115 02       		.byte	0x2
+ 525 0116 23       		.byte	0x23
+ 526 0117 08       		.uleb128 0x8
+ 527 0118 0C       		.uleb128 0xc
+ 528 0119 89020000 		.4byte	.LASF19
+ 529 011d 03       		.byte	0x3
+ 530 011e 3D02     		.2byte	0x23d
+ 531 0120 88000000 		.4byte	0x88
+ 532 0124 02       		.byte	0x2
+ 533 0125 23       		.byte	0x23
+ 534 0126 0C       		.uleb128 0xc
+ 535 0127 0C       		.uleb128 0xc
+ 536 0128 B7020000 		.4byte	.LASF20
+ 537 012c 03       		.byte	0x3
+ 538 012d 3E02     		.2byte	0x23e
+ 539 012f 88000000 		.4byte	0x88
+ 540 0133 02       		.byte	0x2
+ 541 0134 23       		.byte	0x23
+ 542 0135 10       		.uleb128 0x10
+ 543 0136 0B       		.uleb128 0xb
+ 544 0137 505200   		.ascii	"PR\000"
+ 545 013a 03       		.byte	0x3
+ 546 013b 3F02     		.2byte	0x23f
+ 547 013d 88000000 		.4byte	0x88
+ 548 0141 02       		.byte	0x2
+ 549 0142 23       		.byte	0x23
+ 550 0143 14       		.uleb128 0x14
+ 551 0144 00       		.byte	0
+ 552 0145 09       		.uleb128 0x9
+ 553 0146 3C010000 		.4byte	.LASF21
+ 554 014a 03       		.byte	0x3
+ 555 014b 4002     		.2byte	0x240
+ 556 014d E2000000 		.4byte	0xe2
+ 557 0151 0D       		.uleb128 0xd
+ 558 0152 01       		.byte	0x1
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 16
+
+
+ 559 0153 04       		.byte	0x4
+ 560 0154 37       		.byte	0x37
+ 561 0155 66010000 		.4byte	0x166
+ 562 0159 07       		.uleb128 0x7
+ 563 015a D7000000 		.4byte	.LASF22
+ 564 015e 00       		.sleb128 0
+ 565 015f 07       		.uleb128 0x7
+ 566 0160 59000000 		.4byte	.LASF23
+ 567 0164 04       		.sleb128 4
+ 568 0165 00       		.byte	0
+ 569 0166 03       		.uleb128 0x3
+ 570 0167 2B010000 		.4byte	.LASF24
+ 571 016b 04       		.byte	0x4
+ 572 016c 3A       		.byte	0x3a
+ 573 016d 51010000 		.4byte	0x151
+ 574 0171 0D       		.uleb128 0xd
+ 575 0172 01       		.byte	0x1
+ 576 0173 04       		.byte	0x4
+ 577 0174 43       		.byte	0x43
+ 578 0175 8C010000 		.4byte	0x18c
+ 579 0179 07       		.uleb128 0x7
+ 580 017a 6C010000 		.4byte	.LASF25
+ 581 017e 08       		.sleb128 8
+ 582 017f 07       		.uleb128 0x7
+ 583 0180 44000000 		.4byte	.LASF26
+ 584 0184 0C       		.sleb128 12
+ 585 0185 07       		.uleb128 0x7
+ 586 0186 80010000 		.4byte	.LASF27
+ 587 018a 10       		.sleb128 16
+ 588 018b 00       		.byte	0
+ 589 018c 03       		.uleb128 0x3
+ 590 018d A3020000 		.4byte	.LASF28
+ 591 0191 04       		.byte	0x4
+ 592 0192 47       		.byte	0x47
+ 593 0193 71010000 		.4byte	0x171
+ 594 0197 0E       		.uleb128 0xe
+ 595 0198 08       		.byte	0x8
+ 596 0199 04       		.byte	0x4
+ 597 019a 50       		.byte	0x50
+ 598 019b D8010000 		.4byte	0x1d8
+ 599 019f 0F       		.uleb128 0xf
+ 600 01a0 00000000 		.4byte	.LASF29
+ 601 01a4 04       		.byte	0x4
+ 602 01a5 52       		.byte	0x52
+ 603 01a6 53000000 		.4byte	0x53
+ 604 01aa 02       		.byte	0x2
+ 605 01ab 23       		.byte	0x23
+ 606 01ac 00       		.uleb128 0
+ 607 01ad 0F       		.uleb128 0xf
+ 608 01ae 0A000000 		.4byte	.LASF30
+ 609 01b2 04       		.byte	0x4
+ 610 01b3 55       		.byte	0x55
+ 611 01b4 66010000 		.4byte	0x166
+ 612 01b8 02       		.byte	0x2
+ 613 01b9 23       		.byte	0x23
+ 614 01ba 04       		.uleb128 0x4
+ 615 01bb 0F       		.uleb128 0xf
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 17
+
+
+ 616 01bc 37000000 		.4byte	.LASF31
+ 617 01c0 04       		.byte	0x4
+ 618 01c1 58       		.byte	0x58
+ 619 01c2 8C010000 		.4byte	0x18c
+ 620 01c6 02       		.byte	0x2
+ 621 01c7 23       		.byte	0x23
+ 622 01c8 05       		.uleb128 0x5
+ 623 01c9 0F       		.uleb128 0xf
+ 624 01ca 2A000000 		.4byte	.LASF32
+ 625 01ce 04       		.byte	0x4
+ 626 01cf 5B       		.byte	0x5b
+ 627 01d0 D6000000 		.4byte	0xd6
+ 628 01d4 02       		.byte	0x2
+ 629 01d5 23       		.byte	0x23
+ 630 01d6 06       		.uleb128 0x6
+ 631 01d7 00       		.byte	0
+ 632 01d8 03       		.uleb128 0x3
+ 633 01d9 AF000000 		.4byte	.LASF33
+ 634 01dd 04       		.byte	0x4
+ 635 01de 5D       		.byte	0x5d
+ 636 01df 97010000 		.4byte	0x197
+ 637 01e3 10       		.uleb128 0x10
+ 638 01e4 01       		.byte	0x1
+ 639 01e5 BD020000 		.4byte	.LASF47
+ 640 01e9 01       		.byte	0x1
+ 641 01ea 6D       		.byte	0x6d
+ 642 01eb 01       		.byte	0x1
+ 643 01ec 00000000 		.4byte	.LFB110
+ 644 01f0 1C000000 		.4byte	.LFE110
+ 645 01f4 02       		.byte	0x2
+ 646 01f5 7D       		.byte	0x7d
+ 647 01f6 00       		.sleb128 0
+ 648 01f7 01       		.byte	0x1
+ 649 01f8 11       		.uleb128 0x11
+ 650 01f9 01       		.byte	0x1
+ 651 01fa CE010000 		.4byte	.LASF34
+ 652 01fe 01       		.byte	0x1
+ 653 01ff 7D       		.byte	0x7d
+ 654 0200 01       		.byte	0x1
+ 655 0201 1C000000 		.4byte	.LFB111
+ 656 0205 94000000 		.4byte	.LFE111
+ 657 0209 00000000 		.4byte	.LLST0
+ 658 020d 01       		.byte	0x1
+ 659 020e 2F020000 		.4byte	0x22f
+ 660 0212 12       		.uleb128 0x12
+ 661 0213 C0000000 		.4byte	.LASF36
+ 662 0217 01       		.byte	0x1
+ 663 0218 7D       		.byte	0x7d
+ 664 0219 2F020000 		.4byte	0x22f
+ 665 021d 01       		.byte	0x1
+ 666 021e 50       		.byte	0x50
+ 667 021f 13       		.uleb128 0x13
+ 668 0220 746D7000 		.ascii	"tmp\000"
+ 669 0224 01       		.byte	0x1
+ 670 0225 7F       		.byte	0x7f
+ 671 0226 53000000 		.4byte	0x53
+ 672 022a 20000000 		.4byte	.LLST1
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 18
+
+
+ 673 022e 00       		.byte	0
+ 674 022f 14       		.uleb128 0x14
+ 675 0230 04       		.byte	0x4
+ 676 0231 D8010000 		.4byte	0x1d8
+ 677 0235 15       		.uleb128 0x15
+ 678 0236 01       		.byte	0x1
+ 679 0237 02020000 		.4byte	.LASF35
+ 680 023b 01       		.byte	0x1
+ 681 023c B5       		.byte	0xb5
+ 682 023d 01       		.byte	0x1
+ 683 023e 94000000 		.4byte	.LFB112
+ 684 0242 A2000000 		.4byte	.LFE112
+ 685 0246 02       		.byte	0x2
+ 686 0247 7D       		.byte	0x7d
+ 687 0248 00       		.sleb128 0
+ 688 0249 01       		.byte	0x1
+ 689 024a 5C020000 		.4byte	0x25c
+ 690 024e 12       		.uleb128 0x12
+ 691 024f C0000000 		.4byte	.LASF36
+ 692 0253 01       		.byte	0x1
+ 693 0254 B5       		.byte	0xb5
+ 694 0255 2F020000 		.4byte	0x22f
+ 695 0259 01       		.byte	0x1
+ 696 025a 50       		.byte	0x50
+ 697 025b 00       		.byte	0
+ 698 025c 15       		.uleb128 0x15
+ 699 025d 01       		.byte	0x1
+ 700 025e 96000000 		.4byte	.LASF37
+ 701 0262 01       		.byte	0x1
+ 702 0263 C4       		.byte	0xc4
+ 703 0264 01       		.byte	0x1
+ 704 0265 A2000000 		.4byte	.LFB113
+ 705 0269 B0000000 		.4byte	.LFE113
+ 706 026d 02       		.byte	0x2
+ 707 026e 7D       		.byte	0x7d
+ 708 026f 00       		.sleb128 0
+ 709 0270 01       		.byte	0x1
+ 710 0271 85020000 		.4byte	0x285
+ 711 0275 16       		.uleb128 0x16
+ 712 0276 00000000 		.4byte	.LASF29
+ 713 027a 01       		.byte	0x1
+ 714 027b C4       		.byte	0xc4
+ 715 027c 53000000 		.4byte	0x53
+ 716 0280 96000000 		.4byte	.LLST2
+ 717 0284 00       		.byte	0
+ 718 0285 17       		.uleb128 0x17
+ 719 0286 01       		.byte	0x1
+ 720 0287 D8010000 		.4byte	.LASF40
+ 721 028b 01       		.byte	0x1
+ 722 028c E2       		.byte	0xe2
+ 723 028d 01       		.byte	0x1
+ 724 028e A8000000 		.4byte	0xa8
+ 725 0292 B0000000 		.4byte	.LFB114
+ 726 0296 C4000000 		.4byte	.LFE114
+ 727 029a 02       		.byte	0x2
+ 728 029b 7D       		.byte	0x7d
+ 729 029c 00       		.sleb128 0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 19
+
+
+ 730 029d 01       		.byte	0x1
+ 731 029e C1020000 		.4byte	0x2c1
+ 732 02a2 16       		.uleb128 0x16
+ 733 02a3 00000000 		.4byte	.LASF29
+ 734 02a7 01       		.byte	0x1
+ 735 02a8 E2       		.byte	0xe2
+ 736 02a9 53000000 		.4byte	0x53
+ 737 02ad B7000000 		.4byte	.LLST3
+ 738 02b1 18       		.uleb128 0x18
+ 739 02b2 8C000000 		.4byte	.LASF38
+ 740 02b6 01       		.byte	0x1
+ 741 02b7 E4       		.byte	0xe4
+ 742 02b8 A8000000 		.4byte	0xa8
+ 743 02bc D8000000 		.4byte	.LLST4
+ 744 02c0 00       		.byte	0
+ 745 02c1 15       		.uleb128 0x15
+ 746 02c2 01       		.byte	0x1
+ 747 02c3 04010000 		.4byte	.LASF39
+ 748 02c7 01       		.byte	0x1
+ 749 02c8 F9       		.byte	0xf9
+ 750 02c9 01       		.byte	0x1
+ 751 02ca C4000000 		.4byte	.LFB115
+ 752 02ce D0000000 		.4byte	.LFE115
+ 753 02d2 02       		.byte	0x2
+ 754 02d3 7D       		.byte	0x7d
+ 755 02d4 00       		.sleb128 0
+ 756 02d5 01       		.byte	0x1
+ 757 02d6 E8020000 		.4byte	0x2e8
+ 758 02da 12       		.uleb128 0x12
+ 759 02db 00000000 		.4byte	.LASF29
+ 760 02df 01       		.byte	0x1
+ 761 02e0 F9       		.byte	0xf9
+ 762 02e1 53000000 		.4byte	0x53
+ 763 02e5 01       		.byte	0x1
+ 764 02e6 50       		.byte	0x50
+ 765 02e7 00       		.byte	0
+ 766 02e8 19       		.uleb128 0x19
+ 767 02e9 01       		.byte	0x1
+ 768 02ea 3D020000 		.4byte	.LASF41
+ 769 02ee 01       		.byte	0x1
+ 770 02ef 0701     		.2byte	0x107
+ 771 02f1 01       		.byte	0x1
+ 772 02f2 B4000000 		.4byte	0xb4
+ 773 02f6 D0000000 		.4byte	.LFB116
+ 774 02fa EC000000 		.4byte	.LFE116
+ 775 02fe 02       		.byte	0x2
+ 776 02ff 7D       		.byte	0x7d
+ 777 0300 00       		.sleb128 0
+ 778 0301 01       		.byte	0x1
+ 779 0302 37030000 		.4byte	0x337
+ 780 0306 1A       		.uleb128 0x1a
+ 781 0307 00000000 		.4byte	.LASF29
+ 782 030b 01       		.byte	0x1
+ 783 030c 0701     		.2byte	0x107
+ 784 030e 53000000 		.4byte	0x53
+ 785 0312 11010000 		.4byte	.LLST5
+ 786 0316 1B       		.uleb128 0x1b
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 20
+
+
+ 787 0317 8C000000 		.4byte	.LASF38
+ 788 031b 01       		.byte	0x1
+ 789 031c 0901     		.2byte	0x109
+ 790 031e B4000000 		.4byte	0xb4
+ 791 0322 4B010000 		.4byte	.LLST6
+ 792 0326 1B       		.uleb128 0x1b
+ 793 0327 1D000000 		.4byte	.LASF42
+ 794 032b 01       		.byte	0x1
+ 795 032c 0A01     		.2byte	0x10a
+ 796 032e 53000000 		.4byte	0x53
+ 797 0332 6A010000 		.4byte	.LLST7
+ 798 0336 00       		.byte	0
+ 799 0337 1C       		.uleb128 0x1c
+ 800 0338 01       		.byte	0x1
+ 801 0339 4E020000 		.4byte	.LASF43
+ 802 033d 01       		.byte	0x1
+ 803 033e 2001     		.2byte	0x120
+ 804 0340 01       		.byte	0x1
+ 805 0341 EC000000 		.4byte	.LFB117
+ 806 0345 F8000000 		.4byte	.LFE117
+ 807 0349 02       		.byte	0x2
+ 808 034a 7D       		.byte	0x7d
+ 809 034b 00       		.sleb128 0
+ 810 034c 01       		.byte	0x1
+ 811 034d 60030000 		.4byte	0x360
+ 812 0351 1D       		.uleb128 0x1d
+ 813 0352 00000000 		.4byte	.LASF29
+ 814 0356 01       		.byte	0x1
+ 815 0357 2001     		.2byte	0x120
+ 816 0359 53000000 		.4byte	0x53
+ 817 035d 01       		.byte	0x1
+ 818 035e 50       		.byte	0x50
+ 819 035f 00       		.byte	0
+ 820 0360 1E       		.uleb128 0x1e
+ 821 0361 51010000 		.4byte	.LASF48
+ 822 0365 05       		.byte	0x5
+ 823 0366 1A05     		.2byte	0x51a
+ 824 0368 8D000000 		.4byte	0x8d
+ 825 036c 01       		.byte	0x1
+ 826 036d 01       		.byte	0x1
+ 827 036e 00       		.byte	0
+ 828              		.section	.debug_abbrev,"",%progbits
+ 829              	.Ldebug_abbrev0:
+ 830 0000 01       		.uleb128 0x1
+ 831 0001 11       		.uleb128 0x11
+ 832 0002 01       		.byte	0x1
+ 833 0003 25       		.uleb128 0x25
+ 834 0004 0E       		.uleb128 0xe
+ 835 0005 13       		.uleb128 0x13
+ 836 0006 0B       		.uleb128 0xb
+ 837 0007 03       		.uleb128 0x3
+ 838 0008 0E       		.uleb128 0xe
+ 839 0009 1B       		.uleb128 0x1b
+ 840 000a 0E       		.uleb128 0xe
+ 841 000b 11       		.uleb128 0x11
+ 842 000c 01       		.uleb128 0x1
+ 843 000d 12       		.uleb128 0x12
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 21
+
+
+ 844 000e 01       		.uleb128 0x1
+ 845 000f 10       		.uleb128 0x10
+ 846 0010 06       		.uleb128 0x6
+ 847 0011 00       		.byte	0
+ 848 0012 00       		.byte	0
+ 849 0013 02       		.uleb128 0x2
+ 850 0014 24       		.uleb128 0x24
+ 851 0015 00       		.byte	0
+ 852 0016 0B       		.uleb128 0xb
+ 853 0017 0B       		.uleb128 0xb
+ 854 0018 3E       		.uleb128 0x3e
+ 855 0019 0B       		.uleb128 0xb
+ 856 001a 03       		.uleb128 0x3
+ 857 001b 0E       		.uleb128 0xe
+ 858 001c 00       		.byte	0
+ 859 001d 00       		.byte	0
+ 860 001e 03       		.uleb128 0x3
+ 861 001f 16       		.uleb128 0x16
+ 862 0020 00       		.byte	0
+ 863 0021 03       		.uleb128 0x3
+ 864 0022 0E       		.uleb128 0xe
+ 865 0023 3A       		.uleb128 0x3a
+ 866 0024 0B       		.uleb128 0xb
+ 867 0025 3B       		.uleb128 0x3b
+ 868 0026 0B       		.uleb128 0xb
+ 869 0027 49       		.uleb128 0x49
+ 870 0028 13       		.uleb128 0x13
+ 871 0029 00       		.byte	0
+ 872 002a 00       		.byte	0
+ 873 002b 04       		.uleb128 0x4
+ 874 002c 24       		.uleb128 0x24
+ 875 002d 00       		.byte	0
+ 876 002e 0B       		.uleb128 0xb
+ 877 002f 0B       		.uleb128 0xb
+ 878 0030 3E       		.uleb128 0x3e
+ 879 0031 0B       		.uleb128 0xb
+ 880 0032 03       		.uleb128 0x3
+ 881 0033 08       		.uleb128 0x8
+ 882 0034 00       		.byte	0
+ 883 0035 00       		.byte	0
+ 884 0036 05       		.uleb128 0x5
+ 885 0037 35       		.uleb128 0x35
+ 886 0038 00       		.byte	0
+ 887 0039 49       		.uleb128 0x49
+ 888 003a 13       		.uleb128 0x13
+ 889 003b 00       		.byte	0
+ 890 003c 00       		.byte	0
+ 891 003d 06       		.uleb128 0x6
+ 892 003e 04       		.uleb128 0x4
+ 893 003f 01       		.byte	0x1
+ 894 0040 0B       		.uleb128 0xb
+ 895 0041 0B       		.uleb128 0xb
+ 896 0042 3A       		.uleb128 0x3a
+ 897 0043 0B       		.uleb128 0xb
+ 898 0044 3B       		.uleb128 0x3b
+ 899 0045 05       		.uleb128 0x5
+ 900 0046 01       		.uleb128 0x1
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 22
+
+
+ 901 0047 13       		.uleb128 0x13
+ 902 0048 00       		.byte	0
+ 903 0049 00       		.byte	0
+ 904 004a 07       		.uleb128 0x7
+ 905 004b 28       		.uleb128 0x28
+ 906 004c 00       		.byte	0
+ 907 004d 03       		.uleb128 0x3
+ 908 004e 0E       		.uleb128 0xe
+ 909 004f 1C       		.uleb128 0x1c
+ 910 0050 0D       		.uleb128 0xd
+ 911 0051 00       		.byte	0
+ 912 0052 00       		.byte	0
+ 913 0053 08       		.uleb128 0x8
+ 914 0054 28       		.uleb128 0x28
+ 915 0055 00       		.byte	0
+ 916 0056 03       		.uleb128 0x3
+ 917 0057 08       		.uleb128 0x8
+ 918 0058 1C       		.uleb128 0x1c
+ 919 0059 0D       		.uleb128 0xd
+ 920 005a 00       		.byte	0
+ 921 005b 00       		.byte	0
+ 922 005c 09       		.uleb128 0x9
+ 923 005d 16       		.uleb128 0x16
+ 924 005e 00       		.byte	0
+ 925 005f 03       		.uleb128 0x3
+ 926 0060 0E       		.uleb128 0xe
+ 927 0061 3A       		.uleb128 0x3a
+ 928 0062 0B       		.uleb128 0xb
+ 929 0063 3B       		.uleb128 0x3b
+ 930 0064 05       		.uleb128 0x5
+ 931 0065 49       		.uleb128 0x49
+ 932 0066 13       		.uleb128 0x13
+ 933 0067 00       		.byte	0
+ 934 0068 00       		.byte	0
+ 935 0069 0A       		.uleb128 0xa
+ 936 006a 13       		.uleb128 0x13
+ 937 006b 01       		.byte	0x1
+ 938 006c 0B       		.uleb128 0xb
+ 939 006d 0B       		.uleb128 0xb
+ 940 006e 3A       		.uleb128 0x3a
+ 941 006f 0B       		.uleb128 0xb
+ 942 0070 3B       		.uleb128 0x3b
+ 943 0071 05       		.uleb128 0x5
+ 944 0072 01       		.uleb128 0x1
+ 945 0073 13       		.uleb128 0x13
+ 946 0074 00       		.byte	0
+ 947 0075 00       		.byte	0
+ 948 0076 0B       		.uleb128 0xb
+ 949 0077 0D       		.uleb128 0xd
+ 950 0078 00       		.byte	0
+ 951 0079 03       		.uleb128 0x3
+ 952 007a 08       		.uleb128 0x8
+ 953 007b 3A       		.uleb128 0x3a
+ 954 007c 0B       		.uleb128 0xb
+ 955 007d 3B       		.uleb128 0x3b
+ 956 007e 05       		.uleb128 0x5
+ 957 007f 49       		.uleb128 0x49
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 23
+
+
+ 958 0080 13       		.uleb128 0x13
+ 959 0081 38       		.uleb128 0x38
+ 960 0082 0A       		.uleb128 0xa
+ 961 0083 00       		.byte	0
+ 962 0084 00       		.byte	0
+ 963 0085 0C       		.uleb128 0xc
+ 964 0086 0D       		.uleb128 0xd
+ 965 0087 00       		.byte	0
+ 966 0088 03       		.uleb128 0x3
+ 967 0089 0E       		.uleb128 0xe
+ 968 008a 3A       		.uleb128 0x3a
+ 969 008b 0B       		.uleb128 0xb
+ 970 008c 3B       		.uleb128 0x3b
+ 971 008d 05       		.uleb128 0x5
+ 972 008e 49       		.uleb128 0x49
+ 973 008f 13       		.uleb128 0x13
+ 974 0090 38       		.uleb128 0x38
+ 975 0091 0A       		.uleb128 0xa
+ 976 0092 00       		.byte	0
+ 977 0093 00       		.byte	0
+ 978 0094 0D       		.uleb128 0xd
+ 979 0095 04       		.uleb128 0x4
+ 980 0096 01       		.byte	0x1
+ 981 0097 0B       		.uleb128 0xb
+ 982 0098 0B       		.uleb128 0xb
+ 983 0099 3A       		.uleb128 0x3a
+ 984 009a 0B       		.uleb128 0xb
+ 985 009b 3B       		.uleb128 0x3b
+ 986 009c 0B       		.uleb128 0xb
+ 987 009d 01       		.uleb128 0x1
+ 988 009e 13       		.uleb128 0x13
+ 989 009f 00       		.byte	0
+ 990 00a0 00       		.byte	0
+ 991 00a1 0E       		.uleb128 0xe
+ 992 00a2 13       		.uleb128 0x13
+ 993 00a3 01       		.byte	0x1
+ 994 00a4 0B       		.uleb128 0xb
+ 995 00a5 0B       		.uleb128 0xb
+ 996 00a6 3A       		.uleb128 0x3a
+ 997 00a7 0B       		.uleb128 0xb
+ 998 00a8 3B       		.uleb128 0x3b
+ 999 00a9 0B       		.uleb128 0xb
+ 1000 00aa 01       		.uleb128 0x1
+ 1001 00ab 13       		.uleb128 0x13
+ 1002 00ac 00       		.byte	0
+ 1003 00ad 00       		.byte	0
+ 1004 00ae 0F       		.uleb128 0xf
+ 1005 00af 0D       		.uleb128 0xd
+ 1006 00b0 00       		.byte	0
+ 1007 00b1 03       		.uleb128 0x3
+ 1008 00b2 0E       		.uleb128 0xe
+ 1009 00b3 3A       		.uleb128 0x3a
+ 1010 00b4 0B       		.uleb128 0xb
+ 1011 00b5 3B       		.uleb128 0x3b
+ 1012 00b6 0B       		.uleb128 0xb
+ 1013 00b7 49       		.uleb128 0x49
+ 1014 00b8 13       		.uleb128 0x13
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 24
+
+
+ 1015 00b9 38       		.uleb128 0x38
+ 1016 00ba 0A       		.uleb128 0xa
+ 1017 00bb 00       		.byte	0
+ 1018 00bc 00       		.byte	0
+ 1019 00bd 10       		.uleb128 0x10
+ 1020 00be 2E       		.uleb128 0x2e
+ 1021 00bf 00       		.byte	0
+ 1022 00c0 3F       		.uleb128 0x3f
+ 1023 00c1 0C       		.uleb128 0xc
+ 1024 00c2 03       		.uleb128 0x3
+ 1025 00c3 0E       		.uleb128 0xe
+ 1026 00c4 3A       		.uleb128 0x3a
+ 1027 00c5 0B       		.uleb128 0xb
+ 1028 00c6 3B       		.uleb128 0x3b
+ 1029 00c7 0B       		.uleb128 0xb
+ 1030 00c8 27       		.uleb128 0x27
+ 1031 00c9 0C       		.uleb128 0xc
+ 1032 00ca 11       		.uleb128 0x11
+ 1033 00cb 01       		.uleb128 0x1
+ 1034 00cc 12       		.uleb128 0x12
+ 1035 00cd 01       		.uleb128 0x1
+ 1036 00ce 40       		.uleb128 0x40
+ 1037 00cf 0A       		.uleb128 0xa
+ 1038 00d0 9742     		.uleb128 0x2117
+ 1039 00d2 0C       		.uleb128 0xc
+ 1040 00d3 00       		.byte	0
+ 1041 00d4 00       		.byte	0
+ 1042 00d5 11       		.uleb128 0x11
+ 1043 00d6 2E       		.uleb128 0x2e
+ 1044 00d7 01       		.byte	0x1
+ 1045 00d8 3F       		.uleb128 0x3f
+ 1046 00d9 0C       		.uleb128 0xc
+ 1047 00da 03       		.uleb128 0x3
+ 1048 00db 0E       		.uleb128 0xe
+ 1049 00dc 3A       		.uleb128 0x3a
+ 1050 00dd 0B       		.uleb128 0xb
+ 1051 00de 3B       		.uleb128 0x3b
+ 1052 00df 0B       		.uleb128 0xb
+ 1053 00e0 27       		.uleb128 0x27
+ 1054 00e1 0C       		.uleb128 0xc
+ 1055 00e2 11       		.uleb128 0x11
+ 1056 00e3 01       		.uleb128 0x1
+ 1057 00e4 12       		.uleb128 0x12
+ 1058 00e5 01       		.uleb128 0x1
+ 1059 00e6 40       		.uleb128 0x40
+ 1060 00e7 06       		.uleb128 0x6
+ 1061 00e8 9742     		.uleb128 0x2117
+ 1062 00ea 0C       		.uleb128 0xc
+ 1063 00eb 01       		.uleb128 0x1
+ 1064 00ec 13       		.uleb128 0x13
+ 1065 00ed 00       		.byte	0
+ 1066 00ee 00       		.byte	0
+ 1067 00ef 12       		.uleb128 0x12
+ 1068 00f0 05       		.uleb128 0x5
+ 1069 00f1 00       		.byte	0
+ 1070 00f2 03       		.uleb128 0x3
+ 1071 00f3 0E       		.uleb128 0xe
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 25
+
+
+ 1072 00f4 3A       		.uleb128 0x3a
+ 1073 00f5 0B       		.uleb128 0xb
+ 1074 00f6 3B       		.uleb128 0x3b
+ 1075 00f7 0B       		.uleb128 0xb
+ 1076 00f8 49       		.uleb128 0x49
+ 1077 00f9 13       		.uleb128 0x13
+ 1078 00fa 02       		.uleb128 0x2
+ 1079 00fb 0A       		.uleb128 0xa
+ 1080 00fc 00       		.byte	0
+ 1081 00fd 00       		.byte	0
+ 1082 00fe 13       		.uleb128 0x13
+ 1083 00ff 34       		.uleb128 0x34
+ 1084 0100 00       		.byte	0
+ 1085 0101 03       		.uleb128 0x3
+ 1086 0102 08       		.uleb128 0x8
+ 1087 0103 3A       		.uleb128 0x3a
+ 1088 0104 0B       		.uleb128 0xb
+ 1089 0105 3B       		.uleb128 0x3b
+ 1090 0106 0B       		.uleb128 0xb
+ 1091 0107 49       		.uleb128 0x49
+ 1092 0108 13       		.uleb128 0x13
+ 1093 0109 02       		.uleb128 0x2
+ 1094 010a 06       		.uleb128 0x6
+ 1095 010b 00       		.byte	0
+ 1096 010c 00       		.byte	0
+ 1097 010d 14       		.uleb128 0x14
+ 1098 010e 0F       		.uleb128 0xf
+ 1099 010f 00       		.byte	0
+ 1100 0110 0B       		.uleb128 0xb
+ 1101 0111 0B       		.uleb128 0xb
+ 1102 0112 49       		.uleb128 0x49
+ 1103 0113 13       		.uleb128 0x13
+ 1104 0114 00       		.byte	0
+ 1105 0115 00       		.byte	0
+ 1106 0116 15       		.uleb128 0x15
+ 1107 0117 2E       		.uleb128 0x2e
+ 1108 0118 01       		.byte	0x1
+ 1109 0119 3F       		.uleb128 0x3f
+ 1110 011a 0C       		.uleb128 0xc
+ 1111 011b 03       		.uleb128 0x3
+ 1112 011c 0E       		.uleb128 0xe
+ 1113 011d 3A       		.uleb128 0x3a
+ 1114 011e 0B       		.uleb128 0xb
+ 1115 011f 3B       		.uleb128 0x3b
+ 1116 0120 0B       		.uleb128 0xb
+ 1117 0121 27       		.uleb128 0x27
+ 1118 0122 0C       		.uleb128 0xc
+ 1119 0123 11       		.uleb128 0x11
+ 1120 0124 01       		.uleb128 0x1
+ 1121 0125 12       		.uleb128 0x12
+ 1122 0126 01       		.uleb128 0x1
+ 1123 0127 40       		.uleb128 0x40
+ 1124 0128 0A       		.uleb128 0xa
+ 1125 0129 9742     		.uleb128 0x2117
+ 1126 012b 0C       		.uleb128 0xc
+ 1127 012c 01       		.uleb128 0x1
+ 1128 012d 13       		.uleb128 0x13
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 26
+
+
+ 1129 012e 00       		.byte	0
+ 1130 012f 00       		.byte	0
+ 1131 0130 16       		.uleb128 0x16
+ 1132 0131 05       		.uleb128 0x5
+ 1133 0132 00       		.byte	0
+ 1134 0133 03       		.uleb128 0x3
+ 1135 0134 0E       		.uleb128 0xe
+ 1136 0135 3A       		.uleb128 0x3a
+ 1137 0136 0B       		.uleb128 0xb
+ 1138 0137 3B       		.uleb128 0x3b
+ 1139 0138 0B       		.uleb128 0xb
+ 1140 0139 49       		.uleb128 0x49
+ 1141 013a 13       		.uleb128 0x13
+ 1142 013b 02       		.uleb128 0x2
+ 1143 013c 06       		.uleb128 0x6
+ 1144 013d 00       		.byte	0
+ 1145 013e 00       		.byte	0
+ 1146 013f 17       		.uleb128 0x17
+ 1147 0140 2E       		.uleb128 0x2e
+ 1148 0141 01       		.byte	0x1
+ 1149 0142 3F       		.uleb128 0x3f
+ 1150 0143 0C       		.uleb128 0xc
+ 1151 0144 03       		.uleb128 0x3
+ 1152 0145 0E       		.uleb128 0xe
+ 1153 0146 3A       		.uleb128 0x3a
+ 1154 0147 0B       		.uleb128 0xb
+ 1155 0148 3B       		.uleb128 0x3b
+ 1156 0149 0B       		.uleb128 0xb
+ 1157 014a 27       		.uleb128 0x27
+ 1158 014b 0C       		.uleb128 0xc
+ 1159 014c 49       		.uleb128 0x49
+ 1160 014d 13       		.uleb128 0x13
+ 1161 014e 11       		.uleb128 0x11
+ 1162 014f 01       		.uleb128 0x1
+ 1163 0150 12       		.uleb128 0x12
+ 1164 0151 01       		.uleb128 0x1
+ 1165 0152 40       		.uleb128 0x40
+ 1166 0153 0A       		.uleb128 0xa
+ 1167 0154 9742     		.uleb128 0x2117
+ 1168 0156 0C       		.uleb128 0xc
+ 1169 0157 01       		.uleb128 0x1
+ 1170 0158 13       		.uleb128 0x13
+ 1171 0159 00       		.byte	0
+ 1172 015a 00       		.byte	0
+ 1173 015b 18       		.uleb128 0x18
+ 1174 015c 34       		.uleb128 0x34
+ 1175 015d 00       		.byte	0
+ 1176 015e 03       		.uleb128 0x3
+ 1177 015f 0E       		.uleb128 0xe
+ 1178 0160 3A       		.uleb128 0x3a
+ 1179 0161 0B       		.uleb128 0xb
+ 1180 0162 3B       		.uleb128 0x3b
+ 1181 0163 0B       		.uleb128 0xb
+ 1182 0164 49       		.uleb128 0x49
+ 1183 0165 13       		.uleb128 0x13
+ 1184 0166 02       		.uleb128 0x2
+ 1185 0167 06       		.uleb128 0x6
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 27
+
+
+ 1186 0168 00       		.byte	0
+ 1187 0169 00       		.byte	0
+ 1188 016a 19       		.uleb128 0x19
+ 1189 016b 2E       		.uleb128 0x2e
+ 1190 016c 01       		.byte	0x1
+ 1191 016d 3F       		.uleb128 0x3f
+ 1192 016e 0C       		.uleb128 0xc
+ 1193 016f 03       		.uleb128 0x3
+ 1194 0170 0E       		.uleb128 0xe
+ 1195 0171 3A       		.uleb128 0x3a
+ 1196 0172 0B       		.uleb128 0xb
+ 1197 0173 3B       		.uleb128 0x3b
+ 1198 0174 05       		.uleb128 0x5
+ 1199 0175 27       		.uleb128 0x27
+ 1200 0176 0C       		.uleb128 0xc
+ 1201 0177 49       		.uleb128 0x49
+ 1202 0178 13       		.uleb128 0x13
+ 1203 0179 11       		.uleb128 0x11
+ 1204 017a 01       		.uleb128 0x1
+ 1205 017b 12       		.uleb128 0x12
+ 1206 017c 01       		.uleb128 0x1
+ 1207 017d 40       		.uleb128 0x40
+ 1208 017e 0A       		.uleb128 0xa
+ 1209 017f 9742     		.uleb128 0x2117
+ 1210 0181 0C       		.uleb128 0xc
+ 1211 0182 01       		.uleb128 0x1
+ 1212 0183 13       		.uleb128 0x13
+ 1213 0184 00       		.byte	0
+ 1214 0185 00       		.byte	0
+ 1215 0186 1A       		.uleb128 0x1a
+ 1216 0187 05       		.uleb128 0x5
+ 1217 0188 00       		.byte	0
+ 1218 0189 03       		.uleb128 0x3
+ 1219 018a 0E       		.uleb128 0xe
+ 1220 018b 3A       		.uleb128 0x3a
+ 1221 018c 0B       		.uleb128 0xb
+ 1222 018d 3B       		.uleb128 0x3b
+ 1223 018e 05       		.uleb128 0x5
+ 1224 018f 49       		.uleb128 0x49
+ 1225 0190 13       		.uleb128 0x13
+ 1226 0191 02       		.uleb128 0x2
+ 1227 0192 06       		.uleb128 0x6
+ 1228 0193 00       		.byte	0
+ 1229 0194 00       		.byte	0
+ 1230 0195 1B       		.uleb128 0x1b
+ 1231 0196 34       		.uleb128 0x34
+ 1232 0197 00       		.byte	0
+ 1233 0198 03       		.uleb128 0x3
+ 1234 0199 0E       		.uleb128 0xe
+ 1235 019a 3A       		.uleb128 0x3a
+ 1236 019b 0B       		.uleb128 0xb
+ 1237 019c 3B       		.uleb128 0x3b
+ 1238 019d 05       		.uleb128 0x5
+ 1239 019e 49       		.uleb128 0x49
+ 1240 019f 13       		.uleb128 0x13
+ 1241 01a0 02       		.uleb128 0x2
+ 1242 01a1 06       		.uleb128 0x6
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 28
+
+
+ 1243 01a2 00       		.byte	0
+ 1244 01a3 00       		.byte	0
+ 1245 01a4 1C       		.uleb128 0x1c
+ 1246 01a5 2E       		.uleb128 0x2e
+ 1247 01a6 01       		.byte	0x1
+ 1248 01a7 3F       		.uleb128 0x3f
+ 1249 01a8 0C       		.uleb128 0xc
+ 1250 01a9 03       		.uleb128 0x3
+ 1251 01aa 0E       		.uleb128 0xe
+ 1252 01ab 3A       		.uleb128 0x3a
+ 1253 01ac 0B       		.uleb128 0xb
+ 1254 01ad 3B       		.uleb128 0x3b
+ 1255 01ae 05       		.uleb128 0x5
+ 1256 01af 27       		.uleb128 0x27
+ 1257 01b0 0C       		.uleb128 0xc
+ 1258 01b1 11       		.uleb128 0x11
+ 1259 01b2 01       		.uleb128 0x1
+ 1260 01b3 12       		.uleb128 0x12
+ 1261 01b4 01       		.uleb128 0x1
+ 1262 01b5 40       		.uleb128 0x40
+ 1263 01b6 0A       		.uleb128 0xa
+ 1264 01b7 9742     		.uleb128 0x2117
+ 1265 01b9 0C       		.uleb128 0xc
+ 1266 01ba 01       		.uleb128 0x1
+ 1267 01bb 13       		.uleb128 0x13
+ 1268 01bc 00       		.byte	0
+ 1269 01bd 00       		.byte	0
+ 1270 01be 1D       		.uleb128 0x1d
+ 1271 01bf 05       		.uleb128 0x5
+ 1272 01c0 00       		.byte	0
+ 1273 01c1 03       		.uleb128 0x3
+ 1274 01c2 0E       		.uleb128 0xe
+ 1275 01c3 3A       		.uleb128 0x3a
+ 1276 01c4 0B       		.uleb128 0xb
+ 1277 01c5 3B       		.uleb128 0x3b
+ 1278 01c6 05       		.uleb128 0x5
+ 1279 01c7 49       		.uleb128 0x49
+ 1280 01c8 13       		.uleb128 0x13
+ 1281 01c9 02       		.uleb128 0x2
+ 1282 01ca 0A       		.uleb128 0xa
+ 1283 01cb 00       		.byte	0
+ 1284 01cc 00       		.byte	0
+ 1285 01cd 1E       		.uleb128 0x1e
+ 1286 01ce 34       		.uleb128 0x34
+ 1287 01cf 00       		.byte	0
+ 1288 01d0 03       		.uleb128 0x3
+ 1289 01d1 0E       		.uleb128 0xe
+ 1290 01d2 3A       		.uleb128 0x3a
+ 1291 01d3 0B       		.uleb128 0xb
+ 1292 01d4 3B       		.uleb128 0x3b
+ 1293 01d5 05       		.uleb128 0x5
+ 1294 01d6 49       		.uleb128 0x49
+ 1295 01d7 13       		.uleb128 0x13
+ 1296 01d8 3F       		.uleb128 0x3f
+ 1297 01d9 0C       		.uleb128 0xc
+ 1298 01da 3C       		.uleb128 0x3c
+ 1299 01db 0C       		.uleb128 0xc
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 29
+
+
+ 1300 01dc 00       		.byte	0
+ 1301 01dd 00       		.byte	0
+ 1302 01de 00       		.byte	0
+ 1303              		.section	.debug_loc,"",%progbits
+ 1304              	.Ldebug_loc0:
+ 1305              	.LLST0:
+ 1306 0000 1C000000 		.4byte	.LFB111-.Ltext0
+ 1307 0004 20000000 		.4byte	.LCFI0-.Ltext0
+ 1308 0008 0200     		.2byte	0x2
+ 1309 000a 7D       		.byte	0x7d
+ 1310 000b 00       		.sleb128 0
+ 1311 000c 20000000 		.4byte	.LCFI0-.Ltext0
+ 1312 0010 94000000 		.4byte	.LFE111-.Ltext0
+ 1313 0014 0200     		.2byte	0x2
+ 1314 0016 7D       		.byte	0x7d
+ 1315 0017 08       		.sleb128 8
+ 1316 0018 00000000 		.4byte	0
+ 1317 001c 00000000 		.4byte	0
+ 1318              	.LLST1:
+ 1319 0020 1C000000 		.4byte	.LVL0-.Ltext0
+ 1320 0024 36000000 		.4byte	.LVL1-.Ltext0
+ 1321 0028 0600     		.2byte	0x6
+ 1322 002a 0C       		.byte	0xc
+ 1323 002b 003C0140 		.4byte	0x40013c00
+ 1324 002f 9F       		.byte	0x9f
+ 1325 0030 36000000 		.4byte	.LVL1-.Ltext0
+ 1326 0034 6A000000 		.4byte	.LVL2-.Ltext0
+ 1327 0038 0E00     		.2byte	0xe
+ 1328 003a 70       		.byte	0x70
+ 1329 003b 04       		.sleb128 4
+ 1330 003c 94       		.byte	0x94
+ 1331 003d 01       		.byte	0x1
+ 1332 003e 08       		.byte	0x8
+ 1333 003f FF       		.byte	0xff
+ 1334 0040 1A       		.byte	0x1a
+ 1335 0041 23       		.byte	0x23
+ 1336 0042 80F88480 		.uleb128 0x40013c00
+ 1336      04
+ 1337 0047 9F       		.byte	0x9f
+ 1338 0048 6A000000 		.4byte	.LVL2-.Ltext0
+ 1339 004c 74000000 		.4byte	.LVL3-.Ltext0
+ 1340 0050 0C00     		.2byte	0xc
+ 1341 0052 71       		.byte	0x71
+ 1342 0053 00       		.sleb128 0
+ 1343 0054 08       		.byte	0x8
+ 1344 0055 FF       		.byte	0xff
+ 1345 0056 1A       		.byte	0x1a
+ 1346 0057 23       		.byte	0x23
+ 1347 0058 80F88480 		.uleb128 0x40013c00
+ 1347      04
+ 1348 005d 9F       		.byte	0x9f
+ 1349 005e 74000000 		.4byte	.LVL3-.Ltext0
+ 1350 0062 78000000 		.4byte	.LVL4-.Ltext0
+ 1351 0066 0E00     		.2byte	0xe
+ 1352 0068 70       		.byte	0x70
+ 1353 0069 05       		.sleb128 5
+ 1354 006a 94       		.byte	0x94
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 30
+
+
+ 1355 006b 01       		.byte	0x1
+ 1356 006c 08       		.byte	0x8
+ 1357 006d FF       		.byte	0xff
+ 1358 006e 1A       		.byte	0x1a
+ 1359 006f 23       		.byte	0x23
+ 1360 0070 80F88480 		.uleb128 0x40013c00
+ 1360      04
+ 1361 0075 9F       		.byte	0x9f
+ 1362 0076 78000000 		.4byte	.LVL4-.Ltext0
+ 1363 007a 8A000000 		.4byte	.LVL5-.Ltext0
+ 1364 007e 0E00     		.2byte	0xe
+ 1365 0080 70       		.byte	0x70
+ 1366 0081 04       		.sleb128 4
+ 1367 0082 94       		.byte	0x94
+ 1368 0083 01       		.byte	0x1
+ 1369 0084 08       		.byte	0x8
+ 1370 0085 FF       		.byte	0xff
+ 1371 0086 1A       		.byte	0x1a
+ 1372 0087 23       		.byte	0x23
+ 1373 0088 80F88480 		.uleb128 0x40013c00
+ 1373      04
+ 1374 008d 9F       		.byte	0x9f
+ 1375 008e 00000000 		.4byte	0
+ 1376 0092 00000000 		.4byte	0
+ 1377              	.LLST2:
+ 1378 0096 A2000000 		.4byte	.LVL7-.Ltext0
+ 1379 009a A8000000 		.4byte	.LVL8-.Ltext0
+ 1380 009e 0100     		.2byte	0x1
+ 1381 00a0 50       		.byte	0x50
+ 1382 00a1 A8000000 		.4byte	.LVL8-.Ltext0
+ 1383 00a5 B0000000 		.4byte	.LFE113-.Ltext0
+ 1384 00a9 0400     		.2byte	0x4
+ 1385 00ab F3       		.byte	0xf3
+ 1386 00ac 01       		.uleb128 0x1
+ 1387 00ad 50       		.byte	0x50
+ 1388 00ae 9F       		.byte	0x9f
+ 1389 00af 00000000 		.4byte	0
+ 1390 00b3 00000000 		.4byte	0
+ 1391              	.LLST3:
+ 1392 00b7 B0000000 		.4byte	.LVL9-.Ltext0
+ 1393 00bb BC000000 		.4byte	.LVL11-.Ltext0
+ 1394 00bf 0100     		.2byte	0x1
+ 1395 00c1 50       		.byte	0x50
+ 1396 00c2 BC000000 		.4byte	.LVL11-.Ltext0
+ 1397 00c6 C4000000 		.4byte	.LFE114-.Ltext0
+ 1398 00ca 0400     		.2byte	0x4
+ 1399 00cc F3       		.byte	0xf3
+ 1400 00cd 01       		.uleb128 0x1
+ 1401 00ce 50       		.byte	0x50
+ 1402 00cf 9F       		.byte	0x9f
+ 1403 00d0 00000000 		.4byte	0
+ 1404 00d4 00000000 		.4byte	0
+ 1405              	.LLST4:
+ 1406 00d8 B0000000 		.4byte	.LVL9-.Ltext0
+ 1407 00dc B4000000 		.4byte	.LVL10-.Ltext0
+ 1408 00e0 0200     		.2byte	0x2
+ 1409 00e2 30       		.byte	0x30
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 31
+
+
+ 1410 00e3 9F       		.byte	0x9f
+ 1411 00e4 B4000000 		.4byte	.LVL10-.Ltext0
+ 1412 00e8 BC000000 		.4byte	.LVL11-.Ltext0
+ 1413 00ec 0800     		.2byte	0x8
+ 1414 00ee 70       		.byte	0x70
+ 1415 00ef 00       		.sleb128 0
+ 1416 00f0 73       		.byte	0x73
+ 1417 00f1 00       		.sleb128 0
+ 1418 00f2 1A       		.byte	0x1a
+ 1419 00f3 30       		.byte	0x30
+ 1420 00f4 2E       		.byte	0x2e
+ 1421 00f5 9F       		.byte	0x9f
+ 1422 00f6 BC000000 		.4byte	.LVL11-.Ltext0
+ 1423 00fa C4000000 		.4byte	.LFE114-.Ltext0
+ 1424 00fe 0900     		.2byte	0x9
+ 1425 0100 F3       		.byte	0xf3
+ 1426 0101 01       		.uleb128 0x1
+ 1427 0102 50       		.byte	0x50
+ 1428 0103 73       		.byte	0x73
+ 1429 0104 00       		.sleb128 0
+ 1430 0105 1A       		.byte	0x1a
+ 1431 0106 30       		.byte	0x30
+ 1432 0107 2E       		.byte	0x2e
+ 1433 0108 9F       		.byte	0x9f
+ 1434 0109 00000000 		.4byte	0
+ 1435 010d 00000000 		.4byte	0
+ 1436              	.LLST5:
+ 1437 0111 D0000000 		.4byte	.LVL13-.Ltext0
+ 1438 0115 E2000000 		.4byte	.LVL15-.Ltext0
+ 1439 0119 0100     		.2byte	0x1
+ 1440 011b 50       		.byte	0x50
+ 1441 011c E2000000 		.4byte	.LVL15-.Ltext0
+ 1442 0120 E4000000 		.4byte	.LVL16-.Ltext0
+ 1443 0124 0400     		.2byte	0x4
+ 1444 0126 F3       		.byte	0xf3
+ 1445 0127 01       		.uleb128 0x1
+ 1446 0128 50       		.byte	0x50
+ 1447 0129 9F       		.byte	0x9f
+ 1448 012a E4000000 		.4byte	.LVL16-.Ltext0
+ 1449 012e E6000000 		.4byte	.LVL17-.Ltext0
+ 1450 0132 0100     		.2byte	0x1
+ 1451 0134 50       		.byte	0x50
+ 1452 0135 E6000000 		.4byte	.LVL17-.Ltext0
+ 1453 0139 EC000000 		.4byte	.LFE116-.Ltext0
+ 1454 013d 0400     		.2byte	0x4
+ 1455 013f F3       		.byte	0xf3
+ 1456 0140 01       		.uleb128 0x1
+ 1457 0141 50       		.byte	0x50
+ 1458 0142 9F       		.byte	0x9f
+ 1459 0143 00000000 		.4byte	0
+ 1460 0147 00000000 		.4byte	0
+ 1461              	.LLST6:
+ 1462 014b D0000000 		.4byte	.LVL13-.Ltext0
+ 1463 014f E6000000 		.4byte	.LVL17-.Ltext0
+ 1464 0153 0200     		.2byte	0x2
+ 1465 0155 30       		.byte	0x30
+ 1466 0156 9F       		.byte	0x9f
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 32
+
+
+ 1467 0157 E6000000 		.4byte	.LVL17-.Ltext0
+ 1468 015b EC000000 		.4byte	.LFE116-.Ltext0
+ 1469 015f 0100     		.2byte	0x1
+ 1470 0161 50       		.byte	0x50
+ 1471 0162 00000000 		.4byte	0
+ 1472 0166 00000000 		.4byte	0
+ 1473              	.LLST7:
+ 1474 016a D0000000 		.4byte	.LVL13-.Ltext0
+ 1475 016e D4000000 		.4byte	.LVL14-.Ltext0
+ 1476 0172 0200     		.2byte	0x2
+ 1477 0174 30       		.byte	0x30
+ 1478 0175 9F       		.byte	0x9f
+ 1479 0176 D4000000 		.4byte	.LVL14-.Ltext0
+ 1480 017a E2000000 		.4byte	.LVL15-.Ltext0
+ 1481 017e 0600     		.2byte	0x6
+ 1482 0180 70       		.byte	0x70
+ 1483 0181 00       		.sleb128 0
+ 1484 0182 72       		.byte	0x72
+ 1485 0183 00       		.sleb128 0
+ 1486 0184 1A       		.byte	0x1a
+ 1487 0185 9F       		.byte	0x9f
+ 1488 0186 E2000000 		.4byte	.LVL15-.Ltext0
+ 1489 018a E4000000 		.4byte	.LVL16-.Ltext0
+ 1490 018e 0700     		.2byte	0x7
+ 1491 0190 F3       		.byte	0xf3
+ 1492 0191 01       		.uleb128 0x1
+ 1493 0192 50       		.byte	0x50
+ 1494 0193 72       		.byte	0x72
+ 1495 0194 00       		.sleb128 0
+ 1496 0195 1A       		.byte	0x1a
+ 1497 0196 9F       		.byte	0x9f
+ 1498 0197 E4000000 		.4byte	.LVL16-.Ltext0
+ 1499 019b E6000000 		.4byte	.LVL17-.Ltext0
+ 1500 019f 0600     		.2byte	0x6
+ 1501 01a1 70       		.byte	0x70
+ 1502 01a2 00       		.sleb128 0
+ 1503 01a3 72       		.byte	0x72
+ 1504 01a4 00       		.sleb128 0
+ 1505 01a5 1A       		.byte	0x1a
+ 1506 01a6 9F       		.byte	0x9f
+ 1507 01a7 E6000000 		.4byte	.LVL17-.Ltext0
+ 1508 01ab EC000000 		.4byte	.LFE116-.Ltext0
+ 1509 01af 0700     		.2byte	0x7
+ 1510 01b1 F3       		.byte	0xf3
+ 1511 01b2 01       		.uleb128 0x1
+ 1512 01b3 50       		.byte	0x50
+ 1513 01b4 72       		.byte	0x72
+ 1514 01b5 00       		.sleb128 0
+ 1515 01b6 1A       		.byte	0x1a
+ 1516 01b7 9F       		.byte	0x9f
+ 1517 01b8 00000000 		.4byte	0
+ 1518 01bc 00000000 		.4byte	0
+ 1519              		.section	.debug_aranges,"",%progbits
+ 1520 0000 1C000000 		.4byte	0x1c
+ 1521 0004 0200     		.2byte	0x2
+ 1522 0006 00000000 		.4byte	.Ldebug_info0
+ 1523 000a 04       		.byte	0x4
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 33
+
+
+ 1524 000b 00       		.byte	0
+ 1525 000c 0000     		.2byte	0
+ 1526 000e 0000     		.2byte	0
+ 1527 0010 00000000 		.4byte	.Ltext0
+ 1528 0014 F8000000 		.4byte	.Letext0-.Ltext0
+ 1529 0018 00000000 		.4byte	0
+ 1530 001c 00000000 		.4byte	0
+ 1531              		.section	.debug_line,"",%progbits
+ 1532              	.Ldebug_line0:
+ 1533 0000 4F010000 		.section	.debug_str,"MS",%progbits,1
+ 1533      0200EA00 
+ 1533      00000201 
+ 1533      FB0E0D00 
+ 1533      01010101 
+ 1534              	.LASF29:
+ 1535 0000 45585449 		.ascii	"EXTI_Line\000"
+ 1535      5F4C696E 
+ 1535      6500
+ 1536              	.LASF30:
+ 1537 000a 45585449 		.ascii	"EXTI_Mode\000"
+ 1537      5F4D6F64 
+ 1537      6500
+ 1538              	.LASF14:
+ 1539 0014 49545374 		.ascii	"ITStatus\000"
+ 1539      61747573 
+ 1539      00
+ 1540              	.LASF42:
+ 1541 001d 656E6162 		.ascii	"enablestatus\000"
+ 1541      6C657374 
+ 1541      61747573 
+ 1541      00
+ 1542              	.LASF32:
+ 1543 002a 45585449 		.ascii	"EXTI_LineCmd\000"
+ 1543      5F4C696E 
+ 1543      65436D64 
+ 1543      00
+ 1544              	.LASF31:
+ 1545 0037 45585449 		.ascii	"EXTI_Trigger\000"
+ 1545      5F547269 
+ 1545      67676572 
+ 1545      00
+ 1546              	.LASF26:
+ 1547 0044 45585449 		.ascii	"EXTI_Trigger_Falling\000"
+ 1547      5F547269 
+ 1547      67676572 
+ 1547      5F46616C 
+ 1547      6C696E67 
+ 1548              	.LASF23:
+ 1549 0059 45585449 		.ascii	"EXTI_Mode_Event\000"
+ 1549      5F4D6F64 
+ 1549      655F4576 
+ 1549      656E7400 
+ 1550              	.LASF3:
+ 1551 0069 73686F72 		.ascii	"short unsigned int\000"
+ 1551      7420756E 
+ 1551      7369676E 
+ 1551      65642069 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 34
+
+
+ 1551      6E7400
+ 1552              	.LASF17:
+ 1553 007c 46756E63 		.ascii	"FunctionalState\000"
+ 1553      74696F6E 
+ 1553      616C5374 
+ 1553      61746500 
+ 1554              	.LASF38:
+ 1555 008c 62697473 		.ascii	"bitstatus\000"
+ 1555      74617475 
+ 1555      7300
+ 1556              	.LASF37:
+ 1557 0096 45585449 		.ascii	"EXTI_GenerateSWInterrupt\000"
+ 1557      5F47656E 
+ 1557      65726174 
+ 1557      65535749 
+ 1557      6E746572 
+ 1558              	.LASF33:
+ 1559 00af 45585449 		.ascii	"EXTI_InitTypeDef\000"
+ 1559      5F496E69 
+ 1559      74547970 
+ 1559      65446566 
+ 1559      00
+ 1560              	.LASF36:
+ 1561 00c0 45585449 		.ascii	"EXTI_InitStruct\000"
+ 1561      5F496E69 
+ 1561      74537472 
+ 1561      75637400 
+ 1562              	.LASF16:
+ 1563 00d0 454E4142 		.ascii	"ENABLE\000"
+ 1563      4C4500
+ 1564              	.LASF22:
+ 1565 00d7 45585449 		.ascii	"EXTI_Mode_Interrupt\000"
+ 1565      5F4D6F64 
+ 1565      655F496E 
+ 1565      74657272 
+ 1565      75707400 
+ 1566              	.LASF1:
+ 1567 00eb 756E7369 		.ascii	"unsigned char\000"
+ 1567      676E6564 
+ 1567      20636861 
+ 1567      7200
+ 1568              	.LASF13:
+ 1569 00f9 466C6167 		.ascii	"FlagStatus\000"
+ 1569      53746174 
+ 1569      757300
+ 1570              	.LASF39:
+ 1571 0104 45585449 		.ascii	"EXTI_ClearFlag\000"
+ 1571      5F436C65 
+ 1571      6172466C 
+ 1571      616700
+ 1572              	.LASF7:
+ 1573 0113 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1573      20756E73 
+ 1573      69676E65 
+ 1573      6420696E 
+ 1573      7400
+ 1574              	.LASF12:
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 35
+
+
+ 1575 0125 52455345 		.ascii	"RESET\000"
+ 1575      5400
+ 1576              	.LASF24:
+ 1577 012b 45585449 		.ascii	"EXTIMode_TypeDef\000"
+ 1577      4D6F6465 
+ 1577      5F547970 
+ 1577      65446566 
+ 1577      00
+ 1578              	.LASF21:
+ 1579 013c 45585449 		.ascii	"EXTI_TypeDef\000"
+ 1579      5F547970 
+ 1579      65446566 
+ 1579      00
+ 1580              	.LASF15:
+ 1581 0149 44495341 		.ascii	"DISABLE\000"
+ 1581      424C4500 
+ 1582              	.LASF48:
+ 1583 0151 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1583      52784275 
+ 1583      66666572 
+ 1583      00
+ 1584              	.LASF18:
+ 1585 015e 52545352 		.ascii	"RTSR\000"
+ 1585      00
+ 1586              	.LASF6:
+ 1587 0163 75696E74 		.ascii	"uint32_t\000"
+ 1587      33325F74 
+ 1587      00
+ 1588              	.LASF25:
+ 1589 016c 45585449 		.ascii	"EXTI_Trigger_Rising\000"
+ 1589      5F547269 
+ 1589      67676572 
+ 1589      5F526973 
+ 1589      696E6700 
+ 1590              	.LASF27:
+ 1591 0180 45585449 		.ascii	"EXTI_Trigger_Rising_Falling\000"
+ 1591      5F547269 
+ 1591      67676572 
+ 1591      5F526973 
+ 1591      696E675F 
+ 1592              	.LASF45:
+ 1593 019c 2E5C7374 		.ascii	".\\stm32f4periph\\src\\stm32f4xx_exti.c\000"
+ 1593      6D333266 
+ 1593      34706572 
+ 1593      6970685C 
+ 1593      7372635C 
+ 1594              	.LASF10:
+ 1595 01c1 756E7369 		.ascii	"unsigned int\000"
+ 1595      676E6564 
+ 1595      20696E74 
+ 1595      00
+ 1596              	.LASF34:
+ 1597 01ce 45585449 		.ascii	"EXTI_Init\000"
+ 1597      5F496E69 
+ 1597      7400
+ 1598              	.LASF40:
+ 1599 01d8 45585449 		.ascii	"EXTI_GetFlagStatus\000"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 36
+
+
+ 1599      5F476574 
+ 1599      466C6167 
+ 1599      53746174 
+ 1599      757300
+ 1600              	.LASF9:
+ 1601 01eb 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1601      206C6F6E 
+ 1601      6720756E 
+ 1601      7369676E 
+ 1601      65642069 
+ 1602              	.LASF35:
+ 1603 0202 45585449 		.ascii	"EXTI_StructInit\000"
+ 1603      5F537472 
+ 1603      75637449 
+ 1603      6E697400 
+ 1604              	.LASF5:
+ 1605 0212 696E7433 		.ascii	"int32_t\000"
+ 1605      325F7400 
+ 1606              	.LASF11:
+ 1607 021a 73697A65 		.ascii	"sizetype\000"
+ 1607      74797065 
+ 1607      00
+ 1608              	.LASF8:
+ 1609 0223 6C6F6E67 		.ascii	"long long int\000"
+ 1609      206C6F6E 
+ 1609      6720696E 
+ 1609      7400
+ 1610              	.LASF44:
+ 1611 0231 474E5520 		.ascii	"GNU C 4.7.2\000"
+ 1611      4320342E 
+ 1611      372E3200 
+ 1612              	.LASF41:
+ 1613 023d 45585449 		.ascii	"EXTI_GetITStatus\000"
+ 1613      5F476574 
+ 1613      49545374 
+ 1613      61747573 
+ 1613      00
+ 1614              	.LASF43:
+ 1615 024e 45585449 		.ascii	"EXTI_ClearITPendingBit\000"
+ 1615      5F436C65 
+ 1615      61724954 
+ 1615      50656E64 
+ 1615      696E6742 
+ 1616              	.LASF2:
+ 1617 0265 73686F72 		.ascii	"short int\000"
+ 1617      7420696E 
+ 1617      7400
+ 1618              	.LASF46:
+ 1619 026f 443A5C4E 		.ascii	"D:\\NiVek\\Firmware\\NiVek32\000"
+ 1619      6956656B 
+ 1619      5C466972 
+ 1619      6D776172 
+ 1619      655C4E69 
+ 1620              	.LASF19:
+ 1621 0289 46545352 		.ascii	"FTSR\000"
+ 1621      00
+ 1622              	.LASF4:
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 37
+
+
+ 1623 028e 6C6F6E67 		.ascii	"long int\000"
+ 1623      20696E74 
+ 1623      00
+ 1624              	.LASF0:
+ 1625 0297 7369676E 		.ascii	"signed char\000"
+ 1625      65642063 
+ 1625      68617200 
+ 1626              	.LASF28:
+ 1627 02a3 45585449 		.ascii	"EXTITrigger_TypeDef\000"
+ 1627      54726967 
+ 1627      6765725F 
+ 1627      54797065 
+ 1627      44656600 
+ 1628              	.LASF20:
+ 1629 02b7 53574945 		.ascii	"SWIER\000"
+ 1629      5200
+ 1630              	.LASF47:
+ 1631 02bd 45585449 		.ascii	"EXTI_DeInit\000"
+ 1631      5F446549 
+ 1631      6E697400 
+ 1632              		.ident	"GCC: (Sourcery CodeBench Lite 2012.09-63) 4.7.2"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s 			page 38
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 stm32f4xx_exti.c
+C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s:70     .text:00000000 $t
+C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s:75     .text:00000000 EXTI_DeInit
+C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s:100    .text:00000014 $d
+C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s:105    .text:0000001c $t
+C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s:110    .text:0000001c EXTI_Init
+C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s:200    .text:00000090 $d
+C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s:204    .text:00000094 $t
+C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s:209    .text:00000094 EXTI_StructInit
+C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s:238    .text:000000a2 EXTI_GenerateSWInterrupt
+C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s:256    .text:000000ac $d
+C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s:260    .text:000000b0 $t
+C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s:265    .text:000000b0 EXTI_GetFlagStatus
+C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s:287    .text:000000c0 $d
+C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s:291    .text:000000c4 $t
+C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s:296    .text:000000c4 EXTI_ClearFlag
+C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s:311    .text:000000cc $d
+C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s:315    .text:000000d0 $t
+C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s:320    .text:000000d0 EXTI_GetITStatus
+C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s:354    .text:000000e8 $d
+C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s:358    .text:000000ec $t
+C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s:363    .text:000000ec EXTI_ClearITPendingBit
+C:\Users\Kevin\AppData\Local\Temp\ccBfPlKb.s:378    .text:000000f4 $d
+                     .debug_frame:00000010 $d
+
+NO UNDEFINED SYMBOLS

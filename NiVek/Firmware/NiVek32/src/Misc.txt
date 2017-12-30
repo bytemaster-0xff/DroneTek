@@ -1,0 +1,76 @@
+
+
+/* Will be used to tune median filter
+ * worst case scenario it takes 50us per applied filter
+ * 6 Sensors * 3 Per Sensor = 900uSeconds PER Sample...opportunity for improvement
+ *
+ * Filter_t testFilter;
+void __filterTuningTest(){
+
+	testFilter.CurrentSlot = 4;
+	testFilter.FilterType = 7;
+	testFilter.History[0] = 12;
+	testFilter.History[1] = 10;
+	testFilter.History[2] = 8;
+	testFilter.History[3] = 6;
+	testFilter.History[4] = 5;
+	testFilter.History[5] = 4;
+	testFilter.History[6] = 3;
+	testFilter.History[7] = 2;
+	testFilter.History[8] = 1;
+
+	GPIO_WriteBit(GPIOC, GPIO_Pin_4, SET);
+	TWB_Filter_Median_Apply(&testFilter, 12);
+	GPIO_WriteBit(GPIOC, GPIO_Pin_4, RESET);
+}*/
+
+	  /*Debug Output Interface*/
+	  0x09,   /* bLength: Endpoint Descriptor size */
+	  USB_INTERFACE_DESCRIPTOR_TYPE,  /* bDescriptorType: */
+	  USB_INT_DEBUG,   /* bInterfaceNumber: Number of Interface */
+	  0x00,   /* bAlternateSetting: Alternate setting */
+	  0x01,   /* bNumEndpoints: One endpoints used */
+	  0x0A,   /* bInterfaceClass: CDC */
+	  0x00,   /* bInterfaceSubClass: */
+	  0x00,   /* bInterfaceProtocol: */
+	  0,   /* iInterface: */
+
+	 /*---------------------------------------------------------------------------*/
+
+		/* Debug Output End Point*/
+	    USB_END_POINT_STRUCT_SIZE,   /* bLength: Endpoint Descriptor size */
+		USB_ENDPOINT_DESCRIPTOR_TYPE,      /* bDescriptorType: Endpoint */
+		EP_DEBUG_IN,                      /* bEndpointAddress */
+		0x03,                              /* bmAttributes: Interrupt */
+		LOBYTE(CDC_DATA_MAX_PACKET_SIZE),  /* wMaxPacketSize: */
+		HIBYTE(CDC_DATA_MAX_PACKET_SIZE),
+		0x00,                               /* bInterval: ignore for Bulk transfer */
+
+	/*Console Interface*/
+	USB_INTERFACE_STRUCT_SIZE,   /* bLength: Interface Descriptor Size */
+	USB_INTERFACE_DESCRIPTOR_TYPE,  /* bDescriptorType: */
+	USB_INT_CONSOLE,   /* bInterfaceNumber: Number of Interface */
+	0x00,   /* bAlternateSetting: Alternate setting */
+	0x02,   /* bNumEndpoints: Two endpoints used */
+	0x0A,   /* bInterfaceClass: CDC */
+	0x00,   /* bInterfaceSubClass: */
+	0x00,   /* bInterfaceProtocol: */
+	0,   /* iInterface: */
+
+	  /*Console Output End Point*/
+	  USB_END_POINT_STRUCT_SIZE,   /* bLength: Endpoint Descriptor size */
+	  USB_ENDPOINT_DESCRIPTOR_TYPE,      /* bDescriptorType: Endpoint */
+	  EP_CONSOLE_OUT,                        /* bEndpointAddress */
+	  0x02,                              /* bmAttributes: Bulk */
+	  LOBYTE(CDC_DATA_MAX_PACKET_SIZE),  /* wMaxPacketSize: */
+	  HIBYTE(CDC_DATA_MAX_PACKET_SIZE),
+	  0x00,                              /* bInterval: ignore for Bulk transfer */
+
+	  /*Console INput End Point*/
+	  USB_END_POINT_STRUCT_SIZE,   /* bLength: Endpoint Descriptor size */
+	  USB_ENDPOINT_DESCRIPTOR_TYPE,      /* bDescriptorType: Endpoint */
+	  EP_CONSOLE_IN,                     /* bEndpointAddress */
+	  0x02,                              /* bmAttributes: Bulk */
+	  LOBYTE(CDC_DATA_MAX_PACKET_SIZE),  /* wMaxPacketSize: */
+	  HIBYTE(CDC_DATA_MAX_PACKET_SIZE),
+	  0x00,                               /* bInterval: ignore for Bulk transfer */

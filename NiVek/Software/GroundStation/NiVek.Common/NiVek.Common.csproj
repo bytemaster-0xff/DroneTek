@@ -1,0 +1,148 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{F3A82A7C-8368-4F94-868C-71E02EC81BB2}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NiVek.Common</RootNamespace>
+    <AssemblyName>NiVek.Common</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{786C830F-07A1-408B-BD7F-6EE04809D6DB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <UseVSHostingProcess>true</UseVSHostingProcess>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug-Rover|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Debug-Rover\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework is automatically included -->
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Comms\Channel.cs" />
+    <Compile Include="Comms\DroneProxy.cs" />
+    <Compile Include="Comms\IChannel.cs" />
+    <Compile Include="Comms\Watchdog.cs" />
+    <Compile Include="GoPro\GoProRemote.cs" />
+    <Compile Include="Models\DroneComms.cs" />
+    <Compile Include="Models\Flight.cs" />
+    <Compile Include="Models\MicroComplementaryFilter.cs" />
+    <Compile Include="Models\RoverStatus.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Modules\MotorModule.cs" />
+    <Compile Include="Services\AMSDataContext.cs" />
+    <Compile Include="Services\IReaderWriter.cs" />
+    <Compile Include="Services\ITimer.cs" />
+    <Compile Include="Services\IUIThread.cs" />
+    <Compile Include="Services\AppServices.cs" />
+    <Compile Include="Utils\ColorManager.cs" />
+    <Compile Include="Utils\IUIThread.cs" />
+    <Compile Include="Comms\Defines.cs" />
+    <Compile Include="Comms\Drone.cs" />
+    <Compile Include="Comms\IncomingMessage.cs" />
+    <Compile Include="Comms\MessageEntry.cs" />
+    <Compile Include="Comms\MessageParser.cs" />
+    <Compile Include="Models\AltitudeData.cs" />
+    <Compile Include="Models\BatteryCondition.cs" />
+    <Compile Include="Models\BlackBoxFile.cs" />
+    <Compile Include="Models\BlackBoxRecord.cs" />
+    <Compile Include="Models\BufferReader.cs" />
+    <Compile Include="Models\CalibrationPoint.cs" />
+    <Compile Include="Models\ComplementaryFilter.cs" />
+    <Compile Include="Models\ConfigBase.cs" />
+    <Compile Include="Models\GPIOConfig.cs" />
+    <Compile Include="Models\GPSData.cs" />
+    <Compile Include="Models\IModel.cs" />
+    <Compile Include="Models\KeyDisplay.cs" />
+    <Compile Include="Models\MicroConfiguration.cs" />
+    <Compile Include="Models\ModelBase.cs" />
+    <Compile Include="Models\MotorStatus.cs" />
+    <Compile Include="Models\MultiWiiPID.cs" />
+    <Compile Include="Models\PIDSensorData.cs" />
+    <Compile Include="Models\PIDTuningDetails.cs" />
+    <Compile Include="Models\RCCalibration.cs" />
+    <Compile Include="Models\SensorConfig.cs" />
+    <Compile Include="Models\SensorDetail.cs" />
+    <Compile Include="Models\SensorFusionDiag.cs" />
+    <Compile Include="Models\SensorMinimal.cs" />
+    <Compile Include="Models\SensorUpdate.cs" />
+    <Compile Include="Models\SystemStatus.cs" />
+    <Compile Include="Models\Targets.cs" />
+    <Compile Include="Modules\NivekSystem.cs" />
+    <Compile Include="Modules\GPIOModule.cs" />
+    <Compile Include="Modules\SensorModule.cs" />
+    <Compile Include="Comms\OutgoingMessage.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\Commission.cs" />
+    <Compile Include="ViewModels\Console.cs" />
+    <Compile Include="ViewModels\FlightConsoleViewModel.cs" />
+    <Compile Include="ViewModels\ViewModelBase.cs" />
+    <Compile Include="ViewModels\ViewModelLocator.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="GalaSoft.MvvmLight">
+      <HintPath>..\FlightControls\packages\MvvmLightLibs.4.3.31.1\lib\portable-net45+wp8+win8+wpa81\GalaSoft.MvvmLight.dll</HintPath>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras">
+      <HintPath>..\FlightControls\packages\MvvmLightLibs.4.3.31.1\lib\portable-net45+wp8+win8+wpa81\GalaSoft.MvvmLight.Extras.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Practices.ServiceLocation">
+      <HintPath>..\FlightControls\packages\MvvmLightLibs.4.3.31.1\lib\portable-net45+wp8+win8+wpa81\Microsoft.Practices.ServiceLocation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.WindowsAzure.Mobile">
+      <HintPath>..\FlightControls\packages\WindowsAzure.MobileServices.1.2.1\lib\portable-win+net45+wp8+wpa81+monotouch+monoandroid\Microsoft.WindowsAzure.Mobile.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\FlightControls\packages\Newtonsoft.Json.6.0.2\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Extensions">
+      <HintPath>..\FlightControls\packages\Microsoft.Net.Http.2.2.19\lib\portable-net45+win8+wpa81\System.Net.Http.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Primitives">
+      <HintPath>..\FlightControls\packages\Microsoft.Net.Http.2.2.19\lib\portable-net45+win8+wpa81\System.Net.Http.Primitives.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
+  <Import Project="..\FlightControls\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\FlightControls\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\FlightControls\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\FlightControls\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

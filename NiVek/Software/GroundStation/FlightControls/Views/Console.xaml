@@ -1,0 +1,100 @@
+﻿<nk:NiVekPage xmlns:nk="using:NiVek.FlightControls.Views"           
+    x:Class="NiVek.FlightControls.Views.Console"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NiVek.FlightControls.Views"
+              xmlns:Controls="using:NiVek.FlightControls.Controls"                              
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Style="{StaticResource LayoutRootStyle}">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/PageBackground.jpg" />
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="160"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Controls:NiVekHeader Grid.ColumnSpan="2" x:Name="Header" />
+        
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="80" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="350" />
+            </Grid.ColumnDefinitions>
+            <ListBox x:Name="ResponseStrings" Margin="10" Background="blue" Foreground="Yellow" FontSize="14" FontFamily="Consolos" Grid.Row="1">
+
+            </ListBox>
+
+            <TextBox x:Name="CommandInput" Grid.Row="2" Margin="10" TextChanged="Commands_TextChanged" AcceptsReturn="True" FontFamily="Courier" FontWeight="Bold" FontSize="64" />
+
+            <StackPanel Grid.Column="1" Grid.RowSpan="3"  >
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="FontSize" Value="24" />
+                    </Style>
+                </StackPanel.Resources>
+
+                <StackPanel Margin="0,0,0,20">
+                    <Button x:Name="GetIPAddress" Content="Load Existing" Margin="4" Click="GetIPAddress_Click"/>
+                </StackPanel>
+
+                <RadioButton x:Name="radAccessPoint" GroupName="ConnectionMode"  Content="AP Mode" FontWeight="Bold" Click="radAccessPoint_Click"/>
+                <StackPanel Margin="0,0,0,20" x:Name="AccessPointMode" Background="LightGray">
+                    <TextBlock Text="Access Point" FontWeight="Bold" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Name:" Width="75"/>
+                        <TextBox x:Name="AccessPointName" Width="200" />
+                    </StackPanel>
+                    <Button x:Name="SetAP" Content="Set" Margin="4" Click="SetAP_Click" Width="60" HorizontalAlignment="Right"/>
+                </StackPanel>
+
+                <RadioButton x:Name="radInfrastructure" GroupName="ConnectionMode"  Content="Infrastructure" FontWeight="Bold" Checked="radInfrastructure_Checked" />
+                <StackPanel Margin="0,0,0,20" x:Name="InfrastructureMode" >
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="SSID:" Width="75"/>
+                        <TextBox x:Name="SSID" Width="200" Margin="2" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="PWD:" Width="75" />
+                        <TextBox x:Name="SSIDPassword" Width="200" Margin="2" />
+                    </StackPanel>
+                    <Button x:Name="SetInfrastructure" Content="Set" Width="60" Margin="4" Click="SetInfrastructure_Click" HorizontalAlignment="Right" />
+                </StackPanel>
+
+                <StackPanel Margin="0,0,0,10" Background="LightGray">
+                    <TextBlock Text="Host"  FontWeight="Bold" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Host:" Width="75" />
+                        <TextBox x:Name="HostAddress" Margin="2" Width="200"/>
+                    </StackPanel>
+                    <Button x:Name="SetHostAddress" Content="Set" Margin="4" Click="SetHostAddress_Click" Width="60" HorizontalAlignment="Right" />
+                </StackPanel>
+                <StackPanel Margin="0,0,0,10">
+                    <TextBlock Text="Protocol" FontWeight="Bold" />
+                    <StackPanel Orientation="Horizontal">
+                        <RadioButton x:Name="radUDP" Content="UDP" GroupName="Protocol" Width="80" Margin="10,0,0,0" />
+                        <RadioButton x:Name="radTCP" Content="TCP" GroupName="Protocol" Width="80" />
+                    </StackPanel>
+                    <Button x:Name="SetProtocol" Content="Set" Margin="4" Click="SetProtocol_Click" Width="60" HorizontalAlignment="Right" />
+                </StackPanel>
+                <StackPanel Margin="0,0,0,20" Background="LightGray">
+                    <TextBlock Text="Remote" FontWeight="Bold" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="IP:" Width="40"/>
+                        <TextBox x:Name="RemoteAddress" Width="150" Margin="2" />
+                        <TextBlock Text="Port:" Width="75" />
+                        <TextBox x:Name="RemotePort" Width="80" Margin="2" />
+                    </StackPanel>
+                    <Button x:Name="SetRemoteAddress"  Content="Set" Margin="4" Click="SetRemoteAddress_Click" HorizontalAlignment="Right" Width="60" />
+                </StackPanel>
+            </StackPanel>            
+        </Grid>
+    </Grid>
+</nk:NiVekPage>

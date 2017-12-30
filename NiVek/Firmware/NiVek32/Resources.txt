@@ -1,0 +1,102 @@
+STM32 Resources Used
+
+Link to review when it's FPU time.
+http://www.eevblog.com/forum/microcontrollers/stm32f4-discovery-and-arm-none-eabi-gcc/15/
+
+TIM2, TIM3 -> PWM Generation for ESC
+TIM10 -> HC-SR04 (Sonar)
+TIM7  -> Main Thread
+TIM14 -> RC Input
+
+TIM16 -> Used in Sensors for timing
+
+External Pin IRQ
+ Pin XX - Pin 1 - AVAILABLE
+ Pin 28 - Pin 2, Port B, Sonar Echo
+ Pin 11 - Pin 3, Port C, BMP085
+ Pin 56 - Pin 4, Port B Pitch/RC1
+ Pin 57 - Pin 5, Port B Roll/RC2
+ Pin 58 - Pin 6, Port B Yaw/RC3
+ Pin 59 - Pin 7, Port B Throttle/RC4
+ Pin 41 - Pin 8, Port A ITG/MPU Gyro
+ Pin XX - Port 9 - Available
+ Pin 51 - Pin 10, Port C L3GD20 IRQ
+ Pin 52 - Pin 11, Port C Aux1
+ Pin 53 - Pin 12, Port C Aux2
+ Pin 34 - Pin 13, Port B LSM303_WTM
+ Pin 35 - Pin 14, Port B ADXL345 IRQ
+ 
+GPIO - Outputs
+ Pin 26 PB0 WiFi Reset
+ Pin 24 PC4 Sonar Trigger
+ 
+I2C1 
+ Pin 61 PB8 SCL
+ Pin 62 PB9 SDA
+ 
+Debugger
+ Pin 49 SWCLK
+ Pin 46 SWDIO
+
+ADC (For LIPO) 
+ Pin 8  PCO - ADC1
+ Pin 9  PC1 - ADC2
+ Pin 10 PC2 - ADC3
+ 
+USART2
+ Pin 14 CTS
+ Pin 15 RTS
+ Pin 16 TX
+ Pin 17 RX
+ 
+USART1
+ Pin 42 TX
+ Pin 43 RX
+ 
+SPI1
+ Pin 20 SS
+ Pin 21 SCK
+ Pin 22 MISO
+ Pin 23 MOSI
+ 
+PWM OUT
+ Pin 29 PB10 AUX2  TIM2_CH3
+ Pin 55 PB3  AUX1  TIM2_CH2
+ Pin 37 PC6  FRONT TIM3_CH1
+ Pin 38 PC7  LEFT  TIM3_CH2
+ Pin 39 PC8  RIGHT TIM3_CH3
+ Pin 40 PC9  REAR  TIM3_CH4
+ 
+USB
+ Pin 44 USB_DM  OTG_FS_DM
+ Pin 45 USB_DP  OTG_FS_DP
+ 
+LED
+ Pin 47 PF6  RC CONNECT
+ Pin 2  PC13 Sensor Online
+ Pin 3  PC14 Sensor Fault
+ Pin 50 PA15 WiFi Connect
+ Pin 36 PB15 Motor Arm
+ 
+VCC
+ Pin 13 (VDDA)
+ Pin 32
+ Pin 48
+ Pin 64
+ 
+GND
+ Pin 12
+ Pin 18
+ Pin 63
+ 
+Crystal
+ Pin 5
+ Pin 6
+ 
+Boot to DFU 
+ Pin 60
+ 
+Reset 
+ Pin 7
+ 
+ 

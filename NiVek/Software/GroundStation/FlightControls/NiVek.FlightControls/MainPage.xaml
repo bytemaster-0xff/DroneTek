@@ -1,0 +1,145 @@
+﻿<Page xmlns:Controls="using:NiVek.FlightControls.Controls" 
+    x:Class="NiVek.FlightControls.MainPage"
+    IsTabStop="false"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NiVek.FlightControls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:bm="using:Bing.Maps"
+    xmlns:telerik="using:Telerik.UI.Xaml.Controls"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120" />
+            <RowDefinition Height="400"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="400"/>
+            <ColumnDefinition Width="200" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <StackPanel>
+            <TextBlock Text="Sensors" FontSize="32" />
+            <StackPanel Orientation="Horizontal" >
+                <Button x:Name="StartSensors" Content="Start" Height="72" Width="72" Background="#FF22AABF" />
+                <Button x:Name="StopSensors" Content="Stop" Height="72" Width="72" Background="#FF22AABF" />
+                <Button x:Name="ZeroSensors" Content="Zero" Height="72" Width="72" Background="#FF22AABF" />
+                <Button x:Name="CalibrateCompass"  Height="72" Width="96" Background="#FF22AABF" >
+                    <TextBlock Text="Calibrate Compass" TextWrapping="Wrap" />
+                </Button>
+
+            </StackPanel>
+        </StackPanel>
+
+
+        <StackPanel Orientation="Horizontal" Grid.Column="1"  Grid.Row="0" Grid.ColumnSpan="2">
+            <TextBlock Text="Sensors" FontSize="32" />
+            <TextBlock Text="Calibrate Stick" FontSize="36" />
+            <TextBlock Text="-" x:Name="CurrentFunction" FontSize="24" />
+            <Button x:Name="CalibrateStick" Content="Stop" Height="72" Width="72" Background="#FF22AABF" />
+
+            <ProgressBar Minimum="0" Maximum="100"  Height="20" Value="{Binding RCIn4}" Margin="0,0,0,0" Width="160" >
+                <ProgressBar.Projection>
+                    <PlaneProjection RotationZ="90"/>
+                </ProgressBar.Projection>
+            </ProgressBar>
+            
+            <StackPanel Width="160">
+                <ProgressBar Minimum="-50" Maximum="50" Value="{Binding RCIn1}" Height="20" Width="160" />
+                <ProgressBar Minimum="-50" Maximum="50" Value="{Binding RCIn2}" Height="20" Margin="0,10,0,0" Width="160"/>
+                <ProgressBar Minimum="-50" Maximum="50" Value="{Binding RCIn3}" Height="20" Margin="0,10,0,0" Width="160"/>
+            </StackPanel>
+            
+            
+        </StackPanel>
+
+
+        <Grid Grid.Row="1" Width="400" Height="400" Margin="0, -10,0,0"  >
+            <Grid.Clip>
+                <RectangleGeometry Rect="0,0,400,400" />
+            </Grid.Clip>
+            <Image x:Name="AOASphere" Source="/Images/AOA.png" RenderTransformOrigin="0.5,0.5" Stretch="None" Margin="-400" >
+                <Image.RenderTransform>
+                    <CompositeTransform Rotation="{Binding AngY}"/>
+                </Image.RenderTransform>
+                <Image.Projection>
+                    <PlaneProjection CenterOfRotationX="300" CenterOfRotationY="300" GlobalOffsetY="{Binding AngXAOA}"/>
+                </Image.Projection>
+            </Image>
+            <Rectangle HorizontalAlignment="Left" Height="200" Margin="360,100,0,0" Stroke="White" VerticalAlignment="Top" Width="40" Fill="#FFF3F3F3" Opacity="0.6" StrokeThickness="2"/>
+            <Ellipse HorizontalAlignment="Left" Height="20" Margin="190,190,0,0" Stroke="Red" VerticalAlignment="Top" Width="20" StrokeThickness="2"/>
+            <Rectangle HorizontalAlignment="Left" Height="36" Stroke="White" VerticalAlignment="Top" Width="400" Fill="#FFF3F3F3" Opacity="0.6" StrokeThickness="2"/>
+        </Grid>
+
+<!--        <bm:Map Grid.Row="1" Grid.Column="3"  x:Name="NavMap" Credentials="ArUdiPESeysnehsIu4wJu1I6UUcU75tnFsC3-KLM54dgrWEE0B-MW2EcQo9O4GZH" />-->
+
+        <Grid Grid.Column="1" Grid.Row="1" Width="200" Height="400" HorizontalAlignment="Left" VerticalAlignment="Top">
+			<Grid.RowDefinitions>
+				<RowDefinition Height="200" />
+				<RowDefinition Height="200"/>
+			</Grid.RowDefinitions>
+            <Canvas x:Name="CopterTop" Width="200" Height="200"  Canvas.ZIndex="{Binding ZIndexTop}" Grid.Row="0" >
+                <Canvas.Projection>
+                    <PlaneProjection RotationX="{Binding AngXCopter}" RotationZ="{Binding AngYCopter}"  CenterOfRotationX="0.5" CenterOfRotationY="0.5" />
+                </Canvas.Projection>
+                <Rectangle Fill="Yellow" HorizontalAlignment="Left" Height="20" Stroke="Black" Width="180" Canvas.Left="10" Canvas.Top="90"/>
+                <Rectangle Fill="Yellow" HorizontalAlignment="Left" Height="180" Stroke="Black" Width="20" Canvas.Left="90" Canvas.Top="10"/>
+                <Ellipse Fill="DarkBlue" HorizontalAlignment="Center" Height="36" Stroke="Black" Width="36" Canvas.Left="82" Canvas.Top="164" />
+                <Ellipse Fill="Yellow" HorizontalAlignment="Center" Height="36" Stroke="Black" Width="36" Canvas.Top="82" RenderTransformOrigin="-1.48699998855591,-1.54499995708466" />
+                <Ellipse Fill="Yellow" HorizontalAlignment="Center" Height="36" Stroke="Black" Width="36" Canvas.Top="82" RenderTransformOrigin="-1.48699998855591,-1.54499995708466" Canvas.Left="164" />
+                <Ellipse Fill="Yellow" HorizontalAlignment="Center" Height="36" Stroke="Black" Width="36" Canvas.Left="82" />
+            </Canvas>
+            <Canvas x:Name="CopterBottom" Width="200" Height="200" Margin="0,2,0,0" Canvas.ZIndex="{Binding ZIndexBottom}" >
+                <Canvas.Projection>
+                    <PlaneProjection RotationX="{Binding AngXCopter}" RotationZ="{Binding AngYCopter}" CenterOfRotationX="0.5" CenterOfRotationY="0.5" />
+                </Canvas.Projection>
+                <Rectangle Fill="LightGray" HorizontalAlignment="Left" Height="20" Stroke="Black" Width="160" Canvas.Left="20" Canvas.Top="90"/>
+                <Rectangle Fill="LightGray" HorizontalAlignment="Left" Height="160" Stroke="Black" Width="20" Canvas.Left="90" Canvas.Top="20"/>
+                <Ellipse Fill="DarkBlue" HorizontalAlignment="Center" Height="36" Stroke="Black" Width="36" Canvas.Left="82" Canvas.Top="164" />
+                <Ellipse Fill="LightGray" HorizontalAlignment="Center" Height="36" Stroke="Black" Width="36" Canvas.Top="82" RenderTransformOrigin="-1.48699998855591,-1.54499995708466" />
+                <Ellipse Fill="LightGray" HorizontalAlignment="Center" Height="36" Stroke="Black" Width="36" Canvas.Top="82" RenderTransformOrigin="-1.48699998855591,-1.54499995708466" Canvas.Left="164" />
+                <Ellipse Fill="LightGray" HorizontalAlignment="Center" Height="36" Stroke="Black" Width="36" Canvas.Left="82" />
+            </Canvas>
+            
+            <Controls:Compass Grid.Row="1" RenderTransformOrigin="0.5,0.5" >
+            	<Controls:Compass.RenderTransform>
+            		<CompositeTransform Rotation="67"/>
+            	</Controls:Compass.RenderTransform>
+            </Controls:Compass>            
+            <Image Source="/Images/Airplane.png" Grid.Row="1" Width="125" Height="125" />
+        </Grid>
+
+        <Grid Grid.Row="2" Grid.ColumnSpan="3">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="60" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <StackPanel >
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="Width" Value="40" />
+                        <Setter Property="TextAlignment" Value="Right" />
+                    </Style>
+                </StackPanel.Resources>
+                <TextBlock Text="{Binding AccX}" FontSize="24" />
+                <TextBlock Text="{Binding AccY}" FontSize="24" />
+                <TextBlock Text="{Binding AngX}" FontSize="24" />
+                <TextBlock Text="{Binding AngY}" FontSize="24" />
+                <TextBlock Text="{Binding AngXRate}" FontSize="24" />
+                <TextBlock Text="{Binding AngYRate}"  FontSize="24"/>
+            </StackPanel>
+            <Grid x:Name="XAxis" Grid.Column="1" />
+            <Grid x:Name="YAxis" Grid.Column="2" />
+        </Grid>
+
+
+
+
+
+    </Grid>
+</Page>

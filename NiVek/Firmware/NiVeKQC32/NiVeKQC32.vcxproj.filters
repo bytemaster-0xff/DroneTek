@@ -1,0 +1,608 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source files">
+      <UniqueIdentifier>{7db8dd0c-c9b3-43e5-8387-caff5fb18442}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header files">
+      <UniqueIdentifier>{8e5ee144-7e61-48a4-9668-b6ca84413f9b}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource files">
+      <UniqueIdentifier>{bee77e4c-c722-4c9c-9a4d-c97d205c463b}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav</Extensions>
+    </Filter>
+    <Filter Include="Make files">
+      <UniqueIdentifier>{72ebb9c5-763a-453f-a112-a9e28464c9df}</UniqueIdentifier>
+      <Extensions>*.mak</Extensions>
+    </Filter>
+    <Filter Include="Source files\Device-specific files">
+      <UniqueIdentifier>{1ef23869-3cd5-47eb-abf2-5bc3a648d0f2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Commo">
+      <UniqueIdentifier>{3b6eb423-0864-4191-8df9-551ec82afe1b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Commo\usb">
+      <UniqueIdentifier>{0f526934-1981-4600-ad1d-f2fd8ea86bdf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Common">
+      <UniqueIdentifier>{a26b3fc9-c970-4730-ab5c-5e89e99fccb8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Filters">
+      <UniqueIdentifier>{b0254cdc-5133-4447-b9e7-7a57d828c03b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Flight">
+      <UniqueIdentifier>{7462397d-d118-4af5-9038-3b988c3f4b15}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Sensors">
+      <UniqueIdentifier>{562c3e8f-62ba-4292-85ac-ac9b4f130ee1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Sensors\Fusion">
+      <UniqueIdentifier>{bc6327ac-6888-43e6-9455-fa2478da6436}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\Common\Math">
+      <UniqueIdentifier>{903ea02b-a63c-4136-b7e1-7b01d87cce0f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source files\System">
+      <UniqueIdentifier>{cb8a664f-c205-4c70-b312-0dbc0a99550e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Sensors">
+      <UniqueIdentifier>{74349b3a-4e36-4565-a8e8-e616b939e085}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Commo">
+      <UniqueIdentifier>{a8c4290f-494d-4436-91fd-10af3f462cd3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Commo\usb">
+      <UniqueIdentifier>{685ed441-25b1-4364-afce-55c5fa9960bf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Filters">
+      <UniqueIdentifier>{7a60820e-df7b-497d-a768-70001c5065c1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Flight">
+      <UniqueIdentifier>{b8a3986c-d312-4ad6-b42a-fc34b7e954bd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\Common">
+      <UniqueIdentifier>{8430c0e0-1000-432b-b0bf-4a8b74895e92}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header files\System">
+      <UniqueIdentifier>{2affa426-85af-4ccb-a862-61ee06330b3c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="stm32f4periph">
+      <UniqueIdentifier>{362dcb34-d85b-4bfd-b104-7bed6dc5530b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="stm32f4periph\src">
+      <UniqueIdentifier>{f1f66651-5e24-4159-bb90-e39854e9eebe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="stm32f4periph\inc">
+      <UniqueIdentifier>{b9239f8e-14ab-4e7f-86f3-2080b4f9bc3f}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="src\main.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\nivek_system.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\system_stm32f4xx.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\twb_config.c">
+      <Filter>Source files</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commo\commo.c">
+      <Filter>Source files\Commo</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commo\msg_parser.c">
+      <Filter>Source files\Commo</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commo\wifi.c">
+      <Filter>Source files\Commo</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commo\usb\usb_bsp.c">
+      <Filter>Source files\Commo\usb</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commo\usb\usb_core.c">
+      <Filter>Source files\Commo\usb</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commo\usb\usb_core_cfg.c">
+      <Filter>Source files\Commo\usb</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commo\usb\usb_core_ep.c">
+      <Filter>Source files\Commo\usb</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commo\usb\usb_core_int.c">
+      <Filter>Source files\Commo\usb</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commo\usb\usb_core_io.c">
+      <Filter>Source files\Commo\usb</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commo\usb\usb_dcd.c">
+      <Filter>Source files\Commo\usb</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commo\usb\usb_dcd_int.c">
+      <Filter>Source files\Commo\usb</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commo\usb\usbd_cdc_core.c">
+      <Filter>Source files\Commo\usb</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commo\usb\usbd_core.c">
+      <Filter>Source files\Commo\usb</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commo\usb\usbd_desc.c">
+      <Filter>Source files\Commo\usb</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commo\usb\usbd_ioreq.c">
+      <Filter>Source files\Commo\usb</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commo\usb\usbd_req.c">
+      <Filter>Source files\Commo\usb</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commo\usb\usbd_usr.c">
+      <Filter>Source files\Commo\usb</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\matmath.c">
+      <Filter>Source files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\memory_mgmt.c">
+      <Filter>Source files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\twb_debug.c">
+      <Filter>Source files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\twb_i2c.c">
+      <Filter>Source files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\twb_i2c_stm32f4.c">
+      <Filter>Source files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\twb_leds.c">
+      <Filter>Source files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\twb_math.c">
+      <Filter>Source files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\twb_strings.c">
+      <Filter>Source files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\twb_serial_eeprom.c">
+      <Filter>Source files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\twb_timer.c">
+      <Filter>Source files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\filters\Median.c">
+      <Filter>Source files\Filters</Filter>
+    </ClCompile>
+    <ClCompile Include="src\flight\autopilot.c">
+      <Filter>Source files\Flight</Filter>
+    </ClCompile>
+    <ClCompile Include="src\flight\ctrl_loop.c">
+      <Filter>Source files\Flight</Filter>
+    </ClCompile>
+    <ClCompile Include="src\flight\ctrl_loop_commo.c">
+      <Filter>Source files\Flight</Filter>
+    </ClCompile>
+    <ClCompile Include="src\flight\ctrl_loop_pid.c">
+      <Filter>Source files\Flight</Filter>
+    </ClCompile>
+    <ClCompile Include="src\flight\pid.c">
+      <Filter>Source files\Flight</Filter>
+    </ClCompile>
+    <ClCompile Include="src\flight\pwm_capture.c">
+      <Filter>Source files\Flight</Filter>
+    </ClCompile>
+    <ClCompile Include="src\flight\pwm_source.c">
+      <Filter>Source files\Flight</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\adxl345.c">
+      <Filter>Source files\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\bmp085.c">
+      <Filter>Source files\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\gps.c">
+      <Filter>Source files\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\hmc5883.c">
+      <Filter>Source files\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\itg3200.c">
+      <Filter>Source files\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\l3g20.c">
+      <Filter>Source files\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\lsm303_acc.c">
+      <Filter>Source files\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\lsm303_mag.c">
+      <Filter>Source files\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\mpu60x0_acc.c">
+      <Filter>Source files\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\mpu60x0_gryo.c">
+      <Filter>Source files\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\ms5611.c">
+      <Filter>Source files\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\sonar.c">
+      <Filter>Source files\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\snsr_zero.c">
+      <Filter>Source files\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\snsr_mgmt.c">
+      <Filter>Source files\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\snsr_main.c">
+      <Filter>Source files\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\snsr_commo.c">
+      <Filter>Source files\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\snsr_actions.c">
+      <Filter>Source files\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\lipo_adc.c">
+      <Filter>Source files\Sensors</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\fusion\complementary.c">
+      <Filter>Source files\Sensors\Fusion</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\fusion\kalman.c">
+      <Filter>Source files\Sensors\Fusion</Filter>
+    </ClCompile>
+    <ClCompile Include="src\sensors\fusion\kalman_calc.c">
+      <Filter>Source files\Sensors\Fusion</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\math\asinf.c">
+      <Filter>Source files\Common\Math</Filter>
+    </ClCompile>
+    <ClCompile Include="src\system\cli.c">
+      <Filter>Source files\System</Filter>
+    </ClCompile>
+    <ClCompile Include="src\common\twb_common.c">
+      <Filter>Source files\Common</Filter>
+    </ClCompile>
+    <ClCompile Include="src\commo\usb\twb_usb.c">
+      <Filter>Source files\Commo\usb</Filter>
+    </ClCompile>
+    <ClCompile Include="stm32f4periph\src\stm32f4xx_adc.c">
+      <Filter>stm32f4periph\src</Filter>
+    </ClCompile>
+    <ClCompile Include="stm32f4periph\src\stm32f4xx_dma.c">
+      <Filter>stm32f4periph\src</Filter>
+    </ClCompile>
+    <ClCompile Include="stm32f4periph\src\stm32f4xx_exti.c">
+      <Filter>stm32f4periph\src</Filter>
+    </ClCompile>
+    <ClCompile Include="stm32f4periph\src\stm32f4xx_gpio.c">
+      <Filter>stm32f4periph\src</Filter>
+    </ClCompile>
+    <ClCompile Include="stm32f4periph\src\stm32f4xx_i2c.c">
+      <Filter>stm32f4periph\src</Filter>
+    </ClCompile>
+    <ClCompile Include="src\stm32f4xx_it.c">
+      <Filter>stm32f4periph\src</Filter>
+    </ClCompile>
+    <ClCompile Include="stm32f4periph\src\stm32f4xx_rcc.c">
+      <Filter>stm32f4periph\src</Filter>
+    </ClCompile>
+    <ClCompile Include="stm32f4periph\src\stm32f4xx_syscfg.c">
+      <Filter>stm32f4periph\src</Filter>
+    </ClCompile>
+    <ClCompile Include="stm32f4periph\src\stm32f4xx_tim.c">
+      <Filter>stm32f4periph\src</Filter>
+    </ClCompile>
+    <ClCompile Include="stm32f4periph\src\stm32f4xx_usart.c">
+      <Filter>stm32f4periph\src</Filter>
+    </ClCompile>
+    <ClCompile Include="stm32f4periph\src\misc.c">
+      <Filter>stm32f4periph\src</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Makefile" />
+    <None Include="debug.mak">
+      <Filter>Make files</Filter>
+    </None>
+    <None Include="release.mak">
+      <Filter>Make files</Filter>
+    </None>
+    <None Include="stm32.mak">
+      <Filter>Source files\Device-specific files</Filter>
+    </None>
+    <None Include="startup\startup_stm32f4xx.s" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\core_cm4.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\core_cm4_simd.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\core_cmFunc.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\core_cmInstr.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\main.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\nivek_system.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\twb_config.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\twb_eeprom.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sensors\fusion\complementary.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\common\twb_debug.h">
+      <Filter>Header files</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sensors\adxl345.h">
+      <Filter>Header files\Sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sensors\bmp085.h">
+      <Filter>Header files\Sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sensors\hmc5883.h">
+      <Filter>Header files\Sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sensors\itg3200.h">
+      <Filter>Header files\Sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sensors\l3g20.h">
+      <Filter>Header files\Sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sensors\lipo_adc.h">
+      <Filter>Header files\Sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sensors\lsm303_acc.h">
+      <Filter>Header files\Sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sensors\lsm303_mag.h">
+      <Filter>Header files\Sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sensors\ms5611.h">
+      <Filter>Header files\Sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sensors\mpu60x0.h">
+      <Filter>Header files\Sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\commo.h">
+      <Filter>Header files\Commo</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\message_ids.h">
+      <Filter>Header files\Commo</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\msg_parser.h">
+      <Filter>Header files\Commo</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\usart.h">
+      <Filter>Header files\Commo</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\wifi.h">
+      <Filter>Header files\Commo</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\usb\usb_bsp.h">
+      <Filter>Header files\Commo\usb</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\usb\usb_conf.h">
+      <Filter>Header files\Commo\usb</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\usb\usb_core.h">
+      <Filter>Header files\Commo\usb</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\usb\usb_dcd.h">
+      <Filter>Header files\Commo\usb</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\usb\usb_dcd_int.h">
+      <Filter>Header files\Commo\usb</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\usb\usb_defines.h">
+      <Filter>Header files\Commo\usb</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\usb\usb_hcd.h">
+      <Filter>Header files\Commo\usb</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\usb\usb_hcd_int.h">
+      <Filter>Header files\Commo\usb</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\usb\usb_otg.h">
+      <Filter>Header files\Commo\usb</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\usb\usb_regs.h">
+      <Filter>Header files\Commo\usb</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\usb\usbd_cdc_core.h">
+      <Filter>Header files\Commo\usb</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\usb\usbd_conf.h">
+      <Filter>Header files\Commo\usb</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\usb\usbd_core.h">
+      <Filter>Header files\Commo\usb</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\usb\usbd_def.h">
+      <Filter>Header files\Commo\usb</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\usb\usbd_desc.h">
+      <Filter>Header files\Commo\usb</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\usb\usbd_ioreq.h">
+      <Filter>Header files\Commo\usb</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\usb\usbd_req.h">
+      <Filter>Header files\Commo\usb</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\usb\usbd_usr.h">
+      <Filter>Header files\Commo\usb</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\commo\usb\twb_usb.h">
+      <Filter>Header files\Commo\usb</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\filters\Filter.h">
+      <Filter>Header files\Filters</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\flight\autopilot.h">
+      <Filter>Header files\Flight</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\flight\ctrl_loop.h">
+      <Filter>Header files\Flight</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\flight\pwm_source.h">
+      <Filter>Header files\Flight</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\flight\pwm_capture.h">
+      <Filter>Header files\Flight</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sensors\sonar.h">
+      <Filter>Header files\Sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sensors\gps.h">
+      <Filter>Header files\Sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sensors\snsr_main.h">
+      <Filter>Header files\Sensors</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\flight\pid.h">
+      <Filter>Header files\Flight</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\common\matmath.h">
+      <Filter>Header files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\common\memory_mgmt.h">
+      <Filter>Header files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\common\twb_common.h">
+      <Filter>Header files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\common\twb_i2c.h">
+      <Filter>Header files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\common\twb_leds.h">
+      <Filter>Header files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\common\twb_math.h">
+      <Filter>Header files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\common\twb_serial_eeprom.h">
+      <Filter>Header files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\common\twb_strings.h">
+      <Filter>Header files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\common\twb_timer.h">
+      <Filter>Header files\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\sensors\fusion\kalman.h">
+      <Filter>Header files\Filters</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\system\cli.h">
+      <Filter>Header files\System</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\stm32f4_discovery.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\stm32f4xx.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_adc.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_can.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\stm32f4xx_conf.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_crc.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_cryp.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_dac.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_dbgmcu.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_dcmi.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_dma.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_exti.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_flash.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_fsmc.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_gpio.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_hash.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_i2c.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\stm32f4xx_it.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_iwdg.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_pwr.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_rcc.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_rng.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_rtc.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_sdio.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_spi.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_syscfg.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_tim.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_usart.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_wwdg.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="inc\system_stm32f4xx.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+    <ClInclude Include="stm32f4periph\inc\misc.h">
+      <Filter>stm32f4periph\inc</Filter>
+    </ClInclude>
+  </ItemGroup>
+</Project>

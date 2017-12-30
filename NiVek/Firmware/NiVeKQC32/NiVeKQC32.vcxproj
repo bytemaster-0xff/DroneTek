@@ -1,0 +1,247 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{1723F947-BFD4-4F37-AEA9-E5B370EA8B21}</ProjectGuid>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Makefile</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <NMakeIncludeSearchPath>$(ProjectDir)\inc;$(ProjectDir)\stm32f4periph\inc;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F4xxxx\CMSIS\Device\ST\STM32F4xx\Include;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F4xxxx\CMSIS\Include;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F4xxxx\CMSIS\RTOS;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc;k:\electronics\sysgcc\arm-eabi\arm-eabi\include\c++\4.8.2;k:\electronics\sysgcc\arm-eabi\arm-eabi\include\c++\4.8.2\arm-eabi\thumb\fpu\cortex_m4;k:\electronics\sysgcc\arm-eabi\arm-eabi\include\c++\4.8.2\backward;k:\electronics\sysgcc\arm-eabi\lib\gcc\arm-eabi\4.8.2\include;k:\electronics\sysgcc\arm-eabi\lib\gcc\arm-eabi\4.8.2\include-fixed;k:\electronics\sysgcc\arm-eabi\arm-eabi\sys-include;k:\electronics\sysgcc\arm-eabi\arm-eabi\include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(ProjectDir)\gcc_Debug.h;$(VISUALGDB_DIR)\gcc_compat.h;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\stm32_compat.h;$(NMakeForcedIncludes)</NMakeForcedIncludes>
+    <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /rebuild "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeReBuildCommandLine>
+    <NMakeOutput>$(ProjectDir)NiVeKQC32-Debug.vgdbsettings</NMakeOutput>
+    <IncludePath />
+    <ReferencePath />
+    <LibraryPath />
+    <NMakePreprocessorDefinitions>__VisualGDB_CFG_Debug;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <NMakeIncludeSearchPath>$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F4xxxx\CMSIS\Device\ST\STM32F4xx\Include;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F4xxxx\CMSIS\Include;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F4xxxx\CMSIS\RTOS;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\STM32F4xxxx\STM32F4xx_StdPeriph_Driver\inc;k:\electronics\sysgcc\arm-eabi\arm-eabi\include\c++\4.8.2;k:\electronics\sysgcc\arm-eabi\arm-eabi\include\c++\4.8.2\arm-eabi\thumb\fpu\cortex_m4;k:\electronics\sysgcc\arm-eabi\arm-eabi\include\c++\4.8.2\backward;k:\electronics\sysgcc\arm-eabi\lib\gcc\arm-eabi\4.8.2\include;k:\electronics\sysgcc\arm-eabi\lib\gcc\arm-eabi\4.8.2\include-fixed;k:\electronics\sysgcc\arm-eabi\arm-eabi\sys-include;k:\electronics\sysgcc\arm-eabi\arm-eabi\include;$(NMakeIncludeSearchPath)</NMakeIncludeSearchPath>
+    <NMakeForcedIncludes>$(ProjectDir)\gcc_Release.h;$(VISUALGDB_DIR)\gcc_compat.h;$(LOCALAPPDATA)\VisualGDB\EmbeddedBSPs\arm-eabi\com.sysprogs.arm.stm32\stm32_compat.h;$(NMakeForcedIncludes)</NMakeForcedIncludes>
+    <NMakePreprocessorDefinitions>__VisualGDB_CFG_Release;$(NMakePreprocessorDefinitions)</NMakePreprocessorDefinitions>
+    <NMakeBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /build "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeBuildCommandLine>
+    <NMakeCleanCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /clean "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeCleanCommandLine>
+    <NMakeReBuildCommandLine>"$(VISUALGDB_DIR)\VisualGDB.exe" /rebuild "$(ProjectPath)" "/solution:$(SolutionPath)" "/config:$(Configuration)" "/platform:$(Platform)"</NMakeReBuildCommandLine>
+    <NMakeOutput>$(ProjectDir)NiVeKQC32-Release.vgdbsettings</NMakeOutput>
+    <IncludePath />
+    <ReferencePath />
+    <LibraryPath />
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClCompile Include="src\common\math\asinf.c" />
+    <ClCompile Include="src\common\matmath.c" />
+    <ClCompile Include="src\common\memory_mgmt.c" />
+    <ClCompile Include="src\common\twb_common.c" />
+    <ClCompile Include="src\common\twb_debug.c" />
+    <ClCompile Include="src\common\twb_i2c.c" />
+    <ClCompile Include="src\common\twb_i2c_stm32f4.c" />
+    <ClCompile Include="src\common\twb_leds.c" />
+    <ClCompile Include="src\common\twb_math.c" />
+    <ClCompile Include="src\common\twb_serial_eeprom.c" />
+    <ClCompile Include="src\common\twb_strings.c" />
+    <ClCompile Include="src\common\twb_timer.c" />
+    <ClCompile Include="src\commo\commo.c" />
+    <ClCompile Include="src\commo\msg_parser.c" />
+    <ClCompile Include="src\commo\usb\twb_usb.c" />
+    <ClCompile Include="src\commo\usb\usbd_cdc_core.c" />
+    <ClCompile Include="src\commo\usb\usbd_core.c" />
+    <ClCompile Include="src\commo\usb\usbd_desc.c" />
+    <ClCompile Include="src\commo\usb\usbd_ioreq.c" />
+    <ClCompile Include="src\commo\usb\usbd_req.c" />
+    <ClCompile Include="src\commo\usb\usbd_usr.c" />
+    <ClCompile Include="src\commo\usb\usb_bsp.c" />
+    <ClCompile Include="src\commo\usb\usb_core.c" />
+    <ClCompile Include="src\commo\usb\usb_core_cfg.c" />
+    <ClCompile Include="src\commo\usb\usb_core_ep.c" />
+    <ClCompile Include="src\commo\usb\usb_core_int.c" />
+    <ClCompile Include="src\commo\usb\usb_core_io.c" />
+    <ClCompile Include="src\commo\usb\usb_dcd.c" />
+    <ClCompile Include="src\commo\usb\usb_dcd_int.c" />
+    <ClCompile Include="src\commo\wifi.c" />
+    <ClCompile Include="src\filters\Median.c" />
+    <ClCompile Include="src\flight\autopilot.c" />
+    <ClCompile Include="src\flight\ctrl_loop.c" />
+    <ClCompile Include="src\flight\ctrl_loop_commo.c" />
+    <ClCompile Include="src\flight\ctrl_loop_pid.c" />
+    <ClCompile Include="src\flight\pid.c" />
+    <ClCompile Include="src\flight\pwm_capture.c" />
+    <ClCompile Include="src\flight\pwm_source.c" />
+    <ClCompile Include="src\main.c" />
+    <ClCompile Include="src\nivek_system.c" />
+    <ClCompile Include="src\sensors\adxl345.c" />
+    <ClCompile Include="src\sensors\bmp085.c" />
+    <ClCompile Include="src\sensors\fusion\complementary.c" />
+    <ClCompile Include="src\sensors\fusion\kalman.c" />
+    <ClCompile Include="src\sensors\fusion\kalman_calc.c" />
+    <ClCompile Include="src\sensors\gps.c" />
+    <ClCompile Include="src\sensors\hmc5883.c" />
+    <ClCompile Include="src\sensors\itg3200.c" />
+    <ClCompile Include="src\sensors\l3g20.c" />
+    <ClCompile Include="src\sensors\lipo_adc.c" />
+    <ClCompile Include="src\sensors\lsm303_acc.c" />
+    <ClCompile Include="src\sensors\lsm303_mag.c" />
+    <ClCompile Include="src\sensors\mpu60x0_acc.c" />
+    <ClCompile Include="src\sensors\mpu60x0_gryo.c" />
+    <ClCompile Include="src\sensors\ms5611.c" />
+    <ClCompile Include="src\sensors\snsr_actions.c" />
+    <ClCompile Include="src\sensors\snsr_commo.c" />
+    <ClCompile Include="src\sensors\snsr_main.c" />
+    <ClCompile Include="src\sensors\snsr_mgmt.c" />
+    <ClCompile Include="src\sensors\snsr_zero.c" />
+    <ClCompile Include="src\sensors\sonar.c" />
+    <ClCompile Include="src\stm32f4xx_it.c" />
+    <ClCompile Include="src\system\cli.c" />
+    <ClCompile Include="src\system_stm32f4xx.c" />
+    <ClCompile Include="src\twb_config.c" />
+    <ClCompile Include="stm32f4periph\src\misc.c" />
+    <ClCompile Include="stm32f4periph\src\stm32f4xx_adc.c" />
+    <ClCompile Include="stm32f4periph\src\stm32f4xx_dma.c" />
+    <ClCompile Include="stm32f4periph\src\stm32f4xx_exti.c" />
+    <ClCompile Include="stm32f4periph\src\stm32f4xx_gpio.c" />
+    <ClCompile Include="stm32f4periph\src\stm32f4xx_i2c.c" />
+    <ClCompile Include="stm32f4periph\src\stm32f4xx_rcc.c" />
+    <ClCompile Include="stm32f4periph\src\stm32f4xx_syscfg.c" />
+    <ClCompile Include="stm32f4periph\src\stm32f4xx_tim.c" />
+    <ClCompile Include="stm32f4periph\src\stm32f4xx_usart.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="debug.mak" />
+    <None Include="Makefile" />
+    <None Include="release.mak" />
+    <None Include="startup\startup_stm32f4xx.s" />
+    <None Include="stm32.mak" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="inc\common\matmath.h" />
+    <ClInclude Include="inc\common\memory_mgmt.h" />
+    <ClInclude Include="inc\common\twb_common.h" />
+    <ClInclude Include="inc\common\twb_debug.h" />
+    <ClInclude Include="inc\common\twb_i2c.h" />
+    <ClInclude Include="inc\common\twb_leds.h" />
+    <ClInclude Include="inc\common\twb_math.h" />
+    <ClInclude Include="inc\common\twb_serial_eeprom.h" />
+    <ClInclude Include="inc\common\twb_strings.h" />
+    <ClInclude Include="inc\common\twb_timer.h" />
+    <ClInclude Include="inc\commo\commo.h" />
+    <ClInclude Include="inc\commo\message_ids.h" />
+    <ClInclude Include="inc\commo\msg_parser.h" />
+    <ClInclude Include="inc\commo\usart.h" />
+    <ClInclude Include="inc\commo\usb\twb_usb.h" />
+    <ClInclude Include="inc\commo\usb\usbd_cdc_core.h" />
+    <ClInclude Include="inc\commo\usb\usbd_conf.h" />
+    <ClInclude Include="inc\commo\usb\usbd_core.h" />
+    <ClInclude Include="inc\commo\usb\usbd_def.h" />
+    <ClInclude Include="inc\commo\usb\usbd_desc.h" />
+    <ClInclude Include="inc\commo\usb\usbd_ioreq.h" />
+    <ClInclude Include="inc\commo\usb\usbd_req.h" />
+    <ClInclude Include="inc\commo\usb\usbd_usr.h" />
+    <ClInclude Include="inc\commo\usb\usb_bsp.h" />
+    <ClInclude Include="inc\commo\usb\usb_conf.h" />
+    <ClInclude Include="inc\commo\usb\usb_core.h" />
+    <ClInclude Include="inc\commo\usb\usb_dcd.h" />
+    <ClInclude Include="inc\commo\usb\usb_dcd_int.h" />
+    <ClInclude Include="inc\commo\usb\usb_defines.h" />
+    <ClInclude Include="inc\commo\usb\usb_hcd.h" />
+    <ClInclude Include="inc\commo\usb\usb_hcd_int.h" />
+    <ClInclude Include="inc\commo\usb\usb_otg.h" />
+    <ClInclude Include="inc\commo\usb\usb_regs.h" />
+    <ClInclude Include="inc\commo\wifi.h" />
+    <ClInclude Include="inc\core_cm4.h" />
+    <ClInclude Include="inc\core_cm4_simd.h" />
+    <ClInclude Include="inc\core_cmFunc.h" />
+    <ClInclude Include="inc\core_cmInstr.h" />
+    <ClInclude Include="inc\filters\Filter.h" />
+    <ClInclude Include="inc\flight\autopilot.h" />
+    <ClInclude Include="inc\flight\ctrl_loop.h" />
+    <ClInclude Include="inc\flight\pid.h" />
+    <ClInclude Include="inc\flight\pwm_capture.h" />
+    <ClInclude Include="inc\flight\pwm_source.h" />
+    <ClInclude Include="inc\main.h" />
+    <ClInclude Include="inc\nivek_system.h" />
+    <ClInclude Include="inc\sensors\adxl345.h" />
+    <ClInclude Include="inc\sensors\bmp085.h" />
+    <ClInclude Include="inc\sensors\fusion\complementary.h" />
+    <ClInclude Include="inc\sensors\fusion\kalman.h" />
+    <ClInclude Include="inc\sensors\gps.h" />
+    <ClInclude Include="inc\sensors\hmc5883.h" />
+    <ClInclude Include="inc\sensors\itg3200.h" />
+    <ClInclude Include="inc\sensors\l3g20.h" />
+    <ClInclude Include="inc\sensors\lipo_adc.h" />
+    <ClInclude Include="inc\sensors\lsm303_acc.h" />
+    <ClInclude Include="inc\sensors\lsm303_mag.h" />
+    <ClInclude Include="inc\sensors\mpu60x0.h" />
+    <ClInclude Include="inc\sensors\ms5611.h" />
+    <ClInclude Include="inc\sensors\snsr_main.h" />
+    <ClInclude Include="inc\sensors\sonar.h" />
+    <ClInclude Include="inc\stm32f4xx.h" />
+    <ClInclude Include="inc\stm32f4xx_conf.h" />
+    <ClInclude Include="inc\stm32f4xx_it.h" />
+    <ClInclude Include="inc\stm32f4_discovery.h" />
+    <ClInclude Include="inc\system\cli.h" />
+    <ClInclude Include="inc\system_stm32f4xx.h" />
+    <ClInclude Include="inc\twb_config.h" />
+    <ClInclude Include="inc\twb_eeprom.h" />
+    <ClInclude Include="stm32f4periph\inc\misc.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_adc.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_can.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_crc.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_cryp.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_dac.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_dbgmcu.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_dcmi.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_dma.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_exti.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_flash.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_fsmc.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_gpio.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_hash.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_i2c.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_iwdg.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_pwr.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_rcc.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_rng.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_rtc.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_sdio.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_spi.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_syscfg.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_tim.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_usart.h" />
+    <ClInclude Include="stm32f4periph\inc\stm32f4xx_wwdg.h" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>

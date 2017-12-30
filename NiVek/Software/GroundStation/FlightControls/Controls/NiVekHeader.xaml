@@ -1,0 +1,168 @@
+﻿<UserControl
+    x:Name="NavHeaderRoot"
+    x:Class="NiVek.FlightControls.Controls.NiVekHeader"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NiVek.FlightControls.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="140"
+    d:DesignWidth="1368">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="60"/>
+            <ColumnDefinition Width="auto"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Button x:Name="backButton" Click="backButton_Click_1"  IsEnabled="{Binding CanGoBack, ElementName=NavHeaderRoot}" VerticalAlignment="Center" HorizontalAlignment="Center" Style="{StaticResource BackButtonStyle}" Margin="0"/>
+        <StackPanel Grid.Column="1" Orientation="Horizontal" >
+            <StackPanel>
+                <Button x:Name="ControlType" Content="????" Width="120" />
+                <TextBlock Text="Altitude Hold" TextAlignment="Center" />
+                <Button x:Name="AltutideHold" Content="????" Width="120" />
+                <Button Content="Zero" x:Name="ZeroSensors" Width="120" />
+            </StackPanel>
+
+            <Button Background="{Binding ArmedColor, Converter={StaticResource BrushConverter}}" Foreground="White" Padding="0" VerticalAlignment="Top" Command="{Binding ArmCommand}" >
+                <StackPanel Width="150" x:Name="StatusBlock" >
+                    <StackPanel.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="FontSize" Value="14" />
+                        </Style>
+                    </StackPanel.Resources>
+                    <TextBlock x:Name="NiVekName" Text="{Binding DroneName}" HorizontalAlignment="Center" />
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Platform:" Width="64" />
+                        <TextBlock x:Name="Platform" Text="{Binding Status.Platform}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="FrmWre:" Width="64" />
+                        <TextBlock x:Name="FirmwareVersion"  Text="{Binding Status.FirmwareVersion}" />
+                    </StackPanel>                    
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="System:" Width="64" />
+                        <TextBlock x:Name="AppStatus" Text="{Binding Status.SystemState}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Sensors:" Width="64" />
+                        <TextBlock x:Name="SensorStatus" Text="{Binding Status.SensorState}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="GPIO:" Width="64" />
+                        <TextBlock x:Name="GPIOStatus" Text="{Binding Status.GPIOState}" />
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="Ctrl:" Width="64" />
+                        <TextBlock x:Name="Control"  Text="{Binding Status.ControlMethod}" />
+                    </StackPanel>
+                </StackPanel>
+            </Button>
+            <Grid>
+                <StackPanel Orientation="Vertical" Width="80">
+                    <TextBlock x:Name="Comms"  HorizontalAlignment="Center" FontSize="16" Text="Comms"/>
+                    <TextBlock Text="{Binding Channel.Address, FallbackValue=255.255.255.255}"  HorizontalAlignment="Center" FontSize="10"/>
+                    <StackPanel Orientation="Horizontal">
+                        <TextBlock Text="{Binding Channel.Protocol, FallbackValue=9050}"  HorizontalAlignment="Center" FontSize="10" Margin="0,0,20,0"/>
+                        <TextBlock Text="{Binding Channel.Port, FallbackValue=9050}"  HorizontalAlignment="Center" FontSize="10"/>
+                    </StackPanel>
+                    <Rectangle Width="60" Height="50" Fill="{Binding ConnectionColor, Converter={StaticResource BrushConverter}}" x:Name="ConnectionStatus" Grid.Row="1" />
+                    <StackPanel Orientation="Horizontal" Margin="0,10,0,0" >
+                        <TextBlock Text="ErrorRate: "  FontSize="12" Width="55" />
+                        <TextBlock Text="{Binding Channel.ErrorRate}" FontSize="12" Width="25" />
+                        <TextBlock Text="%" FontSize="12" Width="25" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+
+            <local:Inputs x:Name="InputsCtrl" />
+
+            <local:MotorsCross x:Name="MotorCtrlCross"  Visibility="Collapsed" />
+            <local:Motors x:Name="MotorCtrlX" Visibility="Collapsed"/>
+
+            <StackPanel x:Name="LiveStatus" Orientation="Horizontal"  >
+                <Grid x:Name="SatellitContainer" Width="110" Height="100" VerticalAlignment="Top" Background="{Binding GPSData.BackgroundColor, Converter={StaticResource BrushConverter}}">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="35*" />
+                        <ColumnDefinition Width="65*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.Resources>
+                        <Style TargetType="TextBlock">
+                            <Setter Property="FontSize" Value="14" />
+                            <Setter Property="Margin" Value="4,0,4,0" />
+                            <Setter Property="Height" Value="14" />
+                        </Style>
+                    </Grid.Resources>
+                    <TextBlock Text="GPS" Foreground="{Binding GPSData.ForgroundColor, Converter={StaticResource BrushConverter}}"  />
+                    <TextBlock Text="Sats" Grid.Row="1" Foreground="{Binding GPSData.ForgroundColor, Converter={StaticResource BrushConverter}}" />
+                    <TextBlock Text="Lon" Grid.Row="2" Foreground="{Binding GPSData.ForgroundColor, Converter={StaticResource BrushConverter}}" />
+                    <TextBlock Text="Lat" Grid.Row="3" Foreground="{Binding GPSData.ForgroundColor, Converter={StaticResource BrushConverter}}" />
+                    <TextBlock Text="Alt" Grid.Row="4" Foreground="{Binding GPSData.ForgroundColor, Converter={StaticResource BrushConverter}}" />
+                    <TextBlock Text="Hdg" Grid.Row="5" Foreground="{Binding GPSData.ForgroundColor, Converter={StaticResource BrushConverter}}" />
+                    <TextBlock Grid.Row="0" Grid.Column="1" x:Name="FixStatus" Text="{Binding GPSData.FixTypeDisplay}" Foreground="{Binding GPSData.ForgroundColor, Converter={StaticResource BrushConverter}}" />
+                    <TextBlock Grid.Row="1" Grid.Column="1" x:Name="Satellites" Text="{Binding GPSData.SatellitesUsed}" Foreground="{Binding GPSData.ForgroundColor, Converter={StaticResource BrushConverter}}" />
+                    <TextBlock Grid.Row="2" Grid.Column="1" x:Name="Longitude" Text="{Binding GPSData.Longitude}" Foreground="{Binding GPSData.ForgroundColor, Converter={StaticResource BrushConverter}}" />
+                    <TextBlock Grid.Row="3" Grid.Column="1" x:Name="Latitude" Text="{Binding GPSData.Latitude}" Foreground="{Binding GPSData.ForgroundColor, Converter={StaticResource BrushConverter}}" />
+                    <TextBlock Grid.Row="4" Grid.Column="1" x:Name="Altitude" Text="{Binding GPSData.Altitude}" Foreground="{Binding GPSData.ForgroundColor, Converter={StaticResource BrushConverter}}" />
+                    <TextBlock Grid.Row="5" Grid.Column="1" x:Name="Heading" Text="{Binding GPSData.Heading}" Foreground="{Binding GPSData.ForgroundColor, Converter={StaticResource BrushConverter}}" />
+                </Grid>
+                <StackPanel Orientation="Horizontal">
+                    <local:Battery x:Name="BatteryCtrl" />
+                    <ListBox  Width="200" Height="130" x:Name="MessageQueue" ItemsSource="{Binding Channel.MessageLog}" VerticalAlignment="Top"  >
+                        <ListBox.ItemContainerStyle>
+                            <Style TargetType="ListBoxItem">
+                                <Setter Property="Padding" Value="0" />
+                            </Style>
+                        </ListBox.ItemContainerStyle>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal"  Background="{Binding Path=RowColor, Converter={StaticResource BrushConverter}}" >
+                                    <StackPanel.Resources>
+                                        <Style TargetType="TextBlock">
+                                            <Setter Property="FontSize" Value="12" />
+                                        </Style>
+                                    </StackPanel.Resources>
+                                    <TextBlock Text="{Binding SerialNumber}" Width="32" TextAlignment="Right" Margin="0,0,2,0" />
+                                    <TextBlock Text="{Binding ModuleType}" Width="50" />
+                                    <TextBlock Text="{Binding MessageType}" Width="65"/>
+                                    <TextBlock Text="{Binding AckStatus}" Width="45"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Button x:Name="LaunchButton" Foreground="White" Padding="0" Content="LAUNCH" Height="80" Width="80" Visibility="Collapsed"/>
+                    <Button x:Name="LandButton" Foreground="White" Padding="0" Content="LAND" Height="80" Width="80" Visibility="Collapsed" />
+
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+        <Rectangle Fill="Black" Grid.Column="1" Opacity="0.8" x:Name="DisconnectMask" Visibility="{Binding IsNotConencted, Converter={StaticResource VisibilityConverter}}"  >
+
+        </Rectangle>
+        <StackPanel Grid.Column="2" x:Name="PlaybackControls" HorizontalAlignment="Right" Orientation="Horizontal" Visibility="Collapsed">
+            <StackPanel>
+                <TextBlock x:Name="BBDateStamp" FontSize="16" />
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock x:Name="FileTimeCurrent"  FontSize="16" />
+                    <TextBlock Text="/"  FontSize="16" />
+                    <TextBlock x:Name="FileTimeLength"  FontSize="16" />
+                </StackPanel>
+            </StackPanel>
+            <StackPanel >
+                <Button x:Name="Details" Content="DETAILS" Width="120" />
+                <Button x:Name="Restart" Content="RESTART" Width="120"  />
+                <Button x:Name="Pause" Content="PAUSE" Width="120"  />
+                <Button x:Name="Close" Content="CLOSE" Width="120"  />
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</UserControl>

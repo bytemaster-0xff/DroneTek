@@ -1,0 +1,3245 @@
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 3	@ Tag_ABI_HardFP_use
+   4              		.eabi_attribute 28, 1	@ Tag_ABI_VFP_args
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1	@ Tag_ABI_FP_denormal
+   7              		.eabi_attribute 21, 1	@ Tag_ABI_FP_exceptions
+   8              		.eabi_attribute 23, 3	@ Tag_ABI_FP_number_model
+   9              		.eabi_attribute 24, 1	@ Tag_ABI_align8_needed
+  10              		.eabi_attribute 25, 1	@ Tag_ABI_align8_preserved
+  11              		.eabi_attribute 26, 1	@ Tag_ABI_enum_size
+  12              		.eabi_attribute 30, 4	@ Tag_ABI_optimization_goals
+  13              		.eabi_attribute 34, 1	@ Tag_CPU_unaligned_access
+  14              		.eabi_attribute 18, 4	@ Tag_ABI_PCS_wchar_t
+  15              		.file	"nivek_system.c"
+  16              	@ GNU C (Sourcery CodeBench Lite 2012.09-63) version 4.7.2 (arm-none-eabi)
+  17              	@	compiled by GNU C version 4.3.2, GMP version 5.0.5, MPFR version 3.1.1-p2, MPC version 1.0.1
+  18              	@ GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+  19              	@ options passed:  -I . -I \STMSPINCDDIR -I .\stm32f4periph\inc
+  20              	@ -I .\CMSIS\Include -I .\inc\commo\usb -I .\inc\commo -I .\inc\common
+  21              	@ -I .\inc -imultilib thumb2
+  22              	@ -iprefix k:\electronics\gcc\bin\../lib/gcc/arm-none-eabi/4.7.2/
+  23              	@ -isysroot k:\electronics\gcc\bin\../arm-none-eabi
+  24              	@ -MD .\src\nivek_system.d -MF .dep\nivek_system.o.d -MP
+  25              	@ -MQ .\src\nivek_system.o -D__USES_INITFINI__ -D STM32F0XX
+  26              	@ -D USE_STDPERIPH_DRIVER -D RUN_FROM_FLASH=1
+  27              	@ -D __CS_SOURCERYGXX_MAJ__=2012 -D __CS_SOURCERYGXX_MIN__=9
+  28              	@ -D __CS_SOURCERYGXX_REV__=63 .\src\nivek_system.c -mcpu=cortex-m4
+  29              	@ -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb
+  30              	@ -auxbase-strip .\src\nivek_system.o -gdwarf-2 -Os -Wall
+  31              	@ -Wstrict-prototypes -std=gnu99 -fomit-frame-pointer -fverbose-asm
+  32              	@ options enabled:  -fauto-inc-dec -fbranch-count-reg -fcaller-saves
+  33              	@ -fcombine-stack-adjustments -fcommon -fcompare-elim -fcprop-registers
+  34              	@ -fcrossjumping -fcse-follow-jumps -fdebug-types-section -fdefer-pop
+  35              	@ -fdelete-null-pointer-checks -fdevirtualize -fdwarf2-cfi-asm
+  36              	@ -fearly-inlining -feliminate-unused-debug-types -fexpensive-optimizations
+  37              	@ -fextension-elimination -fforward-propagate -ffunction-cse -fgcse
+  38              	@ -fgcse-lm -fgnu-runtime -fguess-branch-probability -fident
+  39              	@ -fif-conversion -fif-conversion2 -findirect-inlining -finline
+  40              	@ -finline-atomics -finline-functions -finline-functions-called-once
+  41              	@ -finline-small-functions -fipa-cp -fipa-profile -fipa-pure-const
+  42              	@ -fipa-reference -fipa-sra -fira-share-save-slots -fira-share-spill-slots
+  43              	@ -fivopts -fkeep-static-consts -fleading-underscore -fmath-errno
+  44              	@ -fmerge-constants -fmerge-debug-strings -fmove-loop-invariants
+  45              	@ -fomit-frame-pointer -foptimize-register-move -foptimize-sibling-calls
+  46              	@ -fpartial-inlining -fpeephole -fpeephole2 -fprefetch-loop-arrays
+  47              	@ -freg-struct-return -fregmove -freorder-blocks -freorder-functions
+  48              	@ -frerun-cse-after-loop -fsched-critical-path-heuristic
+  49              	@ -fsched-dep-count-heuristic -fsched-group-heuristic -fsched-interblock
+  50              	@ -fsched-last-insn-heuristic -fsched-rank-heuristic -fsched-spec
+  51              	@ -fsched-spec-insn-heuristic -fsched-stalled-insns-dep -fschedule-insns2
+  52              	@ -fsection-anchors -fshow-column -fshrink-wrap -fsigned-zeros
+  53              	@ -fsplit-ivs-in-unroller -fsplit-wide-types -fstrict-aliasing
+  54              	@ -fstrict-overflow -fstrict-volatile-bitfields -fthread-jumps
+  55              	@ -ftoplevel-reorder -ftrapping-math -ftree-bit-ccp -ftree-builtin-call-dce
+  56              	@ -ftree-ccp -ftree-ch -ftree-copy-prop -ftree-copyrename -ftree-cselim
+  57              	@ -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 2
+
+
+  58              	@ -ftree-if-to-switch-conversion -ftree-loop-if-convert -ftree-loop-im
+  59              	@ -ftree-loop-ivcanon -ftree-loop-optimize -ftree-parallelize-loops=
+  60              	@ -ftree-phiprop -ftree-pre -ftree-pta -ftree-reassoc -ftree-scev-cprop
+  61              	@ -ftree-sink -ftree-slp-vectorize -ftree-sra -ftree-switch-conversion
+  62              	@ -ftree-tail-merge -ftree-ter -ftree-vect-loop-version -ftree-vrp
+  63              	@ -funit-at-a-time -fvar-tracking -fvar-tracking-assignments -fverbose-asm
+  64              	@ -fzero-initialized-in-bss -mlittle-endian -msched-prolog -mthumb
+  65              	@ -munaligned-access -mvectorize-with-neon-quad
+  66              	
+  67              		.text
+  68              	.Ltext0:
+  69              		.cfi_sections	.debug_frame
+  70              		.align	1
+  71              		.global	TWB_Sys_Init
+  72              		.thumb
+  73              		.thumb_func
+  74              		.type	TWB_Sys_Init, %function
+  75              	TWB_Sys_Init:
+  76              	.LFB110:
+  77              		.file 1 ".\\src\\nivek_system.c"
+   1:.\src/nivek_system.c **** /*
+   2:.\src/nivek_system.c ****  * nivek_system.c
+   3:.\src/nivek_system.c ****  *
+   4:.\src/nivek_system.c ****  *  Created on: Jul 14, 2013
+   5:.\src/nivek_system.c ****  *      Author: Kevin
+   6:.\src/nivek_system.c ****  */
+   7:.\src/nivek_system.c **** 
+   8:.\src/nivek_system.c **** 
+   9:.\src/nivek_system.c **** #include "nivek_system.h"
+  10:.\src/nivek_system.c **** 
+  11:.\src/nivek_system.c **** #include <string.h>
+  12:.\src/nivek_system.c **** #include "common/twb_debug.h"
+  13:.\src/nivek_system.c **** #include "common/twb_leds.h"
+  14:.\src/nivek_system.c **** #include "twb_eeprom.h"
+  15:.\src/nivek_system.c **** #include "common/twb_serial_eeprom.h"
+  16:.\src/nivek_system.c **** #include "commo/message_ids.h"
+  17:.\src/nivek_system.c **** #include "memory_mgmt.h"
+  18:.\src/nivek_system.c **** #include "commo/wifi.h"
+  19:.\src/nivek_system.c **** 
+  20:.\src/nivek_system.c **** uint8_t *NiVekName = null;
+  21:.\src/nivek_system.c **** uint8_t StartupPhase = 255;
+  22:.\src/nivek_system.c **** 
+  23:.\src/nivek_system.c **** iOpResult_e TWB_Sys_Init(void){
+  78              		.loc 1 23 0
+  79              		.cfi_startproc
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82 0000 10B5     		push	{r4, lr}	@
+  83              	.LCFI0:
+  84              		.cfi_def_cfa_offset 8
+  85              		.cfi_offset 4, -8
+  86              		.cfi_offset 14, -4
+  24:.\src/nivek_system.c **** 	TWB_SE_ReadBuffer(NIVEK_NAME_OFFSET, NiVekName, NIVEK_NAME_SIZE);
+  87              		.loc 1 24 0
+  88 0002 094C     		ldr	r4, .L2	@ tmp137,
+  89 0004 1822     		movs	r2, #24	@,
+  90 0006 2168     		ldr	r1, [r4, #0]	@, NiVekName
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 3
+
+
+  91 0008 4FF48050 		mov	r0, #4096	@,
+  92 000c FFF7FEFF 		bl	TWB_SE_ReadBuffer	@
+  93              	.LVL0:
+  25:.\src/nivek_system.c **** 	TWB_Debug_Print("Name: ");
+  94              		.loc 1 25 0
+  95 0010 0648     		ldr	r0, .L2+4	@,
+  96 0012 FFF7FEFF 		bl	TWB_Debug_Print	@
+  97              	.LVL1:
+  26:.\src/nivek_system.c **** 	TWB_Debug_Print((const char *)NiVekName);
+  98              		.loc 1 26 0
+  99 0016 2068     		ldr	r0, [r4, #0]	@, NiVekName
+ 100 0018 FFF7FEFF 		bl	TWB_Debug_Print	@
+ 101              	.LVL2:
+  27:.\src/nivek_system.c **** 	TWB_Debug_Print("\r\n");
+ 102              		.loc 1 27 0
+ 103 001c 0448     		ldr	r0, .L2+8	@,
+ 104 001e FFF7FEFF 		bl	TWB_Debug_Print	@
+ 105              	.LVL3:
+  28:.\src/nivek_system.c **** 
+  29:.\src/nivek_system.c **** 	return OK;
+  30:.\src/nivek_system.c **** }
+ 106              		.loc 1 30 0
+ 107 0022 0020     		movs	r0, #0	@,
+ 108 0024 10BD     		pop	{r4, pc}	@
+ 109              	.L3:
+ 110 0026 00BF     		.align	2
+ 111              	.L2:
+ 112 0028 00000000 		.word	.LANCHOR0
+ 113 002c 00000000 		.word	.LC0
+ 114 0030 07000000 		.word	.LC1
+ 115              		.cfi_endproc
+ 116              	.LFE110:
+ 117              		.size	TWB_Sys_Init, .-TWB_Sys_Init
+ 118              		.align	1
+ 119              		.global	TWB_Sys_Get_ShouldForwardDebugToConsole
+ 120              		.thumb
+ 121              		.thumb_func
+ 122              		.type	TWB_Sys_Get_ShouldForwardDebugToConsole, %function
+ 123              	TWB_Sys_Get_ShouldForwardDebugToConsole:
+ 124              	.LFB111:
+  31:.\src/nivek_system.c **** 
+  32:.\src/nivek_system.c **** iOpResult_e TWB_Sys_Get_ShouldForwardDebugToConsole(ForwardDebugMessages_e *shoudForward){
+ 125              		.loc 1 32 0
+ 126              		.cfi_startproc
+ 127              		@ args = 0, pretend = 0, frame = 0
+ 128              		@ frame_needed = 0, uses_anonymous_args = 0
+ 129              	.LVL4:
+ 130 0034 10B5     		push	{r4, lr}	@
+ 131              	.LCFI1:
+ 132              		.cfi_def_cfa_offset 8
+ 133              		.cfi_offset 4, -8
+ 134              		.cfi_offset 14, -4
+ 135              		.loc 1 32 0
+ 136 0036 0446     		mov	r4, r0	@ shoudForward, shoudForward
+  33:.\src/nivek_system.c **** 	assert_succeed(TWB_SE_ReadU8(FORWARD_DEBUG_MSG_VIA_USB_ADDRESS, shoudForward));
+ 137              		.loc 1 33 0
+ 138 0038 2146     		mov	r1, r4	@, shoudForward
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 4
+
+
+ 139 003a 42F21800 		movw	r0, #8216	@,
+ 140              	.LVL5:
+ 141 003e FFF7FEFF 		bl	TWB_SE_ReadU8	@
+ 142              	.LVL6:
+ 143 0042 30B1     		cbz	r0, .L5	@,
+ 144              		.loc 1 33 0 is_stmt 0 discriminator 1
+ 145 0044 42F21800 		movw	r0, #8216	@,
+ 146 0048 2146     		mov	r1, r4	@, shoudForward
+  34:.\src/nivek_system.c **** 	return OK;
+  35:.\src/nivek_system.c **** }
+ 147              		.loc 1 35 0 is_stmt 1 discriminator 1
+ 148 004a BDE81040 		pop	{r4, lr}	@
+  33:.\src/nivek_system.c **** 	assert_succeed(TWB_SE_ReadU8(FORWARD_DEBUG_MSG_VIA_USB_ADDRESS, shoudForward));
+ 149              		.loc 1 33 0 discriminator 1
+ 150 004e FFF7FEBF 		b	TWB_SE_ReadU8	@
+ 151              	.LVL7:
+ 152              	.L5:
+ 153              		.loc 1 35 0
+ 154 0052 10BD     		pop	{r4, pc}	@
+ 155              		.cfi_endproc
+ 156              	.LFE111:
+ 157              		.size	TWB_Sys_Get_ShouldForwardDebugToConsole, .-TWB_Sys_Get_ShouldForwardDebugToConsole
+ 158              		.align	1
+ 159              		.global	TWB_Sys_Set_ShouldForwardDebugToConsole
+ 160              		.thumb
+ 161              		.thumb_func
+ 162              		.type	TWB_Sys_Set_ShouldForwardDebugToConsole, %function
+ 163              	TWB_Sys_Set_ShouldForwardDebugToConsole:
+ 164              	.LFB112:
+  36:.\src/nivek_system.c **** 
+  37:.\src/nivek_system.c **** iOpResult_e TWB_Sys_Set_ShouldForwardDebugToConsole(ForwardDebugMessages_e shoudForward){
+ 165              		.loc 1 37 0
+ 166              		.cfi_startproc
+ 167              		@ args = 0, pretend = 0, frame = 0
+ 168              		@ frame_needed = 0, uses_anonymous_args = 0
+ 169              	.LVL8:
+ 170 0054 10B5     		push	{r4, lr}	@
+ 171              	.LCFI2:
+ 172              		.cfi_def_cfa_offset 8
+ 173              		.cfi_offset 4, -8
+ 174              		.cfi_offset 14, -4
+ 175              		.loc 1 37 0
+ 176 0056 0446     		mov	r4, r0	@ shoudForward, shoudForward
+  38:.\src/nivek_system.c **** 	assert_succeed(TWB_SE_WriteU8(FORWARD_DEBUG_MSG_VIA_USB_ADDRESS, shoudForward));
+ 177              		.loc 1 38 0
+ 178 0058 2146     		mov	r1, r4	@, shoudForward
+ 179 005a 42F21800 		movw	r0, #8216	@,
+ 180              	.LVL9:
+ 181 005e FFF7FEFF 		bl	TWB_SE_WriteU8	@
+ 182              	.LVL10:
+ 183 0062 30B1     		cbz	r0, .L7	@,
+ 184              		.loc 1 38 0 is_stmt 0 discriminator 1
+ 185 0064 42F21800 		movw	r0, #8216	@,
+ 186 0068 2146     		mov	r1, r4	@, shoudForward
+  39:.\src/nivek_system.c **** 	return OK;
+  40:.\src/nivek_system.c **** }
+ 187              		.loc 1 40 0 is_stmt 1 discriminator 1
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 5
+
+
+ 188 006a BDE81040 		pop	{r4, lr}	@
+  38:.\src/nivek_system.c **** 	assert_succeed(TWB_SE_WriteU8(FORWARD_DEBUG_MSG_VIA_USB_ADDRESS, shoudForward));
+ 189              		.loc 1 38 0 discriminator 1
+ 190 006e FFF7FEBF 		b	TWB_SE_WriteU8	@
+ 191              	.LVL11:
+ 192              	.L7:
+ 193              		.loc 1 40 0
+ 194 0072 10BD     		pop	{r4, pc}	@
+ 195              		.cfi_endproc
+ 196              	.LFE112:
+ 197              		.size	TWB_Sys_Set_ShouldForwardDebugToConsole, .-TWB_Sys_Set_ShouldForwardDebugToConsole
+ 198              		.align	1
+ 199              		.global	TWB_Sys_GetBaudRate
+ 200              		.thumb
+ 201              		.thumb_func
+ 202              		.type	TWB_Sys_GetBaudRate, %function
+ 203              	TWB_Sys_GetBaudRate:
+ 204              	.LFB113:
+  41:.\src/nivek_system.c **** 
+  42:.\src/nivek_system.c **** 
+  43:.\src/nivek_system.c **** iOpResult_e TWB_Sys_GetBaudRate(BaudRates_e *baud){
+ 205              		.loc 1 43 0
+ 206              		.cfi_startproc
+ 207              		@ args = 0, pretend = 0, frame = 0
+ 208              		@ frame_needed = 0, uses_anonymous_args = 0
+ 209              	.LVL12:
+ 210 0074 10B5     		push	{r4, lr}	@
+ 211              	.LCFI3:
+ 212              		.cfi_def_cfa_offset 8
+ 213              		.cfi_offset 4, -8
+ 214              		.cfi_offset 14, -4
+ 215              		.loc 1 43 0
+ 216 0076 0446     		mov	r4, r0	@ baud, baud
+  44:.\src/nivek_system.c **** 	assert_succeed(TWB_SE_ReadU8(BAUD_RATE_ADDRESS, baud));
+ 217              		.loc 1 44 0
+ 218 0078 2146     		mov	r1, r4	@, baud
+ 219 007a 41F21800 		movw	r0, #4120	@,
+ 220              	.LVL13:
+ 221 007e FFF7FEFF 		bl	TWB_SE_ReadU8	@
+ 222              	.LVL14:
+ 223 0082 30B1     		cbz	r0, .L9	@,
+ 224              		.loc 1 44 0 is_stmt 0 discriminator 1
+ 225 0084 41F21800 		movw	r0, #4120	@,
+ 226 0088 2146     		mov	r1, r4	@, baud
+  45:.\src/nivek_system.c **** 	return OK;
+  46:.\src/nivek_system.c **** }
+ 227              		.loc 1 46 0 is_stmt 1 discriminator 1
+ 228 008a BDE81040 		pop	{r4, lr}	@
+  44:.\src/nivek_system.c **** 	assert_succeed(TWB_SE_ReadU8(BAUD_RATE_ADDRESS, baud));
+ 229              		.loc 1 44 0 discriminator 1
+ 230 008e FFF7FEBF 		b	TWB_SE_ReadU8	@
+ 231              	.LVL15:
+ 232              	.L9:
+ 233              		.loc 1 46 0
+ 234 0092 10BD     		pop	{r4, pc}	@
+ 235              		.cfi_endproc
+ 236              	.LFE113:
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 6
+
+
+ 237              		.size	TWB_Sys_GetBaudRate, .-TWB_Sys_GetBaudRate
+ 238              		.align	1
+ 239              		.global	TWB_Sys_SetBaudRate
+ 240              		.thumb
+ 241              		.thumb_func
+ 242              		.type	TWB_Sys_SetBaudRate, %function
+ 243              	TWB_Sys_SetBaudRate:
+ 244              	.LFB114:
+  47:.\src/nivek_system.c **** 
+  48:.\src/nivek_system.c **** iOpResult_e TWB_Sys_SetBaudRate(BaudRates_e baud){
+ 245              		.loc 1 48 0
+ 246              		.cfi_startproc
+ 247              		@ args = 0, pretend = 0, frame = 0
+ 248              		@ frame_needed = 0, uses_anonymous_args = 0
+ 249              	.LVL16:
+ 250 0094 10B5     		push	{r4, lr}	@
+ 251              	.LCFI4:
+ 252              		.cfi_def_cfa_offset 8
+ 253              		.cfi_offset 4, -8
+ 254              		.cfi_offset 14, -4
+ 255              		.loc 1 48 0
+ 256 0096 0446     		mov	r4, r0	@ baud, baud
+  49:.\src/nivek_system.c **** 	assert_succeed(TWB_SE_WriteU8(BAUD_RATE_ADDRESS, baud));
+ 257              		.loc 1 49 0
+ 258 0098 2146     		mov	r1, r4	@, baud
+ 259 009a 41F21800 		movw	r0, #4120	@,
+ 260              	.LVL17:
+ 261 009e FFF7FEFF 		bl	TWB_SE_WriteU8	@
+ 262              	.LVL18:
+ 263 00a2 30B1     		cbz	r0, .L11	@,
+ 264              		.loc 1 49 0 is_stmt 0 discriminator 1
+ 265 00a4 41F21800 		movw	r0, #4120	@,
+ 266 00a8 2146     		mov	r1, r4	@, baud
+  50:.\src/nivek_system.c **** 	return OK;
+  51:.\src/nivek_system.c **** }
+ 267              		.loc 1 51 0 is_stmt 1 discriminator 1
+ 268 00aa BDE81040 		pop	{r4, lr}	@
+  49:.\src/nivek_system.c **** 	assert_succeed(TWB_SE_WriteU8(BAUD_RATE_ADDRESS, baud));
+ 269              		.loc 1 49 0 discriminator 1
+ 270 00ae FFF7FEBF 		b	TWB_SE_WriteU8	@
+ 271              	.LVL19:
+ 272              	.L11:
+ 273              		.loc 1 51 0
+ 274 00b2 10BD     		pop	{r4, pc}	@
+ 275              		.cfi_endproc
+ 276              	.LFE114:
+ 277              		.size	TWB_Sys_SetBaudRate, .-TWB_Sys_SetBaudRate
+ 278              		.align	1
+ 279              		.global	TWB_Sys_RestoreDefaults
+ 280              		.thumb
+ 281              		.thumb_func
+ 282              		.type	TWB_Sys_RestoreDefaults, %function
+ 283              	TWB_Sys_RestoreDefaults:
+ 284              	.LFB115:
+  52:.\src/nivek_system.c **** 
+  53:.\src/nivek_system.c **** iOpResult_e TWB_Sys_RestoreDefaults(void){
+ 285              		.loc 1 53 0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 7
+
+
+ 286              		.cfi_startproc
+ 287              		@ args = 0, pretend = 0, frame = 0
+ 288              		@ frame_needed = 0, uses_anonymous_args = 0
+ 289              	.LVL20:
+ 290 00b4 38B5     		push	{r3, r4, r5, lr}	@
+ 291              	.LCFI5:
+ 292              		.cfi_def_cfa_offset 16
+ 293              		.cfi_offset 3, -16
+ 294              		.cfi_offset 4, -12
+ 295              		.cfi_offset 5, -8
+ 296              		.cfi_offset 14, -4
+ 297              	.LBB2:
+  54:.\src/nivek_system.c **** 	for(uint8_t idx = 0; idx < NIVEK_NAME_SIZE;++idx)
+  55:.\src/nivek_system.c **** 		NiVekName[idx] = 0x00;
+ 298              		.loc 1 55 0
+ 299 00b6 1849     		ldr	r1, .L19	@ tmp167,
+ 300              	.LBE2:
+  53:.\src/nivek_system.c **** iOpResult_e TWB_Sys_RestoreDefaults(void){
+ 301              		.loc 1 53 0
+ 302 00b8 0024     		movs	r4, #0	@ D.9246,
+ 303              	.LBB3:
+ 304              		.loc 1 55 0
+ 305 00ba 2246     		mov	r2, r4	@ tmp168, D.9246
+ 306              	.LVL21:
+ 307              	.L13:
+ 308              		.loc 1 55 0 is_stmt 0 discriminator 2
+ 309 00bc 0B68     		ldr	r3, [r1, #0]	@ NiVekName, NiVekName
+ 310 00be 164D     		ldr	r5, .L19	@ tmp150,
+ 311 00c0 1A55     		strb	r2, [r3, r4]	@ tmp168, *D.9247_6
+ 312 00c2 0134     		adds	r4, r4, #1	@ D.9246, D.9246,
+  54:.\src/nivek_system.c **** 	for(uint8_t idx = 0; idx < NIVEK_NAME_SIZE;++idx)
+ 313              		.loc 1 54 0 is_stmt 1 discriminator 2
+ 314 00c4 182C     		cmp	r4, #24	@ D.9246,
+ 315 00c6 F9D1     		bne	.L13	@,
+ 316              	.LBE3:
+  56:.\src/nivek_system.c **** 
+  57:.\src/nivek_system.c **** 	assert_succeed(TWB_SE_WriteBufferPause(NIVEK_NAME_OFFSET, NiVekName, NIVEK_NAME_SIZE));
+ 317              		.loc 1 57 0
+ 318 00c8 4FF48050 		mov	r0, #4096	@,
+ 319 00cc 2968     		ldr	r1, [r5, #0]	@, NiVekName
+ 320 00ce 2246     		mov	r2, r4	@, D.9246
+ 321 00d0 FFF7FEFF 		bl	TWB_SE_WriteBufferPause	@
+ 322              	.LVL22:
+ 323 00d4 38B1     		cbz	r0, .L14	@,
+ 324              		.loc 1 57 0 is_stmt 0 discriminator 1
+ 325 00d6 2968     		ldr	r1, [r5, #0]	@, NiVekName
+ 326 00d8 4FF48050 		mov	r0, #4096	@,
+ 327 00dc 2246     		mov	r2, r4	@, D.9246
+  58:.\src/nivek_system.c **** 	assert_succeed(TWB_SE_WriteU8Pause(BAUD_RATE_ADDRESS, Baud_230400));
+  59:.\src/nivek_system.c **** 	assert_succeed(TWB_SE_WriteU8Pause(FORWARD_DEBUG_MSG_VIA_USB_ADDRESS, ForwardDebugMessages_Off));
+  60:.\src/nivek_system.c **** 
+  61:.\src/nivek_system.c **** 	return OK;
+  62:.\src/nivek_system.c **** }
+ 328              		.loc 1 62 0 is_stmt 1 discriminator 1
+ 329 00de BDE83840 		pop	{r3, r4, r5, lr}	@
+  57:.\src/nivek_system.c **** 	assert_succeed(TWB_SE_WriteBufferPause(NIVEK_NAME_OFFSET, NiVekName, NIVEK_NAME_SIZE));
+ 330              		.loc 1 57 0 discriminator 1
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 8
+
+
+ 331 00e2 FFF7FEBF 		b	TWB_SE_WriteBufferPause	@
+ 332              	.LVL23:
+ 333              	.L14:
+  58:.\src/nivek_system.c **** 	assert_succeed(TWB_SE_WriteU8Pause(BAUD_RATE_ADDRESS, Baud_230400));
+ 334              		.loc 1 58 0
+ 335 00e6 41F21800 		movw	r0, #4120	@,
+ 336 00ea 0221     		movs	r1, #2	@,
+ 337 00ec FFF7FEFF 		bl	TWB_SE_WriteU8Pause	@
+ 338              	.LVL24:
+ 339 00f0 0446     		mov	r4, r0	@ tmp159,
+ 340 00f2 18B1     		cbz	r0, .L15	@ tmp159,
+  58:.\src/nivek_system.c **** 	assert_succeed(TWB_SE_WriteU8Pause(BAUD_RATE_ADDRESS, Baud_230400));
+ 341              		.loc 1 58 0 is_stmt 0 discriminator 1
+ 342 00f4 41F21800 		movw	r0, #4120	@,
+ 343 00f8 0221     		movs	r1, #2	@,
+ 344 00fa 08E0     		b	.L18	@
+ 345              	.L15:
+  59:.\src/nivek_system.c **** 	assert_succeed(TWB_SE_WriteU8Pause(FORWARD_DEBUG_MSG_VIA_USB_ADDRESS, ForwardDebugMessages_Off));
+ 346              		.loc 1 59 0 is_stmt 1
+ 347 00fc 42F21800 		movw	r0, #8216	@,
+ 348 0100 2146     		mov	r1, r4	@, tmp159
+ 349 0102 FFF7FEFF 		bl	TWB_SE_WriteU8Pause	@
+ 350              	.LVL25:
+ 351 0106 30B1     		cbz	r0, .L16	@,
+  59:.\src/nivek_system.c **** 	assert_succeed(TWB_SE_WriteU8Pause(FORWARD_DEBUG_MSG_VIA_USB_ADDRESS, ForwardDebugMessages_Off));
+ 352              		.loc 1 59 0 is_stmt 0 discriminator 1
+ 353 0108 42F21800 		movw	r0, #8216	@,
+ 354 010c 2146     		mov	r1, r4	@, tmp159
+ 355              	.L18:
+ 356              		.loc 1 62 0 is_stmt 1 discriminator 1
+ 357 010e BDE83840 		pop	{r3, r4, r5, lr}	@
+  59:.\src/nivek_system.c **** 	assert_succeed(TWB_SE_WriteU8Pause(FORWARD_DEBUG_MSG_VIA_USB_ADDRESS, ForwardDebugMessages_Off));
+ 358              		.loc 1 59 0 discriminator 1
+ 359 0112 FFF7FEBF 		b	TWB_SE_WriteU8Pause	@
+ 360              	.LVL26:
+ 361              	.L16:
+ 362              		.loc 1 62 0
+ 363 0116 38BD     		pop	{r3, r4, r5, pc}	@
+ 364              	.L20:
+ 365              		.align	2
+ 366              	.L19:
+ 367 0118 00000000 		.word	.LANCHOR0
+ 368              		.cfi_endproc
+ 369              	.LFE115:
+ 370              		.size	TWB_Sys_RestoreDefaults, .-TWB_Sys_RestoreDefaults
+ 371              		.align	1
+ 372              		.global	TWB_Sys_HandleMessage
+ 373              		.thumb
+ 374              		.thumb_func
+ 375              		.type	TWB_Sys_HandleMessage, %function
+ 376              	TWB_Sys_HandleMessage:
+ 377              	.LFB116:
+  63:.\src/nivek_system.c **** 
+  64:.\src/nivek_system.c **** iOpResult_e TWB_Sys_HandleMessage(TWB_Commo_Message_t *msg) {
+ 378              		.loc 1 64 0
+ 379              		.cfi_startproc
+ 380              		@ args = 0, pretend = 0, frame = 0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 9
+
+
+ 381              		@ frame_needed = 0, uses_anonymous_args = 0
+ 382              	.LVL27:
+ 383 011c 10B5     		push	{r4, lr}	@
+ 384              	.LCFI6:
+ 385              		.cfi_def_cfa_offset 8
+ 386              		.cfi_offset 4, -8
+ 387              		.cfi_offset 14, -4
+  65:.\src/nivek_system.c **** 	switch(msg->TypeId){
+ 388              		.loc 1 65 0
+ 389 011e 8378     		ldrb	r3, [r0, #2]	@ zero_extendqisi2	@ D.9219, msg_2(D)->TypeId
+ 390 0120 C82B     		cmp	r3, #200	@ D.9219,
+  64:.\src/nivek_system.c **** iOpResult_e TWB_Sys_HandleMessage(TWB_Commo_Message_t *msg) {
+ 391              		.loc 1 64 0
+ 392 0122 0446     		mov	r4, r0	@ msg, msg
+ 393              		.loc 1 65 0
+ 394 0124 32D0     		beq	.L24	@,
+ 395 0126 04D8     		bhi	.L26	@,
+ 396 0128 A3F16402 		sub	r2, r3, #100	@ tmp162, D.9219,
+ 397 012c 012A     		cmp	r2, #1	@ tmp162,
+ 398 012e 58D8     		bhi	.L22	@,
+ 399 0130 02E0     		b	.L36	@
+ 400              	.L26:
+ 401 0132 C92B     		cmp	r3, #201	@ D.9219,
+ 402 0134 55D1     		bne	.L22	@,
+ 403 0136 4DE0     		b	.L25	@
+ 404              	.L36:
+  66:.\src/nivek_system.c **** 		case MSG_PING:
+  67:.\src/nivek_system.c **** 		case MSG_WELCOME_PING:
+  68:.\src/nivek_system.c **** 			//If we were previously disconnected make sure
+  69:.\src/nivek_system.c **** 			//Send a welcome ping and set connection status.
+  70:.\src/nivek_system.c **** 			if(msg->TypeId == MSG_WELCOME_PING){
+ 405              		.loc 1 70 0
+ 406 0138 652B     		cmp	r3, #101	@ D.9219,
+ 407 013a 08D1     		bne	.L27	@,
+  71:.\src/nivek_system.c **** 				TWB_Debug_Print("WiFi Connected, send welcome ping\r\n");
+ 408              		.loc 1 71 0
+ 409 013c 2A48     		ldr	r0, .L37	@,
+ 410              	.LVL28:
+ 411 013e FFF7FEFF 		bl	TWB_Debug_Print	@
+ 412              	.LVL29:
+  72:.\src/nivek_system.c **** 				TWB_Commo_SendMessage(MOD_System, MSG_PING, null, 0);
+ 413              		.loc 1 72 0
+ 414 0142 6420     		movs	r0, #100	@,
+ 415 0144 0022     		movs	r2, #0	@,
+ 416 0146 0146     		mov	r1, r0	@,
+ 417 0148 1346     		mov	r3, r2	@,
+ 418 014a FFF7FEFF 		bl	TWB_Commo_SendMessage	@
+ 419              	.LVL30:
+ 420              	.L27:
+  73:.\src/nivek_system.c **** 			}
+  74:.\src/nivek_system.c **** 
+  75:.\src/nivek_system.c **** 			//Along with the Ping comes settings for control inputs.
+  76:.\src/nivek_system.c **** 			WiFiThrottle = msg->MsgBuffer[0];
+ 421              		.loc 1 76 0
+ 422 014e E368     		ldr	r3, [r4, #12]	@ D.9223, msg_2(D)->MsgBuffer
+ 423 0150 264A     		ldr	r2, .L37+4	@ tmp166,
+ 424 0152 1978     		ldrb	r1, [r3, #0]	@ zero_extendqisi2	@ WiFiThrottle.0, *D.9223_6
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 10
+
+
+ 425              	.LVL31:
+  77:.\src/nivek_system.c **** 			WiFiPitch = msg->MsgBuffer[1];
+  78:.\src/nivek_system.c **** 			WiFiRoll = msg->MsgBuffer[2];
+  79:.\src/nivek_system.c **** 			WiFiYaw = msg->MsgBuffer[3];
+  80:.\src/nivek_system.c **** 
+  81:.\src/nivek_system.c **** 			TWB_Timer_Enable(WiFiInWatchDog);
+  82:.\src/nivek_system.c **** 			WiFiIsConnected = WiFiConnected;
+ 426              		.loc 1 82 0
+ 427 0154 264C     		ldr	r4, .L37+8	@ tmp178,
+ 428              	.LVL32:
+  76:.\src/nivek_system.c **** 			WiFiThrottle = msg->MsgBuffer[0];
+ 429              		.loc 1 76 0
+ 430 0156 1170     		strb	r1, [r2, #0]	@ WiFiThrottle.0, WiFiThrottle
+  77:.\src/nivek_system.c **** 			WiFiPitch = msg->MsgBuffer[1];
+ 431              		.loc 1 77 0
+ 432 0158 5978     		ldrb	r1, [r3, #1]	@ zero_extendqisi2	@ MEM[(uint8_t *)D.9223_6 + 1B], MEM[(uint8_t *)D.9223_6 + 1B
+ 433              	.LVL33:
+ 434 015a 264A     		ldr	r2, .L37+12	@ tmp168,
+ 435 015c 1170     		strb	r1, [r2, #0]	@ MEM[(uint8_t *)D.9223_6 + 1B], WiFiPitch
+  78:.\src/nivek_system.c **** 			WiFiRoll = msg->MsgBuffer[2];
+ 436              		.loc 1 78 0
+ 437 015e 9978     		ldrb	r1, [r3, #2]	@ zero_extendqisi2	@ MEM[(uint8_t *)D.9223_6 + 2B], MEM[(uint8_t *)D.9223_6 + 2B
+ 438 0160 254A     		ldr	r2, .L37+16	@ tmp171,
+ 439 0162 1170     		strb	r1, [r2, #0]	@ MEM[(uint8_t *)D.9223_6 + 2B], WiFiRoll
+  79:.\src/nivek_system.c **** 			WiFiYaw = msg->MsgBuffer[3];
+ 440              		.loc 1 79 0
+ 441 0164 DA78     		ldrb	r2, [r3, #3]	@ zero_extendqisi2	@ MEM[(uint8_t *)D.9223_6 + 3B], MEM[(uint8_t *)D.9223_6 + 3B
+ 442 0166 254B     		ldr	r3, .L37+20	@ tmp174,
+ 443 0168 1A70     		strb	r2, [r3, #0]	@ MEM[(uint8_t *)D.9223_6 + 3B], WiFiYaw
+  81:.\src/nivek_system.c **** 			TWB_Timer_Enable(WiFiInWatchDog);
+ 444              		.loc 1 81 0
+ 445 016a 254B     		ldr	r3, .L37+24	@ tmp177,
+ 446 016c 1868     		ldr	r0, [r3, #0]	@, WiFiInWatchDog
+ 447 016e FFF7FEFF 		bl	TWB_Timer_Enable	@
+ 448              	.LVL34:
+  83:.\src/nivek_system.c **** 			TWB_LEDS_SetState(LED_WiFi_Connected, LED_On);
+ 449              		.loc 1 83 0
+ 450 0172 0020     		movs	r0, #0	@,
+  82:.\src/nivek_system.c **** 			WiFiIsConnected = WiFiConnected;
+ 451              		.loc 1 82 0
+ 452 0174 FF23     		movs	r3, #255	@ tmp179,
+ 453              		.loc 1 83 0
+ 454 0176 0146     		mov	r1, r0	@,
+  82:.\src/nivek_system.c **** 			WiFiIsConnected = WiFiConnected;
+ 455              		.loc 1 82 0
+ 456 0178 2370     		strb	r3, [r4, #0]	@ tmp179, WiFiIsConnected
+ 457              		.loc 1 83 0
+ 458 017a FFF7FEFF 		bl	TWB_LEDS_SetState	@
+ 459              	.LVL35:
+  84:.\src/nivek_system.c **** 
+  85:.\src/nivek_system.c **** 			if(WiFiIsConnected == WiFiDisconnected)
+ 460              		.loc 1 85 0
+ 461 017e 2378     		ldrb	r3, [r4, #0]	@ zero_extendqisi2	@ WiFiIsConnected, WiFiIsConnected
+ 462 0180 002B     		cmp	r3, #0	@ WiFiIsConnected
+ 463 0182 2ED1     		bne	.L22	@
+  86:.\src/nivek_system.c **** 				TWB_Debug_Print("\r\nTelemetry Connected\r\n\r\n");
+ 464              		.loc 1 86 0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 11
+
+
+ 465 0184 1F48     		ldr	r0, .L37+28	@,
+ 466 0186 FFF7FEFF 		bl	TWB_Debug_Print	@
+ 467              	.LVL36:
+ 468 018a 2AE0     		b	.L22	@
+ 469              	.LVL37:
+ 470              	.L24:
+  87:.\src/nivek_system.c **** 
+  88:.\src/nivek_system.c **** 		break;
+  89:.\src/nivek_system.c **** 		case MSG_SET_NAME:
+  90:.\src/nivek_system.c **** 			memcpy(NiVekName, msg->MsgBuffer, NIVEK_NAME_SIZE);
+ 471              		.loc 1 90 0
+ 472 018c 1E4A     		ldr	r2, .L37+32	@ tmp184,
+ 473 018e C368     		ldr	r3, [r0, #12]	@ msg_2(D)->MsgBuffer, msg_2(D)->MsgBuffer
+ 474 0190 1268     		ldr	r2, [r2, #0]	@ NiVekName, NiVekName
+ 475 0192 03F11801 		add	r1, r3, #24	@ tmp189, msg_2(D)->MsgBuffer,
+ 476              	.LVL38:
+ 477              	.L29:
+ 478 0196 53F8040B 		ldr	r0, [r3], #4	@ unaligned	@ tmp190,
+ 479 019a 8B42     		cmp	r3, r1	@ msg_2(D)->MsgBuffer, tmp189
+ 480 019c 42F8040B 		str	r0, [r2], #4	@ unaligned	@ tmp190,
+ 481 01a0 F9D1     		bne	.L29	@,
+  91:.\src/nivek_system.c **** 
+  92:.\src/nivek_system.c **** 			TWB_Debug_Print("NiVek's new name: ");
+ 482              		.loc 1 92 0
+ 483 01a2 1A48     		ldr	r0, .L37+36	@,
+ 484 01a4 FFF7FEFF 		bl	TWB_Debug_Print	@
+ 485              	.LVL39:
+  93:.\src/nivek_system.c **** 			TWB_Debug_Print((const char *)NiVekName);
+ 486              		.loc 1 93 0
+ 487 01a8 174B     		ldr	r3, .L37+32	@ tmp194,
+ 488 01aa 1868     		ldr	r0, [r3, #0]	@, NiVekName
+ 489 01ac FFF7FEFF 		bl	TWB_Debug_Print	@
+ 490              	.LVL40:
+  94:.\src/nivek_system.c **** 			TWB_Debug_Print("\r\n");
+ 491              		.loc 1 94 0
+ 492 01b0 1748     		ldr	r0, .L37+40	@,
+ 493 01b2 FFF7FEFF 		bl	TWB_Debug_Print	@
+ 494              	.LVL41:
+  95:.\src/nivek_system.c **** 			assert_succeed(TWB_SE_WriteBuffer(NIVEK_NAME_OFFSET, msg->MsgBuffer, NIVEK_NAME_SIZE));
+ 495              		.loc 1 95 0
+ 496 01b6 4FF48050 		mov	r0, #4096	@,
+ 497 01ba E168     		ldr	r1, [r4, #12]	@, msg_2(D)->MsgBuffer
+ 498 01bc 1822     		movs	r2, #24	@,
+ 499 01be FFF7FEFF 		bl	TWB_SE_WriteBuffer	@
+ 500              	.LVL42:
+ 501 01c2 70B1     		cbz	r0, .L22	@,
+ 502              		.loc 1 95 0 is_stmt 0 discriminator 1
+ 503 01c4 E168     		ldr	r1, [r4, #12]	@, msg_2(D)->MsgBuffer
+ 504 01c6 4FF48050 		mov	r0, #4096	@,
+ 505 01ca 1822     		movs	r2, #24	@,
+  96:.\src/nivek_system.c **** 			break;
+  97:.\src/nivek_system.c **** 		case MSG_GET_NAME:
+  98:.\src/nivek_system.c **** 			TWB_Commo_SendMessage(MOD_System, MSG_NIVEK_NAME, NiVekName, NIVEK_NAME_SIZE);
+  99:.\src/nivek_system.c **** 
+ 100:.\src/nivek_system.c **** 			break;
+ 101:.\src/nivek_system.c **** 	}
+ 102:.\src/nivek_system.c **** 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 12
+
+
+ 103:.\src/nivek_system.c **** 	return OK;
+ 104:.\src/nivek_system.c **** }
+ 506              		.loc 1 104 0 is_stmt 1 discriminator 1
+ 507 01cc BDE81040 		pop	{r4, lr}	@
+  95:.\src/nivek_system.c **** 			assert_succeed(TWB_SE_WriteBuffer(NIVEK_NAME_OFFSET, msg->MsgBuffer, NIVEK_NAME_SIZE));
+ 508              		.loc 1 95 0 discriminator 1
+ 509 01d0 FFF7FEBF 		b	TWB_SE_WriteBuffer	@
+ 510              	.LVL43:
+ 511              	.L25:
+  98:.\src/nivek_system.c **** 			TWB_Commo_SendMessage(MOD_System, MSG_NIVEK_NAME, NiVekName, NIVEK_NAME_SIZE);
+ 512              		.loc 1 98 0
+ 513 01d4 0C4B     		ldr	r3, .L37+32	@ tmp198,
+ 514 01d6 6420     		movs	r0, #100	@,
+ 515              	.LVL44:
+ 516 01d8 1A68     		ldr	r2, [r3, #0]	@, NiVekName
+ 517 01da C821     		movs	r1, #200	@,
+ 518 01dc 1823     		movs	r3, #24	@,
+ 519 01de FFF7FEFF 		bl	TWB_Commo_SendMessage	@
+ 520              	.LVL45:
+ 521              	.L22:
+ 522              		.loc 1 104 0
+ 523 01e2 0020     		movs	r0, #0	@,
+ 524 01e4 10BD     		pop	{r4, pc}	@
+ 525              	.L38:
+ 526 01e6 00BF     		.align	2
+ 527              	.L37:
+ 528 01e8 0A000000 		.word	.LC2
+ 529 01ec 00000000 		.word	WiFiThrottle
+ 530 01f0 00000000 		.word	WiFiIsConnected
+ 531 01f4 00000000 		.word	WiFiPitch
+ 532 01f8 00000000 		.word	WiFiRoll
+ 533 01fc 00000000 		.word	WiFiYaw
+ 534 0200 00000000 		.word	WiFiInWatchDog
+ 535 0204 2E000000 		.word	.LC3
+ 536 0208 00000000 		.word	.LANCHOR0
+ 537 020c 48000000 		.word	.LC4
+ 538 0210 07000000 		.word	.LC1
+ 539              		.cfi_endproc
+ 540              	.LFE116:
+ 541              		.size	TWB_Sys_HandleMessage, .-TWB_Sys_HandleMessage
+ 542              		.global	StartupPhase
+ 543              		.global	NiVekName
+ 544              		.section	.rodata.str1.1,"aMS",%progbits,1
+ 545              	.LC0:
+ 546 0000 4E616D65 		.ascii	"Name: \000"
+ 546      3A2000
+ 547              	.LC1:
+ 548 0007 0D0A00   		.ascii	"\015\012\000"
+ 549              	.LC2:
+ 550 000a 57694669 		.ascii	"WiFi Connected, send welcome ping\015\012\000"
+ 550      20436F6E 
+ 550      6E656374 
+ 550      65642C20 
+ 550      73656E64 
+ 551              	.LC3:
+ 552 002e 0D0A5465 		.ascii	"\015\012Telemetry Connected\015\012\015\012\000"
+ 552      6C656D65 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 13
+
+
+ 552      74727920 
+ 552      436F6E6E 
+ 552      65637465 
+ 553              	.LC4:
+ 554 0048 4E695665 		.ascii	"NiVek's new name: \000"
+ 554      6B277320 
+ 554      6E657720 
+ 554      6E616D65 
+ 554      3A2000
+ 555              		.data
+ 556              		.type	StartupPhase, %object
+ 557              		.size	StartupPhase, 1
+ 558              	StartupPhase:
+ 559 0000 FF       		.byte	-1
+ 560              		.bss
+ 561              		.align	2
+ 562              		.set	.LANCHOR0,. + 0
+ 563              		.type	NiVekName, %object
+ 564              		.size	NiVekName, 4
+ 565              	NiVekName:
+ 566 0000 00000000 		.space	4
+ 567              		.text
+ 568              	.Letext0:
+ 569              		.file 2 "k:\\electronics\\gcc\\bin\\../lib/gcc/arm-none-eabi/4.7.2/../../../../arm-none-eabi/inclu
+ 570              		.file 3 ".\\inc/twb_config.h"
+ 571              		.file 4 ".\\inc\\common/twb_common.h"
+ 572              		.file 5 ".\\inc/commo/message_ids.h"
+ 573              		.file 6 ".\\inc/common/twb_timer.h"
+ 574              		.file 7 ".\\inc\\commo/commo.h"
+ 575              		.file 8 ".\\inc/commo/wifi.h"
+ 576              		.file 9 ".\\inc/common/twb_debug.h"
+ 577              		.file 10 ".\\inc/common/twb_leds.h"
+ 578              		.file 11 ".\\inc/core_cm4.h"
+ 579              		.file 12 ".\\inc/common/twb_serial_eeprom.h"
+ 580              		.section	.debug_info,"",%progbits
+ 581              	.Ldebug_info0:
+ 582 0000 B3080000 		.4byte	0x8b3
+ 583 0004 0200     		.2byte	0x2
+ 584 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 585 000a 04       		.byte	0x4
+ 586 000b 01       		.uleb128 0x1
+ 587 000c 5B030000 		.4byte	.LASF103
+ 588 0010 01       		.byte	0x1
+ 589 0011 67030000 		.4byte	.LASF104
+ 590 0015 73050000 		.4byte	.LASF105
+ 591 0019 00000000 		.4byte	.Ltext0
+ 592 001d 14020000 		.4byte	.Letext0
+ 593 0021 00000000 		.4byte	.Ldebug_line0
+ 594 0025 02       		.uleb128 0x2
+ 595 0026 39000000 		.4byte	.LASF0
+ 596 002a 02       		.byte	0x2
+ 597 002b 29       		.byte	0x29
+ 598 002c 30000000 		.4byte	0x30
+ 599 0030 03       		.uleb128 0x3
+ 600 0031 01       		.byte	0x1
+ 601 0032 06       		.byte	0x6
+ 602 0033 8A010000 		.4byte	.LASF2
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 14
+
+
+ 603 0037 02       		.uleb128 0x2
+ 604 0038 27010000 		.4byte	.LASF1
+ 605 003c 02       		.byte	0x2
+ 606 003d 2A       		.byte	0x2a
+ 607 003e 42000000 		.4byte	0x42
+ 608 0042 03       		.uleb128 0x3
+ 609 0043 01       		.byte	0x1
+ 610 0044 08       		.byte	0x8
+ 611 0045 AC020000 		.4byte	.LASF3
+ 612 0049 03       		.uleb128 0x3
+ 613 004a 02       		.byte	0x2
+ 614 004b 05       		.byte	0x5
+ 615 004c 73000000 		.4byte	.LASF4
+ 616 0050 02       		.uleb128 0x2
+ 617 0051 52030000 		.4byte	.LASF5
+ 618 0055 02       		.byte	0x2
+ 619 0056 36       		.byte	0x36
+ 620 0057 5B000000 		.4byte	0x5b
+ 621 005b 03       		.uleb128 0x3
+ 622 005c 02       		.byte	0x2
+ 623 005d 07       		.byte	0x7
+ 624 005e E7030000 		.4byte	.LASF6
+ 625 0062 02       		.uleb128 0x2
+ 626 0063 D8030000 		.4byte	.LASF7
+ 627 0067 02       		.byte	0x2
+ 628 0068 4F       		.byte	0x4f
+ 629 0069 6D000000 		.4byte	0x6d
+ 630 006d 03       		.uleb128 0x3
+ 631 006e 04       		.byte	0x4
+ 632 006f 05       		.byte	0x5
+ 633 0070 20020000 		.4byte	.LASF8
+ 634 0074 03       		.uleb128 0x3
+ 635 0075 04       		.byte	0x4
+ 636 0076 07       		.byte	0x7
+ 637 0077 41040000 		.4byte	.LASF9
+ 638 007b 03       		.uleb128 0x3
+ 639 007c 08       		.byte	0x8
+ 640 007d 05       		.byte	0x5
+ 641 007e CE010000 		.4byte	.LASF10
+ 642 0082 03       		.uleb128 0x3
+ 643 0083 08       		.byte	0x8
+ 644 0084 07       		.byte	0x7
+ 645 0085 18030000 		.4byte	.LASF11
+ 646 0089 04       		.uleb128 0x4
+ 647 008a 04       		.byte	0x4
+ 648 008b 05       		.byte	0x5
+ 649 008c 696E7400 		.ascii	"int\000"
+ 650 0090 03       		.uleb128 0x3
+ 651 0091 04       		.byte	0x4
+ 652 0092 07       		.byte	0x7
+ 653 0093 B7010000 		.4byte	.LASF12
+ 654 0097 03       		.uleb128 0x3
+ 655 0098 04       		.byte	0x4
+ 656 0099 07       		.byte	0x7
+ 657 009a 90000000 		.4byte	.LASF13
+ 658 009e 05       		.uleb128 0x5
+ 659 009f 62000000 		.4byte	0x62
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 15
+
+
+ 660 00a3 06       		.uleb128 0x6
+ 661 00a4 04       		.byte	0x4
+ 662 00a5 07       		.uleb128 0x7
+ 663 00a6 01       		.byte	0x1
+ 664 00a7 08       		.uleb128 0x8
+ 665 00a8 04       		.byte	0x4
+ 666 00a9 A5000000 		.4byte	0xa5
+ 667 00ad 08       		.uleb128 0x8
+ 668 00ae 04       		.byte	0x4
+ 669 00af B3000000 		.4byte	0xb3
+ 670 00b3 03       		.uleb128 0x3
+ 671 00b4 01       		.byte	0x1
+ 672 00b5 08       		.byte	0x8
+ 673 00b6 C8030000 		.4byte	.LASF14
+ 674 00ba 08       		.uleb128 0x8
+ 675 00bb 04       		.byte	0x4
+ 676 00bc C0000000 		.4byte	0xc0
+ 677 00c0 09       		.uleb128 0x9
+ 678 00c1 B3000000 		.4byte	0xb3
+ 679 00c5 03       		.uleb128 0x3
+ 680 00c6 08       		.byte	0x8
+ 681 00c7 04       		.byte	0x4
+ 682 00c8 6C050000 		.4byte	.LASF15
+ 683 00cc 03       		.uleb128 0x3
+ 684 00cd 04       		.byte	0x4
+ 685 00ce 04       		.byte	0x4
+ 686 00cf 96010000 		.4byte	.LASF16
+ 687 00d3 03       		.uleb128 0x3
+ 688 00d4 08       		.byte	0x8
+ 689 00d5 04       		.byte	0x4
+ 690 00d6 90020000 		.4byte	.LASF17
+ 691 00da 08       		.uleb128 0x8
+ 692 00db 04       		.byte	0x4
+ 693 00dc 37000000 		.4byte	0x37
+ 694 00e0 0A       		.uleb128 0xa
+ 695 00e1 01       		.byte	0x1
+ 696 00e2 03       		.byte	0x3
+ 697 00e3 98       		.byte	0x98
+ 698 00e4 F6000000 		.4byte	0xf6
+ 699 00e8 0B       		.uleb128 0xb
+ 700 00e9 12050000 		.4byte	.LASF18
+ 701 00ed FF01     		.sleb128 255
+ 702 00ef 0B       		.uleb128 0xb
+ 703 00f0 41030000 		.4byte	.LASF19
+ 704 00f4 00       		.sleb128 0
+ 705 00f5 00       		.byte	0
+ 706 00f6 02       		.uleb128 0x2
+ 707 00f7 00000000 		.4byte	.LASF20
+ 708 00fb 03       		.byte	0x3
+ 709 00fc 9B       		.byte	0x9b
+ 710 00fd E0000000 		.4byte	0xe0
+ 711 0101 0A       		.uleb128 0xa
+ 712 0102 01       		.byte	0x1
+ 713 0103 04       		.byte	0x4
+ 714 0104 1E       		.byte	0x1e
+ 715 0105 57010000 		.4byte	0x157
+ 716 0109 0C       		.uleb128 0xc
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 16
+
+
+ 717 010a 4F4B00   		.ascii	"OK\000"
+ 718 010d 00       		.sleb128 0
+ 719 010e 0B       		.uleb128 0xb
+ 720 010f 4D000000 		.4byte	.LASF21
+ 721 0113 01       		.sleb128 1
+ 722 0114 0B       		.uleb128 0xb
+ 723 0115 39030000 		.4byte	.LASF22
+ 724 0119 02       		.sleb128 2
+ 725 011a 0B       		.uleb128 0xb
+ 726 011b 00030000 		.4byte	.LASF23
+ 727 011f 03       		.sleb128 3
+ 728 0120 0B       		.uleb128 0xb
+ 729 0121 65010000 		.4byte	.LASF24
+ 730 0125 04       		.sleb128 4
+ 731 0126 0B       		.uleb128 0xb
+ 732 0127 27040000 		.4byte	.LASF25
+ 733 012b 05       		.sleb128 5
+ 734 012c 0B       		.uleb128 0xb
+ 735 012d E6000000 		.4byte	.LASF26
+ 736 0131 06       		.sleb128 6
+ 737 0132 0B       		.uleb128 0xb
+ 738 0133 20050000 		.4byte	.LASF27
+ 739 0137 07       		.sleb128 7
+ 740 0138 0B       		.uleb128 0xb
+ 741 0139 FD040000 		.4byte	.LASF28
+ 742 013d 08       		.sleb128 8
+ 743 013e 0B       		.uleb128 0xb
+ 744 013f 05030000 		.4byte	.LASF29
+ 745 0143 09       		.sleb128 9
+ 746 0144 0B       		.uleb128 0xb
+ 747 0145 FA030000 		.4byte	.LASF30
+ 748 0149 0A       		.sleb128 10
+ 749 014a 0B       		.uleb128 0xb
+ 750 014b 54050000 		.4byte	.LASF31
+ 751 014f 0B       		.sleb128 11
+ 752 0150 0B       		.uleb128 0xb
+ 753 0151 7D000000 		.4byte	.LASF32
+ 754 0155 0C       		.sleb128 12
+ 755 0156 00       		.byte	0
+ 756 0157 02       		.uleb128 0x2
+ 757 0158 98040000 		.4byte	.LASF33
+ 758 015c 04       		.byte	0x4
+ 759 015d 2C       		.byte	0x2c
+ 760 015e 01010000 		.4byte	0x101
+ 761 0162 0A       		.uleb128 0xa
+ 762 0163 01       		.byte	0x1
+ 763 0164 05       		.byte	0x5
+ 764 0165 0C       		.byte	0xc
+ 765 0166 87010000 		.4byte	0x187
+ 766 016a 0B       		.uleb128 0xb
+ 767 016b 1F000000 		.4byte	.LASF34
+ 768 016f C600     		.sleb128 70
+ 769 0171 0B       		.uleb128 0xb
+ 770 0172 8F030000 		.4byte	.LASF35
+ 771 0176 D000     		.sleb128 80
+ 772 0178 0B       		.uleb128 0xb
+ 773 0179 09050000 		.4byte	.LASF36
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 17
+
+
+ 774 017d DA00     		.sleb128 90
+ 775 017f 0B       		.uleb128 0xb
+ 776 0180 14010000 		.4byte	.LASF37
+ 777 0184 E400     		.sleb128 100
+ 778 0186 00       		.byte	0
+ 779 0187 0D       		.uleb128 0xd
+ 780 0188 14       		.byte	0x14
+ 781 0189 06       		.byte	0x6
+ 782 018a 06       		.byte	0x6
+ 783 018b 00020000 		.4byte	0x200
+ 784 018f 0E       		.uleb128 0xe
+ 785 0190 C7000000 		.4byte	.LASF38
+ 786 0194 06       		.byte	0x6
+ 787 0195 07       		.byte	0x7
+ 788 0196 AD000000 		.4byte	0xad
+ 789 019a 02       		.byte	0x2
+ 790 019b 23       		.byte	0x23
+ 791 019c 00       		.uleb128 0
+ 792 019d 0E       		.uleb128 0xe
+ 793 019e C4010000 		.4byte	.LASF39
+ 794 01a2 06       		.byte	0x6
+ 795 01a3 08       		.byte	0x8
+ 796 01a4 42000000 		.4byte	0x42
+ 797 01a8 02       		.byte	0x2
+ 798 01a9 23       		.byte	0x23
+ 799 01aa 04       		.uleb128 0x4
+ 800 01ab 0E       		.uleb128 0xe
+ 801 01ac 37040000 		.4byte	.LASF40
+ 802 01b0 06       		.byte	0x6
+ 803 01b1 09       		.byte	0x9
+ 804 01b2 42000000 		.4byte	0x42
+ 805 01b6 02       		.byte	0x2
+ 806 01b7 23       		.byte	0x23
+ 807 01b8 05       		.uleb128 0x5
+ 808 01b9 0E       		.uleb128 0xe
+ 809 01ba 2F030000 		.4byte	.LASF41
+ 810 01be 06       		.byte	0x6
+ 811 01bf 0A       		.byte	0xa
+ 812 01c0 42000000 		.4byte	0x42
+ 813 01c4 02       		.byte	0x2
+ 814 01c5 23       		.byte	0x23
+ 815 01c6 06       		.uleb128 0x6
+ 816 01c7 0E       		.uleb128 0xe
+ 817 01c8 BD000000 		.4byte	.LASF42
+ 818 01cc 06       		.byte	0x6
+ 819 01cd 0B       		.byte	0xb
+ 820 01ce 50000000 		.4byte	0x50
+ 821 01d2 02       		.byte	0x2
+ 822 01d3 23       		.byte	0x23
+ 823 01d4 08       		.uleb128 0x8
+ 824 01d5 0E       		.uleb128 0xe
+ 825 01d6 65040000 		.4byte	.LASF43
+ 826 01da 06       		.byte	0x6
+ 827 01db 0C       		.byte	0xc
+ 828 01dc 50000000 		.4byte	0x50
+ 829 01e0 02       		.byte	0x2
+ 830 01e1 23       		.byte	0x23
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 18
+
+
+ 831 01e2 0A       		.uleb128 0xa
+ 832 01e3 0E       		.uleb128 0xe
+ 833 01e4 DA040000 		.4byte	.LASF44
+ 834 01e8 06       		.byte	0x6
+ 835 01e9 0D       		.byte	0xd
+ 836 01ea A7000000 		.4byte	0xa7
+ 837 01ee 02       		.byte	0x2
+ 838 01ef 23       		.byte	0x23
+ 839 01f0 0C       		.uleb128 0xc
+ 840 01f1 0E       		.uleb128 0xe
+ 841 01f2 22040000 		.4byte	.LASF45
+ 842 01f6 06       		.byte	0x6
+ 843 01f7 0F       		.byte	0xf
+ 844 01f8 A3000000 		.4byte	0xa3
+ 845 01fc 02       		.byte	0x2
+ 846 01fd 23       		.byte	0x23
+ 847 01fe 10       		.uleb128 0x10
+ 848 01ff 00       		.byte	0
+ 849 0200 02       		.uleb128 0x2
+ 850 0201 41020000 		.4byte	.LASF46
+ 851 0205 06       		.byte	0x6
+ 852 0206 10       		.byte	0x10
+ 853 0207 87010000 		.4byte	0x187
+ 854 020b 0D       		.uleb128 0xd
+ 855 020c 10       		.byte	0x10
+ 856 020d 07       		.byte	0x7
+ 857 020e 1B       		.byte	0x1b
+ 858 020f 76020000 		.4byte	0x276
+ 859 0213 0E       		.uleb128 0xe
+ 860 0214 DC010000 		.4byte	.LASF47
+ 861 0218 07       		.byte	0x7
+ 862 0219 1C       		.byte	0x1c
+ 863 021a 37000000 		.4byte	0x37
+ 864 021e 02       		.byte	0x2
+ 865 021f 23       		.byte	0x23
+ 866 0220 00       		.uleb128 0
+ 867 0221 0E       		.uleb128 0xe
+ 868 0222 BD040000 		.4byte	.LASF48
+ 869 0226 07       		.byte	0x7
+ 870 0227 1D       		.byte	0x1d
+ 871 0228 37000000 		.4byte	0x37
+ 872 022c 02       		.byte	0x2
+ 873 022d 23       		.byte	0x23
+ 874 022e 01       		.uleb128 0x1
+ 875 022f 0E       		.uleb128 0xe
+ 876 0230 65050000 		.4byte	.LASF49
+ 877 0234 07       		.byte	0x7
+ 878 0235 1E       		.byte	0x1e
+ 879 0236 37000000 		.4byte	0x37
+ 880 023a 02       		.byte	0x2
+ 881 023b 23       		.byte	0x23
+ 882 023c 02       		.uleb128 0x2
+ 883 023d 0E       		.uleb128 0xe
+ 884 023e 77020000 		.4byte	.LASF50
+ 885 0242 07       		.byte	0x7
+ 886 0243 1F       		.byte	0x1f
+ 887 0244 50000000 		.4byte	0x50
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 19
+
+
+ 888 0248 02       		.byte	0x2
+ 889 0249 23       		.byte	0x23
+ 890 024a 04       		.uleb128 0x4
+ 891 024b 0E       		.uleb128 0xe
+ 892 024c 07010000 		.4byte	.LASF51
+ 893 0250 07       		.byte	0x7
+ 894 0251 20       		.byte	0x20
+ 895 0252 50000000 		.4byte	0x50
+ 896 0256 02       		.byte	0x2
+ 897 0257 23       		.byte	0x23
+ 898 0258 06       		.uleb128 0x6
+ 899 0259 0E       		.uleb128 0xe
+ 900 025a 61020000 		.4byte	.LASF52
+ 901 025e 07       		.byte	0x7
+ 902 025f 21       		.byte	0x21
+ 903 0260 37000000 		.4byte	0x37
+ 904 0264 02       		.byte	0x2
+ 905 0265 23       		.byte	0x23
+ 906 0266 08       		.uleb128 0x8
+ 907 0267 0E       		.uleb128 0xe
+ 908 0268 49020000 		.4byte	.LASF53
+ 909 026c 07       		.byte	0x7
+ 910 026d 22       		.byte	0x22
+ 911 026e DA000000 		.4byte	0xda
+ 912 0272 02       		.byte	0x2
+ 913 0273 23       		.byte	0x23
+ 914 0274 0C       		.uleb128 0xc
+ 915 0275 00       		.byte	0
+ 916 0276 02       		.uleb128 0x2
+ 917 0277 51010000 		.4byte	.LASF54
+ 918 027b 07       		.byte	0x7
+ 919 027c 23       		.byte	0x23
+ 920 027d 0B020000 		.4byte	0x20b
+ 921 0281 0A       		.uleb128 0xa
+ 922 0282 01       		.byte	0x1
+ 923 0283 08       		.byte	0x8
+ 924 0284 0D       		.byte	0xd
+ 925 0285 A8020000 		.4byte	0x2a8
+ 926 0289 0B       		.uleb128 0xb
+ 927 028a B0050000 		.4byte	.LASF55
+ 928 028e 09       		.sleb128 9
+ 929 028f 0B       		.uleb128 0xb
+ 930 0290 2F010000 		.4byte	.LASF56
+ 931 0294 01       		.sleb128 1
+ 932 0295 0B       		.uleb128 0xb
+ 933 0296 DB000000 		.4byte	.LASF57
+ 934 029a 03       		.sleb128 3
+ 935 029b 0B       		.uleb128 0xb
+ 936 029c CD030000 		.4byte	.LASF58
+ 937 02a0 05       		.sleb128 5
+ 938 02a1 0B       		.uleb128 0xb
+ 939 02a2 C6040000 		.4byte	.LASF59
+ 940 02a6 02       		.sleb128 2
+ 941 02a7 00       		.byte	0
+ 942 02a8 02       		.uleb128 0x2
+ 943 02a9 8D050000 		.4byte	.LASF60
+ 944 02ad 08       		.byte	0x8
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 20
+
+
+ 945 02ae 14       		.byte	0x14
+ 946 02af 81020000 		.4byte	0x281
+ 947 02b3 0A       		.uleb128 0xa
+ 948 02b4 01       		.byte	0x1
+ 949 02b5 09       		.byte	0x9
+ 950 02b6 0F       		.byte	0xf
+ 951 02b7 C9020000 		.4byte	0x2c9
+ 952 02bb 0B       		.uleb128 0xb
+ 953 02bc 0A040000 		.4byte	.LASF61
+ 954 02c0 FF01     		.sleb128 255
+ 955 02c2 0B       		.uleb128 0xb
+ 956 02c3 A4040000 		.4byte	.LASF62
+ 957 02c7 00       		.sleb128 0
+ 958 02c8 00       		.byte	0
+ 959 02c9 02       		.uleb128 0x2
+ 960 02ca 99050000 		.4byte	.LASF63
+ 961 02ce 09       		.byte	0x9
+ 962 02cf 12       		.byte	0x12
+ 963 02d0 B3020000 		.4byte	0x2b3
+ 964 02d4 0A       		.uleb128 0xa
+ 965 02d5 01       		.byte	0x1
+ 966 02d6 0A       		.byte	0xa
+ 967 02d7 07       		.byte	0x7
+ 968 02d8 FB020000 		.4byte	0x2fb
+ 969 02dc 0B       		.uleb128 0xb
+ 970 02dd 99000000 		.4byte	.LASF64
+ 971 02e1 00       		.sleb128 0
+ 972 02e2 0B       		.uleb128 0xb
+ 973 02e3 7F020000 		.4byte	.LASF65
+ 974 02e7 01       		.sleb128 1
+ 975 02e8 0B       		.uleb128 0xb
+ 976 02e9 29020000 		.4byte	.LASF66
+ 977 02ed 02       		.sleb128 2
+ 978 02ee 0B       		.uleb128 0xb
+ 979 02ef 2A000000 		.4byte	.LASF67
+ 980 02f3 03       		.sleb128 3
+ 981 02f4 0B       		.uleb128 0xb
+ 982 02f5 9C020000 		.4byte	.LASF68
+ 983 02f9 04       		.sleb128 4
+ 984 02fa 00       		.byte	0
+ 985 02fb 02       		.uleb128 0x2
+ 986 02fc AC000000 		.4byte	.LASF69
+ 987 0300 0A       		.byte	0xa
+ 988 0301 0D       		.byte	0xd
+ 989 0302 D4020000 		.4byte	0x2d4
+ 990 0306 0A       		.uleb128 0xa
+ 991 0307 01       		.byte	0x1
+ 992 0308 0A       		.byte	0xa
+ 993 0309 11       		.byte	0x11
+ 994 030a 27030000 		.4byte	0x327
+ 995 030e 0B       		.uleb128 0xb
+ 996 030f E0030000 		.4byte	.LASF70
+ 997 0313 00       		.sleb128 0
+ 998 0314 0B       		.uleb128 0xb
+ 999 0315 1F010000 		.4byte	.LASF71
+ 1000 0319 01       		.sleb128 1
+ 1001 031a 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 21
+
+
+ 1002 031b 9C010000 		.4byte	.LASF72
+ 1003 031f 02       		.sleb128 2
+ 1004 0320 0B       		.uleb128 0xb
+ 1005 0321 12020000 		.4byte	.LASF73
+ 1006 0325 03       		.sleb128 3
+ 1007 0326 00       		.byte	0
+ 1008 0327 02       		.uleb128 0x2
+ 1009 0328 53040000 		.4byte	.LASF74
+ 1010 032c 0A       		.byte	0xa
+ 1011 032d 16       		.byte	0x16
+ 1012 032e 06030000 		.4byte	0x306
+ 1013 0332 0F       		.uleb128 0xf
+ 1014 0333 01       		.byte	0x1
+ 1015 0334 40000000 		.4byte	.LASF75
+ 1016 0338 01       		.byte	0x1
+ 1017 0339 17       		.byte	0x17
+ 1018 033a 01       		.byte	0x1
+ 1019 033b 57010000 		.4byte	0x157
+ 1020 033f 00000000 		.4byte	.LFB110
+ 1021 0343 34000000 		.4byte	.LFE110
+ 1022 0347 00000000 		.4byte	.LLST0
+ 1023 034b 01       		.byte	0x1
+ 1024 034c 9E030000 		.4byte	0x39e
+ 1025 0350 10       		.uleb128 0x10
+ 1026 0351 10000000 		.4byte	.LVL0
+ 1027 0355 95070000 		.4byte	0x795
+ 1028 0359 6A030000 		.4byte	0x36a
+ 1029 035d 11       		.uleb128 0x11
+ 1030 035e 01       		.byte	0x1
+ 1031 035f 52       		.byte	0x52
+ 1032 0360 01       		.byte	0x1
+ 1033 0361 48       		.byte	0x48
+ 1034 0362 11       		.uleb128 0x11
+ 1035 0363 01       		.byte	0x1
+ 1036 0364 50       		.byte	0x50
+ 1037 0365 03       		.byte	0x3
+ 1038 0366 0A       		.byte	0xa
+ 1039 0367 0010     		.2byte	0x1000
+ 1040 0369 00       		.byte	0
+ 1041 036a 10       		.uleb128 0x10
+ 1042 036b 16000000 		.4byte	.LVL1
+ 1043 036f B7070000 		.4byte	0x7b7
+ 1044 0373 81030000 		.4byte	0x381
+ 1045 0377 11       		.uleb128 0x11
+ 1046 0378 01       		.byte	0x1
+ 1047 0379 50       		.byte	0x50
+ 1048 037a 05       		.byte	0x5
+ 1049 037b 03       		.byte	0x3
+ 1050 037c 00000000 		.4byte	.LC0
+ 1051 0380 00       		.byte	0
+ 1052 0381 12       		.uleb128 0x12
+ 1053 0382 1C000000 		.4byte	.LVL2
+ 1054 0386 B7070000 		.4byte	0x7b7
+ 1055 038a 13       		.uleb128 0x13
+ 1056 038b 22000000 		.4byte	.LVL3
+ 1057 038f B7070000 		.4byte	0x7b7
+ 1058 0393 11       		.uleb128 0x11
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 22
+
+
+ 1059 0394 01       		.byte	0x1
+ 1060 0395 50       		.byte	0x50
+ 1061 0396 05       		.byte	0x5
+ 1062 0397 03       		.byte	0x3
+ 1063 0398 07000000 		.4byte	.LC1
+ 1064 039c 00       		.byte	0
+ 1065 039d 00       		.byte	0
+ 1066 039e 0F       		.uleb128 0xf
+ 1067 039f 01       		.byte	0x1
+ 1068 03a0 D8020000 		.4byte	.LASF76
+ 1069 03a4 01       		.byte	0x1
+ 1070 03a5 20       		.byte	0x20
+ 1071 03a6 01       		.byte	0x1
+ 1072 03a7 57010000 		.4byte	0x157
+ 1073 03ab 34000000 		.4byte	.LFB111
+ 1074 03af 54000000 		.4byte	.LFE111
+ 1075 03b3 20000000 		.4byte	.LLST1
+ 1076 03b7 01       		.byte	0x1
+ 1077 03b8 FF030000 		.4byte	0x3ff
+ 1078 03bc 14       		.uleb128 0x14
+ 1079 03bd BA050000 		.4byte	.LASF78
+ 1080 03c1 01       		.byte	0x1
+ 1081 03c2 20       		.byte	0x20
+ 1082 03c3 FF030000 		.4byte	0x3ff
+ 1083 03c7 40000000 		.4byte	.LLST2
+ 1084 03cb 10       		.uleb128 0x10
+ 1085 03cc 42000000 		.4byte	.LVL6
+ 1086 03d0 CF070000 		.4byte	0x7cf
+ 1087 03d4 E6030000 		.4byte	0x3e6
+ 1088 03d8 11       		.uleb128 0x11
+ 1089 03d9 01       		.byte	0x1
+ 1090 03da 51       		.byte	0x51
+ 1091 03db 02       		.byte	0x2
+ 1092 03dc 74       		.byte	0x74
+ 1093 03dd 00       		.sleb128 0
+ 1094 03de 11       		.uleb128 0x11
+ 1095 03df 01       		.byte	0x1
+ 1096 03e0 50       		.byte	0x50
+ 1097 03e1 03       		.byte	0x3
+ 1098 03e2 0A       		.byte	0xa
+ 1099 03e3 1820     		.2byte	0x2018
+ 1100 03e5 00       		.byte	0
+ 1101 03e6 15       		.uleb128 0x15
+ 1102 03e7 52000000 		.4byte	.LVL7
+ 1103 03eb 01       		.byte	0x1
+ 1104 03ec CF070000 		.4byte	0x7cf
+ 1105 03f0 11       		.uleb128 0x11
+ 1106 03f1 01       		.byte	0x1
+ 1107 03f2 51       		.byte	0x51
+ 1108 03f3 02       		.byte	0x2
+ 1109 03f4 74       		.byte	0x74
+ 1110 03f5 00       		.sleb128 0
+ 1111 03f6 11       		.uleb128 0x11
+ 1112 03f7 01       		.byte	0x1
+ 1113 03f8 50       		.byte	0x50
+ 1114 03f9 03       		.byte	0x3
+ 1115 03fa 0A       		.byte	0xa
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 23
+
+
+ 1116 03fb 1820     		.2byte	0x2018
+ 1117 03fd 00       		.byte	0
+ 1118 03fe 00       		.byte	0
+ 1119 03ff 08       		.uleb128 0x8
+ 1120 0400 04       		.byte	0x4
+ 1121 0401 C9020000 		.4byte	0x2c9
+ 1122 0405 0F       		.uleb128 0xf
+ 1123 0406 01       		.byte	0x1
+ 1124 0407 2C050000 		.4byte	.LASF77
+ 1125 040b 01       		.byte	0x1
+ 1126 040c 25       		.byte	0x25
+ 1127 040d 01       		.byte	0x1
+ 1128 040e 57010000 		.4byte	0x157
+ 1129 0412 54000000 		.4byte	.LFB112
+ 1130 0416 74000000 		.4byte	.LFE112
+ 1131 041a 69000000 		.4byte	.LLST3
+ 1132 041e 01       		.byte	0x1
+ 1133 041f 66040000 		.4byte	0x466
+ 1134 0423 14       		.uleb128 0x14
+ 1135 0424 BA050000 		.4byte	.LASF78
+ 1136 0428 01       		.byte	0x1
+ 1137 0429 25       		.byte	0x25
+ 1138 042a C9020000 		.4byte	0x2c9
+ 1139 042e 89000000 		.4byte	.LLST4
+ 1140 0432 10       		.uleb128 0x10
+ 1141 0433 62000000 		.4byte	.LVL10
+ 1142 0437 EC070000 		.4byte	0x7ec
+ 1143 043b 4D040000 		.4byte	0x44d
+ 1144 043f 11       		.uleb128 0x11
+ 1145 0440 01       		.byte	0x1
+ 1146 0441 51       		.byte	0x51
+ 1147 0442 02       		.byte	0x2
+ 1148 0443 74       		.byte	0x74
+ 1149 0444 00       		.sleb128 0
+ 1150 0445 11       		.uleb128 0x11
+ 1151 0446 01       		.byte	0x1
+ 1152 0447 50       		.byte	0x50
+ 1153 0448 03       		.byte	0x3
+ 1154 0449 0A       		.byte	0xa
+ 1155 044a 1820     		.2byte	0x2018
+ 1156 044c 00       		.byte	0
+ 1157 044d 15       		.uleb128 0x15
+ 1158 044e 72000000 		.4byte	.LVL11
+ 1159 0452 01       		.byte	0x1
+ 1160 0453 EC070000 		.4byte	0x7ec
+ 1161 0457 11       		.uleb128 0x11
+ 1162 0458 01       		.byte	0x1
+ 1163 0459 51       		.byte	0x51
+ 1164 045a 02       		.byte	0x2
+ 1165 045b 74       		.byte	0x74
+ 1166 045c 00       		.sleb128 0
+ 1167 045d 11       		.uleb128 0x11
+ 1168 045e 01       		.byte	0x1
+ 1169 045f 50       		.byte	0x50
+ 1170 0460 03       		.byte	0x3
+ 1171 0461 0A       		.byte	0xa
+ 1172 0462 1820     		.2byte	0x2018
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 24
+
+
+ 1173 0464 00       		.byte	0
+ 1174 0465 00       		.byte	0
+ 1175 0466 0F       		.uleb128 0xf
+ 1176 0467 01       		.byte	0x1
+ 1177 0468 C4020000 		.4byte	.LASF79
+ 1178 046c 01       		.byte	0x1
+ 1179 046d 2B       		.byte	0x2b
+ 1180 046e 01       		.byte	0x1
+ 1181 046f 57010000 		.4byte	0x157
+ 1182 0473 74000000 		.4byte	.LFB113
+ 1183 0477 94000000 		.4byte	.LFE113
+ 1184 047b AA000000 		.4byte	.LLST5
+ 1185 047f 01       		.byte	0x1
+ 1186 0480 C7040000 		.4byte	0x4c7
+ 1187 0484 14       		.uleb128 0x14
+ 1188 0485 5C020000 		.4byte	.LASF80
+ 1189 0489 01       		.byte	0x1
+ 1190 048a 2B       		.byte	0x2b
+ 1191 048b C7040000 		.4byte	0x4c7
+ 1192 048f CA000000 		.4byte	.LLST6
+ 1193 0493 10       		.uleb128 0x10
+ 1194 0494 82000000 		.4byte	.LVL14
+ 1195 0498 CF070000 		.4byte	0x7cf
+ 1196 049c AE040000 		.4byte	0x4ae
+ 1197 04a0 11       		.uleb128 0x11
+ 1198 04a1 01       		.byte	0x1
+ 1199 04a2 51       		.byte	0x51
+ 1200 04a3 02       		.byte	0x2
+ 1201 04a4 74       		.byte	0x74
+ 1202 04a5 00       		.sleb128 0
+ 1203 04a6 11       		.uleb128 0x11
+ 1204 04a7 01       		.byte	0x1
+ 1205 04a8 50       		.byte	0x50
+ 1206 04a9 03       		.byte	0x3
+ 1207 04aa 0A       		.byte	0xa
+ 1208 04ab 1810     		.2byte	0x1018
+ 1209 04ad 00       		.byte	0
+ 1210 04ae 15       		.uleb128 0x15
+ 1211 04af 92000000 		.4byte	.LVL15
+ 1212 04b3 01       		.byte	0x1
+ 1213 04b4 CF070000 		.4byte	0x7cf
+ 1214 04b8 11       		.uleb128 0x11
+ 1215 04b9 01       		.byte	0x1
+ 1216 04ba 51       		.byte	0x51
+ 1217 04bb 02       		.byte	0x2
+ 1218 04bc 74       		.byte	0x74
+ 1219 04bd 00       		.sleb128 0
+ 1220 04be 11       		.uleb128 0x11
+ 1221 04bf 01       		.byte	0x1
+ 1222 04c0 50       		.byte	0x50
+ 1223 04c1 03       		.byte	0x3
+ 1224 04c2 0A       		.byte	0xa
+ 1225 04c3 1810     		.2byte	0x1018
+ 1226 04c5 00       		.byte	0
+ 1227 04c6 00       		.byte	0
+ 1228 04c7 08       		.uleb128 0x8
+ 1229 04c8 04       		.byte	0x4
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 25
+
+
+ 1230 04c9 A8020000 		.4byte	0x2a8
+ 1231 04cd 0F       		.uleb128 0xf
+ 1232 04ce 01       		.byte	0x1
+ 1233 04cf FE010000 		.4byte	.LASF81
+ 1234 04d3 01       		.byte	0x1
+ 1235 04d4 30       		.byte	0x30
+ 1236 04d5 01       		.byte	0x1
+ 1237 04d6 57010000 		.4byte	0x157
+ 1238 04da 94000000 		.4byte	.LFB114
+ 1239 04de B4000000 		.4byte	.LFE114
+ 1240 04e2 F3000000 		.4byte	.LLST7
+ 1241 04e6 01       		.byte	0x1
+ 1242 04e7 2E050000 		.4byte	0x52e
+ 1243 04eb 14       		.uleb128 0x14
+ 1244 04ec 5C020000 		.4byte	.LASF80
+ 1245 04f0 01       		.byte	0x1
+ 1246 04f1 30       		.byte	0x30
+ 1247 04f2 A8020000 		.4byte	0x2a8
+ 1248 04f6 13010000 		.4byte	.LLST8
+ 1249 04fa 10       		.uleb128 0x10
+ 1250 04fb A2000000 		.4byte	.LVL18
+ 1251 04ff EC070000 		.4byte	0x7ec
+ 1252 0503 15050000 		.4byte	0x515
+ 1253 0507 11       		.uleb128 0x11
+ 1254 0508 01       		.byte	0x1
+ 1255 0509 51       		.byte	0x51
+ 1256 050a 02       		.byte	0x2
+ 1257 050b 74       		.byte	0x74
+ 1258 050c 00       		.sleb128 0
+ 1259 050d 11       		.uleb128 0x11
+ 1260 050e 01       		.byte	0x1
+ 1261 050f 50       		.byte	0x50
+ 1262 0510 03       		.byte	0x3
+ 1263 0511 0A       		.byte	0xa
+ 1264 0512 1810     		.2byte	0x1018
+ 1265 0514 00       		.byte	0
+ 1266 0515 15       		.uleb128 0x15
+ 1267 0516 B2000000 		.4byte	.LVL19
+ 1268 051a 01       		.byte	0x1
+ 1269 051b EC070000 		.4byte	0x7ec
+ 1270 051f 11       		.uleb128 0x11
+ 1271 0520 01       		.byte	0x1
+ 1272 0521 51       		.byte	0x51
+ 1273 0522 02       		.byte	0x2
+ 1274 0523 74       		.byte	0x74
+ 1275 0524 00       		.sleb128 0
+ 1276 0525 11       		.uleb128 0x11
+ 1277 0526 01       		.byte	0x1
+ 1278 0527 50       		.byte	0x50
+ 1279 0528 03       		.byte	0x3
+ 1280 0529 0A       		.byte	0xa
+ 1281 052a 1810     		.2byte	0x1018
+ 1282 052c 00       		.byte	0
+ 1283 052d 00       		.byte	0
+ 1284 052e 0F       		.uleb128 0xf
+ 1285 052f 01       		.byte	0x1
+ 1286 0530 72010000 		.4byte	.LASF82
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 26
+
+
+ 1287 0534 01       		.byte	0x1
+ 1288 0535 35       		.byte	0x35
+ 1289 0536 01       		.byte	0x1
+ 1290 0537 57010000 		.4byte	0x157
+ 1291 053b B4000000 		.4byte	.LFB115
+ 1292 053f 1C010000 		.4byte	.LFE115
+ 1293 0543 34010000 		.4byte	.LLST9
+ 1294 0547 01       		.byte	0x1
+ 1295 0548 DC050000 		.4byte	0x5dc
+ 1296 054c 16       		.uleb128 0x16
+ 1297 054d 00000000 		.4byte	.Ldebug_ranges0+0
+ 1298 0551 65050000 		.4byte	0x565
+ 1299 0555 17       		.uleb128 0x17
+ 1300 0556 69647800 		.ascii	"idx\000"
+ 1301 055a 01       		.byte	0x1
+ 1302 055b 36       		.byte	0x36
+ 1303 055c 37000000 		.4byte	0x37
+ 1304 0560 54010000 		.4byte	.LLST10
+ 1305 0564 00       		.byte	0
+ 1306 0565 10       		.uleb128 0x10
+ 1307 0566 D4000000 		.4byte	.LVL22
+ 1308 056a 09080000 		.4byte	0x809
+ 1309 056e 80050000 		.4byte	0x580
+ 1310 0572 11       		.uleb128 0x11
+ 1311 0573 01       		.byte	0x1
+ 1312 0574 52       		.byte	0x52
+ 1313 0575 02       		.byte	0x2
+ 1314 0576 74       		.byte	0x74
+ 1315 0577 00       		.sleb128 0
+ 1316 0578 11       		.uleb128 0x11
+ 1317 0579 01       		.byte	0x1
+ 1318 057a 50       		.byte	0x50
+ 1319 057b 03       		.byte	0x3
+ 1320 057c 0A       		.byte	0xa
+ 1321 057d 0010     		.2byte	0x1000
+ 1322 057f 00       		.byte	0
+ 1323 0580 18       		.uleb128 0x18
+ 1324 0581 E6000000 		.4byte	.LVL23
+ 1325 0585 01       		.byte	0x1
+ 1326 0586 09080000 		.4byte	0x809
+ 1327 058a 9C050000 		.4byte	0x59c
+ 1328 058e 11       		.uleb128 0x11
+ 1329 058f 01       		.byte	0x1
+ 1330 0590 52       		.byte	0x52
+ 1331 0591 02       		.byte	0x2
+ 1332 0592 74       		.byte	0x74
+ 1333 0593 00       		.sleb128 0
+ 1334 0594 11       		.uleb128 0x11
+ 1335 0595 01       		.byte	0x1
+ 1336 0596 50       		.byte	0x50
+ 1337 0597 03       		.byte	0x3
+ 1338 0598 0A       		.byte	0xa
+ 1339 0599 0010     		.2byte	0x1000
+ 1340 059b 00       		.byte	0
+ 1341 059c 10       		.uleb128 0x10
+ 1342 059d F0000000 		.4byte	.LVL24
+ 1343 05a1 2B080000 		.4byte	0x82b
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 27
+
+
+ 1344 05a5 B6050000 		.4byte	0x5b6
+ 1345 05a9 11       		.uleb128 0x11
+ 1346 05aa 01       		.byte	0x1
+ 1347 05ab 51       		.byte	0x51
+ 1348 05ac 01       		.byte	0x1
+ 1349 05ad 32       		.byte	0x32
+ 1350 05ae 11       		.uleb128 0x11
+ 1351 05af 01       		.byte	0x1
+ 1352 05b0 50       		.byte	0x50
+ 1353 05b1 03       		.byte	0x3
+ 1354 05b2 0A       		.byte	0xa
+ 1355 05b3 1810     		.2byte	0x1018
+ 1356 05b5 00       		.byte	0
+ 1357 05b6 10       		.uleb128 0x10
+ 1358 05b7 06010000 		.4byte	.LVL25
+ 1359 05bb 2B080000 		.4byte	0x82b
+ 1360 05bf D1050000 		.4byte	0x5d1
+ 1361 05c3 11       		.uleb128 0x11
+ 1362 05c4 01       		.byte	0x1
+ 1363 05c5 51       		.byte	0x51
+ 1364 05c6 02       		.byte	0x2
+ 1365 05c7 74       		.byte	0x74
+ 1366 05c8 00       		.sleb128 0
+ 1367 05c9 11       		.uleb128 0x11
+ 1368 05ca 01       		.byte	0x1
+ 1369 05cb 50       		.byte	0x50
+ 1370 05cc 03       		.byte	0x3
+ 1371 05cd 0A       		.byte	0xa
+ 1372 05ce 1820     		.2byte	0x2018
+ 1373 05d0 00       		.byte	0
+ 1374 05d1 19       		.uleb128 0x19
+ 1375 05d2 16010000 		.4byte	.LVL26
+ 1376 05d6 01       		.byte	0x1
+ 1377 05d7 2B080000 		.4byte	0x82b
+ 1378 05db 00       		.byte	0
+ 1379 05dc 0F       		.uleb128 0xf
+ 1380 05dd 01       		.byte	0x1
+ 1381 05de B2030000 		.4byte	.LASF83
+ 1382 05e2 01       		.byte	0x1
+ 1383 05e3 40       		.byte	0x40
+ 1384 05e4 01       		.byte	0x1
+ 1385 05e5 57010000 		.4byte	0x157
+ 1386 05e9 1C010000 		.4byte	.LFB116
+ 1387 05ed 14020000 		.4byte	.LFE116
+ 1388 05f1 68010000 		.4byte	.LLST11
+ 1389 05f5 01       		.byte	0x1
+ 1390 05f6 04070000 		.4byte	0x704
+ 1391 05fa 1A       		.uleb128 0x1a
+ 1392 05fb 6D736700 		.ascii	"msg\000"
+ 1393 05ff 01       		.byte	0x1
+ 1394 0600 40       		.byte	0x40
+ 1395 0601 04070000 		.4byte	0x704
+ 1396 0605 88010000 		.4byte	.LLST12
+ 1397 0609 10       		.uleb128 0x10
+ 1398 060a 42010000 		.4byte	.LVL29
+ 1399 060e B7070000 		.4byte	0x7b7
+ 1400 0612 20060000 		.4byte	0x620
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 28
+
+
+ 1401 0616 11       		.uleb128 0x11
+ 1402 0617 01       		.byte	0x1
+ 1403 0618 50       		.byte	0x50
+ 1404 0619 05       		.byte	0x5
+ 1405 061a 03       		.byte	0x3
+ 1406 061b 0A000000 		.4byte	.LC2
+ 1407 061f 00       		.byte	0
+ 1408 0620 10       		.uleb128 0x10
+ 1409 0621 4E010000 		.4byte	.LVL30
+ 1410 0625 48080000 		.4byte	0x848
+ 1411 0629 44060000 		.4byte	0x644
+ 1412 062d 11       		.uleb128 0x11
+ 1413 062e 01       		.byte	0x1
+ 1414 062f 53       		.byte	0x53
+ 1415 0630 01       		.byte	0x1
+ 1416 0631 30       		.byte	0x30
+ 1417 0632 11       		.uleb128 0x11
+ 1418 0633 01       		.byte	0x1
+ 1419 0634 52       		.byte	0x52
+ 1420 0635 01       		.byte	0x1
+ 1421 0636 30       		.byte	0x30
+ 1422 0637 11       		.uleb128 0x11
+ 1423 0638 01       		.byte	0x1
+ 1424 0639 51       		.byte	0x51
+ 1425 063a 02       		.byte	0x2
+ 1426 063b 08       		.byte	0x8
+ 1427 063c 64       		.byte	0x64
+ 1428 063d 11       		.uleb128 0x11
+ 1429 063e 01       		.byte	0x1
+ 1430 063f 50       		.byte	0x50
+ 1431 0640 02       		.byte	0x2
+ 1432 0641 08       		.byte	0x8
+ 1433 0642 64       		.byte	0x64
+ 1434 0643 00       		.byte	0
+ 1435 0644 12       		.uleb128 0x12
+ 1436 0645 72010000 		.4byte	.LVL34
+ 1437 0649 6B080000 		.4byte	0x86b
+ 1438 064d 10       		.uleb128 0x10
+ 1439 064e 7E010000 		.4byte	.LVL35
+ 1440 0652 7F080000 		.4byte	0x87f
+ 1441 0656 65060000 		.4byte	0x665
+ 1442 065a 11       		.uleb128 0x11
+ 1443 065b 01       		.byte	0x1
+ 1444 065c 51       		.byte	0x51
+ 1445 065d 01       		.byte	0x1
+ 1446 065e 30       		.byte	0x30
+ 1447 065f 11       		.uleb128 0x11
+ 1448 0660 01       		.byte	0x1
+ 1449 0661 50       		.byte	0x50
+ 1450 0662 01       		.byte	0x1
+ 1451 0663 30       		.byte	0x30
+ 1452 0664 00       		.byte	0
+ 1453 0665 10       		.uleb128 0x10
+ 1454 0666 8A010000 		.4byte	.LVL36
+ 1455 066a B7070000 		.4byte	0x7b7
+ 1456 066e 7C060000 		.4byte	0x67c
+ 1457 0672 11       		.uleb128 0x11
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 29
+
+
+ 1458 0673 01       		.byte	0x1
+ 1459 0674 50       		.byte	0x50
+ 1460 0675 05       		.byte	0x5
+ 1461 0676 03       		.byte	0x3
+ 1462 0677 2E000000 		.4byte	.LC3
+ 1463 067b 00       		.byte	0
+ 1464 067c 10       		.uleb128 0x10
+ 1465 067d A8010000 		.4byte	.LVL39
+ 1466 0681 B7070000 		.4byte	0x7b7
+ 1467 0685 93060000 		.4byte	0x693
+ 1468 0689 11       		.uleb128 0x11
+ 1469 068a 01       		.byte	0x1
+ 1470 068b 50       		.byte	0x50
+ 1471 068c 05       		.byte	0x5
+ 1472 068d 03       		.byte	0x3
+ 1473 068e 48000000 		.4byte	.LC4
+ 1474 0692 00       		.byte	0
+ 1475 0693 12       		.uleb128 0x12
+ 1476 0694 B0010000 		.4byte	.LVL40
+ 1477 0698 B7070000 		.4byte	0x7b7
+ 1478 069c 10       		.uleb128 0x10
+ 1479 069d B6010000 		.4byte	.LVL41
+ 1480 06a1 B7070000 		.4byte	0x7b7
+ 1481 06a5 B3060000 		.4byte	0x6b3
+ 1482 06a9 11       		.uleb128 0x11
+ 1483 06aa 01       		.byte	0x1
+ 1484 06ab 50       		.byte	0x50
+ 1485 06ac 05       		.byte	0x5
+ 1486 06ad 03       		.byte	0x3
+ 1487 06ae 07000000 		.4byte	.LC1
+ 1488 06b2 00       		.byte	0
+ 1489 06b3 10       		.uleb128 0x10
+ 1490 06b4 C2010000 		.4byte	.LVL42
+ 1491 06b8 98080000 		.4byte	0x898
+ 1492 06bc CD060000 		.4byte	0x6cd
+ 1493 06c0 11       		.uleb128 0x11
+ 1494 06c1 01       		.byte	0x1
+ 1495 06c2 52       		.byte	0x52
+ 1496 06c3 01       		.byte	0x1
+ 1497 06c4 48       		.byte	0x48
+ 1498 06c5 11       		.uleb128 0x11
+ 1499 06c6 01       		.byte	0x1
+ 1500 06c7 50       		.byte	0x50
+ 1501 06c8 03       		.byte	0x3
+ 1502 06c9 0A       		.byte	0xa
+ 1503 06ca 0010     		.2byte	0x1000
+ 1504 06cc 00       		.byte	0
+ 1505 06cd 18       		.uleb128 0x18
+ 1506 06ce D4010000 		.4byte	.LVL43
+ 1507 06d2 01       		.byte	0x1
+ 1508 06d3 98080000 		.4byte	0x898
+ 1509 06d7 E8060000 		.4byte	0x6e8
+ 1510 06db 11       		.uleb128 0x11
+ 1511 06dc 01       		.byte	0x1
+ 1512 06dd 52       		.byte	0x52
+ 1513 06de 01       		.byte	0x1
+ 1514 06df 48       		.byte	0x48
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 30
+
+
+ 1515 06e0 11       		.uleb128 0x11
+ 1516 06e1 01       		.byte	0x1
+ 1517 06e2 50       		.byte	0x50
+ 1518 06e3 03       		.byte	0x3
+ 1519 06e4 0A       		.byte	0xa
+ 1520 06e5 0010     		.2byte	0x1000
+ 1521 06e7 00       		.byte	0
+ 1522 06e8 13       		.uleb128 0x13
+ 1523 06e9 E2010000 		.4byte	.LVL45
+ 1524 06ed 48080000 		.4byte	0x848
+ 1525 06f1 11       		.uleb128 0x11
+ 1526 06f2 01       		.byte	0x1
+ 1527 06f3 53       		.byte	0x53
+ 1528 06f4 01       		.byte	0x1
+ 1529 06f5 48       		.byte	0x48
+ 1530 06f6 11       		.uleb128 0x11
+ 1531 06f7 01       		.byte	0x1
+ 1532 06f8 51       		.byte	0x51
+ 1533 06f9 02       		.byte	0x2
+ 1534 06fa 09       		.byte	0x9
+ 1535 06fb C8       		.byte	0xc8
+ 1536 06fc 11       		.uleb128 0x11
+ 1537 06fd 01       		.byte	0x1
+ 1538 06fe 50       		.byte	0x50
+ 1539 06ff 02       		.byte	0x2
+ 1540 0700 08       		.byte	0x8
+ 1541 0701 64       		.byte	0x64
+ 1542 0702 00       		.byte	0
+ 1543 0703 00       		.byte	0
+ 1544 0704 08       		.uleb128 0x8
+ 1545 0705 04       		.byte	0x4
+ 1546 0706 76020000 		.4byte	0x276
+ 1547 070a 1B       		.uleb128 0x1b
+ 1548 070b 8B040000 		.4byte	.LASF84
+ 1549 070f 0B       		.byte	0xb
+ 1550 0710 1A05     		.2byte	0x51a
+ 1551 0712 9E000000 		.4byte	0x9e
+ 1552 0716 01       		.byte	0x1
+ 1553 0717 01       		.byte	0x1
+ 1554 0718 1B       		.uleb128 0x1b
+ 1555 0719 AA010000 		.4byte	.LASF85
+ 1556 071d 03       		.byte	0x3
+ 1557 071e 5303     		.2byte	0x353
+ 1558 0720 37000000 		.4byte	0x37
+ 1559 0724 01       		.byte	0x1
+ 1560 0725 01       		.byte	0x1
+ 1561 0726 1B       		.uleb128 0x1b
+ 1562 0727 D2040000 		.4byte	.LASF86
+ 1563 072b 03       		.byte	0x3
+ 1564 072c 5403     		.2byte	0x354
+ 1565 072e 25000000 		.4byte	0x25
+ 1566 0732 01       		.byte	0x1
+ 1567 0733 01       		.byte	0x1
+ 1568 0734 1B       		.uleb128 0x1b
+ 1569 0735 81040000 		.4byte	.LASF87
+ 1570 0739 03       		.byte	0x3
+ 1571 073a 5503     		.2byte	0x355
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 31
+
+
+ 1572 073c 25000000 		.4byte	0x25
+ 1573 0740 01       		.byte	0x1
+ 1574 0741 01       		.byte	0x1
+ 1575 0742 1B       		.uleb128 0x1b
+ 1576 0743 53020000 		.4byte	.LASF88
+ 1577 0747 03       		.byte	0x3
+ 1578 0748 5603     		.2byte	0x356
+ 1579 074a 25000000 		.4byte	0x25
+ 1580 074e 01       		.byte	0x1
+ 1581 074f 01       		.byte	0x1
+ 1582 0750 1C       		.uleb128 0x1c
+ 1583 0751 BA020000 		.4byte	.LASF89
+ 1584 0755 01       		.byte	0x1
+ 1585 0756 14       		.byte	0x14
+ 1586 0757 DA000000 		.4byte	0xda
+ 1587 075b 01       		.byte	0x1
+ 1588 075c 05       		.byte	0x5
+ 1589 075d 03       		.byte	0x3
+ 1590 075e 00000000 		.4byte	NiVekName
+ 1591 0762 1B       		.uleb128 0x1b
+ 1592 0763 63000000 		.4byte	.LASF90
+ 1593 0767 03       		.byte	0x3
+ 1594 0768 6203     		.2byte	0x362
+ 1595 076a F6000000 		.4byte	0xf6
+ 1596 076e 01       		.byte	0x1
+ 1597 076f 01       		.byte	0x1
+ 1598 0770 1D       		.uleb128 0x1d
+ 1599 0771 10000000 		.4byte	.LASF91
+ 1600 0775 07       		.byte	0x7
+ 1601 0776 25       		.byte	0x25
+ 1602 0777 7D070000 		.4byte	0x77d
+ 1603 077b 01       		.byte	0x1
+ 1604 077c 01       		.byte	0x1
+ 1605 077d 08       		.uleb128 0x8
+ 1606 077e 04       		.byte	0x4
+ 1607 077f 00020000 		.4byte	0x200
+ 1608 0783 1C       		.uleb128 0x1c
+ 1609 0784 6A020000 		.4byte	.LASF92
+ 1610 0788 01       		.byte	0x1
+ 1611 0789 15       		.byte	0x15
+ 1612 078a 37000000 		.4byte	0x37
+ 1613 078e 01       		.byte	0x1
+ 1614 078f 05       		.byte	0x5
+ 1615 0790 03       		.byte	0x3
+ 1616 0791 00000000 		.4byte	StartupPhase
+ 1617 0795 1E       		.uleb128 0x1e
+ 1618 0796 01       		.byte	0x1
+ 1619 0797 6F040000 		.4byte	.LASF93
+ 1620 079b 0C       		.byte	0xc
+ 1621 079c 0A       		.byte	0xa
+ 1622 079d 01       		.byte	0x1
+ 1623 079e 57010000 		.4byte	0x157
+ 1624 07a2 01       		.byte	0x1
+ 1625 07a3 B7070000 		.4byte	0x7b7
+ 1626 07a7 1F       		.uleb128 0x1f
+ 1627 07a8 50000000 		.4byte	0x50
+ 1628 07ac 1F       		.uleb128 0x1f
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 32
+
+
+ 1629 07ad DA000000 		.4byte	0xda
+ 1630 07b1 1F       		.uleb128 0x1f
+ 1631 07b2 37000000 		.4byte	0x37
+ 1632 07b6 00       		.byte	0
+ 1633 07b7 1E       		.uleb128 0x1e
+ 1634 07b8 01       		.byte	0x1
+ 1635 07b9 A2030000 		.4byte	.LASF94
+ 1636 07bd 09       		.byte	0x9
+ 1637 07be 16       		.byte	0x16
+ 1638 07bf 01       		.byte	0x1
+ 1639 07c0 57010000 		.4byte	0x157
+ 1640 07c4 01       		.byte	0x1
+ 1641 07c5 CF070000 		.4byte	0x7cf
+ 1642 07c9 1F       		.uleb128 0x1f
+ 1643 07ca BA000000 		.4byte	0xba
+ 1644 07ce 00       		.byte	0
+ 1645 07cf 1E       		.uleb128 0x1e
+ 1646 07d0 01       		.byte	0x1
+ 1647 07d1 33020000 		.4byte	.LASF95
+ 1648 07d5 0C       		.byte	0xc
+ 1649 07d6 0C       		.byte	0xc
+ 1650 07d7 01       		.byte	0x1
+ 1651 07d8 57010000 		.4byte	0x157
+ 1652 07dc 01       		.byte	0x1
+ 1653 07dd EC070000 		.4byte	0x7ec
+ 1654 07e1 1F       		.uleb128 0x1f
+ 1655 07e2 50000000 		.4byte	0x50
+ 1656 07e6 1F       		.uleb128 0x1f
+ 1657 07e7 DA000000 		.4byte	0xda
+ 1658 07eb 00       		.byte	0
+ 1659 07ec 1E       		.uleb128 0x1e
+ 1660 07ed 01       		.byte	0x1
+ 1661 07ee CC000000 		.4byte	.LASF96
+ 1662 07f2 0C       		.byte	0xc
+ 1663 07f3 10       		.byte	0x10
+ 1664 07f4 01       		.byte	0x1
+ 1665 07f5 57010000 		.4byte	0x157
+ 1666 07f9 01       		.byte	0x1
+ 1667 07fa 09080000 		.4byte	0x809
+ 1668 07fe 1F       		.uleb128 0x1f
+ 1669 07ff 50000000 		.4byte	0x50
+ 1670 0803 1F       		.uleb128 0x1f
+ 1671 0804 37000000 		.4byte	0x37
+ 1672 0808 00       		.byte	0
+ 1673 0809 1E       		.uleb128 0x1e
+ 1674 080a 01       		.byte	0x1
+ 1675 080b E6010000 		.4byte	.LASF97
+ 1676 080f 0C       		.byte	0xc
+ 1677 0810 19       		.byte	0x19
+ 1678 0811 01       		.byte	0x1
+ 1679 0812 57010000 		.4byte	0x157
+ 1680 0816 01       		.byte	0x1
+ 1681 0817 2B080000 		.4byte	0x82b
+ 1682 081b 1F       		.uleb128 0x1f
+ 1683 081c 50000000 		.4byte	0x50
+ 1684 0820 1F       		.uleb128 0x1f
+ 1685 0821 DA000000 		.4byte	0xda
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 33
+
+
+ 1686 0825 1F       		.uleb128 0x1f
+ 1687 0826 37000000 		.4byte	0x37
+ 1688 082a 00       		.byte	0
+ 1689 082b 1E       		.uleb128 0x1e
+ 1690 082c 01       		.byte	0x1
+ 1691 082d E9040000 		.4byte	.LASF98
+ 1692 0831 0C       		.byte	0xc
+ 1693 0832 11       		.byte	0x11
+ 1694 0833 01       		.byte	0x1
+ 1695 0834 57010000 		.4byte	0x157
+ 1696 0838 01       		.byte	0x1
+ 1697 0839 48080000 		.4byte	0x848
+ 1698 083d 1F       		.uleb128 0x1f
+ 1699 083e 50000000 		.4byte	0x50
+ 1700 0842 1F       		.uleb128 0x1f
+ 1701 0843 37000000 		.4byte	0x37
+ 1702 0847 00       		.byte	0
+ 1703 0848 20       		.uleb128 0x20
+ 1704 0849 01       		.byte	0x1
+ 1705 084a 3B010000 		.4byte	.LASF99
+ 1706 084e 07       		.byte	0x7
+ 1707 084f 40       		.byte	0x40
+ 1708 0850 01       		.byte	0x1
+ 1709 0851 01       		.byte	0x1
+ 1710 0852 6B080000 		.4byte	0x86b
+ 1711 0856 1F       		.uleb128 0x1f
+ 1712 0857 37000000 		.4byte	0x37
+ 1713 085b 1F       		.uleb128 0x1f
+ 1714 085c 37000000 		.4byte	0x37
+ 1715 0860 1F       		.uleb128 0x1f
+ 1716 0861 DA000000 		.4byte	0xda
+ 1717 0865 1F       		.uleb128 0x1f
+ 1718 0866 50000000 		.4byte	0x50
+ 1719 086a 00       		.byte	0
+ 1720 086b 20       		.uleb128 0x20
+ 1721 086c 01       		.byte	0x1
+ 1722 086d 52000000 		.4byte	.LASF100
+ 1723 0871 06       		.byte	0x6
+ 1724 0872 16       		.byte	0x16
+ 1725 0873 01       		.byte	0x1
+ 1726 0874 01       		.byte	0x1
+ 1727 0875 7F080000 		.4byte	0x87f
+ 1728 0879 1F       		.uleb128 0x1f
+ 1729 087a 7D070000 		.4byte	0x77d
+ 1730 087e 00       		.byte	0
+ 1731 087f 20       		.uleb128 0x20
+ 1732 0880 01       		.byte	0x1
+ 1733 0881 F5000000 		.4byte	.LASF101
+ 1734 0885 0A       		.byte	0xa
+ 1735 0886 22       		.byte	0x22
+ 1736 0887 01       		.byte	0x1
+ 1737 0888 01       		.byte	0x1
+ 1738 0889 98080000 		.4byte	0x898
+ 1739 088d 1F       		.uleb128 0x1f
+ 1740 088e FB020000 		.4byte	0x2fb
+ 1741 0892 1F       		.uleb128 0x1f
+ 1742 0893 27030000 		.4byte	0x327
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 34
+
+
+ 1743 0897 00       		.byte	0
+ 1744 0898 21       		.uleb128 0x21
+ 1745 0899 01       		.byte	0x1
+ 1746 089a 7C030000 		.4byte	.LASF102
+ 1747 089e 0C       		.byte	0xc
+ 1748 089f 18       		.byte	0x18
+ 1749 08a0 01       		.byte	0x1
+ 1750 08a1 57010000 		.4byte	0x157
+ 1751 08a5 01       		.byte	0x1
+ 1752 08a6 1F       		.uleb128 0x1f
+ 1753 08a7 50000000 		.4byte	0x50
+ 1754 08ab 1F       		.uleb128 0x1f
+ 1755 08ac DA000000 		.4byte	0xda
+ 1756 08b0 1F       		.uleb128 0x1f
+ 1757 08b1 37000000 		.4byte	0x37
+ 1758 08b5 00       		.byte	0
+ 1759 08b6 00       		.byte	0
+ 1760              		.section	.debug_abbrev,"",%progbits
+ 1761              	.Ldebug_abbrev0:
+ 1762 0000 01       		.uleb128 0x1
+ 1763 0001 11       		.uleb128 0x11
+ 1764 0002 01       		.byte	0x1
+ 1765 0003 25       		.uleb128 0x25
+ 1766 0004 0E       		.uleb128 0xe
+ 1767 0005 13       		.uleb128 0x13
+ 1768 0006 0B       		.uleb128 0xb
+ 1769 0007 03       		.uleb128 0x3
+ 1770 0008 0E       		.uleb128 0xe
+ 1771 0009 1B       		.uleb128 0x1b
+ 1772 000a 0E       		.uleb128 0xe
+ 1773 000b 11       		.uleb128 0x11
+ 1774 000c 01       		.uleb128 0x1
+ 1775 000d 12       		.uleb128 0x12
+ 1776 000e 01       		.uleb128 0x1
+ 1777 000f 10       		.uleb128 0x10
+ 1778 0010 06       		.uleb128 0x6
+ 1779 0011 00       		.byte	0
+ 1780 0012 00       		.byte	0
+ 1781 0013 02       		.uleb128 0x2
+ 1782 0014 16       		.uleb128 0x16
+ 1783 0015 00       		.byte	0
+ 1784 0016 03       		.uleb128 0x3
+ 1785 0017 0E       		.uleb128 0xe
+ 1786 0018 3A       		.uleb128 0x3a
+ 1787 0019 0B       		.uleb128 0xb
+ 1788 001a 3B       		.uleb128 0x3b
+ 1789 001b 0B       		.uleb128 0xb
+ 1790 001c 49       		.uleb128 0x49
+ 1791 001d 13       		.uleb128 0x13
+ 1792 001e 00       		.byte	0
+ 1793 001f 00       		.byte	0
+ 1794 0020 03       		.uleb128 0x3
+ 1795 0021 24       		.uleb128 0x24
+ 1796 0022 00       		.byte	0
+ 1797 0023 0B       		.uleb128 0xb
+ 1798 0024 0B       		.uleb128 0xb
+ 1799 0025 3E       		.uleb128 0x3e
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 35
+
+
+ 1800 0026 0B       		.uleb128 0xb
+ 1801 0027 03       		.uleb128 0x3
+ 1802 0028 0E       		.uleb128 0xe
+ 1803 0029 00       		.byte	0
+ 1804 002a 00       		.byte	0
+ 1805 002b 04       		.uleb128 0x4
+ 1806 002c 24       		.uleb128 0x24
+ 1807 002d 00       		.byte	0
+ 1808 002e 0B       		.uleb128 0xb
+ 1809 002f 0B       		.uleb128 0xb
+ 1810 0030 3E       		.uleb128 0x3e
+ 1811 0031 0B       		.uleb128 0xb
+ 1812 0032 03       		.uleb128 0x3
+ 1813 0033 08       		.uleb128 0x8
+ 1814 0034 00       		.byte	0
+ 1815 0035 00       		.byte	0
+ 1816 0036 05       		.uleb128 0x5
+ 1817 0037 35       		.uleb128 0x35
+ 1818 0038 00       		.byte	0
+ 1819 0039 49       		.uleb128 0x49
+ 1820 003a 13       		.uleb128 0x13
+ 1821 003b 00       		.byte	0
+ 1822 003c 00       		.byte	0
+ 1823 003d 06       		.uleb128 0x6
+ 1824 003e 0F       		.uleb128 0xf
+ 1825 003f 00       		.byte	0
+ 1826 0040 0B       		.uleb128 0xb
+ 1827 0041 0B       		.uleb128 0xb
+ 1828 0042 00       		.byte	0
+ 1829 0043 00       		.byte	0
+ 1830 0044 07       		.uleb128 0x7
+ 1831 0045 15       		.uleb128 0x15
+ 1832 0046 00       		.byte	0
+ 1833 0047 27       		.uleb128 0x27
+ 1834 0048 0C       		.uleb128 0xc
+ 1835 0049 00       		.byte	0
+ 1836 004a 00       		.byte	0
+ 1837 004b 08       		.uleb128 0x8
+ 1838 004c 0F       		.uleb128 0xf
+ 1839 004d 00       		.byte	0
+ 1840 004e 0B       		.uleb128 0xb
+ 1841 004f 0B       		.uleb128 0xb
+ 1842 0050 49       		.uleb128 0x49
+ 1843 0051 13       		.uleb128 0x13
+ 1844 0052 00       		.byte	0
+ 1845 0053 00       		.byte	0
+ 1846 0054 09       		.uleb128 0x9
+ 1847 0055 26       		.uleb128 0x26
+ 1848 0056 00       		.byte	0
+ 1849 0057 49       		.uleb128 0x49
+ 1850 0058 13       		.uleb128 0x13
+ 1851 0059 00       		.byte	0
+ 1852 005a 00       		.byte	0
+ 1853 005b 0A       		.uleb128 0xa
+ 1854 005c 04       		.uleb128 0x4
+ 1855 005d 01       		.byte	0x1
+ 1856 005e 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 36
+
+
+ 1857 005f 0B       		.uleb128 0xb
+ 1858 0060 3A       		.uleb128 0x3a
+ 1859 0061 0B       		.uleb128 0xb
+ 1860 0062 3B       		.uleb128 0x3b
+ 1861 0063 0B       		.uleb128 0xb
+ 1862 0064 01       		.uleb128 0x1
+ 1863 0065 13       		.uleb128 0x13
+ 1864 0066 00       		.byte	0
+ 1865 0067 00       		.byte	0
+ 1866 0068 0B       		.uleb128 0xb
+ 1867 0069 28       		.uleb128 0x28
+ 1868 006a 00       		.byte	0
+ 1869 006b 03       		.uleb128 0x3
+ 1870 006c 0E       		.uleb128 0xe
+ 1871 006d 1C       		.uleb128 0x1c
+ 1872 006e 0D       		.uleb128 0xd
+ 1873 006f 00       		.byte	0
+ 1874 0070 00       		.byte	0
+ 1875 0071 0C       		.uleb128 0xc
+ 1876 0072 28       		.uleb128 0x28
+ 1877 0073 00       		.byte	0
+ 1878 0074 03       		.uleb128 0x3
+ 1879 0075 08       		.uleb128 0x8
+ 1880 0076 1C       		.uleb128 0x1c
+ 1881 0077 0D       		.uleb128 0xd
+ 1882 0078 00       		.byte	0
+ 1883 0079 00       		.byte	0
+ 1884 007a 0D       		.uleb128 0xd
+ 1885 007b 13       		.uleb128 0x13
+ 1886 007c 01       		.byte	0x1
+ 1887 007d 0B       		.uleb128 0xb
+ 1888 007e 0B       		.uleb128 0xb
+ 1889 007f 3A       		.uleb128 0x3a
+ 1890 0080 0B       		.uleb128 0xb
+ 1891 0081 3B       		.uleb128 0x3b
+ 1892 0082 0B       		.uleb128 0xb
+ 1893 0083 01       		.uleb128 0x1
+ 1894 0084 13       		.uleb128 0x13
+ 1895 0085 00       		.byte	0
+ 1896 0086 00       		.byte	0
+ 1897 0087 0E       		.uleb128 0xe
+ 1898 0088 0D       		.uleb128 0xd
+ 1899 0089 00       		.byte	0
+ 1900 008a 03       		.uleb128 0x3
+ 1901 008b 0E       		.uleb128 0xe
+ 1902 008c 3A       		.uleb128 0x3a
+ 1903 008d 0B       		.uleb128 0xb
+ 1904 008e 3B       		.uleb128 0x3b
+ 1905 008f 0B       		.uleb128 0xb
+ 1906 0090 49       		.uleb128 0x49
+ 1907 0091 13       		.uleb128 0x13
+ 1908 0092 38       		.uleb128 0x38
+ 1909 0093 0A       		.uleb128 0xa
+ 1910 0094 00       		.byte	0
+ 1911 0095 00       		.byte	0
+ 1912 0096 0F       		.uleb128 0xf
+ 1913 0097 2E       		.uleb128 0x2e
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 37
+
+
+ 1914 0098 01       		.byte	0x1
+ 1915 0099 3F       		.uleb128 0x3f
+ 1916 009a 0C       		.uleb128 0xc
+ 1917 009b 03       		.uleb128 0x3
+ 1918 009c 0E       		.uleb128 0xe
+ 1919 009d 3A       		.uleb128 0x3a
+ 1920 009e 0B       		.uleb128 0xb
+ 1921 009f 3B       		.uleb128 0x3b
+ 1922 00a0 0B       		.uleb128 0xb
+ 1923 00a1 27       		.uleb128 0x27
+ 1924 00a2 0C       		.uleb128 0xc
+ 1925 00a3 49       		.uleb128 0x49
+ 1926 00a4 13       		.uleb128 0x13
+ 1927 00a5 11       		.uleb128 0x11
+ 1928 00a6 01       		.uleb128 0x1
+ 1929 00a7 12       		.uleb128 0x12
+ 1930 00a8 01       		.uleb128 0x1
+ 1931 00a9 40       		.uleb128 0x40
+ 1932 00aa 06       		.uleb128 0x6
+ 1933 00ab 9742     		.uleb128 0x2117
+ 1934 00ad 0C       		.uleb128 0xc
+ 1935 00ae 01       		.uleb128 0x1
+ 1936 00af 13       		.uleb128 0x13
+ 1937 00b0 00       		.byte	0
+ 1938 00b1 00       		.byte	0
+ 1939 00b2 10       		.uleb128 0x10
+ 1940 00b3 898201   		.uleb128 0x4109
+ 1941 00b6 01       		.byte	0x1
+ 1942 00b7 11       		.uleb128 0x11
+ 1943 00b8 01       		.uleb128 0x1
+ 1944 00b9 31       		.uleb128 0x31
+ 1945 00ba 13       		.uleb128 0x13
+ 1946 00bb 01       		.uleb128 0x1
+ 1947 00bc 13       		.uleb128 0x13
+ 1948 00bd 00       		.byte	0
+ 1949 00be 00       		.byte	0
+ 1950 00bf 11       		.uleb128 0x11
+ 1951 00c0 8A8201   		.uleb128 0x410a
+ 1952 00c3 00       		.byte	0
+ 1953 00c4 02       		.uleb128 0x2
+ 1954 00c5 0A       		.uleb128 0xa
+ 1955 00c6 9142     		.uleb128 0x2111
+ 1956 00c8 0A       		.uleb128 0xa
+ 1957 00c9 00       		.byte	0
+ 1958 00ca 00       		.byte	0
+ 1959 00cb 12       		.uleb128 0x12
+ 1960 00cc 898201   		.uleb128 0x4109
+ 1961 00cf 00       		.byte	0
+ 1962 00d0 11       		.uleb128 0x11
+ 1963 00d1 01       		.uleb128 0x1
+ 1964 00d2 31       		.uleb128 0x31
+ 1965 00d3 13       		.uleb128 0x13
+ 1966 00d4 00       		.byte	0
+ 1967 00d5 00       		.byte	0
+ 1968 00d6 13       		.uleb128 0x13
+ 1969 00d7 898201   		.uleb128 0x4109
+ 1970 00da 01       		.byte	0x1
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 38
+
+
+ 1971 00db 11       		.uleb128 0x11
+ 1972 00dc 01       		.uleb128 0x1
+ 1973 00dd 31       		.uleb128 0x31
+ 1974 00de 13       		.uleb128 0x13
+ 1975 00df 00       		.byte	0
+ 1976 00e0 00       		.byte	0
+ 1977 00e1 14       		.uleb128 0x14
+ 1978 00e2 05       		.uleb128 0x5
+ 1979 00e3 00       		.byte	0
+ 1980 00e4 03       		.uleb128 0x3
+ 1981 00e5 0E       		.uleb128 0xe
+ 1982 00e6 3A       		.uleb128 0x3a
+ 1983 00e7 0B       		.uleb128 0xb
+ 1984 00e8 3B       		.uleb128 0x3b
+ 1985 00e9 0B       		.uleb128 0xb
+ 1986 00ea 49       		.uleb128 0x49
+ 1987 00eb 13       		.uleb128 0x13
+ 1988 00ec 02       		.uleb128 0x2
+ 1989 00ed 06       		.uleb128 0x6
+ 1990 00ee 00       		.byte	0
+ 1991 00ef 00       		.byte	0
+ 1992 00f0 15       		.uleb128 0x15
+ 1993 00f1 898201   		.uleb128 0x4109
+ 1994 00f4 01       		.byte	0x1
+ 1995 00f5 11       		.uleb128 0x11
+ 1996 00f6 01       		.uleb128 0x1
+ 1997 00f7 9542     		.uleb128 0x2115
+ 1998 00f9 0C       		.uleb128 0xc
+ 1999 00fa 31       		.uleb128 0x31
+ 2000 00fb 13       		.uleb128 0x13
+ 2001 00fc 00       		.byte	0
+ 2002 00fd 00       		.byte	0
+ 2003 00fe 16       		.uleb128 0x16
+ 2004 00ff 0B       		.uleb128 0xb
+ 2005 0100 01       		.byte	0x1
+ 2006 0101 55       		.uleb128 0x55
+ 2007 0102 06       		.uleb128 0x6
+ 2008 0103 01       		.uleb128 0x1
+ 2009 0104 13       		.uleb128 0x13
+ 2010 0105 00       		.byte	0
+ 2011 0106 00       		.byte	0
+ 2012 0107 17       		.uleb128 0x17
+ 2013 0108 34       		.uleb128 0x34
+ 2014 0109 00       		.byte	0
+ 2015 010a 03       		.uleb128 0x3
+ 2016 010b 08       		.uleb128 0x8
+ 2017 010c 3A       		.uleb128 0x3a
+ 2018 010d 0B       		.uleb128 0xb
+ 2019 010e 3B       		.uleb128 0x3b
+ 2020 010f 0B       		.uleb128 0xb
+ 2021 0110 49       		.uleb128 0x49
+ 2022 0111 13       		.uleb128 0x13
+ 2023 0112 02       		.uleb128 0x2
+ 2024 0113 06       		.uleb128 0x6
+ 2025 0114 00       		.byte	0
+ 2026 0115 00       		.byte	0
+ 2027 0116 18       		.uleb128 0x18
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 39
+
+
+ 2028 0117 898201   		.uleb128 0x4109
+ 2029 011a 01       		.byte	0x1
+ 2030 011b 11       		.uleb128 0x11
+ 2031 011c 01       		.uleb128 0x1
+ 2032 011d 9542     		.uleb128 0x2115
+ 2033 011f 0C       		.uleb128 0xc
+ 2034 0120 31       		.uleb128 0x31
+ 2035 0121 13       		.uleb128 0x13
+ 2036 0122 01       		.uleb128 0x1
+ 2037 0123 13       		.uleb128 0x13
+ 2038 0124 00       		.byte	0
+ 2039 0125 00       		.byte	0
+ 2040 0126 19       		.uleb128 0x19
+ 2041 0127 898201   		.uleb128 0x4109
+ 2042 012a 00       		.byte	0
+ 2043 012b 11       		.uleb128 0x11
+ 2044 012c 01       		.uleb128 0x1
+ 2045 012d 9542     		.uleb128 0x2115
+ 2046 012f 0C       		.uleb128 0xc
+ 2047 0130 31       		.uleb128 0x31
+ 2048 0131 13       		.uleb128 0x13
+ 2049 0132 00       		.byte	0
+ 2050 0133 00       		.byte	0
+ 2051 0134 1A       		.uleb128 0x1a
+ 2052 0135 05       		.uleb128 0x5
+ 2053 0136 00       		.byte	0
+ 2054 0137 03       		.uleb128 0x3
+ 2055 0138 08       		.uleb128 0x8
+ 2056 0139 3A       		.uleb128 0x3a
+ 2057 013a 0B       		.uleb128 0xb
+ 2058 013b 3B       		.uleb128 0x3b
+ 2059 013c 0B       		.uleb128 0xb
+ 2060 013d 49       		.uleb128 0x49
+ 2061 013e 13       		.uleb128 0x13
+ 2062 013f 02       		.uleb128 0x2
+ 2063 0140 06       		.uleb128 0x6
+ 2064 0141 00       		.byte	0
+ 2065 0142 00       		.byte	0
+ 2066 0143 1B       		.uleb128 0x1b
+ 2067 0144 34       		.uleb128 0x34
+ 2068 0145 00       		.byte	0
+ 2069 0146 03       		.uleb128 0x3
+ 2070 0147 0E       		.uleb128 0xe
+ 2071 0148 3A       		.uleb128 0x3a
+ 2072 0149 0B       		.uleb128 0xb
+ 2073 014a 3B       		.uleb128 0x3b
+ 2074 014b 05       		.uleb128 0x5
+ 2075 014c 49       		.uleb128 0x49
+ 2076 014d 13       		.uleb128 0x13
+ 2077 014e 3F       		.uleb128 0x3f
+ 2078 014f 0C       		.uleb128 0xc
+ 2079 0150 3C       		.uleb128 0x3c
+ 2080 0151 0C       		.uleb128 0xc
+ 2081 0152 00       		.byte	0
+ 2082 0153 00       		.byte	0
+ 2083 0154 1C       		.uleb128 0x1c
+ 2084 0155 34       		.uleb128 0x34
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 40
+
+
+ 2085 0156 00       		.byte	0
+ 2086 0157 03       		.uleb128 0x3
+ 2087 0158 0E       		.uleb128 0xe
+ 2088 0159 3A       		.uleb128 0x3a
+ 2089 015a 0B       		.uleb128 0xb
+ 2090 015b 3B       		.uleb128 0x3b
+ 2091 015c 0B       		.uleb128 0xb
+ 2092 015d 49       		.uleb128 0x49
+ 2093 015e 13       		.uleb128 0x13
+ 2094 015f 3F       		.uleb128 0x3f
+ 2095 0160 0C       		.uleb128 0xc
+ 2096 0161 02       		.uleb128 0x2
+ 2097 0162 0A       		.uleb128 0xa
+ 2098 0163 00       		.byte	0
+ 2099 0164 00       		.byte	0
+ 2100 0165 1D       		.uleb128 0x1d
+ 2101 0166 34       		.uleb128 0x34
+ 2102 0167 00       		.byte	0
+ 2103 0168 03       		.uleb128 0x3
+ 2104 0169 0E       		.uleb128 0xe
+ 2105 016a 3A       		.uleb128 0x3a
+ 2106 016b 0B       		.uleb128 0xb
+ 2107 016c 3B       		.uleb128 0x3b
+ 2108 016d 0B       		.uleb128 0xb
+ 2109 016e 49       		.uleb128 0x49
+ 2110 016f 13       		.uleb128 0x13
+ 2111 0170 3F       		.uleb128 0x3f
+ 2112 0171 0C       		.uleb128 0xc
+ 2113 0172 3C       		.uleb128 0x3c
+ 2114 0173 0C       		.uleb128 0xc
+ 2115 0174 00       		.byte	0
+ 2116 0175 00       		.byte	0
+ 2117 0176 1E       		.uleb128 0x1e
+ 2118 0177 2E       		.uleb128 0x2e
+ 2119 0178 01       		.byte	0x1
+ 2120 0179 3F       		.uleb128 0x3f
+ 2121 017a 0C       		.uleb128 0xc
+ 2122 017b 03       		.uleb128 0x3
+ 2123 017c 0E       		.uleb128 0xe
+ 2124 017d 3A       		.uleb128 0x3a
+ 2125 017e 0B       		.uleb128 0xb
+ 2126 017f 3B       		.uleb128 0x3b
+ 2127 0180 0B       		.uleb128 0xb
+ 2128 0181 27       		.uleb128 0x27
+ 2129 0182 0C       		.uleb128 0xc
+ 2130 0183 49       		.uleb128 0x49
+ 2131 0184 13       		.uleb128 0x13
+ 2132 0185 3C       		.uleb128 0x3c
+ 2133 0186 0C       		.uleb128 0xc
+ 2134 0187 01       		.uleb128 0x1
+ 2135 0188 13       		.uleb128 0x13
+ 2136 0189 00       		.byte	0
+ 2137 018a 00       		.byte	0
+ 2138 018b 1F       		.uleb128 0x1f
+ 2139 018c 05       		.uleb128 0x5
+ 2140 018d 00       		.byte	0
+ 2141 018e 49       		.uleb128 0x49
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 41
+
+
+ 2142 018f 13       		.uleb128 0x13
+ 2143 0190 00       		.byte	0
+ 2144 0191 00       		.byte	0
+ 2145 0192 20       		.uleb128 0x20
+ 2146 0193 2E       		.uleb128 0x2e
+ 2147 0194 01       		.byte	0x1
+ 2148 0195 3F       		.uleb128 0x3f
+ 2149 0196 0C       		.uleb128 0xc
+ 2150 0197 03       		.uleb128 0x3
+ 2151 0198 0E       		.uleb128 0xe
+ 2152 0199 3A       		.uleb128 0x3a
+ 2153 019a 0B       		.uleb128 0xb
+ 2154 019b 3B       		.uleb128 0x3b
+ 2155 019c 0B       		.uleb128 0xb
+ 2156 019d 27       		.uleb128 0x27
+ 2157 019e 0C       		.uleb128 0xc
+ 2158 019f 3C       		.uleb128 0x3c
+ 2159 01a0 0C       		.uleb128 0xc
+ 2160 01a1 01       		.uleb128 0x1
+ 2161 01a2 13       		.uleb128 0x13
+ 2162 01a3 00       		.byte	0
+ 2163 01a4 00       		.byte	0
+ 2164 01a5 21       		.uleb128 0x21
+ 2165 01a6 2E       		.uleb128 0x2e
+ 2166 01a7 01       		.byte	0x1
+ 2167 01a8 3F       		.uleb128 0x3f
+ 2168 01a9 0C       		.uleb128 0xc
+ 2169 01aa 03       		.uleb128 0x3
+ 2170 01ab 0E       		.uleb128 0xe
+ 2171 01ac 3A       		.uleb128 0x3a
+ 2172 01ad 0B       		.uleb128 0xb
+ 2173 01ae 3B       		.uleb128 0x3b
+ 2174 01af 0B       		.uleb128 0xb
+ 2175 01b0 27       		.uleb128 0x27
+ 2176 01b1 0C       		.uleb128 0xc
+ 2177 01b2 49       		.uleb128 0x49
+ 2178 01b3 13       		.uleb128 0x13
+ 2179 01b4 3C       		.uleb128 0x3c
+ 2180 01b5 0C       		.uleb128 0xc
+ 2181 01b6 00       		.byte	0
+ 2182 01b7 00       		.byte	0
+ 2183 01b8 00       		.byte	0
+ 2184              		.section	.debug_loc,"",%progbits
+ 2185              	.Ldebug_loc0:
+ 2186              	.LLST0:
+ 2187 0000 00000000 		.4byte	.LFB110-.Ltext0
+ 2188 0004 02000000 		.4byte	.LCFI0-.Ltext0
+ 2189 0008 0200     		.2byte	0x2
+ 2190 000a 7D       		.byte	0x7d
+ 2191 000b 00       		.sleb128 0
+ 2192 000c 02000000 		.4byte	.LCFI0-.Ltext0
+ 2193 0010 34000000 		.4byte	.LFE110-.Ltext0
+ 2194 0014 0200     		.2byte	0x2
+ 2195 0016 7D       		.byte	0x7d
+ 2196 0017 08       		.sleb128 8
+ 2197 0018 00000000 		.4byte	0
+ 2198 001c 00000000 		.4byte	0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 42
+
+
+ 2199              	.LLST1:
+ 2200 0020 34000000 		.4byte	.LFB111-.Ltext0
+ 2201 0024 36000000 		.4byte	.LCFI1-.Ltext0
+ 2202 0028 0200     		.2byte	0x2
+ 2203 002a 7D       		.byte	0x7d
+ 2204 002b 00       		.sleb128 0
+ 2205 002c 36000000 		.4byte	.LCFI1-.Ltext0
+ 2206 0030 54000000 		.4byte	.LFE111-.Ltext0
+ 2207 0034 0200     		.2byte	0x2
+ 2208 0036 7D       		.byte	0x7d
+ 2209 0037 08       		.sleb128 8
+ 2210 0038 00000000 		.4byte	0
+ 2211 003c 00000000 		.4byte	0
+ 2212              	.LLST2:
+ 2213 0040 34000000 		.4byte	.LVL4-.Ltext0
+ 2214 0044 3E000000 		.4byte	.LVL5-.Ltext0
+ 2215 0048 0100     		.2byte	0x1
+ 2216 004a 50       		.byte	0x50
+ 2217 004b 3E000000 		.4byte	.LVL5-.Ltext0
+ 2218 004f 41000000 		.4byte	.LVL6-1-.Ltext0
+ 2219 0053 0100     		.2byte	0x1
+ 2220 0055 51       		.byte	0x51
+ 2221 0056 41000000 		.4byte	.LVL6-1-.Ltext0
+ 2222 005a 54000000 		.4byte	.LFE111-.Ltext0
+ 2223 005e 0100     		.2byte	0x1
+ 2224 0060 54       		.byte	0x54
+ 2225 0061 00000000 		.4byte	0
+ 2226 0065 00000000 		.4byte	0
+ 2227              	.LLST3:
+ 2228 0069 54000000 		.4byte	.LFB112-.Ltext0
+ 2229 006d 56000000 		.4byte	.LCFI2-.Ltext0
+ 2230 0071 0200     		.2byte	0x2
+ 2231 0073 7D       		.byte	0x7d
+ 2232 0074 00       		.sleb128 0
+ 2233 0075 56000000 		.4byte	.LCFI2-.Ltext0
+ 2234 0079 74000000 		.4byte	.LFE112-.Ltext0
+ 2235 007d 0200     		.2byte	0x2
+ 2236 007f 7D       		.byte	0x7d
+ 2237 0080 08       		.sleb128 8
+ 2238 0081 00000000 		.4byte	0
+ 2239 0085 00000000 		.4byte	0
+ 2240              	.LLST4:
+ 2241 0089 54000000 		.4byte	.LVL8-.Ltext0
+ 2242 008d 5E000000 		.4byte	.LVL9-.Ltext0
+ 2243 0091 0100     		.2byte	0x1
+ 2244 0093 50       		.byte	0x50
+ 2245 0094 5E000000 		.4byte	.LVL9-.Ltext0
+ 2246 0098 74000000 		.4byte	.LFE112-.Ltext0
+ 2247 009c 0400     		.2byte	0x4
+ 2248 009e F3       		.byte	0xf3
+ 2249 009f 01       		.uleb128 0x1
+ 2250 00a0 50       		.byte	0x50
+ 2251 00a1 9F       		.byte	0x9f
+ 2252 00a2 00000000 		.4byte	0
+ 2253 00a6 00000000 		.4byte	0
+ 2254              	.LLST5:
+ 2255 00aa 74000000 		.4byte	.LFB113-.Ltext0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 43
+
+
+ 2256 00ae 76000000 		.4byte	.LCFI3-.Ltext0
+ 2257 00b2 0200     		.2byte	0x2
+ 2258 00b4 7D       		.byte	0x7d
+ 2259 00b5 00       		.sleb128 0
+ 2260 00b6 76000000 		.4byte	.LCFI3-.Ltext0
+ 2261 00ba 94000000 		.4byte	.LFE113-.Ltext0
+ 2262 00be 0200     		.2byte	0x2
+ 2263 00c0 7D       		.byte	0x7d
+ 2264 00c1 08       		.sleb128 8
+ 2265 00c2 00000000 		.4byte	0
+ 2266 00c6 00000000 		.4byte	0
+ 2267              	.LLST6:
+ 2268 00ca 74000000 		.4byte	.LVL12-.Ltext0
+ 2269 00ce 7E000000 		.4byte	.LVL13-.Ltext0
+ 2270 00d2 0100     		.2byte	0x1
+ 2271 00d4 50       		.byte	0x50
+ 2272 00d5 7E000000 		.4byte	.LVL13-.Ltext0
+ 2273 00d9 81000000 		.4byte	.LVL14-1-.Ltext0
+ 2274 00dd 0100     		.2byte	0x1
+ 2275 00df 51       		.byte	0x51
+ 2276 00e0 81000000 		.4byte	.LVL14-1-.Ltext0
+ 2277 00e4 94000000 		.4byte	.LFE113-.Ltext0
+ 2278 00e8 0100     		.2byte	0x1
+ 2279 00ea 54       		.byte	0x54
+ 2280 00eb 00000000 		.4byte	0
+ 2281 00ef 00000000 		.4byte	0
+ 2282              	.LLST7:
+ 2283 00f3 94000000 		.4byte	.LFB114-.Ltext0
+ 2284 00f7 96000000 		.4byte	.LCFI4-.Ltext0
+ 2285 00fb 0200     		.2byte	0x2
+ 2286 00fd 7D       		.byte	0x7d
+ 2287 00fe 00       		.sleb128 0
+ 2288 00ff 96000000 		.4byte	.LCFI4-.Ltext0
+ 2289 0103 B4000000 		.4byte	.LFE114-.Ltext0
+ 2290 0107 0200     		.2byte	0x2
+ 2291 0109 7D       		.byte	0x7d
+ 2292 010a 08       		.sleb128 8
+ 2293 010b 00000000 		.4byte	0
+ 2294 010f 00000000 		.4byte	0
+ 2295              	.LLST8:
+ 2296 0113 94000000 		.4byte	.LVL16-.Ltext0
+ 2297 0117 9E000000 		.4byte	.LVL17-.Ltext0
+ 2298 011b 0100     		.2byte	0x1
+ 2299 011d 50       		.byte	0x50
+ 2300 011e 9E000000 		.4byte	.LVL17-.Ltext0
+ 2301 0122 B4000000 		.4byte	.LFE114-.Ltext0
+ 2302 0126 0400     		.2byte	0x4
+ 2303 0128 F3       		.byte	0xf3
+ 2304 0129 01       		.uleb128 0x1
+ 2305 012a 50       		.byte	0x50
+ 2306 012b 9F       		.byte	0x9f
+ 2307 012c 00000000 		.4byte	0
+ 2308 0130 00000000 		.4byte	0
+ 2309              	.LLST9:
+ 2310 0134 B4000000 		.4byte	.LFB115-.Ltext0
+ 2311 0138 B6000000 		.4byte	.LCFI5-.Ltext0
+ 2312 013c 0200     		.2byte	0x2
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 44
+
+
+ 2313 013e 7D       		.byte	0x7d
+ 2314 013f 00       		.sleb128 0
+ 2315 0140 B6000000 		.4byte	.LCFI5-.Ltext0
+ 2316 0144 1C010000 		.4byte	.LFE115-.Ltext0
+ 2317 0148 0200     		.2byte	0x2
+ 2318 014a 7D       		.byte	0x7d
+ 2319 014b 10       		.sleb128 16
+ 2320 014c 00000000 		.4byte	0
+ 2321 0150 00000000 		.4byte	0
+ 2322              	.LLST10:
+ 2323 0154 B4000000 		.4byte	.LVL20-.Ltext0
+ 2324 0158 BC000000 		.4byte	.LVL21-.Ltext0
+ 2325 015c 0200     		.2byte	0x2
+ 2326 015e 30       		.byte	0x30
+ 2327 015f 9F       		.byte	0x9f
+ 2328 0160 00000000 		.4byte	0
+ 2329 0164 00000000 		.4byte	0
+ 2330              	.LLST11:
+ 2331 0168 1C010000 		.4byte	.LFB116-.Ltext0
+ 2332 016c 1E010000 		.4byte	.LCFI6-.Ltext0
+ 2333 0170 0200     		.2byte	0x2
+ 2334 0172 7D       		.byte	0x7d
+ 2335 0173 00       		.sleb128 0
+ 2336 0174 1E010000 		.4byte	.LCFI6-.Ltext0
+ 2337 0178 14020000 		.4byte	.LFE116-.Ltext0
+ 2338 017c 0200     		.2byte	0x2
+ 2339 017e 7D       		.byte	0x7d
+ 2340 017f 08       		.sleb128 8
+ 2341 0180 00000000 		.4byte	0
+ 2342 0184 00000000 		.4byte	0
+ 2343              	.LLST12:
+ 2344 0188 1C010000 		.4byte	.LVL27-.Ltext0
+ 2345 018c 3E010000 		.4byte	.LVL28-.Ltext0
+ 2346 0190 0100     		.2byte	0x1
+ 2347 0192 50       		.byte	0x50
+ 2348 0193 3E010000 		.4byte	.LVL28-.Ltext0
+ 2349 0197 56010000 		.4byte	.LVL32-.Ltext0
+ 2350 019b 0100     		.2byte	0x1
+ 2351 019d 54       		.byte	0x54
+ 2352 019e 56010000 		.4byte	.LVL32-.Ltext0
+ 2353 01a2 8C010000 		.4byte	.LVL37-.Ltext0
+ 2354 01a6 0400     		.2byte	0x4
+ 2355 01a8 F3       		.byte	0xf3
+ 2356 01a9 01       		.uleb128 0x1
+ 2357 01aa 50       		.byte	0x50
+ 2358 01ab 9F       		.byte	0x9f
+ 2359 01ac 8C010000 		.4byte	.LVL37-.Ltext0
+ 2360 01b0 96010000 		.4byte	.LVL38-.Ltext0
+ 2361 01b4 0100     		.2byte	0x1
+ 2362 01b6 50       		.byte	0x50
+ 2363 01b7 96010000 		.4byte	.LVL38-.Ltext0
+ 2364 01bb D4010000 		.4byte	.LVL43-.Ltext0
+ 2365 01bf 0100     		.2byte	0x1
+ 2366 01c1 54       		.byte	0x54
+ 2367 01c2 D4010000 		.4byte	.LVL43-.Ltext0
+ 2368 01c6 D8010000 		.4byte	.LVL44-.Ltext0
+ 2369 01ca 0100     		.2byte	0x1
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 45
+
+
+ 2370 01cc 50       		.byte	0x50
+ 2371 01cd D8010000 		.4byte	.LVL44-.Ltext0
+ 2372 01d1 E2010000 		.4byte	.LVL45-.Ltext0
+ 2373 01d5 0100     		.2byte	0x1
+ 2374 01d7 54       		.byte	0x54
+ 2375 01d8 E2010000 		.4byte	.LVL45-.Ltext0
+ 2376 01dc 14020000 		.4byte	.LFE116-.Ltext0
+ 2377 01e0 0400     		.2byte	0x4
+ 2378 01e2 F3       		.byte	0xf3
+ 2379 01e3 01       		.uleb128 0x1
+ 2380 01e4 50       		.byte	0x50
+ 2381 01e5 9F       		.byte	0x9f
+ 2382 01e6 00000000 		.4byte	0
+ 2383 01ea 00000000 		.4byte	0
+ 2384              		.section	.debug_aranges,"",%progbits
+ 2385 0000 1C000000 		.4byte	0x1c
+ 2386 0004 0200     		.2byte	0x2
+ 2387 0006 00000000 		.4byte	.Ldebug_info0
+ 2388 000a 04       		.byte	0x4
+ 2389 000b 00       		.byte	0
+ 2390 000c 0000     		.2byte	0
+ 2391 000e 0000     		.2byte	0
+ 2392 0010 00000000 		.4byte	.Ltext0
+ 2393 0014 14020000 		.4byte	.Letext0-.Ltext0
+ 2394 0018 00000000 		.4byte	0
+ 2395 001c 00000000 		.4byte	0
+ 2396              		.section	.debug_ranges,"",%progbits
+ 2397              	.Ldebug_ranges0:
+ 2398 0000 B6000000 		.4byte	.LBB2-.Ltext0
+ 2399 0004 B8000000 		.4byte	.LBE2-.Ltext0
+ 2400 0008 BA000000 		.4byte	.LBB3-.Ltext0
+ 2401 000c C8000000 		.4byte	.LBE3-.Ltext0
+ 2402 0010 00000000 		.4byte	0
+ 2403 0014 00000000 		.4byte	0
+ 2404              		.section	.debug_line,"",%progbits
+ 2405              	.Ldebug_line0:
+ 2406 0000 23020000 		.section	.debug_str,"MS",%progbits,1
+ 2406      02004501 
+ 2406      00000201 
+ 2406      FB0E0D00 
+ 2406      01010101 
+ 2407              	.LASF20:
+ 2408 0000 57694669 		.ascii	"WiFiConnected_t\000"
+ 2408      436F6E6E 
+ 2408      65637465 
+ 2408      645F7400 
+ 2409              	.LASF91:
+ 2410 0010 57694669 		.ascii	"WiFiInWatchDog\000"
+ 2410      496E5761 
+ 2410      74636844 
+ 2410      6F6700
+ 2411              	.LASF34:
+ 2412 001f 4D4F445F 		.ascii	"MOD_Sensor\000"
+ 2412      53656E73 
+ 2412      6F7200
+ 2413              	.LASF67:
+ 2414 002a 4C45445F 		.ascii	"LED_Snsr_Fault\000"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 46
+
+
+ 2414      536E7372 
+ 2414      5F466175 
+ 2414      6C7400
+ 2415              	.LASF0:
+ 2416 0039 696E7438 		.ascii	"int8_t\000"
+ 2416      5F7400
+ 2417              	.LASF75:
+ 2418 0040 5457425F 		.ascii	"TWB_Sys_Init\000"
+ 2418      5379735F 
+ 2418      496E6974 
+ 2418      00
+ 2419              	.LASF21:
+ 2420 004d 4641494C 		.ascii	"FAIL\000"
+ 2420      00
+ 2421              	.LASF100:
+ 2422 0052 5457425F 		.ascii	"TWB_Timer_Enable\000"
+ 2422      54696D65 
+ 2422      725F456E 
+ 2422      61626C65 
+ 2422      00
+ 2423              	.LASF90:
+ 2424 0063 57694669 		.ascii	"WiFiIsConnected\000"
+ 2424      4973436F 
+ 2424      6E6E6563 
+ 2424      74656400 
+ 2425              	.LASF4:
+ 2426 0073 73686F72 		.ascii	"short int\000"
+ 2426      7420696E 
+ 2426      7400
+ 2427              	.LASF32:
+ 2428 007d 556E6B6E 		.ascii	"UnknownMessageType\000"
+ 2428      6F776E4D 
+ 2428      65737361 
+ 2428      67655479 
+ 2428      706500
+ 2429              	.LASF13:
+ 2430 0090 73697A65 		.ascii	"sizetype\000"
+ 2430      74797065 
+ 2430      00
+ 2431              	.LASF64:
+ 2432 0099 4C45445F 		.ascii	"LED_WiFi_Connected\000"
+ 2432      57694669 
+ 2432      5F436F6E 
+ 2432      6E656374 
+ 2432      656400
+ 2433              	.LASF69:
+ 2434 00ac 53797374 		.ascii	"SystemLedNames_t\000"
+ 2434      656D4C65 
+ 2434      644E616D 
+ 2434      65735F74 
+ 2434      00
+ 2435              	.LASF42:
+ 2436 00bd 54696D65 		.ascii	"TimeOutMS\000"
+ 2436      4F75744D 
+ 2436      5300
+ 2437              	.LASF38:
+ 2438 00c7 4E616D65 		.ascii	"Name\000"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 47
+
+
+ 2438      00
+ 2439              	.LASF96:
+ 2440 00cc 5457425F 		.ascii	"TWB_SE_WriteU8\000"
+ 2440      53455F57 
+ 2440      72697465 
+ 2440      553800
+ 2441              	.LASF57:
+ 2442 00db 42617564 		.ascii	"Baud_38400\000"
+ 2442      5F333834 
+ 2442      303000
+ 2443              	.LASF26:
+ 2444 00e6 4F766572 		.ascii	"OverOrUnderRun\000"
+ 2444      4F72556E 
+ 2444      64657252 
+ 2444      756E00
+ 2445              	.LASF101:
+ 2446 00f5 5457425F 		.ascii	"TWB_LEDS_SetState\000"
+ 2446      4C454453 
+ 2446      5F536574 
+ 2446      53746174 
+ 2446      6500
+ 2447              	.LASF51:
+ 2448 0107 53657269 		.ascii	"SerialNumber\000"
+ 2448      616C4E75 
+ 2448      6D626572 
+ 2448      00
+ 2449              	.LASF37:
+ 2450 0114 4D4F445F 		.ascii	"MOD_System\000"
+ 2450      53797374 
+ 2450      656D00
+ 2451              	.LASF71:
+ 2452 011f 4C45445F 		.ascii	"LED_Off\000"
+ 2452      4F666600 
+ 2453              	.LASF1:
+ 2454 0127 75696E74 		.ascii	"uint8_t\000"
+ 2454      385F7400 
+ 2455              	.LASF56:
+ 2456 012f 42617564 		.ascii	"Baud_115200\000"
+ 2456      5F313135 
+ 2456      32303000 
+ 2457              	.LASF99:
+ 2458 013b 5457425F 		.ascii	"TWB_Commo_SendMessage\000"
+ 2458      436F6D6D 
+ 2458      6F5F5365 
+ 2458      6E644D65 
+ 2458      73736167 
+ 2459              	.LASF54:
+ 2460 0151 5457425F 		.ascii	"TWB_Commo_Message_t\000"
+ 2460      436F6D6D 
+ 2460      6F5F4D65 
+ 2460      73736167 
+ 2460      655F7400 
+ 2461              	.LASF24:
+ 2462 0165 4932435F 		.ascii	"I2C_BusError\000"
+ 2462      42757345 
+ 2462      72726F72 
+ 2462      00
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 48
+
+
+ 2463              	.LASF82:
+ 2464 0172 5457425F 		.ascii	"TWB_Sys_RestoreDefaults\000"
+ 2464      5379735F 
+ 2464      52657374 
+ 2464      6F726544 
+ 2464      65666175 
+ 2465              	.LASF2:
+ 2466 018a 7369676E 		.ascii	"signed char\000"
+ 2466      65642063 
+ 2466      68617200 
+ 2467              	.LASF16:
+ 2468 0196 666C6F61 		.ascii	"float\000"
+ 2468      7400
+ 2469              	.LASF72:
+ 2470 019c 4C45445F 		.ascii	"LED_FastBlink\000"
+ 2470      46617374 
+ 2470      426C696E 
+ 2470      6B00
+ 2471              	.LASF85:
+ 2472 01aa 57694669 		.ascii	"WiFiThrottle\000"
+ 2472      5468726F 
+ 2472      74746C65 
+ 2472      00
+ 2473              	.LASF12:
+ 2474 01b7 756E7369 		.ascii	"unsigned int\000"
+ 2474      676E6564 
+ 2474      20696E74 
+ 2474      00
+ 2475              	.LASF39:
+ 2476 01c4 4175746F 		.ascii	"AutoReset\000"
+ 2476      52657365 
+ 2476      7400
+ 2477              	.LASF10:
+ 2478 01ce 6C6F6E67 		.ascii	"long long int\000"
+ 2478      206C6F6E 
+ 2478      6720696E 
+ 2478      7400
+ 2479              	.LASF47:
+ 2480 01dc 45787065 		.ascii	"ExpectACK\000"
+ 2480      63744143 
+ 2480      4B00
+ 2481              	.LASF97:
+ 2482 01e6 5457425F 		.ascii	"TWB_SE_WriteBufferPause\000"
+ 2482      53455F57 
+ 2482      72697465 
+ 2482      42756666 
+ 2482      65725061 
+ 2483              	.LASF81:
+ 2484 01fe 5457425F 		.ascii	"TWB_Sys_SetBaudRate\000"
+ 2484      5379735F 
+ 2484      53657442 
+ 2484      61756452 
+ 2484      61746500 
+ 2485              	.LASF73:
+ 2486 0212 4C45445F 		.ascii	"LED_SlowBlink\000"
+ 2486      536C6F77 
+ 2486      426C696E 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 49
+
+
+ 2486      6B00
+ 2487              	.LASF8:
+ 2488 0220 6C6F6E67 		.ascii	"long int\000"
+ 2488      20696E74 
+ 2488      00
+ 2489              	.LASF66:
+ 2490 0229 4C45445F 		.ascii	"LED_Armed\000"
+ 2490      41726D65 
+ 2490      6400
+ 2491              	.LASF95:
+ 2492 0233 5457425F 		.ascii	"TWB_SE_ReadU8\000"
+ 2492      53455F52 
+ 2492      65616455 
+ 2492      3800
+ 2493              	.LASF46:
+ 2494 0241 54696D65 		.ascii	"Timer_t\000"
+ 2494      725F7400 
+ 2495              	.LASF53:
+ 2496 0249 4D736742 		.ascii	"MsgBuffer\000"
+ 2496      75666665 
+ 2496      7200
+ 2497              	.LASF88:
+ 2498 0253 57694669 		.ascii	"WiFiRoll\000"
+ 2498      526F6C6C 
+ 2498      00
+ 2499              	.LASF80:
+ 2500 025c 62617564 		.ascii	"baud\000"
+ 2500      00
+ 2501              	.LASF52:
+ 2502 0261 43686563 		.ascii	"CheckSum\000"
+ 2502      6B53756D 
+ 2502      00
+ 2503              	.LASF92:
+ 2504 026a 53746172 		.ascii	"StartupPhase\000"
+ 2504      74757050 
+ 2504      68617365 
+ 2504      00
+ 2505              	.LASF50:
+ 2506 0277 4D736753 		.ascii	"MsgSize\000"
+ 2506      697A6500 
+ 2507              	.LASF65:
+ 2508 027f 4C45445F 		.ascii	"LED_RC_Connected\000"
+ 2508      52435F43 
+ 2508      6F6E6E65 
+ 2508      63746564 
+ 2508      00
+ 2509              	.LASF17:
+ 2510 0290 6C6F6E67 		.ascii	"long double\000"
+ 2510      20646F75 
+ 2510      626C6500 
+ 2511              	.LASF68:
+ 2512 029c 4C45445F 		.ascii	"LED_Snsr_Online\000"
+ 2512      536E7372 
+ 2512      5F4F6E6C 
+ 2512      696E6500 
+ 2513              	.LASF3:
+ 2514 02ac 756E7369 		.ascii	"unsigned char\000"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 50
+
+
+ 2514      676E6564 
+ 2514      20636861 
+ 2514      7200
+ 2515              	.LASF89:
+ 2516 02ba 4E695665 		.ascii	"NiVekName\000"
+ 2516      6B4E616D 
+ 2516      6500
+ 2517              	.LASF79:
+ 2518 02c4 5457425F 		.ascii	"TWB_Sys_GetBaudRate\000"
+ 2518      5379735F 
+ 2518      47657442 
+ 2518      61756452 
+ 2518      61746500 
+ 2519              	.LASF76:
+ 2520 02d8 5457425F 		.ascii	"TWB_Sys_Get_ShouldForwardDebugToConsole\000"
+ 2520      5379735F 
+ 2520      4765745F 
+ 2520      53686F75 
+ 2520      6C64466F 
+ 2521              	.LASF23:
+ 2522 0300 4E61636B 		.ascii	"Nack\000"
+ 2522      00
+ 2523              	.LASF29:
+ 2524 0305 4932435F 		.ascii	"I2C_GeneralFailure\000"
+ 2524      47656E65 
+ 2524      72616C46 
+ 2524      61696C75 
+ 2524      726500
+ 2525              	.LASF11:
+ 2526 0318 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2526      206C6F6E 
+ 2526      6720756E 
+ 2526      7369676E 
+ 2526      65642069 
+ 2527              	.LASF41:
+ 2528 032f 49734578 		.ascii	"IsExpired\000"
+ 2528      70697265 
+ 2528      6400
+ 2529              	.LASF22:
+ 2530 0339 49676E6F 		.ascii	"Ignored\000"
+ 2530      72656400 
+ 2531              	.LASF19:
+ 2532 0341 57694669 		.ascii	"WiFiDisconnected\000"
+ 2532      44697363 
+ 2532      6F6E6E65 
+ 2532      63746564 
+ 2532      00
+ 2533              	.LASF5:
+ 2534 0352 75696E74 		.ascii	"uint16_t\000"
+ 2534      31365F74 
+ 2534      00
+ 2535              	.LASF103:
+ 2536 035b 474E5520 		.ascii	"GNU C 4.7.2\000"
+ 2536      4320342E 
+ 2536      372E3200 
+ 2537              	.LASF104:
+ 2538 0367 2E5C7372 		.ascii	".\\src\\nivek_system.c\000"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 51
+
+
+ 2538      635C6E69 
+ 2538      76656B5F 
+ 2538      73797374 
+ 2538      656D2E63 
+ 2539              	.LASF102:
+ 2540 037c 5457425F 		.ascii	"TWB_SE_WriteBuffer\000"
+ 2540      53455F57 
+ 2540      72697465 
+ 2540      42756666 
+ 2540      657200
+ 2541              	.LASF35:
+ 2542 038f 4D4F445F 		.ascii	"MOD_FlightControls\000"
+ 2542      466C6967 
+ 2542      6874436F 
+ 2542      6E74726F 
+ 2542      6C7300
+ 2543              	.LASF94:
+ 2544 03a2 5457425F 		.ascii	"TWB_Debug_Print\000"
+ 2544      44656275 
+ 2544      675F5072 
+ 2544      696E7400 
+ 2545              	.LASF83:
+ 2546 03b2 5457425F 		.ascii	"TWB_Sys_HandleMessage\000"
+ 2546      5379735F 
+ 2546      48616E64 
+ 2546      6C654D65 
+ 2546      73736167 
+ 2547              	.LASF14:
+ 2548 03c8 63686172 		.ascii	"char\000"
+ 2548      00
+ 2549              	.LASF58:
+ 2550 03cd 42617564 		.ascii	"Baud_57600\000"
+ 2550      5F353736 
+ 2550      303000
+ 2551              	.LASF7:
+ 2552 03d8 696E7433 		.ascii	"int32_t\000"
+ 2552      325F7400 
+ 2553              	.LASF70:
+ 2554 03e0 4C45445F 		.ascii	"LED_On\000"
+ 2554      4F6E00
+ 2555              	.LASF6:
+ 2556 03e7 73686F72 		.ascii	"short unsigned int\000"
+ 2556      7420756E 
+ 2556      7369676E 
+ 2556      65642069 
+ 2556      6E7400
+ 2557              	.LASF30:
+ 2558 03fa 496E7661 		.ascii	"InvalidBusSpeed\000"
+ 2558      6C696442 
+ 2558      75735370 
+ 2558      65656400 
+ 2559              	.LASF61:
+ 2560 040a 466F7277 		.ascii	"ForwardDebugMessages_On\000"
+ 2560      61726444 
+ 2560      65627567 
+ 2560      4D657373 
+ 2560      61676573 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 52
+
+
+ 2561              	.LASF45:
+ 2562 0422 4E657874 		.ascii	"Next\000"
+ 2562      00
+ 2563              	.LASF25:
+ 2564 0427 41726269 		.ascii	"ArbitrationLost\000"
+ 2564      74726174 
+ 2564      696F6E4C 
+ 2564      6F737400 
+ 2565              	.LASF40:
+ 2566 0437 4973456E 		.ascii	"IsEnabled\000"
+ 2566      61626C65 
+ 2566      6400
+ 2567              	.LASF9:
+ 2568 0441 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2568      20756E73 
+ 2568      69676E65 
+ 2568      6420696E 
+ 2568      7400
+ 2569              	.LASF74:
+ 2570 0453 53797374 		.ascii	"SystemLedStates_t\000"
+ 2570      656D4C65 
+ 2570      64537461 
+ 2570      7465735F 
+ 2570      7400
+ 2571              	.LASF43:
+ 2572 0465 43757272 		.ascii	"CurrentMS\000"
+ 2572      656E744D 
+ 2572      5300
+ 2573              	.LASF93:
+ 2574 046f 5457425F 		.ascii	"TWB_SE_ReadBuffer\000"
+ 2574      53455F52 
+ 2574      65616442 
+ 2574      75666665 
+ 2574      7200
+ 2575              	.LASF87:
+ 2576 0481 57694669 		.ascii	"WiFiPitch\000"
+ 2576      50697463 
+ 2576      6800
+ 2577              	.LASF84:
+ 2578 048b 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2578      52784275 
+ 2578      66666572 
+ 2578      00
+ 2579              	.LASF33:
+ 2580 0498 694F7052 		.ascii	"iOpResult_e\000"
+ 2580      6573756C 
+ 2580      745F6500 
+ 2581              	.LASF62:
+ 2582 04a4 466F7277 		.ascii	"ForwardDebugMessages_Off\000"
+ 2582      61726444 
+ 2582      65627567 
+ 2582      4D657373 
+ 2582      61676573 
+ 2583              	.LASF48:
+ 2584 04bd 53797374 		.ascii	"SystemId\000"
+ 2584      656D4964 
+ 2584      00
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 53
+
+
+ 2585              	.LASF59:
+ 2586 04c6 42617564 		.ascii	"Baud_230400\000"
+ 2586      5F323330 
+ 2586      34303000 
+ 2587              	.LASF86:
+ 2588 04d2 57694669 		.ascii	"WiFiYaw\000"
+ 2588      59617700 
+ 2589              	.LASF44:
+ 2590 04da 45787069 		.ascii	"ExpiredHandler\000"
+ 2590      72656448 
+ 2590      616E646C 
+ 2590      657200
+ 2591              	.LASF98:
+ 2592 04e9 5457425F 		.ascii	"TWB_SE_WriteU8Pause\000"
+ 2592      53455F57 
+ 2592      72697465 
+ 2592      55385061 
+ 2592      75736500 
+ 2593              	.LASF28:
+ 2594 04fd 4932435F 		.ascii	"I2C_Timeout\000"
+ 2594      54696D65 
+ 2594      6F757400 
+ 2595              	.LASF36:
+ 2596 0509 4D4F445F 		.ascii	"MOD_WiFi\000"
+ 2596      57694669 
+ 2596      00
+ 2597              	.LASF18:
+ 2598 0512 57694669 		.ascii	"WiFiConnected\000"
+ 2598      436F6E6E 
+ 2598      65637465 
+ 2598      6400
+ 2599              	.LASF27:
+ 2600 0520 4F75744F 		.ascii	"OutOfMemory\000"
+ 2600      664D656D 
+ 2600      6F727900 
+ 2601              	.LASF77:
+ 2602 052c 5457425F 		.ascii	"TWB_Sys_Set_ShouldForwardDebugToConsole\000"
+ 2602      5379735F 
+ 2602      5365745F 
+ 2602      53686F75 
+ 2602      6C64466F 
+ 2603              	.LASF31:
+ 2604 0554 496E7661 		.ascii	"InvalidByteCount\000"
+ 2604      6C696442 
+ 2604      79746543 
+ 2604      6F756E74 
+ 2604      00
+ 2605              	.LASF49:
+ 2606 0565 54797065 		.ascii	"TypeId\000"
+ 2606      496400
+ 2607              	.LASF15:
+ 2608 056c 646F7562 		.ascii	"double\000"
+ 2608      6C6500
+ 2609              	.LASF105:
+ 2610 0573 443A5C4E 		.ascii	"D:\\NiVek\\Firmware\\NiVek32\000"
+ 2610      6956656B 
+ 2610      5C466972 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 54
+
+
+ 2610      6D776172 
+ 2610      655C4E69 
+ 2611              	.LASF60:
+ 2612 058d 42617564 		.ascii	"BaudRates_e\000"
+ 2612      52617465 
+ 2612      735F6500 
+ 2613              	.LASF63:
+ 2614 0599 466F7277 		.ascii	"ForwardDebugMessages_e\000"
+ 2614      61726444 
+ 2614      65627567 
+ 2614      4D657373 
+ 2614      61676573 
+ 2615              	.LASF55:
+ 2616 05b0 42617564 		.ascii	"Baud_9600\000"
+ 2616      5F393630 
+ 2616      3000
+ 2617              	.LASF78:
+ 2618 05ba 73686F75 		.ascii	"shoudForward\000"
+ 2618      64466F72 
+ 2618      77617264 
+ 2618      00
+ 2619              		.ident	"GCC: (Sourcery CodeBench Lite 2012.09-63) 4.7.2"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s 			page 55
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 nivek_system.c
+C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s:70     .text:00000000 $t
+C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s:75     .text:00000000 TWB_Sys_Init
+C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s:112    .text:00000028 $d
+C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s:118    .text:00000034 $t
+C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s:123    .text:00000034 TWB_Sys_Get_ShouldForwardDebugToConsole
+C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s:163    .text:00000054 TWB_Sys_Set_ShouldForwardDebugToConsole
+C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s:203    .text:00000074 TWB_Sys_GetBaudRate
+C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s:243    .text:00000094 TWB_Sys_SetBaudRate
+C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s:283    .text:000000b4 TWB_Sys_RestoreDefaults
+C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s:367    .text:00000118 $d
+C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s:371    .text:0000011c $t
+C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s:376    .text:0000011c TWB_Sys_HandleMessage
+C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s:528    .text:000001e8 $d
+C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s:558    .data:00000000 StartupPhase
+C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s:565    .bss:00000000 NiVekName
+C:\Users\Kevin\AppData\Local\Temp\ccvEiSnJ.s:561    .bss:00000000 $d
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+TWB_SE_ReadBuffer
+TWB_Debug_Print
+TWB_SE_ReadU8
+TWB_SE_WriteU8
+TWB_SE_WriteBufferPause
+TWB_SE_WriteU8Pause
+TWB_Commo_SendMessage
+TWB_Timer_Enable
+TWB_LEDS_SetState
+TWB_SE_WriteBuffer
+WiFiThrottle
+WiFiIsConnected
+WiFiPitch
+WiFiRoll
+WiFiYaw
+WiFiInWatchDog

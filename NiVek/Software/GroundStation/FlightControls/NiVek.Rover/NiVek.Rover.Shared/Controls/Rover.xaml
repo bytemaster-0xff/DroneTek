@@ -1,0 +1,51 @@
+﻿<UserControl
+    x:Class="NiVek.Rover.Controls.Rover"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NiVek.Rover.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+     d:DesignHeight="175"
+    d:DesignWidth="175">
+    <Grid Width="175" Height="175">
+        <Grid Width="110" Height="90" >
+            <Grid.Resources>
+                <Style TargetType="Rectangle" x:Key="Wheel">
+                    <Setter Property="Width" Value="15" />
+                    <Setter Property="Height" Value="20" />
+                    <Setter Property="Fill" Value="WHite" />
+                </Style>
+            </Grid.Resources>
+            <Grid.RenderTransform>
+                <RotateTransform CenterX="55" CenterY="45" Angle="{Binding Heading}" ></RotateTransform>
+            </Grid.RenderTransform>
+            <Rectangle Stroke="White" StrokeThickness="2" Width="60" Height="90" />
+            <Rectangle Style="{StaticResource Wheel}" Margin="10,-5" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+            <Rectangle Style="{StaticResource Wheel}" HorizontalAlignment="Right" VerticalAlignment="Top" Margin="0,-5,10,0" />
+            <Rectangle Style="{StaticResource Wheel}" HorizontalAlignment="Right" VerticalAlignment="Bottom" Margin="0,0,10,-5"/>
+            <Rectangle Style="{StaticResource Wheel}" Margin="10,-5" HorizontalAlignment="Left" VerticalAlignment="Bottom" />
+
+            <Grid VerticalAlignment="Top" Margin="0,-15,0,0" Width="40" Height="40">
+                <Grid.RenderTransform>
+                    <RotateTransform CenterX="20" CenterY="20" Angle="{Binding PanAngle}" ></RotateTransform>
+                </Grid.RenderTransform>
+                <Rectangle Width="40" Height="30" Margin="0,20,0,0" Stroke="White"  StrokeThickness="2"  Fill="White" />
+                <Rectangle Width="10" Height="30" Margin="0,0,0,0" VerticalAlignment="Top" Stroke="White"  StrokeThickness="2"  Fill="White" />
+            </Grid>
+        </Grid>
+        <Ellipse Stroke="Red" StrokeThickness="3" />
+        <TextBlock Text="N" HorizontalAlignment="Center" FontSize="34" Margin="0,-20,0,0"/>
+        <StackPanel VerticalAlignment="Bottom" >
+            <TextBlock Text="{Binding Heading}"  FontSize="14" />
+            <TextBlock Text="heading" VerticalAlignment="Bottom" FontSize="12" Foreground="Silver" />
+            
+        </StackPanel>
+        <StackPanel VerticalAlignment="Bottom" HorizontalAlignment="Right">
+            <TextBlock Text="{Binding PanAngle}" VerticalAlignment="Bottom"   FontSize="14"/>
+            <TextBlock Text="pan" VerticalAlignment="Bottom"  FontSize="12" Foreground="Silver" TextAlignment="Center"/>
+            
+        </StackPanel>        
+    </Grid>
+
+</UserControl>

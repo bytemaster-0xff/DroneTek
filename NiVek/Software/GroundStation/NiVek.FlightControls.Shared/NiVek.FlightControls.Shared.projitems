@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>3ece3d73-472b-4d0e-9f68-e8ef5a318c14</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>NiVek.FlightControls</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="$(MSBuildThisFileDirectory)Common\BooleanToVisibilityConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\IsBusyConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\SuspensionManager.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\ColorConverter.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Common\UIThread.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commo\DroneHub.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commo\MultiWii.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commo\TCPChannel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Commo\UDPChannel.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)FlightRecorder\BlackBox.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)NiVekMath\StandardDeviation.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\Timer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Services\UIThread.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ViewModels\DroneSettings.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="$(MSBuildThisFileDirectory)Common\LocalResources.xaml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="$(MSBuildThisFileDirectory)Common\StandardStyles.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="$(MSBuildThisFileDirectory)App.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </ApplicationDefinition>
+  </ItemGroup>
+</Project>

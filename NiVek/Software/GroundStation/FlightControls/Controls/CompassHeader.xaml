@@ -1,0 +1,76 @@
+﻿<UserControl
+    x:Class="NiVek.FlightControls.Controls.CompassHeader"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NiVek.FlightControls.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="36"
+    d:DesignWidth="200">
+
+    <Canvas Height="25" Width="400" >
+        <Rectangle Fill="#888" Stroke="#FFF" StrokeThickness="1" Opacity="0.6" Width="400" Height="25" />
+        <Grid Height="25" Width="1080" x:Name="CompassScale">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="20*" />
+                <ColumnDefinition Width="20*" />
+                <ColumnDefinition Width="20*" />
+                <ColumnDefinition Width="20*" />
+                <ColumnDefinition Width="20*" />
+                <ColumnDefinition Width="20*" />
+            </Grid.ColumnDefinitions>
+            <Grid.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontSize" Value="14" />
+                    <Setter Property="Foreground" Value="#FFF" />
+                    <Setter Property="TextAlignment" Value="Center" />
+                    <Setter Property="HorizontalAlignment" Value="Center" />
+                    <Setter Property="VerticalAlignment" Value="Center" />
+                    <Setter Property="Width" Value="35" />
+                </Style>
+                <Style TargetType="Line">
+                    <Setter Property="StrokeThickness" Value="1" />
+                    <Setter Property="Stroke"  Value="#FFF"/>
+                </Style>
+            </Grid.Resources>
+            <TextBlock Text="270"  Grid.Column="0" />
+            <TextBlock Text="0"  Grid.Column="1" />
+            <TextBlock Grid.Column="2" Text="90" />
+            <TextBlock Grid.Column="3" Text="180" />
+            <TextBlock Grid.Column="4" Text="270"  />
+
+
+            <TextBlock Grid.Column="5" Text="0"  />
+
+            <Line Grid.Column="0"  X1="0" X2="0" Y1="0" Y2="15"  />
+            <Line Grid.Column="0" X1="45" X2="45" Y1="0" Y2="10"  />
+            <Line  Grid.Column="0" X1="90" X2="90" Y1="0" Y2="5"  />
+            <Line  Grid.Column="0" X1="135" X2="135" Y1="0" Y2="10"  />
+
+            <Line Grid.Column="1"  X1="0" X2="0" Y1="0" Y2="15"  />
+            <Line Grid.Column="1" X1="45" X2="45" Y1="0" Y2="10"  />
+            <Line  Grid.Column="1" X1="90" X2="90" Y1="0" Y2="5" />
+            <Line  Grid.Column="1" X1="135" X2="135" Y1="0" Y2="10" />
+
+            <Line Grid.Column="2"  X1="0" X2="0" Y1="0" Y2="15"  />
+            <Line Grid.Column="2" X1="45" X2="45" Y1="0" Y2="10"  />
+            <Line  Grid.Column="2" X1="90" X2="90" Y1="0" Y2="5"  />
+            <Line  Grid.Column="2" X1="135" X2="135" Y1="0" Y2="10"  />
+
+            <Line Grid.Column="3"  X1="0" X2="0" Y1="0" Y2="15"  />
+            <Line Grid.Column="3" X1="45" X2="45" Y1="0" Y2="10"  />
+            <Line  Grid.Column="3" X1="90" X2="90" Y1="0" Y2="5"  />
+            <Line  Grid.Column="3" X1="135" X2="135" Y1="0" Y2="10"  />
+
+            <Line Grid.Column="4"  X1="0" X2="0" Y1="0" Y2="15"  />
+            <Line Grid.Column="4" X1="45" X2="45" Y1="0" Y2="10"  />
+            <Line  Grid.Column="4" X1="90" X2="90" Y1="0" Y2="5" />
+            <Line  Grid.Column="4" X1="135" X2="135" Y1="0" Y2="10" />
+        </Grid>
+        <Grid Canvas.Left="170" Width="60" Height="25" >
+            <Rectangle Fill="Black" Stroke="#888" StrokeThickness="1" Opacity="0.6" />
+            <TextBlock x:Name="CurrentHeading"  TextAlignment="Center" FontSize="16" Margin="0,5,0,0" Foreground="#FFF" FontWeight="Bold" />
+        </Grid>
+    </Canvas>
+</UserControl>

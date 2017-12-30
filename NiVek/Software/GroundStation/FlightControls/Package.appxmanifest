@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/2010/manifest" xmlns:m2="http://schemas.microsoft.com/appx/2013/manifest">
+  <Identity Name="8c7789a2-e408-4eff-a230-94575b3901c2" Publisher="CN=Kevin" Version="1.1.0.0" />
+  <Properties>
+    <DisplayName>NiVek.FlightControls</DisplayName>
+    <PublisherDisplayName>Kevin</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Prerequisites>
+    <OSMinVersion>6.3.0</OSMinVersion>
+    <OSMaxVersionTested>6.3.0</OSMaxVersionTested>
+  </Prerequisites>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="NiVek.FlightControls.App">
+      <Extensions>
+        <Extension Category="windows.fileTypeAssociation">
+          <FileTypeAssociation Name=".nivek">
+            <DisplayName>NiVek Black Box Recording</DisplayName>
+            <SupportedFileTypes>
+              <FileType ContentType="text/csv">.nivek</FileType>
+            </SupportedFileTypes>
+          </FileTypeAssociation>
+        </Extension>
+      </Extensions>
+      <m2:VisualElements DisplayName="NiVek GO! QC1" Description="NiVek.FlightControls" BackgroundColor="#007FFF" ForegroundText="light" Square150x150Logo="Assets\Logo.png" Square30x30Logo="Assets\SmallLogo.png">
+        <m2:DefaultTile>
+          <m2:ShowNameOnTiles>
+            <m2:ShowOn Tile="square150x150Logo" />
+          </m2:ShowNameOnTiles>
+        </m2:DefaultTile>
+        <m2:SplashScreen Image="Assets\SplashScreen.png" />
+      </m2:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="documentsLibrary" />
+    <Capability Name="videosLibrary" />
+    <Capability Name="privateNetworkClientServer" />
+    <Capability Name="internetClientServer" />
+    <Capability Name="internetClient" />
+    <DeviceCapability Name="webcam" />
+    <DeviceCapability Name="microphone" />
+    <m2:DeviceCapability Name="usb">
+      <m2:Device Id="vidpid:1483 681a">
+        <m2:Function Type="winUsbId:F70242C7-FB25-443B-9E7E-A4260F373981"/>
+      </m2:Device>
+    </m2:DeviceCapability>
+  </Capabilities>
+</Package>

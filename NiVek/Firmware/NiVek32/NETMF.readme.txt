@@ -1,0 +1,29 @@
+In the file "Microsoft.Spot.system.gcc.targets" in the [PK]\Tools\Targets
+
+Add     <ARM_TYPE_FLAGS>cortex-m4</ARM_TYPE_FLAGS/>
+
+
+Change (probably need a better home for this)
+    <AS_CC_CPP_COMMON_FLAGS>$(AS_CC_CPP_COMMON_FLAGS) -mcpu=$(ARM_TYPE_FLAGS)</AS_CC_CPP_COMMON_FLAGS>
+    
+    <AS_CC_CPP_COMMON_FLAGS>$(AS_CC_CPP_COMMON_FLAGS) -mcpu=$(ARM_TYPE_FLAGS) -mthumb</AS_CC_CPP_COMMON_FLAGS>
+    
+  
+In STM32_Power_functions.cpp
+
+Comment out:
+
+__asm void HAL_AssertEx()
+{
+    BKPT     #0
+L1  B        L1
+    BX       lr
+}
+
+and replace with:
+void HAL_AssertEx()
+{
+__asm__ ("BKPT     #0"
+"L1  B        L1"
+"    BX       lr"
+}

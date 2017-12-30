@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NiVekMF", "NiVekMF\NiVekMF.csproj", "{71C53C9D-CFFA-4F79-B2DC-E9EF342B9B8B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SoftwareLogistics.NiVekNETMF", "..\..\..\NiVekNETMF\Solutions\NiVek\ManagedCode\SoftwareLogistics.NiVekNETMF\SoftwareLogistics.NiVekNETMF.csproj", "{1059FE90-0FBD-4D88-A4A8-407BE0AB778B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{71C53C9D-CFFA-4F79-B2DC-E9EF342B9B8B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{71C53C9D-CFFA-4F79-B2DC-E9EF342B9B8B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{71C53C9D-CFFA-4F79-B2DC-E9EF342B9B8B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{71C53C9D-CFFA-4F79-B2DC-E9EF342B9B8B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{71C53C9D-CFFA-4F79-B2DC-E9EF342B9B8B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{71C53C9D-CFFA-4F79-B2DC-E9EF342B9B8B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{1059FE90-0FBD-4D88-A4A8-407BE0AB778B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1059FE90-0FBD-4D88-A4A8-407BE0AB778B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1059FE90-0FBD-4D88-A4A8-407BE0AB778B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1059FE90-0FBD-4D88-A4A8-407BE0AB778B}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

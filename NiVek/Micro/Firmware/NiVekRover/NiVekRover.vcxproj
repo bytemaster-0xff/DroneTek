@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{496AA7F8-779D-4387-9334-81FDA6D9D0C9}</ProjectGuid>
+    <RootNamespace>NiVekRover</RootNamespace>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>true</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>Application</ConfigurationType>
+    <UseDebugLibraries>false</UseDebugLibraries>
+    <PlatformToolset>v120</PlatformToolset>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+    <CharacterSet>MultiByte</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Label="PropertySheets" Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup />
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>Disabled</Optimization>
+      <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>K:\Electronics\Galileo\arduino-1.5.3\hardware\arduino\x86\cores\arduino;K:\Electronics\Galileo\arduino-1.5.3\hardware\arduino\x86\variants\galileo_fab_d;K:\Electronics\Galileo\arduino-1.5.3/hardware/tools/x86/i586-poky-linux-uclibc\usr;K:\Electronics\Galileo\arduino-1.5.3/hardware/tools/x86/i586-poky-linux-uclibc\usr\include;K:\Electronics\Galileo\arduino-1.5.3\hardware\arduino\x86\libraries\Wire;K:\Electronics\Galileo\arduino-1.5.3\hardware\arduino\x86\libraries\Wire\utility;K:\Electronics\Galileo\arduino-1.5.3\hardware\arduino\x86\libraries\Servo;K:\Electronics\Galileo\arduino-1.5.3\hardware\arduino\x86\libraries\Servo\utility;K:\Electronics\Galileo\arduino-1.5.3\libraries\NiVekMessageParser;K:\Electronics\Galileo\arduino-1.5.3\libraries\NiVekMessageParser\utility;K:\Electronics\Galileo\arduino-1.5.3\libraries;K:\Electronics\Galileo\arduino-1.5.3\hardware\arduino\x86\libraries;C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\default\debuggers;C:\Users\Kevin\Documents\Arduino\libraries;K:\Electronics\Galileo\arduino-1.5.3\hardware\tools\x86\i686-pokysdk-mingw32\usr\bin\bin\include;K:\Electronics\Galileo\arduino-1.5.3\hardware\tools\x86\i686-pokysdk-mingw32\usr\bin\bin\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ForcedIncludeFiles>D:\NiVek\Micro\Firmware\NiVekRover\Visual Micro\.NiVekRover.vsarduino.h;%(ForcedIncludeFiles)</ForcedIncludeFiles>
+      <IgnoreStandardIncludePath>true</IgnoreStandardIncludePath>
+      <PreprocessorDefinitions>__BIN_I586__;ARDUINO=153;ARDUINO_MAIN;printf=iprintf;__X86__;__x86__;F_CPU=-m32;__cplusplus;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <ClCompile>
+      <WarningLevel>Level3</WarningLevel>
+      <Optimization>MaxSpeed</Optimization>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <SDLCheck>true</SDLCheck>
+    </ClCompile>
+    <Link>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <OptimizeReferences>true</OptimizeReferences>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <None Include="Comms.pde">
+      <FileType>CppCode</FileType>
+    </None>
+    <None Include="GPIO.pde">
+      <FileType>CppCode</FileType>
+    </None>
+    <None Include="GPIO14.pde">
+      <FileType>CppCode</FileType>
+    </None>
+    <None Include="Motors.pde">
+      <FileType>CppCode</FileType>
+    </None>
+    <None Include="NiVekRover.ino">
+      <FileType>CppCode</FileType>
+    </None>
+    <None Include="Sensors.pde">
+      <FileType>CppCode</FileType>
+    </None>
+    <None Include="System.pde">
+      <FileType>CppCode</FileType>
+    </None>
+    <None Include="Timer.pde">
+      <FileType>CppCode</FileType>
+    </None>
+    <None Include="Turret.pde">
+      <FileType>CppCode</FileType>
+    </None>
+    <None Include="TurretManager.pde">
+      <FileType>CppCode</FileType>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="AppData.h" />
+    <ClInclude Include="def.h" />
+    <ClInclude Include="Motor.h" />
+    <ClInclude Include="Turret.h" />
+    <ClInclude Include="Visual Micro\.NiVekRover.vsarduino.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Motor.cpp" />
+    <ClCompile Include="Turret.cpp" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties arduino.upload.maximum_size="262144" arduino.upload.speed="" visualmicro.package.name="arduino" arduino.board.property_bag="name=Intel® Galileo&#xD;&#xA;upload.tool=izmirdl&#xD;&#xA;upload.protocol=sam-ba&#xD;&#xA;upload.maximum_size=262144&#xD;&#xA;upload.use_1200bps_touch=false&#xD;&#xA;upload.wait_for_upload_port=false&#xD;&#xA;upload.native_usb=false&#xD;&#xA;build.mcu=i586&#xD;&#xA;build.f_cpu=-m32&#xD;&#xA;build.core=arduino&#xD;&#xA;build.variant=galileo_fab_d&#xD;&#xA;runtime.ide.path=K:\Electronics\Galileo\arduino-1.5.3&#xD;&#xA;build.system.path=K:\Electronics\Galileo\arduino-1.5.3\hardware\arduino\x86\system&#xD;&#xA;runtime.ide.version=153&#xD;&#xA;originalid=izmir_fd&#xD;&#xA;mesh_cfg.upload.maximum_size=262144&#xD;&#xA;intellisense.tools.path.more={runtime.ide.path}/hardware/tools/x86/i686-pokysdk-mingw32/usr/bin/i586-poky-linux-uclibc&#xD;&#xA;intellisense.include.paths.more={runtime.ide.path}/hardware/tools/x86/i586-poky-linux-uclibc\usr;{runtime.ide.path}/hardware/tools/x86/i586-poky-linux-uclibc\usr\include;&#xD;&#xA;compiler.path={runtime.ide.path}/hardware/tools/x86/i686-pokysdk-mingw32/usr/bin/i586-poky-linux-uclibc/&#xD;&#xA;compiler.c.cmd=i586-poky-linux-uclibc-gcc&#xD;&#xA;compiler.c.flags=-m32 -march=i586 --sysroot={runtime.ide.path}/hardware/tools/x86/i586-poky-linux-uclibc -c -g -Os -w -ffunction-sections -fdata-sections -MMD -D__ARDUINO_X86__ -Xassembler -mquark-strip-lock=yes&#xD;&#xA;compiler.c.elf.flags=-m32 -march=i586 --sysroot={runtime.ide.path}/hardware/tools/x86/i586-poky-linux-uclibc -Os -Wl,--gc-sections&#xD;&#xA;compiler.c.elf.cmd=i586-poky-linux-uclibc-g++&#xD;&#xA;compiler.S.flags=-c -g -assembler-with-cpp&#xD;&#xA;compiler.cpp.cmd=i586-poky-linux-uclibc-g++&#xD;&#xA;compiler.cpp.flags=-m32 -march=i586 --sysroot={runtime.ide.path}/hardware/tools/x86/i586-poky-linux-uclibc -c -g -Os -w -fno-exceptions -ffunction-sections -fdata-sections -MMD -D__ARDUINO_X86__ -Xassembler -mquark-strip-lock=yes&#xD;&#xA;compiler.ar.cmd=i586-poky-linux-uclibc-ar&#xD;&#xA;compiler.ar.flags=rcs&#xD;&#xA;compiler.objcopy.cmd=i586-poky-linux-uclibc-objcopy&#xD;&#xA;compiler.objcopy.eep.flags=-O ihex -j .eeprom --set-section-flags=.eeprom=alloc,load --no-change-warnings --change-section-lma .eeprom=0&#xD;&#xA;compiler.elf2hex.flags=-O ihex -R .eeprom&#xD;&#xA;compiler.elf2hex.cmd=i586-poky-linux-uclibc-objcopy&#xD;&#xA;compiler.ldflags=&#xD;&#xA;compiler.size.cmd=i586-poky-linux-uclibc-size&#xD;&#xA;compiler.strip.cmd=i586-poky-linux-uclibc-strip&#xD;&#xA;build.extra_flags=&#xD;&#xA;recipe.c.o.pattern=&quot;{compiler.path}{compiler.c.cmd}&quot; {compiler.c.flags} -march={build.mcu} {build.f_cpu} -D{software}={runtime.ide.version} {build.extra_flags} {includes} &quot;{source_file}&quot; -o &quot;{object_file}&quot;&#xD;&#xA;recipe.cpp.o.pattern=&quot;{compiler.path}{compiler.cpp.cmd}&quot; {compiler.cpp.flags} -march={build.mcu} {build.f_cpu} -D{software}={runtime.ide.version} {build.extra_flags} {includes} &quot;{source_file}&quot; -o &quot;{object_file}&quot;&#xD;&#xA;recipe.ar.pattern=&quot;{compiler.path}{compiler.ar.cmd}&quot; {compiler.ar.flags} &quot;{build.path}/{archive_file}&quot; &quot;{object_file}&quot;&#xD;&#xA;recipe.c.combine.pattern=&quot;{compiler.path}{compiler.c.elf.cmd}&quot; {compiler.c.elf.flags} -march={build.mcu} -o &quot;{build.path}/{build.project_name}.elf&quot; {object_files} &quot;{build.path}/{archive_file}&quot; &quot;-L{build.path}&quot; -lm -lpthread&#xD;&#xA;recipe.objcopy.eep.pattern=&quot;{compiler.path}{compiler.strip.cmd}&quot; &quot;{build.path}/{build.project_name}.elf&quot;&#xD;&#xA;recipe.objcopy.hex.pattern=&#xD;&#xA;recipe.size.pattern=&quot;{compiler.path}{compiler.size.cmd}&quot; -A &quot;{build.path}/{build.project_name}.elf&quot;&#xD;&#xA;recipe.size.regex=Total\s+([0-9]+).*&#xD;&#xA;tools.izmirdl.cmd.path={runtime.ide.path}/hardware/arduino/x86/tools/izmir/clupload_win.sh&#xD;&#xA;tools.izmirdl.upload.params.verbose=-vvvvvv&#xD;&#xA;tools.izmirdl.upload.params.quiet=-q&#xD;&#xA;tools.izmirdl.upload.pattern={runtime.ide.path}/hardware/tools/x86/bin/bash --verbose  --noprofile {cmd.path} {runtime.ide.path}/hardware/tools/x86/bin {build.path}/{build.project_name}.elf {serial.port}&#xD;&#xA;tools.izmirdl.program.params.verbose=-v -v -v -v&#xD;&#xA;tools.izmirdl.program.params.quiet=-q -q&#xD;&#xA;tools.izmirdl.program.pattern=&quot;{cmd.path}&quot; &quot;-C{config.path}&quot; {program.verbose} -p{build.mcu} -c{protocol} {program.extra_params} &quot;-Uflash:w:{build.path}/{build.project_name}.hex:i&quot;&#xD;&#xA;tools.izmirdl.erase.params.verbose=-v -v -v -v&#xD;&#xA;tools.izmirdl.erase.params.quiet=-q -q&#xD;&#xA;tools.izmirdl.erase.pattern=&quot;{cmd.path}&quot; &quot;-C{config.path}&quot; {erase.verbose} -p{build.mcu} -c{protocol} {program.extra_params} -e -Ulock:w:{bootloader.unlock_bits}:m -Uefuse:w:{bootloader.extended_fuses}:m -Uhfuse:w:{bootloader.high_fuses}:m -Ulfuse:w:{bootloader.low_fuses}:m&#xD;&#xA;tools.izmirdl.bootloader.params.verbose=-v -v -v -v&#xD;&#xA;tools.izmirdl.bootloader.params.quiet=-q -q&#xD;&#xA;tools.izmirdl.bootloader.pattern=&quot;{cmd.path}&quot; &quot;-C{config.path}&quot; {bootloader.verbose} -p{build.mcu} -c{protocol} {program.extra_params} &quot;-Uflash:w:{runtime.ide.path}/hardware/arduino/x86/bootloaders/{bootloader.file}:i&quot; -Ulock:w:{bootloader.lock_bits}:m&#xD;&#xA;vm.platform.root.path=C:\Program Files (x86)\Visual Micro\Visual Micro for Arduino\Micro Platforms\intelarduino15x&#xD;&#xA;vm.core.include=arduino.h&#xD;&#xA;upload.disable_flushing=true&#xD;&#xA;ide.hint=Arduino boards with Intel processors based on the 1.5 Ide&#xD;&#xA;ide.location.key=intelarduino15x&#xD;&#xA;ide.location.ide.winreg=Intel 1.5.x Application&#xD;&#xA;ide.location.sketchbook.winreg=Intel 1.5.x Sketchbook&#xD;&#xA;ide.location.sketchbook.preferences=sketchbook.path&#xD;&#xA;ide.location.preferences=%VM_APPDATA_ROAMING%\arduino15\preferences.txt&#xD;&#xA;ide.location.preferences_fallback=%VM_APPDATA_ROAMING%\arduino\preferences.txt&#xD;&#xA;ide.default.version=150&#xD;&#xA;ide.default.package=arduino&#xD;&#xA;ide.default.platform=x86&#xD;&#xA;ide.multiplatform=true&#xD;&#xA;ide.includes=arduino.h&#xD;&#xA;ide.platformswithoutpackage=false&#xD;&#xA;ide.extension=ino&#xD;&#xA;ide.extension.fallback=pde&#xD;&#xA;ide.exe=arduino.exe&#xD;&#xA;ide.url=https://communities.intel.com/community/makers/drivers&#xD;&#xA;vm.debug=true&#xD;&#xA;software=ARDUINO&#xD;&#xA;ide.appid=intelarduino15x&#xD;&#xA;location.sketchbook=C:\Users\Kevin\Documents\Arduino&#xD;&#xA;build.board=X86_IZMIR_FD&#xD;&#xA;vm.boardsource.path=K:\Electronics\Galileo\arduino-1.5.3\hardware\arduino\x86&#xD;&#xA;vm.platformname.name=x86&#xD;&#xA;build.arch=X86&#xD;&#xA;build.architecture=bin&#xD;&#xA;vmresolved.compiler.path=K:\Electronics\Galileo\arduino-1.5.3\hardware\tools\x86\i686-pokysdk-mingw32\usr\bin\i586-poky-linux-uclibc\&#xD;&#xA;vmresolved.tools.path=K:\Electronics\Galileo\arduino-1.5.3\hardware\tools\x86\i686-pokysdk-mingw32\usr\bin&#xD;&#xA;" visualmicro.application.name="intelarduino15x" arduino.build.mcu="i586" arduino.upload.protocol="sam-ba" arduino.build.f_cpu="-m32" arduino.board.desc="Intel® Galileo" arduino.board.name="izmir_fd" arduino.upload.port="COM15" visualmicro.platform.name="x86" arduino.build.core="arduino" />
+    </VisualStudio>
+  </ProjectExtensions>
+</Project>

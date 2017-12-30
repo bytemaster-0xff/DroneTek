@@ -1,0 +1,3889 @@
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 3	@ Tag_ABI_HardFP_use
+   4              		.eabi_attribute 28, 1	@ Tag_ABI_VFP_args
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1	@ Tag_ABI_FP_denormal
+   7              		.eabi_attribute 21, 1	@ Tag_ABI_FP_exceptions
+   8              		.eabi_attribute 23, 3	@ Tag_ABI_FP_number_model
+   9              		.eabi_attribute 24, 1	@ Tag_ABI_align8_needed
+  10              		.eabi_attribute 25, 1	@ Tag_ABI_align8_preserved
+  11              		.eabi_attribute 26, 1	@ Tag_ABI_enum_size
+  12              		.eabi_attribute 30, 4	@ Tag_ABI_optimization_goals
+  13              		.eabi_attribute 34, 1	@ Tag_CPU_unaligned_access
+  14              		.eabi_attribute 18, 4	@ Tag_ABI_PCS_wchar_t
+  15              		.file	"median.c"
+  16              	@ GNU C (Sourcery CodeBench Lite 2012.09-63) version 4.7.2 (arm-none-eabi)
+  17              	@	compiled by GNU C version 4.3.2, GMP version 5.0.5, MPFR version 3.1.1-p2, MPC version 1.0.1
+  18              	@ GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+  19              	@ options passed:  -I . -I \STMSPINCDDIR -I .\stm32f4periph\inc
+  20              	@ -I .\CMSIS\Include -I .\inc\commo\usb -I .\inc\commo -I .\inc\common
+  21              	@ -I .\inc -imultilib thumb2
+  22              	@ -iprefix k:\electronics\gcc\bin\../lib/gcc/arm-none-eabi/4.7.2/
+  23              	@ -isysroot k:\electronics\gcc\bin\../arm-none-eabi
+  24              	@ -MD .\src\filters\median.d -MF .dep\median.o.d -MP
+  25              	@ -MQ .\src\filters\median.o -D__USES_INITFINI__ -D STM32F0XX
+  26              	@ -D USE_STDPERIPH_DRIVER -D RUN_FROM_FLASH=1
+  27              	@ -D __CS_SOURCERYGXX_MAJ__=2012 -D __CS_SOURCERYGXX_MIN__=9
+  28              	@ -D __CS_SOURCERYGXX_REV__=63 .\src\filters\median.c -mcpu=cortex-m4
+  29              	@ -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb
+  30              	@ -auxbase-strip .\src\filters\median.o -gdwarf-2 -Os -Wall
+  31              	@ -Wstrict-prototypes -std=gnu99 -fomit-frame-pointer -fverbose-asm
+  32              	@ options enabled:  -fauto-inc-dec -fbranch-count-reg -fcaller-saves
+  33              	@ -fcombine-stack-adjustments -fcommon -fcompare-elim -fcprop-registers
+  34              	@ -fcrossjumping -fcse-follow-jumps -fdebug-types-section -fdefer-pop
+  35              	@ -fdelete-null-pointer-checks -fdevirtualize -fdwarf2-cfi-asm
+  36              	@ -fearly-inlining -feliminate-unused-debug-types -fexpensive-optimizations
+  37              	@ -fextension-elimination -fforward-propagate -ffunction-cse -fgcse
+  38              	@ -fgcse-lm -fgnu-runtime -fguess-branch-probability -fident
+  39              	@ -fif-conversion -fif-conversion2 -findirect-inlining -finline
+  40              	@ -finline-atomics -finline-functions -finline-functions-called-once
+  41              	@ -finline-small-functions -fipa-cp -fipa-profile -fipa-pure-const
+  42              	@ -fipa-reference -fipa-sra -fira-share-save-slots -fira-share-spill-slots
+  43              	@ -fivopts -fkeep-static-consts -fleading-underscore -fmath-errno
+  44              	@ -fmerge-constants -fmerge-debug-strings -fmove-loop-invariants
+  45              	@ -fomit-frame-pointer -foptimize-register-move -foptimize-sibling-calls
+  46              	@ -fpartial-inlining -fpeephole -fpeephole2 -fprefetch-loop-arrays
+  47              	@ -freg-struct-return -fregmove -freorder-blocks -freorder-functions
+  48              	@ -frerun-cse-after-loop -fsched-critical-path-heuristic
+  49              	@ -fsched-dep-count-heuristic -fsched-group-heuristic -fsched-interblock
+  50              	@ -fsched-last-insn-heuristic -fsched-rank-heuristic -fsched-spec
+  51              	@ -fsched-spec-insn-heuristic -fsched-stalled-insns-dep -fschedule-insns2
+  52              	@ -fsection-anchors -fshow-column -fshrink-wrap -fsigned-zeros
+  53              	@ -fsplit-ivs-in-unroller -fsplit-wide-types -fstrict-aliasing
+  54              	@ -fstrict-overflow -fstrict-volatile-bitfields -fthread-jumps
+  55              	@ -ftoplevel-reorder -ftrapping-math -ftree-bit-ccp -ftree-builtin-call-dce
+  56              	@ -ftree-ccp -ftree-ch -ftree-copy-prop -ftree-copyrename -ftree-cselim
+  57              	@ -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 2
+
+
+  58              	@ -ftree-if-to-switch-conversion -ftree-loop-if-convert -ftree-loop-im
+  59              	@ -ftree-loop-ivcanon -ftree-loop-optimize -ftree-parallelize-loops=
+  60              	@ -ftree-phiprop -ftree-pre -ftree-pta -ftree-reassoc -ftree-scev-cprop
+  61              	@ -ftree-sink -ftree-slp-vectorize -ftree-sra -ftree-switch-conversion
+  62              	@ -ftree-tail-merge -ftree-ter -ftree-vect-loop-version -ftree-vrp
+  63              	@ -funit-at-a-time -fvar-tracking -fvar-tracking-assignments -fverbose-asm
+  64              	@ -fzero-initialized-in-bss -mlittle-endian -msched-prolog -mthumb
+  65              	@ -munaligned-access -mvectorize-with-neon-quad
+  66              	
+  67              		.text
+  68              	.Ltext0:
+  69              		.cfi_sections	.debug_frame
+  70              		.align	1
+  71              		.global	TWB_Filter_Median_Apply_Float
+  72              		.thumb
+  73              		.thumb_func
+  74              		.type	TWB_Filter_Median_Apply_Float, %function
+  75              	TWB_Filter_Median_Apply_Float:
+  76              	.LFB110:
+  77              		.file 1 ".\\src\\filters\\median.c"
+   1:.\src\filters/median.c **** /*
+   2:.\src\filters/median.c ****  * Median.c
+   3:.\src\filters/median.c ****  *
+   4:.\src\filters/median.c ****  *  Created on: Nov 25, 2012
+   5:.\src\filters/median.c ****  *      Author: kevinw
+   6:.\src\filters/median.c ****  */
+   7:.\src\filters/median.c **** 
+   8:.\src\filters/median.c **** #include "Filters/Filter.h"
+   9:.\src\filters/median.c **** #include <string.h>
+  10:.\src\filters/median.c **** #include "common/twb_debug.h"
+  11:.\src\filters/median.c **** 
+  12:.\src\filters/median.c **** /*
+  13:.\src\filters/median.c **** 	FilterOption_None = 0,
+  14:.\src\filters/median.c **** 	FilterOption_Median_3_Sample = 1,
+  15:.\src\filters/median.c **** 	FilterOption_Median_5_Sample = 2,
+  16:.\src\filters/median.c **** 	FilterOption_Median_7_Sample = 3,
+  17:.\src\filters/median.c **** 	FilterOption_Median_9_Sample = 4,
+  18:.\src\filters/median.c **** 	FilterOption_Moving_Average_0_01 = 20,
+  19:.\src\filters/median.c **** 	FilterOption_Moving_Average_0_1 = 21,
+  20:.\src\filters/median.c **** 	FilterOption_Moving_Average_1 = 22,
+  21:.\src\filters/median.c **** 	FilterOption_Moving_Average_2 = 23,
+  22:.\src\filters/median.c **** 	FilterOption_Moving_Average_5 = 24,
+  23:.\src\filters/median.c **** 	FilterOption_Moving_Average_10 = 25,
+  24:.\src\filters/median.c **** 	FilterOption_Moving_Average_15 = 26,
+  25:.\src\filters/median.c **** 	FilterOption_Moving_Average_20 = 27,
+  26:.\src\filters/median.c **** 	FilterOption_Moving_Average_25 = 28,
+  27:.\src\filters/median.c **** 	FilterOption_Moving_Average_33 = 29,
+  28:.\src\filters/median.c **** 	FilterOption_Moving_Average_50 = 30,
+  29:.\src\filters/median.c **** */
+  30:.\src\filters/median.c **** 
+  31:.\src\filters/median.c **** uint16_t __medianFilterTempHistory[MAX_HISTORY];
+  32:.\src\filters/median.c **** int16_t __medianFilterSignedTempHistory[MAX_HISTORY];
+  33:.\src\filters/median.c **** float __medianFilterFloatTempHistory[MAX_HISTORY];
+  34:.\src\filters/median.c **** 
+  35:.\src\filters/median.c **** void TWB_Filter_Median_Apply_Float(FilterFloat_t *filter, float currentValue){
+  78              		.loc 1 35 0
+  79              		.cfi_startproc
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 3
+
+
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82              	.LVL0:
+  83 0000 F8B5     		push	{r3, r4, r5, r6, r7, lr}	@
+  84              	.LCFI0:
+  85              		.cfi_def_cfa_offset 24
+  86              		.cfi_offset 3, -24
+  87              		.cfi_offset 4, -20
+  88              		.cfi_offset 5, -16
+  89              		.cfi_offset 6, -12
+  90              		.cfi_offset 7, -8
+  91              		.cfi_offset 14, -4
+  36:.\src\filters/median.c **** 	if(filter->FilterType == FilterOption_None){
+  92              		.loc 1 36 0
+  93 0002 4378     		ldrb	r3, [r0, #1]	@ zero_extendqisi2	@ D.9088, filter_4(D)->FilterType
+  35:.\src\filters/median.c **** void TWB_Filter_Median_Apply_Float(FilterFloat_t *filter, float currentValue){
+  94              		.loc 1 35 0
+  95 0004 2DED028B 		fstmfdd	sp!, {d8}	@,
+  96              	.LCFI1:
+  97              		.cfi_def_cfa_offset 32
+  98              		.cfi_offset 80, -32
+  35:.\src\filters/median.c **** void TWB_Filter_Median_Apply_Float(FilterFloat_t *filter, float currentValue){
+  99              		.loc 1 35 0
+ 100 0008 0446     		mov	r4, r0	@ filter, filter
+ 101 000a B0EE408A 		fcpys	s16, s0	@ currentValue, currentValue
+ 102              		.loc 1 36 0
+ 103 000e 13B9     		cbnz	r3, .L2	@ D.9088,
+  37:.\src\filters/median.c **** 		filter->Current = currentValue;
+ 104              		.loc 1 37 0
+ 105 0010 84ED0A0A 		fsts	s0, [r4, #40]	@ currentValue, filter_4(D)->Current
+  38:.\src\filters/median.c **** 		return;
+ 106              		.loc 1 38 0
+ 107 0014 CEE0     		b	.L1	@
+ 108              	.L2:
+ 109              	.LVL1:
+  39:.\src\filters/median.c **** 	}
+  40:.\src\filters/median.c **** 
+  41:.\src\filters/median.c **** 	FilterOptions_t medianFilterType = filter->FilterType & 0x0F;
+  42:.\src\filters/median.c **** 	FilterOptions_t movingAverageFilterType = filter->FilterType & 0xF0;
+  43:.\src\filters/median.c **** 
+  44:.\src\filters/median.c **** 	if(medianFilterType != FilterOption_None){
+ 110              		.loc 1 44 0
+ 111 0016 13F00F07 		ands	r7, r3, #15	@ medianFilterType, D.9088,
+  42:.\src\filters/median.c **** 	FilterOptions_t movingAverageFilterType = filter->FilterType & 0xF0;
+ 112              		.loc 1 42 0
+ 113 001a 03F0F005 		and	r5, r3, #240	@ movingAverageFilterType, D.9088,
+ 114              	.LVL2:
+ 115              		.loc 1 44 0
+ 116 001e 3FD0     		beq	.L4	@,
+ 117              	.LBB2:
+  45:.\src\filters/median.c **** 		uint8_t maxSize = medianFilterType * 2 + 1;
+ 118              		.loc 1 45 0
+ 119 0020 7E00     		lsls	r6, r7, #1	@ tmp203, medianFilterType,
+ 120 0022 0136     		adds	r6, r6, #1	@ maxSize, tmp203,
+ 121              	.LVL3:
+  46:.\src\filters/median.c **** 		uint8_t idx = 0;
+  47:.\src\filters/median.c **** 		float tmp;
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 4
+
+
+  48:.\src\filters/median.c **** 
+  49:.\src\filters/median.c **** 		if(maxSize > 9){
+ 122              		.loc 1 49 0
+ 123 0024 092E     		cmp	r6, #9	@ maxSize,
+ 124 0026 03D9     		bls	.L5	@,
+  50:.\src\filters/median.c **** 			filter->CurrentSlot = 0;
+  51:.\src\filters/median.c **** 			filter->History[filter->CurrentSlot++] = currentValue;
+ 125              		.loc 1 51 0
+ 126 0028 84ED010A 		fsts	s0, [r4, #4]	@ currentValue, filter_4(D)->History
+ 127 002c 0123     		movs	r3, #1	@ tmp206,
+ 128              	.LVL4:
+ 129 002e 05E0     		b	.L42	@
+ 130              	.LVL5:
+ 131              	.L5:
+  52:.\src\filters/median.c **** 		}
+  53:.\src\filters/median.c **** 		else
+  54:.\src\filters/median.c **** 			filter->History[filter->CurrentSlot++] = currentValue;
+ 132              		.loc 1 54 0
+ 133 0030 0378     		ldrb	r3, [r0, #0]	@ zero_extendqisi2	@ D.9096, filter_4(D)->CurrentSlot
+ 134              	.LVL6:
+ 135 0032 00EB8302 		add	r2, r0, r3, lsl #2	@, tmp209, filter, D.9096,
+ 136 0036 82ED010A 		fsts	s0, [r2, #4]	@ currentValue, filter_4(D)->History
+ 137 003a 0133     		adds	r3, r3, #1	@ tmp211, D.9096,
+ 138              	.L42:
+ 139 003c 2370     		strb	r3, [r4, #0]	@ tmp211, filter_4(D)->CurrentSlot
+  55:.\src\filters/median.c **** 
+  56:.\src\filters/median.c **** 		if(filter->CurrentSlot == maxSize){
+ 140              		.loc 1 56 0
+ 141 003e 2378     		ldrb	r3, [r4, #0]	@ zero_extendqisi2	@ filter_4(D)->CurrentSlot, filter_4(D)->CurrentSlot
+ 142 0040 B342     		cmp	r3, r6	@ filter_4(D)->CurrentSlot, maxSize
+ 143 0042 04D1     		bne	.L7	@,
+  57:.\src\filters/median.c **** 			filter->CurrentSlot = 0;
+ 144              		.loc 1 57 0
+ 145 0044 0023     		movs	r3, #0	@ tmp214,
+ 146 0046 2370     		strb	r3, [r4, #0]	@ tmp214, filter_4(D)->CurrentSlot
+  58:.\src\filters/median.c **** 			filter->IsInitialized = true;
+ 147              		.loc 1 58 0
+ 148 0048 FF23     		movs	r3, #255	@ tmp216,
+ 149 004a 84F83030 		strb	r3, [r4, #48]	@ tmp216, filter_4(D)->IsInitialized
+ 150              	.L7:
+  59:.\src\filters/median.c **** 		}
+  60:.\src\filters/median.c **** 
+  61:.\src\filters/median.c **** 		memcpy(__medianFilterFloatTempHistory, filter->History, maxSize * sizeof(float));
+ 151              		.loc 1 61 0
+ 152 004e B200     		lsls	r2, r6, #2	@, maxSize,
+ 153 0050 5A48     		ldr	r0, .L43	@,
+ 154              	.LVL7:
+ 155 0052 211D     		adds	r1, r4, #4	@, filter,
+ 156 0054 FFF7FEFF 		bl	memcpy	@
+ 157              	.LVL8:
+  62:.\src\filters/median.c **** 
+  63:.\src\filters/median.c **** 		//TODO implement a faster sort
+  64:.\src\filters/median.c **** 		//Simple, inefficient bubble sort, but we only have a max of 9 items
+  65:.\src\filters/median.c **** 		while(idx < maxSize - 1){
+ 158              		.loc 1 65 0
+ 159 0058 013E     		subs	r6, r6, #1	@ tmp251, maxSize,
+ 160              	.LVL9:
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 5
+
+
+  46:.\src\filters/median.c **** 		uint8_t idx = 0;
+ 161              		.loc 1 46 0
+ 162 005a 0023     		movs	r3, #0	@ idx,
+  66:.\src\filters/median.c **** 			if(__medianFilterFloatTempHistory[idx] > __medianFilterFloatTempHistory[idx + 1]){
+ 163              		.loc 1 66 0
+ 164 005c 574A     		ldr	r2, .L43	@ tmp252,
+  65:.\src\filters/median.c **** 		while(idx < maxSize - 1){
+ 165              		.loc 1 65 0
+ 166 005e 14E0     		b	.L40	@
+ 167              	.LVL10:
+ 168              	.L12:
+ 169              		.loc 1 66 0
+ 170 0060 02EB8300 		add	r0, r2, r3, lsl #2	@, tmp228, tmp252, idx,
+ 171 0064 0133     		adds	r3, r3, #1	@ D.9107, idx,
+ 172              	.LVL11:
+ 173 0066 02EB8301 		add	r1, r2, r3, lsl #2	@, tmp231, tmp252, D.9107,
+ 174 006a D0ED007A 		flds	s15, [r0, #0]	@ D.9106, __medianFilterFloatTempHistory
+ 175 006e 91ED007A 		flds	s14, [r1, #0]	@ D.9108, __medianFilterFloatTempHistory
+ 176 0072 F4EEC77A 		fcmpes	s15, s14	@ D.9106, D.9108
+ 177 0076 F1EE10FA 		fmstat
+ 178 007a 05DD     		ble	.L41	@,
+ 179              	.LVL12:
+  67:.\src\filters/median.c **** 				tmp = __medianFilterFloatTempHistory[idx];
+  68:.\src\filters/median.c **** 				__medianFilterFloatTempHistory[idx] = __medianFilterFloatTempHistory[idx + 1];
+ 180              		.loc 1 68 0
+ 181 007c 80ED007A 		fsts	s14, [r0, #0]	@ D.9108, __medianFilterFloatTempHistory
+  69:.\src\filters/median.c **** 				__medianFilterFloatTempHistory[idx + 1] = tmp;
+  70:.\src\filters/median.c **** 				idx = 0;
+ 182              		.loc 1 70 0
+ 183 0080 0023     		movs	r3, #0	@ idx,
+ 184              	.LVL13:
+  69:.\src\filters/median.c **** 				__medianFilterFloatTempHistory[idx + 1] = tmp;
+ 185              		.loc 1 69 0
+ 186 0082 C1ED007A 		fsts	s15, [r1, #0]	@ D.9106, __medianFilterFloatTempHistory
+ 187              	.LVL14:
+ 188 0086 00E0     		b	.L40	@
+ 189              	.LVL15:
+ 190              	.L41:
+  71:.\src\filters/median.c **** 			}
+  72:.\src\filters/median.c **** 			else
+  73:.\src\filters/median.c **** 				idx++;
+ 191              		.loc 1 73 0
+ 192 0088 DBB2     		uxtb	r3, r3	@ idx, D.9107
+ 193              	.LVL16:
+ 194              	.L40:
+  65:.\src\filters/median.c **** 		while(idx < maxSize - 1){
+ 195              		.loc 1 65 0 discriminator 1
+ 196 008a B342     		cmp	r3, r6	@ idx, tmp251
+ 197 008c E8DB     		blt	.L12	@,
+  74:.\src\filters/median.c **** 		}
+  75:.\src\filters/median.c **** 
+  76:.\src\filters/median.c **** 		if(filter->IsInitialized == 0)
+ 198              		.loc 1 76 0
+ 199 008e 94F83030 		ldrb	r3, [r4, #48]	@ zero_extendqisi2	@ filter_4(D)->IsInitialized, filter_4(D)->IsInitialized
+ 200              	.LVL17:
+ 201 0092 2BB9     		cbnz	r3, .L4	@ filter_4(D)->IsInitialized,
+  77:.\src\filters/median.c **** 			filter->Current = __medianFilterFloatTempHistory[medianFilterType]; //FilterType just so happens
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 6
+
+
+ 202              		.loc 1 77 0
+ 203 0094 494B     		ldr	r3, .L43	@ tmp241,
+ 204 0096 03EB8707 		add	r7, r3, r7, lsl #2	@, tmp243, tmp241, medianFilterType,
+ 205 009a 3B68     		ldr	r3, [r7, #0]	@ float	@ tmp244, __medianFilterFloatTempHistory
+ 206 009c A362     		str	r3, [r4, #40]	@ float	@ tmp244, filter_4(D)->Current
+ 207 009e 01E0     		b	.L14	@
+ 208              	.LVL18:
+ 209              	.L4:
+ 210              	.LBE2:
+  78:.\src\filters/median.c **** 		else
+  79:.\src\filters/median.c **** 			filter->Current = currentValue;
+  80:.\src\filters/median.c **** 	}
+  81:.\src\filters/median.c **** 	else
+  82:.\src\filters/median.c **** 		filter->Current = currentValue;
+ 211              		.loc 1 82 0
+ 212 00a0 84ED0A8A 		fsts	s16, [r4, #40]	@ currentValue, filter_4(D)->Current
+ 213              	.L14:
+  83:.\src\filters/median.c **** 
+  84:.\src\filters/median.c **** 	//TODO: These need to really be compensated for by sample rate.
+  85:.\src\filters/median.c **** 	if(movingAverageFilterType != FilterOption_None && filter->Previous != 0.0f){
+ 214              		.loc 1 85 0
+ 215 00a4 002D     		cmp	r5, #0	@ movingAverageFilterType
+ 216 00a6 00F08380 		beq	.L15	@
+ 217              		.loc 1 85 0 is_stmt 0 discriminator 1
+ 218 00aa D4ED0B6A 		flds	s13, [r4, #44]	@ D.9123, filter_4(D)->Previous
+ 219 00ae F5EE406A 		fcmpzs	s13	@ D.9123
+ 220 00b2 F1EE10FA 		fmstat
+ 221 00b6 7BD0     		beq	.L15	@,
+ 222              	.LVL19:
+ 223              	.LBB3:
+  86:.\src\filters/median.c **** 		float currentFactor = 1.0f;
+  87:.\src\filters/median.c **** 		float previousFactor = 0.0f;
+  88:.\src\filters/median.c **** 
+  89:.\src\filters/median.c **** 		switch(movingAverageFilterType){
+ 224              		.loc 1 89 0 is_stmt 1
+ 225 00b8 802D     		cmp	r5, #128	@ movingAverageFilterType,
+ 226 00ba 40D0     		beq	.L24	@,
+ 227 00bc 10D8     		bhi	.L32	@,
+ 228 00be 402D     		cmp	r5, #64	@ movingAverageFilterType,
+ 229 00c0 29D0     		beq	.L20	@,
+ 230 00c2 06D8     		bhi	.L33	@,
+ 231 00c4 202D     		cmp	r5, #32	@ movingAverageFilterType,
+ 232 00c6 67D0     		beq	.L35	@,
+ 233 00c8 302D     		cmp	r5, #48	@ movingAverageFilterType,
+ 234 00ca 1FD0     		beq	.L19	@,
+ 235 00cc 102D     		cmp	r5, #16	@ movingAverageFilterType,
+ 236 00ce 5ED1     		bne	.L16	@,
+ 237 00d0 17E0     		b	.L17	@
+ 238              	.L33:
+ 239 00d2 602D     		cmp	r5, #96	@ movingAverageFilterType,
+ 240 00d4 29D0     		beq	.L22	@,
+ 241 00d6 702D     		cmp	r5, #112	@ movingAverageFilterType,
+ 242 00d8 2CD0     		beq	.L23	@,
+ 243 00da 502D     		cmp	r5, #80	@ movingAverageFilterType,
+ 244 00dc 57D1     		bne	.L16	@,
+ 245 00de 1FE0     		b	.L21	@
+ 246              	.L32:
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 7
+
+
+ 247 00e0 C02D     		cmp	r5, #192	@ movingAverageFilterType,
+ 248 00e2 40D0     		beq	.L28	@,
+ 249 00e4 06D8     		bhi	.L34	@,
+ 250 00e6 A02D     		cmp	r5, #160	@ movingAverageFilterType,
+ 251 00e8 33D0     		beq	.L26	@,
+ 252 00ea B02D     		cmp	r5, #176	@ movingAverageFilterType,
+ 253 00ec 36D0     		beq	.L27	@,
+ 254 00ee 902D     		cmp	r5, #144	@ movingAverageFilterType,
+ 255 00f0 4DD1     		bne	.L16	@,
+ 256 00f2 29E0     		b	.L25	@
+ 257              	.L34:
+ 258 00f4 E02D     		cmp	r5, #224	@ movingAverageFilterType,
+ 259 00f6 40D0     		beq	.L30	@,
+ 260 00f8 F02D     		cmp	r5, #240	@ movingAverageFilterType,
+ 261 00fa 43D0     		beq	.L31	@,
+ 262 00fc D02D     		cmp	r5, #208	@ movingAverageFilterType,
+ 263 00fe 46D1     		bne	.L16	@,
+ 264 0100 36E0     		b	.L29	@
+ 265              	.L17:
+  90:.\src\filters/median.c **** 			case FilterOption_Moving_Average_0_01: previousFactor = 0.9999f; currentFactor = 0.0001f; break;
+ 266              		.loc 1 90 0
+ 267 0102 DFED2F7A 		flds	s15, .L43+4	@ previousFactor,
+ 268 0106 9FED2F7A 		flds	s14, .L43+8	@ currentFactor,
+ 269 010a 49E0     		b	.L18	@
+ 270              	.L19:
+ 271              	.LVL20:
+  91:.\src\filters/median.c **** 			case FilterOption_Moving_Average_0_1: previousFactor = 0.999f; currentFactor = 0.001f; break;
+  92:.\src\filters/median.c **** 			case FilterOption_Moving_Average_1: previousFactor = 0.99f; currentFactor = 0.01f; break;
+ 272              		.loc 1 92 0
+ 273 010c DFED2E7A 		flds	s15, .L43+12	@ previousFactor,
+ 274 0110 9FED2E7A 		flds	s14, .L43+16	@ currentFactor,
+ 275 0114 44E0     		b	.L18	@
+ 276              	.LVL21:
+ 277              	.L20:
+  93:.\src\filters/median.c **** 			case FilterOption_Moving_Average_2: previousFactor = 0.98f; currentFactor = 0.02f; break;
+ 278              		.loc 1 93 0
+ 279 0116 DFED2E7A 		flds	s15, .L43+20	@ previousFactor,
+ 280 011a 9FED2E7A 		flds	s14, .L43+24	@ currentFactor,
+ 281 011e 3FE0     		b	.L18	@
+ 282              	.LVL22:
+ 283              	.L21:
+  94:.\src\filters/median.c **** 			case FilterOption_Moving_Average_5: previousFactor = 0.95f; currentFactor = 0.05f; break;
+ 284              		.loc 1 94 0
+ 285 0120 DFED2D7A 		flds	s15, .L43+28	@ previousFactor,
+ 286 0124 9FED2D7A 		flds	s14, .L43+32	@ currentFactor,
+ 287 0128 3AE0     		b	.L18	@
+ 288              	.LVL23:
+ 289              	.L22:
+  95:.\src\filters/median.c **** 			case FilterOption_Moving_Average_10: previousFactor = 0.90f; currentFactor = 0.10f; break;
+ 290              		.loc 1 95 0
+ 291 012a DFED2D7A 		flds	s15, .L43+36	@ previousFactor,
+ 292 012e 9FED2D7A 		flds	s14, .L43+40	@ currentFactor,
+ 293 0132 35E0     		b	.L18	@
+ 294              	.LVL24:
+ 295              	.L23:
+  96:.\src\filters/median.c **** 			case FilterOption_Moving_Average_15: previousFactor = 0.85f; currentFactor = 0.15f; break;
+ 296              		.loc 1 96 0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 8
+
+
+ 297 0134 DFED2C7A 		flds	s15, .L43+44	@ previousFactor,
+ 298 0138 9FED2C7A 		flds	s14, .L43+48	@ currentFactor,
+ 299 013c 30E0     		b	.L18	@
+ 300              	.LVL25:
+ 301              	.L24:
+  97:.\src\filters/median.c **** 			case FilterOption_Moving_Average_20: previousFactor = 0.80f; currentFactor = 0.2f; break;
+ 302              		.loc 1 97 0
+ 303 013e DFED2C7A 		flds	s15, .L43+52	@ previousFactor,
+ 304 0142 9FED2C7A 		flds	s14, .L43+56	@ currentFactor,
+ 305 0146 2BE0     		b	.L18	@
+ 306              	.LVL26:
+ 307              	.L25:
+  98:.\src\filters/median.c **** 			case FilterOption_Moving_Average_30: previousFactor = 0.70f; currentFactor = 0.3f; break;
+ 308              		.loc 1 98 0
+ 309 0148 DFED2B7A 		flds	s15, .L43+60	@ previousFactor,
+ 310 014c 9FED2B7A 		flds	s14, .L43+64	@ currentFactor,
+ 311 0150 26E0     		b	.L18	@
+ 312              	.LVL27:
+ 313              	.L26:
+  99:.\src\filters/median.c **** 			case FilterOption_Moving_Average_40: previousFactor = 0.6f; currentFactor = 0.4f; break;
+ 314              		.loc 1 99 0
+ 315 0152 DFED2B7A 		flds	s15, .L43+68	@ previousFactor,
+ 316 0156 9FED2B7A 		flds	s14, .L43+72	@ currentFactor,
+ 317 015a 21E0     		b	.L18	@
+ 318              	.LVL28:
+ 319              	.L27:
+ 100:.\src\filters/median.c **** 			case FilterOption_Moving_Average_50: previousFactor = 0.5f; currentFactor = 0.5f; break;
+ 320              		.loc 1 100 0
+ 321 015c F6EE007A 		fconsts	s15, #96	@ previousFactor,
+ 322 0160 B0EE677A 		fcpys	s14, s15	@ currentFactor, previousFactor
+ 323 0164 1CE0     		b	.L18	@
+ 324              	.LVL29:
+ 325              	.L28:
+ 101:.\src\filters/median.c **** 			case FilterOption_Moving_Average_60: previousFactor = 0.4f; currentFactor = 0.6f; break;
+ 326              		.loc 1 101 0
+ 327 0166 DFED277A 		flds	s15, .L43+72	@ previousFactor,
+ 328 016a 9FED257A 		flds	s14, .L43+68	@ currentFactor,
+ 329 016e 17E0     		b	.L18	@
+ 330              	.LVL30:
+ 331              	.L29:
+ 102:.\src\filters/median.c **** 			case FilterOption_Moving_Average_70: previousFactor = 0.3f; currentFactor = 0.7f; break;
+ 332              		.loc 1 102 0
+ 333 0170 DFED227A 		flds	s15, .L43+64	@ previousFactor,
+ 334 0174 9FED207A 		flds	s14, .L43+60	@ currentFactor,
+ 335 0178 12E0     		b	.L18	@
+ 336              	.LVL31:
+ 337              	.L30:
+ 103:.\src\filters/median.c **** 			case FilterOption_Moving_Average_80: previousFactor = 0.2f; currentFactor = 0.8f; break;
+ 338              		.loc 1 103 0
+ 339 017a DFED1E7A 		flds	s15, .L43+56	@ previousFactor,
+ 340 017e 9FED1C7A 		flds	s14, .L43+52	@ currentFactor,
+ 341 0182 0DE0     		b	.L18	@
+ 342              	.LVL32:
+ 343              	.L31:
+ 104:.\src\filters/median.c **** 			case FilterOption_Moving_Average_90: previousFactor = 0.1f; currentFactor = 0.9f; break;
+ 344              		.loc 1 104 0
+ 345 0184 DFED177A 		flds	s15, .L43+40	@ previousFactor,
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 9
+
+
+ 346 0188 9FED157A 		flds	s14, .L43+36	@ currentFactor,
+ 347 018c 08E0     		b	.L18	@
+ 348              	.LVL33:
+ 349              	.L16:
+ 105:.\src\filters/median.c **** 			default: previousFactor = 0.0f; currentFactor = 1.0f; break;
+ 350              		.loc 1 105 0
+ 351 018e DFED1E7A 		flds	s15, .L43+76	@ previousFactor,
+ 352 0192 B7EE007A 		fconsts	s14, #112	@ currentFactor,
+ 353 0196 03E0     		b	.L18	@
+ 354              	.L35:
+  91:.\src\filters/median.c **** 			case FilterOption_Moving_Average_0_1: previousFactor = 0.999f; currentFactor = 0.001f; break;
+ 355              		.loc 1 91 0
+ 356 0198 DFED1C7A 		flds	s15, .L43+80	@ previousFactor,
+ 357 019c 9FED1C7A 		flds	s14, .L43+84	@ currentFactor,
+ 358              	.LVL34:
+ 359              	.L18:
+ 106:.\src\filters/median.c **** 		}
+ 107:.\src\filters/median.c **** 
+ 108:.\src\filters/median.c **** 		filter->Current = filter->Current * currentFactor + filter->Previous * previousFactor;
+ 360              		.loc 1 108 0
+ 361 01a0 94ED0A6A 		flds	s12, [r4, #40]	@ filter_4(D)->Current, filter_4(D)->Current
+ 362 01a4 66EEA77A 		fmuls	s15, s13, s15	@ tmp249, D.9123, previousFactor
+ 363              	.LVL35:
+ 364 01a8 47EE067A 		fmacs	s15, s14, s12	@ tmp249, currentFactor, filter_4(D)->Current
+ 365 01ac C4ED0A7A 		fsts	s15, [r4, #40]	@ tmp249, filter_4(D)->Current
+ 366              	.LVL36:
+ 367              	.L15:
+ 368              	.LBE3:
+ 109:.\src\filters/median.c **** 	}
+ 110:.\src\filters/median.c **** 
+ 111:.\src\filters/median.c **** 	filter->Previous = filter->Current;
+ 369              		.loc 1 111 0
+ 370 01b0 A36A     		ldr	r3, [r4, #40]	@ float	@ filter_4(D)->Current, filter_4(D)->Current
+ 371 01b2 E362     		str	r3, [r4, #44]	@ float	@ filter_4(D)->Current, filter_4(D)->Previous
+ 372              	.LVL37:
+ 373              	.L1:
+ 112:.\src\filters/median.c **** }
+ 374              		.loc 1 112 0
+ 375 01b4 BDEC028B 		fldmfdd	sp!, {d8}
+ 376 01b8 F8BD     		pop	{r3, r4, r5, r6, r7, pc}
+ 377              	.L44:
+ 378 01ba 00BF     		.align	2
+ 379              	.L43:
+ 380 01bc 00000000 		.word	__medianFilterFloatTempHistory
+ 381 01c0 72F97F3F 		.word	1065351538
+ 382 01c4 17B7D138 		.word	953267991
+ 383 01c8 A4707D3F 		.word	1065185444
+ 384 01cc 0AD7233C 		.word	1008981770
+ 385 01d0 48E17A3F 		.word	1065017672
+ 386 01d4 0AD7A33C 		.word	1017370378
+ 387 01d8 3333733F 		.word	1064514355
+ 388 01dc CDCC4C3D 		.word	1028443341
+ 389 01e0 6666663F 		.word	1063675494
+ 390 01e4 CDCCCC3D 		.word	1036831949
+ 391 01e8 9A99593F 		.word	1062836634
+ 392 01ec 9A99193E 		.word	1041865114
+ 393 01f0 CDCC4C3F 		.word	1061997773
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 10
+
+
+ 394 01f4 CDCC4C3E 		.word	1045220557
+ 395 01f8 3333333F 		.word	1060320051
+ 396 01fc 9A99993E 		.word	1050253722
+ 397 0200 9A99193F 		.word	1058642330
+ 398 0204 CDCCCC3E 		.word	1053609165
+ 399 0208 00000000 		.word	0
+ 400 020c 77BE7F3F 		.word	1065336439
+ 401 0210 6F12833A 		.word	981668463
+ 402              		.cfi_endproc
+ 403              	.LFE110:
+ 404              		.size	TWB_Filter_Median_Apply_Float, .-TWB_Filter_Median_Apply_Float
+ 405              		.align	1
+ 406              		.global	TWB_Filter_Median_Apply
+ 407              		.thumb
+ 408              		.thumb_func
+ 409              		.type	TWB_Filter_Median_Apply, %function
+ 410              	TWB_Filter_Median_Apply:
+ 411              	.LFB111:
+ 113:.\src\filters/median.c **** 
+ 114:.\src\filters/median.c **** 
+ 115:.\src\filters/median.c **** void TWB_Filter_Median_Apply(Filter_t *filter, uint16_t currentValue){
+ 412              		.loc 1 115 0
+ 413              		.cfi_startproc
+ 414              		@ args = 0, pretend = 0, frame = 16
+ 415              		@ frame_needed = 0, uses_anonymous_args = 0
+ 416              	.LVL38:
+ 417 0214 2DE9FF41 		push	{r0, r1, r2, r3, r4, r5, r6, r7, r8, lr}	@
+ 418              	.LCFI2:
+ 419              		.cfi_def_cfa_offset 40
+ 420              		.cfi_offset 0, -40
+ 421              		.cfi_offset 1, -36
+ 422              		.cfi_offset 2, -32
+ 423              		.cfi_offset 3, -28
+ 424              		.cfi_offset 4, -24
+ 425              		.cfi_offset 5, -20
+ 426              		.cfi_offset 6, -16
+ 427              		.cfi_offset 7, -12
+ 428              		.cfi_offset 8, -8
+ 429              		.cfi_offset 14, -4
+ 116:.\src\filters/median.c **** 	if(filter->FilterType == FilterOption_None){
+ 430              		.loc 1 116 0
+ 431 0218 4378     		ldrb	r3, [r0, #1]	@ zero_extendqisi2	@ D.9040, filter_4(D)->FilterType
+ 115:.\src\filters/median.c **** void TWB_Filter_Median_Apply(Filter_t *filter, uint16_t currentValue){
+ 432              		.loc 1 115 0
+ 433 021a 0546     		mov	r5, r0	@ filter, filter
+ 434 021c 0E46     		mov	r6, r1	@ currentValue, currentValue
+ 435              		.loc 1 116 0
+ 436 021e 0BB9     		cbnz	r3, .L46	@ D.9040,
+ 117:.\src\filters/median.c **** 		filter->Current = currentValue;
+ 437              		.loc 1 117 0
+ 438 0220 A982     		strh	r1, [r5, #20]	@ movhi	@ currentValue, filter_4(D)->Current
+ 118:.\src\filters/median.c **** 		return;
+ 439              		.loc 1 118 0
+ 440 0222 CBE0     		b	.L45	@
+ 441              	.L46:
+ 442              	.LVL39:
+ 119:.\src\filters/median.c **** 	}
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 11
+
+
+ 120:.\src\filters/median.c **** 
+ 121:.\src\filters/median.c **** 	FilterOptions_t medianFilterType = filter->FilterType & 0x0F;
+ 122:.\src\filters/median.c **** 	FilterOptions_t movingAverageFilterType = filter->FilterType & 0xF0;
+ 123:.\src\filters/median.c **** 
+ 124:.\src\filters/median.c **** 	if(medianFilterType != FilterOption_None){
+ 443              		.loc 1 124 0
+ 444 0224 13F00F08 		ands	r8, r3, #15	@ medianFilterType, D.9040,
+ 122:.\src\filters/median.c **** 	FilterOptions_t movingAverageFilterType = filter->FilterType & 0xF0;
+ 445              		.loc 1 122 0
+ 446 0228 03F0F004 		and	r4, r3, #240	@ movingAverageFilterType, D.9040,
+ 447              	.LVL40:
+ 448              		.loc 1 124 0
+ 449 022c 32D0     		beq	.L49	@,
+ 450              	.LBB4:
+ 125:.\src\filters/median.c **** 		uint8_t maxSize = medianFilterType * 2 + 1;
+ 451              		.loc 1 125 0
+ 452 022e 4FEA4807 		lsl	r7, r8, #1	@ tmp174, medianFilterType,
+ 453 0232 0137     		adds	r7, r7, #1	@ maxSize, tmp174,
+ 454              	.LVL41:
+ 126:.\src\filters/median.c **** 		uint8_t idx = 0;
+ 127:.\src\filters/median.c **** 		uint16_t tmp;
+ 128:.\src\filters/median.c **** 
+ 129:.\src\filters/median.c **** 		if(maxSize > 9){
+ 455              		.loc 1 129 0
+ 456 0234 092F     		cmp	r7, #9	@ maxSize,
+ 457 0236 02D9     		bls	.L50	@,
+ 130:.\src\filters/median.c **** 			filter->CurrentSlot = 0;
+ 131:.\src\filters/median.c **** 			filter->History[filter->CurrentSlot++] = currentValue;
+ 458              		.loc 1 131 0
+ 459 0238 6980     		strh	r1, [r5, #2]	@ movhi	@ currentValue, filter_4(D)->History
+ 460 023a 0123     		movs	r3, #1	@ tmp178,
+ 461              	.LVL42:
+ 462 023c 04E0     		b	.L89	@
+ 463              	.LVL43:
+ 464              	.L50:
+ 132:.\src\filters/median.c **** 		}
+ 133:.\src\filters/median.c **** 		else
+ 134:.\src\filters/median.c **** 			filter->History[filter->CurrentSlot++] = currentValue;
+ 465              		.loc 1 134 0
+ 466 023e 0378     		ldrb	r3, [r0, #0]	@ zero_extendqisi2	@ D.9048, filter_4(D)->CurrentSlot
+ 467              	.LVL44:
+ 468 0240 00EB4302 		add	r2, r0, r3, lsl #1	@, tmp180, filter, D.9048,
+ 469 0244 0133     		adds	r3, r3, #1	@ tmp183, D.9048,
+ 470 0246 5180     		strh	r1, [r2, #2]	@ movhi	@ currentValue, filter_4(D)->History
+ 471              	.L89:
+ 472 0248 2B70     		strb	r3, [r5, #0]	@ tmp183, filter_4(D)->CurrentSlot
+ 135:.\src\filters/median.c **** 
+ 136:.\src\filters/median.c **** 		if(filter->CurrentSlot == maxSize){
+ 473              		.loc 1 136 0
+ 474 024a 2B78     		ldrb	r3, [r5, #0]	@ zero_extendqisi2	@ filter_4(D)->CurrentSlot, filter_4(D)->CurrentSlot
+ 475 024c BB42     		cmp	r3, r7	@ filter_4(D)->CurrentSlot, maxSize
+ 476 024e 03D1     		bne	.L52	@,
+ 137:.\src\filters/median.c **** 			filter->CurrentSlot = 0;
+ 477              		.loc 1 137 0
+ 478 0250 0023     		movs	r3, #0	@ tmp186,
+ 479 0252 2B70     		strb	r3, [r5, #0]	@ tmp186, filter_4(D)->CurrentSlot
+ 138:.\src\filters/median.c **** 			filter->IsInitialized = true;
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 12
+
+
+ 480              		.loc 1 138 0
+ 481 0254 FF23     		movs	r3, #255	@ tmp188,
+ 482 0256 2B76     		strb	r3, [r5, #24]	@ tmp188, filter_4(D)->IsInitialized
+ 483              	.L52:
+ 139:.\src\filters/median.c **** 		}
+ 140:.\src\filters/median.c **** 
+ 141:.\src\filters/median.c **** 		memcpy(__medianFilterTempHistory, filter->History, maxSize * sizeof(uint16_t));
+ 484              		.loc 1 141 0
+ 485 0258 7A00     		lsls	r2, r7, #1	@, maxSize,
+ 486 025a 5948     		ldr	r0, .L91	@,
+ 487              	.LVL45:
+ 488 025c A91C     		adds	r1, r5, #2	@, filter,
+ 489              	.LVL46:
+ 490 025e FFF7FEFF 		bl	memcpy	@
+ 491              	.LVL47:
+ 142:.\src\filters/median.c **** 
+ 143:.\src\filters/median.c **** 		//TODO implement a faster sort
+ 144:.\src\filters/median.c **** 		//Simple, inefficient bubble sort, but we only have a max of 9 items
+ 145:.\src\filters/median.c **** 		while(idx < maxSize - 1){
+ 492              		.loc 1 145 0
+ 493 0262 013F     		subs	r7, r7, #1	@ tmp261, maxSize,
+ 494              	.LVL48:
+ 126:.\src\filters/median.c **** 		uint8_t idx = 0;
+ 495              		.loc 1 126 0
+ 496 0264 0023     		movs	r3, #0	@ idx,
+ 146:.\src\filters/median.c **** 			if(__medianFilterTempHistory[idx] > __medianFilterTempHistory[idx + 1]){
+ 497              		.loc 1 146 0
+ 498 0266 564A     		ldr	r2, .L91	@ tmp262,
+ 145:.\src\filters/median.c **** 		while(idx < maxSize - 1){
+ 499              		.loc 1 145 0
+ 500 0268 0DE0     		b	.L88	@
+ 501              	.LVL49:
+ 502              	.L56:
+ 503              		.loc 1 146 0
+ 504 026a 591C     		adds	r1, r3, #1	@ D.9059, idx,
+ 505 026c 32F81300 		ldrh	r0, [r2, r3, lsl #1]	@ D.9058, __medianFilterTempHistory
+ 506 0270 32F811C0 		ldrh	ip, [r2, r1, lsl #1]	@ D.9060, __medianFilterTempHistory
+ 507 0274 6045     		cmp	r0, ip	@ D.9058, D.9060
+ 508 0276 05D9     		bls	.L54	@,
+ 509              	.LVL50:
+ 147:.\src\filters/median.c **** 				tmp = __medianFilterTempHistory[idx];
+ 148:.\src\filters/median.c **** 				__medianFilterTempHistory[idx] = __medianFilterTempHistory[idx + 1];
+ 510              		.loc 1 148 0
+ 511 0278 22F813C0 		strh	ip, [r2, r3, lsl #1]	@ movhi	@ D.9060, __medianFilterTempHistory
+ 149:.\src\filters/median.c **** 				__medianFilterTempHistory[idx + 1] = tmp;
+ 512              		.loc 1 149 0
+ 513 027c 22F81100 		strh	r0, [r2, r1, lsl #1]	@ movhi	@ D.9058, __medianFilterTempHistory
+ 514              	.LVL51:
+ 150:.\src\filters/median.c **** 				idx = 0;
+ 515              		.loc 1 150 0
+ 516 0280 0023     		movs	r3, #0	@ idx,
+ 517              	.LVL52:
+ 518 0282 00E0     		b	.L88	@
+ 519              	.LVL53:
+ 520              	.L54:
+ 151:.\src\filters/median.c **** 			}
+ 152:.\src\filters/median.c **** 			else
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 13
+
+
+ 153:.\src\filters/median.c **** 				idx++;
+ 521              		.loc 1 153 0
+ 522 0284 CBB2     		uxtb	r3, r1	@ idx, D.9059
+ 523              	.LVL54:
+ 524              	.L88:
+ 145:.\src\filters/median.c **** 		while(idx < maxSize - 1){
+ 525              		.loc 1 145 0 discriminator 1
+ 526 0286 BB42     		cmp	r3, r7	@ idx, tmp261
+ 527 0288 EFDB     		blt	.L56	@,
+ 154:.\src\filters/median.c **** 		}
+ 155:.\src\filters/median.c **** 
+ 156:.\src\filters/median.c **** 		if(filter->IsInitialized)
+ 528              		.loc 1 156 0
+ 529 028a 2B7E     		ldrb	r3, [r5, #24]	@ zero_extendqisi2	@ filter_4(D)->IsInitialized, filter_4(D)->IsInitialized
+ 530              	.LVL55:
+ 531 028c 13B1     		cbz	r3, .L49	@ filter_4(D)->IsInitialized,
+ 157:.\src\filters/median.c **** 			currentValue = __medianFilterTempHistory[medianFilterType]; //FilterType just so happens to be i
+ 532              		.loc 1 157 0
+ 533 028e 4C4B     		ldr	r3, .L91	@ tmp207,
+ 534 0290 33F81860 		ldrh	r6, [r3, r8, lsl #1]	@ currentValue, __medianFilterTempHistory
+ 535              	.LVL56:
+ 536              	.L49:
+ 537              	.LBE4:
+ 158:.\src\filters/median.c **** 
+ 159:.\src\filters/median.c **** 	}
+ 160:.\src\filters/median.c **** 
+ 161:.\src\filters/median.c **** 	//TODO: These need to really be compensated for by sample rate.
+ 162:.\src\filters/median.c **** 	if(movingAverageFilterType != FilterOption_None && filter->Previous != 0){
+ 538              		.loc 1 162 0
+ 539 0294 002C     		cmp	r4, #0	@ movingAverageFilterType
+ 540 0296 00F08F80 		beq	.L58	@
+ 541              		.loc 1 162 0 is_stmt 0 discriminator 1
+ 542 029a EB8A     		ldrh	r3, [r5, #22]	@ D.9072, filter_4(D)->Previous
+ 543 029c 002B     		cmp	r3, #0	@ D.9072
+ 544 029e 00F08B80 		beq	.L58	@
+ 545              	.LBB5:
+ 163:.\src\filters/median.c **** 		volatile float currentFactor = 1.0f;
+ 164:.\src\filters/median.c **** 		volatile float previousFactor = 0.0f;
+ 546              		.loc 1 164 0 is_stmt 1
+ 547 02a2 0022     		movs	r2, #0	@ tmp209,
+ 163:.\src\filters/median.c **** 		volatile float currentFactor = 1.0f;
+ 548              		.loc 1 163 0
+ 549 02a4 4FF07E51 		mov	r1, #1065353216	@ tmp208,
+ 165:.\src\filters/median.c **** 
+ 166:.\src\filters/median.c **** 		switch(movingAverageFilterType){
+ 550              		.loc 1 166 0
+ 551 02a8 802C     		cmp	r4, #128	@ movingAverageFilterType,
+ 163:.\src\filters/median.c **** 		volatile float currentFactor = 1.0f;
+ 552              		.loc 1 163 0
+ 553 02aa 0291     		str	r1, [sp, #8]	@ float	@ tmp208, currentFactor
+ 554              	.LVL57:
+ 164:.\src\filters/median.c **** 		volatile float previousFactor = 0.0f;
+ 555              		.loc 1 164 0
+ 556 02ac 0392     		str	r2, [sp, #12]	@ float	@ tmp209, previousFactor
+ 557              	.LVL58:
+ 558              		.loc 1 166 0
+ 559 02ae 3FD0     		beq	.L67	@,
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 14
+
+
+ 560 02b0 10D8     		bhi	.L75	@,
+ 561 02b2 402C     		cmp	r4, #64	@ movingAverageFilterType,
+ 562 02b4 2CD0     		beq	.L63	@,
+ 563 02b6 06D8     		bhi	.L76	@,
+ 564 02b8 202C     		cmp	r4, #32	@ movingAverageFilterType,
+ 565 02ba 20D0     		beq	.L61	@,
+ 566 02bc 302C     		cmp	r4, #48	@ movingAverageFilterType,
+ 567 02be 23D0     		beq	.L62	@,
+ 568 02c0 102C     		cmp	r4, #16	@ movingAverageFilterType,
+ 569 02c2 55D1     		bne	.L59	@,
+ 570 02c4 17E0     		b	.L60	@
+ 571              	.L76:
+ 572 02c6 602C     		cmp	r4, #96	@ movingAverageFilterType,
+ 573 02c8 2AD0     		beq	.L65	@,
+ 574 02ca 702C     		cmp	r4, #112	@ movingAverageFilterType,
+ 575 02cc 2CD0     		beq	.L66	@,
+ 576 02ce 502C     		cmp	r4, #80	@ movingAverageFilterType,
+ 577 02d0 4ED1     		bne	.L59	@,
+ 578 02d2 21E0     		b	.L64	@
+ 579              	.L75:
+ 580 02d4 C02C     		cmp	r4, #192	@ movingAverageFilterType,
+ 581 02d6 3BD0     		beq	.L71	@,
+ 582 02d8 06D8     		bhi	.L77	@,
+ 583 02da A02C     		cmp	r4, #160	@ movingAverageFilterType,
+ 584 02dc 30D0     		beq	.L69	@,
+ 585 02de B02C     		cmp	r4, #176	@ movingAverageFilterType,
+ 586 02e0 32D0     		beq	.L70	@,
+ 587 02e2 902C     		cmp	r4, #144	@ movingAverageFilterType,
+ 588 02e4 44D1     		bne	.L59	@,
+ 589 02e6 27E0     		b	.L68	@
+ 590              	.L77:
+ 591 02e8 E02C     		cmp	r4, #224	@ movingAverageFilterType,
+ 592 02ea 39D0     		beq	.L73	@,
+ 593 02ec F02C     		cmp	r4, #240	@ movingAverageFilterType,
+ 594 02ee 3BD0     		beq	.L74	@,
+ 595 02f0 D02C     		cmp	r4, #208	@ movingAverageFilterType,
+ 596 02f2 3DD1     		bne	.L59	@,
+ 597 02f4 30E0     		b	.L72	@
+ 598              	.L60:
+ 167:.\src\filters/median.c **** 			case FilterOption_Moving_Average_0_01: previousFactor = 0.9999f; currentFactor = 0.0001f; break;
+ 599              		.loc 1 167 0
+ 600 02f6 334A     		ldr	r2, .L91+4	@ tmp210,
+ 601 02f8 0392     		str	r2, [sp, #12]	@ float	@ tmp210, previousFactor
+ 602 02fa 334A     		ldr	r2, .L91+8	@ tmp211,
+ 603 02fc 02E0     		b	.L90	@
+ 604              	.L61:
+ 168:.\src\filters/median.c **** 			case FilterOption_Moving_Average_0_1: previousFactor = 0.999f; currentFactor = 0.001f; break;
+ 605              		.loc 1 168 0
+ 606 02fe 334A     		ldr	r2, .L91+12	@ tmp212,
+ 607 0300 0392     		str	r2, [sp, #12]	@ float	@ tmp212, previousFactor
+ 608 0302 334A     		ldr	r2, .L91+16	@ tmp213,
+ 609              	.L90:
+ 610 0304 0292     		str	r2, [sp, #8]	@ float	@ tmp213, currentFactor
+ 611 0306 35E0     		b	.L78	@
+ 612              	.L62:
+ 169:.\src\filters/median.c **** 			case FilterOption_Moving_Average_1: previousFactor = 0.99f; currentFactor = 0.01f; break;
+ 613              		.loc 1 169 0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 15
+
+
+ 614 0308 324A     		ldr	r2, .L91+20	@ tmp214,
+ 615 030a 0392     		str	r2, [sp, #12]	@ float	@ tmp214, previousFactor
+ 616 030c 324A     		ldr	r2, .L91+24	@ tmp215,
+ 617 030e F9E7     		b	.L90	@
+ 618              	.L63:
+ 170:.\src\filters/median.c **** 			case FilterOption_Moving_Average_2: previousFactor = 0.98f; currentFactor = 0.02f; break;
+ 619              		.loc 1 170 0
+ 620 0310 324A     		ldr	r2, .L91+28	@ tmp216,
+ 621 0312 0392     		str	r2, [sp, #12]	@ float	@ tmp216, previousFactor
+ 622 0314 324A     		ldr	r2, .L91+32	@ tmp217,
+ 623 0316 F5E7     		b	.L90	@
+ 624              	.L64:
+ 171:.\src\filters/median.c **** 			case FilterOption_Moving_Average_5: previousFactor = 0.95f; currentFactor = 0.05f; break;
+ 625              		.loc 1 171 0
+ 626 0318 324A     		ldr	r2, .L91+36	@ tmp218,
+ 627 031a 0392     		str	r2, [sp, #12]	@ float	@ tmp218, previousFactor
+ 628 031c 324A     		ldr	r2, .L91+40	@ tmp219,
+ 629 031e F1E7     		b	.L90	@
+ 630              	.L65:
+ 172:.\src\filters/median.c **** 			case FilterOption_Moving_Average_10: previousFactor = 0.90f; currentFactor = 0.10f; break;
+ 631              		.loc 1 172 0
+ 632 0320 324A     		ldr	r2, .L91+44	@ tmp220,
+ 633 0322 0392     		str	r2, [sp, #12]	@ float	@ tmp220, previousFactor
+ 634 0324 324A     		ldr	r2, .L91+48	@ tmp221,
+ 635 0326 EDE7     		b	.L90	@
+ 636              	.L66:
+ 173:.\src\filters/median.c **** 			case FilterOption_Moving_Average_15: previousFactor = 0.85f; currentFactor = 0.15f; break;
+ 637              		.loc 1 173 0
+ 638 0328 324A     		ldr	r2, .L91+52	@ tmp222,
+ 639 032a 0392     		str	r2, [sp, #12]	@ float	@ tmp222, previousFactor
+ 640 032c 324A     		ldr	r2, .L91+56	@ tmp223,
+ 641 032e E9E7     		b	.L90	@
+ 642              	.L67:
+ 174:.\src\filters/median.c **** 			case FilterOption_Moving_Average_20: previousFactor = 0.80f; currentFactor = 0.2f; break;
+ 643              		.loc 1 174 0
+ 644 0330 324A     		ldr	r2, .L91+60	@ tmp224,
+ 645 0332 0392     		str	r2, [sp, #12]	@ float	@ tmp224, previousFactor
+ 646 0334 324A     		ldr	r2, .L91+64	@ tmp225,
+ 647 0336 E5E7     		b	.L90	@
+ 648              	.L68:
+ 175:.\src\filters/median.c **** 			case FilterOption_Moving_Average_30: previousFactor = 0.70f; currentFactor = 0.3f; break;
+ 649              		.loc 1 175 0
+ 650 0338 324A     		ldr	r2, .L91+68	@ tmp226,
+ 651 033a 0392     		str	r2, [sp, #12]	@ float	@ tmp226, previousFactor
+ 652 033c 324A     		ldr	r2, .L91+72	@ tmp227,
+ 653 033e E1E7     		b	.L90	@
+ 654              	.L69:
+ 176:.\src\filters/median.c **** 			case FilterOption_Moving_Average_40: previousFactor = 0.6f; currentFactor = 0.4f; break;
+ 655              		.loc 1 176 0
+ 656 0340 324A     		ldr	r2, .L91+76	@ tmp228,
+ 657 0342 0392     		str	r2, [sp, #12]	@ float	@ tmp228, previousFactor
+ 658 0344 324A     		ldr	r2, .L91+80	@ tmp229,
+ 659 0346 DDE7     		b	.L90	@
+ 660              	.L70:
+ 177:.\src\filters/median.c **** 			case FilterOption_Moving_Average_50: previousFactor = 0.5f; currentFactor = 0.5f; break;
+ 661              		.loc 1 177 0
+ 662 0348 4FF07C52 		mov	r2, #1056964608	@ tmp230,
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 16
+
+
+ 663 034c 0392     		str	r2, [sp, #12]	@ float	@ tmp230, previousFactor
+ 664 034e D9E7     		b	.L90	@
+ 665              	.L71:
+ 178:.\src\filters/median.c **** 			case FilterOption_Moving_Average_60: previousFactor = 0.4f; currentFactor = 0.6f; break;
+ 666              		.loc 1 178 0
+ 667 0350 2F4A     		ldr	r2, .L91+80	@ tmp232,
+ 668 0352 0392     		str	r2, [sp, #12]	@ float	@ tmp232, previousFactor
+ 669 0354 2D4A     		ldr	r2, .L91+76	@ tmp233,
+ 670 0356 D5E7     		b	.L90	@
+ 671              	.L72:
+ 179:.\src\filters/median.c **** 			case FilterOption_Moving_Average_70: previousFactor = 0.3f; currentFactor = 0.7f; break;
+ 672              		.loc 1 179 0
+ 673 0358 2B4A     		ldr	r2, .L91+72	@ tmp234,
+ 674 035a 0392     		str	r2, [sp, #12]	@ float	@ tmp234, previousFactor
+ 675 035c 294A     		ldr	r2, .L91+68	@ tmp235,
+ 676 035e D1E7     		b	.L90	@
+ 677              	.L73:
+ 180:.\src\filters/median.c **** 			case FilterOption_Moving_Average_80: previousFactor = 0.2f; currentFactor = 0.8f; break;
+ 678              		.loc 1 180 0
+ 679 0360 274A     		ldr	r2, .L91+64	@ tmp236,
+ 680 0362 0392     		str	r2, [sp, #12]	@ float	@ tmp236, previousFactor
+ 681 0364 254A     		ldr	r2, .L91+60	@ tmp237,
+ 682 0366 CDE7     		b	.L90	@
+ 683              	.L74:
+ 181:.\src\filters/median.c **** 			case FilterOption_Moving_Average_90: previousFactor = 0.1f; currentFactor = 0.9f; break;
+ 684              		.loc 1 181 0
+ 685 0368 214A     		ldr	r2, .L91+48	@ tmp238,
+ 686 036a 0392     		str	r2, [sp, #12]	@ float	@ tmp238, previousFactor
+ 687 036c 1F4A     		ldr	r2, .L91+44	@ tmp239,
+ 688 036e C9E7     		b	.L90	@
+ 689              	.L59:
+ 182:.\src\filters/median.c **** 
+ 183:.\src\filters/median.c **** 			default: previousFactor = 0.0f; currentFactor = 1.0f; break;
+ 690              		.loc 1 183 0
+ 691 0370 0392     		str	r2, [sp, #12]	@ float	@ tmp260, previousFactor
+ 692 0372 0291     		str	r1, [sp, #8]	@ float	@ tmp259, currentFactor
+ 693              	.L78:
+ 184:.\src\filters/median.c **** 		}
+ 185:.\src\filters/median.c **** 
+ 186:.\src\filters/median.c **** 		volatile uint16_t part1 = (uint16_t)((float)currentValue * currentFactor);
+ 694              		.loc 1 186 0
+ 695 0374 06EE906A 		fmsr	s13, r6	@ int	@, currentValue
+ 696 0378 DDED027A 		flds	s15, [sp, #8]	@ currentFactor.17, currentFactor
+ 697 037c B8EE667A 		fuitos	s14, s13	@ tmp242,
+ 187:.\src\filters/median.c **** 		volatile uint16_t part2 = (uint16_t)((float)filter->Previous * previousFactor);
+ 698              		.loc 1 187 0
+ 699 0380 06EE903A 		fmsr	s13, r3	@ int	@, D.9072
+ 186:.\src\filters/median.c **** 		volatile uint16_t part1 = (uint16_t)((float)currentValue * currentFactor);
+ 700              		.loc 1 186 0
+ 701 0384 67EE277A 		fmuls	s15, s14, s15	@ tmp243, tmp242, currentFactor.17
+ 702              		.loc 1 187 0
+ 703 0388 B8EE667A 		fuitos	s14, s13	@ tmp247,
+ 186:.\src\filters/median.c **** 		volatile uint16_t part1 = (uint16_t)((float)currentValue * currentFactor);
+ 704              		.loc 1 186 0
+ 705 038c FCEEE77A 		ftouizs	s15, s15	@, tmp243
+ 706 0390 17EE902A 		fmrs	r2, s15	@ int	@ tmp245,
+ 707 0394 ADF80420 		strh	r2, [sp, #4]	@ movhi	@ tmp245, part1
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 17
+
+
+ 708              	.LVL59:
+ 709              		.loc 1 187 0
+ 710 0398 DDED037A 		flds	s15, [sp, #12]	@ previousFactor.19, previousFactor
+ 711 039c 67EE277A 		fmuls	s15, s14, s15	@ tmp248, tmp247, previousFactor.19
+ 712 03a0 FCEEE77A 		ftouizs	s15, s15	@, tmp248
+ 713 03a4 17EE903A 		fmrs	r3, s15	@ int	@ tmp250,
+ 714 03a8 ADF80630 		strh	r3, [sp, #6]	@ movhi	@ tmp250, part2
+ 715              	.LVL60:
+ 188:.\src\filters/median.c **** 
+ 189:.\src\filters/median.c **** 		currentValue = (uint16_t)(part1 + part2);
+ 716              		.loc 1 189 0
+ 717 03ac BDF80430 		ldrh	r3, [sp, #4]	@, part1
+ 718 03b0 BDF80660 		ldrh	r6, [sp, #6]	@, part2
+ 719              	.LVL61:
+ 720 03b4 F618     		adds	r6, r6, r3	@ tmp256, part2, part1
+ 721 03b6 B6B2     		uxth	r6, r6	@ currentValue, tmp256
+ 722              	.LVL62:
+ 723              	.L58:
+ 724              	.LBE5:
+ 190:.\src\filters/median.c **** 	}
+ 191:.\src\filters/median.c **** 
+ 192:.\src\filters/median.c **** 	filter->Current = currentValue;
+ 725              		.loc 1 192 0
+ 726 03b8 AE82     		strh	r6, [r5, #20]	@ movhi	@ currentValue, filter_4(D)->Current
+ 193:.\src\filters/median.c **** 	filter->Previous = filter->Current;
+ 727              		.loc 1 193 0
+ 728 03ba EE82     		strh	r6, [r5, #22]	@ movhi	@ currentValue, filter_4(D)->Previous
+ 729              	.LVL63:
+ 730              	.L45:
+ 194:.\src\filters/median.c **** }
+ 731              		.loc 1 194 0
+ 732 03bc BDE8FF81 		pop	{r0, r1, r2, r3, r4, r5, r6, r7, r8, pc}
+ 733              	.L92:
+ 734              		.align	2
+ 735              	.L91:
+ 736 03c0 00000000 		.word	__medianFilterTempHistory
+ 737 03c4 72F97F3F 		.word	1065351538
+ 738 03c8 17B7D138 		.word	953267991
+ 739 03cc 77BE7F3F 		.word	1065336439
+ 740 03d0 6F12833A 		.word	981668463
+ 741 03d4 A4707D3F 		.word	1065185444
+ 742 03d8 0AD7233C 		.word	1008981770
+ 743 03dc 48E17A3F 		.word	1065017672
+ 744 03e0 0AD7A33C 		.word	1017370378
+ 745 03e4 3333733F 		.word	1064514355
+ 746 03e8 CDCC4C3D 		.word	1028443341
+ 747 03ec 6666663F 		.word	1063675494
+ 748 03f0 CDCCCC3D 		.word	1036831949
+ 749 03f4 9A99593F 		.word	1062836634
+ 750 03f8 9A99193E 		.word	1041865114
+ 751 03fc CDCC4C3F 		.word	1061997773
+ 752 0400 CDCC4C3E 		.word	1045220557
+ 753 0404 3333333F 		.word	1060320051
+ 754 0408 9A99993E 		.word	1050253722
+ 755 040c 9A99193F 		.word	1058642330
+ 756 0410 CDCCCC3E 		.word	1053609165
+ 757              		.cfi_endproc
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 18
+
+
+ 758              	.LFE111:
+ 759              		.size	TWB_Filter_Median_Apply, .-TWB_Filter_Median_Apply
+ 760              		.align	1
+ 761              		.global	TWB_Filter_Median_Apply_Signed
+ 762              		.thumb
+ 763              		.thumb_func
+ 764              		.type	TWB_Filter_Median_Apply_Signed, %function
+ 765              	TWB_Filter_Median_Apply_Signed:
+ 766              	.LFB112:
+ 195:.\src\filters/median.c **** 
+ 196:.\src\filters/median.c **** void TWB_Filter_Median_Apply_Signed(FilterSigned_t *filter, int16_t currentValue){
+ 767              		.loc 1 196 0
+ 768              		.cfi_startproc
+ 769              		@ args = 0, pretend = 0, frame = 16
+ 770              		@ frame_needed = 0, uses_anonymous_args = 0
+ 771              	.LVL64:
+ 772 0414 2DE9FF41 		push	{r0, r1, r2, r3, r4, r5, r6, r7, r8, lr}	@
+ 773              	.LCFI3:
+ 774              		.cfi_def_cfa_offset 40
+ 775              		.cfi_offset 0, -40
+ 776              		.cfi_offset 1, -36
+ 777              		.cfi_offset 2, -32
+ 778              		.cfi_offset 3, -28
+ 779              		.cfi_offset 4, -24
+ 780              		.cfi_offset 5, -20
+ 781              		.cfi_offset 6, -16
+ 782              		.cfi_offset 7, -12
+ 783              		.cfi_offset 8, -8
+ 784              		.cfi_offset 14, -4
+ 197:.\src\filters/median.c **** 	if(filter->FilterType == FilterOption_None){
+ 785              		.loc 1 197 0
+ 786 0418 4378     		ldrb	r3, [r0, #1]	@ zero_extendqisi2	@ D.8979, filter_4(D)->FilterType
+ 196:.\src\filters/median.c **** void TWB_Filter_Median_Apply_Signed(FilterSigned_t *filter, int16_t currentValue){
+ 787              		.loc 1 196 0
+ 788 041a 0446     		mov	r4, r0	@ filter, filter
+ 789 041c 0D46     		mov	r5, r1	@ currentValue, currentValue
+ 790              		.loc 1 197 0
+ 791 041e 0BB9     		cbnz	r3, .L94	@ D.8979,
+ 198:.\src\filters/median.c **** 		filter->Current = currentValue;
+ 792              		.loc 1 198 0
+ 793 0420 A182     		strh	r1, [r4, #20]	@ movhi	@ currentValue, filter_4(D)->Current
+ 199:.\src\filters/median.c **** 		return;
+ 794              		.loc 1 199 0
+ 795 0422 E7E0     		b	.L93	@
+ 796              	.L94:
+ 200:.\src\filters/median.c **** 	}
+ 201:.\src\filters/median.c **** 
+ 202:.\src\filters/median.c **** 	volatile FilterOptions_t medianFilterType = filter->FilterType & 0x0F;
+ 797              		.loc 1 202 0
+ 798 0424 03F00F02 		and	r2, r3, #15	@ medianFilterType.0, D.8979,
+ 799              	.LVL65:
+ 203:.\src\filters/median.c **** 	volatile FilterOptions_t movingAverageFilterType = filter->FilterType & 0xF0;
+ 800              		.loc 1 203 0
+ 801 0428 03F0F003 		and	r3, r3, #240	@ movingAverageFilterType.1, D.8979,
+ 802              	.LVL66:
+ 202:.\src\filters/median.c **** 	volatile FilterOptions_t medianFilterType = filter->FilterType & 0x0F;
+ 803              		.loc 1 202 0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 19
+
+
+ 804 042c 8DF80020 		strb	r2, [sp, #0]	@ medianFilterType.0, medianFilterType
+ 805              	.LVL67:
+ 806              		.loc 1 203 0
+ 807 0430 8DF80130 		strb	r3, [sp, #1]	@ movingAverageFilterType.1, movingAverageFilterType
+ 204:.\src\filters/median.c **** 
+ 205:.\src\filters/median.c **** 	if(medianFilterType != FilterOption_None){
+ 808              		.loc 1 205 0
+ 809 0434 9DF80030 		ldrb	r3, [sp, #0]	@ zero_extendqisi2	@ medianFilterType, medianFilterType
+ 810              	.LVL68:
+ 811 0438 002B     		cmp	r3, #0	@ medianFilterType
+ 812 043a 3FD0     		beq	.L97	@
+ 813              	.LBB6:
+ 206:.\src\filters/median.c **** 		uint8_t maxSize = medianFilterType * 2 + 1;
+ 814              		.loc 1 206 0
+ 815 043c 9DF80060 		ldrb	r6, [sp, #0]	@ zero_extendqisi2	@ medianFilterType, medianFilterType
+ 816              	.LVL69:
+ 817 0440 7600     		lsls	r6, r6, #1	@ tmp209, medianFilterType,
+ 818              	.LVL70:
+ 819 0442 0136     		adds	r6, r6, #1	@ tmp211, tmp209,
+ 820 0444 F6B2     		uxtb	r6, r6	@ maxSize, tmp211
+ 821              	.LVL71:
+ 207:.\src\filters/median.c **** 		uint8_t idx = 0;
+ 208:.\src\filters/median.c **** 		int16_t tmp;
+ 209:.\src\filters/median.c **** 
+ 210:.\src\filters/median.c **** 		if(maxSize > 9){
+ 822              		.loc 1 210 0
+ 823 0446 092E     		cmp	r6, #9	@ maxSize,
+ 824 0448 02D9     		bls	.L98	@,
+ 211:.\src\filters/median.c **** 			filter->CurrentSlot = 0;
+ 212:.\src\filters/median.c **** 			filter->History[filter->CurrentSlot++] = currentValue;
+ 825              		.loc 1 212 0
+ 826 044a 6180     		strh	r1, [r4, #2]	@ movhi	@ currentValue, filter_4(D)->History
+ 827 044c 0123     		movs	r3, #1	@ tmp213,
+ 828 044e 04E0     		b	.L134	@
+ 829              	.L98:
+ 213:.\src\filters/median.c **** 		}
+ 214:.\src\filters/median.c **** 		else
+ 215:.\src\filters/median.c **** 			filter->History[filter->CurrentSlot++] = currentValue;
+ 830              		.loc 1 215 0
+ 831 0450 0378     		ldrb	r3, [r0, #0]	@ zero_extendqisi2	@ D.8991, filter_4(D)->CurrentSlot
+ 832 0452 00EB4302 		add	r2, r0, r3, lsl #1	@, tmp215, filter, D.8991,
+ 833 0456 0133     		adds	r3, r3, #1	@ tmp218, D.8991,
+ 834 0458 5180     		strh	r1, [r2, #2]	@ movhi	@ currentValue, filter_4(D)->History
+ 835              	.L134:
+ 836 045a 2370     		strb	r3, [r4, #0]	@ tmp218, filter_4(D)->CurrentSlot
+ 216:.\src\filters/median.c **** 
+ 217:.\src\filters/median.c **** 		if(filter->CurrentSlot == maxSize){
+ 837              		.loc 1 217 0
+ 838 045c 2378     		ldrb	r3, [r4, #0]	@ zero_extendqisi2	@ filter_4(D)->CurrentSlot, filter_4(D)->CurrentSlot
+ 839 045e B342     		cmp	r3, r6	@ filter_4(D)->CurrentSlot, maxSize
+ 840 0460 03D1     		bne	.L100	@,
+ 218:.\src\filters/median.c **** 			filter->CurrentSlot = 0;
+ 841              		.loc 1 218 0
+ 842 0462 0023     		movs	r3, #0	@ tmp221,
+ 843 0464 2370     		strb	r3, [r4, #0]	@ tmp221, filter_4(D)->CurrentSlot
+ 219:.\src\filters/median.c **** 			filter->IsInitialized = true;
+ 844              		.loc 1 219 0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 20
+
+
+ 845 0466 FF23     		movs	r3, #255	@ tmp223,
+ 846 0468 2376     		strb	r3, [r4, #24]	@ tmp223, filter_4(D)->IsInitialized
+ 847              	.L100:
+ 220:.\src\filters/median.c **** 		}
+ 221:.\src\filters/median.c **** 
+ 222:.\src\filters/median.c **** 		memcpy(__medianFilterSignedTempHistory, filter->History, maxSize * sizeof(int16_t));
+ 848              		.loc 1 222 0
+ 849 046a 7200     		lsls	r2, r6, #1	@, maxSize,
+ 850 046c 6248     		ldr	r0, .L136	@,
+ 851              	.LVL72:
+ 852 046e A11C     		adds	r1, r4, #2	@, filter,
+ 853              	.LVL73:
+ 854 0470 FFF7FEFF 		bl	memcpy	@
+ 855              	.LVL74:
+ 223:.\src\filters/median.c **** 
+ 224:.\src\filters/median.c **** 		//TODO implement a faster sort
+ 225:.\src\filters/median.c **** 		//Simple, inefficient bubble sort, but we only have a max of 9 items
+ 226:.\src\filters/median.c **** 		while(idx < maxSize - 1){
+ 856              		.loc 1 226 0
+ 857 0474 013E     		subs	r6, r6, #1	@ tmp316, maxSize,
+ 858              	.LVL75:
+ 207:.\src\filters/median.c **** 		uint8_t idx = 0;
+ 859              		.loc 1 207 0
+ 860 0476 0023     		movs	r3, #0	@ idx,
+ 227:.\src\filters/median.c **** 			if(__medianFilterSignedTempHistory[idx] > __medianFilterSignedTempHistory[idx + 1]){
+ 861              		.loc 1 227 0
+ 862 0478 5F4A     		ldr	r2, .L136	@ tmp317,
+ 226:.\src\filters/median.c **** 		while(idx < maxSize - 1){
+ 863              		.loc 1 226 0
+ 864 047a 11E0     		b	.L133	@
+ 865              	.LVL76:
+ 866              	.L104:
+ 867              		.loc 1 227 0
+ 868 047c 591C     		adds	r1, r3, #1	@ D.9002, idx,
+ 869 047e 32F81300 		ldrh	r0, [r2, r3, lsl #1]	@ D.9001, __medianFilterSignedTempHistory
+ 870 0482 32F81170 		ldrh	r7, [r2, r1, lsl #1]	@ D.9003, __medianFilterSignedTempHistory
+ 871 0486 0FFA80F8 		sxth	r8, r0	@ D.9001, D.9001
+ 872 048a 0FFA87FC 		sxth	ip, r7	@ D.9003, D.9003
+ 873 048e E045     		cmp	r8, ip	@ D.9001, D.9003
+ 874 0490 05DD     		ble	.L102	@,
+ 875              	.LVL77:
+ 228:.\src\filters/median.c **** 				tmp = __medianFilterSignedTempHistory[idx];
+ 229:.\src\filters/median.c **** 				__medianFilterSignedTempHistory[idx] = __medianFilterSignedTempHistory[idx + 1];
+ 876              		.loc 1 229 0
+ 877 0492 22F81370 		strh	r7, [r2, r3, lsl #1]	@ movhi	@ D.9003, __medianFilterSignedTempHistory
+ 230:.\src\filters/median.c **** 				__medianFilterSignedTempHistory[idx + 1] = tmp;
+ 878              		.loc 1 230 0
+ 879 0496 22F81100 		strh	r0, [r2, r1, lsl #1]	@ movhi	@ D.9001, __medianFilterSignedTempHistory
+ 880              	.LVL78:
+ 231:.\src\filters/median.c **** 				idx = 0;
+ 881              		.loc 1 231 0
+ 882 049a 0023     		movs	r3, #0	@ idx,
+ 883              	.LVL79:
+ 884 049c 00E0     		b	.L133	@
+ 885              	.LVL80:
+ 886              	.L102:
+ 232:.\src\filters/median.c **** 			}
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 21
+
+
+ 233:.\src\filters/median.c **** 			else
+ 234:.\src\filters/median.c **** 				idx++;
+ 887              		.loc 1 234 0
+ 888 049e CBB2     		uxtb	r3, r1	@ idx, D.9002
+ 889              	.LVL81:
+ 890              	.L133:
+ 226:.\src\filters/median.c **** 		while(idx < maxSize - 1){
+ 891              		.loc 1 226 0 discriminator 1
+ 892 04a0 B342     		cmp	r3, r6	@ idx, tmp316
+ 893 04a2 EBDB     		blt	.L104	@,
+ 235:.\src\filters/median.c **** 		}
+ 236:.\src\filters/median.c **** 
+ 237:.\src\filters/median.c **** 		if(filter->IsInitialized){
+ 894              		.loc 1 237 0
+ 895 04a4 237E     		ldrb	r3, [r4, #24]	@ zero_extendqisi2	@ filter_4(D)->IsInitialized, filter_4(D)->IsInitialized
+ 896              	.LVL82:
+ 897 04a6 4BB1     		cbz	r3, .L97	@ filter_4(D)->IsInitialized,
+ 898              	.LBB7:
+ 238:.\src\filters/median.c **** 			volatile uint16_t slotIndex = medianFilterType;
+ 899              		.loc 1 238 0
+ 900 04a8 9DF80030 		ldrb	r3, [sp, #0]	@ zero_extendqisi2	@ medianFilterType, medianFilterType
+ 901              	.LVL83:
+ 902 04ac ADF80230 		strh	r3, [sp, #2]	@ movhi	@ medianFilterType.4, slotIndex
+ 903              	.LVL84:
+ 239:.\src\filters/median.c **** 			currentValue = __medianFilterSignedTempHistory[slotIndex]; //FilterType just so happens to be in
+ 904              		.loc 1 239 0
+ 905 04b0 BDF80220 		ldrh	r2, [sp, #2]	@, slotIndex
+ 906 04b4 504B     		ldr	r3, .L136	@ tmp250,
+ 907              	.LVL85:
+ 908 04b6 92B2     		uxth	r2, r2	@ slotIndex.6, slotIndex
+ 909 04b8 33F91250 		ldrsh	r5, [r3, r2, lsl #1]	@ currentValue, __medianFilterSignedTempHistory
+ 910              	.LVL86:
+ 911              	.L97:
+ 912              	.LBE7:
+ 913              	.LBE6:
+ 240:.\src\filters/median.c **** 		}
+ 241:.\src\filters/median.c **** 
+ 242:.\src\filters/median.c **** 	}
+ 243:.\src\filters/median.c **** 
+ 244:.\src\filters/median.c **** 		//TODO: These need to really be compensated for by sample rate.
+ 245:.\src\filters/median.c **** 	if(movingAverageFilterType != FilterOption_None && filter->MovingAverageInitialized == true){
+ 914              		.loc 1 245 0
+ 915 04bc 9DF80130 		ldrb	r3, [sp, #1]	@ zero_extendqisi2	@ movingAverageFilterType, movingAverageFilterType
+ 916              	.LVL87:
+ 917 04c0 002B     		cmp	r3, #0	@ movingAverageFilterType
+ 918 04c2 00F09380 		beq	.L106	@
+ 919              		.loc 1 245 0 is_stmt 0 discriminator 1
+ 920 04c6 637E     		ldrb	r3, [r4, #25]	@ zero_extendqisi2	@ filter_4(D)->MovingAverageInitialized, filter_4(D)->Moving
+ 921              	.LVL88:
+ 922 04c8 FF2B     		cmp	r3, #255	@ filter_4(D)->MovingAverageInitialized,
+ 923 04ca 40F08F80 		bne	.L106	@,
+ 924              	.LBB8:
+ 246:.\src\filters/median.c **** 		volatile float currentFactor = 1.0f;
+ 247:.\src\filters/median.c **** 		volatile float previousFactor = 0.0;
+ 925              		.loc 1 247 0 is_stmt 1
+ 926 04ce 0022     		movs	r2, #0	@ tmp256,
+ 246:.\src\filters/median.c **** 		volatile float currentFactor = 1.0f;
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 22
+
+
+ 927              		.loc 1 246 0
+ 928 04d0 4FF07E51 		mov	r1, #1065353216	@ tmp255,
+ 929 04d4 0291     		str	r1, [sp, #8]	@ float	@ tmp255, currentFactor
+ 930              	.LVL89:
+ 931              		.loc 1 247 0
+ 932 04d6 0392     		str	r2, [sp, #12]	@ float	@ tmp256, previousFactor
+ 933              	.LVL90:
+ 248:.\src\filters/median.c **** 
+ 249:.\src\filters/median.c **** 		switch(movingAverageFilterType){
+ 934              		.loc 1 249 0
+ 935 04d8 9DF80130 		ldrb	r3, [sp, #1]	@ zero_extendqisi2	@ movingAverageFilterType, movingAverageFilterType
+ 936              	.LVL91:
+ 937 04dc 802B     		cmp	r3, #128	@ movingAverageFilterType.8,
+ 938 04de 3FD0     		beq	.L115	@,
+ 939 04e0 10D8     		bhi	.L123	@,
+ 940 04e2 402B     		cmp	r3, #64	@ movingAverageFilterType.8,
+ 941              	.LVL92:
+ 942 04e4 2CD0     		beq	.L111	@,
+ 943 04e6 06D8     		bhi	.L124	@,
+ 944 04e8 202B     		cmp	r3, #32	@ movingAverageFilterType.8,
+ 945 04ea 20D0     		beq	.L109	@,
+ 946 04ec 302B     		cmp	r3, #48	@ movingAverageFilterType.8,
+ 947 04ee 23D0     		beq	.L110	@,
+ 948 04f0 102B     		cmp	r3, #16	@ movingAverageFilterType.8,
+ 949 04f2 55D1     		bne	.L107	@,
+ 950 04f4 17E0     		b	.L108	@
+ 951              	.L124:
+ 952 04f6 602B     		cmp	r3, #96	@ movingAverageFilterType.8,
+ 953 04f8 2AD0     		beq	.L113	@,
+ 954 04fa 702B     		cmp	r3, #112	@ movingAverageFilterType.8,
+ 955 04fc 2CD0     		beq	.L114	@,
+ 956 04fe 502B     		cmp	r3, #80	@ movingAverageFilterType.8,
+ 957 0500 4ED1     		bne	.L107	@,
+ 958 0502 21E0     		b	.L112	@
+ 959              	.LVL93:
+ 960              	.L123:
+ 961 0504 C02B     		cmp	r3, #192	@ movingAverageFilterType.8,
+ 962 0506 3BD0     		beq	.L119	@,
+ 963 0508 06D8     		bhi	.L125	@,
+ 964 050a A02B     		cmp	r3, #160	@ movingAverageFilterType.8,
+ 965              	.LVL94:
+ 966 050c 30D0     		beq	.L117	@,
+ 967 050e B02B     		cmp	r3, #176	@ movingAverageFilterType.8,
+ 968 0510 32D0     		beq	.L118	@,
+ 969 0512 902B     		cmp	r3, #144	@ movingAverageFilterType.8,
+ 970 0514 44D1     		bne	.L107	@,
+ 971 0516 27E0     		b	.L116	@
+ 972              	.LVL95:
+ 973              	.L125:
+ 974 0518 E02B     		cmp	r3, #224	@ movingAverageFilterType.8,
+ 975 051a 39D0     		beq	.L121	@,
+ 976 051c F02B     		cmp	r3, #240	@ movingAverageFilterType.8,
+ 977              	.LVL96:
+ 978 051e 3BD0     		beq	.L122	@,
+ 979 0520 D02B     		cmp	r3, #208	@ movingAverageFilterType.8,
+ 980 0522 3DD1     		bne	.L107	@,
+ 981 0524 30E0     		b	.L120	@
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 23
+
+
+ 982              	.L108:
+ 250:.\src\filters/median.c **** 			case FilterOption_Moving_Average_0_01: previousFactor = 0.9999f; currentFactor = 0.0001f; break;
+ 983              		.loc 1 250 0
+ 984 0526 354B     		ldr	r3, .L136+4	@ tmp260,
+ 985 0528 0393     		str	r3, [sp, #12]	@ float	@ tmp260, previousFactor
+ 986 052a 354B     		ldr	r3, .L136+8	@ tmp261,
+ 987 052c 02E0     		b	.L135	@
+ 988              	.L109:
+ 251:.\src\filters/median.c **** 			case FilterOption_Moving_Average_0_1: previousFactor = 0.999f; currentFactor = 0.001f; break;
+ 989              		.loc 1 251 0
+ 990 052e 354B     		ldr	r3, .L136+12	@ tmp262,
+ 991 0530 0393     		str	r3, [sp, #12]	@ float	@ tmp262, previousFactor
+ 992 0532 354B     		ldr	r3, .L136+16	@ tmp263,
+ 993              	.L135:
+ 994 0534 0293     		str	r3, [sp, #8]	@ float	@ tmp263, currentFactor
+ 995 0536 35E0     		b	.L126	@
+ 996              	.L110:
+ 252:.\src\filters/median.c **** 			case FilterOption_Moving_Average_1: previousFactor = 0.99f; currentFactor = 0.01f; break;
+ 997              		.loc 1 252 0
+ 998 0538 344B     		ldr	r3, .L136+20	@ tmp264,
+ 999 053a 0393     		str	r3, [sp, #12]	@ float	@ tmp264, previousFactor
+ 1000 053c 344B     		ldr	r3, .L136+24	@ tmp265,
+ 1001 053e F9E7     		b	.L135	@
+ 1002              	.L111:
+ 253:.\src\filters/median.c **** 			case FilterOption_Moving_Average_2: previousFactor = 0.98f; currentFactor = 0.02f; break;
+ 1003              		.loc 1 253 0
+ 1004 0540 344B     		ldr	r3, .L136+28	@ tmp266,
+ 1005 0542 0393     		str	r3, [sp, #12]	@ float	@ tmp266, previousFactor
+ 1006 0544 344B     		ldr	r3, .L136+32	@ tmp267,
+ 1007 0546 F5E7     		b	.L135	@
+ 1008              	.L112:
+ 254:.\src\filters/median.c **** 			case FilterOption_Moving_Average_5: previousFactor = 0.95f; currentFactor = 0.05; break;
+ 1009              		.loc 1 254 0
+ 1010 0548 344B     		ldr	r3, .L136+36	@ tmp268,
+ 1011 054a 0393     		str	r3, [sp, #12]	@ float	@ tmp268, previousFactor
+ 1012 054c 344B     		ldr	r3, .L136+40	@ tmp269,
+ 1013 054e F1E7     		b	.L135	@
+ 1014              	.L113:
+ 255:.\src\filters/median.c **** 			case FilterOption_Moving_Average_10: previousFactor = 0.90f; currentFactor = 0.10f; break;
+ 1015              		.loc 1 255 0
+ 1016 0550 344B     		ldr	r3, .L136+44	@ tmp270,
+ 1017 0552 0393     		str	r3, [sp, #12]	@ float	@ tmp270, previousFactor
+ 1018 0554 344B     		ldr	r3, .L136+48	@ tmp271,
+ 1019 0556 EDE7     		b	.L135	@
+ 1020              	.L114:
+ 256:.\src\filters/median.c **** 			case FilterOption_Moving_Average_15: previousFactor = 0.85f; currentFactor = 0.15f; break;
+ 1021              		.loc 1 256 0
+ 1022 0558 344B     		ldr	r3, .L136+52	@ tmp272,
+ 1023 055a 0393     		str	r3, [sp, #12]	@ float	@ tmp272, previousFactor
+ 1024 055c 344B     		ldr	r3, .L136+56	@ tmp273,
+ 1025 055e E9E7     		b	.L135	@
+ 1026              	.LVL97:
+ 1027              	.L115:
+ 257:.\src\filters/median.c **** 			case FilterOption_Moving_Average_20: previousFactor = 0.80f; currentFactor = 0.2f; break;
+ 1028              		.loc 1 257 0
+ 1029 0560 344B     		ldr	r3, .L136+60	@ tmp274,
+ 1030              	.LVL98:
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 24
+
+
+ 1031 0562 0393     		str	r3, [sp, #12]	@ float	@ tmp274, previousFactor
+ 1032 0564 344B     		ldr	r3, .L136+64	@ tmp275,
+ 1033 0566 E5E7     		b	.L135	@
+ 1034              	.L116:
+ 258:.\src\filters/median.c **** 			case FilterOption_Moving_Average_30: previousFactor = 0.70f; currentFactor = 0.3f; break;
+ 1035              		.loc 1 258 0
+ 1036 0568 344B     		ldr	r3, .L136+68	@ tmp276,
+ 1037 056a 0393     		str	r3, [sp, #12]	@ float	@ tmp276, previousFactor
+ 1038 056c 344B     		ldr	r3, .L136+72	@ tmp277,
+ 1039 056e E1E7     		b	.L135	@
+ 1040              	.L117:
+ 259:.\src\filters/median.c **** 			case FilterOption_Moving_Average_40: previousFactor = 0.6f; currentFactor = 0.4f; break;
+ 1041              		.loc 1 259 0
+ 1042 0570 344B     		ldr	r3, .L136+76	@ tmp278,
+ 1043 0572 0393     		str	r3, [sp, #12]	@ float	@ tmp278, previousFactor
+ 1044 0574 344B     		ldr	r3, .L136+80	@ tmp279,
+ 1045 0576 DDE7     		b	.L135	@
+ 1046              	.L118:
+ 260:.\src\filters/median.c **** 			case FilterOption_Moving_Average_50: previousFactor = 0.5f; currentFactor = 0.5f; break;
+ 1047              		.loc 1 260 0
+ 1048 0578 4FF07C53 		mov	r3, #1056964608	@ tmp280,
+ 1049 057c 0393     		str	r3, [sp, #12]	@ float	@ tmp280, previousFactor
+ 1050 057e D9E7     		b	.L135	@
+ 1051              	.LVL99:
+ 1052              	.L119:
+ 261:.\src\filters/median.c **** 			case FilterOption_Moving_Average_60: previousFactor = 0.4f; currentFactor = 0.6f; break;
+ 1053              		.loc 1 261 0
+ 1054 0580 314B     		ldr	r3, .L136+80	@ tmp282,
+ 1055              	.LVL100:
+ 1056 0582 0393     		str	r3, [sp, #12]	@ float	@ tmp282, previousFactor
+ 1057 0584 2F4B     		ldr	r3, .L136+76	@ tmp283,
+ 1058 0586 D5E7     		b	.L135	@
+ 1059              	.L120:
+ 262:.\src\filters/median.c **** 			case FilterOption_Moving_Average_70: previousFactor = 0.3f; currentFactor = 0.7f; break;
+ 1060              		.loc 1 262 0
+ 1061 0588 2D4B     		ldr	r3, .L136+72	@ tmp284,
+ 1062 058a 0393     		str	r3, [sp, #12]	@ float	@ tmp284, previousFactor
+ 1063 058c 2B4B     		ldr	r3, .L136+68	@ tmp285,
+ 1064 058e D1E7     		b	.L135	@
+ 1065              	.LVL101:
+ 1066              	.L121:
+ 263:.\src\filters/median.c **** 			case FilterOption_Moving_Average_80: previousFactor = 0.2f; currentFactor = 0.8f; break;
+ 1067              		.loc 1 263 0
+ 1068 0590 294B     		ldr	r3, .L136+64	@ tmp286,
+ 1069              	.LVL102:
+ 1070 0592 0393     		str	r3, [sp, #12]	@ float	@ tmp286, previousFactor
+ 1071 0594 274B     		ldr	r3, .L136+60	@ tmp287,
+ 1072 0596 CDE7     		b	.L135	@
+ 1073              	.L122:
+ 264:.\src\filters/median.c **** 			case FilterOption_Moving_Average_90: previousFactor = 0.1f; currentFactor = 0.9f; break;
+ 1074              		.loc 1 264 0
+ 1075 0598 234B     		ldr	r3, .L136+48	@ tmp288,
+ 1076 059a 0393     		str	r3, [sp, #12]	@ float	@ tmp288, previousFactor
+ 1077 059c 214B     		ldr	r3, .L136+44	@ tmp289,
+ 1078 059e C9E7     		b	.L135	@
+ 1079              	.L107:
+ 265:.\src\filters/median.c **** 			default: previousFactor = 0.0f; currentFactor = 1.0f; break;
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 25
+
+
+ 1080              		.loc 1 265 0
+ 1081 05a0 0392     		str	r2, [sp, #12]	@ float	@ tmp315, previousFactor
+ 1082 05a2 0291     		str	r1, [sp, #8]	@ float	@ tmp314, currentFactor
+ 1083              	.L126:
+ 266:.\src\filters/median.c **** 		}
+ 267:.\src\filters/median.c **** 
+ 268:.\src\filters/median.c **** 		volatile int16_t part1 = (int16_t)((float)currentValue * currentFactor);
+ 1084              		.loc 1 268 0
+ 1085 05a4 06EE905A 		fmsr	s13, r5	@ int	@, currentValue
+ 1086 05a8 DDED027A 		flds	s15, [sp, #8]	@ currentFactor.9, currentFactor
+ 1087 05ac B8EEE67A 		fsitos	s14, s13	@ tmp292,
+ 1088 05b0 67EE277A 		fmuls	s15, s14, s15	@ tmp293, tmp292, currentFactor.9
+ 1089 05b4 FDEEE77A 		ftosizs	s15, s15	@, tmp293
+ 1090 05b8 17EE903A 		fmrs	r3, s15	@ int	@ tmp295,
+ 1091 05bc ADF80430 		strh	r3, [sp, #4]	@ movhi	@ tmp295, part1
+ 1092              	.LVL103:
+ 269:.\src\filters/median.c **** 		volatile int16_t part2 = (int16_t)((float)filter->Previous * previousFactor);
+ 1093              		.loc 1 269 0
+ 1094 05c0 B4F91630 		ldrsh	r3, [r4, #22]	@, filter_4(D)->Previous
+ 1095 05c4 07EE903A 		fmsr	s15, r3	@ int	@ filter_4(D)->Previous,
+ 1096 05c8 9DED037A 		flds	s14, [sp, #12]	@ previousFactor.11, previousFactor
+ 1097 05cc F8EEE77A 		fsitos	s15, s15	@ tmp297, filter_4(D)->Previous
+ 1098 05d0 67EE877A 		fmuls	s15, s15, s14	@ tmp299, tmp297, previousFactor.11
+ 1099 05d4 FDEEE77A 		ftosizs	s15, s15	@, tmp299
+ 1100 05d8 17EE903A 		fmrs	r3, s15	@ int	@ tmp301,
+ 1101 05dc ADF80630 		strh	r3, [sp, #6]	@ movhi	@ tmp301, part2
+ 1102              	.LVL104:
+ 270:.\src\filters/median.c **** 
+ 271:.\src\filters/median.c **** 		currentValue = (part1 + part2);
+ 1103              		.loc 1 271 0
+ 1104 05e0 BDF80430 		ldrh	r3, [sp, #4]	@, part1
+ 1105 05e4 BDF80650 		ldrh	r5, [sp, #6]	@, part2
+ 1106              	.LVL105:
+ 1107 05e8 ED18     		adds	r5, r5, r3	@ tmp309, part2, part1
+ 1108 05ea 2DB2     		sxth	r5, r5	@ currentValue, tmp309
+ 1109              	.LVL106:
+ 1110              	.L106:
+ 1111              	.LBE8:
+ 272:.\src\filters/median.c **** 	}
+ 273:.\src\filters/median.c **** 
+ 274:.\src\filters/median.c **** 	filter->Current = currentValue;
+ 275:.\src\filters/median.c **** 	filter->Previous = filter->Current;
+ 276:.\src\filters/median.c **** 
+ 277:.\src\filters/median.c **** 	filter->MovingAverageInitialized = true;
+ 1112              		.loc 1 277 0
+ 1113 05ec FF23     		movs	r3, #255	@ tmp312,
+ 1114              	.LVL107:
+ 274:.\src\filters/median.c **** 	filter->Current = currentValue;
+ 1115              		.loc 1 274 0
+ 1116 05ee A582     		strh	r5, [r4, #20]	@ movhi	@ currentValue, filter_4(D)->Current
+ 275:.\src\filters/median.c **** 	filter->Previous = filter->Current;
+ 1117              		.loc 1 275 0
+ 1118 05f0 E582     		strh	r5, [r4, #22]	@ movhi	@ currentValue, filter_4(D)->Previous
+ 1119              		.loc 1 277 0
+ 1120 05f2 6376     		strb	r3, [r4, #25]	@ tmp312, filter_4(D)->MovingAverageInitialized
+ 1121              	.LVL108:
+ 1122              	.L93:
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 26
+
+
+ 278:.\src\filters/median.c **** }
+ 1123              		.loc 1 278 0
+ 1124 05f4 BDE8FF81 		pop	{r0, r1, r2, r3, r4, r5, r6, r7, r8, pc}
+ 1125              	.L137:
+ 1126              		.align	2
+ 1127              	.L136:
+ 1128 05f8 00000000 		.word	__medianFilterSignedTempHistory
+ 1129 05fc 72F97F3F 		.word	1065351538
+ 1130 0600 17B7D138 		.word	953267991
+ 1131 0604 77BE7F3F 		.word	1065336439
+ 1132 0608 6F12833A 		.word	981668463
+ 1133 060c A4707D3F 		.word	1065185444
+ 1134 0610 0AD7233C 		.word	1008981770
+ 1135 0614 48E17A3F 		.word	1065017672
+ 1136 0618 0AD7A33C 		.word	1017370378
+ 1137 061c 3333733F 		.word	1064514355
+ 1138 0620 CDCC4C3D 		.word	1028443341
+ 1139 0624 6666663F 		.word	1063675494
+ 1140 0628 CDCCCC3D 		.word	1036831949
+ 1141 062c 9A99593F 		.word	1062836634
+ 1142 0630 9A99193E 		.word	1041865114
+ 1143 0634 CDCC4C3F 		.word	1061997773
+ 1144 0638 CDCC4C3E 		.word	1045220557
+ 1145 063c 3333333F 		.word	1060320051
+ 1146 0640 9A99993E 		.word	1050253722
+ 1147 0644 9A99193F 		.word	1058642330
+ 1148 0648 CDCCCC3E 		.word	1053609165
+ 1149              		.cfi_endproc
+ 1150              	.LFE112:
+ 1151              		.size	TWB_Filter_Median_Apply_Signed, .-TWB_Filter_Median_Apply_Signed
+ 1152              		.comm	__medianFilterFloatTempHistory,36,4
+ 1153              		.comm	__medianFilterSignedTempHistory,18,2
+ 1154              		.comm	__medianFilterTempHistory,18,2
+ 1155              	.Letext0:
+ 1156              		.file 2 "k:\\electronics\\gcc\\bin\\../lib/gcc/arm-none-eabi/4.7.2/../../../../arm-none-eabi/inclu
+ 1157              		.file 3 ".\\inc/twb_config.h"
+ 1158              		.file 4 ".\\inc/Filters/Filter.h"
+ 1159              		.file 5 ".\\inc/core_cm4.h"
+ 1160              		.section	.debug_info,"",%progbits
+ 1161              	.Ldebug_info0:
+ 1162 0000 43060000 		.4byte	0x643
+ 1163 0004 0200     		.2byte	0x2
+ 1164 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 1165 000a 04       		.byte	0x4
+ 1166 000b 01       		.uleb128 0x1
+ 1167 000c 29030000 		.4byte	.LASF66
+ 1168 0010 01       		.byte	0x1
+ 1169 0011 C3030000 		.4byte	.LASF67
+ 1170 0015 C1040000 		.4byte	.LASF68
+ 1171 0019 00000000 		.4byte	.Ltext0
+ 1172 001d 4C060000 		.4byte	.Letext0
+ 1173 0021 00000000 		.4byte	.Ldebug_line0
+ 1174 0025 02       		.uleb128 0x2
+ 1175 0026 01       		.byte	0x1
+ 1176 0027 06       		.byte	0x6
+ 1177 0028 C5020000 		.4byte	.LASF0
+ 1178 002c 03       		.uleb128 0x3
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 27
+
+
+ 1179 002d 56010000 		.4byte	.LASF2
+ 1180 0031 02       		.byte	0x2
+ 1181 0032 2A       		.byte	0x2a
+ 1182 0033 37000000 		.4byte	0x37
+ 1183 0037 02       		.uleb128 0x2
+ 1184 0038 01       		.byte	0x1
+ 1185 0039 08       		.byte	0x8
+ 1186 003a 5E020000 		.4byte	.LASF1
+ 1187 003e 03       		.uleb128 0x3
+ 1188 003f 9C030000 		.4byte	.LASF3
+ 1189 0043 02       		.byte	0x2
+ 1190 0044 35       		.byte	0x35
+ 1191 0045 49000000 		.4byte	0x49
+ 1192 0049 02       		.uleb128 0x2
+ 1193 004a 02       		.byte	0x2
+ 1194 004b 05       		.byte	0x5
+ 1195 004c 4C000000 		.4byte	.LASF4
+ 1196 0050 03       		.uleb128 0x3
+ 1197 0051 20030000 		.4byte	.LASF5
+ 1198 0055 02       		.byte	0x2
+ 1199 0056 36       		.byte	0x36
+ 1200 0057 5B000000 		.4byte	0x5b
+ 1201 005b 02       		.uleb128 0x2
+ 1202 005c 02       		.byte	0x2
+ 1203 005d 07       		.byte	0x7
+ 1204 005e 35030000 		.4byte	.LASF6
+ 1205 0062 03       		.uleb128 0x3
+ 1206 0063 77030000 		.4byte	.LASF7
+ 1207 0067 02       		.byte	0x2
+ 1208 0068 4F       		.byte	0x4f
+ 1209 0069 6D000000 		.4byte	0x6d
+ 1210 006d 02       		.uleb128 0x2
+ 1211 006e 04       		.byte	0x4
+ 1212 006f 05       		.byte	0x5
+ 1213 0070 01020000 		.4byte	.LASF8
+ 1214 0074 02       		.uleb128 0x2
+ 1215 0075 04       		.byte	0x4
+ 1216 0076 07       		.byte	0x7
+ 1217 0077 DA030000 		.4byte	.LASF9
+ 1218 007b 02       		.uleb128 0x2
+ 1219 007c 08       		.byte	0x8
+ 1220 007d 05       		.byte	0x5
+ 1221 007e DF010000 		.4byte	.LASF10
+ 1222 0082 02       		.uleb128 0x2
+ 1223 0083 08       		.byte	0x8
+ 1224 0084 07       		.byte	0x7
+ 1225 0085 D1020000 		.4byte	.LASF11
+ 1226 0089 04       		.uleb128 0x4
+ 1227 008a 04       		.byte	0x4
+ 1228 008b 05       		.byte	0x5
+ 1229 008c 696E7400 		.ascii	"int\000"
+ 1230 0090 02       		.uleb128 0x2
+ 1231 0091 04       		.byte	0x4
+ 1232 0092 07       		.byte	0x7
+ 1233 0093 DB040000 		.4byte	.LASF12
+ 1234 0097 02       		.uleb128 0x2
+ 1235 0098 04       		.byte	0x4
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 28
+
+
+ 1236 0099 07       		.byte	0x7
+ 1237 009a 6F000000 		.4byte	.LASF13
+ 1238 009e 05       		.uleb128 0x5
+ 1239 009f 50000000 		.4byte	0x50
+ 1240 00a3 05       		.uleb128 0x5
+ 1241 00a4 62000000 		.4byte	0x62
+ 1242 00a8 05       		.uleb128 0x5
+ 1243 00a9 3E000000 		.4byte	0x3e
+ 1244 00ad 06       		.uleb128 0x6
+ 1245 00ae 04       		.byte	0x4
+ 1246 00af 02       		.uleb128 0x2
+ 1247 00b0 01       		.byte	0x1
+ 1248 00b1 08       		.byte	0x8
+ 1249 00b2 FC010000 		.4byte	.LASF14
+ 1250 00b6 02       		.uleb128 0x2
+ 1251 00b7 08       		.byte	0x8
+ 1252 00b8 04       		.byte	0x4
+ 1253 00b9 EC030000 		.4byte	.LASF15
+ 1254 00bd 02       		.uleb128 0x2
+ 1255 00be 04       		.byte	0x4
+ 1256 00bf 04       		.byte	0x4
+ 1257 00c0 D9010000 		.4byte	.LASF16
+ 1258 00c4 02       		.uleb128 0x2
+ 1259 00c5 08       		.byte	0x8
+ 1260 00c6 04       		.byte	0x4
+ 1261 00c7 52020000 		.4byte	.LASF17
+ 1262 00cb 07       		.uleb128 0x7
+ 1263 00cc 01       		.byte	0x1
+ 1264 00cd 03       		.byte	0x3
+ 1265 00ce 1B02     		.2byte	0x21b
+ 1266 00d0 59010000 		.4byte	0x159
+ 1267 00d4 08       		.uleb128 0x8
+ 1268 00d5 E6000000 		.4byte	.LASF18
+ 1269 00d9 00       		.sleb128 0
+ 1270 00da 08       		.uleb128 0x8
+ 1271 00db 7F030000 		.4byte	.LASF19
+ 1272 00df 01       		.sleb128 1
+ 1273 00e0 08       		.uleb128 0x8
+ 1274 00e1 6C020000 		.4byte	.LASF20
+ 1275 00e5 02       		.sleb128 2
+ 1276 00e6 08       		.uleb128 0x8
+ 1277 00e7 F8000000 		.4byte	.LASF21
+ 1278 00eb 03       		.sleb128 3
+ 1279 00ec 08       		.uleb128 0x8
+ 1280 00ed 95040000 		.4byte	.LASF22
+ 1281 00f1 04       		.sleb128 4
+ 1282 00f2 08       		.uleb128 0x8
+ 1283 00f3 74040000 		.4byte	.LASF23
+ 1284 00f7 10       		.sleb128 16
+ 1285 00f8 08       		.uleb128 0x8
+ 1286 00f9 F3030000 		.4byte	.LASF24
+ 1287 00fd 20       		.sleb128 32
+ 1288 00fe 08       		.uleb128 0x8
+ 1289 00ff 89020000 		.4byte	.LASF25
+ 1290 0103 30       		.sleb128 48
+ 1291 0104 08       		.uleb128 0x8
+ 1292 0105 A7020000 		.4byte	.LASF26
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 29
+
+
+ 1293 0109 C000     		.sleb128 64
+ 1294 010b 08       		.uleb128 0x8
+ 1295 010c 2D040000 		.4byte	.LASF27
+ 1296 0110 D000     		.sleb128 80
+ 1297 0112 08       		.uleb128 0x8
+ 1298 0113 C7000000 		.4byte	.LASF28
+ 1299 0117 E000     		.sleb128 96
+ 1300 0119 08       		.uleb128 0x8
+ 1301 011a 15010000 		.4byte	.LASF29
+ 1302 011e F000     		.sleb128 112
+ 1303 0120 08       		.uleb128 0x8
+ 1304 0121 25020000 		.4byte	.LASF30
+ 1305 0125 8001     		.sleb128 128
+ 1306 0127 08       		.uleb128 0x8
+ 1307 0128 A4030000 		.4byte	.LASF31
+ 1308 012c 9001     		.sleb128 144
+ 1309 012e 08       		.uleb128 0x8
+ 1310 012f F3020000 		.4byte	.LASF32
+ 1311 0133 A001     		.sleb128 160
+ 1312 0135 08       		.uleb128 0x8
+ 1313 0136 5E010000 		.4byte	.LASF33
+ 1314 013a B001     		.sleb128 176
+ 1315 013c 08       		.uleb128 0x8
+ 1316 013d 48030000 		.4byte	.LASF34
+ 1317 0141 C001     		.sleb128 192
+ 1318 0143 08       		.uleb128 0x8
+ 1319 0144 A1000000 		.4byte	.LASF35
+ 1320 0148 D001     		.sleb128 208
+ 1321 014a 08       		.uleb128 0x8
+ 1322 014b 1F000000 		.4byte	.LASF36
+ 1323 014f E001     		.sleb128 224
+ 1324 0151 08       		.uleb128 0x8
+ 1325 0152 BA010000 		.4byte	.LASF37
+ 1326 0156 F001     		.sleb128 240
+ 1327 0158 00       		.byte	0
+ 1328 0159 09       		.uleb128 0x9
+ 1329 015a 67030000 		.4byte	.LASF38
+ 1330 015e 03       		.byte	0x3
+ 1331 015f 3002     		.2byte	0x230
+ 1332 0161 CB000000 		.4byte	0xcb
+ 1333 0165 0A       		.uleb128 0xa
+ 1334 0166 1A       		.byte	0x1a
+ 1335 0167 04       		.byte	0x4
+ 1336 0168 0A       		.byte	0xa
+ 1337 0169 C2010000 		.4byte	0x1c2
+ 1338 016d 0B       		.uleb128 0xb
+ 1339 016e 86010000 		.4byte	.LASF39
+ 1340 0172 04       		.byte	0x4
+ 1341 0173 0B       		.byte	0xb
+ 1342 0174 2C000000 		.4byte	0x2c
+ 1343 0178 02       		.byte	0x2
+ 1344 0179 23       		.byte	0x23
+ 1345 017a 00       		.uleb128 0
+ 1346 017b 0B       		.uleb128 0xb
+ 1347 017c E8020000 		.4byte	.LASF40
+ 1348 0180 04       		.byte	0x4
+ 1349 0181 0C       		.byte	0xc
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 30
+
+
+ 1350 0182 59010000 		.4byte	0x159
+ 1351 0186 02       		.byte	0x2
+ 1352 0187 23       		.byte	0x23
+ 1353 0188 01       		.uleb128 0x1
+ 1354 0189 0B       		.uleb128 0xb
+ 1355 018a 4B040000 		.4byte	.LASF41
+ 1356 018e 04       		.byte	0x4
+ 1357 018f 0D       		.byte	0xd
+ 1358 0190 C2010000 		.4byte	0x1c2
+ 1359 0194 02       		.byte	0x2
+ 1360 0195 23       		.byte	0x23
+ 1361 0196 02       		.uleb128 0x2
+ 1362 0197 0B       		.uleb128 0xb
+ 1363 0198 4E010000 		.4byte	.LASF42
+ 1364 019c 04       		.byte	0x4
+ 1365 019d 0E       		.byte	0xe
+ 1366 019e 50000000 		.4byte	0x50
+ 1367 01a2 02       		.byte	0x2
+ 1368 01a3 23       		.byte	0x23
+ 1369 01a4 14       		.uleb128 0x14
+ 1370 01a5 0B       		.uleb128 0xb
+ 1371 01a6 7D010000 		.4byte	.LASF43
+ 1372 01aa 04       		.byte	0x4
+ 1373 01ab 0F       		.byte	0xf
+ 1374 01ac 50000000 		.4byte	0x50
+ 1375 01b0 02       		.byte	0x2
+ 1376 01b1 23       		.byte	0x23
+ 1377 01b2 16       		.uleb128 0x16
+ 1378 01b3 0B       		.uleb128 0xb
+ 1379 01b4 44020000 		.4byte	.LASF44
+ 1380 01b8 04       		.byte	0x4
+ 1381 01b9 10       		.byte	0x10
+ 1382 01ba 2C000000 		.4byte	0x2c
+ 1383 01be 02       		.byte	0x2
+ 1384 01bf 23       		.byte	0x23
+ 1385 01c0 18       		.uleb128 0x18
+ 1386 01c1 00       		.byte	0
+ 1387 01c2 0C       		.uleb128 0xc
+ 1388 01c3 50000000 		.4byte	0x50
+ 1389 01c7 D2010000 		.4byte	0x1d2
+ 1390 01cb 0D       		.uleb128 0xd
+ 1391 01cc 97000000 		.4byte	0x97
+ 1392 01d0 08       		.byte	0x8
+ 1393 01d1 00       		.byte	0
+ 1394 01d2 03       		.uleb128 0x3
+ 1395 01d3 53040000 		.4byte	.LASF45
+ 1396 01d7 04       		.byte	0x4
+ 1397 01d8 11       		.byte	0x11
+ 1398 01d9 65010000 		.4byte	0x165
+ 1399 01dd 0A       		.uleb128 0xa
+ 1400 01de 1A       		.byte	0x1a
+ 1401 01df 04       		.byte	0x4
+ 1402 01e0 13       		.byte	0x13
+ 1403 01e1 48020000 		.4byte	0x248
+ 1404 01e5 0B       		.uleb128 0xb
+ 1405 01e6 86010000 		.4byte	.LASF39
+ 1406 01ea 04       		.byte	0x4
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 31
+
+
+ 1407 01eb 14       		.byte	0x14
+ 1408 01ec 2C000000 		.4byte	0x2c
+ 1409 01f0 02       		.byte	0x2
+ 1410 01f1 23       		.byte	0x23
+ 1411 01f2 00       		.uleb128 0
+ 1412 01f3 0B       		.uleb128 0xb
+ 1413 01f4 E8020000 		.4byte	.LASF40
+ 1414 01f8 04       		.byte	0x4
+ 1415 01f9 15       		.byte	0x15
+ 1416 01fa 59010000 		.4byte	0x159
+ 1417 01fe 02       		.byte	0x2
+ 1418 01ff 23       		.byte	0x23
+ 1419 0200 01       		.uleb128 0x1
+ 1420 0201 0B       		.uleb128 0xb
+ 1421 0202 4B040000 		.4byte	.LASF41
+ 1422 0206 04       		.byte	0x4
+ 1423 0207 16       		.byte	0x16
+ 1424 0208 48020000 		.4byte	0x248
+ 1425 020c 02       		.byte	0x2
+ 1426 020d 23       		.byte	0x23
+ 1427 020e 02       		.uleb128 0x2
+ 1428 020f 0B       		.uleb128 0xb
+ 1429 0210 4E010000 		.4byte	.LASF42
+ 1430 0214 04       		.byte	0x4
+ 1431 0215 17       		.byte	0x17
+ 1432 0216 3E000000 		.4byte	0x3e
+ 1433 021a 02       		.byte	0x2
+ 1434 021b 23       		.byte	0x23
+ 1435 021c 14       		.uleb128 0x14
+ 1436 021d 0B       		.uleb128 0xb
+ 1437 021e 7D010000 		.4byte	.LASF43
+ 1438 0222 04       		.byte	0x4
+ 1439 0223 18       		.byte	0x18
+ 1440 0224 3E000000 		.4byte	0x3e
+ 1441 0228 02       		.byte	0x2
+ 1442 0229 23       		.byte	0x23
+ 1443 022a 16       		.uleb128 0x16
+ 1444 022b 0B       		.uleb128 0xb
+ 1445 022c 44020000 		.4byte	.LASF44
+ 1446 0230 04       		.byte	0x4
+ 1447 0231 19       		.byte	0x19
+ 1448 0232 2C000000 		.4byte	0x2c
+ 1449 0236 02       		.byte	0x2
+ 1450 0237 23       		.byte	0x23
+ 1451 0238 18       		.uleb128 0x18
+ 1452 0239 0B       		.uleb128 0xb
+ 1453 023a 56000000 		.4byte	.LASF46
+ 1454 023e 04       		.byte	0x4
+ 1455 023f 1A       		.byte	0x1a
+ 1456 0240 2C000000 		.4byte	0x2c
+ 1457 0244 02       		.byte	0x2
+ 1458 0245 23       		.byte	0x23
+ 1459 0246 19       		.uleb128 0x19
+ 1460 0247 00       		.byte	0
+ 1461 0248 0C       		.uleb128 0xc
+ 1462 0249 3E000000 		.4byte	0x3e
+ 1463 024d 58020000 		.4byte	0x258
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 32
+
+
+ 1464 0251 0D       		.uleb128 0xd
+ 1465 0252 97000000 		.4byte	0x97
+ 1466 0256 08       		.byte	0x8
+ 1467 0257 00       		.byte	0
+ 1468 0258 03       		.uleb128 0x3
+ 1469 0259 ED010000 		.4byte	.LASF47
+ 1470 025d 04       		.byte	0x4
+ 1471 025e 1B       		.byte	0x1b
+ 1472 025f DD010000 		.4byte	0x1dd
+ 1473 0263 0A       		.uleb128 0xa
+ 1474 0264 34       		.byte	0x34
+ 1475 0265 04       		.byte	0x4
+ 1476 0266 1D       		.byte	0x1d
+ 1477 0267 C0020000 		.4byte	0x2c0
+ 1478 026b 0B       		.uleb128 0xb
+ 1479 026c 86010000 		.4byte	.LASF39
+ 1480 0270 04       		.byte	0x4
+ 1481 0271 1E       		.byte	0x1e
+ 1482 0272 2C000000 		.4byte	0x2c
+ 1483 0276 02       		.byte	0x2
+ 1484 0277 23       		.byte	0x23
+ 1485 0278 00       		.uleb128 0
+ 1486 0279 0B       		.uleb128 0xb
+ 1487 027a E8020000 		.4byte	.LASF40
+ 1488 027e 04       		.byte	0x4
+ 1489 027f 1F       		.byte	0x1f
+ 1490 0280 59010000 		.4byte	0x159
+ 1491 0284 02       		.byte	0x2
+ 1492 0285 23       		.byte	0x23
+ 1493 0286 01       		.uleb128 0x1
+ 1494 0287 0B       		.uleb128 0xb
+ 1495 0288 4B040000 		.4byte	.LASF41
+ 1496 028c 04       		.byte	0x4
+ 1497 028d 20       		.byte	0x20
+ 1498 028e C0020000 		.4byte	0x2c0
+ 1499 0292 02       		.byte	0x2
+ 1500 0293 23       		.byte	0x23
+ 1501 0294 04       		.uleb128 0x4
+ 1502 0295 0B       		.uleb128 0xb
+ 1503 0296 4E010000 		.4byte	.LASF42
+ 1504 029a 04       		.byte	0x4
+ 1505 029b 21       		.byte	0x21
+ 1506 029c BD000000 		.4byte	0xbd
+ 1507 02a0 02       		.byte	0x2
+ 1508 02a1 23       		.byte	0x23
+ 1509 02a2 28       		.uleb128 0x28
+ 1510 02a3 0B       		.uleb128 0xb
+ 1511 02a4 7D010000 		.4byte	.LASF43
+ 1512 02a8 04       		.byte	0x4
+ 1513 02a9 22       		.byte	0x22
+ 1514 02aa BD000000 		.4byte	0xbd
+ 1515 02ae 02       		.byte	0x2
+ 1516 02af 23       		.byte	0x23
+ 1517 02b0 2C       		.uleb128 0x2c
+ 1518 02b1 0B       		.uleb128 0xb
+ 1519 02b2 44020000 		.4byte	.LASF44
+ 1520 02b6 04       		.byte	0x4
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 33
+
+
+ 1521 02b7 23       		.byte	0x23
+ 1522 02b8 2C000000 		.4byte	0x2c
+ 1523 02bc 02       		.byte	0x2
+ 1524 02bd 23       		.byte	0x23
+ 1525 02be 30       		.uleb128 0x30
+ 1526 02bf 00       		.byte	0
+ 1527 02c0 0C       		.uleb128 0xc
+ 1528 02c1 BD000000 		.4byte	0xbd
+ 1529 02c5 D0020000 		.4byte	0x2d0
+ 1530 02c9 0D       		.uleb128 0xd
+ 1531 02ca 97000000 		.4byte	0x97
+ 1532 02ce 08       		.byte	0x8
+ 1533 02cf 00       		.byte	0
+ 1534 02d0 03       		.uleb128 0x3
+ 1535 02d1 3E000000 		.4byte	.LASF48
+ 1536 02d5 04       		.byte	0x4
+ 1537 02d6 24       		.byte	0x24
+ 1538 02d7 63020000 		.4byte	0x263
+ 1539 02db 0E       		.uleb128 0xe
+ 1540 02dc 01       		.byte	0x1
+ 1541 02dd 9C010000 		.4byte	.LASF56
+ 1542 02e1 01       		.byte	0x1
+ 1543 02e2 23       		.byte	0x23
+ 1544 02e3 01       		.byte	0x1
+ 1545 02e4 00000000 		.4byte	.LFB110
+ 1546 02e8 14020000 		.4byte	.LFE110
+ 1547 02ec 00000000 		.4byte	.LLST0
+ 1548 02f0 01       		.byte	0x1
+ 1549 02f1 B6030000 		.4byte	0x3b6
+ 1550 02f5 0F       		.uleb128 0xf
+ 1551 02f6 BA040000 		.4byte	.LASF49
+ 1552 02fa 01       		.byte	0x1
+ 1553 02fb 23       		.byte	0x23
+ 1554 02fc B6030000 		.4byte	0x3b6
+ 1555 0300 2C000000 		.4byte	.LLST1
+ 1556 0304 0F       		.uleb128 0xf
+ 1557 0305 20040000 		.4byte	.LASF50
+ 1558 0309 01       		.byte	0x1
+ 1559 030a 23       		.byte	0x23
+ 1560 030b BD000000 		.4byte	0xbd
+ 1561 030f 4A000000 		.4byte	.LLST2
+ 1562 0313 10       		.uleb128 0x10
+ 1563 0314 78000000 		.4byte	.LASF51
+ 1564 0318 01       		.byte	0x1
+ 1565 0319 29       		.byte	0x29
+ 1566 031a 59010000 		.4byte	0x159
+ 1567 031e 6A000000 		.4byte	.LLST3
+ 1568 0322 10       		.uleb128 0x10
+ 1569 0323 89000000 		.4byte	.LASF52
+ 1570 0327 01       		.byte	0x1
+ 1571 0328 2A       		.byte	0x2a
+ 1572 0329 59010000 		.4byte	0x159
+ 1573 032d C3000000 		.4byte	.LLST4
+ 1574 0331 11       		.uleb128 0x11
+ 1575 0332 20000000 		.4byte	.LBB2
+ 1576 0336 A0000000 		.4byte	.LBE2
+ 1577 033a 8D030000 		.4byte	0x38d
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 34
+
+
+ 1578 033e 10       		.uleb128 0x10
+ 1579 033f B2040000 		.4byte	.LASF53
+ 1580 0343 01       		.byte	0x1
+ 1581 0344 2D       		.byte	0x2d
+ 1582 0345 2C000000 		.4byte	0x2c
+ 1583 0349 D6000000 		.4byte	.LLST5
+ 1584 034d 12       		.uleb128 0x12
+ 1585 034e 69647800 		.ascii	"idx\000"
+ 1586 0352 01       		.byte	0x1
+ 1587 0353 2E       		.byte	0x2e
+ 1588 0354 2C000000 		.4byte	0x2c
+ 1589 0358 F6000000 		.4byte	.LLST6
+ 1590 035c 12       		.uleb128 0x12
+ 1591 035d 746D7000 		.ascii	"tmp\000"
+ 1592 0361 01       		.byte	0x1
+ 1593 0362 2F       		.byte	0x2f
+ 1594 0363 BD000000 		.4byte	0xbd
+ 1595 0367 46010000 		.4byte	.LLST7
+ 1596 036b 13       		.uleb128 0x13
+ 1597 036c 58000000 		.4byte	.LVL8
+ 1598 0370 1E060000 		.4byte	0x61e
+ 1599 0374 14       		.uleb128 0x14
+ 1600 0375 01       		.byte	0x1
+ 1601 0376 52       		.byte	0x52
+ 1602 0377 04       		.byte	0x4
+ 1603 0378 76       		.byte	0x76
+ 1604 0379 00       		.sleb128 0
+ 1605 037a 32       		.byte	0x32
+ 1606 037b 24       		.byte	0x24
+ 1607 037c 14       		.uleb128 0x14
+ 1608 037d 01       		.byte	0x1
+ 1609 037e 51       		.byte	0x51
+ 1610 037f 02       		.byte	0x2
+ 1611 0380 74       		.byte	0x74
+ 1612 0381 04       		.sleb128 4
+ 1613 0382 14       		.uleb128 0x14
+ 1614 0383 01       		.byte	0x1
+ 1615 0384 50       		.byte	0x50
+ 1616 0385 05       		.byte	0x5
+ 1617 0386 03       		.byte	0x3
+ 1618 0387 00000000 		.4byte	__medianFilterFloatTempHistory
+ 1619 038b 00       		.byte	0
+ 1620 038c 00       		.byte	0
+ 1621 038d 15       		.uleb128 0x15
+ 1622 038e B8000000 		.4byte	.LBB3
+ 1623 0392 B0010000 		.4byte	.LBE3
+ 1624 0396 10       		.uleb128 0x10
+ 1625 0397 12030000 		.4byte	.LASF54
+ 1626 039b 01       		.byte	0x1
+ 1627 039c 56       		.byte	0x56
+ 1628 039d BD000000 		.4byte	0xbd
+ 1629 03a1 5A010000 		.4byte	.LLST8
+ 1630 03a5 10       		.uleb128 0x10
+ 1631 03a6 0A020000 		.4byte	.LASF55
+ 1632 03aa 01       		.byte	0x1
+ 1633 03ab 57       		.byte	0x57
+ 1634 03ac BD000000 		.4byte	0xbd
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 35
+
+
+ 1635 03b0 5E020000 		.4byte	.LLST9
+ 1636 03b4 00       		.byte	0
+ 1637 03b5 00       		.byte	0
+ 1638 03b6 16       		.uleb128 0x16
+ 1639 03b7 04       		.byte	0x4
+ 1640 03b8 D0020000 		.4byte	0x2d0
+ 1641 03bc 0E       		.uleb128 0xe
+ 1642 03bd 01       		.byte	0x1
+ 1643 03be 5C040000 		.4byte	.LASF57
+ 1644 03c2 01       		.byte	0x1
+ 1645 03c3 73       		.byte	0x73
+ 1646 03c4 01       		.byte	0x1
+ 1647 03c5 14020000 		.4byte	.LFB111
+ 1648 03c9 14040000 		.4byte	.LFE111
+ 1649 03cd 62030000 		.4byte	.LLST10
+ 1650 03d1 01       		.byte	0x1
+ 1651 03d2 B1040000 		.4byte	0x4b1
+ 1652 03d6 0F       		.uleb128 0xf
+ 1653 03d7 BA040000 		.4byte	.LASF49
+ 1654 03db 01       		.byte	0x1
+ 1655 03dc 73       		.byte	0x73
+ 1656 03dd B1040000 		.4byte	0x4b1
+ 1657 03e1 82030000 		.4byte	.LLST11
+ 1658 03e5 0F       		.uleb128 0xf
+ 1659 03e6 20040000 		.4byte	.LASF50
+ 1660 03ea 01       		.byte	0x1
+ 1661 03eb 73       		.byte	0x73
+ 1662 03ec 50000000 		.4byte	0x50
+ 1663 03f0 A0030000 		.4byte	.LLST12
+ 1664 03f4 10       		.uleb128 0x10
+ 1665 03f5 78000000 		.4byte	.LASF51
+ 1666 03f9 01       		.byte	0x1
+ 1667 03fa 79       		.byte	0x79
+ 1668 03fb 59010000 		.4byte	0x159
+ 1669 03ff D7030000 		.4byte	.LLST13
+ 1670 0403 10       		.uleb128 0x10
+ 1671 0404 89000000 		.4byte	.LASF52
+ 1672 0408 01       		.byte	0x1
+ 1673 0409 7A       		.byte	0x7a
+ 1674 040a 59010000 		.4byte	0x159
+ 1675 040e 30040000 		.4byte	.LLST14
+ 1676 0412 11       		.uleb128 0x11
+ 1677 0413 2E020000 		.4byte	.LBB4
+ 1678 0417 94020000 		.4byte	.LBE4
+ 1679 041b 6E040000 		.4byte	0x46e
+ 1680 041f 10       		.uleb128 0x10
+ 1681 0420 B2040000 		.4byte	.LASF53
+ 1682 0424 01       		.byte	0x1
+ 1683 0425 7D       		.byte	0x7d
+ 1684 0426 2C000000 		.4byte	0x2c
+ 1685 042a 43040000 		.4byte	.LLST15
+ 1686 042e 12       		.uleb128 0x12
+ 1687 042f 69647800 		.ascii	"idx\000"
+ 1688 0433 01       		.byte	0x1
+ 1689 0434 7E       		.byte	0x7e
+ 1690 0435 2C000000 		.4byte	0x2c
+ 1691 0439 63040000 		.4byte	.LLST16
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 36
+
+
+ 1692 043d 12       		.uleb128 0x12
+ 1693 043e 746D7000 		.ascii	"tmp\000"
+ 1694 0442 01       		.byte	0x1
+ 1695 0443 7F       		.byte	0x7f
+ 1696 0444 50000000 		.4byte	0x50
+ 1697 0448 99040000 		.4byte	.LLST17
+ 1698 044c 13       		.uleb128 0x13
+ 1699 044d 62020000 		.4byte	.LVL47
+ 1700 0451 1E060000 		.4byte	0x61e
+ 1701 0455 14       		.uleb128 0x14
+ 1702 0456 01       		.byte	0x1
+ 1703 0457 52       		.byte	0x52
+ 1704 0458 04       		.byte	0x4
+ 1705 0459 77       		.byte	0x77
+ 1706 045a 00       		.sleb128 0
+ 1707 045b 31       		.byte	0x31
+ 1708 045c 24       		.byte	0x24
+ 1709 045d 14       		.uleb128 0x14
+ 1710 045e 01       		.byte	0x1
+ 1711 045f 51       		.byte	0x51
+ 1712 0460 02       		.byte	0x2
+ 1713 0461 75       		.byte	0x75
+ 1714 0462 02       		.sleb128 2
+ 1715 0463 14       		.uleb128 0x14
+ 1716 0464 01       		.byte	0x1
+ 1717 0465 50       		.byte	0x50
+ 1718 0466 05       		.byte	0x5
+ 1719 0467 03       		.byte	0x3
+ 1720 0468 00000000 		.4byte	__medianFilterTempHistory
+ 1721 046c 00       		.byte	0
+ 1722 046d 00       		.byte	0
+ 1723 046e 15       		.uleb128 0x15
+ 1724 046f A2020000 		.4byte	.LBB5
+ 1725 0473 B8030000 		.4byte	.LBE5
+ 1726 0477 17       		.uleb128 0x17
+ 1727 0478 12030000 		.4byte	.LASF54
+ 1728 047c 01       		.byte	0x1
+ 1729 047d A3       		.byte	0xa3
+ 1730 047e B7040000 		.4byte	0x4b7
+ 1731 0482 02       		.byte	0x2
+ 1732 0483 91       		.byte	0x91
+ 1733 0484 60       		.sleb128 -32
+ 1734 0485 17       		.uleb128 0x17
+ 1735 0486 0A020000 		.4byte	.LASF55
+ 1736 048a 01       		.byte	0x1
+ 1737 048b A4       		.byte	0xa4
+ 1738 048c B7040000 		.4byte	0x4b7
+ 1739 0490 02       		.byte	0x2
+ 1740 0491 91       		.byte	0x91
+ 1741 0492 64       		.sleb128 -28
+ 1742 0493 17       		.uleb128 0x17
+ 1743 0494 19020000 		.4byte	.LASF58
+ 1744 0498 01       		.byte	0x1
+ 1745 0499 BA       		.byte	0xba
+ 1746 049a 9E000000 		.4byte	0x9e
+ 1747 049e 02       		.byte	0x2
+ 1748 049f 91       		.byte	0x91
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 37
+
+
+ 1749 04a0 5C       		.sleb128 -36
+ 1750 04a1 17       		.uleb128 0x17
+ 1751 04a2 1F020000 		.4byte	.LASF59
+ 1752 04a6 01       		.byte	0x1
+ 1753 04a7 BB       		.byte	0xbb
+ 1754 04a8 9E000000 		.4byte	0x9e
+ 1755 04ac 02       		.byte	0x2
+ 1756 04ad 91       		.byte	0x91
+ 1757 04ae 5E       		.sleb128 -34
+ 1758 04af 00       		.byte	0
+ 1759 04b0 00       		.byte	0
+ 1760 04b1 16       		.uleb128 0x16
+ 1761 04b2 04       		.byte	0x4
+ 1762 04b3 D2010000 		.4byte	0x1d2
+ 1763 04b7 05       		.uleb128 0x5
+ 1764 04b8 BD000000 		.4byte	0xbd
+ 1765 04bc 0E       		.uleb128 0xe
+ 1766 04bd 01       		.byte	0x1
+ 1767 04be 08050000 		.4byte	.LASF60
+ 1768 04c2 01       		.byte	0x1
+ 1769 04c3 C4       		.byte	0xc4
+ 1770 04c4 01       		.byte	0x1
+ 1771 04c5 14040000 		.4byte	.LFB112
+ 1772 04c9 4C060000 		.4byte	.LFE112
+ 1773 04cd C3040000 		.4byte	.LLST18
+ 1774 04d1 01       		.byte	0x1
+ 1775 04d2 CF050000 		.4byte	0x5cf
+ 1776 04d6 0F       		.uleb128 0xf
+ 1777 04d7 BA040000 		.4byte	.LASF49
+ 1778 04db 01       		.byte	0x1
+ 1779 04dc C4       		.byte	0xc4
+ 1780 04dd CF050000 		.4byte	0x5cf
+ 1781 04e1 E3040000 		.4byte	.LLST19
+ 1782 04e5 0F       		.uleb128 0xf
+ 1783 04e6 20040000 		.4byte	.LASF50
+ 1784 04ea 01       		.byte	0x1
+ 1785 04eb C4       		.byte	0xc4
+ 1786 04ec 3E000000 		.4byte	0x3e
+ 1787 04f0 01050000 		.4byte	.LLST20
+ 1788 04f4 10       		.uleb128 0x10
+ 1789 04f5 78000000 		.4byte	.LASF51
+ 1790 04f9 01       		.byte	0x1
+ 1791 04fa CA       		.byte	0xca
+ 1792 04fb D5050000 		.4byte	0x5d5
+ 1793 04ff 44050000 		.4byte	.LLST21
+ 1794 0503 10       		.uleb128 0x10
+ 1795 0504 89000000 		.4byte	.LASF52
+ 1796 0508 01       		.byte	0x1
+ 1797 0509 CB       		.byte	0xcb
+ 1798 050a D5050000 		.4byte	0x5d5
+ 1799 050e 83050000 		.4byte	.LLST22
+ 1800 0512 11       		.uleb128 0x11
+ 1801 0513 3C040000 		.4byte	.LBB6
+ 1802 0517 BC040000 		.4byte	.LBE6
+ 1803 051b 8A050000 		.4byte	0x58a
+ 1804 051f 10       		.uleb128 0x10
+ 1805 0520 B2040000 		.4byte	.LASF53
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 38
+
+
+ 1806 0524 01       		.byte	0x1
+ 1807 0525 CE       		.byte	0xce
+ 1808 0526 2C000000 		.4byte	0x2c
+ 1809 052a FA050000 		.4byte	.LLST23
+ 1810 052e 12       		.uleb128 0x12
+ 1811 052f 69647800 		.ascii	"idx\000"
+ 1812 0533 01       		.byte	0x1
+ 1813 0534 CF       		.byte	0xcf
+ 1814 0535 2C000000 		.4byte	0x2c
+ 1815 0539 1A060000 		.4byte	.LLST24
+ 1816 053d 12       		.uleb128 0x12
+ 1817 053e 746D7000 		.ascii	"tmp\000"
+ 1818 0542 01       		.byte	0x1
+ 1819 0543 D0       		.byte	0xd0
+ 1820 0544 3E000000 		.4byte	0x3e
+ 1821 0548 50060000 		.4byte	.LLST25
+ 1822 054c 11       		.uleb128 0x11
+ 1823 054d A8040000 		.4byte	.LBB7
+ 1824 0551 BC040000 		.4byte	.LBE7
+ 1825 0555 68050000 		.4byte	0x568
+ 1826 0559 17       		.uleb128 0x17
+ 1827 055a 92010000 		.4byte	.LASF61
+ 1828 055e 01       		.byte	0x1
+ 1829 055f EE       		.byte	0xee
+ 1830 0560 9E000000 		.4byte	0x9e
+ 1831 0564 02       		.byte	0x2
+ 1832 0565 91       		.byte	0x91
+ 1833 0566 5A       		.sleb128 -38
+ 1834 0567 00       		.byte	0
+ 1835 0568 13       		.uleb128 0x13
+ 1836 0569 74040000 		.4byte	.LVL74
+ 1837 056d 1E060000 		.4byte	0x61e
+ 1838 0571 14       		.uleb128 0x14
+ 1839 0572 01       		.byte	0x1
+ 1840 0573 52       		.byte	0x52
+ 1841 0574 04       		.byte	0x4
+ 1842 0575 76       		.byte	0x76
+ 1843 0576 00       		.sleb128 0
+ 1844 0577 31       		.byte	0x31
+ 1845 0578 24       		.byte	0x24
+ 1846 0579 14       		.uleb128 0x14
+ 1847 057a 01       		.byte	0x1
+ 1848 057b 51       		.byte	0x51
+ 1849 057c 02       		.byte	0x2
+ 1850 057d 74       		.byte	0x74
+ 1851 057e 02       		.sleb128 2
+ 1852 057f 14       		.uleb128 0x14
+ 1853 0580 01       		.byte	0x1
+ 1854 0581 50       		.byte	0x50
+ 1855 0582 05       		.byte	0x5
+ 1856 0583 03       		.byte	0x3
+ 1857 0584 00000000 		.4byte	__medianFilterSignedTempHistory
+ 1858 0588 00       		.byte	0
+ 1859 0589 00       		.byte	0
+ 1860 058a 15       		.uleb128 0x15
+ 1861 058b CE040000 		.4byte	.LBB8
+ 1862 058f EC050000 		.4byte	.LBE8
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 39
+
+
+ 1863 0593 17       		.uleb128 0x17
+ 1864 0594 12030000 		.4byte	.LASF54
+ 1865 0598 01       		.byte	0x1
+ 1866 0599 F6       		.byte	0xf6
+ 1867 059a B7040000 		.4byte	0x4b7
+ 1868 059e 02       		.byte	0x2
+ 1869 059f 91       		.byte	0x91
+ 1870 05a0 60       		.sleb128 -32
+ 1871 05a1 17       		.uleb128 0x17
+ 1872 05a2 0A020000 		.4byte	.LASF55
+ 1873 05a6 01       		.byte	0x1
+ 1874 05a7 F7       		.byte	0xf7
+ 1875 05a8 B7040000 		.4byte	0x4b7
+ 1876 05ac 02       		.byte	0x2
+ 1877 05ad 91       		.byte	0x91
+ 1878 05ae 64       		.sleb128 -28
+ 1879 05af 18       		.uleb128 0x18
+ 1880 05b0 19020000 		.4byte	.LASF58
+ 1881 05b4 01       		.byte	0x1
+ 1882 05b5 0C01     		.2byte	0x10c
+ 1883 05b7 A8000000 		.4byte	0xa8
+ 1884 05bb 02       		.byte	0x2
+ 1885 05bc 91       		.byte	0x91
+ 1886 05bd 5C       		.sleb128 -36
+ 1887 05be 18       		.uleb128 0x18
+ 1888 05bf 1F020000 		.4byte	.LASF59
+ 1889 05c3 01       		.byte	0x1
+ 1890 05c4 0D01     		.2byte	0x10d
+ 1891 05c6 A8000000 		.4byte	0xa8
+ 1892 05ca 02       		.byte	0x2
+ 1893 05cb 91       		.byte	0x91
+ 1894 05cc 5E       		.sleb128 -34
+ 1895 05cd 00       		.byte	0
+ 1896 05ce 00       		.byte	0
+ 1897 05cf 16       		.uleb128 0x16
+ 1898 05d0 04       		.byte	0x4
+ 1899 05d1 58020000 		.4byte	0x258
+ 1900 05d5 05       		.uleb128 0x5
+ 1901 05d6 59010000 		.4byte	0x159
+ 1902 05da 19       		.uleb128 0x19
+ 1903 05db 13040000 		.4byte	.LASF62
+ 1904 05df 05       		.byte	0x5
+ 1905 05e0 1A05     		.2byte	0x51a
+ 1906 05e2 A3000000 		.4byte	0xa3
+ 1907 05e6 01       		.byte	0x1
+ 1908 05e7 01       		.byte	0x1
+ 1909 05e8 1A       		.uleb128 0x1a
+ 1910 05e9 34010000 		.4byte	.LASF63
+ 1911 05ed 01       		.byte	0x1
+ 1912 05ee 1F       		.byte	0x1f
+ 1913 05ef C2010000 		.4byte	0x1c2
+ 1914 05f3 01       		.byte	0x1
+ 1915 05f4 05       		.byte	0x5
+ 1916 05f5 03       		.byte	0x3
+ 1917 05f6 00000000 		.4byte	__medianFilterTempHistory
+ 1918 05fa 1A       		.uleb128 0x1a
+ 1919 05fb E8040000 		.4byte	.LASF64
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 40
+
+
+ 1920 05ff 01       		.byte	0x1
+ 1921 0600 20       		.byte	0x20
+ 1922 0601 48020000 		.4byte	0x248
+ 1923 0605 01       		.byte	0x1
+ 1924 0606 05       		.byte	0x5
+ 1925 0607 03       		.byte	0x3
+ 1926 0608 00000000 		.4byte	__medianFilterSignedTempHistory
+ 1927 060c 1A       		.uleb128 0x1a
+ 1928 060d 00000000 		.4byte	.LASF65
+ 1929 0611 01       		.byte	0x1
+ 1930 0612 21       		.byte	0x21
+ 1931 0613 C0020000 		.4byte	0x2c0
+ 1932 0617 01       		.byte	0x1
+ 1933 0618 05       		.byte	0x5
+ 1934 0619 03       		.byte	0x3
+ 1935 061a 00000000 		.4byte	__medianFilterFloatTempHistory
+ 1936 061e 1B       		.uleb128 0x1b
+ 1937 061f 01       		.byte	0x1
+ 1938 0620 C0000000 		.4byte	.LASF69
+ 1939 0624 01       		.byte	0x1
+ 1940 0625 AD000000 		.4byte	0xad
+ 1941 0629 01       		.byte	0x1
+ 1942 062a 01       		.byte	0x1
+ 1943 062b 3F060000 		.4byte	0x63f
+ 1944 062f 1C       		.uleb128 0x1c
+ 1945 0630 AD000000 		.4byte	0xad
+ 1946 0634 1C       		.uleb128 0x1c
+ 1947 0635 3F060000 		.4byte	0x63f
+ 1948 0639 1C       		.uleb128 0x1c
+ 1949 063a 97000000 		.4byte	0x97
+ 1950 063e 00       		.byte	0
+ 1951 063f 16       		.uleb128 0x16
+ 1952 0640 04       		.byte	0x4
+ 1953 0641 45060000 		.4byte	0x645
+ 1954 0645 1D       		.uleb128 0x1d
+ 1955 0646 00       		.byte	0
+ 1956              		.section	.debug_abbrev,"",%progbits
+ 1957              	.Ldebug_abbrev0:
+ 1958 0000 01       		.uleb128 0x1
+ 1959 0001 11       		.uleb128 0x11
+ 1960 0002 01       		.byte	0x1
+ 1961 0003 25       		.uleb128 0x25
+ 1962 0004 0E       		.uleb128 0xe
+ 1963 0005 13       		.uleb128 0x13
+ 1964 0006 0B       		.uleb128 0xb
+ 1965 0007 03       		.uleb128 0x3
+ 1966 0008 0E       		.uleb128 0xe
+ 1967 0009 1B       		.uleb128 0x1b
+ 1968 000a 0E       		.uleb128 0xe
+ 1969 000b 11       		.uleb128 0x11
+ 1970 000c 01       		.uleb128 0x1
+ 1971 000d 12       		.uleb128 0x12
+ 1972 000e 01       		.uleb128 0x1
+ 1973 000f 10       		.uleb128 0x10
+ 1974 0010 06       		.uleb128 0x6
+ 1975 0011 00       		.byte	0
+ 1976 0012 00       		.byte	0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 41
+
+
+ 1977 0013 02       		.uleb128 0x2
+ 1978 0014 24       		.uleb128 0x24
+ 1979 0015 00       		.byte	0
+ 1980 0016 0B       		.uleb128 0xb
+ 1981 0017 0B       		.uleb128 0xb
+ 1982 0018 3E       		.uleb128 0x3e
+ 1983 0019 0B       		.uleb128 0xb
+ 1984 001a 03       		.uleb128 0x3
+ 1985 001b 0E       		.uleb128 0xe
+ 1986 001c 00       		.byte	0
+ 1987 001d 00       		.byte	0
+ 1988 001e 03       		.uleb128 0x3
+ 1989 001f 16       		.uleb128 0x16
+ 1990 0020 00       		.byte	0
+ 1991 0021 03       		.uleb128 0x3
+ 1992 0022 0E       		.uleb128 0xe
+ 1993 0023 3A       		.uleb128 0x3a
+ 1994 0024 0B       		.uleb128 0xb
+ 1995 0025 3B       		.uleb128 0x3b
+ 1996 0026 0B       		.uleb128 0xb
+ 1997 0027 49       		.uleb128 0x49
+ 1998 0028 13       		.uleb128 0x13
+ 1999 0029 00       		.byte	0
+ 2000 002a 00       		.byte	0
+ 2001 002b 04       		.uleb128 0x4
+ 2002 002c 24       		.uleb128 0x24
+ 2003 002d 00       		.byte	0
+ 2004 002e 0B       		.uleb128 0xb
+ 2005 002f 0B       		.uleb128 0xb
+ 2006 0030 3E       		.uleb128 0x3e
+ 2007 0031 0B       		.uleb128 0xb
+ 2008 0032 03       		.uleb128 0x3
+ 2009 0033 08       		.uleb128 0x8
+ 2010 0034 00       		.byte	0
+ 2011 0035 00       		.byte	0
+ 2012 0036 05       		.uleb128 0x5
+ 2013 0037 35       		.uleb128 0x35
+ 2014 0038 00       		.byte	0
+ 2015 0039 49       		.uleb128 0x49
+ 2016 003a 13       		.uleb128 0x13
+ 2017 003b 00       		.byte	0
+ 2018 003c 00       		.byte	0
+ 2019 003d 06       		.uleb128 0x6
+ 2020 003e 0F       		.uleb128 0xf
+ 2021 003f 00       		.byte	0
+ 2022 0040 0B       		.uleb128 0xb
+ 2023 0041 0B       		.uleb128 0xb
+ 2024 0042 00       		.byte	0
+ 2025 0043 00       		.byte	0
+ 2026 0044 07       		.uleb128 0x7
+ 2027 0045 04       		.uleb128 0x4
+ 2028 0046 01       		.byte	0x1
+ 2029 0047 0B       		.uleb128 0xb
+ 2030 0048 0B       		.uleb128 0xb
+ 2031 0049 3A       		.uleb128 0x3a
+ 2032 004a 0B       		.uleb128 0xb
+ 2033 004b 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 42
+
+
+ 2034 004c 05       		.uleb128 0x5
+ 2035 004d 01       		.uleb128 0x1
+ 2036 004e 13       		.uleb128 0x13
+ 2037 004f 00       		.byte	0
+ 2038 0050 00       		.byte	0
+ 2039 0051 08       		.uleb128 0x8
+ 2040 0052 28       		.uleb128 0x28
+ 2041 0053 00       		.byte	0
+ 2042 0054 03       		.uleb128 0x3
+ 2043 0055 0E       		.uleb128 0xe
+ 2044 0056 1C       		.uleb128 0x1c
+ 2045 0057 0D       		.uleb128 0xd
+ 2046 0058 00       		.byte	0
+ 2047 0059 00       		.byte	0
+ 2048 005a 09       		.uleb128 0x9
+ 2049 005b 16       		.uleb128 0x16
+ 2050 005c 00       		.byte	0
+ 2051 005d 03       		.uleb128 0x3
+ 2052 005e 0E       		.uleb128 0xe
+ 2053 005f 3A       		.uleb128 0x3a
+ 2054 0060 0B       		.uleb128 0xb
+ 2055 0061 3B       		.uleb128 0x3b
+ 2056 0062 05       		.uleb128 0x5
+ 2057 0063 49       		.uleb128 0x49
+ 2058 0064 13       		.uleb128 0x13
+ 2059 0065 00       		.byte	0
+ 2060 0066 00       		.byte	0
+ 2061 0067 0A       		.uleb128 0xa
+ 2062 0068 13       		.uleb128 0x13
+ 2063 0069 01       		.byte	0x1
+ 2064 006a 0B       		.uleb128 0xb
+ 2065 006b 0B       		.uleb128 0xb
+ 2066 006c 3A       		.uleb128 0x3a
+ 2067 006d 0B       		.uleb128 0xb
+ 2068 006e 3B       		.uleb128 0x3b
+ 2069 006f 0B       		.uleb128 0xb
+ 2070 0070 01       		.uleb128 0x1
+ 2071 0071 13       		.uleb128 0x13
+ 2072 0072 00       		.byte	0
+ 2073 0073 00       		.byte	0
+ 2074 0074 0B       		.uleb128 0xb
+ 2075 0075 0D       		.uleb128 0xd
+ 2076 0076 00       		.byte	0
+ 2077 0077 03       		.uleb128 0x3
+ 2078 0078 0E       		.uleb128 0xe
+ 2079 0079 3A       		.uleb128 0x3a
+ 2080 007a 0B       		.uleb128 0xb
+ 2081 007b 3B       		.uleb128 0x3b
+ 2082 007c 0B       		.uleb128 0xb
+ 2083 007d 49       		.uleb128 0x49
+ 2084 007e 13       		.uleb128 0x13
+ 2085 007f 38       		.uleb128 0x38
+ 2086 0080 0A       		.uleb128 0xa
+ 2087 0081 00       		.byte	0
+ 2088 0082 00       		.byte	0
+ 2089 0083 0C       		.uleb128 0xc
+ 2090 0084 01       		.uleb128 0x1
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 43
+
+
+ 2091 0085 01       		.byte	0x1
+ 2092 0086 49       		.uleb128 0x49
+ 2093 0087 13       		.uleb128 0x13
+ 2094 0088 01       		.uleb128 0x1
+ 2095 0089 13       		.uleb128 0x13
+ 2096 008a 00       		.byte	0
+ 2097 008b 00       		.byte	0
+ 2098 008c 0D       		.uleb128 0xd
+ 2099 008d 21       		.uleb128 0x21
+ 2100 008e 00       		.byte	0
+ 2101 008f 49       		.uleb128 0x49
+ 2102 0090 13       		.uleb128 0x13
+ 2103 0091 2F       		.uleb128 0x2f
+ 2104 0092 0B       		.uleb128 0xb
+ 2105 0093 00       		.byte	0
+ 2106 0094 00       		.byte	0
+ 2107 0095 0E       		.uleb128 0xe
+ 2108 0096 2E       		.uleb128 0x2e
+ 2109 0097 01       		.byte	0x1
+ 2110 0098 3F       		.uleb128 0x3f
+ 2111 0099 0C       		.uleb128 0xc
+ 2112 009a 03       		.uleb128 0x3
+ 2113 009b 0E       		.uleb128 0xe
+ 2114 009c 3A       		.uleb128 0x3a
+ 2115 009d 0B       		.uleb128 0xb
+ 2116 009e 3B       		.uleb128 0x3b
+ 2117 009f 0B       		.uleb128 0xb
+ 2118 00a0 27       		.uleb128 0x27
+ 2119 00a1 0C       		.uleb128 0xc
+ 2120 00a2 11       		.uleb128 0x11
+ 2121 00a3 01       		.uleb128 0x1
+ 2122 00a4 12       		.uleb128 0x12
+ 2123 00a5 01       		.uleb128 0x1
+ 2124 00a6 40       		.uleb128 0x40
+ 2125 00a7 06       		.uleb128 0x6
+ 2126 00a8 9742     		.uleb128 0x2117
+ 2127 00aa 0C       		.uleb128 0xc
+ 2128 00ab 01       		.uleb128 0x1
+ 2129 00ac 13       		.uleb128 0x13
+ 2130 00ad 00       		.byte	0
+ 2131 00ae 00       		.byte	0
+ 2132 00af 0F       		.uleb128 0xf
+ 2133 00b0 05       		.uleb128 0x5
+ 2134 00b1 00       		.byte	0
+ 2135 00b2 03       		.uleb128 0x3
+ 2136 00b3 0E       		.uleb128 0xe
+ 2137 00b4 3A       		.uleb128 0x3a
+ 2138 00b5 0B       		.uleb128 0xb
+ 2139 00b6 3B       		.uleb128 0x3b
+ 2140 00b7 0B       		.uleb128 0xb
+ 2141 00b8 49       		.uleb128 0x49
+ 2142 00b9 13       		.uleb128 0x13
+ 2143 00ba 02       		.uleb128 0x2
+ 2144 00bb 06       		.uleb128 0x6
+ 2145 00bc 00       		.byte	0
+ 2146 00bd 00       		.byte	0
+ 2147 00be 10       		.uleb128 0x10
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 44
+
+
+ 2148 00bf 34       		.uleb128 0x34
+ 2149 00c0 00       		.byte	0
+ 2150 00c1 03       		.uleb128 0x3
+ 2151 00c2 0E       		.uleb128 0xe
+ 2152 00c3 3A       		.uleb128 0x3a
+ 2153 00c4 0B       		.uleb128 0xb
+ 2154 00c5 3B       		.uleb128 0x3b
+ 2155 00c6 0B       		.uleb128 0xb
+ 2156 00c7 49       		.uleb128 0x49
+ 2157 00c8 13       		.uleb128 0x13
+ 2158 00c9 02       		.uleb128 0x2
+ 2159 00ca 06       		.uleb128 0x6
+ 2160 00cb 00       		.byte	0
+ 2161 00cc 00       		.byte	0
+ 2162 00cd 11       		.uleb128 0x11
+ 2163 00ce 0B       		.uleb128 0xb
+ 2164 00cf 01       		.byte	0x1
+ 2165 00d0 11       		.uleb128 0x11
+ 2166 00d1 01       		.uleb128 0x1
+ 2167 00d2 12       		.uleb128 0x12
+ 2168 00d3 01       		.uleb128 0x1
+ 2169 00d4 01       		.uleb128 0x1
+ 2170 00d5 13       		.uleb128 0x13
+ 2171 00d6 00       		.byte	0
+ 2172 00d7 00       		.byte	0
+ 2173 00d8 12       		.uleb128 0x12
+ 2174 00d9 34       		.uleb128 0x34
+ 2175 00da 00       		.byte	0
+ 2176 00db 03       		.uleb128 0x3
+ 2177 00dc 08       		.uleb128 0x8
+ 2178 00dd 3A       		.uleb128 0x3a
+ 2179 00de 0B       		.uleb128 0xb
+ 2180 00df 3B       		.uleb128 0x3b
+ 2181 00e0 0B       		.uleb128 0xb
+ 2182 00e1 49       		.uleb128 0x49
+ 2183 00e2 13       		.uleb128 0x13
+ 2184 00e3 02       		.uleb128 0x2
+ 2185 00e4 06       		.uleb128 0x6
+ 2186 00e5 00       		.byte	0
+ 2187 00e6 00       		.byte	0
+ 2188 00e7 13       		.uleb128 0x13
+ 2189 00e8 898201   		.uleb128 0x4109
+ 2190 00eb 01       		.byte	0x1
+ 2191 00ec 11       		.uleb128 0x11
+ 2192 00ed 01       		.uleb128 0x1
+ 2193 00ee 31       		.uleb128 0x31
+ 2194 00ef 13       		.uleb128 0x13
+ 2195 00f0 00       		.byte	0
+ 2196 00f1 00       		.byte	0
+ 2197 00f2 14       		.uleb128 0x14
+ 2198 00f3 8A8201   		.uleb128 0x410a
+ 2199 00f6 00       		.byte	0
+ 2200 00f7 02       		.uleb128 0x2
+ 2201 00f8 0A       		.uleb128 0xa
+ 2202 00f9 9142     		.uleb128 0x2111
+ 2203 00fb 0A       		.uleb128 0xa
+ 2204 00fc 00       		.byte	0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 45
+
+
+ 2205 00fd 00       		.byte	0
+ 2206 00fe 15       		.uleb128 0x15
+ 2207 00ff 0B       		.uleb128 0xb
+ 2208 0100 01       		.byte	0x1
+ 2209 0101 11       		.uleb128 0x11
+ 2210 0102 01       		.uleb128 0x1
+ 2211 0103 12       		.uleb128 0x12
+ 2212 0104 01       		.uleb128 0x1
+ 2213 0105 00       		.byte	0
+ 2214 0106 00       		.byte	0
+ 2215 0107 16       		.uleb128 0x16
+ 2216 0108 0F       		.uleb128 0xf
+ 2217 0109 00       		.byte	0
+ 2218 010a 0B       		.uleb128 0xb
+ 2219 010b 0B       		.uleb128 0xb
+ 2220 010c 49       		.uleb128 0x49
+ 2221 010d 13       		.uleb128 0x13
+ 2222 010e 00       		.byte	0
+ 2223 010f 00       		.byte	0
+ 2224 0110 17       		.uleb128 0x17
+ 2225 0111 34       		.uleb128 0x34
+ 2226 0112 00       		.byte	0
+ 2227 0113 03       		.uleb128 0x3
+ 2228 0114 0E       		.uleb128 0xe
+ 2229 0115 3A       		.uleb128 0x3a
+ 2230 0116 0B       		.uleb128 0xb
+ 2231 0117 3B       		.uleb128 0x3b
+ 2232 0118 0B       		.uleb128 0xb
+ 2233 0119 49       		.uleb128 0x49
+ 2234 011a 13       		.uleb128 0x13
+ 2235 011b 02       		.uleb128 0x2
+ 2236 011c 0A       		.uleb128 0xa
+ 2237 011d 00       		.byte	0
+ 2238 011e 00       		.byte	0
+ 2239 011f 18       		.uleb128 0x18
+ 2240 0120 34       		.uleb128 0x34
+ 2241 0121 00       		.byte	0
+ 2242 0122 03       		.uleb128 0x3
+ 2243 0123 0E       		.uleb128 0xe
+ 2244 0124 3A       		.uleb128 0x3a
+ 2245 0125 0B       		.uleb128 0xb
+ 2246 0126 3B       		.uleb128 0x3b
+ 2247 0127 05       		.uleb128 0x5
+ 2248 0128 49       		.uleb128 0x49
+ 2249 0129 13       		.uleb128 0x13
+ 2250 012a 02       		.uleb128 0x2
+ 2251 012b 0A       		.uleb128 0xa
+ 2252 012c 00       		.byte	0
+ 2253 012d 00       		.byte	0
+ 2254 012e 19       		.uleb128 0x19
+ 2255 012f 34       		.uleb128 0x34
+ 2256 0130 00       		.byte	0
+ 2257 0131 03       		.uleb128 0x3
+ 2258 0132 0E       		.uleb128 0xe
+ 2259 0133 3A       		.uleb128 0x3a
+ 2260 0134 0B       		.uleb128 0xb
+ 2261 0135 3B       		.uleb128 0x3b
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 46
+
+
+ 2262 0136 05       		.uleb128 0x5
+ 2263 0137 49       		.uleb128 0x49
+ 2264 0138 13       		.uleb128 0x13
+ 2265 0139 3F       		.uleb128 0x3f
+ 2266 013a 0C       		.uleb128 0xc
+ 2267 013b 3C       		.uleb128 0x3c
+ 2268 013c 0C       		.uleb128 0xc
+ 2269 013d 00       		.byte	0
+ 2270 013e 00       		.byte	0
+ 2271 013f 1A       		.uleb128 0x1a
+ 2272 0140 34       		.uleb128 0x34
+ 2273 0141 00       		.byte	0
+ 2274 0142 03       		.uleb128 0x3
+ 2275 0143 0E       		.uleb128 0xe
+ 2276 0144 3A       		.uleb128 0x3a
+ 2277 0145 0B       		.uleb128 0xb
+ 2278 0146 3B       		.uleb128 0x3b
+ 2279 0147 0B       		.uleb128 0xb
+ 2280 0148 49       		.uleb128 0x49
+ 2281 0149 13       		.uleb128 0x13
+ 2282 014a 3F       		.uleb128 0x3f
+ 2283 014b 0C       		.uleb128 0xc
+ 2284 014c 02       		.uleb128 0x2
+ 2285 014d 0A       		.uleb128 0xa
+ 2286 014e 00       		.byte	0
+ 2287 014f 00       		.byte	0
+ 2288 0150 1B       		.uleb128 0x1b
+ 2289 0151 2E       		.uleb128 0x2e
+ 2290 0152 01       		.byte	0x1
+ 2291 0153 3F       		.uleb128 0x3f
+ 2292 0154 0C       		.uleb128 0xc
+ 2293 0155 03       		.uleb128 0x3
+ 2294 0156 0E       		.uleb128 0xe
+ 2295 0157 27       		.uleb128 0x27
+ 2296 0158 0C       		.uleb128 0xc
+ 2297 0159 49       		.uleb128 0x49
+ 2298 015a 13       		.uleb128 0x13
+ 2299 015b 34       		.uleb128 0x34
+ 2300 015c 0C       		.uleb128 0xc
+ 2301 015d 3C       		.uleb128 0x3c
+ 2302 015e 0C       		.uleb128 0xc
+ 2303 015f 01       		.uleb128 0x1
+ 2304 0160 13       		.uleb128 0x13
+ 2305 0161 00       		.byte	0
+ 2306 0162 00       		.byte	0
+ 2307 0163 1C       		.uleb128 0x1c
+ 2308 0164 05       		.uleb128 0x5
+ 2309 0165 00       		.byte	0
+ 2310 0166 49       		.uleb128 0x49
+ 2311 0167 13       		.uleb128 0x13
+ 2312 0168 00       		.byte	0
+ 2313 0169 00       		.byte	0
+ 2314 016a 1D       		.uleb128 0x1d
+ 2315 016b 26       		.uleb128 0x26
+ 2316 016c 00       		.byte	0
+ 2317 016d 00       		.byte	0
+ 2318 016e 00       		.byte	0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 47
+
+
+ 2319 016f 00       		.byte	0
+ 2320              		.section	.debug_loc,"",%progbits
+ 2321              	.Ldebug_loc0:
+ 2322              	.LLST0:
+ 2323 0000 00000000 		.4byte	.LFB110-.Ltext0
+ 2324 0004 02000000 		.4byte	.LCFI0-.Ltext0
+ 2325 0008 0200     		.2byte	0x2
+ 2326 000a 7D       		.byte	0x7d
+ 2327 000b 00       		.sleb128 0
+ 2328 000c 02000000 		.4byte	.LCFI0-.Ltext0
+ 2329 0010 08000000 		.4byte	.LCFI1-.Ltext0
+ 2330 0014 0200     		.2byte	0x2
+ 2331 0016 7D       		.byte	0x7d
+ 2332 0017 18       		.sleb128 24
+ 2333 0018 08000000 		.4byte	.LCFI1-.Ltext0
+ 2334 001c 14020000 		.4byte	.LFE110-.Ltext0
+ 2335 0020 0200     		.2byte	0x2
+ 2336 0022 7D       		.byte	0x7d
+ 2337 0023 20       		.sleb128 32
+ 2338 0024 00000000 		.4byte	0
+ 2339 0028 00000000 		.4byte	0
+ 2340              	.LLST1:
+ 2341 002c 00000000 		.4byte	.LVL0-.Ltext0
+ 2342 0030 52000000 		.4byte	.LVL7-.Ltext0
+ 2343 0034 0100     		.2byte	0x1
+ 2344 0036 50       		.byte	0x50
+ 2345 0037 52000000 		.4byte	.LVL7-.Ltext0
+ 2346 003b 14020000 		.4byte	.LFE110-.Ltext0
+ 2347 003f 0100     		.2byte	0x1
+ 2348 0041 54       		.byte	0x54
+ 2349 0042 00000000 		.4byte	0
+ 2350 0046 00000000 		.4byte	0
+ 2351              	.LLST2:
+ 2352 004a 00000000 		.4byte	.LVL0-.Ltext0
+ 2353 004e 57000000 		.4byte	.LVL8-1-.Ltext0
+ 2354 0052 0200     		.2byte	0x2
+ 2355 0054 90       		.byte	0x90
+ 2356 0055 40       		.uleb128 0x40
+ 2357 0056 57000000 		.4byte	.LVL8-1-.Ltext0
+ 2358 005a 14020000 		.4byte	.LFE110-.Ltext0
+ 2359 005e 0200     		.2byte	0x2
+ 2360 0060 90       		.byte	0x90
+ 2361 0061 50       		.uleb128 0x50
+ 2362 0062 00000000 		.4byte	0
+ 2363 0066 00000000 		.4byte	0
+ 2364              	.LLST3:
+ 2365 006a 16000000 		.4byte	.LVL1-.Ltext0
+ 2366 006e 2E000000 		.4byte	.LVL4-.Ltext0
+ 2367 0072 0500     		.2byte	0x5
+ 2368 0074 73       		.byte	0x73
+ 2369 0075 00       		.sleb128 0
+ 2370 0076 3F       		.byte	0x3f
+ 2371 0077 1A       		.byte	0x1a
+ 2372 0078 9F       		.byte	0x9f
+ 2373 0079 2E000000 		.4byte	.LVL4-.Ltext0
+ 2374 007d 30000000 		.4byte	.LVL5-.Ltext0
+ 2375 0081 0700     		.2byte	0x7
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 48
+
+
+ 2376 0083 70       		.byte	0x70
+ 2377 0084 01       		.sleb128 1
+ 2378 0085 94       		.byte	0x94
+ 2379 0086 01       		.byte	0x1
+ 2380 0087 3F       		.byte	0x3f
+ 2381 0088 1A       		.byte	0x1a
+ 2382 0089 9F       		.byte	0x9f
+ 2383 008a 30000000 		.4byte	.LVL5-.Ltext0
+ 2384 008e 32000000 		.4byte	.LVL6-.Ltext0
+ 2385 0092 0500     		.2byte	0x5
+ 2386 0094 73       		.byte	0x73
+ 2387 0095 00       		.sleb128 0
+ 2388 0096 3F       		.byte	0x3f
+ 2389 0097 1A       		.byte	0x1a
+ 2390 0098 9F       		.byte	0x9f
+ 2391 0099 32000000 		.4byte	.LVL6-.Ltext0
+ 2392 009d 52000000 		.4byte	.LVL7-.Ltext0
+ 2393 00a1 0700     		.2byte	0x7
+ 2394 00a3 70       		.byte	0x70
+ 2395 00a4 01       		.sleb128 1
+ 2396 00a5 94       		.byte	0x94
+ 2397 00a6 01       		.byte	0x1
+ 2398 00a7 3F       		.byte	0x3f
+ 2399 00a8 1A       		.byte	0x1a
+ 2400 00a9 9F       		.byte	0x9f
+ 2401 00aa 52000000 		.4byte	.LVL7-.Ltext0
+ 2402 00ae 57000000 		.4byte	.LVL8-1-.Ltext0
+ 2403 00b2 0700     		.2byte	0x7
+ 2404 00b4 74       		.byte	0x74
+ 2405 00b5 01       		.sleb128 1
+ 2406 00b6 94       		.byte	0x94
+ 2407 00b7 01       		.byte	0x1
+ 2408 00b8 3F       		.byte	0x3f
+ 2409 00b9 1A       		.byte	0x1a
+ 2410 00ba 9F       		.byte	0x9f
+ 2411 00bb 00000000 		.4byte	0
+ 2412 00bf 00000000 		.4byte	0
+ 2413              	.LLST4:
+ 2414 00c3 1E000000 		.4byte	.LVL2-.Ltext0
+ 2415 00c7 B4010000 		.4byte	.LVL37-.Ltext0
+ 2416 00cb 0100     		.2byte	0x1
+ 2417 00cd 55       		.byte	0x55
+ 2418 00ce 00000000 		.4byte	0
+ 2419 00d2 00000000 		.4byte	0
+ 2420              	.LLST5:
+ 2421 00d6 24000000 		.4byte	.LVL3-.Ltext0
+ 2422 00da 5A000000 		.4byte	.LVL9-.Ltext0
+ 2423 00de 0100     		.2byte	0x1
+ 2424 00e0 56       		.byte	0x56
+ 2425 00e1 5A000000 		.4byte	.LVL9-.Ltext0
+ 2426 00e5 A0000000 		.4byte	.LVL18-.Ltext0
+ 2427 00e9 0300     		.2byte	0x3
+ 2428 00eb 76       		.byte	0x76
+ 2429 00ec 01       		.sleb128 1
+ 2430 00ed 9F       		.byte	0x9f
+ 2431 00ee 00000000 		.4byte	0
+ 2432 00f2 00000000 		.4byte	0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 49
+
+
+ 2433              	.LLST6:
+ 2434 00f6 24000000 		.4byte	.LVL3-.Ltext0
+ 2435 00fa 60000000 		.4byte	.LVL10-.Ltext0
+ 2436 00fe 0200     		.2byte	0x2
+ 2437 0100 30       		.byte	0x30
+ 2438 0101 9F       		.byte	0x9f
+ 2439 0102 60000000 		.4byte	.LVL10-.Ltext0
+ 2440 0106 66000000 		.4byte	.LVL11-.Ltext0
+ 2441 010a 0100     		.2byte	0x1
+ 2442 010c 53       		.byte	0x53
+ 2443 010d 66000000 		.4byte	.LVL11-.Ltext0
+ 2444 0111 82000000 		.4byte	.LVL13-.Ltext0
+ 2445 0115 0300     		.2byte	0x3
+ 2446 0117 73       		.byte	0x73
+ 2447 0118 7F       		.sleb128 -1
+ 2448 0119 9F       		.byte	0x9f
+ 2449 011a 86000000 		.4byte	.LVL14-.Ltext0
+ 2450 011e 88000000 		.4byte	.LVL15-.Ltext0
+ 2451 0122 0200     		.2byte	0x2
+ 2452 0124 30       		.byte	0x30
+ 2453 0125 9F       		.byte	0x9f
+ 2454 0126 88000000 		.4byte	.LVL15-.Ltext0
+ 2455 012a 8A000000 		.4byte	.LVL16-.Ltext0
+ 2456 012e 0300     		.2byte	0x3
+ 2457 0130 73       		.byte	0x73
+ 2458 0131 7F       		.sleb128 -1
+ 2459 0132 9F       		.byte	0x9f
+ 2460 0133 8A000000 		.4byte	.LVL16-.Ltext0
+ 2461 0137 92000000 		.4byte	.LVL17-.Ltext0
+ 2462 013b 0100     		.2byte	0x1
+ 2463 013d 53       		.byte	0x53
+ 2464 013e 00000000 		.4byte	0
+ 2465 0142 00000000 		.4byte	0
+ 2466              	.LLST7:
+ 2467 0146 7C000000 		.4byte	.LVL12-.Ltext0
+ 2468 014a 88000000 		.4byte	.LVL15-.Ltext0
+ 2469 014e 0200     		.2byte	0x2
+ 2470 0150 90       		.byte	0x90
+ 2471 0151 4F       		.uleb128 0x4f
+ 2472 0152 00000000 		.4byte	0
+ 2473 0156 00000000 		.4byte	0
+ 2474              	.LLST8:
+ 2475 015a B8000000 		.4byte	.LVL19-.Ltext0
+ 2476 015e 0C010000 		.4byte	.LVL20-.Ltext0
+ 2477 0162 0600     		.2byte	0x6
+ 2478 0164 9E       		.byte	0x9e
+ 2479 0165 04       		.uleb128 0x4
+ 2480 0166 0000803F 		.4byte	0x3f800000
+ 2481 016a 0C010000 		.4byte	.LVL20-.Ltext0
+ 2482 016e 16010000 		.4byte	.LVL21-.Ltext0
+ 2483 0172 0600     		.2byte	0x6
+ 2484 0174 9E       		.byte	0x9e
+ 2485 0175 04       		.uleb128 0x4
+ 2486 0176 0AD7233C 		.4byte	0x3c23d70a
+ 2487 017a 16010000 		.4byte	.LVL21-.Ltext0
+ 2488 017e 20010000 		.4byte	.LVL22-.Ltext0
+ 2489 0182 0600     		.2byte	0x6
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 50
+
+
+ 2490 0184 9E       		.byte	0x9e
+ 2491 0185 04       		.uleb128 0x4
+ 2492 0186 0AD7A33C 		.4byte	0x3ca3d70a
+ 2493 018a 20010000 		.4byte	.LVL22-.Ltext0
+ 2494 018e 2A010000 		.4byte	.LVL23-.Ltext0
+ 2495 0192 0600     		.2byte	0x6
+ 2496 0194 9E       		.byte	0x9e
+ 2497 0195 04       		.uleb128 0x4
+ 2498 0196 CDCC4C3D 		.4byte	0x3d4ccccd
+ 2499 019a 2A010000 		.4byte	.LVL23-.Ltext0
+ 2500 019e 34010000 		.4byte	.LVL24-.Ltext0
+ 2501 01a2 0600     		.2byte	0x6
+ 2502 01a4 9E       		.byte	0x9e
+ 2503 01a5 04       		.uleb128 0x4
+ 2504 01a6 CDCCCC3D 		.4byte	0x3dcccccd
+ 2505 01aa 34010000 		.4byte	.LVL24-.Ltext0
+ 2506 01ae 3E010000 		.4byte	.LVL25-.Ltext0
+ 2507 01b2 0600     		.2byte	0x6
+ 2508 01b4 9E       		.byte	0x9e
+ 2509 01b5 04       		.uleb128 0x4
+ 2510 01b6 9A99193E 		.4byte	0x3e19999a
+ 2511 01ba 3E010000 		.4byte	.LVL25-.Ltext0
+ 2512 01be 48010000 		.4byte	.LVL26-.Ltext0
+ 2513 01c2 0600     		.2byte	0x6
+ 2514 01c4 9E       		.byte	0x9e
+ 2515 01c5 04       		.uleb128 0x4
+ 2516 01c6 CDCC4C3E 		.4byte	0x3e4ccccd
+ 2517 01ca 48010000 		.4byte	.LVL26-.Ltext0
+ 2518 01ce 52010000 		.4byte	.LVL27-.Ltext0
+ 2519 01d2 0600     		.2byte	0x6
+ 2520 01d4 9E       		.byte	0x9e
+ 2521 01d5 04       		.uleb128 0x4
+ 2522 01d6 9A99993E 		.4byte	0x3e99999a
+ 2523 01da 52010000 		.4byte	.LVL27-.Ltext0
+ 2524 01de 5C010000 		.4byte	.LVL28-.Ltext0
+ 2525 01e2 0600     		.2byte	0x6
+ 2526 01e4 9E       		.byte	0x9e
+ 2527 01e5 04       		.uleb128 0x4
+ 2528 01e6 CDCCCC3E 		.4byte	0x3ecccccd
+ 2529 01ea 5C010000 		.4byte	.LVL28-.Ltext0
+ 2530 01ee 66010000 		.4byte	.LVL29-.Ltext0
+ 2531 01f2 0600     		.2byte	0x6
+ 2532 01f4 9E       		.byte	0x9e
+ 2533 01f5 04       		.uleb128 0x4
+ 2534 01f6 0000003F 		.4byte	0x3f000000
+ 2535 01fa 66010000 		.4byte	.LVL29-.Ltext0
+ 2536 01fe 70010000 		.4byte	.LVL30-.Ltext0
+ 2537 0202 0600     		.2byte	0x6
+ 2538 0204 9E       		.byte	0x9e
+ 2539 0205 04       		.uleb128 0x4
+ 2540 0206 9A99193F 		.4byte	0x3f19999a
+ 2541 020a 70010000 		.4byte	.LVL30-.Ltext0
+ 2542 020e 7A010000 		.4byte	.LVL31-.Ltext0
+ 2543 0212 0600     		.2byte	0x6
+ 2544 0214 9E       		.byte	0x9e
+ 2545 0215 04       		.uleb128 0x4
+ 2546 0216 3333333F 		.4byte	0x3f333333
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 51
+
+
+ 2547 021a 7A010000 		.4byte	.LVL31-.Ltext0
+ 2548 021e 84010000 		.4byte	.LVL32-.Ltext0
+ 2549 0222 0600     		.2byte	0x6
+ 2550 0224 9E       		.byte	0x9e
+ 2551 0225 04       		.uleb128 0x4
+ 2552 0226 CDCC4C3F 		.4byte	0x3f4ccccd
+ 2553 022a 84010000 		.4byte	.LVL32-.Ltext0
+ 2554 022e 8E010000 		.4byte	.LVL33-.Ltext0
+ 2555 0232 0600     		.2byte	0x6
+ 2556 0234 9E       		.byte	0x9e
+ 2557 0235 04       		.uleb128 0x4
+ 2558 0236 6666663F 		.4byte	0x3f666666
+ 2559 023a 8E010000 		.4byte	.LVL33-.Ltext0
+ 2560 023e A0010000 		.4byte	.LVL34-.Ltext0
+ 2561 0242 0600     		.2byte	0x6
+ 2562 0244 9E       		.byte	0x9e
+ 2563 0245 04       		.uleb128 0x4
+ 2564 0246 0000803F 		.4byte	0x3f800000
+ 2565 024a A0010000 		.4byte	.LVL34-.Ltext0
+ 2566 024e B0010000 		.4byte	.LVL36-.Ltext0
+ 2567 0252 0200     		.2byte	0x2
+ 2568 0254 90       		.byte	0x90
+ 2569 0255 4E       		.uleb128 0x4e
+ 2570 0256 00000000 		.4byte	0
+ 2571 025a 00000000 		.4byte	0
+ 2572              	.LLST9:
+ 2573 025e B8000000 		.4byte	.LVL19-.Ltext0
+ 2574 0262 0C010000 		.4byte	.LVL20-.Ltext0
+ 2575 0266 0600     		.2byte	0x6
+ 2576 0268 9E       		.byte	0x9e
+ 2577 0269 04       		.uleb128 0x4
+ 2578 026a 00000000 		.4byte	0
+ 2579 026e 0C010000 		.4byte	.LVL20-.Ltext0
+ 2580 0272 16010000 		.4byte	.LVL21-.Ltext0
+ 2581 0276 0600     		.2byte	0x6
+ 2582 0278 9E       		.byte	0x9e
+ 2583 0279 04       		.uleb128 0x4
+ 2584 027a A4707D3F 		.4byte	0x3f7d70a4
+ 2585 027e 16010000 		.4byte	.LVL21-.Ltext0
+ 2586 0282 20010000 		.4byte	.LVL22-.Ltext0
+ 2587 0286 0600     		.2byte	0x6
+ 2588 0288 9E       		.byte	0x9e
+ 2589 0289 04       		.uleb128 0x4
+ 2590 028a 48E17A3F 		.4byte	0x3f7ae148
+ 2591 028e 20010000 		.4byte	.LVL22-.Ltext0
+ 2592 0292 2A010000 		.4byte	.LVL23-.Ltext0
+ 2593 0296 0600     		.2byte	0x6
+ 2594 0298 9E       		.byte	0x9e
+ 2595 0299 04       		.uleb128 0x4
+ 2596 029a 3333733F 		.4byte	0x3f733333
+ 2597 029e 2A010000 		.4byte	.LVL23-.Ltext0
+ 2598 02a2 34010000 		.4byte	.LVL24-.Ltext0
+ 2599 02a6 0600     		.2byte	0x6
+ 2600 02a8 9E       		.byte	0x9e
+ 2601 02a9 04       		.uleb128 0x4
+ 2602 02aa 6666663F 		.4byte	0x3f666666
+ 2603 02ae 34010000 		.4byte	.LVL24-.Ltext0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 52
+
+
+ 2604 02b2 3E010000 		.4byte	.LVL25-.Ltext0
+ 2605 02b6 0600     		.2byte	0x6
+ 2606 02b8 9E       		.byte	0x9e
+ 2607 02b9 04       		.uleb128 0x4
+ 2608 02ba 9A99593F 		.4byte	0x3f59999a
+ 2609 02be 3E010000 		.4byte	.LVL25-.Ltext0
+ 2610 02c2 48010000 		.4byte	.LVL26-.Ltext0
+ 2611 02c6 0600     		.2byte	0x6
+ 2612 02c8 9E       		.byte	0x9e
+ 2613 02c9 04       		.uleb128 0x4
+ 2614 02ca CDCC4C3F 		.4byte	0x3f4ccccd
+ 2615 02ce 48010000 		.4byte	.LVL26-.Ltext0
+ 2616 02d2 52010000 		.4byte	.LVL27-.Ltext0
+ 2617 02d6 0600     		.2byte	0x6
+ 2618 02d8 9E       		.byte	0x9e
+ 2619 02d9 04       		.uleb128 0x4
+ 2620 02da 3333333F 		.4byte	0x3f333333
+ 2621 02de 52010000 		.4byte	.LVL27-.Ltext0
+ 2622 02e2 5C010000 		.4byte	.LVL28-.Ltext0
+ 2623 02e6 0600     		.2byte	0x6
+ 2624 02e8 9E       		.byte	0x9e
+ 2625 02e9 04       		.uleb128 0x4
+ 2626 02ea 9A99193F 		.4byte	0x3f19999a
+ 2627 02ee 5C010000 		.4byte	.LVL28-.Ltext0
+ 2628 02f2 66010000 		.4byte	.LVL29-.Ltext0
+ 2629 02f6 0600     		.2byte	0x6
+ 2630 02f8 9E       		.byte	0x9e
+ 2631 02f9 04       		.uleb128 0x4
+ 2632 02fa 0000003F 		.4byte	0x3f000000
+ 2633 02fe 66010000 		.4byte	.LVL29-.Ltext0
+ 2634 0302 70010000 		.4byte	.LVL30-.Ltext0
+ 2635 0306 0600     		.2byte	0x6
+ 2636 0308 9E       		.byte	0x9e
+ 2637 0309 04       		.uleb128 0x4
+ 2638 030a CDCCCC3E 		.4byte	0x3ecccccd
+ 2639 030e 70010000 		.4byte	.LVL30-.Ltext0
+ 2640 0312 7A010000 		.4byte	.LVL31-.Ltext0
+ 2641 0316 0600     		.2byte	0x6
+ 2642 0318 9E       		.byte	0x9e
+ 2643 0319 04       		.uleb128 0x4
+ 2644 031a 9A99993E 		.4byte	0x3e99999a
+ 2645 031e 7A010000 		.4byte	.LVL31-.Ltext0
+ 2646 0322 84010000 		.4byte	.LVL32-.Ltext0
+ 2647 0326 0600     		.2byte	0x6
+ 2648 0328 9E       		.byte	0x9e
+ 2649 0329 04       		.uleb128 0x4
+ 2650 032a CDCC4C3E 		.4byte	0x3e4ccccd
+ 2651 032e 84010000 		.4byte	.LVL32-.Ltext0
+ 2652 0332 8E010000 		.4byte	.LVL33-.Ltext0
+ 2653 0336 0600     		.2byte	0x6
+ 2654 0338 9E       		.byte	0x9e
+ 2655 0339 04       		.uleb128 0x4
+ 2656 033a CDCCCC3D 		.4byte	0x3dcccccd
+ 2657 033e 8E010000 		.4byte	.LVL33-.Ltext0
+ 2658 0342 A0010000 		.4byte	.LVL34-.Ltext0
+ 2659 0346 0600     		.2byte	0x6
+ 2660 0348 9E       		.byte	0x9e
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 53
+
+
+ 2661 0349 04       		.uleb128 0x4
+ 2662 034a 00000000 		.4byte	0
+ 2663 034e A0010000 		.4byte	.LVL34-.Ltext0
+ 2664 0352 A8010000 		.4byte	.LVL35-.Ltext0
+ 2665 0356 0200     		.2byte	0x2
+ 2666 0358 90       		.byte	0x90
+ 2667 0359 4F       		.uleb128 0x4f
+ 2668 035a 00000000 		.4byte	0
+ 2669 035e 00000000 		.4byte	0
+ 2670              	.LLST10:
+ 2671 0362 14020000 		.4byte	.LFB111-.Ltext0
+ 2672 0366 18020000 		.4byte	.LCFI2-.Ltext0
+ 2673 036a 0200     		.2byte	0x2
+ 2674 036c 7D       		.byte	0x7d
+ 2675 036d 00       		.sleb128 0
+ 2676 036e 18020000 		.4byte	.LCFI2-.Ltext0
+ 2677 0372 14040000 		.4byte	.LFE111-.Ltext0
+ 2678 0376 0200     		.2byte	0x2
+ 2679 0378 7D       		.byte	0x7d
+ 2680 0379 28       		.sleb128 40
+ 2681 037a 00000000 		.4byte	0
+ 2682 037e 00000000 		.4byte	0
+ 2683              	.LLST11:
+ 2684 0382 14020000 		.4byte	.LVL38-.Ltext0
+ 2685 0386 5C020000 		.4byte	.LVL45-.Ltext0
+ 2686 038a 0100     		.2byte	0x1
+ 2687 038c 50       		.byte	0x50
+ 2688 038d 5C020000 		.4byte	.LVL45-.Ltext0
+ 2689 0391 14040000 		.4byte	.LFE111-.Ltext0
+ 2690 0395 0100     		.2byte	0x1
+ 2691 0397 55       		.byte	0x55
+ 2692 0398 00000000 		.4byte	0
+ 2693 039c 00000000 		.4byte	0
+ 2694              	.LLST12:
+ 2695 03a0 14020000 		.4byte	.LVL38-.Ltext0
+ 2696 03a4 5E020000 		.4byte	.LVL46-.Ltext0
+ 2697 03a8 0100     		.2byte	0x1
+ 2698 03aa 51       		.byte	0x51
+ 2699 03ab 5E020000 		.4byte	.LVL46-.Ltext0
+ 2700 03af 94020000 		.4byte	.LVL56-.Ltext0
+ 2701 03b3 0400     		.2byte	0x4
+ 2702 03b5 F3       		.byte	0xf3
+ 2703 03b6 01       		.uleb128 0x1
+ 2704 03b7 51       		.byte	0x51
+ 2705 03b8 9F       		.byte	0x9f
+ 2706 03b9 94020000 		.4byte	.LVL56-.Ltext0
+ 2707 03bd B4030000 		.4byte	.LVL61-.Ltext0
+ 2708 03c1 0100     		.2byte	0x1
+ 2709 03c3 56       		.byte	0x56
+ 2710 03c4 B8030000 		.4byte	.LVL62-.Ltext0
+ 2711 03c8 BC030000 		.4byte	.LVL63-.Ltext0
+ 2712 03cc 0100     		.2byte	0x1
+ 2713 03ce 56       		.byte	0x56
+ 2714 03cf 00000000 		.4byte	0
+ 2715 03d3 00000000 		.4byte	0
+ 2716              	.LLST13:
+ 2717 03d7 24020000 		.4byte	.LVL39-.Ltext0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 54
+
+
+ 2718 03db 3C020000 		.4byte	.LVL42-.Ltext0
+ 2719 03df 0500     		.2byte	0x5
+ 2720 03e1 73       		.byte	0x73
+ 2721 03e2 00       		.sleb128 0
+ 2722 03e3 3F       		.byte	0x3f
+ 2723 03e4 1A       		.byte	0x1a
+ 2724 03e5 9F       		.byte	0x9f
+ 2725 03e6 3C020000 		.4byte	.LVL42-.Ltext0
+ 2726 03ea 3E020000 		.4byte	.LVL43-.Ltext0
+ 2727 03ee 0700     		.2byte	0x7
+ 2728 03f0 70       		.byte	0x70
+ 2729 03f1 01       		.sleb128 1
+ 2730 03f2 94       		.byte	0x94
+ 2731 03f3 01       		.byte	0x1
+ 2732 03f4 3F       		.byte	0x3f
+ 2733 03f5 1A       		.byte	0x1a
+ 2734 03f6 9F       		.byte	0x9f
+ 2735 03f7 3E020000 		.4byte	.LVL43-.Ltext0
+ 2736 03fb 40020000 		.4byte	.LVL44-.Ltext0
+ 2737 03ff 0500     		.2byte	0x5
+ 2738 0401 73       		.byte	0x73
+ 2739 0402 00       		.sleb128 0
+ 2740 0403 3F       		.byte	0x3f
+ 2741 0404 1A       		.byte	0x1a
+ 2742 0405 9F       		.byte	0x9f
+ 2743 0406 40020000 		.4byte	.LVL44-.Ltext0
+ 2744 040a 5C020000 		.4byte	.LVL45-.Ltext0
+ 2745 040e 0700     		.2byte	0x7
+ 2746 0410 70       		.byte	0x70
+ 2747 0411 01       		.sleb128 1
+ 2748 0412 94       		.byte	0x94
+ 2749 0413 01       		.byte	0x1
+ 2750 0414 3F       		.byte	0x3f
+ 2751 0415 1A       		.byte	0x1a
+ 2752 0416 9F       		.byte	0x9f
+ 2753 0417 5C020000 		.4byte	.LVL45-.Ltext0
+ 2754 041b 61020000 		.4byte	.LVL47-1-.Ltext0
+ 2755 041f 0700     		.2byte	0x7
+ 2756 0421 75       		.byte	0x75
+ 2757 0422 01       		.sleb128 1
+ 2758 0423 94       		.byte	0x94
+ 2759 0424 01       		.byte	0x1
+ 2760 0425 3F       		.byte	0x3f
+ 2761 0426 1A       		.byte	0x1a
+ 2762 0427 9F       		.byte	0x9f
+ 2763 0428 00000000 		.4byte	0
+ 2764 042c 00000000 		.4byte	0
+ 2765              	.LLST14:
+ 2766 0430 2C020000 		.4byte	.LVL40-.Ltext0
+ 2767 0434 BC030000 		.4byte	.LVL63-.Ltext0
+ 2768 0438 0100     		.2byte	0x1
+ 2769 043a 54       		.byte	0x54
+ 2770 043b 00000000 		.4byte	0
+ 2771 043f 00000000 		.4byte	0
+ 2772              	.LLST15:
+ 2773 0443 34020000 		.4byte	.LVL41-.Ltext0
+ 2774 0447 64020000 		.4byte	.LVL48-.Ltext0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 55
+
+
+ 2775 044b 0100     		.2byte	0x1
+ 2776 044d 57       		.byte	0x57
+ 2777 044e 64020000 		.4byte	.LVL48-.Ltext0
+ 2778 0452 94020000 		.4byte	.LVL56-.Ltext0
+ 2779 0456 0300     		.2byte	0x3
+ 2780 0458 77       		.byte	0x77
+ 2781 0459 01       		.sleb128 1
+ 2782 045a 9F       		.byte	0x9f
+ 2783 045b 00000000 		.4byte	0
+ 2784 045f 00000000 		.4byte	0
+ 2785              	.LLST16:
+ 2786 0463 34020000 		.4byte	.LVL41-.Ltext0
+ 2787 0467 6A020000 		.4byte	.LVL49-.Ltext0
+ 2788 046b 0200     		.2byte	0x2
+ 2789 046d 30       		.byte	0x30
+ 2790 046e 9F       		.byte	0x9f
+ 2791 046f 6A020000 		.4byte	.LVL49-.Ltext0
+ 2792 0473 80020000 		.4byte	.LVL51-.Ltext0
+ 2793 0477 0100     		.2byte	0x1
+ 2794 0479 53       		.byte	0x53
+ 2795 047a 80020000 		.4byte	.LVL51-.Ltext0
+ 2796 047e 84020000 		.4byte	.LVL53-.Ltext0
+ 2797 0482 0200     		.2byte	0x2
+ 2798 0484 30       		.byte	0x30
+ 2799 0485 9F       		.byte	0x9f
+ 2800 0486 84020000 		.4byte	.LVL53-.Ltext0
+ 2801 048a 8C020000 		.4byte	.LVL55-.Ltext0
+ 2802 048e 0100     		.2byte	0x1
+ 2803 0490 53       		.byte	0x53
+ 2804 0491 00000000 		.4byte	0
+ 2805 0495 00000000 		.4byte	0
+ 2806              	.LLST17:
+ 2807 0499 78020000 		.4byte	.LVL50-.Ltext0
+ 2808 049d 82020000 		.4byte	.LVL52-.Ltext0
+ 2809 04a1 0700     		.2byte	0x7
+ 2810 04a3 73       		.byte	0x73
+ 2811 04a4 00       		.sleb128 0
+ 2812 04a5 31       		.byte	0x31
+ 2813 04a6 24       		.byte	0x24
+ 2814 04a7 72       		.byte	0x72
+ 2815 04a8 00       		.sleb128 0
+ 2816 04a9 22       		.byte	0x22
+ 2817 04aa 82020000 		.4byte	.LVL52-.Ltext0
+ 2818 04ae 84020000 		.4byte	.LVL53-.Ltext0
+ 2819 04b2 0700     		.2byte	0x7
+ 2820 04b4 71       		.byte	0x71
+ 2821 04b5 7F       		.sleb128 -1
+ 2822 04b6 31       		.byte	0x31
+ 2823 04b7 24       		.byte	0x24
+ 2824 04b8 72       		.byte	0x72
+ 2825 04b9 00       		.sleb128 0
+ 2826 04ba 22       		.byte	0x22
+ 2827 04bb 00000000 		.4byte	0
+ 2828 04bf 00000000 		.4byte	0
+ 2829              	.LLST18:
+ 2830 04c3 14040000 		.4byte	.LFB112-.Ltext0
+ 2831 04c7 18040000 		.4byte	.LCFI3-.Ltext0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 56
+
+
+ 2832 04cb 0200     		.2byte	0x2
+ 2833 04cd 7D       		.byte	0x7d
+ 2834 04ce 00       		.sleb128 0
+ 2835 04cf 18040000 		.4byte	.LCFI3-.Ltext0
+ 2836 04d3 4C060000 		.4byte	.LFE112-.Ltext0
+ 2837 04d7 0200     		.2byte	0x2
+ 2838 04d9 7D       		.byte	0x7d
+ 2839 04da 28       		.sleb128 40
+ 2840 04db 00000000 		.4byte	0
+ 2841 04df 00000000 		.4byte	0
+ 2842              	.LLST19:
+ 2843 04e3 14040000 		.4byte	.LVL64-.Ltext0
+ 2844 04e7 6E040000 		.4byte	.LVL72-.Ltext0
+ 2845 04eb 0100     		.2byte	0x1
+ 2846 04ed 50       		.byte	0x50
+ 2847 04ee 6E040000 		.4byte	.LVL72-.Ltext0
+ 2848 04f2 4C060000 		.4byte	.LFE112-.Ltext0
+ 2849 04f6 0100     		.2byte	0x1
+ 2850 04f8 54       		.byte	0x54
+ 2851 04f9 00000000 		.4byte	0
+ 2852 04fd 00000000 		.4byte	0
+ 2853              	.LLST20:
+ 2854 0501 14040000 		.4byte	.LVL64-.Ltext0
+ 2855 0505 70040000 		.4byte	.LVL73-.Ltext0
+ 2856 0509 0100     		.2byte	0x1
+ 2857 050b 51       		.byte	0x51
+ 2858 050c 70040000 		.4byte	.LVL73-.Ltext0
+ 2859 0510 BC040000 		.4byte	.LVL86-.Ltext0
+ 2860 0514 0400     		.2byte	0x4
+ 2861 0516 F3       		.byte	0xf3
+ 2862 0517 01       		.uleb128 0x1
+ 2863 0518 51       		.byte	0x51
+ 2864 0519 9F       		.byte	0x9f
+ 2865 051a BC040000 		.4byte	.LVL86-.Ltext0
+ 2866 051e E8050000 		.4byte	.LVL105-.Ltext0
+ 2867 0522 0100     		.2byte	0x1
+ 2868 0524 55       		.byte	0x55
+ 2869 0525 E8050000 		.4byte	.LVL105-.Ltext0
+ 2870 0529 EC050000 		.4byte	.LVL106-.Ltext0
+ 2871 052d 0200     		.2byte	0x2
+ 2872 052f 90       		.byte	0x90
+ 2873 0530 4D       		.uleb128 0x4d
+ 2874 0531 EC050000 		.4byte	.LVL106-.Ltext0
+ 2875 0535 F4050000 		.4byte	.LVL108-.Ltext0
+ 2876 0539 0100     		.2byte	0x1
+ 2877 053b 55       		.byte	0x55
+ 2878 053c 00000000 		.4byte	0
+ 2879 0540 00000000 		.4byte	0
+ 2880              	.LLST21:
+ 2881 0544 2C040000 		.4byte	.LVL66-.Ltext0
+ 2882 0548 38040000 		.4byte	.LVL68-.Ltext0
+ 2883 054c 0100     		.2byte	0x1
+ 2884 054e 52       		.byte	0x52
+ 2885 054f 38040000 		.4byte	.LVL68-.Ltext0
+ 2886 0553 40040000 		.4byte	.LVL69-.Ltext0
+ 2887 0557 0100     		.2byte	0x1
+ 2888 0559 53       		.byte	0x53
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 57
+
+
+ 2889 055a 40040000 		.4byte	.LVL69-.Ltext0
+ 2890 055e 42040000 		.4byte	.LVL70-.Ltext0
+ 2891 0562 0100     		.2byte	0x1
+ 2892 0564 56       		.byte	0x56
+ 2893 0565 AC040000 		.4byte	.LVL83-.Ltext0
+ 2894 0569 B6040000 		.4byte	.LVL85-.Ltext0
+ 2895 056d 0100     		.2byte	0x1
+ 2896 056f 53       		.byte	0x53
+ 2897 0570 BC040000 		.4byte	.LVL86-.Ltext0
+ 2898 0574 C0040000 		.4byte	.LVL87-.Ltext0
+ 2899 0578 0100     		.2byte	0x1
+ 2900 057a 53       		.byte	0x53
+ 2901 057b 00000000 		.4byte	0
+ 2902 057f 00000000 		.4byte	0
+ 2903              	.LLST22:
+ 2904 0583 30040000 		.4byte	.LVL67-.Ltext0
+ 2905 0587 38040000 		.4byte	.LVL68-.Ltext0
+ 2906 058b 0100     		.2byte	0x1
+ 2907 058d 53       		.byte	0x53
+ 2908 058e 38040000 		.4byte	.LVL68-.Ltext0
+ 2909 0592 C0040000 		.4byte	.LVL87-.Ltext0
+ 2910 0596 0200     		.2byte	0x2
+ 2911 0598 91       		.byte	0x91
+ 2912 0599 59       		.sleb128 -39
+ 2913 059a C0040000 		.4byte	.LVL87-.Ltext0
+ 2914 059e C8040000 		.4byte	.LVL88-.Ltext0
+ 2915 05a2 0100     		.2byte	0x1
+ 2916 05a4 53       		.byte	0x53
+ 2917 05a5 DC040000 		.4byte	.LVL91-.Ltext0
+ 2918 05a9 E4040000 		.4byte	.LVL92-.Ltext0
+ 2919 05ad 0100     		.2byte	0x1
+ 2920 05af 53       		.byte	0x53
+ 2921 05b0 04050000 		.4byte	.LVL93-.Ltext0
+ 2922 05b4 0C050000 		.4byte	.LVL94-.Ltext0
+ 2923 05b8 0100     		.2byte	0x1
+ 2924 05ba 53       		.byte	0x53
+ 2925 05bb 18050000 		.4byte	.LVL95-.Ltext0
+ 2926 05bf 1E050000 		.4byte	.LVL96-.Ltext0
+ 2927 05c3 0100     		.2byte	0x1
+ 2928 05c5 53       		.byte	0x53
+ 2929 05c6 60050000 		.4byte	.LVL97-.Ltext0
+ 2930 05ca 62050000 		.4byte	.LVL98-.Ltext0
+ 2931 05ce 0100     		.2byte	0x1
+ 2932 05d0 53       		.byte	0x53
+ 2933 05d1 80050000 		.4byte	.LVL99-.Ltext0
+ 2934 05d5 82050000 		.4byte	.LVL100-.Ltext0
+ 2935 05d9 0100     		.2byte	0x1
+ 2936 05db 53       		.byte	0x53
+ 2937 05dc 90050000 		.4byte	.LVL101-.Ltext0
+ 2938 05e0 92050000 		.4byte	.LVL102-.Ltext0
+ 2939 05e4 0100     		.2byte	0x1
+ 2940 05e6 53       		.byte	0x53
+ 2941 05e7 EC050000 		.4byte	.LVL106-.Ltext0
+ 2942 05eb EE050000 		.4byte	.LVL107-.Ltext0
+ 2943 05ef 0100     		.2byte	0x1
+ 2944 05f1 53       		.byte	0x53
+ 2945 05f2 00000000 		.4byte	0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 58
+
+
+ 2946 05f6 00000000 		.4byte	0
+ 2947              	.LLST23:
+ 2948 05fa 46040000 		.4byte	.LVL71-.Ltext0
+ 2949 05fe 76040000 		.4byte	.LVL75-.Ltext0
+ 2950 0602 0100     		.2byte	0x1
+ 2951 0604 56       		.byte	0x56
+ 2952 0605 76040000 		.4byte	.LVL75-.Ltext0
+ 2953 0609 BC040000 		.4byte	.LVL86-.Ltext0
+ 2954 060d 0300     		.2byte	0x3
+ 2955 060f 76       		.byte	0x76
+ 2956 0610 01       		.sleb128 1
+ 2957 0611 9F       		.byte	0x9f
+ 2958 0612 00000000 		.4byte	0
+ 2959 0616 00000000 		.4byte	0
+ 2960              	.LLST24:
+ 2961 061a 46040000 		.4byte	.LVL71-.Ltext0
+ 2962 061e 7C040000 		.4byte	.LVL76-.Ltext0
+ 2963 0622 0200     		.2byte	0x2
+ 2964 0624 30       		.byte	0x30
+ 2965 0625 9F       		.byte	0x9f
+ 2966 0626 7C040000 		.4byte	.LVL76-.Ltext0
+ 2967 062a 9A040000 		.4byte	.LVL78-.Ltext0
+ 2968 062e 0100     		.2byte	0x1
+ 2969 0630 53       		.byte	0x53
+ 2970 0631 9A040000 		.4byte	.LVL78-.Ltext0
+ 2971 0635 9E040000 		.4byte	.LVL80-.Ltext0
+ 2972 0639 0200     		.2byte	0x2
+ 2973 063b 30       		.byte	0x30
+ 2974 063c 9F       		.byte	0x9f
+ 2975 063d 9E040000 		.4byte	.LVL80-.Ltext0
+ 2976 0641 A6040000 		.4byte	.LVL82-.Ltext0
+ 2977 0645 0100     		.2byte	0x1
+ 2978 0647 53       		.byte	0x53
+ 2979 0648 00000000 		.4byte	0
+ 2980 064c 00000000 		.4byte	0
+ 2981              	.LLST25:
+ 2982 0650 92040000 		.4byte	.LVL77-.Ltext0
+ 2983 0654 9C040000 		.4byte	.LVL79-.Ltext0
+ 2984 0658 0700     		.2byte	0x7
+ 2985 065a 73       		.byte	0x73
+ 2986 065b 00       		.sleb128 0
+ 2987 065c 31       		.byte	0x31
+ 2988 065d 24       		.byte	0x24
+ 2989 065e 72       		.byte	0x72
+ 2990 065f 00       		.sleb128 0
+ 2991 0660 22       		.byte	0x22
+ 2992 0661 9C040000 		.4byte	.LVL79-.Ltext0
+ 2993 0665 9E040000 		.4byte	.LVL80-.Ltext0
+ 2994 0669 0700     		.2byte	0x7
+ 2995 066b 71       		.byte	0x71
+ 2996 066c 7F       		.sleb128 -1
+ 2997 066d 31       		.byte	0x31
+ 2998 066e 24       		.byte	0x24
+ 2999 066f 72       		.byte	0x72
+ 3000 0670 00       		.sleb128 0
+ 3001 0671 22       		.byte	0x22
+ 3002 0672 00000000 		.4byte	0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 59
+
+
+ 3003 0676 00000000 		.4byte	0
+ 3004              		.section	.debug_aranges,"",%progbits
+ 3005 0000 1C000000 		.4byte	0x1c
+ 3006 0004 0200     		.2byte	0x2
+ 3007 0006 00000000 		.4byte	.Ldebug_info0
+ 3008 000a 04       		.byte	0x4
+ 3009 000b 00       		.byte	0
+ 3010 000c 0000     		.2byte	0
+ 3011 000e 0000     		.2byte	0
+ 3012 0010 00000000 		.4byte	.Ltext0
+ 3013 0014 4C060000 		.4byte	.Letext0-.Ltext0
+ 3014 0018 00000000 		.4byte	0
+ 3015 001c 00000000 		.4byte	0
+ 3016              		.section	.debug_line,"",%progbits
+ 3017              	.Ldebug_line0:
+ 3018 0000 D9010000 		.section	.debug_str,"MS",%progbits,1
+ 3018      0200CF00 
+ 3018      00000201 
+ 3018      FB0E0D00 
+ 3018      01010101 
+ 3019              	.LASF65:
+ 3020 0000 5F5F6D65 		.ascii	"__medianFilterFloatTempHistory\000"
+ 3020      6469616E 
+ 3020      46696C74 
+ 3020      6572466C 
+ 3020      6F617454 
+ 3021              	.LASF36:
+ 3022 001f 46696C74 		.ascii	"FilterOption_Moving_Average_80\000"
+ 3022      65724F70 
+ 3022      74696F6E 
+ 3022      5F4D6F76 
+ 3022      696E675F 
+ 3023              	.LASF48:
+ 3024 003e 46696C74 		.ascii	"FilterFloat_t\000"
+ 3024      6572466C 
+ 3024      6F61745F 
+ 3024      7400
+ 3025              	.LASF4:
+ 3026 004c 73686F72 		.ascii	"short int\000"
+ 3026      7420696E 
+ 3026      7400
+ 3027              	.LASF46:
+ 3028 0056 4D6F7669 		.ascii	"MovingAverageInitialized\000"
+ 3028      6E674176 
+ 3028      65726167 
+ 3028      65496E69 
+ 3028      7469616C 
+ 3029              	.LASF13:
+ 3030 006f 73697A65 		.ascii	"sizetype\000"
+ 3030      74797065 
+ 3030      00
+ 3031              	.LASF51:
+ 3032 0078 6D656469 		.ascii	"medianFilterType\000"
+ 3032      616E4669 
+ 3032      6C746572 
+ 3032      54797065 
+ 3032      00
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 60
+
+
+ 3033              	.LASF52:
+ 3034 0089 6D6F7669 		.ascii	"movingAverageFilterType\000"
+ 3034      6E674176 
+ 3034      65726167 
+ 3034      6546696C 
+ 3034      74657254 
+ 3035              	.LASF35:
+ 3036 00a1 46696C74 		.ascii	"FilterOption_Moving_Average_70\000"
+ 3036      65724F70 
+ 3036      74696F6E 
+ 3036      5F4D6F76 
+ 3036      696E675F 
+ 3037              	.LASF69:
+ 3038 00c0 6D656D63 		.ascii	"memcpy\000"
+ 3038      707900
+ 3039              	.LASF28:
+ 3040 00c7 46696C74 		.ascii	"FilterOption_Moving_Average_10\000"
+ 3040      65724F70 
+ 3040      74696F6E 
+ 3040      5F4D6F76 
+ 3040      696E675F 
+ 3041              	.LASF18:
+ 3042 00e6 46696C74 		.ascii	"FilterOption_None\000"
+ 3042      65724F70 
+ 3042      74696F6E 
+ 3042      5F4E6F6E 
+ 3042      6500
+ 3043              	.LASF21:
+ 3044 00f8 46696C74 		.ascii	"FilterOption_Median_7_Sample\000"
+ 3044      65724F70 
+ 3044      74696F6E 
+ 3044      5F4D6564 
+ 3044      69616E5F 
+ 3045              	.LASF29:
+ 3046 0115 46696C74 		.ascii	"FilterOption_Moving_Average_15\000"
+ 3046      65724F70 
+ 3046      74696F6E 
+ 3046      5F4D6F76 
+ 3046      696E675F 
+ 3047              	.LASF63:
+ 3048 0134 5F5F6D65 		.ascii	"__medianFilterTempHistory\000"
+ 3048      6469616E 
+ 3048      46696C74 
+ 3048      65725465 
+ 3048      6D704869 
+ 3049              	.LASF42:
+ 3050 014e 43757272 		.ascii	"Current\000"
+ 3050      656E7400 
+ 3051              	.LASF2:
+ 3052 0156 75696E74 		.ascii	"uint8_t\000"
+ 3052      385F7400 
+ 3053              	.LASF33:
+ 3054 015e 46696C74 		.ascii	"FilterOption_Moving_Average_50\000"
+ 3054      65724F70 
+ 3054      74696F6E 
+ 3054      5F4D6F76 
+ 3054      696E675F 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 61
+
+
+ 3055              	.LASF43:
+ 3056 017d 50726576 		.ascii	"Previous\000"
+ 3056      696F7573 
+ 3056      00
+ 3057              	.LASF39:
+ 3058 0186 43757272 		.ascii	"CurrentSlot\000"
+ 3058      656E7453 
+ 3058      6C6F7400 
+ 3059              	.LASF61:
+ 3060 0192 736C6F74 		.ascii	"slotIndex\000"
+ 3060      496E6465 
+ 3060      7800
+ 3061              	.LASF56:
+ 3062 019c 5457425F 		.ascii	"TWB_Filter_Median_Apply_Float\000"
+ 3062      46696C74 
+ 3062      65725F4D 
+ 3062      65646961 
+ 3062      6E5F4170 
+ 3063              	.LASF37:
+ 3064 01ba 46696C74 		.ascii	"FilterOption_Moving_Average_90\000"
+ 3064      65724F70 
+ 3064      74696F6E 
+ 3064      5F4D6F76 
+ 3064      696E675F 
+ 3065              	.LASF16:
+ 3066 01d9 666C6F61 		.ascii	"float\000"
+ 3066      7400
+ 3067              	.LASF10:
+ 3068 01df 6C6F6E67 		.ascii	"long long int\000"
+ 3068      206C6F6E 
+ 3068      6720696E 
+ 3068      7400
+ 3069              	.LASF47:
+ 3070 01ed 46696C74 		.ascii	"FilterSigned_t\000"
+ 3070      65725369 
+ 3070      676E6564 
+ 3070      5F7400
+ 3071              	.LASF14:
+ 3072 01fc 63686172 		.ascii	"char\000"
+ 3072      00
+ 3073              	.LASF8:
+ 3074 0201 6C6F6E67 		.ascii	"long int\000"
+ 3074      20696E74 
+ 3074      00
+ 3075              	.LASF55:
+ 3076 020a 70726576 		.ascii	"previousFactor\000"
+ 3076      696F7573 
+ 3076      46616374 
+ 3076      6F7200
+ 3077              	.LASF58:
+ 3078 0219 70617274 		.ascii	"part1\000"
+ 3078      3100
+ 3079              	.LASF59:
+ 3080 021f 70617274 		.ascii	"part2\000"
+ 3080      3200
+ 3081              	.LASF30:
+ 3082 0225 46696C74 		.ascii	"FilterOption_Moving_Average_20\000"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 62
+
+
+ 3082      65724F70 
+ 3082      74696F6E 
+ 3082      5F4D6F76 
+ 3082      696E675F 
+ 3083              	.LASF44:
+ 3084 0244 4973496E 		.ascii	"IsInitialized\000"
+ 3084      69746961 
+ 3084      6C697A65 
+ 3084      6400
+ 3085              	.LASF17:
+ 3086 0252 6C6F6E67 		.ascii	"long double\000"
+ 3086      20646F75 
+ 3086      626C6500 
+ 3087              	.LASF1:
+ 3088 025e 756E7369 		.ascii	"unsigned char\000"
+ 3088      676E6564 
+ 3088      20636861 
+ 3088      7200
+ 3089              	.LASF20:
+ 3090 026c 46696C74 		.ascii	"FilterOption_Median_5_Sample\000"
+ 3090      65724F70 
+ 3090      74696F6E 
+ 3090      5F4D6564 
+ 3090      69616E5F 
+ 3091              	.LASF25:
+ 3092 0289 46696C74 		.ascii	"FilterOption_Moving_Average_1\000"
+ 3092      65724F70 
+ 3092      74696F6E 
+ 3092      5F4D6F76 
+ 3092      696E675F 
+ 3093              	.LASF26:
+ 3094 02a7 46696C74 		.ascii	"FilterOption_Moving_Average_2\000"
+ 3094      65724F70 
+ 3094      74696F6E 
+ 3094      5F4D6F76 
+ 3094      696E675F 
+ 3095              	.LASF0:
+ 3096 02c5 7369676E 		.ascii	"signed char\000"
+ 3096      65642063 
+ 3096      68617200 
+ 3097              	.LASF11:
+ 3098 02d1 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 3098      206C6F6E 
+ 3098      6720756E 
+ 3098      7369676E 
+ 3098      65642069 
+ 3099              	.LASF40:
+ 3100 02e8 46696C74 		.ascii	"FilterType\000"
+ 3100      65725479 
+ 3100      706500
+ 3101              	.LASF32:
+ 3102 02f3 46696C74 		.ascii	"FilterOption_Moving_Average_40\000"
+ 3102      65724F70 
+ 3102      74696F6E 
+ 3102      5F4D6F76 
+ 3102      696E675F 
+ 3103              	.LASF54:
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 63
+
+
+ 3104 0312 63757272 		.ascii	"currentFactor\000"
+ 3104      656E7446 
+ 3104      6163746F 
+ 3104      7200
+ 3105              	.LASF5:
+ 3106 0320 75696E74 		.ascii	"uint16_t\000"
+ 3106      31365F74 
+ 3106      00
+ 3107              	.LASF66:
+ 3108 0329 474E5520 		.ascii	"GNU C 4.7.2\000"
+ 3108      4320342E 
+ 3108      372E3200 
+ 3109              	.LASF6:
+ 3110 0335 73686F72 		.ascii	"short unsigned int\000"
+ 3110      7420756E 
+ 3110      7369676E 
+ 3110      65642069 
+ 3110      6E7400
+ 3111              	.LASF34:
+ 3112 0348 46696C74 		.ascii	"FilterOption_Moving_Average_60\000"
+ 3112      65724F70 
+ 3112      74696F6E 
+ 3112      5F4D6F76 
+ 3112      696E675F 
+ 3113              	.LASF38:
+ 3114 0367 46696C74 		.ascii	"FilterOptions_t\000"
+ 3114      65724F70 
+ 3114      74696F6E 
+ 3114      735F7400 
+ 3115              	.LASF7:
+ 3116 0377 696E7433 		.ascii	"int32_t\000"
+ 3116      325F7400 
+ 3117              	.LASF19:
+ 3118 037f 46696C74 		.ascii	"FilterOption_Median_3_Sample\000"
+ 3118      65724F70 
+ 3118      74696F6E 
+ 3118      5F4D6564 
+ 3118      69616E5F 
+ 3119              	.LASF3:
+ 3120 039c 696E7431 		.ascii	"int16_t\000"
+ 3120      365F7400 
+ 3121              	.LASF31:
+ 3122 03a4 46696C74 		.ascii	"FilterOption_Moving_Average_30\000"
+ 3122      65724F70 
+ 3122      74696F6E 
+ 3122      5F4D6F76 
+ 3122      696E675F 
+ 3123              	.LASF67:
+ 3124 03c3 2E5C7372 		.ascii	".\\src\\filters\\median.c\000"
+ 3124      635C6669 
+ 3124      6C746572 
+ 3124      735C6D65 
+ 3124      6469616E 
+ 3125              	.LASF9:
+ 3126 03da 6C6F6E67 		.ascii	"long unsigned int\000"
+ 3126      20756E73 
+ 3126      69676E65 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 64
+
+
+ 3126      6420696E 
+ 3126      7400
+ 3127              	.LASF15:
+ 3128 03ec 646F7562 		.ascii	"double\000"
+ 3128      6C6500
+ 3129              	.LASF24:
+ 3130 03f3 46696C74 		.ascii	"FilterOption_Moving_Average_0_1\000"
+ 3130      65724F70 
+ 3130      74696F6E 
+ 3130      5F4D6F76 
+ 3130      696E675F 
+ 3131              	.LASF62:
+ 3132 0413 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 3132      52784275 
+ 3132      66666572 
+ 3132      00
+ 3133              	.LASF50:
+ 3134 0420 63757272 		.ascii	"currentValue\000"
+ 3134      656E7456 
+ 3134      616C7565 
+ 3134      00
+ 3135              	.LASF27:
+ 3136 042d 46696C74 		.ascii	"FilterOption_Moving_Average_5\000"
+ 3136      65724F70 
+ 3136      74696F6E 
+ 3136      5F4D6F76 
+ 3136      696E675F 
+ 3137              	.LASF41:
+ 3138 044b 48697374 		.ascii	"History\000"
+ 3138      6F727900 
+ 3139              	.LASF45:
+ 3140 0453 46696C74 		.ascii	"Filter_t\000"
+ 3140      65725F74 
+ 3140      00
+ 3141              	.LASF57:
+ 3142 045c 5457425F 		.ascii	"TWB_Filter_Median_Apply\000"
+ 3142      46696C74 
+ 3142      65725F4D 
+ 3142      65646961 
+ 3142      6E5F4170 
+ 3143              	.LASF23:
+ 3144 0474 46696C74 		.ascii	"FilterOption_Moving_Average_0_01\000"
+ 3144      65724F70 
+ 3144      74696F6E 
+ 3144      5F4D6F76 
+ 3144      696E675F 
+ 3145              	.LASF22:
+ 3146 0495 46696C74 		.ascii	"FilterOption_Median_9_Sample\000"
+ 3146      65724F70 
+ 3146      74696F6E 
+ 3146      5F4D6564 
+ 3146      69616E5F 
+ 3147              	.LASF53:
+ 3148 04b2 6D617853 		.ascii	"maxSize\000"
+ 3148      697A6500 
+ 3149              	.LASF49:
+ 3150 04ba 66696C74 		.ascii	"filter\000"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 65
+
+
+ 3150      657200
+ 3151              	.LASF68:
+ 3152 04c1 443A5C4E 		.ascii	"D:\\NiVek\\Firmware\\NiVek32\000"
+ 3152      6956656B 
+ 3152      5C466972 
+ 3152      6D776172 
+ 3152      655C4E69 
+ 3153              	.LASF12:
+ 3154 04db 756E7369 		.ascii	"unsigned int\000"
+ 3154      676E6564 
+ 3154      20696E74 
+ 3154      00
+ 3155              	.LASF64:
+ 3156 04e8 5F5F6D65 		.ascii	"__medianFilterSignedTempHistory\000"
+ 3156      6469616E 
+ 3156      46696C74 
+ 3156      65725369 
+ 3156      676E6564 
+ 3157              	.LASF60:
+ 3158 0508 5457425F 		.ascii	"TWB_Filter_Median_Apply_Signed\000"
+ 3158      46696C74 
+ 3158      65725F4D 
+ 3158      65646961 
+ 3158      6E5F4170 
+ 3159              		.ident	"GCC: (Sourcery CodeBench Lite 2012.09-63) 4.7.2"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s 			page 66
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 median.c
+C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s:70     .text:00000000 $t
+C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s:75     .text:00000000 TWB_Filter_Median_Apply_Float
+C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s:380    .text:000001bc $d
+                            *COM*:00000024 __medianFilterFloatTempHistory
+C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s:405    .text:00000214 $t
+C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s:410    .text:00000214 TWB_Filter_Median_Apply
+C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s:736    .text:000003c0 $d
+                            *COM*:00000012 __medianFilterTempHistory
+C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s:760    .text:00000414 $t
+C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s:765    .text:00000414 TWB_Filter_Median_Apply_Signed
+C:\Users\Kevin\AppData\Local\Temp\ccDjt7l8.s:1128   .text:000005f8 $d
+                            *COM*:00000012 __medianFilterSignedTempHistory
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+memcpy

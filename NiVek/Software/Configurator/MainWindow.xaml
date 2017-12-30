@@ -1,0 +1,91 @@
+﻿<Window x:Class="NiVekConfigurator.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="800" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="24" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="24" />
+        </Grid.RowDefinitions>
+        <Grid >
+            <TextBlock x:Name="ConnectionStatus" Text="Not Conencted" Foreground="White" Width="100" VerticalAlignment="Center" Padding="4" HorizontalAlignment="Left" TextAlignment="Center" Background="Red" FontWeight="Bold"/>
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right" Margin="2">
+                <ComboBox x:Name="SerialPorts" Width="120" Text="port" SelectionChanged="SerialPorts_SelectionChanged_1" />
+                <Button x:Name="Refresh" Content="REFRESH" Click="Refresh_Click_1" />
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="200" />
+                </Grid.ColumnDefinitions>
+
+                <ListView x:Name="IncomingMessages" FontFamily="Courier" FontWeight="Bold" Background="Black" Foreground="Yellow" FontSize="9"/>
+                <StackPanel Grid.Column="1"  >
+
+                    <StackPanel Margin="0,0,0,20">
+                        <Button x:Name="GetIPAddress" Content="Load Existing" Margin="4" Click="GetIPAddress_Click_1" />
+                    </StackPanel>
+
+                    <RadioButton x:Name="radAccessPoint" GroupName="ConnectionMode"  Content="AP Mode" FontWeight="Bold" Checked="radAccessPoint_Checked_1" />
+                    <StackPanel Margin="0,0,0,20" x:Name="AccessPointMode" Background="LightGray">
+                        <TextBlock Text="Access Point" FontWeight="Bold" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Name:" Width="50"/>
+                            <TextBox x:Name="AccessPointName" Width="120" />
+                        </StackPanel>
+                        <Button x:Name="SetAP" Content="Set" Margin="4" Click="SetAP_Click_1" Width="60" HorizontalAlignment="Right"/>
+                    </StackPanel>
+
+                    <RadioButton x:Name="radInfrastructure" GroupName="ConnectionMode"  Content="Infrastructure" FontWeight="Bold" Checked="radInfrastructure_Checked_1" />
+                    <StackPanel Margin="0,0,0,20" x:Name="InfrastructureMode" >
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="SSID:" Width="50"/>
+                            <TextBox x:Name="SSID" Width="120" Margin="2" />
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="PWD:" Width="50" />
+                            <TextBox x:Name="SSIDPassword" Width="120" Margin="2" />
+                        </StackPanel>
+                        <Button x:Name="SetInfrastructure" Content="Set" Width="60" Margin="4" Click="SetInfrastructure_Click_1" HorizontalAlignment="Right" />
+                    </StackPanel>
+                    
+                    <StackPanel Margin="0,0,0,10" Background="LightGray">
+                        <TextBlock Text="Host"  FontWeight="Bold" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="Host:" Width="50" />
+                            <TextBox x:Name="HostAddress" Margin="2" Width="120"/>
+                        </StackPanel>
+                        <Button x:Name="SetHostAddress" Content="Set" Margin="4" Click="SetHostAddress_Click_1" Width="60" HorizontalAlignment="Right" />
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,10">
+                        <TextBlock Text="Protocol" FontWeight="Bold" />
+                        <StackPanel Orientation="Horizontal">
+                            <RadioButton x:Name="radUDP" Content="UDP" GroupName="Protocol" Width="80" Margin="10,0,0,0" />
+                            <RadioButton x:Name="radTCP" Content="TCP" GroupName="Protocol" Width="80" />
+                        </StackPanel>
+                        <Button x:Name="SetProtocol" Content="Set" Margin="4" Click="SetProtocol_Click_1" Width="60" HorizontalAlignment="Right" />
+                    </StackPanel>
+                    <StackPanel Margin="0,0,0,20" Background="LightGray">
+                        <TextBlock Text="Remote" FontWeight="Bold" />
+                        <StackPanel Orientation="Horizontal">
+                            <TextBlock Text="IP:" Width="20"/>
+                            <TextBox x:Name="RemoteAddress" Width="100" Margin="2" />
+                            <TextBlock Text="Port:" Width="30" />
+                            <TextBox x:Name="RemotePort" Width="60" Margin="2" />
+                        </StackPanel>
+                        <Button x:Name="SetRemoteAddress"  Content="Set" Margin="4" Click="SetRemoteAddress_Click_1" HorizontalAlignment="Right" Width="60" />
+                    </StackPanel>
+                </StackPanel>
+            </Grid>
+        </Grid>
+
+        <Grid Grid.Row="2">
+            <TextBox x:Name="OutgoingMessage" Margin="2" TextChanged="OutgoingMessage_TextChanged_1" AcceptsReturn="True" />
+        </Grid>
+
+
+    </Grid>
+</Window>

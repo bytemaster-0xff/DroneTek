@@ -1,0 +1,20 @@
+CPU Utilization:
+
+1) MPU60x0 Gyro running at 200 Hz = 6% of CPU
+2) L3GD20 Gyro = 1.4ms  internal Sample Rate 760Hz, App Sample Rate 1.4 * 200 = 280ms or 28% of time
+2) LSM303 Acc  = 1.4ms running at 100 Hz w/ filtering = 11%
+2) LSM303 Mag  = 0.5ms Running at 100Hz = 50ms or 5% of CPU time
+
+Compass - Tilt Compenation Algorith - 10uSeconds
+
+
+TWB_SNSR_Complementary_Process -> 4 uSeconds * 200Hz or .8 uSeconds or 0.08% of CPU
+
+ADC Conversion CPU Utilization
+----------------------------------------------
+1.0uSecond - Start Read
+2.0uSecond - EOC 1
+1.5uSecond - EOC 2
+1.5uSecond - EOC 3 & Process
+------
+6uSeconds * 10Hz = 60uSeconds Total 

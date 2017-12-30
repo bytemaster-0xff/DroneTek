@@ -1,0 +1,21 @@
+﻿<nk:NiVekPage xmlns:nk="using:NiVek.FlightControls.Views"           
+    xmlns:Controls="using:NiVek.FlightControls.Controls"                              
+    x:Class="NiVek.FlightControls.Views.GPS"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NiVek.FlightControls.Views" >
+
+    <Grid Style="{StaticResource LayoutRootStyle}">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/PageBackground.jpg" />
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="160"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Controls:NiVekHeader Grid.ColumnSpan="3" x:Name="Header" />
+
+    </Grid>
+
+</nk:NiVekPage>

@@ -1,0 +1,118 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MultiWii_Picopter", "MultiWii_Picopter.vcxproj", "{1C939783-3843-4D46-986B-6516B9B1B6E6}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "PicopterTransmitter", "..\PicopterTransmitter\PicopterTransmitter.vcxproj", "{7840FA2B-9FD4-4713-86C8-53B20BA6E09C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{D02A42E7-2D90-45D7-8878-6335C13FC415}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PicopterWiiClassicCtrler", "PicopterWiiClassicCtrler", "{D89E3B39-B777-45E2-A858-A1241E908BDC}"
+	ProjectSection(SolutionItems) = preProject
+		K:\Electronics\AVR\arduino-0023\libraries\PicopterWiiClassicCtrler\PicopterWiiClassicCtrler.c = K:\Electronics\AVR\arduino-0023\libraries\PicopterWiiClassicCtrler\PicopterWiiClassicCtrler.c
+		K:\Electronics\AVR\arduino-0023\libraries\PicopterWiiClassicCtrler\PicopterWiiClassicCtrler.h = K:\Electronics\AVR\arduino-0023\libraries\PicopterWiiClassicCtrler\PicopterWiiClassicCtrler.h
+		K:\Electronics\AVR\arduino-0023\libraries\PicopterWiiClassicCtrler\twi.c = K:\Electronics\AVR\arduino-0023\libraries\PicopterWiiClassicCtrler\twi.c
+		K:\Electronics\AVR\arduino-0023\libraries\PicopterWiiClassicCtrler\twi.h = K:\Electronics\AVR\arduino-0023\libraries\PicopterWiiClassicCtrler\twi.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NiVekMessageParser", "NiVekMessageParser", "{C06F1DB9-E0FC-4300-BB58-EB0E0FFE152C}"
+	ProjectSection(SolutionItems) = preProject
+		K:\Electronics\AVR\arduino-0023\libraries\NiVekMessageParser\NiVekMessage.cpp = K:\Electronics\AVR\arduino-0023\libraries\NiVekMessageParser\NiVekMessage.cpp
+		K:\Electronics\AVR\arduino-0023\libraries\NiVekMessageParser\NiVekMessage.h = K:\Electronics\AVR\arduino-0023\libraries\NiVekMessageParser\NiVekMessage.h
+		K:\Electronics\AVR\arduino-0023\libraries\NiVekMessageParser\NiVekMessageParser.cpp = K:\Electronics\AVR\arduino-0023\libraries\NiVekMessageParser\NiVekMessageParser.cpp
+		K:\Electronics\AVR\arduino-0023\libraries\NiVekMessageParser\NiVekMessageParser.h = K:\Electronics\AVR\arduino-0023\libraries\NiVekMessageParser\NiVekMessageParser.h
+		K:\Electronics\AVR\arduino-0023\libraries\NiVekMessageParser\NiVekMessageScribe.cpp = K:\Electronics\AVR\arduino-0023\libraries\NiVekMessageParser\NiVekMessageScribe.cpp
+		K:\Electronics\AVR\arduino-0023\libraries\NiVekMessageParser\NiVekMessageScribe.h = K:\Electronics\AVR\arduino-0023\libraries\NiVekMessageParser\NiVekMessageScribe.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NiVekRadio", "NiVekRadio", "{FD72191D-4558-4CBD-BBD6-5794BD167870}"
+	ProjectSection(SolutionItems) = preProject
+		K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\atmega_rfa1.h = K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\atmega_rfa1.h
+		K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\board.h = K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\board.h
+		K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\board_cfg.h = K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\board_cfg.h
+		K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\const.h = K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\const.h
+		K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\LICENSE.txt = K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\LICENSE.txt
+		K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\NiVekRadio.cpp = K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\NiVekRadio.cpp
+		K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\NiVekRadio.h = K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\NiVekRadio.h
+		K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\PicopterRadio.cpp = K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\PicopterRadio.cpp
+		K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\PicopterRadio.h = K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\PicopterRadio.h
+		K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\radio.h = K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\radio.h
+		K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\radio_rfa.c = K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\radio_rfa.c
+		K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\RELEASENOTES.txt = K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\RELEASENOTES.txt
+		K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\transceiver.h = K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\transceiver.h
+		K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\trx_datarate.c = K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\trx_datarate.c
+		K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\trx_datarate_str.c = K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\trx_datarate_str.c
+		K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\trx_rfa.c = K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\trx_rfa.c
+		K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\ZigduinoRadioCfg.h = K:\Electronics\AVR\arduino-0023\libraries\NiVekRadio\ZigduinoRadioCfg.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Picoradio", "Picoradio", "{6F10E3A0-C12A-4539-8D8B-6250BC0A8DFB}"
+	ProjectSection(SolutionItems) = preProject
+		K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\atmega_rfa1.h = K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\atmega_rfa1.h
+		K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\board.h = K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\board.h
+		K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\board_cfg.h = K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\board_cfg.h
+		K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\const.h = K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\const.h
+		K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\LICENSE.txt = K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\LICENSE.txt
+		K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\PicopterRadio.cpp = K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\PicopterRadio.cpp
+		K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\PicopterRadio.h = K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\PicopterRadio.h
+		K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\radio.h = K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\radio.h
+		K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\radio_rfa.c = K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\radio_rfa.c
+		K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\RELEASENOTES.txt = K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\RELEASENOTES.txt
+		K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\transceiver.h = K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\transceiver.h
+		K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\trx_datarate.c = K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\trx_datarate.c
+		K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\trx_datarate_str.c = K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\trx_datarate_str.c
+		K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\trx_rfa.c = K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\trx_rfa.c
+		K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\ZigduinoRadioCfg.h = K:\Electronics\AVR\arduino-0023\libraries\PicopterRadio\ZigduinoRadioCfg.h
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|Mixed Platforms = Debug|Mixed Platforms
+		Debug|Win32 = Debug|Win32
+		Release|Any CPU = Release|Any CPU
+		Release|Mixed Platforms = Release|Mixed Platforms
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1C939783-3843-4D46-986B-6516B9B1B6E6}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{1C939783-3843-4D46-986B-6516B9B1B6E6}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{1C939783-3843-4D46-986B-6516B9B1B6E6}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{1C939783-3843-4D46-986B-6516B9B1B6E6}.Debug|Mixed Platforms.Deploy.0 = Debug|Win32
+		{1C939783-3843-4D46-986B-6516B9B1B6E6}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1C939783-3843-4D46-986B-6516B9B1B6E6}.Debug|Win32.Build.0 = Debug|Win32
+		{1C939783-3843-4D46-986B-6516B9B1B6E6}.Debug|Win32.Deploy.0 = Debug|Win32
+		{1C939783-3843-4D46-986B-6516B9B1B6E6}.Release|Any CPU.ActiveCfg = Release|Win32
+		{1C939783-3843-4D46-986B-6516B9B1B6E6}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{1C939783-3843-4D46-986B-6516B9B1B6E6}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{1C939783-3843-4D46-986B-6516B9B1B6E6}.Release|Mixed Platforms.Deploy.0 = Release|Win32
+		{1C939783-3843-4D46-986B-6516B9B1B6E6}.Release|Win32.ActiveCfg = Release|Win32
+		{1C939783-3843-4D46-986B-6516B9B1B6E6}.Release|Win32.Build.0 = Release|Win32
+		{1C939783-3843-4D46-986B-6516B9B1B6E6}.Release|Win32.Deploy.0 = Release|Win32
+		{7840FA2B-9FD4-4713-86C8-53B20BA6E09C}.Debug|Any CPU.ActiveCfg = Debug|Win32
+		{7840FA2B-9FD4-4713-86C8-53B20BA6E09C}.Debug|Mixed Platforms.ActiveCfg = Debug|Win32
+		{7840FA2B-9FD4-4713-86C8-53B20BA6E09C}.Debug|Mixed Platforms.Build.0 = Debug|Win32
+		{7840FA2B-9FD4-4713-86C8-53B20BA6E09C}.Debug|Mixed Platforms.Deploy.0 = Debug|Win32
+		{7840FA2B-9FD4-4713-86C8-53B20BA6E09C}.Debug|Win32.ActiveCfg = Debug|Win32
+		{7840FA2B-9FD4-4713-86C8-53B20BA6E09C}.Debug|Win32.Build.0 = Debug|Win32
+		{7840FA2B-9FD4-4713-86C8-53B20BA6E09C}.Debug|Win32.Deploy.0 = Debug|Win32
+		{7840FA2B-9FD4-4713-86C8-53B20BA6E09C}.Release|Any CPU.ActiveCfg = Release|Win32
+		{7840FA2B-9FD4-4713-86C8-53B20BA6E09C}.Release|Mixed Platforms.ActiveCfg = Release|Win32
+		{7840FA2B-9FD4-4713-86C8-53B20BA6E09C}.Release|Mixed Platforms.Build.0 = Release|Win32
+		{7840FA2B-9FD4-4713-86C8-53B20BA6E09C}.Release|Mixed Platforms.Deploy.0 = Release|Win32
+		{7840FA2B-9FD4-4713-86C8-53B20BA6E09C}.Release|Win32.ActiveCfg = Release|Win32
+		{7840FA2B-9FD4-4713-86C8-53B20BA6E09C}.Release|Win32.Build.0 = Release|Win32
+		{7840FA2B-9FD4-4713-86C8-53B20BA6E09C}.Release|Win32.Deploy.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D89E3B39-B777-45E2-A858-A1241E908BDC} = {D02A42E7-2D90-45D7-8878-6335C13FC415}
+		{C06F1DB9-E0FC-4300-BB58-EB0E0FFE152C} = {D02A42E7-2D90-45D7-8878-6335C13FC415}
+		{FD72191D-4558-4CBD-BBD6-5794BD167870} = {D02A42E7-2D90-45D7-8878-6335C13FC415}
+		{6F10E3A0-C12A-4539-8D8B-6250BC0A8DFB} = {D02A42E7-2D90-45D7-8878-6335C13FC415}
+	EndGlobalSection
+EndGlobal

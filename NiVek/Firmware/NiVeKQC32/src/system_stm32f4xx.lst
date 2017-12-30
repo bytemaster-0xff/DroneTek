@@ -1,0 +1,2540 @@
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 3	@ Tag_ABI_HardFP_use
+   4              		.eabi_attribute 28, 1	@ Tag_ABI_VFP_args
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1	@ Tag_ABI_FP_denormal
+   7              		.eabi_attribute 21, 1	@ Tag_ABI_FP_exceptions
+   8              		.eabi_attribute 23, 3	@ Tag_ABI_FP_number_model
+   9              		.eabi_attribute 24, 1	@ Tag_ABI_align8_needed
+  10              		.eabi_attribute 25, 1	@ Tag_ABI_align8_preserved
+  11              		.eabi_attribute 26, 1	@ Tag_ABI_enum_size
+  12              		.eabi_attribute 30, 4	@ Tag_ABI_optimization_goals
+  13              		.eabi_attribute 34, 1	@ Tag_CPU_unaligned_access
+  14              		.eabi_attribute 18, 4	@ Tag_ABI_PCS_wchar_t
+  15              		.file	"system_stm32f4xx.c"
+  16              	@ GNU C (Sourcery CodeBench Lite 2012.09-63) version 4.7.2 (arm-none-eabi)
+  17              	@	compiled by GNU C version 4.3.2, GMP version 5.0.5, MPFR version 3.1.1-p2, MPC version 1.0.1
+  18              	@ GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+  19              	@ options passed:  -I . -I \STMSPINCDDIR -I .\stm32f4periph\inc
+  20              	@ -I .\CMSIS\Include -I .\inc\commo\usb -I .\inc\commo -I .\inc\common
+  21              	@ -I .\inc -imultilib thumb2
+  22              	@ -iprefix k:\electronics\gcc\bin\../lib/gcc/arm-none-eabi/4.7.2/
+  23              	@ -isysroot k:\electronics\gcc\bin\../arm-none-eabi
+  24              	@ -MD .\src\system_stm32f4xx.d -MF .dep\system_stm32f4xx.o.d -MP
+  25              	@ -MQ .\src\system_stm32f4xx.o -D__USES_INITFINI__ -D STM32F0XX
+  26              	@ -D USE_STDPERIPH_DRIVER -D RUN_FROM_FLASH=1
+  27              	@ -D __CS_SOURCERYGXX_MAJ__=2012 -D __CS_SOURCERYGXX_MIN__=9
+  28              	@ -D __CS_SOURCERYGXX_REV__=63 .\src\system_stm32f4xx.c -mcpu=cortex-m4
+  29              	@ -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb
+  30              	@ -auxbase-strip .\src\system_stm32f4xx.o -gdwarf-2 -Os -Wall
+  31              	@ -Wstrict-prototypes -std=gnu99 -fomit-frame-pointer -fverbose-asm
+  32              	@ options enabled:  -fauto-inc-dec -fbranch-count-reg -fcaller-saves
+  33              	@ -fcombine-stack-adjustments -fcommon -fcompare-elim -fcprop-registers
+  34              	@ -fcrossjumping -fcse-follow-jumps -fdebug-types-section -fdefer-pop
+  35              	@ -fdelete-null-pointer-checks -fdevirtualize -fdwarf2-cfi-asm
+  36              	@ -fearly-inlining -feliminate-unused-debug-types -fexpensive-optimizations
+  37              	@ -fextension-elimination -fforward-propagate -ffunction-cse -fgcse
+  38              	@ -fgcse-lm -fgnu-runtime -fguess-branch-probability -fident
+  39              	@ -fif-conversion -fif-conversion2 -findirect-inlining -finline
+  40              	@ -finline-atomics -finline-functions -finline-functions-called-once
+  41              	@ -finline-small-functions -fipa-cp -fipa-profile -fipa-pure-const
+  42              	@ -fipa-reference -fipa-sra -fira-share-save-slots -fira-share-spill-slots
+  43              	@ -fivopts -fkeep-static-consts -fleading-underscore -fmath-errno
+  44              	@ -fmerge-constants -fmerge-debug-strings -fmove-loop-invariants
+  45              	@ -fomit-frame-pointer -foptimize-register-move -foptimize-sibling-calls
+  46              	@ -fpartial-inlining -fpeephole -fpeephole2 -fprefetch-loop-arrays
+  47              	@ -freg-struct-return -fregmove -freorder-blocks -freorder-functions
+  48              	@ -frerun-cse-after-loop -fsched-critical-path-heuristic
+  49              	@ -fsched-dep-count-heuristic -fsched-group-heuristic -fsched-interblock
+  50              	@ -fsched-last-insn-heuristic -fsched-rank-heuristic -fsched-spec
+  51              	@ -fsched-spec-insn-heuristic -fsched-stalled-insns-dep -fschedule-insns2
+  52              	@ -fsection-anchors -fshow-column -fshrink-wrap -fsigned-zeros
+  53              	@ -fsplit-ivs-in-unroller -fsplit-wide-types -fstrict-aliasing
+  54              	@ -fstrict-overflow -fstrict-volatile-bitfields -fthread-jumps
+  55              	@ -ftoplevel-reorder -ftrapping-math -ftree-bit-ccp -ftree-builtin-call-dce
+  56              	@ -ftree-ccp -ftree-ch -ftree-copy-prop -ftree-copyrename -ftree-cselim
+  57              	@ -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 2
+
+
+  58              	@ -ftree-if-to-switch-conversion -ftree-loop-if-convert -ftree-loop-im
+  59              	@ -ftree-loop-ivcanon -ftree-loop-optimize -ftree-parallelize-loops=
+  60              	@ -ftree-phiprop -ftree-pre -ftree-pta -ftree-reassoc -ftree-scev-cprop
+  61              	@ -ftree-sink -ftree-slp-vectorize -ftree-sra -ftree-switch-conversion
+  62              	@ -ftree-tail-merge -ftree-ter -ftree-vect-loop-version -ftree-vrp
+  63              	@ -funit-at-a-time -fvar-tracking -fvar-tracking-assignments -fverbose-asm
+  64              	@ -fzero-initialized-in-bss -mlittle-endian -msched-prolog -mthumb
+  65              	@ -munaligned-access -mvectorize-with-neon-quad
+  66              	
+  67              		.text
+  68              	.Ltext0:
+  69              		.cfi_sections	.debug_frame
+  70              		.align	1
+  71              		.global	SystemInit
+  72              		.thumb
+  73              		.thumb_func
+  74              		.type	SystemInit, %function
+  75              	SystemInit:
+  76              	.LFB110:
+  77              		.file 1 ".\\src\\system_stm32f4xx.c"
+   1:.\src/system_stm32f4xx.c **** /**
+   2:.\src/system_stm32f4xx.c ****   ******************************************************************************
+   3:.\src/system_stm32f4xx.c ****   * @file    system_stm32f4xx.c
+   4:.\src/system_stm32f4xx.c ****   * @author  MCD Application Team
+   5:.\src/system_stm32f4xx.c ****   * @version V1.0.1
+   6:.\src/system_stm32f4xx.c ****   * @date    13-April-2012
+   7:.\src/system_stm32f4xx.c ****   * @brief   CMSIS Cortex-M4 Device Peripheral Access Layer System Source File.
+   8:.\src/system_stm32f4xx.c ****   *          This file contains the system clock configuration for STM32F4xx devices,
+   9:.\src/system_stm32f4xx.c ****   *          and is generated by the clock configuration tool
+  10:.\src/system_stm32f4xx.c ****   *          stm32f4xx_Clock_Configuration_V1.0.0.xls
+  11:.\src/system_stm32f4xx.c ****   *             
+  12:.\src/system_stm32f4xx.c ****   * 1.  This file provides two functions and one global variable to be called from 
+  13:.\src/system_stm32f4xx.c ****   *     user application:
+  14:.\src/system_stm32f4xx.c ****   *      - SystemInit(): Setups the system clock (System clock source, PLL Multiplier
+  15:.\src/system_stm32f4xx.c ****   *                      and Divider factors, AHB/APBx prescalers and Flash settings),
+  16:.\src/system_stm32f4xx.c ****   *                      depending on the configuration made in the clock xls tool. 
+  17:.\src/system_stm32f4xx.c ****   *                      This function is called at startup just after reset and 
+  18:.\src/system_stm32f4xx.c ****   *                      before branch to main program. This call is made inside
+  19:.\src/system_stm32f4xx.c ****   *                      the "startup_stm32f4xx.s" file.
+  20:.\src/system_stm32f4xx.c ****   *
+  21:.\src/system_stm32f4xx.c ****   *      - SystemCoreClock variable: Contains the core clock (HCLK), it can be used
+  22:.\src/system_stm32f4xx.c ****   *                                  by the user application to setup the SysTick 
+  23:.\src/system_stm32f4xx.c ****   *                                  timer or configure other parameters.
+  24:.\src/system_stm32f4xx.c ****   *                                     
+  25:.\src/system_stm32f4xx.c ****   *      - SystemCoreClockUpdate(): Updates the variable SystemCoreClock and must
+  26:.\src/system_stm32f4xx.c ****   *                                 be called whenever the core clock is changed
+  27:.\src/system_stm32f4xx.c ****   *                                 during program execution.
+  28:.\src/system_stm32f4xx.c ****   *
+  29:.\src/system_stm32f4xx.c ****   * 2. After each device reset the HSI (16 MHz) is used as system clock source.
+  30:.\src/system_stm32f4xx.c ****   *    Then SystemInit() function is called, in "startup_stm32f4xx.s" file, to
+  31:.\src/system_stm32f4xx.c ****   *    configure the system clock before to branch to main program.
+  32:.\src/system_stm32f4xx.c ****   *
+  33:.\src/system_stm32f4xx.c ****   * 3. If the system clock source selected by user fails to startup, the SystemInit()
+  34:.\src/system_stm32f4xx.c ****   *    function will do nothing and HSI still used as system clock source. User can 
+  35:.\src/system_stm32f4xx.c ****   *    add some code to deal with this issue inside the SetSysClock() function.
+  36:.\src/system_stm32f4xx.c ****   *
+  37:.\src/system_stm32f4xx.c ****   * 4. The default value of HSE crystal is set to 25MHz, refer to "HSE_VALUE" define
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 3
+
+
+  38:.\src/system_stm32f4xx.c ****   *    in "stm32f4xx.h" file. When HSE is used as system clock source, directly or
+  39:.\src/system_stm32f4xx.c ****   *    through PLL, and you are using different crystal you have to adapt the HSE
+  40:.\src/system_stm32f4xx.c ****   *    value to your own configuration.
+  41:.\src/system_stm32f4xx.c ****   *
+  42:.\src/system_stm32f4xx.c ****   * 5. This file configures the system clock as follows:
+  43:.\src/system_stm32f4xx.c ****   *=============================================================================
+  44:.\src/system_stm32f4xx.c ****   *=============================================================================
+  45:.\src/system_stm32f4xx.c ****   *        Supported STM32F4xx device revision    | Rev A
+  46:.\src/system_stm32f4xx.c ****   *-----------------------------------------------------------------------------
+  47:.\src/system_stm32f4xx.c ****   *        System Clock source                    | PLL (HSE)
+  48:.\src/system_stm32f4xx.c ****   *-----------------------------------------------------------------------------
+  49:.\src/system_stm32f4xx.c ****   *        SYSCLK(Hz)                             | 168000000
+  50:.\src/system_stm32f4xx.c ****   *-----------------------------------------------------------------------------
+  51:.\src/system_stm32f4xx.c ****   *        HCLK(Hz)                               | 168000000
+  52:.\src/system_stm32f4xx.c ****   *-----------------------------------------------------------------------------
+  53:.\src/system_stm32f4xx.c ****   *        AHB Prescaler                          | 1
+  54:.\src/system_stm32f4xx.c ****   *-----------------------------------------------------------------------------
+  55:.\src/system_stm32f4xx.c ****   *        APB1 Prescaler                         | 4
+  56:.\src/system_stm32f4xx.c ****   *-----------------------------------------------------------------------------
+  57:.\src/system_stm32f4xx.c ****   *        APB2 Prescaler                         | 2
+  58:.\src/system_stm32f4xx.c ****   *-----------------------------------------------------------------------------
+  59:.\src/system_stm32f4xx.c ****   *        HSE Frequency(Hz)                      | 25000000
+  60:.\src/system_stm32f4xx.c ****   *-----------------------------------------------------------------------------
+  61:.\src/system_stm32f4xx.c ****   *        PLL_M                                  | 25
+  62:.\src/system_stm32f4xx.c ****   *-----------------------------------------------------------------------------
+  63:.\src/system_stm32f4xx.c ****   *        PLL_N                                  | 336
+  64:.\src/system_stm32f4xx.c ****   *-----------------------------------------------------------------------------
+  65:.\src/system_stm32f4xx.c ****   *        PLL_P                                  | 2
+  66:.\src/system_stm32f4xx.c ****   *-----------------------------------------------------------------------------
+  67:.\src/system_stm32f4xx.c ****   *        PLL_Q                                  | 7
+  68:.\src/system_stm32f4xx.c ****   *-----------------------------------------------------------------------------
+  69:.\src/system_stm32f4xx.c ****   *        PLLI2S_N                               | NA
+  70:.\src/system_stm32f4xx.c ****   *-----------------------------------------------------------------------------
+  71:.\src/system_stm32f4xx.c ****   *        PLLI2S_R                               | NA
+  72:.\src/system_stm32f4xx.c ****   *-----------------------------------------------------------------------------
+  73:.\src/system_stm32f4xx.c ****   *        I2S input clock                        | NA
+  74:.\src/system_stm32f4xx.c ****   *-----------------------------------------------------------------------------
+  75:.\src/system_stm32f4xx.c ****   *        VDD(V)                                 | 3.3
+  76:.\src/system_stm32f4xx.c ****   *-----------------------------------------------------------------------------
+  77:.\src/system_stm32f4xx.c ****   *        Main regulator output voltage          | Scale1 mode
+  78:.\src/system_stm32f4xx.c ****   *-----------------------------------------------------------------------------
+  79:.\src/system_stm32f4xx.c ****   *        Flash Latency(WS)                      | 5
+  80:.\src/system_stm32f4xx.c ****   *-----------------------------------------------------------------------------
+  81:.\src/system_stm32f4xx.c ****   *        Prefetch Buffer                        | OFF
+  82:.\src/system_stm32f4xx.c ****   *-----------------------------------------------------------------------------
+  83:.\src/system_stm32f4xx.c ****   *        Instruction cache                      | ON
+  84:.\src/system_stm32f4xx.c ****   *-----------------------------------------------------------------------------
+  85:.\src/system_stm32f4xx.c ****   *        Data cache                             | ON
+  86:.\src/system_stm32f4xx.c ****   *-----------------------------------------------------------------------------
+  87:.\src/system_stm32f4xx.c ****   *        Require 48MHz for USB OTG FS,          | Enabled
+  88:.\src/system_stm32f4xx.c ****   *        SDIO and RNG clock                     |
+  89:.\src/system_stm32f4xx.c ****   *-----------------------------------------------------------------------------
+  90:.\src/system_stm32f4xx.c ****   *=============================================================================
+  91:.\src/system_stm32f4xx.c ****   ******************************************************************************
+  92:.\src/system_stm32f4xx.c ****   * @attention
+  93:.\src/system_stm32f4xx.c ****   *
+  94:.\src/system_stm32f4xx.c ****   * <h2><center>&copy; COPYRIGHT 2012 STMicroelectronics</center></h2>
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 4
+
+
+  95:.\src/system_stm32f4xx.c ****   *
+  96:.\src/system_stm32f4xx.c ****   * Licensed under MCD-ST Liberty SW License Agreement V2, (the "License");
+  97:.\src/system_stm32f4xx.c ****   * You may not use this file except in compliance with the License.
+  98:.\src/system_stm32f4xx.c ****   * You may obtain a copy of the License at:
+  99:.\src/system_stm32f4xx.c ****   *
+ 100:.\src/system_stm32f4xx.c ****   *        http://www.st.com/software_license_agreement_liberty_v2
+ 101:.\src/system_stm32f4xx.c ****   *
+ 102:.\src/system_stm32f4xx.c ****   * Unless required by applicable law or agreed to in writing, software 
+ 103:.\src/system_stm32f4xx.c ****   * distributed under the License is distributed on an "AS IS" BASIS, 
+ 104:.\src/system_stm32f4xx.c ****   * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ 105:.\src/system_stm32f4xx.c ****   * See the License for the specific language governing permissions and
+ 106:.\src/system_stm32f4xx.c ****   * limitations under the License.
+ 107:.\src/system_stm32f4xx.c ****   *
+ 108:.\src/system_stm32f4xx.c ****   ******************************************************************************
+ 109:.\src/system_stm32f4xx.c ****   */
+ 110:.\src/system_stm32f4xx.c **** 
+ 111:.\src/system_stm32f4xx.c **** /** @addtogroup CMSIS
+ 112:.\src/system_stm32f4xx.c ****   * @{
+ 113:.\src/system_stm32f4xx.c ****   */
+ 114:.\src/system_stm32f4xx.c **** 
+ 115:.\src/system_stm32f4xx.c **** /** @addtogroup stm32f4xx_system
+ 116:.\src/system_stm32f4xx.c ****   * @{
+ 117:.\src/system_stm32f4xx.c ****   */  
+ 118:.\src/system_stm32f4xx.c ****   
+ 119:.\src/system_stm32f4xx.c **** /** @addtogroup STM32F4xx_System_Private_Includes
+ 120:.\src/system_stm32f4xx.c ****   * @{
+ 121:.\src/system_stm32f4xx.c ****   */
+ 122:.\src/system_stm32f4xx.c **** 
+ 123:.\src/system_stm32f4xx.c **** #include "stm32f4xx.h"
+ 124:.\src/system_stm32f4xx.c **** 
+ 125:.\src/system_stm32f4xx.c **** /**
+ 126:.\src/system_stm32f4xx.c ****   * @}
+ 127:.\src/system_stm32f4xx.c ****   */
+ 128:.\src/system_stm32f4xx.c **** 
+ 129:.\src/system_stm32f4xx.c **** /** @addtogroup STM32F4xx_System_Private_TypesDefinitions
+ 130:.\src/system_stm32f4xx.c ****   * @{
+ 131:.\src/system_stm32f4xx.c ****   */
+ 132:.\src/system_stm32f4xx.c **** 
+ 133:.\src/system_stm32f4xx.c **** /**
+ 134:.\src/system_stm32f4xx.c ****   * @}
+ 135:.\src/system_stm32f4xx.c ****   */
+ 136:.\src/system_stm32f4xx.c **** 
+ 137:.\src/system_stm32f4xx.c **** /** @addtogroup STM32F4xx_System_Private_Defines
+ 138:.\src/system_stm32f4xx.c ****   * @{
+ 139:.\src/system_stm32f4xx.c ****   */
+ 140:.\src/system_stm32f4xx.c **** 
+ 141:.\src/system_stm32f4xx.c **** /************************* Miscellaneous Configuration ************************/
+ 142:.\src/system_stm32f4xx.c **** /*!< Uncomment the following line if you need to use external SRAM mounted
+ 143:.\src/system_stm32f4xx.c ****      on STM324xG_EVAL board as data memory  */
+ 144:.\src/system_stm32f4xx.c **** /* #define DATA_IN_ExtSRAM */
+ 145:.\src/system_stm32f4xx.c **** 
+ 146:.\src/system_stm32f4xx.c **** /*!< Uncomment the following line if you need to relocate your vector Table in
+ 147:.\src/system_stm32f4xx.c ****      Internal SRAM. */
+ 148:.\src/system_stm32f4xx.c **** /* #define VECT_TAB_SRAM */
+ 149:.\src/system_stm32f4xx.c **** #define VECT_TAB_OFFSET  0x00 /*!< Vector Table base offset field. 
+ 150:.\src/system_stm32f4xx.c ****                                    This value must be a multiple of 0x200. */
+ 151:.\src/system_stm32f4xx.c **** /******************************************************************************/
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 5
+
+
+ 152:.\src/system_stm32f4xx.c **** 
+ 153:.\src/system_stm32f4xx.c **** /************************* PLL Parameters *************************************/
+ 154:.\src/system_stm32f4xx.c **** /* PLL_VCO = (HSE_VALUE or HSI_VALUE / PLL_M) * PLL_N */
+ 155:.\src/system_stm32f4xx.c **** #define PLL_M      25
+ 156:.\src/system_stm32f4xx.c **** #define PLL_N      336
+ 157:.\src/system_stm32f4xx.c **** 
+ 158:.\src/system_stm32f4xx.c **** /* SYSCLK = PLL_VCO / PLL_P */
+ 159:.\src/system_stm32f4xx.c **** #define PLL_P      2
+ 160:.\src/system_stm32f4xx.c **** 
+ 161:.\src/system_stm32f4xx.c **** /* USB OTG FS, SDIO and RNG Clock =  PLL_VCO / PLLQ */
+ 162:.\src/system_stm32f4xx.c **** #define PLL_Q      7
+ 163:.\src/system_stm32f4xx.c **** 
+ 164:.\src/system_stm32f4xx.c **** /******************************************************************************/
+ 165:.\src/system_stm32f4xx.c **** 
+ 166:.\src/system_stm32f4xx.c **** /**
+ 167:.\src/system_stm32f4xx.c ****   * @}
+ 168:.\src/system_stm32f4xx.c ****   */
+ 169:.\src/system_stm32f4xx.c **** 
+ 170:.\src/system_stm32f4xx.c **** /** @addtogroup STM32F4xx_System_Private_Macros
+ 171:.\src/system_stm32f4xx.c ****   * @{
+ 172:.\src/system_stm32f4xx.c ****   */
+ 173:.\src/system_stm32f4xx.c **** 
+ 174:.\src/system_stm32f4xx.c **** /**
+ 175:.\src/system_stm32f4xx.c ****   * @}
+ 176:.\src/system_stm32f4xx.c ****   */
+ 177:.\src/system_stm32f4xx.c **** 
+ 178:.\src/system_stm32f4xx.c **** /** @addtogroup STM32F4xx_System_Private_Variables
+ 179:.\src/system_stm32f4xx.c ****   * @{
+ 180:.\src/system_stm32f4xx.c ****   */
+ 181:.\src/system_stm32f4xx.c **** 
+ 182:.\src/system_stm32f4xx.c ****   uint32_t SystemCoreClock = 168000000;
+ 183:.\src/system_stm32f4xx.c **** 
+ 184:.\src/system_stm32f4xx.c ****   __I uint8_t AHBPrescTable[16] = {0, 0, 0, 0, 0, 0, 0, 0, 1, 2, 3, 4, 6, 7, 8, 9};
+ 185:.\src/system_stm32f4xx.c **** 
+ 186:.\src/system_stm32f4xx.c **** /**
+ 187:.\src/system_stm32f4xx.c ****   * @}
+ 188:.\src/system_stm32f4xx.c ****   */
+ 189:.\src/system_stm32f4xx.c **** 
+ 190:.\src/system_stm32f4xx.c **** /** @addtogroup STM32F4xx_System_Private_FunctionPrototypes
+ 191:.\src/system_stm32f4xx.c ****   * @{
+ 192:.\src/system_stm32f4xx.c ****   */
+ 193:.\src/system_stm32f4xx.c **** 
+ 194:.\src/system_stm32f4xx.c **** static void SetSysClock(void);
+ 195:.\src/system_stm32f4xx.c **** #ifdef DATA_IN_ExtSRAM
+ 196:.\src/system_stm32f4xx.c ****   static void SystemInit_ExtMemCtl(void); 
+ 197:.\src/system_stm32f4xx.c **** #endif /* DATA_IN_ExtSRAM */
+ 198:.\src/system_stm32f4xx.c **** 
+ 199:.\src/system_stm32f4xx.c **** /**
+ 200:.\src/system_stm32f4xx.c ****   * @}
+ 201:.\src/system_stm32f4xx.c ****   */
+ 202:.\src/system_stm32f4xx.c **** 
+ 203:.\src/system_stm32f4xx.c **** /** @addtogroup STM32F4xx_System_Private_Functions
+ 204:.\src/system_stm32f4xx.c ****   * @{
+ 205:.\src/system_stm32f4xx.c ****   */
+ 206:.\src/system_stm32f4xx.c **** 
+ 207:.\src/system_stm32f4xx.c **** /**
+ 208:.\src/system_stm32f4xx.c ****   * @brief  Setup the microcontroller system
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 6
+
+
+ 209:.\src/system_stm32f4xx.c ****   *         Initialize the Embedded Flash Interface, the PLL and update the 
+ 210:.\src/system_stm32f4xx.c ****   *         SystemFrequency variable.
+ 211:.\src/system_stm32f4xx.c ****   * @param  None
+ 212:.\src/system_stm32f4xx.c ****   * @retval None
+ 213:.\src/system_stm32f4xx.c ****   */
+ 214:.\src/system_stm32f4xx.c **** void SystemInit(void)
+ 215:.\src/system_stm32f4xx.c **** {
+  78              		.loc 1 215 0
+  79              		.cfi_startproc
+  80              		@ args = 0, pretend = 0, frame = 8
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82              		@ link register save eliminated.
+ 216:.\src/system_stm32f4xx.c ****   /* FPU settings ------------------------------------------------------------*/
+ 217:.\src/system_stm32f4xx.c ****   #if (__FPU_PRESENT == 1) && (__FPU_USED == 1)
+ 218:.\src/system_stm32f4xx.c ****     SCB->CPACR |= ((3UL << 10*2)|(3UL << 11*2));  /* set CP10 and CP11 Full Access */
+  83              		.loc 1 218 0
+  84 0000 374B     		ldr	r3, .L17	@ tmp172,
+  85 0002 D3F88820 		ldr	r2, [r3, #136]	@ D.7361, MEM[(struct SCB_Type *)3758157056B].CPACR
+  86 0006 42F47002 		orr	r2, r2, #15728640	@ D.7362, D.7361,
+  87 000a C3F88820 		str	r2, [r3, #136]	@ D.7362, MEM[(struct SCB_Type *)3758157056B].CPACR
+ 219:.\src/system_stm32f4xx.c ****   #endif
+ 220:.\src/system_stm32f4xx.c **** 
+ 221:.\src/system_stm32f4xx.c ****   /* Reset the RCC clock configuration to the default reset state ------------*/
+ 222:.\src/system_stm32f4xx.c ****   /* Set HSION bit */
+ 223:.\src/system_stm32f4xx.c ****   RCC->CR |= (uint32_t)0x00000001;
+  88              		.loc 1 223 0
+  89 000e 354B     		ldr	r3, .L17+4	@ tmp174,
+  90 0010 1A68     		ldr	r2, [r3, #0]	@ D.7364, MEM[(struct RCC_TypeDef *)1073887232B].CR
+  91 0012 42F00102 		orr	r2, r2, #1	@ D.7365, D.7364,
+  92 0016 1A60     		str	r2, [r3, #0]	@ D.7365, MEM[(struct RCC_TypeDef *)1073887232B].CR
+ 224:.\src/system_stm32f4xx.c **** 
+ 225:.\src/system_stm32f4xx.c ****   /* Reset CFGR register */
+ 226:.\src/system_stm32f4xx.c ****   RCC->CFGR = 0x00000000;
+  93              		.loc 1 226 0
+  94 0018 0022     		movs	r2, #0	@ tmp177,
+  95 001a 9A60     		str	r2, [r3, #8]	@ tmp177, MEM[(struct RCC_TypeDef *)1073887232B].CFGR
+ 227:.\src/system_stm32f4xx.c **** 
+ 228:.\src/system_stm32f4xx.c ****   /* Reset HSEON, CSSON and PLLON bits */
+ 229:.\src/system_stm32f4xx.c ****   RCC->CR &= (uint32_t)0xFEF6FFFF;
+  96              		.loc 1 229 0
+  97 001c 1968     		ldr	r1, [r3, #0]	@ D.7366, MEM[(struct RCC_TypeDef *)1073887232B].CR
+  98 001e 21F08471 		bic	r1, r1, #17301504	@ tmp179, D.7366,
+  99 0022 21F48031 		bic	r1, r1, #65536	@ D.7367, tmp179,
+ 100 0026 1960     		str	r1, [r3, #0]	@ D.7367, MEM[(struct RCC_TypeDef *)1073887232B].CR
+ 230:.\src/system_stm32f4xx.c **** 
+ 231:.\src/system_stm32f4xx.c ****   /* Reset PLLCFGR register */
+ 232:.\src/system_stm32f4xx.c ****   RCC->PLLCFGR = 0x24003010;
+ 101              		.loc 1 232 0
+ 102 0028 2F49     		ldr	r1, .L17+8	@ tmp182,
+ 103 002a 5960     		str	r1, [r3, #4]	@ tmp182, MEM[(struct RCC_TypeDef *)1073887232B].PLLCFGR
+ 233:.\src/system_stm32f4xx.c **** 
+ 234:.\src/system_stm32f4xx.c ****   /* Reset HSEBYP bit */
+ 235:.\src/system_stm32f4xx.c ****   RCC->CR &= (uint32_t)0xFFFBFFFF;
+ 104              		.loc 1 235 0
+ 105 002c 1968     		ldr	r1, [r3, #0]	@ D.7368, MEM[(struct RCC_TypeDef *)1073887232B].CR
+ 215:.\src/system_stm32f4xx.c **** {
+ 106              		.loc 1 215 0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 7
+
+
+ 107 002e 82B0     		sub	sp, sp, #8	@,,
+ 108              	.LCFI0:
+ 109              		.cfi_def_cfa_offset 8
+ 110              		.loc 1 235 0
+ 111 0030 21F48021 		bic	r1, r1, #262144	@ D.7369, D.7368,
+ 112 0034 1960     		str	r1, [r3, #0]	@ D.7369, MEM[(struct RCC_TypeDef *)1073887232B].CR
+ 236:.\src/system_stm32f4xx.c **** 
+ 237:.\src/system_stm32f4xx.c ****   /* Disable all interrupts */
+ 238:.\src/system_stm32f4xx.c ****   RCC->CIR = 0x00000000;
+ 113              		.loc 1 238 0
+ 114 0036 DA60     		str	r2, [r3, #12]	@ tmp177, MEM[(struct RCC_TypeDef *)1073887232B].CIR
+ 115              	.LBB4:
+ 116              	.LBB5:
+ 239:.\src/system_stm32f4xx.c **** 
+ 240:.\src/system_stm32f4xx.c **** #ifdef DATA_IN_ExtSRAM
+ 241:.\src/system_stm32f4xx.c ****   SystemInit_ExtMemCtl(); 
+ 242:.\src/system_stm32f4xx.c **** #endif /* DATA_IN_ExtSRAM */
+ 243:.\src/system_stm32f4xx.c ****          
+ 244:.\src/system_stm32f4xx.c ****   /* Configure the System clock source, PLL Multiplier and Divider factors, 
+ 245:.\src/system_stm32f4xx.c ****      AHB/APBx prescalers and Flash settings ----------------------------------*/
+ 246:.\src/system_stm32f4xx.c ****   SetSysClock();
+ 247:.\src/system_stm32f4xx.c **** 
+ 248:.\src/system_stm32f4xx.c ****   /* Configure the Vector Table location add offset address ------------------*/
+ 249:.\src/system_stm32f4xx.c **** #ifdef VECT_TAB_SRAM
+ 250:.\src/system_stm32f4xx.c ****   SCB->VTOR = SRAM_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal SRAM */
+ 251:.\src/system_stm32f4xx.c **** #else
+ 252:.\src/system_stm32f4xx.c ****   SCB->VTOR = FLASH_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal FLASH */
+ 253:.\src/system_stm32f4xx.c **** #endif
+ 254:.\src/system_stm32f4xx.c **** }
+ 255:.\src/system_stm32f4xx.c **** 
+ 256:.\src/system_stm32f4xx.c **** /**
+ 257:.\src/system_stm32f4xx.c ****    * @brief  Update SystemCoreClock variable according to Clock Register Values.
+ 258:.\src/system_stm32f4xx.c ****   *         The SystemCoreClock variable contains the core clock (HCLK), it can
+ 259:.\src/system_stm32f4xx.c ****   *         be used by the user application to setup the SysTick timer or configure
+ 260:.\src/system_stm32f4xx.c ****   *         other parameters.
+ 261:.\src/system_stm32f4xx.c ****   *           
+ 262:.\src/system_stm32f4xx.c ****   * @note   Each time the core clock (HCLK) changes, this function must be called
+ 263:.\src/system_stm32f4xx.c ****   *         to update SystemCoreClock variable value. Otherwise, any configuration
+ 264:.\src/system_stm32f4xx.c ****   *         based on this variable will be incorrect.         
+ 265:.\src/system_stm32f4xx.c ****   *     
+ 266:.\src/system_stm32f4xx.c ****   * @note   - The system frequency computed by this function is not the real 
+ 267:.\src/system_stm32f4xx.c ****   *           frequency in the chip. It is calculated based on the predefined 
+ 268:.\src/system_stm32f4xx.c ****   *           constant and the selected clock source:
+ 269:.\src/system_stm32f4xx.c ****   *             
+ 270:.\src/system_stm32f4xx.c ****   *           - If SYSCLK source is HSI, SystemCoreClock will contain the HSI_VALUE(*)
+ 271:.\src/system_stm32f4xx.c ****   *                                              
+ 272:.\src/system_stm32f4xx.c ****   *           - If SYSCLK source is HSE, SystemCoreClock will contain the HSE_VALUE(**)
+ 273:.\src/system_stm32f4xx.c ****   *                          
+ 274:.\src/system_stm32f4xx.c ****   *           - If SYSCLK source is PLL, SystemCoreClock will contain the HSE_VALUE(**) 
+ 275:.\src/system_stm32f4xx.c ****   *             or HSI_VALUE(*) multiplied/divided by the PLL factors.
+ 276:.\src/system_stm32f4xx.c ****   *         
+ 277:.\src/system_stm32f4xx.c ****   *         (*) HSI_VALUE is a constant defined in stm32f4xx.h file (default value
+ 278:.\src/system_stm32f4xx.c ****   *             16 MHz) but the real value may vary depending on the variations
+ 279:.\src/system_stm32f4xx.c ****   *             in voltage and temperature.   
+ 280:.\src/system_stm32f4xx.c ****   *    
+ 281:.\src/system_stm32f4xx.c ****   *         (**) HSE_VALUE is a constant defined in stm32f4xx.h file (default value
+ 282:.\src/system_stm32f4xx.c ****   *              25 MHz), user has to ensure that HSE_VALUE is same as the real
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 8
+
+
+ 283:.\src/system_stm32f4xx.c ****   *              frequency of the crystal used. Otherwise, this function may
+ 284:.\src/system_stm32f4xx.c ****   *              have wrong result.
+ 285:.\src/system_stm32f4xx.c ****   *                
+ 286:.\src/system_stm32f4xx.c ****   *         - The result of this function could be not correct when using fractional
+ 287:.\src/system_stm32f4xx.c ****   *           value for HSE crystal.
+ 288:.\src/system_stm32f4xx.c ****   *     
+ 289:.\src/system_stm32f4xx.c ****   * @param  None
+ 290:.\src/system_stm32f4xx.c ****   * @retval None
+ 291:.\src/system_stm32f4xx.c ****   */
+ 292:.\src/system_stm32f4xx.c **** void SystemCoreClockUpdate(void)
+ 293:.\src/system_stm32f4xx.c **** {
+ 294:.\src/system_stm32f4xx.c ****   uint32_t tmp = 0, pllvco = 0, pllp = 2, pllsource = 0, pllm = 2;
+ 295:.\src/system_stm32f4xx.c ****   
+ 296:.\src/system_stm32f4xx.c ****   /* Get SYSCLK source -------------------------------------------------------*/
+ 297:.\src/system_stm32f4xx.c ****   tmp = RCC->CFGR & RCC_CFGR_SWS;
+ 298:.\src/system_stm32f4xx.c **** 
+ 299:.\src/system_stm32f4xx.c ****   switch (tmp)
+ 300:.\src/system_stm32f4xx.c ****   {
+ 301:.\src/system_stm32f4xx.c ****     case 0x00:  /* HSI used as system clock source */
+ 302:.\src/system_stm32f4xx.c ****       SystemCoreClock = HSI_VALUE;
+ 303:.\src/system_stm32f4xx.c ****       break;
+ 304:.\src/system_stm32f4xx.c ****     case 0x04:  /* HSE used as system clock source */
+ 305:.\src/system_stm32f4xx.c ****       SystemCoreClock = HSE_VALUE;
+ 306:.\src/system_stm32f4xx.c ****       break;
+ 307:.\src/system_stm32f4xx.c ****     case 0x08:  /* PLL used as system clock source */
+ 308:.\src/system_stm32f4xx.c **** 
+ 309:.\src/system_stm32f4xx.c ****       /* PLL_VCO = (HSE_VALUE or HSI_VALUE / PLL_M) * PLL_N
+ 310:.\src/system_stm32f4xx.c ****          SYSCLK = PLL_VCO / PLL_P
+ 311:.\src/system_stm32f4xx.c ****          */    
+ 312:.\src/system_stm32f4xx.c ****       pllsource = (RCC->PLLCFGR & RCC_PLLCFGR_PLLSRC) >> 22;
+ 313:.\src/system_stm32f4xx.c ****       pllm = RCC->PLLCFGR & RCC_PLLCFGR_PLLM;
+ 314:.\src/system_stm32f4xx.c ****       
+ 315:.\src/system_stm32f4xx.c ****       if (pllsource != 0)
+ 316:.\src/system_stm32f4xx.c ****       {
+ 317:.\src/system_stm32f4xx.c ****         /* HSE used as PLL clock source */
+ 318:.\src/system_stm32f4xx.c ****         pllvco = (HSE_VALUE / pllm) * ((RCC->PLLCFGR & RCC_PLLCFGR_PLLN) >> 6);
+ 319:.\src/system_stm32f4xx.c ****       }
+ 320:.\src/system_stm32f4xx.c ****       else
+ 321:.\src/system_stm32f4xx.c ****       {
+ 322:.\src/system_stm32f4xx.c ****         /* HSI used as PLL clock source */
+ 323:.\src/system_stm32f4xx.c ****         pllvco = (HSI_VALUE / pllm) * ((RCC->PLLCFGR & RCC_PLLCFGR_PLLN) >> 6);      
+ 324:.\src/system_stm32f4xx.c ****       }
+ 325:.\src/system_stm32f4xx.c **** 
+ 326:.\src/system_stm32f4xx.c ****       pllp = (((RCC->PLLCFGR & RCC_PLLCFGR_PLLP) >>16) + 1 ) *2;
+ 327:.\src/system_stm32f4xx.c ****       SystemCoreClock = pllvco/pllp;
+ 328:.\src/system_stm32f4xx.c ****       break;
+ 329:.\src/system_stm32f4xx.c ****     default:
+ 330:.\src/system_stm32f4xx.c ****       SystemCoreClock = HSI_VALUE;
+ 331:.\src/system_stm32f4xx.c ****       break;
+ 332:.\src/system_stm32f4xx.c ****   }
+ 333:.\src/system_stm32f4xx.c ****   /* Compute HCLK frequency --------------------------------------------------*/
+ 334:.\src/system_stm32f4xx.c ****   /* Get HCLK prescaler */
+ 335:.\src/system_stm32f4xx.c ****   tmp = AHBPrescTable[((RCC->CFGR & RCC_CFGR_HPRE) >> 4)];
+ 336:.\src/system_stm32f4xx.c ****   /* HCLK frequency */
+ 337:.\src/system_stm32f4xx.c ****   SystemCoreClock >>= tmp;
+ 338:.\src/system_stm32f4xx.c **** }
+ 339:.\src/system_stm32f4xx.c **** 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 9
+
+
+ 340:.\src/system_stm32f4xx.c **** /**
+ 341:.\src/system_stm32f4xx.c ****   * @brief  Configures the System clock source, PLL Multiplier and Divider factors, 
+ 342:.\src/system_stm32f4xx.c ****   *         AHB/APBx prescalers and Flash settings
+ 343:.\src/system_stm32f4xx.c ****   * @Note   This function should be called only once the RCC clock configuration  
+ 344:.\src/system_stm32f4xx.c ****   *         is reset to the default reset state (done in SystemInit() function).   
+ 345:.\src/system_stm32f4xx.c ****   * @param  None
+ 346:.\src/system_stm32f4xx.c ****   * @retval None
+ 347:.\src/system_stm32f4xx.c ****   */
+ 348:.\src/system_stm32f4xx.c **** static void SetSysClock(void)
+ 349:.\src/system_stm32f4xx.c **** {
+ 350:.\src/system_stm32f4xx.c **** /******************************************************************************/
+ 351:.\src/system_stm32f4xx.c **** /*            PLL (clocked by HSE) used as System clock source                */
+ 352:.\src/system_stm32f4xx.c **** /******************************************************************************/
+ 353:.\src/system_stm32f4xx.c ****   __IO uint32_t StartUpCounter = 0, HSEStatus = 0;
+ 117              		.loc 1 353 0
+ 118 0038 0092     		str	r2, [sp, #0]	@ tmp177, StartUpCounter
+ 119              	.LVL0:
+ 120 003a 0192     		str	r2, [sp, #4]	@ tmp177, HSEStatus
+ 121              	.LVL1:
+ 354:.\src/system_stm32f4xx.c ****   
+ 355:.\src/system_stm32f4xx.c ****   /* Enable HSE */
+ 356:.\src/system_stm32f4xx.c ****   RCC->CR |= ((uint32_t)RCC_CR_HSEON);
+ 122              		.loc 1 356 0
+ 123 003c 1A68     		ldr	r2, [r3, #0]	@ D.7447, MEM[(struct RCC_TypeDef *)1073887232B].CR
+ 124 003e 42F48032 		orr	r2, r2, #65536	@ D.7446, D.7447,
+ 125 0042 1A60     		str	r2, [r3, #0]	@ D.7446, MEM[(struct RCC_TypeDef *)1073887232B].CR
+ 126              	.L3:
+ 357:.\src/system_stm32f4xx.c ****  
+ 358:.\src/system_stm32f4xx.c ****   /* Wait till HSE is ready and if Time out is reached exit */
+ 359:.\src/system_stm32f4xx.c ****   do
+ 360:.\src/system_stm32f4xx.c ****   {
+ 361:.\src/system_stm32f4xx.c ****     HSEStatus = RCC->CR & RCC_CR_HSERDY;
+ 127              		.loc 1 361 0
+ 128 0044 1A68     		ldr	r2, [r3, #0]	@ D.7445, MEM[(struct RCC_TypeDef *)1073887232B].CR
+ 129 0046 02F40032 		and	r2, r2, #131072	@ HSEStatus.4, D.7445,
+ 130              	.LVL2:
+ 131 004a 0192     		str	r2, [sp, #4]	@ HSEStatus.4, HSEStatus
+ 132              	.LVL3:
+ 362:.\src/system_stm32f4xx.c ****     StartUpCounter++;
+ 133              		.loc 1 362 0
+ 134 004c 009A     		ldr	r2, [sp, #0]	@ StartUpCounter.5, StartUpCounter
+ 135              	.LVL4:
+ 136 004e 0132     		adds	r2, r2, #1	@ StartUpCounter.6, StartUpCounter.5,
+ 137              	.LVL5:
+ 138 0050 0092     		str	r2, [sp, #0]	@ StartUpCounter.6, StartUpCounter
+ 139              	.LVL6:
+ 363:.\src/system_stm32f4xx.c ****   } while((HSEStatus == 0) && (StartUpCounter != HSE_STARTUP_TIMEOUT));
+ 140              		.loc 1 363 0
+ 141 0052 019A     		ldr	r2, [sp, #4]	@ HSEStatus.7, HSEStatus
+ 142              	.LVL7:
+ 143 0054 1AB9     		cbnz	r2, .L2	@ HSEStatus.7,
+ 144 0056 009A     		ldr	r2, [sp, #0]	@ StartUpCounter.8, StartUpCounter
+ 145 0058 B2F5A06F 		cmp	r2, #1280	@ StartUpCounter.8,
+ 146 005c F2D1     		bne	.L3	@,
+ 147              	.L2:
+ 364:.\src/system_stm32f4xx.c **** 
+ 365:.\src/system_stm32f4xx.c ****   if ((RCC->CR & RCC_CR_HSERDY) != RESET)
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 10
+
+
+ 148              		.loc 1 365 0
+ 149 005e 214B     		ldr	r3, .L17+4	@ tmp222,
+ 150 0060 1B68     		ldr	r3, [r3, #0]	@ D.7439, MEM[(struct RCC_TypeDef *)1073887232B].CR
+ 151 0062 13F40033 		ands	r3, r3, #131072	@ tmp193, D.7439,
+ 366:.\src/system_stm32f4xx.c ****   {
+ 367:.\src/system_stm32f4xx.c ****     HSEStatus = (uint32_t)0x01;
+ 152              		.loc 1 367 0
+ 153 0066 18BF     		it	ne
+ 154 0068 0123     		movne	r3, #1	@ tmp194,
+ 368:.\src/system_stm32f4xx.c ****   }
+ 369:.\src/system_stm32f4xx.c ****   else
+ 370:.\src/system_stm32f4xx.c ****   {
+ 371:.\src/system_stm32f4xx.c ****     HSEStatus = (uint32_t)0x00;
+ 155              		.loc 1 371 0
+ 156 006a 0193     		str	r3, [sp, #4]	@ tmp193, HSEStatus
+ 372:.\src/system_stm32f4xx.c ****   }
+ 373:.\src/system_stm32f4xx.c **** 
+ 374:.\src/system_stm32f4xx.c ****   if (HSEStatus == (uint32_t)0x01)
+ 157              		.loc 1 374 0
+ 158 006c 019B     		ldr	r3, [sp, #4]	@ HSEStatus.9, HSEStatus
+ 159 006e 012B     		cmp	r3, #1	@ HSEStatus.9,
+ 160 0070 04D0     		beq	.L6	@,
+ 161              	.L9:
+ 162              	.LBE5:
+ 163              	.LBE4:
+ 252:.\src/system_stm32f4xx.c ****   SCB->VTOR = FLASH_BASE | VECT_TAB_OFFSET; /* Vector Table Relocation in Internal FLASH */
+ 164              		.loc 1 252 0
+ 165 0072 1B4B     		ldr	r3, .L17	@ tmp196,
+ 166 0074 4FF00062 		mov	r2, #134217728	@ tmp197,
+ 167 0078 9A60     		str	r2, [r3, #8]	@ tmp197, MEM[(struct SCB_Type *)3758157056B].VTOR
+ 168 007a 2FE0     		b	.L16	@
+ 169              	.L6:
+ 170              	.LBB7:
+ 171              	.LBB6:
+ 375:.\src/system_stm32f4xx.c ****   {
+ 376:.\src/system_stm32f4xx.c ****     /* Select regulator voltage output Scale 1 mode, System frequency up to 168 MHz */
+ 377:.\src/system_stm32f4xx.c ****     RCC->APB1ENR |= RCC_APB1ENR_PWREN;
+ 172              		.loc 1 377 0
+ 173 007c 194B     		ldr	r3, .L17+4	@ tmp198,
+ 174 007e 1A6C     		ldr	r2, [r3, #64]	@ D.7436, MEM[(struct RCC_TypeDef *)1073887232B].APB1ENR
+ 175 0080 42F08052 		orr	r2, r2, #268435456	@ D.7435, D.7436,
+ 176 0084 1A64     		str	r2, [r3, #64]	@ D.7435, MEM[(struct RCC_TypeDef *)1073887232B].APB1ENR
+ 378:.\src/system_stm32f4xx.c ****     PWR->CR |= PWR_CR_VOS;
+ 177              		.loc 1 378 0
+ 178 0086 194A     		ldr	r2, .L17+12	@ tmp200,
+ 179 0088 1168     		ldr	r1, [r2, #0]	@ D.7434, MEM[(struct PWR_TypeDef *)1073770496B].CR
+ 180 008a 41F48041 		orr	r1, r1, #16384	@ D.7433, D.7434,
+ 181 008e 1160     		str	r1, [r2, #0]	@ D.7433, MEM[(struct PWR_TypeDef *)1073770496B].CR
+ 379:.\src/system_stm32f4xx.c **** 
+ 380:.\src/system_stm32f4xx.c ****     /* HCLK = SYSCLK / 1*/
+ 381:.\src/system_stm32f4xx.c ****     RCC->CFGR |= RCC_CFGR_HPRE_DIV1;
+ 182              		.loc 1 381 0
+ 183 0090 9A68     		ldr	r2, [r3, #8]	@ D.7432, MEM[(struct RCC_TypeDef *)1073887232B].CFGR
+ 184 0092 9A60     		str	r2, [r3, #8]	@ D.7432, MEM[(struct RCC_TypeDef *)1073887232B].CFGR
+ 382:.\src/system_stm32f4xx.c ****       
+ 383:.\src/system_stm32f4xx.c ****     /* PCLK2 = HCLK / 2*/
+ 384:.\src/system_stm32f4xx.c ****     RCC->CFGR |= RCC_CFGR_PPRE2_DIV2;
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 11
+
+
+ 185              		.loc 1 384 0
+ 186 0094 9A68     		ldr	r2, [r3, #8]	@ D.7431, MEM[(struct RCC_TypeDef *)1073887232B].CFGR
+ 187 0096 42F40042 		orr	r2, r2, #32768	@ D.7430, D.7431,
+ 188 009a 9A60     		str	r2, [r3, #8]	@ D.7430, MEM[(struct RCC_TypeDef *)1073887232B].CFGR
+ 385:.\src/system_stm32f4xx.c ****     
+ 386:.\src/system_stm32f4xx.c ****     /* PCLK1 = HCLK / 4*/
+ 387:.\src/system_stm32f4xx.c ****     RCC->CFGR |= RCC_CFGR_PPRE1_DIV4;
+ 189              		.loc 1 387 0
+ 190 009c 9A68     		ldr	r2, [r3, #8]	@ D.7429, MEM[(struct RCC_TypeDef *)1073887232B].CFGR
+ 191 009e 42F4A052 		orr	r2, r2, #5120	@ D.7428, D.7429,
+ 192 00a2 9A60     		str	r2, [r3, #8]	@ D.7428, MEM[(struct RCC_TypeDef *)1073887232B].CFGR
+ 388:.\src/system_stm32f4xx.c **** 
+ 389:.\src/system_stm32f4xx.c ****     /* Configure the main PLL */
+ 390:.\src/system_stm32f4xx.c ****     RCC->PLLCFGR = PLL_M | (PLL_N << 6) | (((PLL_P >> 1) -1) << 16) |
+ 193              		.loc 1 390 0
+ 194 00a4 124A     		ldr	r2, .L17+16	@ tmp209,
+ 195 00a6 5A60     		str	r2, [r3, #4]	@ tmp209, MEM[(struct RCC_TypeDef *)1073887232B].PLLCFGR
+ 391:.\src/system_stm32f4xx.c ****                    (RCC_PLLCFGR_PLLSRC_HSE) | (PLL_Q << 24);
+ 392:.\src/system_stm32f4xx.c **** 
+ 393:.\src/system_stm32f4xx.c ****     /* Enable the main PLL */
+ 394:.\src/system_stm32f4xx.c ****     RCC->CR |= RCC_CR_PLLON;
+ 196              		.loc 1 394 0
+ 197 00a8 1A68     		ldr	r2, [r3, #0]	@ D.7427, MEM[(struct RCC_TypeDef *)1073887232B].CR
+ 198 00aa 42F08072 		orr	r2, r2, #16777216	@ D.7426, D.7427,
+ 199 00ae 1A60     		str	r2, [r3, #0]	@ D.7426, MEM[(struct RCC_TypeDef *)1073887232B].CR
+ 200              	.L7:
+ 395:.\src/system_stm32f4xx.c **** 
+ 396:.\src/system_stm32f4xx.c ****     /* Wait till the main PLL is ready */
+ 397:.\src/system_stm32f4xx.c ****     while((RCC->CR & RCC_CR_PLLRDY) == 0)
+ 201              		.loc 1 397 0
+ 202 00b0 1968     		ldr	r1, [r3, #0]	@ D.7425, MEM[(struct RCC_TypeDef *)1073887232B].CR
+ 203 00b2 0C4A     		ldr	r2, .L17+4	@ tmp212,
+ 204 00b4 8901     		lsls	r1, r1, #6	@, D.7425,
+ 205 00b6 FBD5     		bpl	.L7	@,
+ 398:.\src/system_stm32f4xx.c ****     {
+ 399:.\src/system_stm32f4xx.c ****     }
+ 400:.\src/system_stm32f4xx.c ****    
+ 401:.\src/system_stm32f4xx.c ****     /* Configure Flash prefetch, Instruction cache, Data cache and wait state */
+ 402:.\src/system_stm32f4xx.c ****     FLASH->ACR = FLASH_ACR_ICEN |FLASH_ACR_DCEN |FLASH_ACR_LATENCY_5WS;
+ 206              		.loc 1 402 0
+ 207 00b8 0E4B     		ldr	r3, .L17+20	@ tmp214,
+ 208 00ba 40F20561 		movw	r1, #1541	@ tmp215,
+ 209 00be 1960     		str	r1, [r3, #0]	@ tmp215, MEM[(struct FLASH_TypeDef *)1073888256B].ACR
+ 403:.\src/system_stm32f4xx.c **** 
+ 404:.\src/system_stm32f4xx.c ****     /* Select the main PLL as system clock source */
+ 405:.\src/system_stm32f4xx.c ****     RCC->CFGR &= (uint32_t)((uint32_t)~(RCC_CFGR_SW));
+ 210              		.loc 1 405 0
+ 211 00c0 9368     		ldr	r3, [r2, #8]	@ D.7423, MEM[(struct RCC_TypeDef *)1073887232B].CFGR
+ 212 00c2 23F00303 		bic	r3, r3, #3	@ D.7422, D.7423,
+ 213 00c6 9360     		str	r3, [r2, #8]	@ D.7422, MEM[(struct RCC_TypeDef *)1073887232B].CFGR
+ 406:.\src/system_stm32f4xx.c ****     RCC->CFGR |= RCC_CFGR_SW_PLL;
+ 214              		.loc 1 406 0
+ 215 00c8 9368     		ldr	r3, [r2, #8]	@ D.7421, MEM[(struct RCC_TypeDef *)1073887232B].CFGR
+ 216 00ca 43F00203 		orr	r3, r3, #2	@ D.7420, D.7421,
+ 217 00ce 9360     		str	r3, [r2, #8]	@ D.7420, MEM[(struct RCC_TypeDef *)1073887232B].CFGR
+ 218              	.L8:
+ 407:.\src/system_stm32f4xx.c **** 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 12
+
+
+ 408:.\src/system_stm32f4xx.c ****     /* Wait till the main PLL is used as system clock source */
+ 409:.\src/system_stm32f4xx.c ****     while ((RCC->CFGR & (uint32_t)RCC_CFGR_SWS ) != RCC_CFGR_SWS_PLL);
+ 219              		.loc 1 409 0
+ 220 00d0 9368     		ldr	r3, [r2, #8]	@ D.7419, MEM[(struct RCC_TypeDef *)1073887232B].CFGR
+ 221 00d2 03F00C03 		and	r3, r3, #12	@ tmp221, D.7419,
+ 222 00d6 082B     		cmp	r3, #8	@ tmp221,
+ 223 00d8 FAD1     		bne	.L8	@,
+ 224 00da CAE7     		b	.L9	@
+ 225              	.L16:
+ 226              	.LBE6:
+ 227              	.LBE7:
+ 254:.\src/system_stm32f4xx.c **** }
+ 228              		.loc 1 254 0
+ 229 00dc 02B0     		add	sp, sp, #8	@,,
+ 230 00de 7047     		bx	lr
+ 231              	.L18:
+ 232              		.align	2
+ 233              	.L17:
+ 234 00e0 00ED00E0 		.word	-536810240
+ 235 00e4 00380240 		.word	1073887232
+ 236 00e8 10300024 		.word	603992080
+ 237 00ec 00700040 		.word	1073770496
+ 238 00f0 19544007 		.word	121656345
+ 239 00f4 003C0240 		.word	1073888256
+ 240              		.cfi_endproc
+ 241              	.LFE110:
+ 242              		.size	SystemInit, .-SystemInit
+ 243              		.align	1
+ 244              		.global	SystemCoreClockUpdate
+ 245              		.thumb
+ 246              		.thumb_func
+ 247              		.type	SystemCoreClockUpdate, %function
+ 248              	SystemCoreClockUpdate:
+ 249              	.LFB111:
+ 293:.\src/system_stm32f4xx.c **** {
+ 250              		.loc 1 293 0
+ 251              		.cfi_startproc
+ 252              		@ args = 0, pretend = 0, frame = 0
+ 253              		@ frame_needed = 0, uses_anonymous_args = 0
+ 254              		@ link register save eliminated.
+ 255              	.LVL8:
+ 297:.\src/system_stm32f4xx.c ****   tmp = RCC->CFGR & RCC_CFGR_SWS;
+ 256              		.loc 1 297 0
+ 257 00f8 184B     		ldr	r3, .L29	@ tmp163,
+ 258 00fa 194A     		ldr	r2, .L29+4	@ tmp207,
+ 259 00fc 9968     		ldr	r1, [r3, #8]	@ D.7333, MEM[(struct RCC_TypeDef *)1073887232B].CFGR
+ 260              	.LVL9:
+ 261 00fe 01F00C01 		and	r1, r1, #12	@ tmp164, D.7333,
+ 262              	.LVL10:
+ 299:.\src/system_stm32f4xx.c ****   switch (tmp)
+ 263              		.loc 1 299 0
+ 264 0102 0429     		cmp	r1, #4	@ tmp164,
+ 265 0104 03D0     		beq	.L22	@,
+ 266 0106 0829     		cmp	r1, #8	@ tmp164,
+ 267 0108 03D0     		beq	.L23	@,
+ 268 010a 164B     		ldr	r3, .L29+8	@ tmp208,
+ 269 010c 19E0     		b	.L28	@
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 13
+
+
+ 270              	.L22:
+ 305:.\src/system_stm32f4xx.c ****       SystemCoreClock = HSE_VALUE;
+ 271              		.loc 1 305 0
+ 272 010e 164B     		ldr	r3, .L29+12	@ tmp168,
+ 273 0110 17E0     		b	.L28	@
+ 274              	.L23:
+ 312:.\src/system_stm32f4xx.c ****       pllsource = (RCC->PLLCFGR & RCC_PLLCFGR_PLLSRC) >> 22;
+ 275              		.loc 1 312 0
+ 276 0112 5968     		ldr	r1, [r3, #4]	@ D.7334, MEM[(struct RCC_TypeDef *)1073887232B].PLLCFGR
+ 277              	.LVL11:
+ 313:.\src/system_stm32f4xx.c ****       pllm = RCC->PLLCFGR & RCC_PLLCFGR_PLLM;
+ 278              		.loc 1 313 0
+ 279 0114 5A68     		ldr	r2, [r3, #4]	@ D.7336, MEM[(struct RCC_TypeDef *)1073887232B].PLLCFGR
+ 315:.\src/system_stm32f4xx.c ****       if (pllsource != 0)
+ 280              		.loc 1 315 0
+ 281 0116 11F4800F 		tst	r1, #4194304	@ D.7334,
+ 318:.\src/system_stm32f4xx.c ****         pllvco = (HSE_VALUE / pllm) * ((RCC->PLLCFGR & RCC_PLLCFGR_PLLN) >> 6);
+ 282              		.loc 1 318 0
+ 283 011a 5968     		ldr	r1, [r3, #4]	@ D.7340,
+ 284              	.LVL12:
+ 285 011c 14BF     		ite	ne
+ 286 011e 124B     		ldrne	r3, .L29+12	@ tmp179,
+ 323:.\src/system_stm32f4xx.c ****         pllvco = (HSI_VALUE / pllm) * ((RCC->PLLCFGR & RCC_PLLCFGR_PLLN) >> 6);      
+ 287              		.loc 1 323 0
+ 288 0120 104B     		ldreq	r3, .L29+8	@ tmp186,
+ 313:.\src/system_stm32f4xx.c ****       pllm = RCC->PLLCFGR & RCC_PLLCFGR_PLLM;
+ 289              		.loc 1 313 0
+ 290 0122 02F03F02 		and	r2, r2, #63	@ pllm, D.7336,
+ 291              	.LVL13:
+ 323:.\src/system_stm32f4xx.c ****         pllvco = (HSI_VALUE / pllm) * ((RCC->PLLCFGR & RCC_PLLCFGR_PLLN) >> 6);      
+ 292              		.loc 1 323 0
+ 293 0126 B3FBF2F3 		udiv	r3, r3, r2	@ tmp185, tmp186, pllm
+ 326:.\src/system_stm32f4xx.c ****       pllp = (((RCC->PLLCFGR & RCC_PLLCFGR_PLLP) >>16) + 1 ) *2;
+ 294              		.loc 1 326 0
+ 295 012a 0C4A     		ldr	r2, .L29	@ tmp187,
+ 296              	.LVL14:
+ 297 012c 5268     		ldr	r2, [r2, #4]	@ D.7348, MEM[(struct RCC_TypeDef *)1073887232B].PLLCFGR
+ 298 012e C2F30142 		ubfx	r2, r2, #16, #2	@ tmp190, D.7348,,
+ 318:.\src/system_stm32f4xx.c ****         pllvco = (HSE_VALUE / pllm) * ((RCC->PLLCFGR & RCC_PLLCFGR_PLLN) >> 6);
+ 299              		.loc 1 318 0
+ 300 0132 C1F38811 		ubfx	r1, r1, #6, #9	@ tmp176, D.7340,,
+ 326:.\src/system_stm32f4xx.c ****       pllp = (((RCC->PLLCFGR & RCC_PLLCFGR_PLLP) >>16) + 1 ) *2;
+ 301              		.loc 1 326 0
+ 302 0136 0132     		adds	r2, r2, #1	@ tmp191, tmp190,
+ 303 0138 5200     		lsls	r2, r2, #1	@ tmp192, tmp191,
+ 323:.\src/system_stm32f4xx.c ****         pllvco = (HSI_VALUE / pllm) * ((RCC->PLLCFGR & RCC_PLLCFGR_PLLN) >> 6);      
+ 304              		.loc 1 323 0
+ 305 013a 4B43     		muls	r3, r1, r3	@ pllvco, tmp183
+ 306              	.LVL15:
+ 327:.\src/system_stm32f4xx.c ****       SystemCoreClock = pllvco/pllp;
+ 307              		.loc 1 327 0
+ 308 013c B3FBF2F3 		udiv	r3, r3, r2	@ tmp193, pllvco, tmp192
+ 309              	.LVL16:
+ 310 0140 074A     		ldr	r2, .L29+4	@ tmp188,
+ 311              	.L28:
+ 312 0142 1360     		str	r3, [r2, #0]	@ tmp193, SystemCoreClock
+ 335:.\src/system_stm32f4xx.c ****   tmp = AHBPrescTable[((RCC->CFGR & RCC_CFGR_HPRE) >> 4)];
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 14
+
+
+ 313              		.loc 1 335 0
+ 314 0144 054B     		ldr	r3, .L29	@ tmp196,
+ 315 0146 9A68     		ldr	r2, [r3, #8]	@ D.7353, MEM[(struct RCC_TypeDef *)1073887232B].CFGR
+ 316 0148 054B     		ldr	r3, .L29+4	@ tmp198,
+ 317 014a C2F30312 		ubfx	r2, r2, #4, #4	@ D.7355, D.7353,,
+ 318 014e 9A18     		adds	r2, r3, r2	@ tmp199, tmp198, D.7355
+ 319 0150 1179     		ldrb	r1, [r2, #4]	@ zero_extendqisi2	@ tmp202, AHBPrescTable
+ 320              	.LVL17:
+ 337:.\src/system_stm32f4xx.c ****   SystemCoreClock >>= tmp;
+ 321              		.loc 1 337 0
+ 322 0152 1A68     		ldr	r2, [r3, #0]	@ SystemCoreClock, SystemCoreClock
+ 323 0154 22FA01F2 		lsr	r2, r2, r1	@ tmp205, SystemCoreClock, tmp202
+ 324 0158 1A60     		str	r2, [r3, #0]	@ tmp205, SystemCoreClock
+ 325 015a 7047     		bx	lr	@
+ 326              	.L30:
+ 327              		.align	2
+ 328              	.L29:
+ 329 015c 00380240 		.word	1073887232
+ 330 0160 00000000 		.word	.LANCHOR0
+ 331 0164 0024F400 		.word	16000000
+ 332 0168 40787D01 		.word	25000000
+ 333              		.cfi_endproc
+ 334              	.LFE111:
+ 335              		.size	SystemCoreClockUpdate, .-SystemCoreClockUpdate
+ 336              		.global	AHBPrescTable
+ 337              		.global	SystemCoreClock
+ 338              		.data
+ 339              		.align	2
+ 340              		.set	.LANCHOR0,. + 0
+ 341              		.type	SystemCoreClock, %object
+ 342              		.size	SystemCoreClock, 4
+ 343              	SystemCoreClock:
+ 344 0000 007A030A 		.word	168000000
+ 345              		.type	AHBPrescTable, %object
+ 346              		.size	AHBPrescTable, 16
+ 347              	AHBPrescTable:
+ 348 0004 00       		.byte	0
+ 349 0005 00       		.byte	0
+ 350 0006 00       		.byte	0
+ 351 0007 00       		.byte	0
+ 352 0008 00       		.byte	0
+ 353 0009 00       		.byte	0
+ 354 000a 00       		.byte	0
+ 355 000b 00       		.byte	0
+ 356 000c 01       		.byte	1
+ 357 000d 02       		.byte	2
+ 358 000e 03       		.byte	3
+ 359 000f 04       		.byte	4
+ 360 0010 06       		.byte	6
+ 361 0011 07       		.byte	7
+ 362 0012 08       		.byte	8
+ 363 0013 09       		.byte	9
+ 364              		.text
+ 365              	.Letext0:
+ 366              		.file 2 "k:\\electronics\\gcc\\bin\\../lib/gcc/arm-none-eabi/4.7.2/../../../../arm-none-eabi/inclu
+ 367              		.file 3 ".\\inc/core_cm4.h"
+ 368              		.file 4 ".\\inc/stm32f4xx.h"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 15
+
+
+ 369              		.section	.debug_info,"",%progbits
+ 370              	.Ldebug_info0:
+ 371 0000 10060000 		.4byte	0x610
+ 372 0004 0200     		.2byte	0x2
+ 373 0006 00000000 		.4byte	.Ldebug_abbrev0
+ 374 000a 04       		.byte	0x4
+ 375 000b 01       		.uleb128 0x1
+ 376 000c 91010000 		.4byte	.LASF74
+ 377 0010 01       		.byte	0x1
+ 378 0011 98020000 		.4byte	.LASF75
+ 379 0015 CD020000 		.4byte	.LASF76
+ 380 0019 00000000 		.4byte	.Ltext0
+ 381 001d 6C010000 		.4byte	.Letext0
+ 382 0021 00000000 		.4byte	.Ldebug_line0
+ 383 0025 02       		.uleb128 0x2
+ 384 0026 01       		.byte	0x1
+ 385 0027 06       		.byte	0x6
+ 386 0028 52010000 		.4byte	.LASF0
+ 387 002c 03       		.uleb128 0x3
+ 388 002d 77000000 		.4byte	.LASF3
+ 389 0031 02       		.byte	0x2
+ 390 0032 2A       		.byte	0x2a
+ 391 0033 37000000 		.4byte	0x37
+ 392 0037 02       		.uleb128 0x2
+ 393 0038 01       		.byte	0x1
+ 394 0039 08       		.byte	0x8
+ 395 003a 2D010000 		.4byte	.LASF1
+ 396 003e 02       		.uleb128 0x2
+ 397 003f 02       		.byte	0x2
+ 398 0040 05       		.byte	0x5
+ 399 0041 B0000000 		.4byte	.LASF2
+ 400 0045 03       		.uleb128 0x3
+ 401 0046 88010000 		.4byte	.LASF4
+ 402 004a 02       		.byte	0x2
+ 403 004b 36       		.byte	0x36
+ 404 004c 50000000 		.4byte	0x50
+ 405 0050 02       		.uleb128 0x2
+ 406 0051 02       		.byte	0x2
+ 407 0052 07       		.byte	0x7
+ 408 0053 D6010000 		.4byte	.LASF5
+ 409 0057 03       		.uleb128 0x3
+ 410 0058 FF010000 		.4byte	.LASF6
+ 411 005c 02       		.byte	0x2
+ 412 005d 4F       		.byte	0x4f
+ 413 005e 62000000 		.4byte	0x62
+ 414 0062 02       		.uleb128 0x2
+ 415 0063 04       		.byte	0x4
+ 416 0064 05       		.byte	0x5
+ 417 0065 DA000000 		.4byte	.LASF7
+ 418 0069 03       		.uleb128 0x3
+ 419 006a A7000000 		.4byte	.LASF8
+ 420 006e 02       		.byte	0x2
+ 421 006f 50       		.byte	0x50
+ 422 0070 74000000 		.4byte	0x74
+ 423 0074 02       		.uleb128 0x2
+ 424 0075 04       		.byte	0x4
+ 425 0076 07       		.byte	0x7
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 16
+
+
+ 426 0077 9D010000 		.4byte	.LASF9
+ 427 007b 02       		.uleb128 0x2
+ 428 007c 08       		.byte	0x8
+ 429 007d 05       		.byte	0x5
+ 430 007e C7000000 		.4byte	.LASF10
+ 431 0082 02       		.uleb128 0x2
+ 432 0083 08       		.byte	0x8
+ 433 0084 07       		.byte	0x7
+ 434 0085 5E010000 		.4byte	.LASF11
+ 435 0089 04       		.uleb128 0x4
+ 436 008a 04       		.byte	0x4
+ 437 008b 05       		.byte	0x5
+ 438 008c 696E7400 		.ascii	"int\000"
+ 439 0090 02       		.uleb128 0x2
+ 440 0091 04       		.byte	0x4
+ 441 0092 07       		.byte	0x7
+ 442 0093 7B010000 		.4byte	.LASF12
+ 443 0097 02       		.uleb128 0x2
+ 444 0098 04       		.byte	0x4
+ 445 0099 07       		.byte	0x7
+ 446 009a 23000000 		.4byte	.LASF13
+ 447 009e 05       		.uleb128 0x5
+ 448 009f 69000000 		.4byte	0x69
+ 449 00a3 06       		.uleb128 0x6
+ 450 00a4 8C       		.byte	0x8c
+ 451 00a5 03       		.byte	0x3
+ 452 00a6 4F01     		.2byte	0x14f
+ 453 00a8 E9010000 		.4byte	0x1e9
+ 454 00ac 07       		.uleb128 0x7
+ 455 00ad 58000000 		.4byte	.LASF14
+ 456 00b1 03       		.byte	0x3
+ 457 00b2 5101     		.2byte	0x151
+ 458 00b4 E9010000 		.4byte	0x1e9
+ 459 00b8 02       		.byte	0x2
+ 460 00b9 23       		.byte	0x23
+ 461 00ba 00       		.uleb128 0
+ 462 00bb 07       		.uleb128 0x7
+ 463 00bc BA000000 		.4byte	.LASF15
+ 464 00c0 03       		.byte	0x3
+ 465 00c1 5201     		.2byte	0x152
+ 466 00c3 9E000000 		.4byte	0x9e
+ 467 00c7 02       		.byte	0x2
+ 468 00c8 23       		.byte	0x23
+ 469 00c9 04       		.uleb128 0x4
+ 470 00ca 07       		.uleb128 0x7
+ 471 00cb FA010000 		.4byte	.LASF16
+ 472 00cf 03       		.byte	0x3
+ 473 00d0 5301     		.2byte	0x153
+ 474 00d2 9E000000 		.4byte	0x9e
+ 475 00d6 02       		.byte	0x2
+ 476 00d7 23       		.byte	0x23
+ 477 00d8 08       		.uleb128 0x8
+ 478 00d9 07       		.uleb128 0x7
+ 479 00da 27010000 		.4byte	.LASF17
+ 480 00de 03       		.byte	0x3
+ 481 00df 5401     		.2byte	0x154
+ 482 00e1 9E000000 		.4byte	0x9e
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 17
+
+
+ 483 00e5 02       		.byte	0x2
+ 484 00e6 23       		.byte	0x23
+ 485 00e7 0C       		.uleb128 0xc
+ 486 00e8 08       		.uleb128 0x8
+ 487 00e9 53435200 		.ascii	"SCR\000"
+ 488 00ed 03       		.byte	0x3
+ 489 00ee 5501     		.2byte	0x155
+ 490 00f0 9E000000 		.4byte	0x9e
+ 491 00f4 02       		.byte	0x2
+ 492 00f5 23       		.byte	0x23
+ 493 00f6 10       		.uleb128 0x10
+ 494 00f7 08       		.uleb128 0x8
+ 495 00f8 43435200 		.ascii	"CCR\000"
+ 496 00fc 03       		.byte	0x3
+ 497 00fd 5601     		.2byte	0x156
+ 498 00ff 9E000000 		.4byte	0x9e
+ 499 0103 02       		.byte	0x2
+ 500 0104 23       		.byte	0x23
+ 501 0105 14       		.uleb128 0x14
+ 502 0106 08       		.uleb128 0x8
+ 503 0107 53485000 		.ascii	"SHP\000"
+ 504 010b 03       		.byte	0x3
+ 505 010c 5701     		.2byte	0x157
+ 506 010e FE010000 		.4byte	0x1fe
+ 507 0112 02       		.byte	0x2
+ 508 0113 23       		.byte	0x23
+ 509 0114 18       		.uleb128 0x18
+ 510 0115 07       		.uleb128 0x7
+ 511 0116 75010000 		.4byte	.LASF18
+ 512 011a 03       		.byte	0x3
+ 513 011b 5801     		.2byte	0x158
+ 514 011d 9E000000 		.4byte	0x9e
+ 515 0121 02       		.byte	0x2
+ 516 0122 23       		.byte	0x23
+ 517 0123 24       		.uleb128 0x24
+ 518 0124 07       		.uleb128 0x7
+ 519 0125 F8000000 		.4byte	.LASF19
+ 520 0129 03       		.byte	0x3
+ 521 012a 5901     		.2byte	0x159
+ 522 012c 9E000000 		.4byte	0x9e
+ 523 0130 02       		.byte	0x2
+ 524 0131 23       		.byte	0x23
+ 525 0132 28       		.uleb128 0x28
+ 526 0133 07       		.uleb128 0x7
+ 527 0134 21020000 		.4byte	.LASF20
+ 528 0138 03       		.byte	0x3
+ 529 0139 5A01     		.2byte	0x15a
+ 530 013b 9E000000 		.4byte	0x9e
+ 531 013f 02       		.byte	0x2
+ 532 0140 23       		.byte	0x23
+ 533 0141 2C       		.uleb128 0x2c
+ 534 0142 07       		.uleb128 0x7
+ 535 0143 0C020000 		.4byte	.LASF21
+ 536 0147 03       		.byte	0x3
+ 537 0148 5B01     		.2byte	0x15b
+ 538 014a 9E000000 		.4byte	0x9e
+ 539 014e 02       		.byte	0x2
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 18
+
+
+ 540 014f 23       		.byte	0x23
+ 541 0150 30       		.uleb128 0x30
+ 542 0151 07       		.uleb128 0x7
+ 543 0152 C5010000 		.4byte	.LASF22
+ 544 0156 03       		.byte	0x3
+ 545 0157 5C01     		.2byte	0x15c
+ 546 0159 9E000000 		.4byte	0x9e
+ 547 015d 02       		.byte	0x2
+ 548 015e 23       		.byte	0x23
+ 549 015f 34       		.uleb128 0x34
+ 550 0160 07       		.uleb128 0x7
+ 551 0161 D5000000 		.4byte	.LASF23
+ 552 0165 03       		.byte	0x3
+ 553 0166 5D01     		.2byte	0x15d
+ 554 0168 9E000000 		.4byte	0x9e
+ 555 016c 02       		.byte	0x2
+ 556 016d 23       		.byte	0x23
+ 557 016e 38       		.uleb128 0x38
+ 558 016f 07       		.uleb128 0x7
+ 559 0170 B1020000 		.4byte	.LASF24
+ 560 0174 03       		.byte	0x3
+ 561 0175 5E01     		.2byte	0x15e
+ 562 0177 9E000000 		.4byte	0x9e
+ 563 017b 02       		.byte	0x2
+ 564 017c 23       		.byte	0x23
+ 565 017d 3C       		.uleb128 0x3c
+ 566 017e 08       		.uleb128 0x8
+ 567 017f 50465200 		.ascii	"PFR\000"
+ 568 0183 03       		.byte	0x3
+ 569 0184 5F01     		.2byte	0x15f
+ 570 0186 13020000 		.4byte	0x213
+ 571 018a 02       		.byte	0x2
+ 572 018b 23       		.byte	0x23
+ 573 018c 40       		.uleb128 0x40
+ 574 018d 08       		.uleb128 0x8
+ 575 018e 44465200 		.ascii	"DFR\000"
+ 576 0192 03       		.byte	0x3
+ 577 0193 6001     		.2byte	0x160
+ 578 0195 E9010000 		.4byte	0x1e9
+ 579 0199 02       		.byte	0x2
+ 580 019a 23       		.byte	0x23
+ 581 019b 48       		.uleb128 0x48
+ 582 019c 08       		.uleb128 0x8
+ 583 019d 41445200 		.ascii	"ADR\000"
+ 584 01a1 03       		.byte	0x3
+ 585 01a2 6101     		.2byte	0x161
+ 586 01a4 E9010000 		.4byte	0x1e9
+ 587 01a8 02       		.byte	0x2
+ 588 01a9 23       		.byte	0x23
+ 589 01aa 4C       		.uleb128 0x4c
+ 590 01ab 07       		.uleb128 0x7
+ 591 01ac 30020000 		.4byte	.LASF25
+ 592 01b0 03       		.byte	0x3
+ 593 01b1 6201     		.2byte	0x162
+ 594 01b3 2D020000 		.4byte	0x22d
+ 595 01b7 02       		.byte	0x2
+ 596 01b8 23       		.byte	0x23
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 19
+
+
+ 597 01b9 50       		.uleb128 0x50
+ 598 01ba 07       		.uleb128 0x7
+ 599 01bb 07020000 		.4byte	.LASF26
+ 600 01bf 03       		.byte	0x3
+ 601 01c0 6301     		.2byte	0x163
+ 602 01c2 47020000 		.4byte	0x247
+ 603 01c6 02       		.byte	0x2
+ 604 01c7 23       		.byte	0x23
+ 605 01c8 60       		.uleb128 0x60
+ 606 01c9 07       		.uleb128 0x7
+ 607 01ca 35020000 		.4byte	.LASF27
+ 608 01ce 03       		.byte	0x3
+ 609 01cf 6401     		.2byte	0x164
+ 610 01d1 37020000 		.4byte	0x237
+ 611 01d5 02       		.byte	0x2
+ 612 01d6 23       		.byte	0x23
+ 613 01d7 74       		.uleb128 0x74
+ 614 01d8 07       		.uleb128 0x7
+ 615 01d9 E7020000 		.4byte	.LASF28
+ 616 01dd 03       		.byte	0x3
+ 617 01de 6501     		.2byte	0x165
+ 618 01e0 9E000000 		.4byte	0x9e
+ 619 01e4 03       		.byte	0x3
+ 620 01e5 23       		.byte	0x23
+ 621 01e6 8801     		.uleb128 0x88
+ 622 01e8 00       		.byte	0
+ 623 01e9 09       		.uleb128 0x9
+ 624 01ea 9E000000 		.4byte	0x9e
+ 625 01ee 0A       		.uleb128 0xa
+ 626 01ef 2C000000 		.4byte	0x2c
+ 627 01f3 FE010000 		.4byte	0x1fe
+ 628 01f7 0B       		.uleb128 0xb
+ 629 01f8 97000000 		.4byte	0x97
+ 630 01fc 0B       		.byte	0xb
+ 631 01fd 00       		.byte	0
+ 632 01fe 05       		.uleb128 0x5
+ 633 01ff EE010000 		.4byte	0x1ee
+ 634 0203 0A       		.uleb128 0xa
+ 635 0204 69000000 		.4byte	0x69
+ 636 0208 13020000 		.4byte	0x213
+ 637 020c 0B       		.uleb128 0xb
+ 638 020d 97000000 		.4byte	0x97
+ 639 0211 01       		.byte	0x1
+ 640 0212 00       		.byte	0
+ 641 0213 09       		.uleb128 0x9
+ 642 0214 18020000 		.4byte	0x218
+ 643 0218 05       		.uleb128 0x5
+ 644 0219 03020000 		.4byte	0x203
+ 645 021d 0A       		.uleb128 0xa
+ 646 021e 69000000 		.4byte	0x69
+ 647 0222 2D020000 		.4byte	0x22d
+ 648 0226 0B       		.uleb128 0xb
+ 649 0227 97000000 		.4byte	0x97
+ 650 022b 03       		.byte	0x3
+ 651 022c 00       		.byte	0
+ 652 022d 09       		.uleb128 0x9
+ 653 022e 32020000 		.4byte	0x232
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 20
+
+
+ 654 0232 05       		.uleb128 0x5
+ 655 0233 1D020000 		.4byte	0x21d
+ 656 0237 0A       		.uleb128 0xa
+ 657 0238 69000000 		.4byte	0x69
+ 658 023c 47020000 		.4byte	0x247
+ 659 0240 0B       		.uleb128 0xb
+ 660 0241 97000000 		.4byte	0x97
+ 661 0245 04       		.byte	0x4
+ 662 0246 00       		.byte	0
+ 663 0247 09       		.uleb128 0x9
+ 664 0248 4C020000 		.4byte	0x24c
+ 665 024c 05       		.uleb128 0x5
+ 666 024d 37020000 		.4byte	0x237
+ 667 0251 0C       		.uleb128 0xc
+ 668 0252 7F000000 		.4byte	.LASF29
+ 669 0256 03       		.byte	0x3
+ 670 0257 6601     		.2byte	0x166
+ 671 0259 A3000000 		.4byte	0xa3
+ 672 025d 05       		.uleb128 0x5
+ 673 025e 57000000 		.4byte	0x57
+ 674 0262 0D       		.uleb128 0xd
+ 675 0263 01       		.byte	0x1
+ 676 0264 04       		.byte	0x4
+ 677 0265 1E01     		.2byte	0x11e
+ 678 0267 78020000 		.4byte	0x278
+ 679 026b 0E       		.uleb128 0xe
+ 680 026c 92020000 		.4byte	.LASF30
+ 681 0270 00       		.sleb128 0
+ 682 0271 0F       		.uleb128 0xf
+ 683 0272 53455400 		.ascii	"SET\000"
+ 684 0276 01       		.sleb128 1
+ 685 0277 00       		.byte	0
+ 686 0278 06       		.uleb128 0x6
+ 687 0279 18       		.byte	0x18
+ 688 027a 04       		.byte	0x4
+ 689 027b 4602     		.2byte	0x246
+ 690 027d DA020000 		.4byte	0x2da
+ 691 0281 08       		.uleb128 0x8
+ 692 0282 41435200 		.ascii	"ACR\000"
+ 693 0286 04       		.byte	0x4
+ 694 0287 4802     		.2byte	0x248
+ 695 0289 9E000000 		.4byte	0x9e
+ 696 028d 02       		.byte	0x2
+ 697 028e 23       		.byte	0x23
+ 698 028f 00       		.uleb128 0
+ 699 0290 07       		.uleb128 0x7
+ 700 0291 18010000 		.4byte	.LASF31
+ 701 0295 04       		.byte	0x4
+ 702 0296 4902     		.2byte	0x249
+ 703 0298 9E000000 		.4byte	0x9e
+ 704 029c 02       		.byte	0x2
+ 705 029d 23       		.byte	0x23
+ 706 029e 04       		.uleb128 0x4
+ 707 029f 07       		.uleb128 0x7
+ 708 02a0 BF000000 		.4byte	.LASF32
+ 709 02a4 04       		.byte	0x4
+ 710 02a5 4A02     		.2byte	0x24a
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 21
+
+
+ 711 02a7 9E000000 		.4byte	0x9e
+ 712 02ab 02       		.byte	0x2
+ 713 02ac 23       		.byte	0x23
+ 714 02ad 08       		.uleb128 0x8
+ 715 02ae 08       		.uleb128 0x8
+ 716 02af 535200   		.ascii	"SR\000"
+ 717 02b2 04       		.byte	0x4
+ 718 02b3 4B02     		.2byte	0x24b
+ 719 02b5 9E000000 		.4byte	0x9e
+ 720 02b9 02       		.byte	0x2
+ 721 02ba 23       		.byte	0x23
+ 722 02bb 0C       		.uleb128 0xc
+ 723 02bc 08       		.uleb128 0x8
+ 724 02bd 435200   		.ascii	"CR\000"
+ 725 02c0 04       		.byte	0x4
+ 726 02c1 4C02     		.2byte	0x24c
+ 727 02c3 9E000000 		.4byte	0x9e
+ 728 02c7 02       		.byte	0x2
+ 729 02c8 23       		.byte	0x23
+ 730 02c9 10       		.uleb128 0x10
+ 731 02ca 07       		.uleb128 0x7
+ 732 02cb F7020000 		.4byte	.LASF33
+ 733 02cf 04       		.byte	0x4
+ 734 02d0 4D02     		.2byte	0x24d
+ 735 02d2 9E000000 		.4byte	0x9e
+ 736 02d6 02       		.byte	0x2
+ 737 02d7 23       		.byte	0x23
+ 738 02d8 14       		.uleb128 0x14
+ 739 02d9 00       		.byte	0
+ 740 02da 0C       		.uleb128 0xc
+ 741 02db BF020000 		.4byte	.LASF34
+ 742 02df 04       		.byte	0x4
+ 743 02e0 4E02     		.2byte	0x24e
+ 744 02e2 78020000 		.4byte	0x278
+ 745 02e6 06       		.uleb128 0x6
+ 746 02e7 08       		.byte	0x8
+ 747 02e8 04       		.byte	0x4
+ 748 02e9 D402     		.2byte	0x2d4
+ 749 02eb 0D030000 		.4byte	0x30d
+ 750 02ef 08       		.uleb128 0x8
+ 751 02f0 435200   		.ascii	"CR\000"
+ 752 02f3 04       		.byte	0x4
+ 753 02f4 D602     		.2byte	0x2d6
+ 754 02f6 9E000000 		.4byte	0x9e
+ 755 02fa 02       		.byte	0x2
+ 756 02fb 23       		.byte	0x23
+ 757 02fc 00       		.uleb128 0
+ 758 02fd 08       		.uleb128 0x8
+ 759 02fe 43535200 		.ascii	"CSR\000"
+ 760 0302 04       		.byte	0x4
+ 761 0303 D702     		.2byte	0x2d7
+ 762 0305 9E000000 		.4byte	0x9e
+ 763 0309 02       		.byte	0x2
+ 764 030a 23       		.byte	0x23
+ 765 030b 04       		.uleb128 0x4
+ 766 030c 00       		.byte	0
+ 767 030d 0C       		.uleb128 0xc
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 22
+
+
+ 768 030e 3C000000 		.4byte	.LASF35
+ 769 0312 04       		.byte	0x4
+ 770 0313 D802     		.2byte	0x2d8
+ 771 0315 E6020000 		.4byte	0x2e6
+ 772 0319 06       		.uleb128 0x6
+ 773 031a 88       		.byte	0x88
+ 774 031b 04       		.byte	0x4
+ 775 031c DE02     		.2byte	0x2de
+ 776 031e E6040000 		.4byte	0x4e6
+ 777 0322 08       		.uleb128 0x8
+ 778 0323 435200   		.ascii	"CR\000"
+ 779 0326 04       		.byte	0x4
+ 780 0327 E002     		.2byte	0x2e0
+ 781 0329 9E000000 		.4byte	0x9e
+ 782 032d 02       		.byte	0x2
+ 783 032e 23       		.byte	0x23
+ 784 032f 00       		.uleb128 0
+ 785 0330 07       		.uleb128 0x7
+ 786 0331 0A000000 		.4byte	.LASF36
+ 787 0335 04       		.byte	0x4
+ 788 0336 E102     		.2byte	0x2e1
+ 789 0338 9E000000 		.4byte	0x9e
+ 790 033c 02       		.byte	0x2
+ 791 033d 23       		.byte	0x23
+ 792 033e 04       		.uleb128 0x4
+ 793 033f 07       		.uleb128 0x7
+ 794 0340 68000000 		.4byte	.LASF37
+ 795 0344 04       		.byte	0x4
+ 796 0345 E202     		.2byte	0x2e2
+ 797 0347 9E000000 		.4byte	0x9e
+ 798 034b 02       		.byte	0x2
+ 799 034c 23       		.byte	0x23
+ 800 034d 08       		.uleb128 0x8
+ 801 034e 08       		.uleb128 0x8
+ 802 034f 43495200 		.ascii	"CIR\000"
+ 803 0353 04       		.byte	0x4
+ 804 0354 E302     		.2byte	0x2e3
+ 805 0356 9E000000 		.4byte	0x9e
+ 806 035a 02       		.byte	0x2
+ 807 035b 23       		.byte	0x23
+ 808 035c 0C       		.uleb128 0xc
+ 809 035d 07       		.uleb128 0x7
+ 810 035e 9E000000 		.4byte	.LASF38
+ 811 0362 04       		.byte	0x4
+ 812 0363 E402     		.2byte	0x2e4
+ 813 0365 9E000000 		.4byte	0x9e
+ 814 0369 02       		.byte	0x2
+ 815 036a 23       		.byte	0x23
+ 816 036b 10       		.uleb128 0x10
+ 817 036c 07       		.uleb128 0x7
+ 818 036d FD000000 		.4byte	.LASF39
+ 819 0371 04       		.byte	0x4
+ 820 0372 E502     		.2byte	0x2e5
+ 821 0374 9E000000 		.4byte	0x9e
+ 822 0378 02       		.byte	0x2
+ 823 0379 23       		.byte	0x23
+ 824 037a 14       		.uleb128 0x14
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 23
+
+
+ 825 037b 07       		.uleb128 0x7
+ 826 037c B6020000 		.4byte	.LASF40
+ 827 0380 04       		.byte	0x4
+ 828 0381 E602     		.2byte	0x2e6
+ 829 0383 9E000000 		.4byte	0x9e
+ 830 0387 02       		.byte	0x2
+ 831 0388 23       		.byte	0x23
+ 832 0389 18       		.uleb128 0x18
+ 833 038a 07       		.uleb128 0x7
+ 834 038b 35020000 		.4byte	.LASF27
+ 835 038f 04       		.byte	0x4
+ 836 0390 E702     		.2byte	0x2e7
+ 837 0392 69000000 		.4byte	0x69
+ 838 0396 02       		.byte	0x2
+ 839 0397 23       		.byte	0x23
+ 840 0398 1C       		.uleb128 0x1c
+ 841 0399 07       		.uleb128 0x7
+ 842 039a 12000000 		.4byte	.LASF41
+ 843 039e 04       		.byte	0x4
+ 844 039f E802     		.2byte	0x2e8
+ 845 03a1 9E000000 		.4byte	0x9e
+ 846 03a5 02       		.byte	0x2
+ 847 03a6 23       		.byte	0x23
+ 848 03a7 20       		.uleb128 0x20
+ 849 03a8 07       		.uleb128 0x7
+ 850 03a9 EF000000 		.4byte	.LASF42
+ 851 03ad 04       		.byte	0x4
+ 852 03ae E902     		.2byte	0x2e9
+ 853 03b0 9E000000 		.4byte	0x9e
+ 854 03b4 02       		.byte	0x2
+ 855 03b5 23       		.byte	0x23
+ 856 03b6 24       		.uleb128 0x24
+ 857 03b7 07       		.uleb128 0x7
+ 858 03b8 3F020000 		.4byte	.LASF43
+ 859 03bc 04       		.byte	0x4
+ 860 03bd EA02     		.2byte	0x2ea
+ 861 03bf 03020000 		.4byte	0x203
+ 862 03c3 02       		.byte	0x2
+ 863 03c4 23       		.byte	0x23
+ 864 03c5 28       		.uleb128 0x28
+ 865 03c6 07       		.uleb128 0x7
+ 866 03c7 8A020000 		.4byte	.LASF44
+ 867 03cb 04       		.byte	0x4
+ 868 03cc EB02     		.2byte	0x2eb
+ 869 03ce 9E000000 		.4byte	0x9e
+ 870 03d2 02       		.byte	0x2
+ 871 03d3 23       		.byte	0x23
+ 872 03d4 30       		.uleb128 0x30
+ 873 03d5 07       		.uleb128 0x7
+ 874 03d6 1B000000 		.4byte	.LASF45
+ 875 03da 04       		.byte	0x4
+ 876 03db EC02     		.2byte	0x2ec
+ 877 03dd 9E000000 		.4byte	0x9e
+ 878 03e1 02       		.byte	0x2
+ 879 03e2 23       		.byte	0x23
+ 880 03e3 34       		.uleb128 0x34
+ 881 03e4 07       		.uleb128 0x7
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 24
+
+
+ 882 03e5 10010000 		.4byte	.LASF46
+ 883 03e9 04       		.byte	0x4
+ 884 03ea ED02     		.2byte	0x2ed
+ 885 03ec 9E000000 		.4byte	0x9e
+ 886 03f0 02       		.byte	0x2
+ 887 03f1 23       		.byte	0x23
+ 888 03f2 38       		.uleb128 0x38
+ 889 03f3 07       		.uleb128 0x7
+ 890 03f4 49020000 		.4byte	.LASF47
+ 891 03f8 04       		.byte	0x4
+ 892 03f9 EE02     		.2byte	0x2ee
+ 893 03fb 69000000 		.4byte	0x69
+ 894 03ff 02       		.byte	0x2
+ 895 0400 23       		.byte	0x23
+ 896 0401 3C       		.uleb128 0x3c
+ 897 0402 07       		.uleb128 0x7
+ 898 0403 88000000 		.4byte	.LASF48
+ 899 0407 04       		.byte	0x4
+ 900 0408 EF02     		.2byte	0x2ef
+ 901 040a 9E000000 		.4byte	0x9e
+ 902 040e 02       		.byte	0x2
+ 903 040f 23       		.byte	0x23
+ 904 0410 40       		.uleb128 0x40
+ 905 0411 07       		.uleb128 0x7
+ 906 0412 3B010000 		.4byte	.LASF49
+ 907 0416 04       		.byte	0x4
+ 908 0417 F002     		.2byte	0x2f0
+ 909 0419 9E000000 		.4byte	0x9e
+ 910 041d 02       		.byte	0x2
+ 911 041e 23       		.byte	0x23
+ 912 041f 44       		.uleb128 0x44
+ 913 0420 07       		.uleb128 0x7
+ 914 0421 6D000000 		.4byte	.LASF50
+ 915 0425 04       		.byte	0x4
+ 916 0426 F102     		.2byte	0x2f1
+ 917 0428 03020000 		.4byte	0x203
+ 918 042c 02       		.byte	0x2
+ 919 042d 23       		.byte	0x23
+ 920 042e 48       		.uleb128 0x48
+ 921 042f 07       		.uleb128 0x7
+ 922 0430 00000000 		.4byte	.LASF51
+ 923 0434 04       		.byte	0x4
+ 924 0435 F202     		.2byte	0x2f2
+ 925 0437 9E000000 		.4byte	0x9e
+ 926 043b 02       		.byte	0x2
+ 927 043c 23       		.byte	0x23
+ 928 043d 50       		.uleb128 0x50
+ 929 043e 07       		.uleb128 0x7
+ 930 043f 26020000 		.4byte	.LASF52
+ 931 0443 04       		.byte	0x4
+ 932 0444 F302     		.2byte	0x2f3
+ 933 0446 9E000000 		.4byte	0x9e
+ 934 044a 02       		.byte	0x2
+ 935 044b 23       		.byte	0x23
+ 936 044c 54       		.uleb128 0x54
+ 937 044d 07       		.uleb128 0x7
+ 938 044e 5E000000 		.4byte	.LASF53
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 25
+
+
+ 939 0452 04       		.byte	0x4
+ 940 0453 F402     		.2byte	0x2f4
+ 941 0455 9E000000 		.4byte	0x9e
+ 942 0459 02       		.byte	0x2
+ 943 045a 23       		.byte	0x23
+ 944 045b 58       		.uleb128 0x58
+ 945 045c 07       		.uleb128 0x7
+ 946 045d 5F020000 		.4byte	.LASF54
+ 947 0461 04       		.byte	0x4
+ 948 0462 F502     		.2byte	0x2f5
+ 949 0464 69000000 		.4byte	0x69
+ 950 0468 02       		.byte	0x2
+ 951 0469 23       		.byte	0x23
+ 952 046a 5C       		.uleb128 0x5c
+ 953 046b 07       		.uleb128 0x7
+ 954 046c E9010000 		.4byte	.LASF55
+ 955 0470 04       		.byte	0x4
+ 956 0471 F602     		.2byte	0x2f6
+ 957 0473 9E000000 		.4byte	0x9e
+ 958 0477 02       		.byte	0x2
+ 959 0478 23       		.byte	0x23
+ 960 0479 60       		.uleb128 0x60
+ 961 047a 07       		.uleb128 0x7
+ 962 047b ED020000 		.4byte	.LASF56
+ 963 047f 04       		.byte	0x4
+ 964 0480 F702     		.2byte	0x2f7
+ 965 0482 9E000000 		.4byte	0x9e
+ 966 0486 02       		.byte	0x2
+ 967 0487 23       		.byte	0x23
+ 968 0488 64       		.uleb128 0x64
+ 969 0489 07       		.uleb128 0x7
+ 970 048a 69020000 		.4byte	.LASF57
+ 971 048e 04       		.byte	0x4
+ 972 048f F802     		.2byte	0x2f8
+ 973 0491 03020000 		.4byte	0x203
+ 974 0495 02       		.byte	0x2
+ 975 0496 23       		.byte	0x23
+ 976 0497 68       		.uleb128 0x68
+ 977 0498 07       		.uleb128 0x7
+ 978 0499 2C000000 		.4byte	.LASF58
+ 979 049d 04       		.byte	0x4
+ 980 049e F902     		.2byte	0x2f9
+ 981 04a0 9E000000 		.4byte	0x9e
+ 982 04a4 02       		.byte	0x2
+ 983 04a5 23       		.byte	0x23
+ 984 04a6 70       		.uleb128 0x70
+ 985 04a7 08       		.uleb128 0x8
+ 986 04a8 43535200 		.ascii	"CSR\000"
+ 987 04ac 04       		.byte	0x4
+ 988 04ad FA02     		.2byte	0x2fa
+ 989 04af 9E000000 		.4byte	0x9e
+ 990 04b3 02       		.byte	0x2
+ 991 04b4 23       		.byte	0x23
+ 992 04b5 74       		.uleb128 0x74
+ 993 04b6 07       		.uleb128 0x7
+ 994 04b7 73020000 		.4byte	.LASF59
+ 995 04bb 04       		.byte	0x4
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 26
+
+
+ 996 04bc FB02     		.2byte	0x2fb
+ 997 04be 03020000 		.4byte	0x203
+ 998 04c2 02       		.byte	0x2
+ 999 04c3 23       		.byte	0x23
+ 1000 04c4 78       		.uleb128 0x78
+ 1001 04c5 07       		.uleb128 0x7
+ 1002 04c6 48000000 		.4byte	.LASF60
+ 1003 04ca 04       		.byte	0x4
+ 1004 04cb FC02     		.2byte	0x2fc
+ 1005 04cd 9E000000 		.4byte	0x9e
+ 1006 04d1 03       		.byte	0x3
+ 1007 04d2 23       		.byte	0x23
+ 1008 04d3 8001     		.uleb128 0x80
+ 1009 04d5 07       		.uleb128 0x7
+ 1010 04d6 31000000 		.4byte	.LASF61
+ 1011 04da 04       		.byte	0x4
+ 1012 04db FD02     		.2byte	0x2fd
+ 1013 04dd 9E000000 		.4byte	0x9e
+ 1014 04e1 03       		.byte	0x3
+ 1015 04e2 23       		.byte	0x23
+ 1016 04e3 8401     		.uleb128 0x84
+ 1017 04e5 00       		.byte	0
+ 1018 04e6 0C       		.uleb128 0xc
+ 1019 04e7 E3000000 		.4byte	.LASF62
+ 1020 04eb 04       		.byte	0x4
+ 1021 04ec FE02     		.2byte	0x2fe
+ 1022 04ee 19030000 		.4byte	0x319
+ 1023 04f2 10       		.uleb128 0x10
+ 1024 04f3 53020000 		.4byte	.LASF77
+ 1025 04f7 01       		.byte	0x1
+ 1026 04f8 5C01     		.2byte	0x15c
+ 1027 04fa 01       		.byte	0x1
+ 1028 04fb 01       		.byte	0x1
+ 1029 04fc 19050000 		.4byte	0x519
+ 1030 0500 11       		.uleb128 0x11
+ 1031 0501 43010000 		.4byte	.LASF63
+ 1032 0505 01       		.byte	0x1
+ 1033 0506 6101     		.2byte	0x161
+ 1034 0508 9E000000 		.4byte	0x9e
+ 1035 050c 11       		.uleb128 0x11
+ 1036 050d 4E000000 		.4byte	.LASF64
+ 1037 0511 01       		.byte	0x1
+ 1038 0512 6101     		.2byte	0x161
+ 1039 0514 9E000000 		.4byte	0x9e
+ 1040 0518 00       		.byte	0
+ 1041 0519 12       		.uleb128 0x12
+ 1042 051a 01       		.byte	0x1
+ 1043 051b CB010000 		.4byte	.LASF65
+ 1044 051f 01       		.byte	0x1
+ 1045 0520 D6       		.byte	0xd6
+ 1046 0521 01       		.byte	0x1
+ 1047 0522 00000000 		.4byte	.LFB110
+ 1048 0526 F8000000 		.4byte	.LFE110
+ 1049 052a 00000000 		.4byte	.LLST0
+ 1050 052e 01       		.byte	0x1
+ 1051 052f 5C050000 		.4byte	0x55c
+ 1052 0533 13       		.uleb128 0x13
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 27
+
+
+ 1053 0534 F2040000 		.4byte	0x4f2
+ 1054 0538 38000000 		.4byte	.LBB4
+ 1055 053c 00000000 		.4byte	.Ldebug_ranges0+0
+ 1056 0540 01       		.byte	0x1
+ 1057 0541 F6       		.byte	0xf6
+ 1058 0542 14       		.uleb128 0x14
+ 1059 0543 18000000 		.4byte	.Ldebug_ranges0+0x18
+ 1060 0547 15       		.uleb128 0x15
+ 1061 0548 00050000 		.4byte	0x500
+ 1062 054c 20000000 		.4byte	.LLST1
+ 1063 0550 15       		.uleb128 0x15
+ 1064 0551 0C050000 		.4byte	0x50c
+ 1065 0555 4B000000 		.4byte	.LLST2
+ 1066 0559 00       		.byte	0
+ 1067 055a 00       		.byte	0
+ 1068 055b 00       		.byte	0
+ 1069 055c 16       		.uleb128 0x16
+ 1070 055d 01       		.byte	0x1
+ 1071 055e AF010000 		.4byte	.LASF66
+ 1072 0562 01       		.byte	0x1
+ 1073 0563 2401     		.2byte	0x124
+ 1074 0565 01       		.byte	0x1
+ 1075 0566 F8000000 		.4byte	.LFB111
+ 1076 056a 6C010000 		.4byte	.LFE111
+ 1077 056e 02       		.byte	0x2
+ 1078 056f 7D       		.byte	0x7d
+ 1079 0570 00       		.sleb128 0
+ 1080 0571 01       		.byte	0x1
+ 1081 0572 C7050000 		.4byte	0x5c7
+ 1082 0576 17       		.uleb128 0x17
+ 1083 0577 746D7000 		.ascii	"tmp\000"
+ 1084 057b 01       		.byte	0x1
+ 1085 057c 2601     		.2byte	0x126
+ 1086 057e 69000000 		.4byte	0x69
+ 1087 0582 76000000 		.4byte	.LLST3
+ 1088 0586 18       		.uleb128 0x18
+ 1089 0587 F3010000 		.4byte	.LASF67
+ 1090 058b 01       		.byte	0x1
+ 1091 058c 2601     		.2byte	0x126
+ 1092 058e 69000000 		.4byte	0x69
+ 1093 0592 B4000000 		.4byte	.LLST4
+ 1094 0596 18       		.uleb128 0x18
+ 1095 0597 22010000 		.4byte	.LASF68
+ 1096 059b 01       		.byte	0x1
+ 1097 059c 2601     		.2byte	0x126
+ 1098 059e 69000000 		.4byte	0x69
+ 1099 05a2 D3000000 		.4byte	.LLST5
+ 1100 05a6 18       		.uleb128 0x18
+ 1101 05a7 06010000 		.4byte	.LASF69
+ 1102 05ab 01       		.byte	0x1
+ 1103 05ac 2601     		.2byte	0x126
+ 1104 05ae 69000000 		.4byte	0x69
+ 1105 05b2 E7000000 		.4byte	.LLST6
+ 1106 05b6 18       		.uleb128 0x18
+ 1107 05b7 1D010000 		.4byte	.LASF70
+ 1108 05bb 01       		.byte	0x1
+ 1109 05bc 2601     		.2byte	0x126
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 28
+
+
+ 1110 05be 69000000 		.4byte	0x69
+ 1111 05c2 0E010000 		.4byte	.LLST7
+ 1112 05c6 00       		.byte	0
+ 1113 05c7 19       		.uleb128 0x19
+ 1114 05c8 7D020000 		.4byte	.LASF71
+ 1115 05cc 03       		.byte	0x3
+ 1116 05cd 1A05     		.2byte	0x51a
+ 1117 05cf 5D020000 		.4byte	0x25d
+ 1118 05d3 01       		.byte	0x1
+ 1119 05d4 01       		.byte	0x1
+ 1120 05d5 1A       		.uleb128 0x1a
+ 1121 05d6 11020000 		.4byte	.LASF72
+ 1122 05da 01       		.byte	0x1
+ 1123 05db B6       		.byte	0xb6
+ 1124 05dc 69000000 		.4byte	0x69
+ 1125 05e0 01       		.byte	0x1
+ 1126 05e1 05       		.byte	0x5
+ 1127 05e2 03       		.byte	0x3
+ 1128 05e3 00000000 		.4byte	SystemCoreClock
+ 1129 05e7 0A       		.uleb128 0xa
+ 1130 05e8 2C000000 		.4byte	0x2c
+ 1131 05ec F7050000 		.4byte	0x5f7
+ 1132 05f0 0B       		.uleb128 0xb
+ 1133 05f1 97000000 		.4byte	0x97
+ 1134 05f5 0F       		.byte	0xf
+ 1135 05f6 00       		.byte	0
+ 1136 05f7 1A       		.uleb128 0x1a
+ 1137 05f8 90000000 		.4byte	.LASF73
+ 1138 05fc 01       		.byte	0x1
+ 1139 05fd B8       		.byte	0xb8
+ 1140 05fe 09060000 		.4byte	0x609
+ 1141 0602 01       		.byte	0x1
+ 1142 0603 05       		.byte	0x5
+ 1143 0604 03       		.byte	0x3
+ 1144 0605 00000000 		.4byte	AHBPrescTable
+ 1145 0609 09       		.uleb128 0x9
+ 1146 060a 0E060000 		.4byte	0x60e
+ 1147 060e 05       		.uleb128 0x5
+ 1148 060f E7050000 		.4byte	0x5e7
+ 1149 0613 00       		.byte	0
+ 1150              		.section	.debug_abbrev,"",%progbits
+ 1151              	.Ldebug_abbrev0:
+ 1152 0000 01       		.uleb128 0x1
+ 1153 0001 11       		.uleb128 0x11
+ 1154 0002 01       		.byte	0x1
+ 1155 0003 25       		.uleb128 0x25
+ 1156 0004 0E       		.uleb128 0xe
+ 1157 0005 13       		.uleb128 0x13
+ 1158 0006 0B       		.uleb128 0xb
+ 1159 0007 03       		.uleb128 0x3
+ 1160 0008 0E       		.uleb128 0xe
+ 1161 0009 1B       		.uleb128 0x1b
+ 1162 000a 0E       		.uleb128 0xe
+ 1163 000b 11       		.uleb128 0x11
+ 1164 000c 01       		.uleb128 0x1
+ 1165 000d 12       		.uleb128 0x12
+ 1166 000e 01       		.uleb128 0x1
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 29
+
+
+ 1167 000f 10       		.uleb128 0x10
+ 1168 0010 06       		.uleb128 0x6
+ 1169 0011 00       		.byte	0
+ 1170 0012 00       		.byte	0
+ 1171 0013 02       		.uleb128 0x2
+ 1172 0014 24       		.uleb128 0x24
+ 1173 0015 00       		.byte	0
+ 1174 0016 0B       		.uleb128 0xb
+ 1175 0017 0B       		.uleb128 0xb
+ 1176 0018 3E       		.uleb128 0x3e
+ 1177 0019 0B       		.uleb128 0xb
+ 1178 001a 03       		.uleb128 0x3
+ 1179 001b 0E       		.uleb128 0xe
+ 1180 001c 00       		.byte	0
+ 1181 001d 00       		.byte	0
+ 1182 001e 03       		.uleb128 0x3
+ 1183 001f 16       		.uleb128 0x16
+ 1184 0020 00       		.byte	0
+ 1185 0021 03       		.uleb128 0x3
+ 1186 0022 0E       		.uleb128 0xe
+ 1187 0023 3A       		.uleb128 0x3a
+ 1188 0024 0B       		.uleb128 0xb
+ 1189 0025 3B       		.uleb128 0x3b
+ 1190 0026 0B       		.uleb128 0xb
+ 1191 0027 49       		.uleb128 0x49
+ 1192 0028 13       		.uleb128 0x13
+ 1193 0029 00       		.byte	0
+ 1194 002a 00       		.byte	0
+ 1195 002b 04       		.uleb128 0x4
+ 1196 002c 24       		.uleb128 0x24
+ 1197 002d 00       		.byte	0
+ 1198 002e 0B       		.uleb128 0xb
+ 1199 002f 0B       		.uleb128 0xb
+ 1200 0030 3E       		.uleb128 0x3e
+ 1201 0031 0B       		.uleb128 0xb
+ 1202 0032 03       		.uleb128 0x3
+ 1203 0033 08       		.uleb128 0x8
+ 1204 0034 00       		.byte	0
+ 1205 0035 00       		.byte	0
+ 1206 0036 05       		.uleb128 0x5
+ 1207 0037 35       		.uleb128 0x35
+ 1208 0038 00       		.byte	0
+ 1209 0039 49       		.uleb128 0x49
+ 1210 003a 13       		.uleb128 0x13
+ 1211 003b 00       		.byte	0
+ 1212 003c 00       		.byte	0
+ 1213 003d 06       		.uleb128 0x6
+ 1214 003e 13       		.uleb128 0x13
+ 1215 003f 01       		.byte	0x1
+ 1216 0040 0B       		.uleb128 0xb
+ 1217 0041 0B       		.uleb128 0xb
+ 1218 0042 3A       		.uleb128 0x3a
+ 1219 0043 0B       		.uleb128 0xb
+ 1220 0044 3B       		.uleb128 0x3b
+ 1221 0045 05       		.uleb128 0x5
+ 1222 0046 01       		.uleb128 0x1
+ 1223 0047 13       		.uleb128 0x13
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 30
+
+
+ 1224 0048 00       		.byte	0
+ 1225 0049 00       		.byte	0
+ 1226 004a 07       		.uleb128 0x7
+ 1227 004b 0D       		.uleb128 0xd
+ 1228 004c 00       		.byte	0
+ 1229 004d 03       		.uleb128 0x3
+ 1230 004e 0E       		.uleb128 0xe
+ 1231 004f 3A       		.uleb128 0x3a
+ 1232 0050 0B       		.uleb128 0xb
+ 1233 0051 3B       		.uleb128 0x3b
+ 1234 0052 05       		.uleb128 0x5
+ 1235 0053 49       		.uleb128 0x49
+ 1236 0054 13       		.uleb128 0x13
+ 1237 0055 38       		.uleb128 0x38
+ 1238 0056 0A       		.uleb128 0xa
+ 1239 0057 00       		.byte	0
+ 1240 0058 00       		.byte	0
+ 1241 0059 08       		.uleb128 0x8
+ 1242 005a 0D       		.uleb128 0xd
+ 1243 005b 00       		.byte	0
+ 1244 005c 03       		.uleb128 0x3
+ 1245 005d 08       		.uleb128 0x8
+ 1246 005e 3A       		.uleb128 0x3a
+ 1247 005f 0B       		.uleb128 0xb
+ 1248 0060 3B       		.uleb128 0x3b
+ 1249 0061 05       		.uleb128 0x5
+ 1250 0062 49       		.uleb128 0x49
+ 1251 0063 13       		.uleb128 0x13
+ 1252 0064 38       		.uleb128 0x38
+ 1253 0065 0A       		.uleb128 0xa
+ 1254 0066 00       		.byte	0
+ 1255 0067 00       		.byte	0
+ 1256 0068 09       		.uleb128 0x9
+ 1257 0069 26       		.uleb128 0x26
+ 1258 006a 00       		.byte	0
+ 1259 006b 49       		.uleb128 0x49
+ 1260 006c 13       		.uleb128 0x13
+ 1261 006d 00       		.byte	0
+ 1262 006e 00       		.byte	0
+ 1263 006f 0A       		.uleb128 0xa
+ 1264 0070 01       		.uleb128 0x1
+ 1265 0071 01       		.byte	0x1
+ 1266 0072 49       		.uleb128 0x49
+ 1267 0073 13       		.uleb128 0x13
+ 1268 0074 01       		.uleb128 0x1
+ 1269 0075 13       		.uleb128 0x13
+ 1270 0076 00       		.byte	0
+ 1271 0077 00       		.byte	0
+ 1272 0078 0B       		.uleb128 0xb
+ 1273 0079 21       		.uleb128 0x21
+ 1274 007a 00       		.byte	0
+ 1275 007b 49       		.uleb128 0x49
+ 1276 007c 13       		.uleb128 0x13
+ 1277 007d 2F       		.uleb128 0x2f
+ 1278 007e 0B       		.uleb128 0xb
+ 1279 007f 00       		.byte	0
+ 1280 0080 00       		.byte	0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 31
+
+
+ 1281 0081 0C       		.uleb128 0xc
+ 1282 0082 16       		.uleb128 0x16
+ 1283 0083 00       		.byte	0
+ 1284 0084 03       		.uleb128 0x3
+ 1285 0085 0E       		.uleb128 0xe
+ 1286 0086 3A       		.uleb128 0x3a
+ 1287 0087 0B       		.uleb128 0xb
+ 1288 0088 3B       		.uleb128 0x3b
+ 1289 0089 05       		.uleb128 0x5
+ 1290 008a 49       		.uleb128 0x49
+ 1291 008b 13       		.uleb128 0x13
+ 1292 008c 00       		.byte	0
+ 1293 008d 00       		.byte	0
+ 1294 008e 0D       		.uleb128 0xd
+ 1295 008f 04       		.uleb128 0x4
+ 1296 0090 01       		.byte	0x1
+ 1297 0091 0B       		.uleb128 0xb
+ 1298 0092 0B       		.uleb128 0xb
+ 1299 0093 3A       		.uleb128 0x3a
+ 1300 0094 0B       		.uleb128 0xb
+ 1301 0095 3B       		.uleb128 0x3b
+ 1302 0096 05       		.uleb128 0x5
+ 1303 0097 01       		.uleb128 0x1
+ 1304 0098 13       		.uleb128 0x13
+ 1305 0099 00       		.byte	0
+ 1306 009a 00       		.byte	0
+ 1307 009b 0E       		.uleb128 0xe
+ 1308 009c 28       		.uleb128 0x28
+ 1309 009d 00       		.byte	0
+ 1310 009e 03       		.uleb128 0x3
+ 1311 009f 0E       		.uleb128 0xe
+ 1312 00a0 1C       		.uleb128 0x1c
+ 1313 00a1 0D       		.uleb128 0xd
+ 1314 00a2 00       		.byte	0
+ 1315 00a3 00       		.byte	0
+ 1316 00a4 0F       		.uleb128 0xf
+ 1317 00a5 28       		.uleb128 0x28
+ 1318 00a6 00       		.byte	0
+ 1319 00a7 03       		.uleb128 0x3
+ 1320 00a8 08       		.uleb128 0x8
+ 1321 00a9 1C       		.uleb128 0x1c
+ 1322 00aa 0D       		.uleb128 0xd
+ 1323 00ab 00       		.byte	0
+ 1324 00ac 00       		.byte	0
+ 1325 00ad 10       		.uleb128 0x10
+ 1326 00ae 2E       		.uleb128 0x2e
+ 1327 00af 01       		.byte	0x1
+ 1328 00b0 03       		.uleb128 0x3
+ 1329 00b1 0E       		.uleb128 0xe
+ 1330 00b2 3A       		.uleb128 0x3a
+ 1331 00b3 0B       		.uleb128 0xb
+ 1332 00b4 3B       		.uleb128 0x3b
+ 1333 00b5 05       		.uleb128 0x5
+ 1334 00b6 27       		.uleb128 0x27
+ 1335 00b7 0C       		.uleb128 0xc
+ 1336 00b8 20       		.uleb128 0x20
+ 1337 00b9 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 32
+
+
+ 1338 00ba 01       		.uleb128 0x1
+ 1339 00bb 13       		.uleb128 0x13
+ 1340 00bc 00       		.byte	0
+ 1341 00bd 00       		.byte	0
+ 1342 00be 11       		.uleb128 0x11
+ 1343 00bf 34       		.uleb128 0x34
+ 1344 00c0 00       		.byte	0
+ 1345 00c1 03       		.uleb128 0x3
+ 1346 00c2 0E       		.uleb128 0xe
+ 1347 00c3 3A       		.uleb128 0x3a
+ 1348 00c4 0B       		.uleb128 0xb
+ 1349 00c5 3B       		.uleb128 0x3b
+ 1350 00c6 05       		.uleb128 0x5
+ 1351 00c7 49       		.uleb128 0x49
+ 1352 00c8 13       		.uleb128 0x13
+ 1353 00c9 00       		.byte	0
+ 1354 00ca 00       		.byte	0
+ 1355 00cb 12       		.uleb128 0x12
+ 1356 00cc 2E       		.uleb128 0x2e
+ 1357 00cd 01       		.byte	0x1
+ 1358 00ce 3F       		.uleb128 0x3f
+ 1359 00cf 0C       		.uleb128 0xc
+ 1360 00d0 03       		.uleb128 0x3
+ 1361 00d1 0E       		.uleb128 0xe
+ 1362 00d2 3A       		.uleb128 0x3a
+ 1363 00d3 0B       		.uleb128 0xb
+ 1364 00d4 3B       		.uleb128 0x3b
+ 1365 00d5 0B       		.uleb128 0xb
+ 1366 00d6 27       		.uleb128 0x27
+ 1367 00d7 0C       		.uleb128 0xc
+ 1368 00d8 11       		.uleb128 0x11
+ 1369 00d9 01       		.uleb128 0x1
+ 1370 00da 12       		.uleb128 0x12
+ 1371 00db 01       		.uleb128 0x1
+ 1372 00dc 40       		.uleb128 0x40
+ 1373 00dd 06       		.uleb128 0x6
+ 1374 00de 9742     		.uleb128 0x2117
+ 1375 00e0 0C       		.uleb128 0xc
+ 1376 00e1 01       		.uleb128 0x1
+ 1377 00e2 13       		.uleb128 0x13
+ 1378 00e3 00       		.byte	0
+ 1379 00e4 00       		.byte	0
+ 1380 00e5 13       		.uleb128 0x13
+ 1381 00e6 1D       		.uleb128 0x1d
+ 1382 00e7 01       		.byte	0x1
+ 1383 00e8 31       		.uleb128 0x31
+ 1384 00e9 13       		.uleb128 0x13
+ 1385 00ea 52       		.uleb128 0x52
+ 1386 00eb 01       		.uleb128 0x1
+ 1387 00ec 55       		.uleb128 0x55
+ 1388 00ed 06       		.uleb128 0x6
+ 1389 00ee 58       		.uleb128 0x58
+ 1390 00ef 0B       		.uleb128 0xb
+ 1391 00f0 59       		.uleb128 0x59
+ 1392 00f1 0B       		.uleb128 0xb
+ 1393 00f2 00       		.byte	0
+ 1394 00f3 00       		.byte	0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 33
+
+
+ 1395 00f4 14       		.uleb128 0x14
+ 1396 00f5 0B       		.uleb128 0xb
+ 1397 00f6 01       		.byte	0x1
+ 1398 00f7 55       		.uleb128 0x55
+ 1399 00f8 06       		.uleb128 0x6
+ 1400 00f9 00       		.byte	0
+ 1401 00fa 00       		.byte	0
+ 1402 00fb 15       		.uleb128 0x15
+ 1403 00fc 34       		.uleb128 0x34
+ 1404 00fd 00       		.byte	0
+ 1405 00fe 31       		.uleb128 0x31
+ 1406 00ff 13       		.uleb128 0x13
+ 1407 0100 02       		.uleb128 0x2
+ 1408 0101 06       		.uleb128 0x6
+ 1409 0102 00       		.byte	0
+ 1410 0103 00       		.byte	0
+ 1411 0104 16       		.uleb128 0x16
+ 1412 0105 2E       		.uleb128 0x2e
+ 1413 0106 01       		.byte	0x1
+ 1414 0107 3F       		.uleb128 0x3f
+ 1415 0108 0C       		.uleb128 0xc
+ 1416 0109 03       		.uleb128 0x3
+ 1417 010a 0E       		.uleb128 0xe
+ 1418 010b 3A       		.uleb128 0x3a
+ 1419 010c 0B       		.uleb128 0xb
+ 1420 010d 3B       		.uleb128 0x3b
+ 1421 010e 05       		.uleb128 0x5
+ 1422 010f 27       		.uleb128 0x27
+ 1423 0110 0C       		.uleb128 0xc
+ 1424 0111 11       		.uleb128 0x11
+ 1425 0112 01       		.uleb128 0x1
+ 1426 0113 12       		.uleb128 0x12
+ 1427 0114 01       		.uleb128 0x1
+ 1428 0115 40       		.uleb128 0x40
+ 1429 0116 0A       		.uleb128 0xa
+ 1430 0117 9742     		.uleb128 0x2117
+ 1431 0119 0C       		.uleb128 0xc
+ 1432 011a 01       		.uleb128 0x1
+ 1433 011b 13       		.uleb128 0x13
+ 1434 011c 00       		.byte	0
+ 1435 011d 00       		.byte	0
+ 1436 011e 17       		.uleb128 0x17
+ 1437 011f 34       		.uleb128 0x34
+ 1438 0120 00       		.byte	0
+ 1439 0121 03       		.uleb128 0x3
+ 1440 0122 08       		.uleb128 0x8
+ 1441 0123 3A       		.uleb128 0x3a
+ 1442 0124 0B       		.uleb128 0xb
+ 1443 0125 3B       		.uleb128 0x3b
+ 1444 0126 05       		.uleb128 0x5
+ 1445 0127 49       		.uleb128 0x49
+ 1446 0128 13       		.uleb128 0x13
+ 1447 0129 02       		.uleb128 0x2
+ 1448 012a 06       		.uleb128 0x6
+ 1449 012b 00       		.byte	0
+ 1450 012c 00       		.byte	0
+ 1451 012d 18       		.uleb128 0x18
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 34
+
+
+ 1452 012e 34       		.uleb128 0x34
+ 1453 012f 00       		.byte	0
+ 1454 0130 03       		.uleb128 0x3
+ 1455 0131 0E       		.uleb128 0xe
+ 1456 0132 3A       		.uleb128 0x3a
+ 1457 0133 0B       		.uleb128 0xb
+ 1458 0134 3B       		.uleb128 0x3b
+ 1459 0135 05       		.uleb128 0x5
+ 1460 0136 49       		.uleb128 0x49
+ 1461 0137 13       		.uleb128 0x13
+ 1462 0138 02       		.uleb128 0x2
+ 1463 0139 06       		.uleb128 0x6
+ 1464 013a 00       		.byte	0
+ 1465 013b 00       		.byte	0
+ 1466 013c 19       		.uleb128 0x19
+ 1467 013d 34       		.uleb128 0x34
+ 1468 013e 00       		.byte	0
+ 1469 013f 03       		.uleb128 0x3
+ 1470 0140 0E       		.uleb128 0xe
+ 1471 0141 3A       		.uleb128 0x3a
+ 1472 0142 0B       		.uleb128 0xb
+ 1473 0143 3B       		.uleb128 0x3b
+ 1474 0144 05       		.uleb128 0x5
+ 1475 0145 49       		.uleb128 0x49
+ 1476 0146 13       		.uleb128 0x13
+ 1477 0147 3F       		.uleb128 0x3f
+ 1478 0148 0C       		.uleb128 0xc
+ 1479 0149 3C       		.uleb128 0x3c
+ 1480 014a 0C       		.uleb128 0xc
+ 1481 014b 00       		.byte	0
+ 1482 014c 00       		.byte	0
+ 1483 014d 1A       		.uleb128 0x1a
+ 1484 014e 34       		.uleb128 0x34
+ 1485 014f 00       		.byte	0
+ 1486 0150 03       		.uleb128 0x3
+ 1487 0151 0E       		.uleb128 0xe
+ 1488 0152 3A       		.uleb128 0x3a
+ 1489 0153 0B       		.uleb128 0xb
+ 1490 0154 3B       		.uleb128 0x3b
+ 1491 0155 0B       		.uleb128 0xb
+ 1492 0156 49       		.uleb128 0x49
+ 1493 0157 13       		.uleb128 0x13
+ 1494 0158 3F       		.uleb128 0x3f
+ 1495 0159 0C       		.uleb128 0xc
+ 1496 015a 02       		.uleb128 0x2
+ 1497 015b 0A       		.uleb128 0xa
+ 1498 015c 00       		.byte	0
+ 1499 015d 00       		.byte	0
+ 1500 015e 00       		.byte	0
+ 1501              		.section	.debug_loc,"",%progbits
+ 1502              	.Ldebug_loc0:
+ 1503              	.LLST0:
+ 1504 0000 00000000 		.4byte	.LFB110-.Ltext0
+ 1505 0004 30000000 		.4byte	.LCFI0-.Ltext0
+ 1506 0008 0200     		.2byte	0x2
+ 1507 000a 7D       		.byte	0x7d
+ 1508 000b 00       		.sleb128 0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 35
+
+
+ 1509 000c 30000000 		.4byte	.LCFI0-.Ltext0
+ 1510 0010 F8000000 		.4byte	.LFE110-.Ltext0
+ 1511 0014 0200     		.2byte	0x2
+ 1512 0016 7D       		.byte	0x7d
+ 1513 0017 08       		.sleb128 8
+ 1514 0018 00000000 		.4byte	0
+ 1515 001c 00000000 		.4byte	0
+ 1516              	.LLST1:
+ 1517 0020 3A000000 		.4byte	.LVL0-.Ltext0
+ 1518 0024 50000000 		.4byte	.LVL5-.Ltext0
+ 1519 0028 0200     		.2byte	0x2
+ 1520 002a 91       		.byte	0x91
+ 1521 002b 78       		.sleb128 -8
+ 1522 002c 52000000 		.4byte	.LVL6-.Ltext0
+ 1523 0030 54000000 		.4byte	.LVL7-.Ltext0
+ 1524 0034 0100     		.2byte	0x1
+ 1525 0036 52       		.byte	0x52
+ 1526 0037 54000000 		.4byte	.LVL7-.Ltext0
+ 1527 003b F8000000 		.4byte	.LFE110-.Ltext0
+ 1528 003f 0200     		.2byte	0x2
+ 1529 0041 91       		.byte	0x91
+ 1530 0042 78       		.sleb128 -8
+ 1531 0043 00000000 		.4byte	0
+ 1532 0047 00000000 		.4byte	0
+ 1533              	.LLST2:
+ 1534 004b 3C000000 		.4byte	.LVL1-.Ltext0
+ 1535 004f 4A000000 		.4byte	.LVL2-.Ltext0
+ 1536 0053 0200     		.2byte	0x2
+ 1537 0055 91       		.byte	0x91
+ 1538 0056 7C       		.sleb128 -4
+ 1539 0057 4C000000 		.4byte	.LVL3-.Ltext0
+ 1540 005b 4E000000 		.4byte	.LVL4-.Ltext0
+ 1541 005f 0100     		.2byte	0x1
+ 1542 0061 52       		.byte	0x52
+ 1543 0062 4E000000 		.4byte	.LVL4-.Ltext0
+ 1544 0066 F8000000 		.4byte	.LFE110-.Ltext0
+ 1545 006a 0200     		.2byte	0x2
+ 1546 006c 91       		.byte	0x91
+ 1547 006d 7C       		.sleb128 -4
+ 1548 006e 00000000 		.4byte	0
+ 1549 0072 00000000 		.4byte	0
+ 1550              	.LLST3:
+ 1551 0076 F8000000 		.4byte	.LVL8-.Ltext0
+ 1552 007a FE000000 		.4byte	.LVL9-.Ltext0
+ 1553 007e 0200     		.2byte	0x2
+ 1554 0080 30       		.byte	0x30
+ 1555 0081 9F       		.byte	0x9f
+ 1556 0082 FE000000 		.4byte	.LVL9-.Ltext0
+ 1557 0086 02010000 		.4byte	.LVL10-.Ltext0
+ 1558 008a 0500     		.2byte	0x5
+ 1559 008c 71       		.byte	0x71
+ 1560 008d 00       		.sleb128 0
+ 1561 008e 3C       		.byte	0x3c
+ 1562 008f 1A       		.byte	0x1a
+ 1563 0090 9F       		.byte	0x9f
+ 1564 0091 02010000 		.4byte	.LVL10-.Ltext0
+ 1565 0095 14010000 		.4byte	.LVL11-.Ltext0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 36
+
+
+ 1566 0099 0100     		.2byte	0x1
+ 1567 009b 51       		.byte	0x51
+ 1568 009c 52010000 		.4byte	.LVL17-.Ltext0
+ 1569 00a0 6C010000 		.4byte	.LFE111-.Ltext0
+ 1570 00a4 0600     		.2byte	0x6
+ 1571 00a6 71       		.byte	0x71
+ 1572 00a7 00       		.sleb128 0
+ 1573 00a8 08       		.byte	0x8
+ 1574 00a9 FF       		.byte	0xff
+ 1575 00aa 1A       		.byte	0x1a
+ 1576 00ab 9F       		.byte	0x9f
+ 1577 00ac 00000000 		.4byte	0
+ 1578 00b0 00000000 		.4byte	0
+ 1579              	.LLST4:
+ 1580 00b4 F8000000 		.4byte	.LVL8-.Ltext0
+ 1581 00b8 3C010000 		.4byte	.LVL15-.Ltext0
+ 1582 00bc 0200     		.2byte	0x2
+ 1583 00be 30       		.byte	0x30
+ 1584 00bf 9F       		.byte	0x9f
+ 1585 00c0 3C010000 		.4byte	.LVL15-.Ltext0
+ 1586 00c4 40010000 		.4byte	.LVL16-.Ltext0
+ 1587 00c8 0100     		.2byte	0x1
+ 1588 00ca 53       		.byte	0x53
+ 1589 00cb 00000000 		.4byte	0
+ 1590 00cf 00000000 		.4byte	0
+ 1591              	.LLST5:
+ 1592 00d3 F8000000 		.4byte	.LVL8-.Ltext0
+ 1593 00d7 3C010000 		.4byte	.LVL15-.Ltext0
+ 1594 00db 0200     		.2byte	0x2
+ 1595 00dd 32       		.byte	0x32
+ 1596 00de 9F       		.byte	0x9f
+ 1597 00df 00000000 		.4byte	0
+ 1598 00e3 00000000 		.4byte	0
+ 1599              	.LLST6:
+ 1600 00e7 F8000000 		.4byte	.LVL8-.Ltext0
+ 1601 00eb 14010000 		.4byte	.LVL11-.Ltext0
+ 1602 00ef 0200     		.2byte	0x2
+ 1603 00f1 30       		.byte	0x30
+ 1604 00f2 9F       		.byte	0x9f
+ 1605 00f3 14010000 		.4byte	.LVL11-.Ltext0
+ 1606 00f7 1C010000 		.4byte	.LVL12-.Ltext0
+ 1607 00fb 0900     		.2byte	0x9
+ 1608 00fd 71       		.byte	0x71
+ 1609 00fe 00       		.sleb128 0
+ 1610 00ff 40       		.byte	0x40
+ 1611 0100 42       		.byte	0x42
+ 1612 0101 24       		.byte	0x24
+ 1613 0102 1A       		.byte	0x1a
+ 1614 0103 46       		.byte	0x46
+ 1615 0104 25       		.byte	0x25
+ 1616 0105 9F       		.byte	0x9f
+ 1617 0106 00000000 		.4byte	0
+ 1618 010a 00000000 		.4byte	0
+ 1619              	.LLST7:
+ 1620 010e F8000000 		.4byte	.LVL8-.Ltext0
+ 1621 0112 26010000 		.4byte	.LVL13-.Ltext0
+ 1622 0116 0200     		.2byte	0x2
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 37
+
+
+ 1623 0118 32       		.byte	0x32
+ 1624 0119 9F       		.byte	0x9f
+ 1625 011a 26010000 		.4byte	.LVL13-.Ltext0
+ 1626 011e 2C010000 		.4byte	.LVL14-.Ltext0
+ 1627 0122 0100     		.2byte	0x1
+ 1628 0124 52       		.byte	0x52
+ 1629 0125 00000000 		.4byte	0
+ 1630 0129 00000000 		.4byte	0
+ 1631              		.section	.debug_aranges,"",%progbits
+ 1632 0000 1C000000 		.4byte	0x1c
+ 1633 0004 0200     		.2byte	0x2
+ 1634 0006 00000000 		.4byte	.Ldebug_info0
+ 1635 000a 04       		.byte	0x4
+ 1636 000b 00       		.byte	0
+ 1637 000c 0000     		.2byte	0
+ 1638 000e 0000     		.2byte	0
+ 1639 0010 00000000 		.4byte	.Ltext0
+ 1640 0014 6C010000 		.4byte	.Letext0-.Ltext0
+ 1641 0018 00000000 		.4byte	0
+ 1642 001c 00000000 		.4byte	0
+ 1643              		.section	.debug_ranges,"",%progbits
+ 1644              	.Ldebug_ranges0:
+ 1645 0000 38000000 		.4byte	.LBB4-.Ltext0
+ 1646 0004 72000000 		.4byte	.LBE4-.Ltext0
+ 1647 0008 7C000000 		.4byte	.LBB7-.Ltext0
+ 1648 000c DC000000 		.4byte	.LBE7-.Ltext0
+ 1649 0010 00000000 		.4byte	0
+ 1650 0014 00000000 		.4byte	0
+ 1651 0018 38000000 		.4byte	.LBB5-.Ltext0
+ 1652 001c 72000000 		.4byte	.LBE5-.Ltext0
+ 1653 0020 7C000000 		.4byte	.LBB6-.Ltext0
+ 1654 0024 DC000000 		.4byte	.LBE6-.Ltext0
+ 1655 0028 00000000 		.4byte	0
+ 1656 002c 00000000 		.4byte	0
+ 1657              		.section	.debug_line,"",%progbits
+ 1658              	.Ldebug_line0:
+ 1659 0000 16010000 		.section	.debug_str,"MS",%progbits,1
+ 1659      0200B600 
+ 1659      00000201 
+ 1659      FB0E0D00 
+ 1659      01010101 
+ 1660              	.LASF51:
+ 1661 0000 41484231 		.ascii	"AHB1LPENR\000"
+ 1661      4C50454E 
+ 1661      5200
+ 1662              	.LASF36:
+ 1663 000a 504C4C43 		.ascii	"PLLCFGR\000"
+ 1663      46475200 
+ 1664              	.LASF41:
+ 1665 0012 41504231 		.ascii	"APB1RSTR\000"
+ 1665      52535452 
+ 1665      00
+ 1666              	.LASF45:
+ 1667 001b 41484232 		.ascii	"AHB2ENR\000"
+ 1667      454E5200 
+ 1668              	.LASF13:
+ 1669 0023 73697A65 		.ascii	"sizetype\000"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 38
+
+
+ 1669      74797065 
+ 1669      00
+ 1670              	.LASF58:
+ 1671 002c 42444352 		.ascii	"BDCR\000"
+ 1671      00
+ 1672              	.LASF61:
+ 1673 0031 504C4C49 		.ascii	"PLLI2SCFGR\000"
+ 1673      32534346 
+ 1673      475200
+ 1674              	.LASF35:
+ 1675 003c 5057525F 		.ascii	"PWR_TypeDef\000"
+ 1675      54797065 
+ 1675      44656600 
+ 1676              	.LASF60:
+ 1677 0048 53534347 		.ascii	"SSCGR\000"
+ 1677      5200
+ 1678              	.LASF64:
+ 1679 004e 48534553 		.ascii	"HSEStatus\000"
+ 1679      74617475 
+ 1679      7300
+ 1680              	.LASF14:
+ 1681 0058 43505549 		.ascii	"CPUID\000"
+ 1681      4400
+ 1682              	.LASF53:
+ 1683 005e 41484233 		.ascii	"AHB3LPENR\000"
+ 1683      4C50454E 
+ 1683      5200
+ 1684              	.LASF37:
+ 1685 0068 43464752 		.ascii	"CFGR\000"
+ 1685      00
+ 1686              	.LASF50:
+ 1687 006d 52455345 		.ascii	"RESERVED3\000"
+ 1687      52564544 
+ 1687      3300
+ 1688              	.LASF3:
+ 1689 0077 75696E74 		.ascii	"uint8_t\000"
+ 1689      385F7400 
+ 1690              	.LASF29:
+ 1691 007f 5343425F 		.ascii	"SCB_Type\000"
+ 1691      54797065 
+ 1691      00
+ 1692              	.LASF48:
+ 1693 0088 41504231 		.ascii	"APB1ENR\000"
+ 1693      454E5200 
+ 1694              	.LASF73:
+ 1695 0090 41484250 		.ascii	"AHBPrescTable\000"
+ 1695      72657363 
+ 1695      5461626C 
+ 1695      6500
+ 1696              	.LASF38:
+ 1697 009e 41484231 		.ascii	"AHB1RSTR\000"
+ 1697      52535452 
+ 1697      00
+ 1698              	.LASF8:
+ 1699 00a7 75696E74 		.ascii	"uint32_t\000"
+ 1699      33325F74 
+ 1699      00
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 39
+
+
+ 1700              	.LASF2:
+ 1701 00b0 73686F72 		.ascii	"short int\000"
+ 1701      7420696E 
+ 1701      7400
+ 1702              	.LASF15:
+ 1703 00ba 49435352 		.ascii	"ICSR\000"
+ 1703      00
+ 1704              	.LASF32:
+ 1705 00bf 4F50544B 		.ascii	"OPTKEYR\000"
+ 1705      45595200 
+ 1706              	.LASF10:
+ 1707 00c7 6C6F6E67 		.ascii	"long long int\000"
+ 1707      206C6F6E 
+ 1707      6720696E 
+ 1707      7400
+ 1708              	.LASF23:
+ 1709 00d5 42464152 		.ascii	"BFAR\000"
+ 1709      00
+ 1710              	.LASF7:
+ 1711 00da 6C6F6E67 		.ascii	"long int\000"
+ 1711      20696E74 
+ 1711      00
+ 1712              	.LASF62:
+ 1713 00e3 5243435F 		.ascii	"RCC_TypeDef\000"
+ 1713      54797065 
+ 1713      44656600 
+ 1714              	.LASF42:
+ 1715 00ef 41504232 		.ascii	"APB2RSTR\000"
+ 1715      52535452 
+ 1715      00
+ 1716              	.LASF19:
+ 1717 00f8 43465352 		.ascii	"CFSR\000"
+ 1717      00
+ 1718              	.LASF39:
+ 1719 00fd 41484232 		.ascii	"AHB2RSTR\000"
+ 1719      52535452 
+ 1719      00
+ 1720              	.LASF69:
+ 1721 0106 706C6C73 		.ascii	"pllsource\000"
+ 1721      6F757263 
+ 1721      6500
+ 1722              	.LASF46:
+ 1723 0110 41484233 		.ascii	"AHB3ENR\000"
+ 1723      454E5200 
+ 1724              	.LASF31:
+ 1725 0118 4B455952 		.ascii	"KEYR\000"
+ 1725      00
+ 1726              	.LASF70:
+ 1727 011d 706C6C6D 		.ascii	"pllm\000"
+ 1727      00
+ 1728              	.LASF68:
+ 1729 0122 706C6C70 		.ascii	"pllp\000"
+ 1729      00
+ 1730              	.LASF17:
+ 1731 0127 41495243 		.ascii	"AIRCR\000"
+ 1731      5200
+ 1732              	.LASF1:
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 40
+
+
+ 1733 012d 756E7369 		.ascii	"unsigned char\000"
+ 1733      676E6564 
+ 1733      20636861 
+ 1733      7200
+ 1734              	.LASF49:
+ 1735 013b 41504232 		.ascii	"APB2ENR\000"
+ 1735      454E5200 
+ 1736              	.LASF63:
+ 1737 0143 53746172 		.ascii	"StartUpCounter\000"
+ 1737      74557043 
+ 1737      6F756E74 
+ 1737      657200
+ 1738              	.LASF0:
+ 1739 0152 7369676E 		.ascii	"signed char\000"
+ 1739      65642063 
+ 1739      68617200 
+ 1740              	.LASF11:
+ 1741 015e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 1741      206C6F6E 
+ 1741      6720756E 
+ 1741      7369676E 
+ 1741      65642069 
+ 1742              	.LASF18:
+ 1743 0175 53484353 		.ascii	"SHCSR\000"
+ 1743      5200
+ 1744              	.LASF12:
+ 1745 017b 756E7369 		.ascii	"unsigned int\000"
+ 1745      676E6564 
+ 1745      20696E74 
+ 1745      00
+ 1746              	.LASF4:
+ 1747 0188 75696E74 		.ascii	"uint16_t\000"
+ 1747      31365F74 
+ 1747      00
+ 1748              	.LASF74:
+ 1749 0191 474E5520 		.ascii	"GNU C 4.7.2\000"
+ 1749      4320342E 
+ 1749      372E3200 
+ 1750              	.LASF9:
+ 1751 019d 6C6F6E67 		.ascii	"long unsigned int\000"
+ 1751      20756E73 
+ 1751      69676E65 
+ 1751      6420696E 
+ 1751      7400
+ 1752              	.LASF66:
+ 1753 01af 53797374 		.ascii	"SystemCoreClockUpdate\000"
+ 1753      656D436F 
+ 1753      7265436C 
+ 1753      6F636B55 
+ 1753      70646174 
+ 1754              	.LASF22:
+ 1755 01c5 4D4D4641 		.ascii	"MMFAR\000"
+ 1755      5200
+ 1756              	.LASF65:
+ 1757 01cb 53797374 		.ascii	"SystemInit\000"
+ 1757      656D496E 
+ 1757      697400
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 41
+
+
+ 1758              	.LASF5:
+ 1759 01d6 73686F72 		.ascii	"short unsigned int\000"
+ 1759      7420756E 
+ 1759      7369676E 
+ 1759      65642069 
+ 1759      6E7400
+ 1760              	.LASF55:
+ 1761 01e9 41504231 		.ascii	"APB1LPENR\000"
+ 1761      4C50454E 
+ 1761      5200
+ 1762              	.LASF67:
+ 1763 01f3 706C6C76 		.ascii	"pllvco\000"
+ 1763      636F00
+ 1764              	.LASF16:
+ 1765 01fa 56544F52 		.ascii	"VTOR\000"
+ 1765      00
+ 1766              	.LASF6:
+ 1767 01ff 696E7433 		.ascii	"int32_t\000"
+ 1767      325F7400 
+ 1768              	.LASF26:
+ 1769 0207 49534152 		.ascii	"ISAR\000"
+ 1769      00
+ 1770              	.LASF21:
+ 1771 020c 44465352 		.ascii	"DFSR\000"
+ 1771      00
+ 1772              	.LASF72:
+ 1773 0211 53797374 		.ascii	"SystemCoreClock\000"
+ 1773      656D436F 
+ 1773      7265436C 
+ 1773      6F636B00 
+ 1774              	.LASF20:
+ 1775 0221 48465352 		.ascii	"HFSR\000"
+ 1775      00
+ 1776              	.LASF52:
+ 1777 0226 41484232 		.ascii	"AHB2LPENR\000"
+ 1777      4C50454E 
+ 1777      5200
+ 1778              	.LASF25:
+ 1779 0230 4D4D4652 		.ascii	"MMFR\000"
+ 1779      00
+ 1780              	.LASF27:
+ 1781 0235 52455345 		.ascii	"RESERVED0\000"
+ 1781      52564544 
+ 1781      3000
+ 1782              	.LASF43:
+ 1783 023f 52455345 		.ascii	"RESERVED1\000"
+ 1783      52564544 
+ 1783      3100
+ 1784              	.LASF47:
+ 1785 0249 52455345 		.ascii	"RESERVED2\000"
+ 1785      52564544 
+ 1785      3200
+ 1786              	.LASF77:
+ 1787 0253 53657453 		.ascii	"SetSysClock\000"
+ 1787      7973436C 
+ 1787      6F636B00 
+ 1788              	.LASF54:
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 42
+
+
+ 1789 025f 52455345 		.ascii	"RESERVED4\000"
+ 1789      52564544 
+ 1789      3400
+ 1790              	.LASF57:
+ 1791 0269 52455345 		.ascii	"RESERVED5\000"
+ 1791      52564544 
+ 1791      3500
+ 1792              	.LASF59:
+ 1793 0273 52455345 		.ascii	"RESERVED6\000"
+ 1793      52564544 
+ 1793      3600
+ 1794              	.LASF71:
+ 1795 027d 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 1795      52784275 
+ 1795      66666572 
+ 1795      00
+ 1796              	.LASF44:
+ 1797 028a 41484231 		.ascii	"AHB1ENR\000"
+ 1797      454E5200 
+ 1798              	.LASF30:
+ 1799 0292 52455345 		.ascii	"RESET\000"
+ 1799      5400
+ 1800              	.LASF75:
+ 1801 0298 2E5C7372 		.ascii	".\\src\\system_stm32f4xx.c\000"
+ 1801      635C7379 
+ 1801      7374656D 
+ 1801      5F73746D 
+ 1801      33326634 
+ 1802              	.LASF24:
+ 1803 02b1 41465352 		.ascii	"AFSR\000"
+ 1803      00
+ 1804              	.LASF40:
+ 1805 02b6 41484233 		.ascii	"AHB3RSTR\000"
+ 1805      52535452 
+ 1805      00
+ 1806              	.LASF34:
+ 1807 02bf 464C4153 		.ascii	"FLASH_TypeDef\000"
+ 1807      485F5479 
+ 1807      70654465 
+ 1807      6600
+ 1808              	.LASF76:
+ 1809 02cd 443A5C4E 		.ascii	"D:\\NiVek\\Firmware\\NiVek32\000"
+ 1809      6956656B 
+ 1809      5C466972 
+ 1809      6D776172 
+ 1809      655C4E69 
+ 1810              	.LASF28:
+ 1811 02e7 43504143 		.ascii	"CPACR\000"
+ 1811      5200
+ 1812              	.LASF56:
+ 1813 02ed 41504232 		.ascii	"APB2LPENR\000"
+ 1813      4C50454E 
+ 1813      5200
+ 1814              	.LASF33:
+ 1815 02f7 4F505443 		.ascii	"OPTCR\000"
+ 1815      5200
+ 1816              		.ident	"GCC: (Sourcery CodeBench Lite 2012.09-63) 4.7.2"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 43
+
+
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s 			page 44
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 system_stm32f4xx.c
+C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s:70     .text:00000000 $t
+C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s:75     .text:00000000 SystemInit
+C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s:234    .text:000000e0 $d
+C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s:243    .text:000000f8 $t
+C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s:248    .text:000000f8 SystemCoreClockUpdate
+C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s:329    .text:0000015c $d
+C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s:347    .data:00000004 AHBPrescTable
+C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s:343    .data:00000000 SystemCoreClock
+C:\Users\Kevin\AppData\Local\Temp\ccJHPTe2.s:339    .data:00000000 $d
+                     .debug_frame:00000010 $d
+
+NO UNDEFINED SYMBOLS

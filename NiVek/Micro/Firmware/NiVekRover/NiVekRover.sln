@@ -1,0 +1,53 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.30501.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "NiVekRover", "NiVekRover.vcxproj", "{496AA7F8-779D-4387-9334-81FDA6D9D0C9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{F08638DE-5C1B-43AA-9E7D-236EC1331F1C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "NiVekMessageParser", "NiVekMessageParser", "{5020807C-2F4A-4868-885F-93E9A6014000}"
+	ProjectSection(SolutionItems) = preProject
+		K:\Electronics\Galileo\arduino-1.5.3\libraries\NiVekMessageParser\NiVekMessage.cpp = K:\Electronics\Galileo\arduino-1.5.3\libraries\NiVekMessageParser\NiVekMessage.cpp
+		K:\Electronics\Galileo\arduino-1.5.3\libraries\NiVekMessageParser\NiVekMessage.h = K:\Electronics\Galileo\arduino-1.5.3\libraries\NiVekMessageParser\NiVekMessage.h
+		K:\Electronics\Galileo\arduino-1.5.3\libraries\NiVekMessageParser\NiVekMessageParser.cpp = K:\Electronics\Galileo\arduino-1.5.3\libraries\NiVekMessageParser\NiVekMessageParser.cpp
+		K:\Electronics\Galileo\arduino-1.5.3\libraries\NiVekMessageParser\NiVekMessageParser.h = K:\Electronics\Galileo\arduino-1.5.3\libraries\NiVekMessageParser\NiVekMessageParser.h
+		K:\Electronics\Galileo\arduino-1.5.3\libraries\NiVekMessageParser\NiVekMessageScribe.cpp = K:\Electronics\Galileo\arduino-1.5.3\libraries\NiVekMessageParser\NiVekMessageScribe.cpp
+		K:\Electronics\Galileo\arduino-1.5.3\libraries\NiVekMessageParser\NiVekMessageScribe.h = K:\Electronics\Galileo\arduino-1.5.3\libraries\NiVekMessageParser\NiVekMessageScribe.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Servo", "Servo", "{DEAF98D7-69A5-43F8-9EC8-3402EAA60545}"
+	ProjectSection(SolutionItems) = preProject
+		K:\Electronics\Galileo\arduino-1.5.3\hardware\arduino\x86\libraries\Servo\Servo.cpp = K:\Electronics\Galileo\arduino-1.5.3\hardware\arduino\x86\libraries\Servo\Servo.cpp
+		K:\Electronics\Galileo\arduino-1.5.3\hardware\arduino\x86\libraries\Servo\Servo.h = K:\Electronics\Galileo\arduino-1.5.3\hardware\arduino\x86\libraries\Servo\Servo.h
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Wire", "Wire", "{4508E426-AA03-415B-80CA-39271BF833F1}"
+	ProjectSection(SolutionItems) = preProject
+		K:\Electronics\Galileo\arduino-1.5.3\hardware\arduino\x86\libraries\Wire\Wire.cpp = K:\Electronics\Galileo\arduino-1.5.3\hardware\arduino\x86\libraries\Wire\Wire.cpp
+		K:\Electronics\Galileo\arduino-1.5.3\hardware\arduino\x86\libraries\Wire\Wire.h = K:\Electronics\Galileo\arduino-1.5.3\hardware\arduino\x86\libraries\Wire\Wire.h
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{496AA7F8-779D-4387-9334-81FDA6D9D0C9}.Debug|Win32.ActiveCfg = Debug|Win32
+		{496AA7F8-779D-4387-9334-81FDA6D9D0C9}.Debug|Win32.Build.0 = Debug|Win32
+		{496AA7F8-779D-4387-9334-81FDA6D9D0C9}.Debug|Win32.Deploy.0 = Debug|Win32
+		{496AA7F8-779D-4387-9334-81FDA6D9D0C9}.Release|Win32.ActiveCfg = Release|Win32
+		{496AA7F8-779D-4387-9334-81FDA6D9D0C9}.Release|Win32.Build.0 = Release|Win32
+		{496AA7F8-779D-4387-9334-81FDA6D9D0C9}.Release|Win32.Deploy.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5020807C-2F4A-4868-885F-93E9A6014000} = {F08638DE-5C1B-43AA-9E7D-236EC1331F1C}
+		{DEAF98D7-69A5-43F8-9EC8-3402EAA60545} = {F08638DE-5C1B-43AA-9E7D-236EC1331F1C}
+		{4508E426-AA03-415B-80CA-39271BF833F1} = {F08638DE-5C1B-43AA-9E7D-236EC1331F1C}
+	EndGlobalSection
+EndGlobal

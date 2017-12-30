@@ -1,0 +1,4069 @@
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 1
+
+
+   1              		.syntax unified
+   2              		.cpu cortex-m4
+   3              		.eabi_attribute 27, 3	@ Tag_ABI_HardFP_use
+   4              		.eabi_attribute 28, 1	@ Tag_ABI_VFP_args
+   5              		.fpu fpv4-sp-d16
+   6              		.eabi_attribute 20, 1	@ Tag_ABI_FP_denormal
+   7              		.eabi_attribute 21, 1	@ Tag_ABI_FP_exceptions
+   8              		.eabi_attribute 23, 3	@ Tag_ABI_FP_number_model
+   9              		.eabi_attribute 24, 1	@ Tag_ABI_align8_needed
+  10              		.eabi_attribute 25, 1	@ Tag_ABI_align8_preserved
+  11              		.eabi_attribute 26, 1	@ Tag_ABI_enum_size
+  12              		.eabi_attribute 30, 4	@ Tag_ABI_optimization_goals
+  13              		.eabi_attribute 34, 1	@ Tag_CPU_unaligned_access
+  14              		.eabi_attribute 18, 4	@ Tag_ABI_PCS_wchar_t
+  15              		.file	"kalman.c"
+  16              	@ GNU C (Sourcery CodeBench Lite 2012.09-63) version 4.7.2 (arm-none-eabi)
+  17              	@	compiled by GNU C version 4.3.2, GMP version 5.0.5, MPFR version 3.1.1-p2, MPC version 1.0.1
+  18              	@ GGC heuristics: --param ggc-min-expand=100 --param ggc-min-heapsize=131072
+  19              	@ options passed:  -I . -I \STMSPINCDDIR -I .\stm32f4periph\inc
+  20              	@ -I .\CMSIS\Include -I .\inc\commo\usb -I .\inc\commo -I .\inc\common
+  21              	@ -I .\inc -imultilib thumb2
+  22              	@ -iprefix k:\electronics\gcc\bin\../lib/gcc/arm-none-eabi/4.7.2/
+  23              	@ -isysroot k:\electronics\gcc\bin\../arm-none-eabi
+  24              	@ -MD .\src\sensors\fusion\kalman.d -MF .dep\kalman.o.d -MP
+  25              	@ -MQ .\src\sensors\fusion\kalman.o -D__USES_INITFINI__ -D STM32F0XX
+  26              	@ -D USE_STDPERIPH_DRIVER -D RUN_FROM_FLASH=1
+  27              	@ -D __CS_SOURCERYGXX_MAJ__=2012 -D __CS_SOURCERYGXX_MIN__=9
+  28              	@ -D __CS_SOURCERYGXX_REV__=63 .\src\sensors\fusion\kalman.c
+  29              	@ -mcpu=cortex-m4 -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb
+  30              	@ -auxbase-strip .\src\sensors\fusion\kalman.o -gdwarf-2 -Os -Wall
+  31              	@ -Wstrict-prototypes -std=gnu99 -fomit-frame-pointer -fverbose-asm
+  32              	@ options enabled:  -fauto-inc-dec -fbranch-count-reg -fcaller-saves
+  33              	@ -fcombine-stack-adjustments -fcommon -fcompare-elim -fcprop-registers
+  34              	@ -fcrossjumping -fcse-follow-jumps -fdebug-types-section -fdefer-pop
+  35              	@ -fdelete-null-pointer-checks -fdevirtualize -fdwarf2-cfi-asm
+  36              	@ -fearly-inlining -feliminate-unused-debug-types -fexpensive-optimizations
+  37              	@ -fextension-elimination -fforward-propagate -ffunction-cse -fgcse
+  38              	@ -fgcse-lm -fgnu-runtime -fguess-branch-probability -fident
+  39              	@ -fif-conversion -fif-conversion2 -findirect-inlining -finline
+  40              	@ -finline-atomics -finline-functions -finline-functions-called-once
+  41              	@ -finline-small-functions -fipa-cp -fipa-profile -fipa-pure-const
+  42              	@ -fipa-reference -fipa-sra -fira-share-save-slots -fira-share-spill-slots
+  43              	@ -fivopts -fkeep-static-consts -fleading-underscore -fmath-errno
+  44              	@ -fmerge-constants -fmerge-debug-strings -fmove-loop-invariants
+  45              	@ -fomit-frame-pointer -foptimize-register-move -foptimize-sibling-calls
+  46              	@ -fpartial-inlining -fpeephole -fpeephole2 -fprefetch-loop-arrays
+  47              	@ -freg-struct-return -fregmove -freorder-blocks -freorder-functions
+  48              	@ -frerun-cse-after-loop -fsched-critical-path-heuristic
+  49              	@ -fsched-dep-count-heuristic -fsched-group-heuristic -fsched-interblock
+  50              	@ -fsched-last-insn-heuristic -fsched-rank-heuristic -fsched-spec
+  51              	@ -fsched-spec-insn-heuristic -fsched-stalled-insns-dep -fschedule-insns2
+  52              	@ -fsection-anchors -fshow-column -fshrink-wrap -fsigned-zeros
+  53              	@ -fsplit-ivs-in-unroller -fsplit-wide-types -fstrict-aliasing
+  54              	@ -fstrict-overflow -fstrict-volatile-bitfields -fthread-jumps
+  55              	@ -ftoplevel-reorder -ftrapping-math -ftree-bit-ccp -ftree-builtin-call-dce
+  56              	@ -ftree-ccp -ftree-ch -ftree-copy-prop -ftree-copyrename -ftree-cselim
+  57              	@ -ftree-dce -ftree-dominator-opts -ftree-dse -ftree-forwprop -ftree-fre
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 2
+
+
+  58              	@ -ftree-if-to-switch-conversion -ftree-loop-if-convert -ftree-loop-im
+  59              	@ -ftree-loop-ivcanon -ftree-loop-optimize -ftree-parallelize-loops=
+  60              	@ -ftree-phiprop -ftree-pre -ftree-pta -ftree-reassoc -ftree-scev-cprop
+  61              	@ -ftree-sink -ftree-slp-vectorize -ftree-sra -ftree-switch-conversion
+  62              	@ -ftree-tail-merge -ftree-ter -ftree-vect-loop-version -ftree-vrp
+  63              	@ -funit-at-a-time -fvar-tracking -fvar-tracking-assignments -fverbose-asm
+  64              	@ -fzero-initialized-in-bss -mlittle-endian -msched-prolog -mthumb
+  65              	@ -munaligned-access -mvectorize-with-neon-quad
+  66              	
+  67              		.text
+  68              	.Ltext0:
+  69              		.cfi_sections	.debug_frame
+  70              		.align	1
+  71              		.global	TWB_SNSR_Kalman_Init
+  72              		.thumb
+  73              		.thumb_func
+  74              		.type	TWB_SNSR_Kalman_Init, %function
+  75              	TWB_SNSR_Kalman_Init:
+  76              	.LFB110:
+  77              		.file 1 ".\\src\\sensors\\fusion\\kalman.c"
+   1:.\src\sensors\fusion/kalman.c **** /*
+   2:.\src\sensors\fusion/kalman.c ****  * kalman.c
+   3:.\src\sensors\fusion/kalman.c ****  *
+   4:.\src\sensors\fusion/kalman.c ****  *  Created on: Jan 4, 2013
+   5:.\src\sensors\fusion/kalman.c ****  *      Author: kevinw
+   6:.\src\sensors\fusion/kalman.c ****  */
+   7:.\src\sensors\fusion/kalman.c **** 
+   8:.\src\sensors\fusion/kalman.c **** #include "sensors/fusion/kalman.h"
+   9:.\src\sensors\fusion/kalman.c **** #include "sensors/snsr_main.h"
+  10:.\src\sensors\fusion/kalman.c **** 
+  11:.\src\sensors\fusion/kalman.c **** iOpResult_e TWB_SNSR_Kalman_Init(void){
+  78              		.loc 1 11 0
+  79              		.cfi_startproc
+  80              		@ args = 0, pretend = 0, frame = 0
+  81              		@ frame_needed = 0, uses_anonymous_args = 0
+  82              		@ link register save eliminated.
+  12:.\src\sensors\fusion/kalman.c **** 	KalmanSnsrFusion->SampleRate = SensorConfig->Kalman_Enabled;
+  83              		.loc 1 12 0
+  84 0000 054A     		ldr	r2, .L2	@ tmp140,
+  85 0002 064B     		ldr	r3, .L2+4	@ tmp139,
+  86 0004 1268     		ldr	r2, [r2, #0]	@ SensorConfig.1, SensorConfig
+  87 0006 1B68     		ldr	r3, [r3, #0]	@ KalmanSnsrFusion.0, KalmanSnsrFusion
+  88 0008 92F84E10 		ldrb	r1, [r2, #78]	@ zero_extendqisi2	@ SensorConfig.1_2->Kalman_Enabled, SensorConfig.1_2->Kalman
+  13:.\src\sensors\fusion/kalman.c **** 	KalmanSnsrFusion->IsEnabled = SensorConfig->Kalman_SampleRate;
+  89              		.loc 1 13 0
+  90 000c 92F84F20 		ldrb	r2, [r2, #79]	@ zero_extendqisi2	@ SensorConfig.1_2->Kalman_SampleRate, SensorConfig.1_2->Kal
+  12:.\src\sensors\fusion/kalman.c **** 	KalmanSnsrFusion->SampleRate = SensorConfig->Kalman_Enabled;
+  91              		.loc 1 12 0
+  92 0010 5973     		strb	r1, [r3, #13]	@ SensorConfig.1_2->Kalman_Enabled, KalmanSnsrFusion.0_1->SampleRate
+  93              		.loc 1 13 0
+  94 0012 5A71     		strb	r2, [r3, #5]	@ SensorConfig.1_2->Kalman_SampleRate, KalmanSnsrFusion.0_1->IsEnabled
+  14:.\src\sensors\fusion/kalman.c **** 
+  15:.\src\sensors\fusion/kalman.c **** 	return OK;
+  16:.\src\sensors\fusion/kalman.c **** }
+  95              		.loc 1 16 0
+  96 0014 0020     		movs	r0, #0	@,
+  97 0016 7047     		bx	lr	@
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 3
+
+
+  98              	.L3:
+  99              		.align	2
+ 100              	.L2:
+ 101 0018 00000000 		.word	SensorConfig
+ 102 001c 00000000 		.word	KalmanSnsrFusion
+ 103              		.cfi_endproc
+ 104              	.LFE110:
+ 105              		.size	TWB_SNSR_Kalman_Init, .-TWB_SNSR_Kalman_Init
+ 106              		.align	1
+ 107              		.global	TWB_SNSR_Kalman_ResetDefaults
+ 108              		.thumb
+ 109              		.thumb_func
+ 110              		.type	TWB_SNSR_Kalman_ResetDefaults, %function
+ 111              	TWB_SNSR_Kalman_ResetDefaults:
+ 112              	.LFB111:
+  17:.\src\sensors\fusion/kalman.c **** 
+  18:.\src\sensors\fusion/kalman.c **** iOpResult_e TWB_SNSR_Kalman_ResetDefaults(void) {
+ 113              		.loc 1 18 0
+ 114              		.cfi_startproc
+ 115              		@ args = 0, pretend = 0, frame = 0
+ 116              		@ frame_needed = 0, uses_anonymous_args = 0
+ 117              		@ link register save eliminated.
+  19:.\src\sensors\fusion/kalman.c **** 
+  20:.\src\sensors\fusion/kalman.c **** 	return OK;
+  21:.\src\sensors\fusion/kalman.c **** }
+ 118              		.loc 1 21 0
+ 119 0020 0020     		movs	r0, #0	@,
+ 120 0022 7047     		bx	lr	@
+ 121              		.cfi_endproc
+ 122              	.LFE111:
+ 123              		.size	TWB_SNSR_Kalman_ResetDefaults, .-TWB_SNSR_Kalman_ResetDefaults
+ 124              		.align	1
+ 125              		.global	TWB_SNSR_Kalman_UpdateSetting
+ 126              		.thumb
+ 127              		.thumb_func
+ 128              		.type	TWB_SNSR_Kalman_UpdateSetting, %function
+ 129              	TWB_SNSR_Kalman_UpdateSetting:
+ 130              	.LFB112:
+  22:.\src\sensors\fusion/kalman.c **** 
+  23:.\src\sensors\fusion/kalman.c **** iOpResult_e TWB_SNSR_Kalman_UpdateSetting(uint16_t addr, uint8_t value){
+ 131              		.loc 1 23 0
+ 132              		.cfi_startproc
+ 133              		@ args = 0, pretend = 0, frame = 0
+ 134              		@ frame_needed = 0, uses_anonymous_args = 0
+ 135              		@ link register save eliminated.
+ 136              	.LVL0:
+  24:.\src\sensors\fusion/kalman.c **** 
+  25:.\src\sensors\fusion/kalman.c **** 	return OK;
+  26:.\src\sensors\fusion/kalman.c **** }
+ 137              		.loc 1 26 0
+ 138 0024 0020     		movs	r0, #0	@,
+ 139              	.LVL1:
+ 140 0026 7047     		bx	lr	@
+ 141              		.cfi_endproc
+ 142              	.LFE112:
+ 143              		.size	TWB_SNSR_Kalman_UpdateSetting, .-TWB_SNSR_Kalman_UpdateSetting
+ 144              		.align	1
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 4
+
+
+ 145              		.global	TWB_SNSR_Kalman_SendDiag
+ 146              		.thumb
+ 147              		.thumb_func
+ 148              		.type	TWB_SNSR_Kalman_SendDiag, %function
+ 149              	TWB_SNSR_Kalman_SendDiag:
+ 150              	.LFB113:
+  27:.\src\sensors\fusion/kalman.c **** 
+  28:.\src\sensors\fusion/kalman.c **** void TWB_SNSR_Kalman_SendDiag(void){
+ 151              		.loc 1 28 0
+ 152              		.cfi_startproc
+ 153              		@ args = 0, pretend = 0, frame = 0
+ 154              		@ frame_needed = 0, uses_anonymous_args = 0
+ 155              		@ link register save eliminated.
+ 156 0028 7047     		bx	lr	@
+ 157              		.cfi_endproc
+ 158              	.LFE113:
+ 159              		.size	TWB_SNSR_Kalman_SendDiag, .-TWB_SNSR_Kalman_SendDiag
+ 160              		.align	1
+ 161              		.global	TWB_SNSR_Kalman_Process
+ 162              		.thumb
+ 163              		.thumb_func
+ 164              		.type	TWB_SNSR_Kalman_Process, %function
+ 165              	TWB_SNSR_Kalman_Process:
+ 166              	.LFB114:
+  29:.\src\sensors\fusion/kalman.c **** 
+  30:.\src\sensors\fusion/kalman.c **** }
+  31:.\src\sensors\fusion/kalman.c **** 
+  32:.\src\sensors\fusion/kalman.c **** 
+  33:.\src\sensors\fusion/kalman.c **** iOpResult_e TWB_SNSR_Kalman_Process(float deltaT){
+ 167              		.loc 1 33 0
+ 168              		.cfi_startproc
+ 169              		@ args = 0, pretend = 0, frame = 0
+ 170              		@ frame_needed = 0, uses_anonymous_args = 0
+ 171              		@ link register save eliminated.
+ 172              	.LVL2:
+  34:.\src\sensors\fusion/kalman.c **** 
+  35:.\src\sensors\fusion/kalman.c **** 	return OK;
+  36:.\src\sensors\fusion/kalman.c **** }
+ 173              		.loc 1 36 0
+ 174 002a 0020     		movs	r0, #0	@,
+ 175 002c 7047     		bx	lr	@
+ 176              		.cfi_endproc
+ 177              	.LFE114:
+ 178              		.size	TWB_SNSR_Kalman_Process, .-TWB_SNSR_Kalman_Process
+ 179              		.comm	I2CZeroJob,4,4
+ 180              	.Letext0:
+ 181              		.file 2 "k:\\electronics\\gcc\\bin\\../lib/gcc/arm-none-eabi/4.7.2/../../../../arm-none-eabi/inclu
+ 182              		.file 3 ".\\inc/twb_config.h"
+ 183              		.file 4 ".\\inc/common/twb_common.h"
+ 184              		.file 5 ".\\inc/common/twb_i2c.h"
+ 185              		.file 6 ".\\inc/sensors/snsr_main.h"
+ 186              		.file 7 ".\\inc/core_cm4.h"
+ 187 002e 00BF     		.section	.debug_info,"",%progbits
+ 188              	.Ldebug_info0:
+ 189 0000 7E0D0000 		.4byte	0xd7e
+ 190 0004 0200     		.2byte	0x2
+ 191 0006 00000000 		.4byte	.Ldebug_abbrev0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 5
+
+
+ 192 000a 04       		.byte	0x4
+ 193 000b 01       		.uleb128 0x1
+ 194 000c A4030000 		.4byte	.LASF275
+ 195 0010 01       		.byte	0x1
+ 196 0011 87000000 		.4byte	.LASF276
+ 197 0015 F5080000 		.4byte	.LASF277
+ 198 0019 00000000 		.4byte	.Ltext0
+ 199 001d 2E000000 		.4byte	.Letext0
+ 200 0021 00000000 		.4byte	.Ldebug_line0
+ 201 0025 02       		.uleb128 0x2
+ 202 0026 01       		.byte	0x1
+ 203 0027 06       		.byte	0x6
+ 204 0028 880C0000 		.4byte	.LASF0
+ 205 002c 03       		.uleb128 0x3
+ 206 002d DE060000 		.4byte	.LASF3
+ 207 0031 02       		.byte	0x2
+ 208 0032 2A       		.byte	0x2a
+ 209 0033 37000000 		.4byte	0x37
+ 210 0037 02       		.uleb128 0x2
+ 211 0038 01       		.byte	0x1
+ 212 0039 08       		.byte	0x8
+ 213 003a 100E0000 		.4byte	.LASF1
+ 214 003e 02       		.uleb128 0x2
+ 215 003f 02       		.byte	0x2
+ 216 0040 05       		.byte	0x5
+ 217 0041 260B0000 		.4byte	.LASF2
+ 218 0045 03       		.uleb128 0x3
+ 219 0046 300A0000 		.4byte	.LASF4
+ 220 004a 02       		.byte	0x2
+ 221 004b 36       		.byte	0x36
+ 222 004c 50000000 		.4byte	0x50
+ 223 0050 02       		.uleb128 0x2
+ 224 0051 02       		.byte	0x2
+ 225 0052 07       		.byte	0x7
+ 226 0053 C80F0000 		.4byte	.LASF5
+ 227 0057 03       		.uleb128 0x3
+ 228 0058 C90D0000 		.4byte	.LASF6
+ 229 005c 02       		.byte	0x2
+ 230 005d 4F       		.byte	0x4f
+ 231 005e 62000000 		.4byte	0x62
+ 232 0062 02       		.uleb128 0x2
+ 233 0063 04       		.byte	0x4
+ 234 0064 05       		.byte	0x5
+ 235 0065 590B0000 		.4byte	.LASF7
+ 236 0069 02       		.uleb128 0x2
+ 237 006a 04       		.byte	0x4
+ 238 006b 07       		.byte	0x7
+ 239 006c 890D0000 		.4byte	.LASF8
+ 240 0070 02       		.uleb128 0x2
+ 241 0071 08       		.byte	0x8
+ 242 0072 05       		.byte	0x5
+ 243 0073 D0060000 		.4byte	.LASF9
+ 244 0077 02       		.uleb128 0x2
+ 245 0078 08       		.byte	0x8
+ 246 0079 07       		.byte	0x7
+ 247 007a 0E040000 		.4byte	.LASF10
+ 248 007e 04       		.uleb128 0x4
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 6
+
+
+ 249 007f 04       		.byte	0x4
+ 250 0080 05       		.byte	0x5
+ 251 0081 696E7400 		.ascii	"int\000"
+ 252 0085 02       		.uleb128 0x2
+ 253 0086 04       		.byte	0x4
+ 254 0087 07       		.byte	0x7
+ 255 0088 F90C0000 		.4byte	.LASF11
+ 256 008c 02       		.uleb128 0x2
+ 257 008d 04       		.byte	0x4
+ 258 008e 07       		.byte	0x7
+ 259 008f 610D0000 		.4byte	.LASF12
+ 260 0093 05       		.uleb128 0x5
+ 261 0094 57000000 		.4byte	0x57
+ 262 0098 06       		.uleb128 0x6
+ 263 0099 04       		.byte	0x4
+ 264 009a 07       		.uleb128 0x7
+ 265 009b 01       		.byte	0x1
+ 266 009c 08       		.uleb128 0x8
+ 267 009d 04       		.byte	0x4
+ 268 009e 9A000000 		.4byte	0x9a
+ 269 00a2 08       		.uleb128 0x8
+ 270 00a3 04       		.byte	0x4
+ 271 00a4 A8000000 		.4byte	0xa8
+ 272 00a8 02       		.uleb128 0x2
+ 273 00a9 01       		.byte	0x1
+ 274 00aa 08       		.byte	0x8
+ 275 00ab AB040000 		.4byte	.LASF13
+ 276 00af 02       		.uleb128 0x2
+ 277 00b0 08       		.byte	0x8
+ 278 00b1 04       		.byte	0x4
+ 279 00b2 5F100000 		.4byte	.LASF14
+ 280 00b6 02       		.uleb128 0x2
+ 281 00b7 04       		.byte	0x4
+ 282 00b8 04       		.byte	0x4
+ 283 00b9 B0030000 		.4byte	.LASF15
+ 284 00bd 02       		.uleb128 0x2
+ 285 00be 08       		.byte	0x8
+ 286 00bf 04       		.byte	0x4
+ 287 00c0 240A0000 		.4byte	.LASF16
+ 288 00c4 08       		.uleb128 0x8
+ 289 00c5 04       		.byte	0x4
+ 290 00c6 2C000000 		.4byte	0x2c
+ 291 00ca 09       		.uleb128 0x9
+ 292 00cb D3050000 		.4byte	.LASF220
+ 293 00cf 06       		.byte	0x6
+ 294 00d0 03       		.byte	0x3
+ 295 00d1 21       		.byte	0x21
+ 296 00d2 FB000000 		.4byte	0xfb
+ 297 00d6 0A       		.uleb128 0xa
+ 298 00d7 7800     		.ascii	"x\000"
+ 299 00d9 03       		.byte	0x3
+ 300 00da 22       		.byte	0x22
+ 301 00db 45000000 		.4byte	0x45
+ 302 00df 02       		.byte	0x2
+ 303 00e0 23       		.byte	0x23
+ 304 00e1 00       		.uleb128 0
+ 305 00e2 0A       		.uleb128 0xa
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 7
+
+
+ 306 00e3 7900     		.ascii	"y\000"
+ 307 00e5 03       		.byte	0x3
+ 308 00e6 22       		.byte	0x22
+ 309 00e7 45000000 		.4byte	0x45
+ 310 00eb 02       		.byte	0x2
+ 311 00ec 23       		.byte	0x23
+ 312 00ed 02       		.uleb128 0x2
+ 313 00ee 0A       		.uleb128 0xa
+ 314 00ef 7A00     		.ascii	"z\000"
+ 315 00f1 03       		.byte	0x3
+ 316 00f2 22       		.byte	0x22
+ 317 00f3 45000000 		.4byte	0x45
+ 318 00f7 02       		.byte	0x2
+ 319 00f8 23       		.byte	0x23
+ 320 00f9 04       		.uleb128 0x4
+ 321 00fa 00       		.byte	0
+ 322 00fb 03       		.uleb128 0x3
+ 323 00fc C3060000 		.4byte	.LASF17
+ 324 0100 03       		.byte	0x3
+ 325 0101 23       		.byte	0x23
+ 326 0102 CA000000 		.4byte	0xca
+ 327 0106 0B       		.uleb128 0xb
+ 328 0107 01       		.byte	0x1
+ 329 0108 03       		.byte	0x3
+ 330 0109 29       		.byte	0x29
+ 331 010a 1C010000 		.4byte	0x11c
+ 332 010e 0C       		.uleb128 0xc
+ 333 010f 13000000 		.4byte	.LASF18
+ 334 0113 FF01     		.sleb128 255
+ 335 0115 0C       		.uleb128 0xc
+ 336 0116 C5080000 		.4byte	.LASF19
+ 337 011a 00       		.sleb128 0
+ 338 011b 00       		.byte	0
+ 339 011c 03       		.uleb128 0x3
+ 340 011d 37000000 		.4byte	.LASF20
+ 341 0121 03       		.byte	0x3
+ 342 0122 2C       		.byte	0x2c
+ 343 0123 06010000 		.4byte	0x106
+ 344 0127 0B       		.uleb128 0xb
+ 345 0128 01       		.byte	0x1
+ 346 0129 03       		.byte	0x3
+ 347 012a 81       		.byte	0x81
+ 348 012b 3C010000 		.4byte	0x13c
+ 349 012f 0C       		.uleb128 0xc
+ 350 0130 CD100000 		.4byte	.LASF21
+ 351 0134 00       		.sleb128 0
+ 352 0135 0C       		.uleb128 0xc
+ 353 0136 110F0000 		.4byte	.LASF22
+ 354 013a 01       		.sleb128 1
+ 355 013b 00       		.byte	0
+ 356 013c 03       		.uleb128 0x3
+ 357 013d 9D0B0000 		.4byte	.LASF23
+ 358 0141 03       		.byte	0x3
+ 359 0142 84       		.byte	0x84
+ 360 0143 27010000 		.4byte	0x127
+ 361 0147 0B       		.uleb128 0xb
+ 362 0148 01       		.byte	0x1
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 8
+
+
+ 363 0149 03       		.byte	0x3
+ 364 014a 86       		.byte	0x86
+ 365 014b 5C010000 		.4byte	0x15c
+ 366 014f 0C       		.uleb128 0xc
+ 367 0150 D3080000 		.4byte	.LASF24
+ 368 0154 00       		.sleb128 0
+ 369 0155 0C       		.uleb128 0xc
+ 370 0156 BA0D0000 		.4byte	.LASF25
+ 371 015a 01       		.sleb128 1
+ 372 015b 00       		.byte	0
+ 373 015c 03       		.uleb128 0x3
+ 374 015d E40C0000 		.4byte	.LASF26
+ 375 0161 03       		.byte	0x3
+ 376 0162 89       		.byte	0x89
+ 377 0163 47010000 		.4byte	0x147
+ 378 0167 0B       		.uleb128 0xb
+ 379 0168 01       		.byte	0x1
+ 380 0169 03       		.byte	0x3
+ 381 016a AC       		.byte	0xac
+ 382 016b 82010000 		.4byte	0x182
+ 383 016f 0C       		.uleb128 0xc
+ 384 0170 5F060000 		.4byte	.LASF27
+ 385 0174 00       		.sleb128 0
+ 386 0175 0C       		.uleb128 0xc
+ 387 0176 4E0F0000 		.4byte	.LASF28
+ 388 017a 01       		.sleb128 1
+ 389 017b 0C       		.uleb128 0xc
+ 390 017c 060D0000 		.4byte	.LASF29
+ 391 0180 02       		.sleb128 2
+ 392 0181 00       		.byte	0
+ 393 0182 03       		.uleb128 0x3
+ 394 0183 4D0E0000 		.4byte	.LASF30
+ 395 0187 03       		.byte	0x3
+ 396 0188 B0       		.byte	0xb0
+ 397 0189 67010000 		.4byte	0x167
+ 398 018d 0B       		.uleb128 0xb
+ 399 018e 01       		.byte	0x1
+ 400 018f 03       		.byte	0x3
+ 401 0190 C3       		.byte	0xc3
+ 402 0191 DF010000 		.4byte	0x1df
+ 403 0195 0C       		.uleb128 0xc
+ 404 0196 560A0000 		.4byte	.LASF31
+ 405 019a 00       		.sleb128 0
+ 406 019b 0C       		.uleb128 0xc
+ 407 019c 03030000 		.4byte	.LASF32
+ 408 01a0 01       		.sleb128 1
+ 409 01a1 0C       		.uleb128 0xc
+ 410 01a2 DE030000 		.4byte	.LASF33
+ 411 01a6 02       		.sleb128 2
+ 412 01a7 0C       		.uleb128 0xc
+ 413 01a8 10070000 		.4byte	.LASF34
+ 414 01ac 03       		.sleb128 3
+ 415 01ad 0C       		.uleb128 0xc
+ 416 01ae 6E090000 		.4byte	.LASF35
+ 417 01b2 04       		.sleb128 4
+ 418 01b3 0C       		.uleb128 0xc
+ 419 01b4 660A0000 		.4byte	.LASF36
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 9
+
+
+ 420 01b8 05       		.sleb128 5
+ 421 01b9 0C       		.uleb128 0xc
+ 422 01ba E10E0000 		.4byte	.LASF37
+ 423 01be 06       		.sleb128 6
+ 424 01bf 0C       		.uleb128 0xc
+ 425 01c0 640F0000 		.4byte	.LASF38
+ 426 01c4 07       		.sleb128 7
+ 427 01c5 0C       		.uleb128 0xc
+ 428 01c6 2E0F0000 		.4byte	.LASF39
+ 429 01ca 08       		.sleb128 8
+ 430 01cb 0C       		.uleb128 0xc
+ 431 01cc 2F0D0000 		.4byte	.LASF40
+ 432 01d0 09       		.sleb128 9
+ 433 01d1 0C       		.uleb128 0xc
+ 434 01d2 34030000 		.4byte	.LASF41
+ 435 01d6 0A       		.sleb128 10
+ 436 01d7 0C       		.uleb128 0xc
+ 437 01d8 4A0B0000 		.4byte	.LASF42
+ 438 01dc FF01     		.sleb128 255
+ 439 01de 00       		.byte	0
+ 440 01df 03       		.uleb128 0x3
+ 441 01e0 D2020000 		.4byte	.LASF43
+ 442 01e4 03       		.byte	0x3
+ 443 01e5 D0       		.byte	0xd0
+ 444 01e6 8D010000 		.4byte	0x18d
+ 445 01ea 0D       		.uleb128 0xd
+ 446 01eb 01       		.byte	0x1
+ 447 01ec 03       		.byte	0x3
+ 448 01ed CB01     		.2byte	0x1cb
+ 449 01ef 79020000 		.4byte	0x279
+ 450 01f3 0C       		.uleb128 0xc
+ 451 01f4 DB0D0000 		.4byte	.LASF44
+ 452 01f8 00       		.sleb128 0
+ 453 01f9 0C       		.uleb128 0xc
+ 454 01fa CF070000 		.4byte	.LASF45
+ 455 01fe 20       		.sleb128 32
+ 456 01ff 0C       		.uleb128 0xc
+ 457 0200 A9010000 		.4byte	.LASF46
+ 458 0204 21       		.sleb128 33
+ 459 0205 0C       		.uleb128 0xc
+ 460 0206 100B0000 		.4byte	.LASF47
+ 461 020a 22       		.sleb128 34
+ 462 020b 0C       		.uleb128 0xc
+ 463 020c D10D0000 		.4byte	.LASF48
+ 464 0210 30       		.sleb128 48
+ 465 0211 0C       		.uleb128 0xc
+ 466 0212 28050000 		.4byte	.LASF49
+ 467 0216 31       		.sleb128 49
+ 468 0217 0C       		.uleb128 0xc
+ 469 0218 66100000 		.4byte	.LASF50
+ 470 021c 32       		.sleb128 50
+ 471 021d 0C       		.uleb128 0xc
+ 472 021e CF090000 		.4byte	.LASF51
+ 473 0222 C000     		.sleb128 64
+ 474 0224 0C       		.uleb128 0xc
+ 475 0225 BF020000 		.4byte	.LASF52
+ 476 0229 C100     		.sleb128 65
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 10
+
+
+ 477 022b 0C       		.uleb128 0xc
+ 478 022c EF030000 		.4byte	.LASF53
+ 479 0230 C200     		.sleb128 66
+ 480 0232 0C       		.uleb128 0xc
+ 481 0233 D30A0000 		.4byte	.LASF54
+ 482 0237 D000     		.sleb128 80
+ 483 0239 0C       		.uleb128 0xc
+ 484 023a 9B0D0000 		.4byte	.LASF55
+ 485 023e D100     		.sleb128 81
+ 486 0240 0C       		.uleb128 0xc
+ 487 0241 000B0000 		.4byte	.LASF56
+ 488 0245 D200     		.sleb128 82
+ 489 0247 0C       		.uleb128 0xc
+ 490 0248 DB070000 		.4byte	.LASF57
+ 491 024c D300     		.sleb128 83
+ 492 024e 0C       		.uleb128 0xc
+ 493 024f BD080000 		.4byte	.LASF58
+ 494 0253 E000     		.sleb128 96
+ 495 0255 0C       		.uleb128 0xc
+ 496 0256 330E0000 		.4byte	.LASF59
+ 497 025a F000     		.sleb128 112
+ 498 025c 0C       		.uleb128 0xc
+ 499 025d BA000000 		.4byte	.LASF60
+ 500 0261 8001     		.sleb128 128
+ 501 0263 0C       		.uleb128 0xc
+ 502 0264 FF060000 		.4byte	.LASF61
+ 503 0268 8101     		.sleb128 129
+ 504 026a 0C       		.uleb128 0xc
+ 505 026b 78060000 		.4byte	.LASF62
+ 506 026f 9001     		.sleb128 144
+ 507 0271 0C       		.uleb128 0xc
+ 508 0272 76000000 		.4byte	.LASF63
+ 509 0276 A001     		.sleb128 160
+ 510 0278 00       		.byte	0
+ 511 0279 0E       		.uleb128 0xe
+ 512 027a 99100000 		.4byte	.LASF64
+ 513 027e 03       		.byte	0x3
+ 514 027f E801     		.2byte	0x1e8
+ 515 0281 EA010000 		.4byte	0x1ea
+ 516 0285 0D       		.uleb128 0xd
+ 517 0286 01       		.byte	0x1
+ 518 0287 03       		.byte	0x3
+ 519 0288 EA01     		.2byte	0x1ea
+ 520 028a A1020000 		.4byte	0x2a1
+ 521 028e 0C       		.uleb128 0xc
+ 522 028f BA050000 		.4byte	.LASF65
+ 523 0293 00       		.sleb128 0
+ 524 0294 0C       		.uleb128 0xc
+ 525 0295 BA0C0000 		.4byte	.LASF66
+ 526 0299 01       		.sleb128 1
+ 527 029a 0C       		.uleb128 0xc
+ 528 029b 54060000 		.4byte	.LASF67
+ 529 029f 02       		.sleb128 2
+ 530 02a0 00       		.byte	0
+ 531 02a1 0E       		.uleb128 0xe
+ 532 02a2 700E0000 		.4byte	.LASF68
+ 533 02a6 03       		.byte	0x3
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 11
+
+
+ 534 02a7 EE01     		.2byte	0x1ee
+ 535 02a9 85020000 		.4byte	0x285
+ 536 02ad 0D       		.uleb128 0xd
+ 537 02ae 01       		.byte	0x1
+ 538 02af 03       		.byte	0x3
+ 539 02b0 F001     		.2byte	0x1f0
+ 540 02b2 1D030000 		.4byte	0x31d
+ 541 02b6 0C       		.uleb128 0xc
+ 542 02b7 4C0C0000 		.4byte	.LASF69
+ 543 02bb 00       		.sleb128 0
+ 544 02bc 0C       		.uleb128 0xc
+ 545 02bd 5F010000 		.4byte	.LASF70
+ 546 02c1 01       		.sleb128 1
+ 547 02c2 0C       		.uleb128 0xc
+ 548 02c3 AC080000 		.4byte	.LASF71
+ 549 02c7 02       		.sleb128 2
+ 550 02c8 0C       		.uleb128 0xc
+ 551 02c9 9A060000 		.4byte	.LASF72
+ 552 02cd 03       		.sleb128 3
+ 553 02ce 0C       		.uleb128 0xc
+ 554 02cf D3010000 		.4byte	.LASF73
+ 555 02d3 04       		.sleb128 4
+ 556 02d4 0C       		.uleb128 0xc
+ 557 02d5 33050000 		.4byte	.LASF74
+ 558 02d9 05       		.sleb128 5
+ 559 02da 0C       		.uleb128 0xc
+ 560 02db 120D0000 		.4byte	.LASF75
+ 561 02df 06       		.sleb128 6
+ 562 02e0 0C       		.uleb128 0xc
+ 563 02e1 C3050000 		.4byte	.LASF76
+ 564 02e5 07       		.sleb128 7
+ 565 02e6 0C       		.uleb128 0xc
+ 566 02e7 B6030000 		.4byte	.LASF77
+ 567 02eb 08       		.sleb128 8
+ 568 02ec 0C       		.uleb128 0xc
+ 569 02ed 7D0A0000 		.4byte	.LASF78
+ 570 02f1 09       		.sleb128 9
+ 571 02f2 0C       		.uleb128 0xc
+ 572 02f3 22010000 		.4byte	.LASF79
+ 573 02f7 0A       		.sleb128 10
+ 574 02f8 0C       		.uleb128 0xc
+ 575 02f9 34070000 		.4byte	.LASF80
+ 576 02fd 0B       		.sleb128 11
+ 577 02fe 0C       		.uleb128 0xc
+ 578 02ff 7C070000 		.4byte	.LASF81
+ 579 0303 0C       		.sleb128 12
+ 580 0304 0C       		.uleb128 0xc
+ 581 0305 3E0F0000 		.4byte	.LASF82
+ 582 0309 0D       		.sleb128 13
+ 583 030a 0C       		.uleb128 0xc
+ 584 030b 9D0F0000 		.4byte	.LASF83
+ 585 030f 0E       		.sleb128 14
+ 586 0310 0C       		.uleb128 0xc
+ 587 0311 03080000 		.4byte	.LASF84
+ 588 0315 0F       		.sleb128 15
+ 589 0316 0C       		.uleb128 0xc
+ 590 0317 7B0B0000 		.4byte	.LASF85
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 12
+
+
+ 591 031b 10       		.sleb128 16
+ 592 031c 00       		.byte	0
+ 593 031d 0E       		.uleb128 0xe
+ 594 031e 260C0000 		.4byte	.LASF86
+ 595 0322 03       		.byte	0x3
+ 596 0323 0202     		.2byte	0x202
+ 597 0325 AD020000 		.4byte	0x2ad
+ 598 0329 0D       		.uleb128 0xd
+ 599 032a 01       		.byte	0x1
+ 600 032b 03       		.byte	0x3
+ 601 032c 1B02     		.2byte	0x21b
+ 602 032e B7030000 		.4byte	0x3b7
+ 603 0332 0C       		.uleb128 0xc
+ 604 0333 590E0000 		.4byte	.LASF87
+ 605 0337 00       		.sleb128 0
+ 606 0338 0C       		.uleb128 0xc
+ 607 0339 4F040000 		.4byte	.LASF88
+ 608 033d 01       		.sleb128 1
+ 609 033e 0C       		.uleb128 0xc
+ 610 033f F6100000 		.4byte	.LASF89
+ 611 0343 02       		.sleb128 2
+ 612 0344 0C       		.uleb128 0xc
+ 613 0345 C20C0000 		.4byte	.LASF90
+ 614 0349 03       		.sleb128 3
+ 615 034a 0C       		.uleb128 0xc
+ 616 034b B2070000 		.4byte	.LASF91
+ 617 034f 04       		.sleb128 4
+ 618 0350 0C       		.uleb128 0xc
+ 619 0351 E9000000 		.4byte	.LASF92
+ 620 0355 10       		.sleb128 16
+ 621 0356 0C       		.uleb128 0xc
+ 622 0357 4E090000 		.4byte	.LASF93
+ 623 035b 20       		.sleb128 32
+ 624 035c 0C       		.uleb128 0xc
+ 625 035d BD0B0000 		.4byte	.LASF94
+ 626 0361 30       		.sleb128 48
+ 627 0362 0C       		.uleb128 0xc
+ 628 0363 DB0B0000 		.4byte	.LASF95
+ 629 0367 C000     		.sleb128 64
+ 630 0369 0C       		.uleb128 0xc
+ 631 036a F90B0000 		.4byte	.LASF96
+ 632 036e D000     		.sleb128 80
+ 633 0370 0C       		.uleb128 0xc
+ 634 0371 5D0C0000 		.4byte	.LASF97
+ 635 0375 E000     		.sleb128 96
+ 636 0377 0C       		.uleb128 0xc
+ 637 0378 9E0E0000 		.4byte	.LASF98
+ 638 037c F000     		.sleb128 112
+ 639 037e 0C       		.uleb128 0xc
+ 640 037f 37100000 		.4byte	.LASF99
+ 641 0383 8001     		.sleb128 128
+ 642 0385 0C       		.uleb128 0xc
+ 643 0386 D7100000 		.4byte	.LASF100
+ 644 038a 9001     		.sleb128 144
+ 645 038c 0C       		.uleb128 0xc
+ 646 038d 63020000 		.4byte	.LASF101
+ 647 0391 A001     		.sleb128 160
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 13
+
+
+ 648 0393 0C       		.uleb128 0xc
+ 649 0394 7B040000 		.4byte	.LASF102
+ 650 0398 B001     		.sleb128 176
+ 651 039a 0C       		.uleb128 0xc
+ 652 039b 43030000 		.4byte	.LASF103
+ 653 039f C001     		.sleb128 192
+ 654 03a1 0C       		.uleb128 0xc
+ 655 03a2 29080000 		.4byte	.LASF104
+ 656 03a6 D001     		.sleb128 208
+ 657 03a8 0C       		.uleb128 0xc
+ 658 03a9 6D050000 		.4byte	.LASF105
+ 659 03ad E001     		.sleb128 224
+ 660 03af 0C       		.uleb128 0xc
+ 661 03b0 6A0D0000 		.4byte	.LASF106
+ 662 03b4 F001     		.sleb128 240
+ 663 03b6 00       		.byte	0
+ 664 03b7 0E       		.uleb128 0xe
+ 665 03b8 3E0D0000 		.4byte	.LASF107
+ 666 03bc 03       		.byte	0x3
+ 667 03bd 3002     		.2byte	0x230
+ 668 03bf 29030000 		.4byte	0x329
+ 669 03c3 0D       		.uleb128 0xd
+ 670 03c4 01       		.byte	0x1
+ 671 03c5 03       		.byte	0x3
+ 672 03c6 3202     		.2byte	0x232
+ 673 03c8 DA030000 		.4byte	0x3da
+ 674 03cc 0C       		.uleb128 0xc
+ 675 03cd 080E0000 		.4byte	.LASF108
+ 676 03d1 FF01     		.sleb128 255
+ 677 03d3 0C       		.uleb128 0xc
+ 678 03d4 070B0000 		.4byte	.LASF109
+ 679 03d8 00       		.sleb128 0
+ 680 03d9 00       		.byte	0
+ 681 03da 0E       		.uleb128 0xe
+ 682 03db 940E0000 		.4byte	.LASF110
+ 683 03df 03       		.byte	0x3
+ 684 03e0 3502     		.2byte	0x235
+ 685 03e2 C3030000 		.4byte	0x3c3
+ 686 03e6 0F       		.uleb128 0xf
+ 687 03e7 50       		.byte	0x50
+ 688 03e8 03       		.byte	0x3
+ 689 03e9 3702     		.2byte	0x237
+ 690 03eb A0080000 		.4byte	0x8a0
+ 691 03ef 10       		.uleb128 0x10
+ 692 03f0 F6030000 		.4byte	.LASF111
+ 693 03f4 03       		.byte	0x3
+ 694 03f5 3802     		.2byte	0x238
+ 695 03f7 1D030000 		.4byte	0x31d
+ 696 03fb 02       		.byte	0x2
+ 697 03fc 23       		.byte	0x23
+ 698 03fd 00       		.uleb128 0
+ 699 03fe 10       		.uleb128 0x10
+ 700 03ff 4E0D0000 		.4byte	.LASF112
+ 701 0403 03       		.byte	0x3
+ 702 0404 3A02     		.2byte	0x23a
+ 703 0406 DF010000 		.4byte	0x1df
+ 704 040a 02       		.byte	0x2
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 14
+
+
+ 705 040b 23       		.byte	0x23
+ 706 040c 01       		.uleb128 0x1
+ 707 040d 10       		.uleb128 0x10
+ 708 040e DD0A0000 		.4byte	.LASF113
+ 709 0412 03       		.byte	0x3
+ 710 0413 3B02     		.2byte	0x23b
+ 711 0415 DF010000 		.4byte	0x1df
+ 712 0419 02       		.byte	0x2
+ 713 041a 23       		.byte	0x23
+ 714 041b 02       		.uleb128 0x2
+ 715 041c 10       		.uleb128 0x10
+ 716 041d 3A090000 		.4byte	.LASF114
+ 717 0421 03       		.byte	0x3
+ 718 0422 3C02     		.2byte	0x23c
+ 719 0424 DF010000 		.4byte	0x1df
+ 720 0428 02       		.byte	0x2
+ 721 0429 23       		.byte	0x23
+ 722 042a 03       		.uleb128 0x3
+ 723 042b 10       		.uleb128 0x10
+ 724 042c 3A0E0000 		.4byte	.LASF115
+ 725 0430 03       		.byte	0x3
+ 726 0431 3D02     		.2byte	0x23d
+ 727 0433 DF010000 		.4byte	0x1df
+ 728 0437 02       		.byte	0x2
+ 729 0438 23       		.byte	0x23
+ 730 0439 04       		.uleb128 0x4
+ 731 043a 10       		.uleb128 0x10
+ 732 043b 4C000000 		.4byte	.LASF116
+ 733 043f 03       		.byte	0x3
+ 734 0440 3E02     		.2byte	0x23e
+ 735 0442 DF010000 		.4byte	0x1df
+ 736 0446 02       		.byte	0x2
+ 737 0447 23       		.byte	0x23
+ 738 0448 05       		.uleb128 0x5
+ 739 0449 10       		.uleb128 0x10
+ 740 044a 8D0A0000 		.4byte	.LASF117
+ 741 044e 03       		.byte	0x3
+ 742 044f 3F02     		.2byte	0x23f
+ 743 0451 DF010000 		.4byte	0x1df
+ 744 0455 02       		.byte	0x2
+ 745 0456 23       		.byte	0x23
+ 746 0457 06       		.uleb128 0x6
+ 747 0458 10       		.uleb128 0x10
+ 748 0459 B9040000 		.4byte	.LASF118
+ 749 045d 03       		.byte	0x3
+ 750 045e 4002     		.2byte	0x240
+ 751 0460 DF010000 		.4byte	0x1df
+ 752 0464 02       		.byte	0x2
+ 753 0465 23       		.byte	0x23
+ 754 0466 07       		.uleb128 0x7
+ 755 0467 10       		.uleb128 0x10
+ 756 0468 8A080000 		.4byte	.LASF119
+ 757 046c 03       		.byte	0x3
+ 758 046d 4202     		.2byte	0x242
+ 759 046f DA030000 		.4byte	0x3da
+ 760 0473 02       		.byte	0x2
+ 761 0474 23       		.byte	0x23
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 15
+
+
+ 762 0475 08       		.uleb128 0x8
+ 763 0476 10       		.uleb128 0x10
+ 764 0477 BD100000 		.4byte	.LASF120
+ 765 047b 03       		.byte	0x3
+ 766 047c 4302     		.2byte	0x243
+ 767 047e 2C000000 		.4byte	0x2c
+ 768 0482 02       		.byte	0x2
+ 769 0483 23       		.byte	0x23
+ 770 0484 09       		.uleb128 0x9
+ 771 0485 10       		.uleb128 0x10
+ 772 0486 8A0B0000 		.4byte	.LASF121
+ 773 048a 03       		.byte	0x3
+ 774 048b 4402     		.2byte	0x244
+ 775 048d 2C000000 		.4byte	0x2c
+ 776 0491 02       		.byte	0x2
+ 777 0492 23       		.byte	0x23
+ 778 0493 0A       		.uleb128 0xa
+ 779 0494 10       		.uleb128 0x10
+ 780 0495 300B0000 		.4byte	.LASF122
+ 781 0499 03       		.byte	0x3
+ 782 049a 4502     		.2byte	0x245
+ 783 049c B7030000 		.4byte	0x3b7
+ 784 04a0 02       		.byte	0x2
+ 785 04a1 23       		.byte	0x23
+ 786 04a2 0B       		.uleb128 0xb
+ 787 04a3 10       		.uleb128 0x10
+ 788 04a4 A7050000 		.4byte	.LASF123
+ 789 04a8 03       		.byte	0x3
+ 790 04a9 4602     		.2byte	0x246
+ 791 04ab DF010000 		.4byte	0x1df
+ 792 04af 02       		.byte	0x2
+ 793 04b0 23       		.byte	0x23
+ 794 04b1 0C       		.uleb128 0xc
+ 795 04b2 10       		.uleb128 0x10
+ 796 04b3 A50A0000 		.4byte	.LASF124
+ 797 04b7 03       		.byte	0x3
+ 798 04b8 4802     		.2byte	0x248
+ 799 04ba DA030000 		.4byte	0x3da
+ 800 04be 02       		.byte	0x2
+ 801 04bf 23       		.byte	0x23
+ 802 04c0 0D       		.uleb128 0xd
+ 803 04c1 10       		.uleb128 0x10
+ 804 04c2 B40F0000 		.4byte	.LASF125
+ 805 04c6 03       		.byte	0x3
+ 806 04c7 4902     		.2byte	0x249
+ 807 04c9 DA030000 		.4byte	0x3da
+ 808 04cd 02       		.byte	0x2
+ 809 04ce 23       		.byte	0x23
+ 810 04cf 0E       		.uleb128 0xe
+ 811 04d0 10       		.uleb128 0x10
+ 812 04d1 E5070000 		.4byte	.LASF126
+ 813 04d5 03       		.byte	0x3
+ 814 04d6 4B02     		.2byte	0x24b
+ 815 04d8 2C000000 		.4byte	0x2c
+ 816 04dc 02       		.byte	0x2
+ 817 04dd 23       		.byte	0x23
+ 818 04de 0F       		.uleb128 0xf
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 16
+
+
+ 819 04df 10       		.uleb128 0x10
+ 820 04e0 740F0000 		.4byte	.LASF127
+ 821 04e4 03       		.byte	0x3
+ 822 04e5 4C02     		.2byte	0x24c
+ 823 04e7 2C000000 		.4byte	0x2c
+ 824 04eb 02       		.byte	0x2
+ 825 04ec 23       		.byte	0x23
+ 826 04ed 10       		.uleb128 0x10
+ 827 04ee 10       		.uleb128 0x10
+ 828 04ef 76030000 		.4byte	.LASF128
+ 829 04f3 03       		.byte	0x3
+ 830 04f4 4D02     		.2byte	0x24d
+ 831 04f6 2C000000 		.4byte	0x2c
+ 832 04fa 02       		.byte	0x2
+ 833 04fb 23       		.byte	0x23
+ 834 04fc 11       		.uleb128 0x11
+ 835 04fd 10       		.uleb128 0x10
+ 836 04fe E6080000 		.4byte	.LASF129
+ 837 0502 03       		.byte	0x3
+ 838 0503 4E02     		.2byte	0x24e
+ 839 0505 2C000000 		.4byte	0x2c
+ 840 0509 02       		.byte	0x2
+ 841 050a 23       		.byte	0x23
+ 842 050b 12       		.uleb128 0x12
+ 843 050c 10       		.uleb128 0x10
+ 844 050d 62030000 		.4byte	.LASF130
+ 845 0511 03       		.byte	0x3
+ 846 0512 4F02     		.2byte	0x24f
+ 847 0514 DA030000 		.4byte	0x3da
+ 848 0518 02       		.byte	0x2
+ 849 0519 23       		.byte	0x23
+ 850 051a 13       		.uleb128 0x13
+ 851 051b 10       		.uleb128 0x10
+ 852 051c E6060000 		.4byte	.LASF131
+ 853 0520 03       		.byte	0x3
+ 854 0521 5102     		.2byte	0x251
+ 855 0523 B7030000 		.4byte	0x3b7
+ 856 0527 02       		.byte	0x2
+ 857 0528 23       		.byte	0x23
+ 858 0529 14       		.uleb128 0x14
+ 859 052a 10       		.uleb128 0x10
+ 860 052b B7090000 		.4byte	.LASF132
+ 861 052f 03       		.byte	0x3
+ 862 0530 5202     		.2byte	0x252
+ 863 0532 B7030000 		.4byte	0x3b7
+ 864 0536 02       		.byte	0x2
+ 865 0537 23       		.byte	0x23
+ 866 0538 15       		.uleb128 0x15
+ 867 0539 10       		.uleb128 0x10
+ 868 053a D2000000 		.4byte	.LASF133
+ 869 053e 03       		.byte	0x3
+ 870 053f 5302     		.2byte	0x253
+ 871 0541 DF010000 		.4byte	0x1df
+ 872 0545 02       		.byte	0x2
+ 873 0546 23       		.byte	0x23
+ 874 0547 16       		.uleb128 0x16
+ 875 0548 10       		.uleb128 0x10
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 17
+
+
+ 876 0549 FE040000 		.4byte	.LASF134
+ 877 054d 03       		.byte	0x3
+ 878 054e 5402     		.2byte	0x254
+ 879 0550 DF010000 		.4byte	0x1df
+ 880 0554 02       		.byte	0x2
+ 881 0555 23       		.byte	0x23
+ 882 0556 17       		.uleb128 0x17
+ 883 0557 10       		.uleb128 0x10
+ 884 0558 2F040000 		.4byte	.LASF135
+ 885 055c 03       		.byte	0x3
+ 886 055d 5602     		.2byte	0x256
+ 887 055f DA030000 		.4byte	0x3da
+ 888 0563 02       		.byte	0x2
+ 889 0564 23       		.byte	0x23
+ 890 0565 18       		.uleb128 0x18
+ 891 0566 10       		.uleb128 0x10
+ 892 0567 F10E0000 		.4byte	.LASF136
+ 893 056b 03       		.byte	0x3
+ 894 056c 5702     		.2byte	0x257
+ 895 056e 2C000000 		.4byte	0x2c
+ 896 0572 02       		.byte	0x2
+ 897 0573 23       		.byte	0x23
+ 898 0574 19       		.uleb128 0x19
+ 899 0575 10       		.uleb128 0x10
+ 900 0576 010F0000 		.4byte	.LASF137
+ 901 057a 03       		.byte	0x3
+ 902 057b 5802     		.2byte	0x258
+ 903 057d 2C000000 		.4byte	0x2c
+ 904 0581 02       		.byte	0x2
+ 905 0582 23       		.byte	0x23
+ 906 0583 1A       		.uleb128 0x1a
+ 907 0584 10       		.uleb128 0x10
+ 908 0585 14030000 		.4byte	.LASF138
+ 909 0589 03       		.byte	0x3
+ 910 058a 5902     		.2byte	0x259
+ 911 058c 2C000000 		.4byte	0x2c
+ 912 0590 02       		.byte	0x2
+ 913 0591 23       		.byte	0x23
+ 914 0592 1B       		.uleb128 0x1b
+ 915 0593 10       		.uleb128 0x10
+ 916 0594 1E0F0000 		.4byte	.LASF139
+ 917 0598 03       		.byte	0x3
+ 918 0599 5A02     		.2byte	0x25a
+ 919 059b 2C000000 		.4byte	0x2c
+ 920 059f 02       		.byte	0x2
+ 921 05a0 23       		.byte	0x23
+ 922 05a1 1C       		.uleb128 0x1c
+ 923 05a2 10       		.uleb128 0x10
+ 924 05a3 F0010000 		.4byte	.LASF140
+ 925 05a7 03       		.byte	0x3
+ 926 05a8 5B02     		.2byte	0x25b
+ 927 05aa DA030000 		.4byte	0x3da
+ 928 05ae 02       		.byte	0x2
+ 929 05af 23       		.byte	0x23
+ 930 05b0 1D       		.uleb128 0x1d
+ 931 05b1 10       		.uleb128 0x10
+ 932 05b2 64070000 		.4byte	.LASF141
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 18
+
+
+ 933 05b6 03       		.byte	0x3
+ 934 05b7 5C02     		.2byte	0x25c
+ 935 05b9 B7030000 		.4byte	0x3b7
+ 936 05bd 02       		.byte	0x2
+ 937 05be 23       		.byte	0x23
+ 938 05bf 1E       		.uleb128 0x1e
+ 939 05c0 10       		.uleb128 0x10
+ 940 05c1 60000000 		.4byte	.LASF142
+ 941 05c5 03       		.byte	0x3
+ 942 05c6 5D02     		.2byte	0x25d
+ 943 05c8 DF010000 		.4byte	0x1df
+ 944 05cc 02       		.byte	0x2
+ 945 05cd 23       		.byte	0x23
+ 946 05ce 1F       		.uleb128 0x1f
+ 947 05cf 10       		.uleb128 0x10
+ 948 05d0 F50D0000 		.4byte	.LASF143
+ 949 05d4 03       		.byte	0x3
+ 950 05d5 5F02     		.2byte	0x25f
+ 951 05d7 DA030000 		.4byte	0x3da
+ 952 05db 02       		.byte	0x2
+ 953 05dc 23       		.byte	0x23
+ 954 05dd 20       		.uleb128 0x20
+ 955 05de 10       		.uleb128 0x10
+ 956 05df 86030000 		.4byte	.LASF144
+ 957 05e3 03       		.byte	0x3
+ 958 05e4 6002     		.2byte	0x260
+ 959 05e6 2C000000 		.4byte	0x2c
+ 960 05ea 02       		.byte	0x2
+ 961 05eb 23       		.byte	0x23
+ 962 05ec 21       		.uleb128 0x21
+ 963 05ed 10       		.uleb128 0x10
+ 964 05ee 95030000 		.4byte	.LASF145
+ 965 05f2 03       		.byte	0x3
+ 966 05f3 6102     		.2byte	0x261
+ 967 05f5 2C000000 		.4byte	0x2c
+ 968 05f9 02       		.byte	0x2
+ 969 05fa 23       		.byte	0x23
+ 970 05fb 22       		.uleb128 0x22
+ 971 05fc 10       		.uleb128 0x10
+ 972 05fd 02100000 		.4byte	.LASF146
+ 973 0601 03       		.byte	0x3
+ 974 0602 6202     		.2byte	0x262
+ 975 0604 2C000000 		.4byte	0x2c
+ 976 0608 02       		.byte	0x2
+ 977 0609 23       		.byte	0x23
+ 978 060a 23       		.uleb128 0x23
+ 979 060b 10       		.uleb128 0x10
+ 980 060c AB060000 		.4byte	.LASF147
+ 981 0610 03       		.byte	0x3
+ 982 0611 6302     		.2byte	0x263
+ 983 0613 B7030000 		.4byte	0x3b7
+ 984 0617 02       		.byte	0x2
+ 985 0618 23       		.byte	0x23
+ 986 0619 24       		.uleb128 0x24
+ 987 061a 10       		.uleb128 0x10
+ 988 061b 57050000 		.4byte	.LASF148
+ 989 061f 03       		.byte	0x3
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 19
+
+
+ 990 0620 6402     		.2byte	0x264
+ 991 0622 DF010000 		.4byte	0x1df
+ 992 0626 02       		.byte	0x2
+ 993 0627 23       		.byte	0x23
+ 994 0628 25       		.uleb128 0x25
+ 995 0629 10       		.uleb128 0x10
+ 996 062a A40D0000 		.4byte	.LASF149
+ 997 062e 03       		.byte	0x3
+ 998 062f 6502     		.2byte	0x265
+ 999 0631 1C010000 		.4byte	0x11c
+ 1000 0635 02       		.byte	0x2
+ 1001 0636 23       		.byte	0x23
+ 1002 0637 26       		.uleb128 0x26
+ 1003 0638 10       		.uleb128 0x10
+ 1004 0639 11020000 		.4byte	.LASF150
+ 1005 063d 03       		.byte	0x3
+ 1006 063e 6702     		.2byte	0x267
+ 1007 0640 DA030000 		.4byte	0x3da
+ 1008 0644 02       		.byte	0x2
+ 1009 0645 23       		.byte	0x23
+ 1010 0646 27       		.uleb128 0x27
+ 1011 0647 10       		.uleb128 0x10
+ 1012 0648 3B010000 		.4byte	.LASF151
+ 1013 064c 03       		.byte	0x3
+ 1014 064d 6802     		.2byte	0x268
+ 1015 064f 2C000000 		.4byte	0x2c
+ 1016 0653 02       		.byte	0x2
+ 1017 0654 23       		.byte	0x23
+ 1018 0655 28       		.uleb128 0x28
+ 1019 0656 10       		.uleb128 0x10
+ 1020 0657 47010000 		.4byte	.LASF152
+ 1021 065b 03       		.byte	0x3
+ 1022 065c 6902     		.2byte	0x269
+ 1023 065e 2C000000 		.4byte	0x2c
+ 1024 0662 02       		.byte	0x2
+ 1025 0663 23       		.byte	0x23
+ 1026 0664 29       		.uleb128 0x29
+ 1027 0665 10       		.uleb128 0x10
+ 1028 0666 53010000 		.4byte	.LASF153
+ 1029 066a 03       		.byte	0x3
+ 1030 066b 6A02     		.2byte	0x26a
+ 1031 066d 2C000000 		.4byte	0x2c
+ 1032 0671 02       		.byte	0x2
+ 1033 0672 23       		.byte	0x23
+ 1034 0673 2A       		.uleb128 0x2a
+ 1035 0674 10       		.uleb128 0x10
+ 1036 0675 230D0000 		.4byte	.LASF154
+ 1037 0679 03       		.byte	0x3
+ 1038 067a 6B02     		.2byte	0x26b
+ 1039 067c 2C000000 		.4byte	0x2c
+ 1040 0680 02       		.byte	0x2
+ 1041 0681 23       		.byte	0x23
+ 1042 0682 2B       		.uleb128 0x2b
+ 1043 0683 10       		.uleb128 0x10
+ 1044 0684 70010000 		.4byte	.LASF155
+ 1045 0688 03       		.byte	0x3
+ 1046 0689 6C02     		.2byte	0x26c
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 20
+
+
+ 1047 068b 2C000000 		.4byte	0x2c
+ 1048 068f 02       		.byte	0x2
+ 1049 0690 23       		.byte	0x23
+ 1050 0691 2C       		.uleb128 0x2c
+ 1051 0692 10       		.uleb128 0x10
+ 1052 0693 79100000 		.4byte	.LASF156
+ 1053 0697 03       		.byte	0x3
+ 1054 0698 6D02     		.2byte	0x26d
+ 1055 069a DA030000 		.4byte	0x3da
+ 1056 069e 02       		.byte	0x2
+ 1057 069f 23       		.byte	0x23
+ 1058 06a0 2D       		.uleb128 0x2d
+ 1059 06a1 10       		.uleb128 0x10
+ 1060 06a2 DF020000 		.4byte	.LASF157
+ 1061 06a6 03       		.byte	0x3
+ 1062 06a7 6E02     		.2byte	0x26e
+ 1063 06a9 B7030000 		.4byte	0x3b7
+ 1064 06ad 02       		.byte	0x2
+ 1065 06ae 23       		.byte	0x23
+ 1066 06af 2E       		.uleb128 0x2e
+ 1067 06b0 10       		.uleb128 0x10
+ 1068 06b1 9A080000 		.4byte	.LASF158
+ 1069 06b5 03       		.byte	0x3
+ 1070 06b6 6F02     		.2byte	0x26f
+ 1071 06b8 DF010000 		.4byte	0x1df
+ 1072 06bc 02       		.byte	0x2
+ 1073 06bd 23       		.byte	0x23
+ 1074 06be 2F       		.uleb128 0x2f
+ 1075 06bf 10       		.uleb128 0x10
+ 1076 06c0 0F090000 		.4byte	.LASF159
+ 1077 06c4 03       		.byte	0x3
+ 1078 06c5 7102     		.2byte	0x271
+ 1079 06c7 DA030000 		.4byte	0x3da
+ 1080 06cb 02       		.byte	0x2
+ 1081 06cc 23       		.byte	0x23
+ 1082 06cd 30       		.uleb128 0x30
+ 1083 06ce 10       		.uleb128 0x10
+ 1084 06cf E5040000 		.4byte	.LASF160
+ 1085 06d3 03       		.byte	0x3
+ 1086 06d4 7202     		.2byte	0x272
+ 1087 06d6 2C000000 		.4byte	0x2c
+ 1088 06da 02       		.byte	0x2
+ 1089 06db 23       		.byte	0x23
+ 1090 06dc 31       		.uleb128 0x31
+ 1091 06dd 10       		.uleb128 0x10
+ 1092 06de 40060000 		.4byte	.LASF161
+ 1093 06e2 03       		.byte	0x3
+ 1094 06e3 7302     		.2byte	0x273
+ 1095 06e5 2C000000 		.4byte	0x2c
+ 1096 06e9 02       		.byte	0x2
+ 1097 06ea 23       		.byte	0x23
+ 1098 06eb 32       		.uleb128 0x32
+ 1099 06ec 10       		.uleb128 0x10
+ 1100 06ed 14050000 		.4byte	.LASF162
+ 1101 06f1 03       		.byte	0x3
+ 1102 06f2 7402     		.2byte	0x274
+ 1103 06f4 DA030000 		.4byte	0x3da
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 21
+
+
+ 1104 06f8 02       		.byte	0x2
+ 1105 06f9 23       		.byte	0x23
+ 1106 06fa 33       		.uleb128 0x33
+ 1107 06fb 10       		.uleb128 0x10
+ 1108 06fc 1E0E0000 		.4byte	.LASF163
+ 1109 0700 03       		.byte	0x3
+ 1110 0701 7502     		.2byte	0x275
+ 1111 0703 B7030000 		.4byte	0x3b7
+ 1112 0707 02       		.byte	0x2
+ 1113 0708 23       		.byte	0x23
+ 1114 0709 34       		.uleb128 0x34
+ 1115 070a 10       		.uleb128 0x10
+ 1116 070b ED0A0000 		.4byte	.LASF164
+ 1117 070f 03       		.byte	0x3
+ 1118 0710 7602     		.2byte	0x276
+ 1119 0712 DF010000 		.4byte	0x1df
+ 1120 0716 02       		.byte	0x2
+ 1121 0717 23       		.byte	0x23
+ 1122 0718 35       		.uleb128 0x35
+ 1123 0719 10       		.uleb128 0x10
+ 1124 071a F3020000 		.4byte	.LASF165
+ 1125 071e 03       		.byte	0x3
+ 1126 071f 7802     		.2byte	0x278
+ 1127 0721 DA030000 		.4byte	0x3da
+ 1128 0725 02       		.byte	0x2
+ 1129 0726 23       		.byte	0x23
+ 1130 0727 36       		.uleb128 0x36
+ 1131 0728 10       		.uleb128 0x10
+ 1132 0729 1D060000 		.4byte	.LASF166
+ 1133 072d 03       		.byte	0x3
+ 1134 072e 7902     		.2byte	0x279
+ 1135 0730 2C000000 		.4byte	0x2c
+ 1136 0734 02       		.byte	0x2
+ 1137 0735 23       		.byte	0x23
+ 1138 0736 37       		.uleb128 0x37
+ 1139 0737 10       		.uleb128 0x10
+ 1140 0738 29060000 		.4byte	.LASF167
+ 1141 073c 03       		.byte	0x3
+ 1142 073d 7A02     		.2byte	0x27a
+ 1143 073f 2C000000 		.4byte	0x2c
+ 1144 0743 02       		.byte	0x2
+ 1145 0744 23       		.byte	0x23
+ 1146 0745 38       		.uleb128 0x38
+ 1147 0746 10       		.uleb128 0x10
+ 1148 0747 BD0E0000 		.4byte	.LASF168
+ 1149 074b 03       		.byte	0x3
+ 1150 074c 7B02     		.2byte	0x27b
+ 1151 074e 2C000000 		.4byte	0x2c
+ 1152 0752 02       		.byte	0x2
+ 1153 0753 23       		.byte	0x23
+ 1154 0754 39       		.uleb128 0x39
+ 1155 0755 10       		.uleb128 0x10
+ 1156 0756 8D090000 		.4byte	.LASF169
+ 1157 075a 03       		.byte	0x3
+ 1158 075b 7C02     		.2byte	0x27c
+ 1159 075d B7030000 		.4byte	0x3b7
+ 1160 0761 02       		.byte	0x2
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 22
+
+
+ 1161 0762 23       		.byte	0x23
+ 1162 0763 3A       		.uleb128 0x3a
+ 1163 0764 10       		.uleb128 0x10
+ 1164 0765 10100000 		.4byte	.LASF170
+ 1165 0769 03       		.byte	0x3
+ 1166 076a 7D02     		.2byte	0x27d
+ 1167 076c DF010000 		.4byte	0x1df
+ 1168 0770 02       		.byte	0x2
+ 1169 0771 23       		.byte	0x23
+ 1170 0772 3B       		.uleb128 0x3b
+ 1171 0773 10       		.uleb128 0x10
+ 1172 0774 21070000 		.4byte	.LASF171
+ 1173 0778 03       		.byte	0x3
+ 1174 0779 7E02     		.2byte	0x27e
+ 1175 077b 1C010000 		.4byte	0x11c
+ 1176 077f 02       		.byte	0x2
+ 1177 0780 23       		.byte	0x23
+ 1178 0781 3C       		.uleb128 0x3c
+ 1179 0782 10       		.uleb128 0x10
+ 1180 0783 7C0E0000 		.4byte	.LASF172
+ 1181 0787 03       		.byte	0x3
+ 1182 0788 8002     		.2byte	0x280
+ 1183 078a DA030000 		.4byte	0x3da
+ 1184 078e 02       		.byte	0x2
+ 1185 078f 23       		.byte	0x23
+ 1186 0790 3D       		.uleb128 0x3d
+ 1187 0791 10       		.uleb128 0x10
+ 1188 0792 4B0A0000 		.4byte	.LASF173
+ 1189 0796 03       		.byte	0x3
+ 1190 0797 8102     		.2byte	0x281
+ 1191 0799 A1020000 		.4byte	0x2a1
+ 1192 079d 02       		.byte	0x2
+ 1193 079e 23       		.byte	0x23
+ 1194 079f 3E       		.uleb128 0x3e
+ 1195 07a0 10       		.uleb128 0x10
+ 1196 07a1 B5010000 		.4byte	.LASF174
+ 1197 07a5 03       		.byte	0x3
+ 1198 07a6 8202     		.2byte	0x282
+ 1199 07a8 B7030000 		.4byte	0x3b7
+ 1200 07ac 02       		.byte	0x2
+ 1201 07ad 23       		.byte	0x23
+ 1202 07ae 3F       		.uleb128 0x3f
+ 1203 07af 10       		.uleb128 0x10
+ 1204 07b0 DB0F0000 		.4byte	.LASF175
+ 1205 07b4 03       		.byte	0x3
+ 1206 07b5 8302     		.2byte	0x283
+ 1207 07b7 DF010000 		.4byte	0x1df
+ 1208 07bb 02       		.byte	0x2
+ 1209 07bc 23       		.byte	0x23
+ 1210 07bd 40       		.uleb128 0x40
+ 1211 07be 10       		.uleb128 0x10
+ 1212 07bf 0E060000 		.4byte	.LASF176
+ 1213 07c3 03       		.byte	0x3
+ 1214 07c4 8502     		.2byte	0x285
+ 1215 07c6 DA030000 		.4byte	0x3da
+ 1216 07ca 02       		.byte	0x2
+ 1217 07cb 23       		.byte	0x23
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 23
+
+
+ 1218 07cc 41       		.uleb128 0x41
+ 1219 07cd 10       		.uleb128 0x10
+ 1220 07ce 8C070000 		.4byte	.LASF177
+ 1221 07d2 03       		.byte	0x3
+ 1222 07d3 8602     		.2byte	0x286
+ 1223 07d5 2C000000 		.4byte	0x2c
+ 1224 07d9 02       		.byte	0x2
+ 1225 07da 23       		.byte	0x23
+ 1226 07db 42       		.uleb128 0x42
+ 1227 07dc 10       		.uleb128 0x10
+ 1228 07dd DE050000 		.4byte	.LASF178
+ 1229 07e1 03       		.byte	0x3
+ 1230 07e2 8702     		.2byte	0x287
+ 1231 07e4 2C000000 		.4byte	0x2c
+ 1232 07e8 02       		.byte	0x2
+ 1233 07e9 23       		.byte	0x23
+ 1234 07ea 43       		.uleb128 0x43
+ 1235 07eb 10       		.uleb128 0x10
+ 1236 07ec 48080000 		.4byte	.LASF179
+ 1237 07f0 03       		.byte	0x3
+ 1238 07f1 8802     		.2byte	0x288
+ 1239 07f3 B7030000 		.4byte	0x3b7
+ 1240 07f7 02       		.byte	0x2
+ 1241 07f8 23       		.byte	0x23
+ 1242 07f9 44       		.uleb128 0x44
+ 1243 07fa 10       		.uleb128 0x10
+ 1244 07fb 8B0F0000 		.4byte	.LASF180
+ 1245 07ff 03       		.byte	0x3
+ 1246 0800 8902     		.2byte	0x289
+ 1247 0802 DF010000 		.4byte	0x1df
+ 1248 0806 02       		.byte	0x2
+ 1249 0807 23       		.byte	0x23
+ 1250 0808 45       		.uleb128 0x45
+ 1251 0809 10       		.uleb128 0x10
+ 1252 080a E60D0000 		.4byte	.LASF181
+ 1253 080e 03       		.byte	0x3
+ 1254 080f 8B02     		.2byte	0x28b
+ 1255 0811 DA030000 		.4byte	0x3da
+ 1256 0815 02       		.byte	0x2
+ 1257 0816 23       		.byte	0x23
+ 1258 0817 46       		.uleb128 0x46
+ 1259 0818 10       		.uleb128 0x10
+ 1260 0819 F6050000 		.4byte	.LASF182
+ 1261 081d 03       		.byte	0x3
+ 1262 081e 8C02     		.2byte	0x28c
+ 1263 0820 2C000000 		.4byte	0x2c
+ 1264 0824 02       		.byte	0x2
+ 1265 0825 23       		.byte	0x23
+ 1266 0826 47       		.uleb128 0x47
+ 1267 0827 10       		.uleb128 0x10
+ 1268 0828 23100000 		.4byte	.LASF183
+ 1269 082c 03       		.byte	0x3
+ 1270 082d 8D02     		.2byte	0x28d
+ 1271 082f B7030000 		.4byte	0x3b7
+ 1272 0833 02       		.byte	0x2
+ 1273 0834 23       		.byte	0x23
+ 1274 0835 48       		.uleb128 0x48
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 24
+
+
+ 1275 0836 10       		.uleb128 0x10
+ 1276 0837 C10A0000 		.4byte	.LASF184
+ 1277 083b 03       		.byte	0x3
+ 1278 083c 8E02     		.2byte	0x28e
+ 1279 083e DF010000 		.4byte	0x1df
+ 1280 0842 02       		.byte	0x2
+ 1281 0843 23       		.byte	0x23
+ 1282 0844 49       		.uleb128 0x49
+ 1283 0845 10       		.uleb128 0x10
+ 1284 0846 88020000 		.4byte	.LASF185
+ 1285 084a 03       		.byte	0x3
+ 1286 084b 9002     		.2byte	0x290
+ 1287 084d 82010000 		.4byte	0x182
+ 1288 0851 02       		.byte	0x2
+ 1289 0852 23       		.byte	0x23
+ 1290 0853 4A       		.uleb128 0x4a
+ 1291 0854 10       		.uleb128 0x10
+ 1292 0855 5C080000 		.4byte	.LASF186
+ 1293 0859 03       		.byte	0x3
+ 1294 085a 9202     		.2byte	0x292
+ 1295 085c DA030000 		.4byte	0x3da
+ 1296 0860 02       		.byte	0x2
+ 1297 0861 23       		.byte	0x23
+ 1298 0862 4B       		.uleb128 0x4b
+ 1299 0863 10       		.uleb128 0x10
+ 1300 0864 EC0F0000 		.4byte	.LASF187
+ 1301 0868 03       		.byte	0x3
+ 1302 0869 9302     		.2byte	0x293
+ 1303 086b B7030000 		.4byte	0x3b7
+ 1304 086f 02       		.byte	0x2
+ 1305 0870 23       		.byte	0x23
+ 1306 0871 4C       		.uleb128 0x4c
+ 1307 0872 10       		.uleb128 0x10
+ 1308 0873 940C0000 		.4byte	.LASF188
+ 1309 0877 03       		.byte	0x3
+ 1310 0878 9402     		.2byte	0x294
+ 1311 087a DF010000 		.4byte	0x1df
+ 1312 087e 02       		.byte	0x2
+ 1313 087f 23       		.byte	0x23
+ 1314 0880 4D       		.uleb128 0x4d
+ 1315 0881 10       		.uleb128 0x10
+ 1316 0882 8C050000 		.4byte	.LASF189
+ 1317 0886 03       		.byte	0x3
+ 1318 0887 9602     		.2byte	0x296
+ 1319 0889 DA030000 		.4byte	0x3da
+ 1320 088d 02       		.byte	0x2
+ 1321 088e 23       		.byte	0x23
+ 1322 088f 4E       		.uleb128 0x4e
+ 1323 0890 10       		.uleb128 0x10
+ 1324 0891 390A0000 		.4byte	.LASF190
+ 1325 0895 03       		.byte	0x3
+ 1326 0896 9702     		.2byte	0x297
+ 1327 0898 DF010000 		.4byte	0x1df
+ 1328 089c 02       		.byte	0x2
+ 1329 089d 23       		.byte	0x23
+ 1330 089e 4F       		.uleb128 0x4f
+ 1331 089f 00       		.byte	0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 25
+
+
+ 1332 08a0 0E       		.uleb128 0xe
+ 1333 08a1 12080000 		.4byte	.LASF191
+ 1334 08a5 03       		.byte	0x3
+ 1335 08a6 9902     		.2byte	0x299
+ 1336 08a8 E6030000 		.4byte	0x3e6
+ 1337 08ac 0B       		.uleb128 0xb
+ 1338 08ad 01       		.byte	0x1
+ 1339 08ae 04       		.byte	0x4
+ 1340 08af 1E       		.byte	0x1e
+ 1341 08b0 02090000 		.4byte	0x902
+ 1342 08b4 11       		.uleb128 0x11
+ 1343 08b5 4F4B00   		.ascii	"OK\000"
+ 1344 08b8 00       		.sleb128 0
+ 1345 08b9 0C       		.uleb128 0xc
+ 1346 08ba F3090000 		.4byte	.LASF192
+ 1347 08be 01       		.sleb128 1
+ 1348 08bf 0C       		.uleb128 0xc
+ 1349 08c0 CA020000 		.4byte	.LASF193
+ 1350 08c4 02       		.sleb128 2
+ 1351 08c5 0C       		.uleb128 0xc
+ 1352 08c6 A00A0000 		.4byte	.LASF194
+ 1353 08ca 03       		.sleb128 3
+ 1354 08cb 0C       		.uleb128 0xc
+ 1355 08cc 1F090000 		.4byte	.LASF195
+ 1356 08d0 04       		.sleb128 4
+ 1357 08d1 0C       		.uleb128 0xc
+ 1358 08d2 2D020000 		.4byte	.LASF196
+ 1359 08d6 05       		.sleb128 5
+ 1360 08d7 0C       		.uleb128 0xc
+ 1361 08d8 A8100000 		.4byte	.LASF197
+ 1362 08dc 06       		.sleb128 6
+ 1363 08dd 0C       		.uleb128 0xc
+ 1364 08de 7C0C0000 		.4byte	.LASF198
+ 1365 08e2 07       		.sleb128 7
+ 1366 08e3 0C       		.uleb128 0xc
+ 1367 08e4 9B050000 		.4byte	.LASF199
+ 1368 08e8 08       		.sleb128 8
+ 1369 08e9 0C       		.uleb128 0xc
+ 1370 08ea 00000000 		.4byte	.LASF200
+ 1371 08ee 09       		.sleb128 9
+ 1372 08ef 0C       		.uleb128 0xc
+ 1373 08f0 24030000 		.4byte	.LASF201
+ 1374 08f4 0A       		.sleb128 10
+ 1375 08f5 0C       		.uleb128 0xc
+ 1376 08f6 9A040000 		.4byte	.LASF202
+ 1377 08fa 0B       		.sleb128 11
+ 1378 08fb 0C       		.uleb128 0xc
+ 1379 08fc 3D020000 		.4byte	.LASF203
+ 1380 0900 0C       		.sleb128 12
+ 1381 0901 00       		.byte	0
+ 1382 0902 03       		.uleb128 0x3
+ 1383 0903 A5000000 		.4byte	.LASF204
+ 1384 0907 04       		.byte	0x4
+ 1385 0908 2C       		.byte	0x2c
+ 1386 0909 AC080000 		.4byte	0x8ac
+ 1387 090d 0B       		.uleb128 0xb
+ 1388 090e 01       		.byte	0x1
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 26
+
+
+ 1389 090f 05       		.byte	0x5
+ 1390 0910 29       		.byte	0x29
+ 1391 0911 58090000 		.4byte	0x958
+ 1392 0915 0C       		.uleb128 0xc
+ 1393 0916 21080000 		.4byte	.LASF205
+ 1394 091a 01       		.sleb128 1
+ 1395 091b 0C       		.uleb128 0xc
+ 1396 091c 85080000 		.4byte	.LASF206
+ 1397 0920 02       		.sleb128 2
+ 1398 0921 0C       		.uleb128 0xc
+ 1399 0922 CE040000 		.4byte	.LASF207
+ 1400 0926 03       		.sleb128 3
+ 1401 0927 0C       		.uleb128 0xc
+ 1402 0928 50020000 		.4byte	.LASF208
+ 1403 092c 04       		.sleb128 4
+ 1404 092d 0C       		.uleb128 0xc
+ 1405 092e 170C0000 		.4byte	.LASF209
+ 1406 0932 05       		.sleb128 5
+ 1407 0933 0C       		.uleb128 0xc
+ 1408 0934 7C010000 		.4byte	.LASF210
+ 1409 0938 06       		.sleb128 6
+ 1410 0939 0C       		.uleb128 0xc
+ 1411 093a AB020000 		.4byte	.LASF211
+ 1412 093e 07       		.sleb128 7
+ 1413 093f 0C       		.uleb128 0xc
+ 1414 0940 42040000 		.4byte	.LASF212
+ 1415 0944 08       		.sleb128 8
+ 1416 0945 0C       		.uleb128 0xc
+ 1417 0946 20020000 		.4byte	.LASF213
+ 1418 094a 09       		.sleb128 9
+ 1419 094b 0C       		.uleb128 0xc
+ 1420 094c 2C090000 		.4byte	.LASF214
+ 1421 0950 10       		.sleb128 16
+ 1422 0951 0C       		.uleb128 0xc
+ 1423 0952 C8010000 		.4byte	.LASF215
+ 1424 0956 11       		.sleb128 17
+ 1425 0957 00       		.byte	0
+ 1426 0958 03       		.uleb128 0x3
+ 1427 0959 620B0000 		.4byte	.LASF216
+ 1428 095d 05       		.byte	0x5
+ 1429 095e 38       		.byte	0x38
+ 1430 095f 0D090000 		.4byte	0x90d
+ 1431 0963 0B       		.uleb128 0xb
+ 1432 0964 01       		.byte	0x1
+ 1433 0965 05       		.byte	0x5
+ 1434 0966 3B       		.byte	0x3b
+ 1435 0967 78090000 		.4byte	0x978
+ 1436 096b 0C       		.uleb128 0xc
+ 1437 096c 6B060000 		.4byte	.LASF217
+ 1438 0970 00       		.sleb128 0
+ 1439 0971 0C       		.uleb128 0xc
+ 1440 0972 35060000 		.4byte	.LASF218
+ 1441 0976 01       		.sleb128 1
+ 1442 0977 00       		.byte	0
+ 1443 0978 03       		.uleb128 0x3
+ 1444 0979 32010000 		.4byte	.LASF219
+ 1445 097d 05       		.byte	0x5
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 27
+
+
+ 1446 097e 3E       		.byte	0x3e
+ 1447 097f 63090000 		.4byte	0x963
+ 1448 0983 09       		.uleb128 0x9
+ 1449 0984 BA0A0000 		.4byte	.LASF221
+ 1450 0988 18       		.byte	0x18
+ 1451 0989 05       		.byte	0x5
+ 1452 098a 41       		.byte	0x41
+ 1453 098b 2A0A0000 		.4byte	0xa2a
+ 1454 098f 12       		.uleb128 0x12
+ 1455 0990 450B0000 		.4byte	.LASF222
+ 1456 0994 05       		.byte	0x5
+ 1457 0995 42       		.byte	0x42
+ 1458 0996 78090000 		.4byte	0x978
+ 1459 099a 02       		.byte	0x2
+ 1460 099b 23       		.byte	0x23
+ 1461 099c 00       		.uleb128 0
+ 1462 099d 12       		.uleb128 0x12
+ 1463 099e 71100000 		.4byte	.LASF223
+ 1464 09a2 05       		.byte	0x5
+ 1465 09a3 43       		.byte	0x43
+ 1466 09a4 2C000000 		.4byte	0x2c
+ 1467 09a8 02       		.byte	0x2
+ 1468 09a9 23       		.byte	0x23
+ 1469 09aa 01       		.uleb128 0x1
+ 1470 09ab 12       		.uleb128 0x12
+ 1471 09ac 8C100000 		.4byte	.LASF224
+ 1472 09b0 05       		.byte	0x5
+ 1473 09b1 44       		.byte	0x44
+ 1474 09b2 2C000000 		.4byte	0x2c
+ 1475 09b6 02       		.byte	0x2
+ 1476 09b7 23       		.byte	0x23
+ 1477 09b8 02       		.uleb128 0x2
+ 1478 09b9 12       		.uleb128 0x12
+ 1479 09ba 5A0F0000 		.4byte	.LASF225
+ 1480 09be 05       		.byte	0x5
+ 1481 09bf 45       		.byte	0x45
+ 1482 09c0 2C000000 		.4byte	0x2c
+ 1483 09c4 02       		.byte	0x2
+ 1484 09c5 23       		.byte	0x23
+ 1485 09c6 03       		.uleb128 0x3
+ 1486 09c7 12       		.uleb128 0x12
+ 1487 09c8 7F090000 		.4byte	.LASF226
+ 1488 09cc 05       		.byte	0x5
+ 1489 09cd 46       		.byte	0x46
+ 1490 09ce 2C000000 		.4byte	0x2c
+ 1491 09d2 02       		.byte	0x2
+ 1492 09d3 23       		.byte	0x23
+ 1493 09d4 04       		.uleb128 0x4
+ 1494 09d5 12       		.uleb128 0x12
+ 1495 09d6 44050000 		.4byte	.LASF227
+ 1496 09da 05       		.byte	0x5
+ 1497 09db 47       		.byte	0x47
+ 1498 09dc 2C000000 		.4byte	0x2c
+ 1499 09e0 02       		.byte	0x2
+ 1500 09e1 23       		.byte	0x23
+ 1501 09e2 05       		.uleb128 0x5
+ 1502 09e3 12       		.uleb128 0x12
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 28
+
+
+ 1503 09e4 DF080000 		.4byte	.LASF228
+ 1504 09e8 05       		.byte	0x5
+ 1505 09e9 48       		.byte	0x48
+ 1506 09ea 02090000 		.4byte	0x902
+ 1507 09ee 02       		.byte	0x2
+ 1508 09ef 23       		.byte	0x23
+ 1509 09f0 06       		.uleb128 0x6
+ 1510 09f1 12       		.uleb128 0x12
+ 1511 09f2 FA070000 		.4byte	.LASF229
+ 1512 09f6 05       		.byte	0x5
+ 1513 09f7 4A       		.byte	0x4a
+ 1514 09f8 C4000000 		.4byte	0xc4
+ 1515 09fc 02       		.byte	0x2
+ 1516 09fd 23       		.byte	0x23
+ 1517 09fe 08       		.uleb128 0x8
+ 1518 09ff 12       		.uleb128 0x12
+ 1519 0a00 07020000 		.4byte	.LASF230
+ 1520 0a04 05       		.byte	0x5
+ 1521 0a05 4B       		.byte	0x4b
+ 1522 0a06 C4000000 		.4byte	0xc4
+ 1523 0a0a 02       		.byte	0x2
+ 1524 0a0b 23       		.byte	0x23
+ 1525 0a0c 0C       		.uleb128 0xc
+ 1526 0a0d 12       		.uleb128 0x12
+ 1527 0a0e 82020000 		.4byte	.LASF231
+ 1528 0a12 05       		.byte	0x5
+ 1529 0a13 4C       		.byte	0x4c
+ 1530 0a14 58090000 		.4byte	0x958
+ 1531 0a18 02       		.byte	0x2
+ 1532 0a19 23       		.byte	0x23
+ 1533 0a1a 10       		.uleb128 0x10
+ 1534 0a1b 12       		.uleb128 0x12
+ 1535 0a1c F5040000 		.4byte	.LASF232
+ 1536 0a20 05       		.byte	0x5
+ 1537 0a21 4D       		.byte	0x4d
+ 1538 0a22 360A0000 		.4byte	0xa36
+ 1539 0a26 02       		.byte	0x2
+ 1540 0a27 23       		.byte	0x23
+ 1541 0a28 14       		.uleb128 0x14
+ 1542 0a29 00       		.byte	0
+ 1543 0a2a 13       		.uleb128 0x13
+ 1544 0a2b 01       		.byte	0x1
+ 1545 0a2c 360A0000 		.4byte	0xa36
+ 1546 0a30 14       		.uleb128 0x14
+ 1547 0a31 98000000 		.4byte	0x98
+ 1548 0a35 00       		.byte	0
+ 1549 0a36 08       		.uleb128 0x8
+ 1550 0a37 04       		.byte	0x4
+ 1551 0a38 2A0A0000 		.4byte	0xa2a
+ 1552 0a3c 03       		.uleb128 0x3
+ 1553 0a3d 56100000 		.4byte	.LASF233
+ 1554 0a41 05       		.byte	0x5
+ 1555 0a42 4E       		.byte	0x4e
+ 1556 0a43 83090000 		.4byte	0x983
+ 1557 0a47 0B       		.uleb128 0xb
+ 1558 0a48 01       		.byte	0x1
+ 1559 0a49 06       		.byte	0x6
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 29
+
+
+ 1560 0a4a 35       		.byte	0x35
+ 1561 0a4b 6E0A0000 		.4byte	0xa6e
+ 1562 0a4f 0C       		.uleb128 0xc
+ 1563 0a50 A80C0000 		.4byte	.LASF234
+ 1564 0a54 00       		.sleb128 0
+ 1565 0a55 0C       		.uleb128 0xc
+ 1566 0a56 95020000 		.4byte	.LASF235
+ 1567 0a5a 01       		.sleb128 1
+ 1568 0a5b 0C       		.uleb128 0xc
+ 1569 0a5c 24000000 		.4byte	.LASF236
+ 1570 0a60 02       		.sleb128 2
+ 1571 0a61 0C       		.uleb128 0xc
+ 1572 0a62 86060000 		.4byte	.LASF237
+ 1573 0a66 03       		.sleb128 3
+ 1574 0a67 0C       		.uleb128 0xc
+ 1575 0a68 4F070000 		.4byte	.LASF238
+ 1576 0a6c 04       		.sleb128 4
+ 1577 0a6d 00       		.byte	0
+ 1578 0a6e 03       		.uleb128 0x3
+ 1579 0a6f 0A010000 		.4byte	.LASF239
+ 1580 0a73 06       		.byte	0x6
+ 1581 0a74 3B       		.byte	0x3b
+ 1582 0a75 470A0000 		.4byte	0xa47
+ 1583 0a79 15       		.uleb128 0x15
+ 1584 0a7a 58       		.byte	0x58
+ 1585 0a7b 06       		.byte	0x6
+ 1586 0a7c 3D       		.byte	0x3d
+ 1587 0a7d 050C0000 		.4byte	0xc05
+ 1588 0a81 12       		.uleb128 0x12
+ 1589 0a82 E0040000 		.4byte	.LASF240
+ 1590 0a86 06       		.byte	0x6
+ 1591 0a87 3E       		.byte	0x3e
+ 1592 0a88 A2000000 		.4byte	0xa2
+ 1593 0a8c 02       		.byte	0x2
+ 1594 0a8d 23       		.byte	0x23
+ 1595 0a8e 00       		.uleb128 0
+ 1596 0a8f 12       		.uleb128 0x12
+ 1597 0a90 F8090000 		.4byte	.LASF241
+ 1598 0a94 06       		.byte	0x6
+ 1599 0a95 3F       		.byte	0x3f
+ 1600 0a96 79020000 		.4byte	0x279
+ 1601 0a9a 02       		.byte	0x2
+ 1602 0a9b 23       		.byte	0x23
+ 1603 0a9c 04       		.uleb128 0x4
+ 1604 0a9d 12       		.uleb128 0x12
+ 1605 0a9e 25040000 		.4byte	.LASF242
+ 1606 0aa2 06       		.byte	0x6
+ 1607 0aa3 45       		.byte	0x45
+ 1608 0aa4 DA030000 		.4byte	0x3da
+ 1609 0aa8 02       		.byte	0x2
+ 1610 0aa9 23       		.byte	0x23
+ 1611 0aaa 05       		.uleb128 0x5
+ 1612 0aab 12       		.uleb128 0x12
+ 1613 0aac 6C040000 		.4byte	.LASF243
+ 1614 0ab0 06       		.byte	0x6
+ 1615 0ab1 4F       		.byte	0x4f
+ 1616 0ab2 45000000 		.4byte	0x45
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 30
+
+
+ 1617 0ab6 02       		.byte	0x2
+ 1618 0ab7 23       		.byte	0x23
+ 1619 0ab8 06       		.uleb128 0x6
+ 1620 0ab9 12       		.uleb128 0x12
+ 1621 0aba D60E0000 		.4byte	.LASF244
+ 1622 0abe 06       		.byte	0x6
+ 1623 0abf 58       		.byte	0x58
+ 1624 0ac0 45000000 		.4byte	0x45
+ 1625 0ac4 02       		.byte	0x2
+ 1626 0ac5 23       		.byte	0x23
+ 1627 0ac6 08       		.uleb128 0x8
+ 1628 0ac7 12       		.uleb128 0x12
+ 1629 0ac8 D3080000 		.4byte	.LASF24
+ 1630 0acc 06       		.byte	0x6
+ 1631 0acd 6B       		.byte	0x6b
+ 1632 0ace 5C010000 		.4byte	0x15c
+ 1633 0ad2 02       		.byte	0x2
+ 1634 0ad3 23       		.byte	0x23
+ 1635 0ad4 0A       		.uleb128 0xa
+ 1636 0ad5 12       		.uleb128 0x12
+ 1637 0ad6 CD100000 		.4byte	.LASF21
+ 1638 0ada 06       		.byte	0x6
+ 1639 0adb 78       		.byte	0x78
+ 1640 0adc 3C010000 		.4byte	0x13c
+ 1641 0ae0 02       		.byte	0x2
+ 1642 0ae1 23       		.byte	0x23
+ 1643 0ae2 0B       		.uleb128 0xb
+ 1644 0ae3 12       		.uleb128 0x12
+ 1645 0ae4 80000000 		.4byte	.LASF245
+ 1646 0ae8 06       		.byte	0x6
+ 1647 0ae9 7B       		.byte	0x7b
+ 1648 0aea 6E0A0000 		.4byte	0xa6e
+ 1649 0aee 02       		.byte	0x2
+ 1650 0aef 23       		.byte	0x23
+ 1651 0af0 0C       		.uleb128 0xc
+ 1652 0af1 12       		.uleb128 0x12
+ 1653 0af2 44070000 		.4byte	.LASF246
+ 1654 0af6 06       		.byte	0x6
+ 1655 0af7 82       		.byte	0x82
+ 1656 0af8 DF010000 		.4byte	0x1df
+ 1657 0afc 02       		.byte	0x2
+ 1658 0afd 23       		.byte	0x23
+ 1659 0afe 0D       		.uleb128 0xd
+ 1660 0aff 12       		.uleb128 0x12
+ 1661 0b00 CA0E0000 		.4byte	.LASF247
+ 1662 0b04 06       		.byte	0x6
+ 1663 0b05 8A       		.byte	0x8a
+ 1664 0b06 02090000 		.4byte	0x902
+ 1665 0b0a 02       		.byte	0x2
+ 1666 0b0b 23       		.byte	0x23
+ 1667 0b0c 0E       		.uleb128 0xe
+ 1668 0b0d 12       		.uleb128 0x12
+ 1669 0b0e 52050000 		.4byte	.LASF248
+ 1670 0b12 06       		.byte	0x6
+ 1671 0b13 92       		.byte	0x92
+ 1672 0b14 0B0C0000 		.4byte	0xc0b
+ 1673 0b18 02       		.byte	0x2
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 31
+
+
+ 1674 0b19 23       		.byte	0x23
+ 1675 0b1a 10       		.uleb128 0x10
+ 1676 0b1b 12       		.uleb128 0x12
+ 1677 0b1c AF0B0000 		.4byte	.LASF249
+ 1678 0b20 06       		.byte	0x6
+ 1679 0b21 98       		.byte	0x98
+ 1680 0b22 0B0C0000 		.4byte	0xc0b
+ 1681 0b26 02       		.byte	0x2
+ 1682 0b27 23       		.byte	0x23
+ 1683 0b28 14       		.uleb128 0x14
+ 1684 0b29 12       		.uleb128 0x12
+ 1685 0b2a 46000000 		.4byte	.LASF250
+ 1686 0b2e 06       		.byte	0x6
+ 1687 0b2f A2       		.byte	0xa2
+ 1688 0b30 0B0C0000 		.4byte	0xc0b
+ 1689 0b34 02       		.byte	0x2
+ 1690 0b35 23       		.byte	0x23
+ 1691 0b36 18       		.uleb128 0x18
+ 1692 0b37 12       		.uleb128 0x12
+ 1693 0b38 1E000000 		.4byte	.LASF251
+ 1694 0b3c 06       		.byte	0x6
+ 1695 0b3d A3       		.byte	0xa3
+ 1696 0b3e 0B0C0000 		.4byte	0xc0b
+ 1697 0b42 02       		.byte	0x2
+ 1698 0b43 23       		.byte	0x23
+ 1699 0b44 1C       		.uleb128 0x1c
+ 1700 0b45 12       		.uleb128 0x12
+ 1701 0b46 AD0F0000 		.4byte	.LASF252
+ 1702 0b4a 06       		.byte	0x6
+ 1703 0b4b A4       		.byte	0xa4
+ 1704 0b4c 0B0C0000 		.4byte	0xc0b
+ 1705 0b50 02       		.byte	0x2
+ 1706 0b51 23       		.byte	0x23
+ 1707 0b52 20       		.uleb128 0x20
+ 1708 0b53 12       		.uleb128 0x12
+ 1709 0b54 6B0E0000 		.4byte	.LASF253
+ 1710 0b58 06       		.byte	0x6
+ 1711 0b59 A5       		.byte	0xa5
+ 1712 0b5a 0B0C0000 		.4byte	0xc0b
+ 1713 0b5e 02       		.byte	0x2
+ 1714 0b5f 23       		.byte	0x23
+ 1715 0b60 24       		.uleb128 0x24
+ 1716 0b61 12       		.uleb128 0x12
+ 1717 0b62 73060000 		.4byte	.LASF254
+ 1718 0b66 06       		.byte	0x6
+ 1719 0b67 B9       		.byte	0xb9
+ 1720 0b68 210C0000 		.4byte	0xc21
+ 1721 0b6c 02       		.byte	0x2
+ 1722 0b6d 23       		.byte	0x23
+ 1723 0b6e 28       		.uleb128 0x28
+ 1724 0b6f 12       		.uleb128 0x12
+ 1725 0b70 E4010000 		.4byte	.LASF255
+ 1726 0b74 06       		.byte	0x6
+ 1727 0b75 C4       		.byte	0xc4
+ 1728 0b76 0B0C0000 		.4byte	0xc0b
+ 1729 0b7a 02       		.byte	0x2
+ 1730 0b7b 23       		.byte	0x23
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 32
+
+
+ 1731 0b7c 2C       		.uleb128 0x2c
+ 1732 0b7d 12       		.uleb128 0x12
+ 1733 0b7e 8A0E0000 		.4byte	.LASF256
+ 1734 0b82 06       		.byte	0x6
+ 1735 0b83 C9       		.byte	0xc9
+ 1736 0b84 0B0C0000 		.4byte	0xc0b
+ 1737 0b88 02       		.byte	0x2
+ 1738 0b89 23       		.byte	0x23
+ 1739 0b8a 30       		.uleb128 0x30
+ 1740 0b8b 12       		.uleb128 0x12
+ 1741 0b8c C6030000 		.4byte	.LASF257
+ 1742 0b90 06       		.byte	0x6
+ 1743 0b91 D5       		.byte	0xd5
+ 1744 0b92 3C0C0000 		.4byte	0xc3c
+ 1745 0b96 02       		.byte	0x2
+ 1746 0b97 23       		.byte	0x23
+ 1747 0b98 34       		.uleb128 0x34
+ 1748 0b99 12       		.uleb128 0x12
+ 1749 0b9a D9090000 		.4byte	.LASF258
+ 1750 0b9e 06       		.byte	0x6
+ 1751 0b9f DC       		.byte	0xdc
+ 1752 0ba0 580C0000 		.4byte	0xc58
+ 1753 0ba4 02       		.byte	0x2
+ 1754 0ba5 23       		.byte	0x23
+ 1755 0ba6 38       		.uleb128 0x38
+ 1756 0ba7 12       		.uleb128 0x12
+ 1757 0ba8 D0030000 		.4byte	.LASF259
+ 1758 0bac 06       		.byte	0x6
+ 1759 0bad E6       		.byte	0xe6
+ 1760 0bae 730C0000 		.4byte	0xc73
+ 1761 0bb2 02       		.byte	0x2
+ 1762 0bb3 23       		.byte	0x23
+ 1763 0bb4 3C       		.uleb128 0x3c
+ 1764 0bb5 12       		.uleb128 0x12
+ 1765 0bb6 B1000000 		.4byte	.LASF260
+ 1766 0bba 06       		.byte	0x6
+ 1767 0bbb EC       		.byte	0xec
+ 1768 0bbc 9C000000 		.4byte	0x9c
+ 1769 0bc0 02       		.byte	0x2
+ 1770 0bc1 23       		.byte	0x23
+ 1771 0bc2 40       		.uleb128 0x40
+ 1772 0bc3 0A       		.uleb128 0xa
+ 1773 0bc4 5800     		.ascii	"X\000"
+ 1774 0bc6 06       		.byte	0x6
+ 1775 0bc7 F1       		.byte	0xf1
+ 1776 0bc8 B6000000 		.4byte	0xb6
+ 1777 0bcc 02       		.byte	0x2
+ 1778 0bcd 23       		.byte	0x23
+ 1779 0bce 44       		.uleb128 0x44
+ 1780 0bcf 0A       		.uleb128 0xa
+ 1781 0bd0 5900     		.ascii	"Y\000"
+ 1782 0bd2 06       		.byte	0x6
+ 1783 0bd3 F2       		.byte	0xf2
+ 1784 0bd4 B6000000 		.4byte	0xb6
+ 1785 0bd8 02       		.byte	0x2
+ 1786 0bd9 23       		.byte	0x23
+ 1787 0bda 48       		.uleb128 0x48
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 33
+
+
+ 1788 0bdb 0A       		.uleb128 0xa
+ 1789 0bdc 5A00     		.ascii	"Z\000"
+ 1790 0bde 06       		.byte	0x6
+ 1791 0bdf F3       		.byte	0xf3
+ 1792 0be0 B6000000 		.4byte	0xb6
+ 1793 0be4 02       		.byte	0x2
+ 1794 0be5 23       		.byte	0x23
+ 1795 0be6 4C       		.uleb128 0x4c
+ 1796 0be7 12       		.uleb128 0x12
+ 1797 0be8 B0040000 		.4byte	.LASF261
+ 1798 0bec 06       		.byte	0x6
+ 1799 0bed FB       		.byte	0xfb
+ 1800 0bee 98000000 		.4byte	0x98
+ 1801 0bf2 02       		.byte	0x2
+ 1802 0bf3 23       		.byte	0x23
+ 1803 0bf4 50       		.uleb128 0x50
+ 1804 0bf5 10       		.uleb128 0x10
+ 1805 0bf6 1F0A0000 		.4byte	.LASF262
+ 1806 0bfa 06       		.byte	0x6
+ 1807 0bfb 0101     		.2byte	0x101
+ 1808 0bfd 98000000 		.4byte	0x98
+ 1809 0c01 02       		.byte	0x2
+ 1810 0c02 23       		.byte	0x23
+ 1811 0c03 54       		.uleb128 0x54
+ 1812 0c04 00       		.byte	0
+ 1813 0c05 16       		.uleb128 0x16
+ 1814 0c06 01       		.byte	0x1
+ 1815 0c07 02090000 		.4byte	0x902
+ 1816 0c0b 08       		.uleb128 0x8
+ 1817 0c0c 04       		.byte	0x4
+ 1818 0c0d 050C0000 		.4byte	0xc05
+ 1819 0c11 17       		.uleb128 0x17
+ 1820 0c12 01       		.byte	0x1
+ 1821 0c13 02090000 		.4byte	0x902
+ 1822 0c17 210C0000 		.4byte	0xc21
+ 1823 0c1b 14       		.uleb128 0x14
+ 1824 0c1c B6000000 		.4byte	0xb6
+ 1825 0c20 00       		.byte	0
+ 1826 0c21 08       		.uleb128 0x8
+ 1827 0c22 04       		.byte	0x4
+ 1828 0c23 110C0000 		.4byte	0xc11
+ 1829 0c27 17       		.uleb128 0x17
+ 1830 0c28 01       		.byte	0x1
+ 1831 0c29 37000000 		.4byte	0x37
+ 1832 0c2d 3C0C0000 		.4byte	0xc3c
+ 1833 0c31 14       		.uleb128 0x14
+ 1834 0c32 2C000000 		.4byte	0x2c
+ 1835 0c36 14       		.uleb128 0x14
+ 1836 0c37 B6000000 		.4byte	0xb6
+ 1837 0c3b 00       		.byte	0
+ 1838 0c3c 08       		.uleb128 0x8
+ 1839 0c3d 04       		.byte	0x4
+ 1840 0c3e 270C0000 		.4byte	0xc27
+ 1841 0c42 17       		.uleb128 0x17
+ 1842 0c43 01       		.byte	0x1
+ 1843 0c44 02090000 		.4byte	0x902
+ 1844 0c48 520C0000 		.4byte	0xc52
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 34
+
+
+ 1845 0c4c 14       		.uleb128 0x14
+ 1846 0c4d 520C0000 		.4byte	0xc52
+ 1847 0c51 00       		.byte	0
+ 1848 0c52 08       		.uleb128 0x8
+ 1849 0c53 04       		.byte	0x4
+ 1850 0c54 FB000000 		.4byte	0xfb
+ 1851 0c58 08       		.uleb128 0x8
+ 1852 0c59 04       		.byte	0x4
+ 1853 0c5a 420C0000 		.4byte	0xc42
+ 1854 0c5e 17       		.uleb128 0x17
+ 1855 0c5f 01       		.byte	0x1
+ 1856 0c60 02090000 		.4byte	0x902
+ 1857 0c64 730C0000 		.4byte	0xc73
+ 1858 0c68 14       		.uleb128 0x14
+ 1859 0c69 45000000 		.4byte	0x45
+ 1860 0c6d 14       		.uleb128 0x14
+ 1861 0c6e 2C000000 		.4byte	0x2c
+ 1862 0c72 00       		.byte	0
+ 1863 0c73 08       		.uleb128 0x8
+ 1864 0c74 04       		.byte	0x4
+ 1865 0c75 5E0C0000 		.4byte	0xc5e
+ 1866 0c79 0E       		.uleb128 0xe
+ 1867 0c7a 19010000 		.4byte	.LASF263
+ 1868 0c7e 06       		.byte	0x6
+ 1869 0c7f 0401     		.2byte	0x104
+ 1870 0c81 790A0000 		.4byte	0xa79
+ 1871 0c85 18       		.uleb128 0x18
+ 1872 0c86 01       		.byte	0x1
+ 1873 0c87 A2090000 		.4byte	.LASF264
+ 1874 0c8b 01       		.byte	0x1
+ 1875 0c8c 0B       		.byte	0xb
+ 1876 0c8d 01       		.byte	0x1
+ 1877 0c8e 02090000 		.4byte	0x902
+ 1878 0c92 00000000 		.4byte	.LFB110
+ 1879 0c96 20000000 		.4byte	.LFE110
+ 1880 0c9a 02       		.byte	0x2
+ 1881 0c9b 7D       		.byte	0x7d
+ 1882 0c9c 00       		.sleb128 0
+ 1883 0c9d 01       		.byte	0x1
+ 1884 0c9e 18       		.uleb128 0x18
+ 1885 0c9f 01       		.byte	0x1
+ 1886 0ca0 8B010000 		.4byte	.LASF265
+ 1887 0ca4 01       		.byte	0x1
+ 1888 0ca5 12       		.byte	0x12
+ 1889 0ca6 01       		.byte	0x1
+ 1890 0ca7 02090000 		.4byte	0x902
+ 1891 0cab 20000000 		.4byte	.LFB111
+ 1892 0caf 24000000 		.4byte	.LFE111
+ 1893 0cb3 02       		.byte	0x2
+ 1894 0cb4 7D       		.byte	0x7d
+ 1895 0cb5 00       		.sleb128 0
+ 1896 0cb6 01       		.byte	0x1
+ 1897 0cb7 19       		.uleb128 0x19
+ 1898 0cb8 01       		.byte	0x1
+ 1899 0cb9 010A0000 		.4byte	.LASF268
+ 1900 0cbd 01       		.byte	0x1
+ 1901 0cbe 17       		.byte	0x17
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 35
+
+
+ 1902 0cbf 01       		.byte	0x1
+ 1903 0cc0 02090000 		.4byte	0x902
+ 1904 0cc4 24000000 		.4byte	.LFB112
+ 1905 0cc8 28000000 		.4byte	.LFE112
+ 1906 0ccc 02       		.byte	0x2
+ 1907 0ccd 7D       		.byte	0x7d
+ 1908 0cce 00       		.sleb128 0
+ 1909 0ccf 01       		.byte	0x1
+ 1910 0cd0 F10C0000 		.4byte	0xcf1
+ 1911 0cd4 1A       		.uleb128 0x1a
+ 1912 0cd5 DF0C0000 		.4byte	.LASF266
+ 1913 0cd9 01       		.byte	0x1
+ 1914 0cda 17       		.byte	0x17
+ 1915 0cdb 45000000 		.4byte	0x45
+ 1916 0cdf 00000000 		.4byte	.LLST0
+ 1917 0ce3 1B       		.uleb128 0x1b
+ 1918 0ce4 B7100000 		.4byte	.LASF267
+ 1919 0ce8 01       		.byte	0x1
+ 1920 0ce9 17       		.byte	0x17
+ 1921 0cea 2C000000 		.4byte	0x2c
+ 1922 0cee 01       		.byte	0x1
+ 1923 0cef 51       		.byte	0x51
+ 1924 0cf0 00       		.byte	0
+ 1925 0cf1 1C       		.uleb128 0x1c
+ 1926 0cf2 01       		.byte	0x1
+ 1927 0cf3 330C0000 		.4byte	.LASF278
+ 1928 0cf7 01       		.byte	0x1
+ 1929 0cf8 1C       		.byte	0x1c
+ 1930 0cf9 01       		.byte	0x1
+ 1931 0cfa 28000000 		.4byte	.LFB113
+ 1932 0cfe 2A000000 		.4byte	.LFE113
+ 1933 0d02 02       		.byte	0x2
+ 1934 0d03 7D       		.byte	0x7d
+ 1935 0d04 00       		.sleb128 0
+ 1936 0d05 01       		.byte	0x1
+ 1937 0d06 19       		.uleb128 0x19
+ 1938 0d07 01       		.byte	0x1
+ 1939 0d08 6D080000 		.4byte	.LASF269
+ 1940 0d0c 01       		.byte	0x1
+ 1941 0d0d 21       		.byte	0x21
+ 1942 0d0e 01       		.byte	0x1
+ 1943 0d0f 02090000 		.4byte	0x902
+ 1944 0d13 2A000000 		.4byte	.LFB114
+ 1945 0d17 2E000000 		.4byte	.LFE114
+ 1946 0d1b 02       		.byte	0x2
+ 1947 0d1c 7D       		.byte	0x7d
+ 1948 0d1d 00       		.sleb128 0
+ 1949 0d1e 01       		.byte	0x1
+ 1950 0d1f 320D0000 		.4byte	0xd32
+ 1951 0d23 1B       		.uleb128 0x1b
+ 1952 0d24 760A0000 		.4byte	.LASF270
+ 1953 0d28 01       		.byte	0x1
+ 1954 0d29 21       		.byte	0x21
+ 1955 0d2a B6000000 		.4byte	0xb6
+ 1956 0d2e 02       		.byte	0x2
+ 1957 0d2f 90       		.byte	0x90
+ 1958 0d30 40       		.uleb128 0x40
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 36
+
+
+ 1959 0d31 00       		.byte	0
+ 1960 0d32 1D       		.uleb128 0x1d
+ 1961 0d33 6E0B0000 		.4byte	.LASF271
+ 1962 0d37 07       		.byte	0x7
+ 1963 0d38 1A05     		.2byte	0x51a
+ 1964 0d3a 93000000 		.4byte	0x93
+ 1965 0d3e 01       		.byte	0x1
+ 1966 0d3f 01       		.byte	0x1
+ 1967 0d40 1D       		.uleb128 0x1d
+ 1968 0d41 E6090000 		.4byte	.LASF272
+ 1969 0d45 03       		.byte	0x3
+ 1970 0d46 3F03     		.2byte	0x33f
+ 1971 0d48 4E0D0000 		.4byte	0xd4e
+ 1972 0d4c 01       		.byte	0x1
+ 1973 0d4d 01       		.byte	0x1
+ 1974 0d4e 08       		.uleb128 0x8
+ 1975 0d4f 04       		.byte	0x4
+ 1976 0d50 A0080000 		.4byte	0x8a0
+ 1977 0d54 1D       		.uleb128 0x1d
+ 1978 0d55 A1070000 		.4byte	.LASF273
+ 1979 0d59 06       		.byte	0x6
+ 1980 0d5a 2601     		.2byte	0x126
+ 1981 0d5c 620D0000 		.4byte	0xd62
+ 1982 0d60 01       		.byte	0x1
+ 1983 0d61 01       		.byte	0x1
+ 1984 0d62 08       		.uleb128 0x8
+ 1985 0d63 04       		.byte	0x4
+ 1986 0d64 790C0000 		.4byte	0xc79
+ 1987 0d68 1E       		.uleb128 0x1e
+ 1988 0d69 1B0B0000 		.4byte	.LASF274
+ 1989 0d6d 06       		.byte	0x6
+ 1990 0d6e 2B01     		.2byte	0x12b
+ 1991 0d70 7B0D0000 		.4byte	0xd7b
+ 1992 0d74 01       		.byte	0x1
+ 1993 0d75 05       		.byte	0x5
+ 1994 0d76 03       		.byte	0x3
+ 1995 0d77 00000000 		.4byte	I2CZeroJob
+ 1996 0d7b 08       		.uleb128 0x8
+ 1997 0d7c 04       		.byte	0x4
+ 1998 0d7d 3C0A0000 		.4byte	0xa3c
+ 1999 0d81 00       		.byte	0
+ 2000              		.section	.debug_abbrev,"",%progbits
+ 2001              	.Ldebug_abbrev0:
+ 2002 0000 01       		.uleb128 0x1
+ 2003 0001 11       		.uleb128 0x11
+ 2004 0002 01       		.byte	0x1
+ 2005 0003 25       		.uleb128 0x25
+ 2006 0004 0E       		.uleb128 0xe
+ 2007 0005 13       		.uleb128 0x13
+ 2008 0006 0B       		.uleb128 0xb
+ 2009 0007 03       		.uleb128 0x3
+ 2010 0008 0E       		.uleb128 0xe
+ 2011 0009 1B       		.uleb128 0x1b
+ 2012 000a 0E       		.uleb128 0xe
+ 2013 000b 11       		.uleb128 0x11
+ 2014 000c 01       		.uleb128 0x1
+ 2015 000d 12       		.uleb128 0x12
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 37
+
+
+ 2016 000e 01       		.uleb128 0x1
+ 2017 000f 10       		.uleb128 0x10
+ 2018 0010 06       		.uleb128 0x6
+ 2019 0011 00       		.byte	0
+ 2020 0012 00       		.byte	0
+ 2021 0013 02       		.uleb128 0x2
+ 2022 0014 24       		.uleb128 0x24
+ 2023 0015 00       		.byte	0
+ 2024 0016 0B       		.uleb128 0xb
+ 2025 0017 0B       		.uleb128 0xb
+ 2026 0018 3E       		.uleb128 0x3e
+ 2027 0019 0B       		.uleb128 0xb
+ 2028 001a 03       		.uleb128 0x3
+ 2029 001b 0E       		.uleb128 0xe
+ 2030 001c 00       		.byte	0
+ 2031 001d 00       		.byte	0
+ 2032 001e 03       		.uleb128 0x3
+ 2033 001f 16       		.uleb128 0x16
+ 2034 0020 00       		.byte	0
+ 2035 0021 03       		.uleb128 0x3
+ 2036 0022 0E       		.uleb128 0xe
+ 2037 0023 3A       		.uleb128 0x3a
+ 2038 0024 0B       		.uleb128 0xb
+ 2039 0025 3B       		.uleb128 0x3b
+ 2040 0026 0B       		.uleb128 0xb
+ 2041 0027 49       		.uleb128 0x49
+ 2042 0028 13       		.uleb128 0x13
+ 2043 0029 00       		.byte	0
+ 2044 002a 00       		.byte	0
+ 2045 002b 04       		.uleb128 0x4
+ 2046 002c 24       		.uleb128 0x24
+ 2047 002d 00       		.byte	0
+ 2048 002e 0B       		.uleb128 0xb
+ 2049 002f 0B       		.uleb128 0xb
+ 2050 0030 3E       		.uleb128 0x3e
+ 2051 0031 0B       		.uleb128 0xb
+ 2052 0032 03       		.uleb128 0x3
+ 2053 0033 08       		.uleb128 0x8
+ 2054 0034 00       		.byte	0
+ 2055 0035 00       		.byte	0
+ 2056 0036 05       		.uleb128 0x5
+ 2057 0037 35       		.uleb128 0x35
+ 2058 0038 00       		.byte	0
+ 2059 0039 49       		.uleb128 0x49
+ 2060 003a 13       		.uleb128 0x13
+ 2061 003b 00       		.byte	0
+ 2062 003c 00       		.byte	0
+ 2063 003d 06       		.uleb128 0x6
+ 2064 003e 0F       		.uleb128 0xf
+ 2065 003f 00       		.byte	0
+ 2066 0040 0B       		.uleb128 0xb
+ 2067 0041 0B       		.uleb128 0xb
+ 2068 0042 00       		.byte	0
+ 2069 0043 00       		.byte	0
+ 2070 0044 07       		.uleb128 0x7
+ 2071 0045 15       		.uleb128 0x15
+ 2072 0046 00       		.byte	0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 38
+
+
+ 2073 0047 27       		.uleb128 0x27
+ 2074 0048 0C       		.uleb128 0xc
+ 2075 0049 00       		.byte	0
+ 2076 004a 00       		.byte	0
+ 2077 004b 08       		.uleb128 0x8
+ 2078 004c 0F       		.uleb128 0xf
+ 2079 004d 00       		.byte	0
+ 2080 004e 0B       		.uleb128 0xb
+ 2081 004f 0B       		.uleb128 0xb
+ 2082 0050 49       		.uleb128 0x49
+ 2083 0051 13       		.uleb128 0x13
+ 2084 0052 00       		.byte	0
+ 2085 0053 00       		.byte	0
+ 2086 0054 09       		.uleb128 0x9
+ 2087 0055 13       		.uleb128 0x13
+ 2088 0056 01       		.byte	0x1
+ 2089 0057 03       		.uleb128 0x3
+ 2090 0058 0E       		.uleb128 0xe
+ 2091 0059 0B       		.uleb128 0xb
+ 2092 005a 0B       		.uleb128 0xb
+ 2093 005b 3A       		.uleb128 0x3a
+ 2094 005c 0B       		.uleb128 0xb
+ 2095 005d 3B       		.uleb128 0x3b
+ 2096 005e 0B       		.uleb128 0xb
+ 2097 005f 01       		.uleb128 0x1
+ 2098 0060 13       		.uleb128 0x13
+ 2099 0061 00       		.byte	0
+ 2100 0062 00       		.byte	0
+ 2101 0063 0A       		.uleb128 0xa
+ 2102 0064 0D       		.uleb128 0xd
+ 2103 0065 00       		.byte	0
+ 2104 0066 03       		.uleb128 0x3
+ 2105 0067 08       		.uleb128 0x8
+ 2106 0068 3A       		.uleb128 0x3a
+ 2107 0069 0B       		.uleb128 0xb
+ 2108 006a 3B       		.uleb128 0x3b
+ 2109 006b 0B       		.uleb128 0xb
+ 2110 006c 49       		.uleb128 0x49
+ 2111 006d 13       		.uleb128 0x13
+ 2112 006e 38       		.uleb128 0x38
+ 2113 006f 0A       		.uleb128 0xa
+ 2114 0070 00       		.byte	0
+ 2115 0071 00       		.byte	0
+ 2116 0072 0B       		.uleb128 0xb
+ 2117 0073 04       		.uleb128 0x4
+ 2118 0074 01       		.byte	0x1
+ 2119 0075 0B       		.uleb128 0xb
+ 2120 0076 0B       		.uleb128 0xb
+ 2121 0077 3A       		.uleb128 0x3a
+ 2122 0078 0B       		.uleb128 0xb
+ 2123 0079 3B       		.uleb128 0x3b
+ 2124 007a 0B       		.uleb128 0xb
+ 2125 007b 01       		.uleb128 0x1
+ 2126 007c 13       		.uleb128 0x13
+ 2127 007d 00       		.byte	0
+ 2128 007e 00       		.byte	0
+ 2129 007f 0C       		.uleb128 0xc
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 39
+
+
+ 2130 0080 28       		.uleb128 0x28
+ 2131 0081 00       		.byte	0
+ 2132 0082 03       		.uleb128 0x3
+ 2133 0083 0E       		.uleb128 0xe
+ 2134 0084 1C       		.uleb128 0x1c
+ 2135 0085 0D       		.uleb128 0xd
+ 2136 0086 00       		.byte	0
+ 2137 0087 00       		.byte	0
+ 2138 0088 0D       		.uleb128 0xd
+ 2139 0089 04       		.uleb128 0x4
+ 2140 008a 01       		.byte	0x1
+ 2141 008b 0B       		.uleb128 0xb
+ 2142 008c 0B       		.uleb128 0xb
+ 2143 008d 3A       		.uleb128 0x3a
+ 2144 008e 0B       		.uleb128 0xb
+ 2145 008f 3B       		.uleb128 0x3b
+ 2146 0090 05       		.uleb128 0x5
+ 2147 0091 01       		.uleb128 0x1
+ 2148 0092 13       		.uleb128 0x13
+ 2149 0093 00       		.byte	0
+ 2150 0094 00       		.byte	0
+ 2151 0095 0E       		.uleb128 0xe
+ 2152 0096 16       		.uleb128 0x16
+ 2153 0097 00       		.byte	0
+ 2154 0098 03       		.uleb128 0x3
+ 2155 0099 0E       		.uleb128 0xe
+ 2156 009a 3A       		.uleb128 0x3a
+ 2157 009b 0B       		.uleb128 0xb
+ 2158 009c 3B       		.uleb128 0x3b
+ 2159 009d 05       		.uleb128 0x5
+ 2160 009e 49       		.uleb128 0x49
+ 2161 009f 13       		.uleb128 0x13
+ 2162 00a0 00       		.byte	0
+ 2163 00a1 00       		.byte	0
+ 2164 00a2 0F       		.uleb128 0xf
+ 2165 00a3 13       		.uleb128 0x13
+ 2166 00a4 01       		.byte	0x1
+ 2167 00a5 0B       		.uleb128 0xb
+ 2168 00a6 0B       		.uleb128 0xb
+ 2169 00a7 3A       		.uleb128 0x3a
+ 2170 00a8 0B       		.uleb128 0xb
+ 2171 00a9 3B       		.uleb128 0x3b
+ 2172 00aa 05       		.uleb128 0x5
+ 2173 00ab 01       		.uleb128 0x1
+ 2174 00ac 13       		.uleb128 0x13
+ 2175 00ad 00       		.byte	0
+ 2176 00ae 00       		.byte	0
+ 2177 00af 10       		.uleb128 0x10
+ 2178 00b0 0D       		.uleb128 0xd
+ 2179 00b1 00       		.byte	0
+ 2180 00b2 03       		.uleb128 0x3
+ 2181 00b3 0E       		.uleb128 0xe
+ 2182 00b4 3A       		.uleb128 0x3a
+ 2183 00b5 0B       		.uleb128 0xb
+ 2184 00b6 3B       		.uleb128 0x3b
+ 2185 00b7 05       		.uleb128 0x5
+ 2186 00b8 49       		.uleb128 0x49
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 40
+
+
+ 2187 00b9 13       		.uleb128 0x13
+ 2188 00ba 38       		.uleb128 0x38
+ 2189 00bb 0A       		.uleb128 0xa
+ 2190 00bc 00       		.byte	0
+ 2191 00bd 00       		.byte	0
+ 2192 00be 11       		.uleb128 0x11
+ 2193 00bf 28       		.uleb128 0x28
+ 2194 00c0 00       		.byte	0
+ 2195 00c1 03       		.uleb128 0x3
+ 2196 00c2 08       		.uleb128 0x8
+ 2197 00c3 1C       		.uleb128 0x1c
+ 2198 00c4 0D       		.uleb128 0xd
+ 2199 00c5 00       		.byte	0
+ 2200 00c6 00       		.byte	0
+ 2201 00c7 12       		.uleb128 0x12
+ 2202 00c8 0D       		.uleb128 0xd
+ 2203 00c9 00       		.byte	0
+ 2204 00ca 03       		.uleb128 0x3
+ 2205 00cb 0E       		.uleb128 0xe
+ 2206 00cc 3A       		.uleb128 0x3a
+ 2207 00cd 0B       		.uleb128 0xb
+ 2208 00ce 3B       		.uleb128 0x3b
+ 2209 00cf 0B       		.uleb128 0xb
+ 2210 00d0 49       		.uleb128 0x49
+ 2211 00d1 13       		.uleb128 0x13
+ 2212 00d2 38       		.uleb128 0x38
+ 2213 00d3 0A       		.uleb128 0xa
+ 2214 00d4 00       		.byte	0
+ 2215 00d5 00       		.byte	0
+ 2216 00d6 13       		.uleb128 0x13
+ 2217 00d7 15       		.uleb128 0x15
+ 2218 00d8 01       		.byte	0x1
+ 2219 00d9 27       		.uleb128 0x27
+ 2220 00da 0C       		.uleb128 0xc
+ 2221 00db 01       		.uleb128 0x1
+ 2222 00dc 13       		.uleb128 0x13
+ 2223 00dd 00       		.byte	0
+ 2224 00de 00       		.byte	0
+ 2225 00df 14       		.uleb128 0x14
+ 2226 00e0 05       		.uleb128 0x5
+ 2227 00e1 00       		.byte	0
+ 2228 00e2 49       		.uleb128 0x49
+ 2229 00e3 13       		.uleb128 0x13
+ 2230 00e4 00       		.byte	0
+ 2231 00e5 00       		.byte	0
+ 2232 00e6 15       		.uleb128 0x15
+ 2233 00e7 13       		.uleb128 0x13
+ 2234 00e8 01       		.byte	0x1
+ 2235 00e9 0B       		.uleb128 0xb
+ 2236 00ea 0B       		.uleb128 0xb
+ 2237 00eb 3A       		.uleb128 0x3a
+ 2238 00ec 0B       		.uleb128 0xb
+ 2239 00ed 3B       		.uleb128 0x3b
+ 2240 00ee 0B       		.uleb128 0xb
+ 2241 00ef 01       		.uleb128 0x1
+ 2242 00f0 13       		.uleb128 0x13
+ 2243 00f1 00       		.byte	0
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 41
+
+
+ 2244 00f2 00       		.byte	0
+ 2245 00f3 16       		.uleb128 0x16
+ 2246 00f4 15       		.uleb128 0x15
+ 2247 00f5 00       		.byte	0
+ 2248 00f6 27       		.uleb128 0x27
+ 2249 00f7 0C       		.uleb128 0xc
+ 2250 00f8 49       		.uleb128 0x49
+ 2251 00f9 13       		.uleb128 0x13
+ 2252 00fa 00       		.byte	0
+ 2253 00fb 00       		.byte	0
+ 2254 00fc 17       		.uleb128 0x17
+ 2255 00fd 15       		.uleb128 0x15
+ 2256 00fe 01       		.byte	0x1
+ 2257 00ff 27       		.uleb128 0x27
+ 2258 0100 0C       		.uleb128 0xc
+ 2259 0101 49       		.uleb128 0x49
+ 2260 0102 13       		.uleb128 0x13
+ 2261 0103 01       		.uleb128 0x1
+ 2262 0104 13       		.uleb128 0x13
+ 2263 0105 00       		.byte	0
+ 2264 0106 00       		.byte	0
+ 2265 0107 18       		.uleb128 0x18
+ 2266 0108 2E       		.uleb128 0x2e
+ 2267 0109 00       		.byte	0
+ 2268 010a 3F       		.uleb128 0x3f
+ 2269 010b 0C       		.uleb128 0xc
+ 2270 010c 03       		.uleb128 0x3
+ 2271 010d 0E       		.uleb128 0xe
+ 2272 010e 3A       		.uleb128 0x3a
+ 2273 010f 0B       		.uleb128 0xb
+ 2274 0110 3B       		.uleb128 0x3b
+ 2275 0111 0B       		.uleb128 0xb
+ 2276 0112 27       		.uleb128 0x27
+ 2277 0113 0C       		.uleb128 0xc
+ 2278 0114 49       		.uleb128 0x49
+ 2279 0115 13       		.uleb128 0x13
+ 2280 0116 11       		.uleb128 0x11
+ 2281 0117 01       		.uleb128 0x1
+ 2282 0118 12       		.uleb128 0x12
+ 2283 0119 01       		.uleb128 0x1
+ 2284 011a 40       		.uleb128 0x40
+ 2285 011b 0A       		.uleb128 0xa
+ 2286 011c 9742     		.uleb128 0x2117
+ 2287 011e 0C       		.uleb128 0xc
+ 2288 011f 00       		.byte	0
+ 2289 0120 00       		.byte	0
+ 2290 0121 19       		.uleb128 0x19
+ 2291 0122 2E       		.uleb128 0x2e
+ 2292 0123 01       		.byte	0x1
+ 2293 0124 3F       		.uleb128 0x3f
+ 2294 0125 0C       		.uleb128 0xc
+ 2295 0126 03       		.uleb128 0x3
+ 2296 0127 0E       		.uleb128 0xe
+ 2297 0128 3A       		.uleb128 0x3a
+ 2298 0129 0B       		.uleb128 0xb
+ 2299 012a 3B       		.uleb128 0x3b
+ 2300 012b 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 42
+
+
+ 2301 012c 27       		.uleb128 0x27
+ 2302 012d 0C       		.uleb128 0xc
+ 2303 012e 49       		.uleb128 0x49
+ 2304 012f 13       		.uleb128 0x13
+ 2305 0130 11       		.uleb128 0x11
+ 2306 0131 01       		.uleb128 0x1
+ 2307 0132 12       		.uleb128 0x12
+ 2308 0133 01       		.uleb128 0x1
+ 2309 0134 40       		.uleb128 0x40
+ 2310 0135 0A       		.uleb128 0xa
+ 2311 0136 9742     		.uleb128 0x2117
+ 2312 0138 0C       		.uleb128 0xc
+ 2313 0139 01       		.uleb128 0x1
+ 2314 013a 13       		.uleb128 0x13
+ 2315 013b 00       		.byte	0
+ 2316 013c 00       		.byte	0
+ 2317 013d 1A       		.uleb128 0x1a
+ 2318 013e 05       		.uleb128 0x5
+ 2319 013f 00       		.byte	0
+ 2320 0140 03       		.uleb128 0x3
+ 2321 0141 0E       		.uleb128 0xe
+ 2322 0142 3A       		.uleb128 0x3a
+ 2323 0143 0B       		.uleb128 0xb
+ 2324 0144 3B       		.uleb128 0x3b
+ 2325 0145 0B       		.uleb128 0xb
+ 2326 0146 49       		.uleb128 0x49
+ 2327 0147 13       		.uleb128 0x13
+ 2328 0148 02       		.uleb128 0x2
+ 2329 0149 06       		.uleb128 0x6
+ 2330 014a 00       		.byte	0
+ 2331 014b 00       		.byte	0
+ 2332 014c 1B       		.uleb128 0x1b
+ 2333 014d 05       		.uleb128 0x5
+ 2334 014e 00       		.byte	0
+ 2335 014f 03       		.uleb128 0x3
+ 2336 0150 0E       		.uleb128 0xe
+ 2337 0151 3A       		.uleb128 0x3a
+ 2338 0152 0B       		.uleb128 0xb
+ 2339 0153 3B       		.uleb128 0x3b
+ 2340 0154 0B       		.uleb128 0xb
+ 2341 0155 49       		.uleb128 0x49
+ 2342 0156 13       		.uleb128 0x13
+ 2343 0157 02       		.uleb128 0x2
+ 2344 0158 0A       		.uleb128 0xa
+ 2345 0159 00       		.byte	0
+ 2346 015a 00       		.byte	0
+ 2347 015b 1C       		.uleb128 0x1c
+ 2348 015c 2E       		.uleb128 0x2e
+ 2349 015d 00       		.byte	0
+ 2350 015e 3F       		.uleb128 0x3f
+ 2351 015f 0C       		.uleb128 0xc
+ 2352 0160 03       		.uleb128 0x3
+ 2353 0161 0E       		.uleb128 0xe
+ 2354 0162 3A       		.uleb128 0x3a
+ 2355 0163 0B       		.uleb128 0xb
+ 2356 0164 3B       		.uleb128 0x3b
+ 2357 0165 0B       		.uleb128 0xb
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 43
+
+
+ 2358 0166 27       		.uleb128 0x27
+ 2359 0167 0C       		.uleb128 0xc
+ 2360 0168 11       		.uleb128 0x11
+ 2361 0169 01       		.uleb128 0x1
+ 2362 016a 12       		.uleb128 0x12
+ 2363 016b 01       		.uleb128 0x1
+ 2364 016c 40       		.uleb128 0x40
+ 2365 016d 0A       		.uleb128 0xa
+ 2366 016e 9742     		.uleb128 0x2117
+ 2367 0170 0C       		.uleb128 0xc
+ 2368 0171 00       		.byte	0
+ 2369 0172 00       		.byte	0
+ 2370 0173 1D       		.uleb128 0x1d
+ 2371 0174 34       		.uleb128 0x34
+ 2372 0175 00       		.byte	0
+ 2373 0176 03       		.uleb128 0x3
+ 2374 0177 0E       		.uleb128 0xe
+ 2375 0178 3A       		.uleb128 0x3a
+ 2376 0179 0B       		.uleb128 0xb
+ 2377 017a 3B       		.uleb128 0x3b
+ 2378 017b 05       		.uleb128 0x5
+ 2379 017c 49       		.uleb128 0x49
+ 2380 017d 13       		.uleb128 0x13
+ 2381 017e 3F       		.uleb128 0x3f
+ 2382 017f 0C       		.uleb128 0xc
+ 2383 0180 3C       		.uleb128 0x3c
+ 2384 0181 0C       		.uleb128 0xc
+ 2385 0182 00       		.byte	0
+ 2386 0183 00       		.byte	0
+ 2387 0184 1E       		.uleb128 0x1e
+ 2388 0185 34       		.uleb128 0x34
+ 2389 0186 00       		.byte	0
+ 2390 0187 03       		.uleb128 0x3
+ 2391 0188 0E       		.uleb128 0xe
+ 2392 0189 3A       		.uleb128 0x3a
+ 2393 018a 0B       		.uleb128 0xb
+ 2394 018b 3B       		.uleb128 0x3b
+ 2395 018c 05       		.uleb128 0x5
+ 2396 018d 49       		.uleb128 0x49
+ 2397 018e 13       		.uleb128 0x13
+ 2398 018f 3F       		.uleb128 0x3f
+ 2399 0190 0C       		.uleb128 0xc
+ 2400 0191 02       		.uleb128 0x2
+ 2401 0192 0A       		.uleb128 0xa
+ 2402 0193 00       		.byte	0
+ 2403 0194 00       		.byte	0
+ 2404 0195 00       		.byte	0
+ 2405              		.section	.debug_loc,"",%progbits
+ 2406              	.Ldebug_loc0:
+ 2407              	.LLST0:
+ 2408 0000 24000000 		.4byte	.LVL0-.Ltext0
+ 2409 0004 26000000 		.4byte	.LVL1-.Ltext0
+ 2410 0008 0100     		.2byte	0x1
+ 2411 000a 50       		.byte	0x50
+ 2412 000b 26000000 		.4byte	.LVL1-.Ltext0
+ 2413 000f 28000000 		.4byte	.LFE112-.Ltext0
+ 2414 0013 0400     		.2byte	0x4
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 44
+
+
+ 2415 0015 F3       		.byte	0xf3
+ 2416 0016 01       		.uleb128 0x1
+ 2417 0017 50       		.byte	0x50
+ 2418 0018 9F       		.byte	0x9f
+ 2419 0019 00000000 		.4byte	0
+ 2420 001d 00000000 		.4byte	0
+ 2421              		.section	.debug_aranges,"",%progbits
+ 2422 0000 1C000000 		.4byte	0x1c
+ 2423 0004 0200     		.2byte	0x2
+ 2424 0006 00000000 		.4byte	.Ldebug_info0
+ 2425 000a 04       		.byte	0x4
+ 2426 000b 00       		.byte	0
+ 2427 000c 0000     		.2byte	0
+ 2428 000e 0000     		.2byte	0
+ 2429 0010 00000000 		.4byte	.Ltext0
+ 2430 0014 2E000000 		.4byte	.Letext0-.Ltext0
+ 2431 0018 00000000 		.4byte	0
+ 2432 001c 00000000 		.4byte	0
+ 2433              		.section	.debug_line,"",%progbits
+ 2434              	.Ldebug_line0:
+ 2435 0000 24010000 		.section	.debug_str,"MS",%progbits,1
+ 2435      02000301 
+ 2435      00000201 
+ 2435      FB0E0D00 
+ 2435      01010101 
+ 2436              	.LASF200:
+ 2437 0000 4932435F 		.ascii	"I2C_GeneralFailure\000"
+ 2437      47656E65 
+ 2437      72616C46 
+ 2437      61696C75 
+ 2437      726500
+ 2438              	.LASF18:
+ 2439 0013 43616C69 		.ascii	"Calibrated\000"
+ 2439      62726174 
+ 2439      656400
+ 2440              	.LASF251:
+ 2441 001e 50617573 		.ascii	"Pause\000"
+ 2441      6500
+ 2442              	.LASF236:
+ 2443 0024 53656E73 		.ascii	"SensorStatus_Ready\000"
+ 2443      6F725374 
+ 2443      61747573 
+ 2443      5F526561 
+ 2443      647900
+ 2444              	.LASF20:
+ 2445 0037 49734361 		.ascii	"IsCalibrated_t\000"
+ 2445      6C696272 
+ 2445      61746564 
+ 2445      5F7400
+ 2446              	.LASF250:
+ 2447 0046 53746172 		.ascii	"Start\000"
+ 2447      7400
+ 2448              	.LASF116:
+ 2449 004c 54617267 		.ascii	"TargetsSendDataRate\000"
+ 2449      65747353 
+ 2449      656E6444 
+ 2449      61746152 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 45
+
+
+ 2449      61746500 
+ 2450              	.LASF142:
+ 2451 0060 4C534D33 		.ascii	"LSM303_ACC_SampleRate\000"
+ 2451      30335F41 
+ 2451      43435F53 
+ 2451      616D706C 
+ 2451      65526174 
+ 2452              	.LASF63:
+ 2453 0076 4175746F 		.ascii	"AutoPilot\000"
+ 2453      50696C6F 
+ 2453      7400
+ 2454              	.LASF245:
+ 2455 0080 53746174 		.ascii	"Status\000"
+ 2455      757300
+ 2456              	.LASF276:
+ 2457 0087 2E5C7372 		.ascii	".\\src\\sensors\\fusion\\kalman.c\000"
+ 2457      635C7365 
+ 2457      6E736F72 
+ 2457      735C6675 
+ 2457      73696F6E 
+ 2458              	.LASF204:
+ 2459 00a5 694F7052 		.ascii	"iOpResult_e\000"
+ 2459      6573756C 
+ 2459      745F6500 
+ 2460              	.LASF260:
+ 2461 00b1 53656E64 		.ascii	"SendDiag\000"
+ 2461      44696167 
+ 2461      00
+ 2462              	.LASF60:
+ 2463 00ba 536E7372 		.ascii	"SnsrFusionComplementary\000"
+ 2463      46757369 
+ 2463      6F6E436F 
+ 2463      6D706C65 
+ 2463      6D656E74 
+ 2464              	.LASF133:
+ 2465 00d2 4D505536 		.ascii	"MPU60x0_GyroSampleRate\000"
+ 2465      3078305F 
+ 2465      4779726F 
+ 2465      53616D70 
+ 2465      6C655261 
+ 2466              	.LASF92:
+ 2467 00e9 46696C74 		.ascii	"FilterOption_Moving_Average_0_01\000"
+ 2467      65724F70 
+ 2467      74696F6E 
+ 2467      5F4D6F76 
+ 2467      696E675F 
+ 2468              	.LASF239:
+ 2469 010a 53656E73 		.ascii	"SensorStatus_t\000"
+ 2469      6F725374 
+ 2469      61747573 
+ 2469      5F7400
+ 2470              	.LASF263:
+ 2471 0119 53656E73 		.ascii	"Sensor_t\000"
+ 2471      6F725F74 
+ 2471      00
+ 2472              	.LASF79:
+ 2473 0122 55706461 		.ascii	"UpdateRate_30Hz\000"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 46
+
+
+ 2473      74655261 
+ 2473      74655F33 
+ 2473      30487A00 
+ 2474              	.LASF219:
+ 2475 0132 4932434D 		.ascii	"I2CModes\000"
+ 2475      6F646573 
+ 2475      00
+ 2476              	.LASF151:
+ 2477 013b 4C334744 		.ascii	"L3GD20_REG1\000"
+ 2477      32305F52 
+ 2477      45473100 
+ 2478              	.LASF152:
+ 2479 0147 4C334744 		.ascii	"L3GD20_REG2\000"
+ 2479      32305F52 
+ 2479      45473200 
+ 2480              	.LASF153:
+ 2481 0153 4C334744 		.ascii	"L3GD20_REG3\000"
+ 2481      32305F52 
+ 2481      45473300 
+ 2482              	.LASF70:
+ 2483 015f 55706461 		.ascii	"UpdateRate_300Hz\000"
+ 2483      74655261 
+ 2483      74655F33 
+ 2483      3030487A 
+ 2483      00
+ 2484              	.LASF155:
+ 2485 0170 4C334744 		.ascii	"L3GD20_REG5\000"
+ 2485      32305F52 
+ 2485      45473500 
+ 2486              	.LASF210:
+ 2487 017c 50656E64 		.ascii	"PendingReceive\000"
+ 2487      696E6752 
+ 2487      65636569 
+ 2487      766500
+ 2488              	.LASF265:
+ 2489 018b 5457425F 		.ascii	"TWB_SNSR_Kalman_ResetDefaults\000"
+ 2489      534E5352 
+ 2489      5F4B616C 
+ 2489      6D616E5F 
+ 2489      52657365 
+ 2490              	.LASF46:
+ 2491 01a9 4779726F 		.ascii	"GyroMPU60x0\000"
+ 2491      4D505536 
+ 2491      30783000 
+ 2492              	.LASF174:
+ 2493 01b5 536F6E61 		.ascii	"Sonar_FilterOption\000"
+ 2493      725F4669 
+ 2493      6C746572 
+ 2493      4F707469 
+ 2493      6F6E00
+ 2494              	.LASF215:
+ 2495 01c8 49324354 		.ascii	"I2CTimeOut\000"
+ 2495      696D654F 
+ 2495      757400
+ 2496              	.LASF73:
+ 2497 01d3 55647061 		.ascii	"UdpateRate_150Hz\000"
+ 2497      74655261 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 47
+
+
+ 2497      74655F31 
+ 2497      3530487A 
+ 2497      00
+ 2498              	.LASF255:
+ 2499 01e4 50726F63 		.ascii	"ProcessData\000"
+ 2499      65737344 
+ 2499      61746100 
+ 2500              	.LASF140:
+ 2501 01f0 4C534D33 		.ascii	"LSM303_ACC_FIFO_Enable\000"
+ 2501      30335F41 
+ 2501      43435F46 
+ 2501      49464F5F 
+ 2501      456E6162 
+ 2502              	.LASF230:
+ 2503 0207 4F757442 		.ascii	"OutBuffer\000"
+ 2503      75666665 
+ 2503      7200
+ 2504              	.LASF150:
+ 2505 0211 4C334744 		.ascii	"L3GD20_Enabled\000"
+ 2505      32305F45 
+ 2505      6E61626C 
+ 2505      656400
+ 2506              	.LASF213:
+ 2507 0220 49324343 		.ascii	"I2CCompleted\000"
+ 2507      6F6D706C 
+ 2507      65746564 
+ 2507      00
+ 2508              	.LASF196:
+ 2509 022d 41726269 		.ascii	"ArbitrationLost\000"
+ 2509      74726174 
+ 2509      696F6E4C 
+ 2509      6F737400 
+ 2510              	.LASF203:
+ 2511 023d 556E6B6E 		.ascii	"UnknownMessageType\000"
+ 2511      6F776E4D 
+ 2511      65737361 
+ 2511      67655479 
+ 2511      706500
+ 2512              	.LASF208:
+ 2513 0250 50656E64 		.ascii	"PendingAddressSent\000"
+ 2513      696E6741 
+ 2513      64647265 
+ 2513      73735365 
+ 2513      6E7400
+ 2514              	.LASF101:
+ 2515 0263 46696C74 		.ascii	"FilterOption_Moving_Average_40\000"
+ 2515      65724F70 
+ 2515      74696F6E 
+ 2515      5F4D6F76 
+ 2515      696E675F 
+ 2516              	.LASF231:
+ 2517 0282 53746174 		.ascii	"State\000"
+ 2517      6500
+ 2518              	.LASF185:
+ 2519 0288 4750535F 		.ascii	"GPS_DGPSMode\000"
+ 2519      44475053 
+ 2519      4D6F6465 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 48
+
+
+ 2519      00
+ 2520              	.LASF235:
+ 2521 0295 53656E73 		.ascii	"SensorStatus_Disabled\000"
+ 2521      6F725374 
+ 2521      61747573 
+ 2521      5F446973 
+ 2521      61626C65 
+ 2522              	.LASF211:
+ 2523 02ab 50656E64 		.ascii	"PendingMasterModeRx\000"
+ 2523      696E674D 
+ 2523      61737465 
+ 2523      724D6F64 
+ 2523      65527800 
+ 2524              	.LASF52:
+ 2525 02bf 4D616748 		.ascii	"MagHMS5883\000"
+ 2525      4D533538 
+ 2525      383300
+ 2526              	.LASF193:
+ 2527 02ca 49676E6F 		.ascii	"Ignored\000"
+ 2527      72656400 
+ 2528              	.LASF43:
+ 2529 02d2 53616D70 		.ascii	"SampleRate_t\000"
+ 2529      6C655261 
+ 2529      74655F74 
+ 2529      00
+ 2530              	.LASF157:
+ 2531 02df 4C334744 		.ascii	"L3GD20_FilterOption\000"
+ 2531      32305F46 
+ 2531      696C7465 
+ 2531      724F7074 
+ 2531      696F6E00 
+ 2532              	.LASF165:
+ 2533 02f3 484D4335 		.ascii	"HMC5883_Enabled\000"
+ 2533      3838335F 
+ 2533      456E6162 
+ 2533      6C656400 
+ 2534              	.LASF32:
+ 2535 0303 53616D70 		.ascii	"SampleRate_500Hz\000"
+ 2535      6C655261 
+ 2535      74655F35 
+ 2535      3030487A 
+ 2535      00
+ 2536              	.LASF138:
+ 2537 0314 4C534D33 		.ascii	"LSM303_ACC_REG3\000"
+ 2537      30335F41 
+ 2537      43435F52 
+ 2537      45473300 
+ 2538              	.LASF201:
+ 2539 0324 496E7661 		.ascii	"InvalidBusSpeed\000"
+ 2539      6C696442 
+ 2539      75735370 
+ 2539      65656400 
+ 2540              	.LASF41:
+ 2541 0334 53616D70 		.ascii	"SampleRate_1Hz\000"
+ 2541      6C655261 
+ 2541      74655F31 
+ 2541      487A00
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 49
+
+
+ 2542              	.LASF103:
+ 2543 0343 46696C74 		.ascii	"FilterOption_Moving_Average_60\000"
+ 2543      65724F70 
+ 2543      74696F6E 
+ 2543      5F4D6F76 
+ 2543      696E675F 
+ 2544              	.LASF130:
+ 2545 0362 4D505536 		.ascii	"MPU60x0_FIFO_Enable\000"
+ 2545      3078305F 
+ 2545      4649464F 
+ 2545      5F456E61 
+ 2545      626C6500 
+ 2546              	.LASF128:
+ 2547 0376 4D505536 		.ascii	"MPU60x0_GYRO_FS\000"
+ 2547      3078305F 
+ 2547      4759524F 
+ 2547      5F465300 
+ 2548              	.LASF144:
+ 2549 0386 4C534D33 		.ascii	"LSM303_MAG_CRA\000"
+ 2549      30335F4D 
+ 2549      41475F43 
+ 2549      524100
+ 2550              	.LASF145:
+ 2551 0395 4C534D33 		.ascii	"LSM303_MAG_CRB\000"
+ 2551      30335F4D 
+ 2551      41475F43 
+ 2551      524200
+ 2552              	.LASF275:
+ 2553 03a4 474E5520 		.ascii	"GNU C 4.7.2\000"
+ 2553      4320342E 
+ 2553      372E3200 
+ 2554              	.LASF15:
+ 2555 03b0 666C6F61 		.ascii	"float\000"
+ 2555      7400
+ 2556              	.LASF77:
+ 2557 03b6 55706461 		.ascii	"UpdateRate_50Hz\000"
+ 2557      74655261 
+ 2557      74655F35 
+ 2557      30487A00 
+ 2558              	.LASF257:
+ 2559 03c6 53746172 		.ascii	"StartZero\000"
+ 2559      745A6572 
+ 2559      6F00
+ 2560              	.LASF259:
+ 2561 03d0 55706461 		.ascii	"UpdateSetting\000"
+ 2561      74655365 
+ 2561      7474696E 
+ 2561      6700
+ 2562              	.LASF33:
+ 2563 03de 53616D70 		.ascii	"SampleRate_200Hz\000"
+ 2563      6C655261 
+ 2563      74655F32 
+ 2563      3030487A 
+ 2563      00
+ 2564              	.LASF53:
+ 2565 03ef 4D616747 		.ascii	"MagGPS\000"
+ 2565      505300
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 50
+
+
+ 2566              	.LASF111:
+ 2567 03f6 436F6E74 		.ascii	"ControlLoopUpdateRateHz\000"
+ 2567      726F6C4C 
+ 2567      6F6F7055 
+ 2567      70646174 
+ 2567      65526174 
+ 2568              	.LASF10:
+ 2569 040e 6C6F6E67 		.ascii	"long long unsigned int\000"
+ 2569      206C6F6E 
+ 2569      6720756E 
+ 2569      7369676E 
+ 2569      65642069 
+ 2570              	.LASF242:
+ 2571 0425 4973456E 		.ascii	"IsEnabled\000"
+ 2571      61626C65 
+ 2571      6400
+ 2572              	.LASF135:
+ 2573 042f 4C534D33 		.ascii	"LSM303_ACC_Enabled\000"
+ 2573      30335F41 
+ 2573      43435F45 
+ 2573      6E61626C 
+ 2573      656400
+ 2574              	.LASF212:
+ 2575 0442 50656E64 		.ascii	"PendingReady\000"
+ 2575      696E6752 
+ 2575      65616479 
+ 2575      00
+ 2576              	.LASF88:
+ 2577 044f 46696C74 		.ascii	"FilterOption_Median_3_Sample\000"
+ 2577      65724F70 
+ 2577      74696F6E 
+ 2577      5F4D6564 
+ 2577      69616E5F 
+ 2578              	.LASF243:
+ 2579 046c 45455052 		.ascii	"EEPROMBaseAddr\000"
+ 2579      4F4D4261 
+ 2579      73654164 
+ 2579      647200
+ 2580              	.LASF102:
+ 2581 047b 46696C74 		.ascii	"FilterOption_Moving_Average_50\000"
+ 2581      65724F70 
+ 2581      74696F6E 
+ 2581      5F4D6F76 
+ 2581      696E675F 
+ 2582              	.LASF202:
+ 2583 049a 496E7661 		.ascii	"InvalidByteCount\000"
+ 2583      6C696442 
+ 2583      79746543 
+ 2583      6F756E74 
+ 2583      00
+ 2584              	.LASF13:
+ 2585 04ab 63686172 		.ascii	"char\000"
+ 2585      00
+ 2586              	.LASF261:
+ 2587 04b0 45787465 		.ascii	"Extended\000"
+ 2587      6E646564 
+ 2587      00
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 51
+
+
+ 2588              	.LASF118:
+ 2589 04b9 416C7469 		.ascii	"AltitudeSendDataRate\000"
+ 2589      74756465 
+ 2589      53656E64 
+ 2589      44617461 
+ 2589      52617465 
+ 2590              	.LASF207:
+ 2591 04ce 50656E64 		.ascii	"PendingMasterMode\000"
+ 2591      696E674D 
+ 2591      61737465 
+ 2591      724D6F64 
+ 2591      6500
+ 2592              	.LASF240:
+ 2593 04e0 4E616D65 		.ascii	"Name\000"
+ 2593      00
+ 2594              	.LASF160:
+ 2595 04e5 4144584C 		.ascii	"ADXL345_BW_RATE\000"
+ 2595      3334355F 
+ 2595      42575F52 
+ 2595      41544500 
+ 2596              	.LASF232:
+ 2597 04f5 43616C6C 		.ascii	"Callback\000"
+ 2597      6261636B 
+ 2597      00
+ 2598              	.LASF134:
+ 2599 04fe 4D505536 		.ascii	"MPU60x0_AccSampleRate\000"
+ 2599      3078305F 
+ 2599      41636353 
+ 2599      616D706C 
+ 2599      65526174 
+ 2600              	.LASF162:
+ 2601 0514 4144584C 		.ascii	"ADXL345_FIFO_Enable\000"
+ 2601      3334355F 
+ 2601      4649464F 
+ 2601      5F456E61 
+ 2601      626C6500 
+ 2602              	.LASF49:
+ 2603 0528 41636341 		.ascii	"AccADXL345\000"
+ 2603      44584C33 
+ 2603      343500
+ 2604              	.LASF74:
+ 2605 0533 55706461 		.ascii	"UpdateRate_125Hz\000"
+ 2605      74655261 
+ 2605      74655F31 
+ 2605      3235487A 
+ 2605      00
+ 2606              	.LASF227:
+ 2607 0544 42797465 		.ascii	"BytesReceived\000"
+ 2607      73526563 
+ 2607      65697665 
+ 2607      6400
+ 2608              	.LASF248:
+ 2609 0552 496E6974 		.ascii	"Init\000"
+ 2609      00
+ 2610              	.LASF148:
+ 2611 0557 4C534D33 		.ascii	"LSM303_MAG_SampleRate\000"
+ 2611      30335F4D 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 52
+
+
+ 2611      41475F53 
+ 2611      616D706C 
+ 2611      65526174 
+ 2612              	.LASF105:
+ 2613 056d 46696C74 		.ascii	"FilterOption_Moving_Average_80\000"
+ 2613      65724F70 
+ 2613      74696F6E 
+ 2613      5F4D6F76 
+ 2613      696E675F 
+ 2614              	.LASF189:
+ 2615 058c 4B616C6D 		.ascii	"Kalman_Enabled\000"
+ 2615      616E5F45 
+ 2615      6E61626C 
+ 2615      656400
+ 2616              	.LASF199:
+ 2617 059b 4932435F 		.ascii	"I2C_Timeout\000"
+ 2617      54696D65 
+ 2617      6F757400 
+ 2618              	.LASF123:
+ 2619 05a7 49544733 		.ascii	"ITG3200_SampleRate\000"
+ 2619      3230305F 
+ 2619      53616D70 
+ 2619      6C655261 
+ 2619      746500
+ 2620              	.LASF65:
+ 2621 05ba 4E4F5F53 		.ascii	"NO_SONAR\000"
+ 2621      4F4E4152 
+ 2621      00
+ 2622              	.LASF76:
+ 2623 05c3 55706461 		.ascii	"UpdateRate_75Hz\000"
+ 2623      74655261 
+ 2623      74655F37 
+ 2623      35487A00 
+ 2624              	.LASF220:
+ 2625 05d3 7531365F 		.ascii	"u16_vector\000"
+ 2625      76656374 
+ 2625      6F7200
+ 2626              	.LASF178:
+ 2627 05de 424D5030 		.ascii	"BMP085_OverSamplingRate\000"
+ 2627      38355F4F 
+ 2627      76657253 
+ 2627      616D706C 
+ 2627      696E6752 
+ 2628              	.LASF182:
+ 2629 05f6 4D533536 		.ascii	"MS5611_OverSamplingRate\000"
+ 2629      31315F4F 
+ 2629      76657253 
+ 2629      616D706C 
+ 2629      696E6752 
+ 2630              	.LASF176:
+ 2631 060e 424D5030 		.ascii	"BMP085_Enabled\000"
+ 2631      38355F45 
+ 2631      6E61626C 
+ 2631      656400
+ 2632              	.LASF166:
+ 2633 061d 484D4335 		.ascii	"HMC5883_CRA\000"
+ 2633      3838335F 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 53
+
+
+ 2633      43524100 
+ 2634              	.LASF167:
+ 2635 0629 484D4335 		.ascii	"HMC5883_CRB\000"
+ 2635      3838335F 
+ 2635      43524200 
+ 2636              	.LASF218:
+ 2637 0635 49324352 		.ascii	"I2CReceive\000"
+ 2637      65636569 
+ 2637      766500
+ 2638              	.LASF161:
+ 2639 0640 4144584C 		.ascii	"ADXL345_DATA_FORMAT\000"
+ 2639      3334355F 
+ 2639      44415441 
+ 2639      5F464F52 
+ 2639      4D415400 
+ 2640              	.LASF67:
+ 2641 0654 4D423130 		.ascii	"MB1030_EZ3\000"
+ 2641      33305F45 
+ 2641      5A3300
+ 2642              	.LASF27:
+ 2643 065f 44475053 		.ascii	"DGPS_None_0\000"
+ 2643      5F4E6F6E 
+ 2643      655F3000 
+ 2644              	.LASF217:
+ 2645 066b 49324353 		.ascii	"I2CSend\000"
+ 2645      656E6400 
+ 2646              	.LASF254:
+ 2647 0673 52656164 		.ascii	"Read\000"
+ 2647      00
+ 2648              	.LASF62:
+ 2649 0678 50494443 		.ascii	"PIDController\000"
+ 2649      6F6E7472 
+ 2649      6F6C6C65 
+ 2649      7200
+ 2650              	.LASF237:
+ 2651 0686 53656E73 		.ascii	"SensorStatus_Online\000"
+ 2651      6F725374 
+ 2651      61747573 
+ 2651      5F4F6E6C 
+ 2651      696E6500 
+ 2652              	.LASF72:
+ 2653 069a 55706461 		.ascii	"UpdateRate_200Hz\000"
+ 2653      74655261 
+ 2653      74655F32 
+ 2653      3030487A 
+ 2653      00
+ 2654              	.LASF147:
+ 2655 06ab 4C534D33 		.ascii	"LSM303_MAG_FilterOption\000"
+ 2655      30335F4D 
+ 2655      41475F46 
+ 2655      696C7465 
+ 2655      724F7074 
+ 2656              	.LASF17:
+ 2657 06c3 7531365F 		.ascii	"u16_vector_t\000"
+ 2657      76656374 
+ 2657      6F725F74 
+ 2657      00
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 54
+
+
+ 2658              	.LASF9:
+ 2659 06d0 6C6F6E67 		.ascii	"long long int\000"
+ 2659      206C6F6E 
+ 2659      6720696E 
+ 2659      7400
+ 2660              	.LASF3:
+ 2661 06de 75696E74 		.ascii	"uint8_t\000"
+ 2661      385F7400 
+ 2662              	.LASF131:
+ 2663 06e6 4D505536 		.ascii	"MPU60x0_GyroFilterOption\000"
+ 2663      3078305F 
+ 2663      4779726F 
+ 2663      46696C74 
+ 2663      65724F70 
+ 2664              	.LASF61:
+ 2665 06ff 536E7372 		.ascii	"SnsrFusionKalman\000"
+ 2665      46757369 
+ 2665      6F6E4B61 
+ 2665      6C6D616E 
+ 2665      00
+ 2666              	.LASF34:
+ 2667 0710 53616D70 		.ascii	"SampleRate_150Hz\000"
+ 2667      6C655261 
+ 2667      74655F31 
+ 2667      3530487A 
+ 2667      00
+ 2668              	.LASF171:
+ 2669 0721 484D4335 		.ascii	"HMC5883_Calibrated\000"
+ 2669      3838335F 
+ 2669      43616C69 
+ 2669      62726174 
+ 2669      656400
+ 2670              	.LASF80:
+ 2671 0734 55706461 		.ascii	"UpdateRate_25Hz\000"
+ 2671      74655261 
+ 2671      74655F32 
+ 2671      35487A00 
+ 2672              	.LASF246:
+ 2673 0744 53616D70 		.ascii	"SampleRate\000"
+ 2673      6C655261 
+ 2673      746500
+ 2674              	.LASF238:
+ 2675 074f 53656E73 		.ascii	"SensorStatus_Failure\000"
+ 2675      6F725374 
+ 2675      61747573 
+ 2675      5F466169 
+ 2675      6C757265 
+ 2676              	.LASF141:
+ 2677 0764 4C534D33 		.ascii	"LSM303_ACC_FilterOption\000"
+ 2677      30335F41 
+ 2677      43435F46 
+ 2677      696C7465 
+ 2677      724F7074 
+ 2678              	.LASF81:
+ 2679 077c 55706461 		.ascii	"UpdateRate_20Hz\000"
+ 2679      74655261 
+ 2679      74655F32 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 55
+
+
+ 2679      30487A00 
+ 2680              	.LASF177:
+ 2681 078c 424D5030 		.ascii	"BMP085_NumberSamples\000"
+ 2681      38355F4E 
+ 2681      756D6265 
+ 2681      7253616D 
+ 2681      706C6573 
+ 2682              	.LASF273:
+ 2683 07a1 4B616C6D 		.ascii	"KalmanSnsrFusion\000"
+ 2683      616E536E 
+ 2683      73724675 
+ 2683      73696F6E 
+ 2683      00
+ 2684              	.LASF91:
+ 2685 07b2 46696C74 		.ascii	"FilterOption_Median_9_Sample\000"
+ 2685      65724F70 
+ 2685      74696F6E 
+ 2685      5F4D6564 
+ 2685      69616E5F 
+ 2686              	.LASF45:
+ 2687 07cf 4779726F 		.ascii	"GyroITG3200\000"
+ 2687      49544733 
+ 2687      32303000 
+ 2688              	.LASF57:
+ 2689 07db 416C744D 		.ascii	"AltMS5611\000"
+ 2689      53353631 
+ 2689      3100
+ 2690              	.LASF126:
+ 2691 07e5 4D505536 		.ascii	"MPU60x0_ACC_GYR_DLPF\000"
+ 2691      3078305F 
+ 2691      4143435F 
+ 2691      4759525F 
+ 2691      444C5046 
+ 2692              	.LASF229:
+ 2693 07fa 496E4275 		.ascii	"InBuffer\000"
+ 2693      66666572 
+ 2693      00
+ 2694              	.LASF84:
+ 2695 0803 55706461 		.ascii	"UpdateRate_5Hz\000"
+ 2695      74655261 
+ 2695      74655F35 
+ 2695      487A00
+ 2696              	.LASF191:
+ 2697 0812 53656E73 		.ascii	"SensorConfig_t\000"
+ 2697      6F72436F 
+ 2697      6E666967 
+ 2697      5F7400
+ 2698              	.LASF205:
+ 2699 0821 50656E64 		.ascii	"Pending\000"
+ 2699      696E6700 
+ 2700              	.LASF104:
+ 2701 0829 46696C74 		.ascii	"FilterOption_Moving_Average_70\000"
+ 2701      65724F70 
+ 2701      74696F6E 
+ 2701      5F4D6F76 
+ 2701      696E675F 
+ 2702              	.LASF179:
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 56
+
+
+ 2703 0848 424D5030 		.ascii	"BMP085_FilterOption\000"
+ 2703      38355F46 
+ 2703      696C7465 
+ 2703      724F7074 
+ 2703      696F6E00 
+ 2704              	.LASF186:
+ 2705 085c 4C49504F 		.ascii	"LIPO_ADC_Enabled\000"
+ 2705      5F414443 
+ 2705      5F456E61 
+ 2705      626C6564 
+ 2705      00
+ 2706              	.LASF269:
+ 2707 086d 5457425F 		.ascii	"TWB_SNSR_Kalman_Process\000"
+ 2707      534E5352 
+ 2707      5F4B616C 
+ 2707      6D616E5F 
+ 2707      50726F63 
+ 2708              	.LASF206:
+ 2709 0885 49646C65 		.ascii	"Idle\000"
+ 2709      00
+ 2710              	.LASF119:
+ 2711 088a 49544733 		.ascii	"ITG3200_Enabled\000"
+ 2711      3230305F 
+ 2711      456E6162 
+ 2711      6C656400 
+ 2712              	.LASF158:
+ 2713 089a 4C334744 		.ascii	"L3GD20_SampleRate\000"
+ 2713      32305F53 
+ 2713      616D706C 
+ 2713      65526174 
+ 2713      6500
+ 2714              	.LASF71:
+ 2715 08ac 55706461 		.ascii	"UpdateRate_250Hz\000"
+ 2715      74655261 
+ 2715      74655F32 
+ 2715      3530487A 
+ 2715      00
+ 2716              	.LASF58:
+ 2717 08bd 4144434C 		.ascii	"ADCLipo\000"
+ 2717      69706F00 
+ 2718              	.LASF19:
+ 2719 08c5 4E6F7443 		.ascii	"NotCalibrated\000"
+ 2719      616C6962 
+ 2719      72617465 
+ 2719      6400
+ 2720              	.LASF24:
+ 2721 08d3 49525141 		.ascii	"IRQAsserted\000"
+ 2721      73736572 
+ 2721      74656400 
+ 2722              	.LASF228:
+ 2723 08df 52657375 		.ascii	"Result\000"
+ 2723      6C7400
+ 2724              	.LASF129:
+ 2725 08e6 4D505536 		.ascii	"MPU60x0_ACC_FS\000"
+ 2725      3078305F 
+ 2725      4143435F 
+ 2725      465300
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 57
+
+
+ 2726              	.LASF277:
+ 2727 08f5 443A5C4E 		.ascii	"D:\\NiVek\\Firmware\\NiVek32\000"
+ 2727      6956656B 
+ 2727      5C466972 
+ 2727      6D776172 
+ 2727      655C4E69 
+ 2728              	.LASF159:
+ 2729 090f 4144584C 		.ascii	"ADXL345_Enabled\000"
+ 2729      3334355F 
+ 2729      456E6162 
+ 2729      6C656400 
+ 2730              	.LASF195:
+ 2731 091f 4932435F 		.ascii	"I2C_BusError\000"
+ 2731      42757345 
+ 2731      72726F72 
+ 2731      00
+ 2732              	.LASF214:
+ 2733 092c 49324341 		.ascii	"I2CAckFailure\000"
+ 2733      636B4661 
+ 2733      696C7572 
+ 2733      6500
+ 2734              	.LASF114:
+ 2735 093a 42617474 		.ascii	"BatterySendDataRate\000"
+ 2735      65727953 
+ 2735      656E6444 
+ 2735      61746152 
+ 2735      61746500 
+ 2736              	.LASF93:
+ 2737 094e 46696C74 		.ascii	"FilterOption_Moving_Average_0_1\000"
+ 2737      65724F70 
+ 2737      74696F6E 
+ 2737      5F4D6F76 
+ 2737      696E675F 
+ 2738              	.LASF35:
+ 2739 096e 53616D70 		.ascii	"SampleRate_100Hz\000"
+ 2739      6C655261 
+ 2739      74655F31 
+ 2739      3030487A 
+ 2739      00
+ 2740              	.LASF226:
+ 2741 097f 4F757442 		.ascii	"OutBufferSize\000"
+ 2741      75666665 
+ 2741      7253697A 
+ 2741      6500
+ 2742              	.LASF169:
+ 2743 098d 484D4335 		.ascii	"HMC5883_FilterOption\000"
+ 2743      3838335F 
+ 2743      46696C74 
+ 2743      65724F70 
+ 2743      74696F6E 
+ 2744              	.LASF264:
+ 2745 09a2 5457425F 		.ascii	"TWB_SNSR_Kalman_Init\000"
+ 2745      534E5352 
+ 2745      5F4B616C 
+ 2745      6D616E5F 
+ 2745      496E6974 
+ 2746              	.LASF132:
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 58
+
+
+ 2747 09b7 4D505536 		.ascii	"MPU60x0_AccFilterOption\000"
+ 2747      3078305F 
+ 2747      41636346 
+ 2747      696C7465 
+ 2747      724F7074 
+ 2748              	.LASF51:
+ 2749 09cf 4D61674C 		.ascii	"MagLSM303\000"
+ 2749      534D3330 
+ 2749      3300
+ 2750              	.LASF258:
+ 2751 09d9 436F6D70 		.ascii	"CompleteZero\000"
+ 2751      6C657465 
+ 2751      5A65726F 
+ 2751      00
+ 2752              	.LASF272:
+ 2753 09e6 53656E73 		.ascii	"SensorConfig\000"
+ 2753      6F72436F 
+ 2753      6E666967 
+ 2753      00
+ 2754              	.LASF192:
+ 2755 09f3 4641494C 		.ascii	"FAIL\000"
+ 2755      00
+ 2756              	.LASF241:
+ 2757 09f8 53656E73 		.ascii	"SensorId\000"
+ 2757      6F724964 
+ 2757      00
+ 2758              	.LASF268:
+ 2759 0a01 5457425F 		.ascii	"TWB_SNSR_Kalman_UpdateSetting\000"
+ 2759      534E5352 
+ 2759      5F4B616C 
+ 2759      6D616E5F 
+ 2759      55706461 
+ 2760              	.LASF262:
+ 2761 0a1f 4E657874 		.ascii	"Next\000"
+ 2761      00
+ 2762              	.LASF16:
+ 2763 0a24 6C6F6E67 		.ascii	"long double\000"
+ 2763      20646F75 
+ 2763      626C6500 
+ 2764              	.LASF4:
+ 2765 0a30 75696E74 		.ascii	"uint16_t\000"
+ 2765      31365F74 
+ 2765      00
+ 2766              	.LASF190:
+ 2767 0a39 4B616C6D 		.ascii	"Kalman_SampleRate\000"
+ 2767      616E5F53 
+ 2767      616D706C 
+ 2767      65526174 
+ 2767      6500
+ 2768              	.LASF173:
+ 2769 0a4b 536F6E61 		.ascii	"Sonar_Type\000"
+ 2769      725F5479 
+ 2769      706500
+ 2770              	.LASF31:
+ 2771 0a56 53616D70 		.ascii	"SampleRate_1KHz\000"
+ 2771      6C655261 
+ 2771      74655F31 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 59
+
+
+ 2771      4B487A00 
+ 2772              	.LASF36:
+ 2773 0a66 53616D70 		.ascii	"SampleRate_50Hz\000"
+ 2773      6C655261 
+ 2773      74655F35 
+ 2773      30487A00 
+ 2774              	.LASF270:
+ 2775 0a76 64656C74 		.ascii	"deltaT\000"
+ 2775      615400
+ 2776              	.LASF78:
+ 2777 0a7d 55706461 		.ascii	"UpdateRate_40Hz\000"
+ 2777      74655261 
+ 2777      74655F34 
+ 2777      30487A00 
+ 2778              	.LASF117:
+ 2779 0a8d 4D6F746F 		.ascii	"MotorsSendDataRate\000"
+ 2779      72735365 
+ 2779      6E644461 
+ 2779      74615261 
+ 2779      746500
+ 2780              	.LASF194:
+ 2781 0aa0 4E61636B 		.ascii	"Nack\000"
+ 2781      00
+ 2782              	.LASF124:
+ 2783 0aa5 4D505536 		.ascii	"MPU60x0_Gyro_Enabled\000"
+ 2783      3078305F 
+ 2783      4779726F 
+ 2783      5F456E61 
+ 2783      626C6564 
+ 2784              	.LASF221:
+ 2785 0aba 4932434A 		.ascii	"I2CJob\000"
+ 2785      6F6200
+ 2786              	.LASF184:
+ 2787 0ac1 4D533536 		.ascii	"MS5611_SampleRate\000"
+ 2787      31315F53 
+ 2787      616D706C 
+ 2787      65526174 
+ 2787      6500
+ 2788              	.LASF54:
+ 2789 0ad3 416C7442 		.ascii	"AltBMP085\000"
+ 2789      4D503038 
+ 2789      3500
+ 2790              	.LASF113:
+ 2791 0add 47505353 		.ascii	"GPSSendDataRate\000"
+ 2791      656E6444 
+ 2791      61746152 
+ 2791      61746500 
+ 2792              	.LASF164:
+ 2793 0aed 4144584C 		.ascii	"ADXL345_SampleRate\000"
+ 2793      3334355F 
+ 2793      53616D70 
+ 2793      6C655261 
+ 2793      746500
+ 2794              	.LASF56:
+ 2795 0b00 416C7447 		.ascii	"AltGPS\000"
+ 2795      505300
+ 2796              	.LASF109:
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 60
+
+
+ 2797 0b07 44697361 		.ascii	"Disabled\000"
+ 2797      626C6564 
+ 2797      00
+ 2798              	.LASF47:
+ 2799 0b10 4779726F 		.ascii	"GyroL3GD20\000"
+ 2799      4C334744 
+ 2799      323000
+ 2800              	.LASF274:
+ 2801 0b1b 4932435A 		.ascii	"I2CZeroJob\000"
+ 2801      65726F4A 
+ 2801      6F6200
+ 2802              	.LASF2:
+ 2803 0b26 73686F72 		.ascii	"short int\000"
+ 2803      7420696E 
+ 2803      7400
+ 2804              	.LASF122:
+ 2805 0b30 49544733 		.ascii	"ITG3200_FilterOption\000"
+ 2805      3230305F 
+ 2805      46696C74 
+ 2805      65724F70 
+ 2805      74696F6E 
+ 2806              	.LASF222:
+ 2807 0b45 4D6F6465 		.ascii	"Mode\000"
+ 2807      00
+ 2808              	.LASF42:
+ 2809 0b4a 53616D70 		.ascii	"SampleRate_IRQ\000"
+ 2809      6C655261 
+ 2809      74655F49 
+ 2809      525100
+ 2810              	.LASF7:
+ 2811 0b59 6C6F6E67 		.ascii	"long int\000"
+ 2811      20696E74 
+ 2811      00
+ 2812              	.LASF216:
+ 2813 0b62 49324353 		.ascii	"I2CStates_t\000"
+ 2813      74617465 
+ 2813      735F7400 
+ 2814              	.LASF271:
+ 2815 0b6e 49544D5F 		.ascii	"ITM_RxBuffer\000"
+ 2815      52784275 
+ 2815      66666572 
+ 2815      00
+ 2816              	.LASF85:
+ 2817 0b7b 55706461 		.ascii	"UpdateRate_1Hz\000"
+ 2817      74655261 
+ 2817      74655F31 
+ 2817      487A00
+ 2818              	.LASF121:
+ 2819 0b8a 49544733 		.ascii	"ITG3200_SMPLRT_DIV\000"
+ 2819      3230305F 
+ 2819      534D504C 
+ 2819      52545F44 
+ 2819      495600
+ 2820              	.LASF23:
+ 2821 0b9d 53656E73 		.ascii	"SensorDataReady_e\000"
+ 2821      6F724461 
+ 2821      74615265 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 61
+
+
+ 2821      6164795F 
+ 2821      6500
+ 2822              	.LASF249:
+ 2823 0baf 52657365 		.ascii	"ResetDefaults\000"
+ 2823      74446566 
+ 2823      61756C74 
+ 2823      7300
+ 2824              	.LASF94:
+ 2825 0bbd 46696C74 		.ascii	"FilterOption_Moving_Average_1\000"
+ 2825      65724F70 
+ 2825      74696F6E 
+ 2825      5F4D6F76 
+ 2825      696E675F 
+ 2826              	.LASF95:
+ 2827 0bdb 46696C74 		.ascii	"FilterOption_Moving_Average_2\000"
+ 2827      65724F70 
+ 2827      74696F6E 
+ 2827      5F4D6F76 
+ 2827      696E675F 
+ 2828              	.LASF96:
+ 2829 0bf9 46696C74 		.ascii	"FilterOption_Moving_Average_5\000"
+ 2829      65724F70 
+ 2829      74696F6E 
+ 2829      5F4D6F76 
+ 2829      696E675F 
+ 2830              	.LASF209:
+ 2831 0c17 50656E64 		.ascii	"PendingSending\000"
+ 2831      696E6753 
+ 2831      656E6469 
+ 2831      6E6700
+ 2832              	.LASF86:
+ 2833 0c26 55706461 		.ascii	"UpdateRate_e\000"
+ 2833      74655261 
+ 2833      74655F65 
+ 2833      00
+ 2834              	.LASF278:
+ 2835 0c33 5457425F 		.ascii	"TWB_SNSR_Kalman_SendDiag\000"
+ 2835      534E5352 
+ 2835      5F4B616C 
+ 2835      6D616E5F 
+ 2835      53656E64 
+ 2836              	.LASF69:
+ 2837 0c4c 55706461 		.ascii	"UpdateRate_400Hz\000"
+ 2837      74655261 
+ 2837      74655F34 
+ 2837      3030487A 
+ 2837      00
+ 2838              	.LASF97:
+ 2839 0c5d 46696C74 		.ascii	"FilterOption_Moving_Average_10\000"
+ 2839      65724F70 
+ 2839      74696F6E 
+ 2839      5F4D6F76 
+ 2839      696E675F 
+ 2840              	.LASF198:
+ 2841 0c7c 4F75744F 		.ascii	"OutOfMemory\000"
+ 2841      664D656D 
+ 2841      6F727900 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 62
+
+
+ 2842              	.LASF0:
+ 2843 0c88 7369676E 		.ascii	"signed char\000"
+ 2843      65642063 
+ 2843      68617200 
+ 2844              	.LASF188:
+ 2845 0c94 4C49504F 		.ascii	"LIPO_ADC_SampleRate\000"
+ 2845      5F414443 
+ 2845      5F53616D 
+ 2845      706C6552 
+ 2845      61746500 
+ 2846              	.LASF234:
+ 2847 0ca8 53656E73 		.ascii	"SensorStatus_Idle\000"
+ 2847      6F725374 
+ 2847      61747573 
+ 2847      5F49646C 
+ 2847      6500
+ 2848              	.LASF66:
+ 2849 0cba 48435F53 		.ascii	"HC_SR04\000"
+ 2849      52303400 
+ 2850              	.LASF90:
+ 2851 0cc2 46696C74 		.ascii	"FilterOption_Median_7_Sample\000"
+ 2851      65724F70 
+ 2851      74696F6E 
+ 2851      5F4D6564 
+ 2851      69616E5F 
+ 2852              	.LASF266:
+ 2853 0cdf 61646472 		.ascii	"addr\000"
+ 2853      00
+ 2854              	.LASF26:
+ 2855 0ce4 49525141 		.ascii	"IRQAssertionStatus_e\000"
+ 2855      73736572 
+ 2855      74696F6E 
+ 2855      53746174 
+ 2855      75735F65 
+ 2856              	.LASF11:
+ 2857 0cf9 756E7369 		.ascii	"unsigned int\000"
+ 2857      676E6564 
+ 2857      20696E74 
+ 2857      00
+ 2858              	.LASF29:
+ 2859 0d06 44475053 		.ascii	"DGPS_WAAS_2\000"
+ 2859      5F574141 
+ 2859      535F3200 
+ 2860              	.LASF75:
+ 2861 0d12 55706461 		.ascii	"UpdateRate_100Hz\000"
+ 2861      74655261 
+ 2861      74655F31 
+ 2861      3030487A 
+ 2861      00
+ 2862              	.LASF154:
+ 2863 0d23 4C334744 		.ascii	"L3GD20_REG4\000"
+ 2863      32305F52 
+ 2863      45473400 
+ 2864              	.LASF40:
+ 2865 0d2f 53616D70 		.ascii	"SampleRate_5Hz\000"
+ 2865      6C655261 
+ 2865      74655F35 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 63
+
+
+ 2865      487A00
+ 2866              	.LASF107:
+ 2867 0d3e 46696C74 		.ascii	"FilterOptions_t\000"
+ 2867      65724F70 
+ 2867      74696F6E 
+ 2867      735F7400 
+ 2868              	.LASF112:
+ 2869 0d4e 53746174 		.ascii	"StatusSendDataRate\000"
+ 2869      75735365 
+ 2869      6E644461 
+ 2869      74615261 
+ 2869      746500
+ 2870              	.LASF12:
+ 2871 0d61 73697A65 		.ascii	"sizetype\000"
+ 2871      74797065 
+ 2871      00
+ 2872              	.LASF106:
+ 2873 0d6a 46696C74 		.ascii	"FilterOption_Moving_Average_90\000"
+ 2873      65724F70 
+ 2873      74696F6E 
+ 2873      5F4D6F76 
+ 2873      696E675F 
+ 2874              	.LASF8:
+ 2875 0d89 6C6F6E67 		.ascii	"long unsigned int\000"
+ 2875      20756E73 
+ 2875      69676E65 
+ 2875      6420696E 
+ 2875      7400
+ 2876              	.LASF55:
+ 2877 0d9b 416C7453 		.ascii	"AltSonar\000"
+ 2877      6F6E6172 
+ 2877      00
+ 2878              	.LASF149:
+ 2879 0da4 4C534D33 		.ascii	"LSM303_MAG_Calibrated\000"
+ 2879      30335F4D 
+ 2879      41475F43 
+ 2879      616C6962 
+ 2879      72617465 
+ 2880              	.LASF25:
+ 2881 0dba 4952514E 		.ascii	"IRQNotAsserted\000"
+ 2881      6F744173 
+ 2881      73657274 
+ 2881      656400
+ 2882              	.LASF6:
+ 2883 0dc9 696E7433 		.ascii	"int32_t\000"
+ 2883      325F7400 
+ 2884              	.LASF48:
+ 2885 0dd1 4163634C 		.ascii	"AccLSM303\000"
+ 2885      534D3330 
+ 2885      3300
+ 2886              	.LASF44:
+ 2887 0ddb 53656E73 		.ascii	"SensorNone\000"
+ 2887      6F724E6F 
+ 2887      6E6500
+ 2888              	.LASF181:
+ 2889 0de6 4D533536 		.ascii	"MS5611_Enabled\000"
+ 2889      31315F45 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 64
+
+
+ 2889      6E61626C 
+ 2889      656400
+ 2890              	.LASF143:
+ 2891 0df5 4C534D33 		.ascii	"LSM303_MAG_Enabled\000"
+ 2891      30335F4D 
+ 2891      41475F45 
+ 2891      6E61626C 
+ 2891      656400
+ 2892              	.LASF108:
+ 2893 0e08 456E6162 		.ascii	"Enabled\000"
+ 2893      6C656400 
+ 2894              	.LASF1:
+ 2895 0e10 756E7369 		.ascii	"unsigned char\000"
+ 2895      676E6564 
+ 2895      20636861 
+ 2895      7200
+ 2896              	.LASF163:
+ 2897 0e1e 4144584C 		.ascii	"ADXL345_FilterOption\000"
+ 2897      3334355F 
+ 2897      46696C74 
+ 2897      65724F70 
+ 2897      74696F6E 
+ 2898              	.LASF59:
+ 2899 0e33 47656F47 		.ascii	"GeoGPS\000"
+ 2899      505300
+ 2900              	.LASF115:
+ 2901 0e3a 53656E73 		.ascii	"SensorSendDataRate\000"
+ 2901      6F725365 
+ 2901      6E644461 
+ 2901      74615261 
+ 2901      746500
+ 2902              	.LASF30:
+ 2903 0e4d 44475053 		.ascii	"DGPSModes_e\000"
+ 2903      4D6F6465 
+ 2903      735F6500 
+ 2904              	.LASF87:
+ 2905 0e59 46696C74 		.ascii	"FilterOption_None\000"
+ 2905      65724F70 
+ 2905      74696F6E 
+ 2905      5F4E6F6E 
+ 2905      6500
+ 2906              	.LASF253:
+ 2907 0e6b 53746F70 		.ascii	"Stop\000"
+ 2907      00
+ 2908              	.LASF68:
+ 2909 0e70 536F6E61 		.ascii	"SonarType_e\000"
+ 2909      72547970 
+ 2909      655F6500 
+ 2910              	.LASF172:
+ 2911 0e7c 536F6E61 		.ascii	"Sonar_Enabled\000"
+ 2911      725F456E 
+ 2911      61626C65 
+ 2911      6400
+ 2912              	.LASF256:
+ 2913 0e8a 48616E64 		.ascii	"HandleIRQ\000"
+ 2913      6C654952 
+ 2913      5100
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 65
+
+
+ 2914              	.LASF110:
+ 2915 0e94 456E6162 		.ascii	"Enabled_t\000"
+ 2915      6C65645F 
+ 2915      7400
+ 2916              	.LASF98:
+ 2917 0e9e 46696C74 		.ascii	"FilterOption_Moving_Average_15\000"
+ 2917      65724F70 
+ 2917      74696F6E 
+ 2917      5F4D6F76 
+ 2917      696E675F 
+ 2918              	.LASF168:
+ 2919 0ebd 484D4335 		.ascii	"HMC5883_MODE\000"
+ 2919      3838335F 
+ 2919      4D4F4445 
+ 2919      00
+ 2920              	.LASF247:
+ 2921 0eca 53656E73 		.ascii	"SensorFault\000"
+ 2921      6F724661 
+ 2921      756C7400 
+ 2922              	.LASF244:
+ 2923 0ed6 4C617374 		.ascii	"LastUpdate\000"
+ 2923      55706461 
+ 2923      746500
+ 2924              	.LASF37:
+ 2925 0ee1 53616D70 		.ascii	"SampleRate_25Hz\000"
+ 2925      6C655261 
+ 2925      74655F32 
+ 2925      35487A00 
+ 2926              	.LASF136:
+ 2927 0ef1 4C534D33 		.ascii	"LSM303_ACC_REG1\000"
+ 2927      30335F41 
+ 2927      43435F52 
+ 2927      45473100 
+ 2928              	.LASF137:
+ 2929 0f01 4C534D33 		.ascii	"LSM303_ACC_REG2\000"
+ 2929      30335F41 
+ 2929      43435F52 
+ 2929      45473200 
+ 2930              	.LASF22:
+ 2931 0f11 44617461 		.ascii	"DataNotReady\000"
+ 2931      4E6F7452 
+ 2931      65616479 
+ 2931      00
+ 2932              	.LASF139:
+ 2933 0f1e 4C534D33 		.ascii	"LSM303_ACC_REG4\000"
+ 2933      30335F41 
+ 2933      43435F52 
+ 2933      45473400 
+ 2934              	.LASF39:
+ 2935 0f2e 53616D70 		.ascii	"SampleRate_10Hz\000"
+ 2935      6C655261 
+ 2935      74655F31 
+ 2935      30487A00 
+ 2936              	.LASF82:
+ 2937 0f3e 55706461 		.ascii	"UpdateRate_15Hz\000"
+ 2937      74655261 
+ 2937      74655F31 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 66
+
+
+ 2937      35487A00 
+ 2938              	.LASF28:
+ 2939 0f4e 44475053 		.ascii	"DGPS_RTCM_1\000"
+ 2939      5F525443 
+ 2939      4D5F3100 
+ 2940              	.LASF225:
+ 2941 0f5a 42797465 		.ascii	"BytesSent\000"
+ 2941      7353656E 
+ 2941      7400
+ 2942              	.LASF38:
+ 2943 0f64 53616D70 		.ascii	"SampleRate_20Hz\000"
+ 2943      6C655261 
+ 2943      74655F32 
+ 2943      30487A00 
+ 2944              	.LASF127:
+ 2945 0f74 4D505536 		.ascii	"MPU60x0_GYR_SMPLRT_DIV\000"
+ 2945      3078305F 
+ 2945      4759525F 
+ 2945      534D504C 
+ 2945      52545F44 
+ 2946              	.LASF180:
+ 2947 0f8b 424D5030 		.ascii	"BMP085_SampleRate\000"
+ 2947      38355F53 
+ 2947      616D706C 
+ 2947      65526174 
+ 2947      6500
+ 2948              	.LASF83:
+ 2949 0f9d 55706461 		.ascii	"UpdateRate_10Hz\000"
+ 2949      74655261 
+ 2949      74655F31 
+ 2949      30487A00 
+ 2950              	.LASF252:
+ 2951 0fad 52657375 		.ascii	"Resume\000"
+ 2951      6D6500
+ 2952              	.LASF125:
+ 2953 0fb4 4D505536 		.ascii	"MPU60x0_Acc_Enabled\000"
+ 2953      3078305F 
+ 2953      4163635F 
+ 2953      456E6162 
+ 2953      6C656400 
+ 2954              	.LASF5:
+ 2955 0fc8 73686F72 		.ascii	"short unsigned int\000"
+ 2955      7420756E 
+ 2955      7369676E 
+ 2955      65642069 
+ 2955      6E7400
+ 2956              	.LASF175:
+ 2957 0fdb 536F6E61 		.ascii	"Sonar_SampleRate\000"
+ 2957      725F5361 
+ 2957      6D706C65 
+ 2957      52617465 
+ 2957      00
+ 2958              	.LASF187:
+ 2959 0fec 4C49504F 		.ascii	"LIPO_ADC_FilterOption\000"
+ 2959      5F414443 
+ 2959      5F46696C 
+ 2959      7465724F 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 67
+
+
+ 2959      7074696F 
+ 2960              	.LASF146:
+ 2961 1002 4C534D33 		.ascii	"LSM303_MAG_MR\000"
+ 2961      30335F4D 
+ 2961      41475F4D 
+ 2961      5200
+ 2962              	.LASF170:
+ 2963 1010 484D4335 		.ascii	"HMC5883_SampleRate\000"
+ 2963      3838335F 
+ 2963      53616D70 
+ 2963      6C655261 
+ 2963      746500
+ 2964              	.LASF183:
+ 2965 1023 4D533536 		.ascii	"MS5611_FilterOption\000"
+ 2965      31315F46 
+ 2965      696C7465 
+ 2965      724F7074 
+ 2965      696F6E00 
+ 2966              	.LASF99:
+ 2967 1037 46696C74 		.ascii	"FilterOption_Moving_Average_20\000"
+ 2967      65724F70 
+ 2967      74696F6E 
+ 2967      5F4D6F76 
+ 2967      696E675F 
+ 2968              	.LASF233:
+ 2969 1056 4932434A 		.ascii	"I2CJob_t\000"
+ 2969      6F625F74 
+ 2969      00
+ 2970              	.LASF14:
+ 2971 105f 646F7562 		.ascii	"double\000"
+ 2971      6C6500
+ 2972              	.LASF50:
+ 2973 1066 4163634D 		.ascii	"AccMPU60x0\000"
+ 2973      50553630 
+ 2973      783000
+ 2974              	.LASF223:
+ 2975 1071 41646472 		.ascii	"Address\000"
+ 2975      65737300 
+ 2976              	.LASF156:
+ 2977 1079 4C334744 		.ascii	"L3GD20_FIFO_Enable\000"
+ 2977      32305F46 
+ 2977      49464F5F 
+ 2977      456E6162 
+ 2977      6C6500
+ 2978              	.LASF224:
+ 2979 108c 496E4275 		.ascii	"InBufferSize\000"
+ 2979      66666572 
+ 2979      53697A65 
+ 2979      00
+ 2980              	.LASF64:
+ 2981 1099 53656E73 		.ascii	"SensorDevice_e\000"
+ 2981      6F724465 
+ 2981      76696365 
+ 2981      5F6500
+ 2982              	.LASF197:
+ 2983 10a8 4F766572 		.ascii	"OverOrUnderRun\000"
+ 2983      4F72556E 
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 68
+
+
+ 2983      64657252 
+ 2983      756E00
+ 2984              	.LASF267:
+ 2985 10b7 76616C75 		.ascii	"value\000"
+ 2985      6500
+ 2986              	.LASF120:
+ 2987 10bd 49544733 		.ascii	"ITG3200_DLPF_FS\000"
+ 2987      3230305F 
+ 2987      444C5046 
+ 2987      5F465300 
+ 2988              	.LASF21:
+ 2989 10cd 44617461 		.ascii	"DataReady\000"
+ 2989      52656164 
+ 2989      7900
+ 2990              	.LASF100:
+ 2991 10d7 46696C74 		.ascii	"FilterOption_Moving_Average_30\000"
+ 2991      65724F70 
+ 2991      74696F6E 
+ 2991      5F4D6F76 
+ 2991      696E675F 
+ 2992              	.LASF89:
+ 2993 10f6 46696C74 		.ascii	"FilterOption_Median_5_Sample\000"
+ 2993      65724F70 
+ 2993      74696F6E 
+ 2993      5F4D6564 
+ 2993      69616E5F 
+ 2994              		.ident	"GCC: (Sourcery CodeBench Lite 2012.09-63) 4.7.2"
+ARM GAS  C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s 			page 69
+
+
+DEFINED SYMBOLS
+                            *ABS*:00000000 kalman.c
+C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s:70     .text:00000000 $t
+C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s:75     .text:00000000 TWB_SNSR_Kalman_Init
+C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s:101    .text:00000018 $d
+C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s:106    .text:00000020 $t
+C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s:111    .text:00000020 TWB_SNSR_Kalman_ResetDefaults
+C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s:129    .text:00000024 TWB_SNSR_Kalman_UpdateSetting
+C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s:149    .text:00000028 TWB_SNSR_Kalman_SendDiag
+C:\Users\Kevin\AppData\Local\Temp\ccIBFCa4.s:165    .text:0000002a TWB_SNSR_Kalman_Process
+                            *COM*:00000004 I2CZeroJob
+                     .debug_frame:00000010 $d
+
+UNDEFINED SYMBOLS
+SensorConfig
+KalmanSnsrFusion
