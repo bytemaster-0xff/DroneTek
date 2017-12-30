@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Package xmlns="http://schemas.microsoft.com/appx/manifest/foundation/windows10" 
+         xmlns:mp="http://schemas.microsoft.com/appx/2014/phone/manifest" 
+         xmlns:uap="http://schemas.microsoft.com/appx/manifest/uap/windows10"
+         xmlns:iot="http://schemas.microsoft.com/appx/manifest/iot/windows10"
+         IgnorableNamespaces="uap mp iot">
+  <Identity Name="64048e80-5445-44ba-9cd0-8a499ae9b6e9" Publisher="CN=kevinw" Version="1.0.0.0" />
+  <mp:PhoneIdentity PhoneProductId="64048e80-5445-44ba-9cd0-8a499ae9b6e9" PhonePublisherId="00000000-0000-0000-0000-000000000000" />
+  <Properties>
+    <DisplayName>NiVek.GroundStation</DisplayName>
+    <PublisherDisplayName>kevinw</PublisherDisplayName>
+    <Logo>Assets\StoreLogo.png</Logo>
+  </Properties>
+  <Dependencies>
+    <TargetDeviceFamily Name="Windows.Universal" MinVersion="10.0.0.0" MaxVersionTested="10.0.0.0" />
+  </Dependencies>
+  <Resources>
+    <Resource Language="x-generate" />
+  </Resources>
+  <Applications>
+    <Application Id="App" Executable="$targetnametoken$.exe" EntryPoint="NiVek.GroundStation.App">
+      <uap:VisualElements DisplayName="NiVek Ground Staion" Square150x150Logo="Assets\Square150x150Logo.png" Square44x44Logo="Assets\Square44x44Logo.png" Description="NiVek.GroundStation" BackgroundColor="transparent">
+        <uap:DefaultTile Wide310x150Logo="Assets\Wide310x150Logo.png">
+        </uap:DefaultTile>
+        <uap:SplashScreen Image="Assets\SplashScreen.png" />
+      </uap:VisualElements>
+    </Application>
+  </Applications>
+  <Capabilities>
+    <Capability Name="internetClient" />
+    <DeviceCapability Name="usb">
+      <Device Id="vidpid:1483 681a">
+        <!--        <Function Type="classId:xx xx xx"/>
+        <Function Type="name:xxxxx"/>-->
+        <Function Type="winUsbId:F70242C7-FB25-443B-9E7E-A4260F373981"/>
+      </Device>
+    </DeviceCapability>
+  </Capabilities>
+</Package>

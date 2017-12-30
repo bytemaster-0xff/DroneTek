@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2013
-VisualStudioVersion = 12.0.30501.0
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NiVek.FlightControls", "NiVek.FlightControls.csproj", "{C99EA44A-9D23-43C0-BE84-ED90ED2557F7}"
 EndProject
@@ -35,13 +35,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NiVek.WinCommon", "..\NiVek
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Common", "Common", "{4B3C0695-63F2-4206-9EE7-A15DD53F57F0}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NiVek.GroundStation", "..\NiVek.GroundStation\NiVek.GroundStation.csproj", "{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		..\NiVek.FlightControls.Shared\NiVek.FlightControls.Shared.projitems*{1cc68db1-b9a9-4b73-b6a0-78a52d639311}*SharedItemsImports = 4
 		..\NiVek.FlightControls.Shared\NiVek.FlightControls.Shared.projitems*{3ece3d73-472b-4d0e-9f68-e8ef5a318c14}*SharedItemsImports = 13
-		..\NiVek.FlightControls.Shared\NiVek.FlightControls.Shared.projitems*{c99ea44a-9d23-43c0-be84-ed90ed2557f7}*SharedItemsImports = 4
 		NiVek.Rover\NiVek.Rover.Shared\NiVek.Rover.Shared.projitems*{43103d07-99df-48ad-a20e-016ca466ee15}*SharedItemsImports = 4
 		..\NiVek.FlightControls.Shared\NiVek.FlightControls.Shared.projitems*{76792ff8-a282-42f7-91fa-366b7fbe8b5a}*SharedItemsImports = 4
 		NiVek.Rover\NiVek.Rover.Shared\NiVek.Rover.Shared.projitems*{b4ff798d-8d33-4934-ad48-1bb14c9d1035}*SharedItemsImports = 4
+		..\NiVek.FlightControls.Shared\NiVek.FlightControls.Shared.projitems*{c99ea44a-9d23-43c0-be84-ed90ed2557f7}*SharedItemsImports = 4
 		NiVek.Rover\NiVek.Rover.Shared\NiVek.Rover.Shared.projitems*{ed56d517-af4b-46df-b391-1a8210ed06a2}*SharedItemsImports = 13
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -348,6 +351,56 @@ Global
 		{D4D69D49-2FA6-4C25-AF73-FE67391701BE}.Release|Win32.ActiveCfg = Release|Any CPU
 		{D4D69D49-2FA6-4C25-AF73-FE67391701BE}.Release|x64.ActiveCfg = Release|Any CPU
 		{D4D69D49-2FA6-4C25-AF73-FE67391701BE}.Release|x86.ActiveCfg = Release|Any CPU
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug|Any CPU.ActiveCfg = Debug|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug|ARM.ActiveCfg = Debug|ARM
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug|ARM.Build.0 = Debug|ARM
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug|ARM.Deploy.0 = Debug|ARM
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug|Mixed Platforms.ActiveCfg = Debug|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug|Mixed Platforms.Build.0 = Debug|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug|Mixed Platforms.Deploy.0 = Debug|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug|Win32.ActiveCfg = Debug|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug|Win32.Build.0 = Debug|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug|Win32.Deploy.0 = Debug|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug|x64.ActiveCfg = Debug|x64
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug|x64.Build.0 = Debug|x64
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug|x64.Deploy.0 = Debug|x64
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug|x86.ActiveCfg = Debug|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug|x86.Build.0 = Debug|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug|x86.Deploy.0 = Debug|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug-Rover|Any CPU.ActiveCfg = Release|x64
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug-Rover|Any CPU.Build.0 = Release|x64
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug-Rover|Any CPU.Deploy.0 = Release|x64
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug-Rover|ARM.ActiveCfg = Debug|ARM
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug-Rover|ARM.Build.0 = Debug|ARM
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug-Rover|ARM.Deploy.0 = Debug|ARM
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug-Rover|Mixed Platforms.ActiveCfg = Debug|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug-Rover|Mixed Platforms.Build.0 = Debug|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug-Rover|Mixed Platforms.Deploy.0 = Debug|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug-Rover|Win32.ActiveCfg = Debug|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug-Rover|Win32.Build.0 = Debug|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug-Rover|Win32.Deploy.0 = Debug|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug-Rover|x64.ActiveCfg = Debug|x64
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug-Rover|x64.Build.0 = Debug|x64
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug-Rover|x64.Deploy.0 = Debug|x64
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug-Rover|x86.ActiveCfg = Debug|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug-Rover|x86.Build.0 = Debug|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Debug-Rover|x86.Deploy.0 = Debug|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Release|Any CPU.ActiveCfg = Release|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Release|ARM.ActiveCfg = Release|ARM
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Release|ARM.Build.0 = Release|ARM
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Release|ARM.Deploy.0 = Release|ARM
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Release|Mixed Platforms.ActiveCfg = Release|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Release|Mixed Platforms.Build.0 = Release|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Release|Mixed Platforms.Deploy.0 = Release|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Release|Win32.ActiveCfg = Release|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Release|Win32.Build.0 = Release|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Release|Win32.Deploy.0 = Release|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Release|x64.ActiveCfg = Release|x64
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Release|x64.Build.0 = Release|x64
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Release|x64.Deploy.0 = Release|x64
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Release|x86.ActiveCfg = Release|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Release|x86.Build.0 = Release|x86
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}.Release|x86.Deploy.0 = Release|x86
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -362,5 +415,6 @@ Global
 		{B4FF798D-8D33-4934-AD48-1BB14C9D1035} = {240621C1-0106-4629-A556-22B6D60FD145}
 		{43103D07-99DF-48AD-A20E-016CA466EE15} = {240621C1-0106-4629-A556-22B6D60FD145}
 		{D4D69D49-2FA6-4C25-AF73-FE67391701BE} = {4B3C0695-63F2-4206-9EE7-A15DD53F57F0}
+		{1CC68DB1-B9A9-4B73-B6A0-78A52D639311} = {850278CB-86FA-4CC6-ACC1-7076B5FA7B9A}
 	EndGlobalSection
 EndGlobal

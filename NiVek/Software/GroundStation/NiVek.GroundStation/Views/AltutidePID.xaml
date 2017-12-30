@@ -1,0 +1,151 @@
+﻿<nk:NiVekPage xmlns:nk="using:NiVek.FlightControls.Views"
+    xmlns:Controls="using:NiVek.FlightControls.Controls"                              
+
+    x:Name="pageRoot"
+    x:Class="NiVek.FlightControls.Views.AltutidePID"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NiVek.FlightControls.Views"
+    xmlns:common="using:NiVek.FlightControls.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Page.Resources>
+
+        <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
+        <x:String x:Key="AppName">My Application</x:String>
+    </Page.Resources>
+
+    <!--
+        This grid acts as a root panel for the page that defines two rows:
+        * Row 0 contains the back button and page title
+        * Row 1 contains the rest of the page layout
+    -->
+    <Grid Style="{StaticResource LayoutRootStyle}">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/PageBackground.jpg" />
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="160"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Back button and page title -->
+        <Controls:NiVekHeader x:Name="Header" />
+
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <StackPanel Width="135" Margin="5" >
+                <TextBlock Text="Altitude (CM)" Width="200" TextAlignment="Left" FontSize="20" />
+                <ComboBox x:Name="TargetAltitude" SelectionChanged="TargetAltitude_SelectionChanged" SelectedIndex="0">
+                    <ComboBoxItem Content="0"/>
+                    <ComboBoxItem Content="100"/>
+                    <ComboBoxItem Content="125"/>
+                    <ComboBoxItem Content="150"/>
+                    <ComboBoxItem Content="200"/>
+                    <ComboBoxItem Content="250"/>
+                    <ComboBoxItem Content="300"/>
+                </ComboBox>
+            </StackPanel>
+        </StackPanel>
+
+        <Grid Grid.Row="2">
+            <Grid x:Name="AltitudeSettings" >
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="250" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Controls:Chart Grid.Column="1" Caption="Altitude" x:Name="AltitudeChart" >
+                    <Controls:Chart.ChartAxis >
+                        <Controls:Axis Label="Target" Scale="10" Origin="Bottom" Color="Green" />
+                        <Controls:Axis Label="Actual" Scale="10" Origin="Bottom" Color="Red" />
+                        <Controls:Axis Label="Sonar" Scale="10" Origin="Bottom" Color="Navy" />
+                        <Controls:Axis Label="BMP085" Scale="10" Origin="Bottom" Color="Brown" />
+                        <Controls:Axis Label="MS5611" Scale="10" Origin="Bottom" Color="Blue" />
+                        <Controls:Axis Label="GPS" Scale="10" Origin="Bottom" Color="CadetBlue" />
+                        <Controls:Axis Label="Throttle" Scale="100" Origin="Bottom" Color="Black" />
+                    </Controls:Chart.ChartAxis >
+                </Controls:Chart>
+                <ScrollViewer Grid.Column="0">
+                    <StackPanel Margin="10,0,10,0">
+                        <StackPanel x:Name="PIDSettings" >
+                            <TextBlock Text="Altitude" FontSize="24" />
+
+                            <TextBlock Text="Error" Width="150" FontSize="20"/>
+                            <Controls:Setting SettingValue="{Binding AltitudeSteadyP, Mode=TwoWay}" CaptionValue="P" IncrementSize="{StaticResource SteadyPIncrementSize}" NumberDecimal="{StaticResource SteadyPNumbDec}" Min="{StaticResource RatePMin}" Max="{StaticResource SteadyPMax}" />
+                            <Controls:Setting SettingValue="{Binding AltitudeSteadyI, Mode=TwoWay}" CaptionValue="I" IncrementSize="{StaticResource SteadyIIncrementSize}" NumberDecimal="{StaticResource SteadyINumbDec}" Min="{StaticResource RateDMin}" Max="{StaticResource SteadyIMax}" />
+                            <Controls:Setting SettingValue="{Binding AltitudeSteadyIMax, Mode=TwoWay}" CaptionValue="I Max Windup" IncrementSize="{StaticResource SteadyIMaxIncrementSize}" NumberDecimal="{StaticResource SteadyIMaxNumbDec}" Min="{StaticResource SteadyIMaxMin}" Max="{StaticResource SteadyIMaxMax}" />
+
+                            <TextBlock Text="Rate" Width="150" FontSize="20"/>
+                            <Controls:Setting SettingValue="{Binding AltitudeRateP, Mode=TwoWay}" CaptionValue="P" IncrementSize="{StaticResource RatePIncrementSize}" NumberDecimal="{StaticResource RatePNumbDec}" Min="{StaticResource RatePMin}" Max="{StaticResource RatePMax}" />
+                            <Controls:Setting SettingValue="{Binding AltitudeRateI, Mode=TwoWay}" CaptionValue="I" IncrementSize="{StaticResource RateIIncrementSize}" NumberDecimal="{StaticResource RateINumbDec}" Min="{StaticResource RateDMin}" Max="{StaticResource RateIMax}" />
+                            <Controls:Setting SettingValue="{Binding AltitudeRateD, Mode=TwoWay}" CaptionValue="D" IncrementSize="{StaticResource RateDIncrementSize}" NumberDecimal="{StaticResource RateDNumbDec}" Min="{StaticResource RateDMin}" Max="{StaticResource RateDMax}" />
+                            <Controls:Setting SettingValue="{Binding AltitudeRateIMax, Mode=TwoWay}" CaptionValue="I Max Windup" IncrementSize="{StaticResource RateIMaxIncrementSize}" NumberDecimal="{StaticResource RateIMaxNumbDec}" Min="{StaticResource RateIMaxMin}" Max="{StaticResource RateIMaxMax}" />
+                            <Controls:Setting SettingValue="{Binding AltitudeRateIDecayFactor, Mode=TwoWay}" CaptionValue="I Decay" IncrementSize="{StaticResource RateIDecayIncrementSize}" NumberDecimal="{StaticResource RateIDecayNumbDec}" Min="{StaticResource RateIDecayMin}" Max="{StaticResource RateIDecayMax}" />
+
+                            <TextBlock Text="D-Filter" />
+                            <ComboBox ItemsSource="{Binding DFilterCollection, Mode=OneWay}" SelectedValue="{Binding AltitudeDFilter, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Key" />
+
+                            <Controls:Setting SettingValue="{Binding AltitudeSteadyBand, Mode=TwoWay}" CaptionValue="Steady Band" IncrementSize="{StaticResource SteadyBandIncrementSize}" NumberDecimal="{StaticResource SteadyBandNumbDec}" Min="{StaticResource SteadyBandMin}" Max="{StaticResource SteadyBandMax}" />
+
+                            <TextBlock Text="Initial Throttle" />
+                            <TextBox Text="{Binding InitialThrottle, Mode=TwoWay}" HorizontalAlignment="Left" />
+                            <TextBlock Text="Initial Altitude" />
+                            <TextBox Text="{Binding InitialAltitude, Mode=TwoWay}" HorizontalAlignment="Left" />
+                        </StackPanel>
+                        <StackPanel x:Name="SensorSettings">
+                            <TextBlock Text="Sonar" FontSize="32" Width="400" />
+                            <TextBlock Text="Enabled" />
+                            <ToggleSwitch IsOn="{Binding SonarEnabled, Mode=TwoWay}" />
+
+                            <TextBlock Text="Sensor Type" />
+                            <ComboBox ItemsSource="{Binding SonarTypeCollection, Mode=OneWay}" SelectedValue="{Binding SonarSensorType, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+
+                            <TextBlock Text="Median Filter" />
+                            <ComboBox ItemsSource="{Binding MedianFilterCollection, Mode=OneWay}" SelectedValue="{Binding SonarMedianFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                            <TextBlock Text="Moving Average Filter" />
+                            <ComboBox ItemsSource="{Binding MovingAverageCollection, Mode=OneWay}" SelectedValue="{Binding SonarMovingAverageFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                            <TextBlock Text="Sample Rate" />
+                            <ComboBox ItemsSource="{Binding SampleRateCollection, Mode=OneWay}" SelectedValue="{Binding SonarSampleRate, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                        </StackPanel>
+                    </StackPanel>
+                </ScrollViewer>
+            </Grid>
+
+            <Controls:BlackboxFilePicker x:Name="BBFilePicker" Grid.Row="2" FileSelected="BBFilePicker_FileSelected_1" />
+
+        </Grid>
+
+        <VisualStateManager.VisualStateGroups>
+
+            <!-- Visual states reflect the application's view state -->
+            <VisualStateGroup x:Name="ApplicationViewStates">
+                <VisualState x:Name="FullScreenLandscape"/>
+                <VisualState x:Name="Filled"/>
+
+                <!-- The entire page respects the narrower 100-pixel margin convention for portrait -->
+                <VisualState x:Name="FullScreenPortrait">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PortraitBackButtonStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+
+                <!-- The back button and title have different styles when snapped -->
+                <VisualState x:Name="Snapped">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedBackButtonStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedPageHeaderTextStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</nk:NiVekPage>

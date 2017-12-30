@@ -1,0 +1,74 @@
+﻿<nk:NiVekPage xmlns:nk="using:NiVek.FlightControls.Views"           
+    x:Class="NiVek.FlightControls.Views.MicroConfig"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:Controls="using:NiVek.FlightControls.Controls"                              
+    xmlns:local="using:NiVek.FlightControls.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Style="{StaticResource LayoutRootStyle}">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/PageBackground.jpg" />
+        </Grid.Background>
+
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="160"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Controls:NiVekHeader  x:Name="Header" />
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200"/>
+                <ColumnDefinition Width="210" />
+                <ColumnDefinition Width="210" />
+                <ColumnDefinition Width="210" />
+                <ColumnDefinition Width="210" />
+                <ColumnDefinition Width="210" />
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel>
+                <TextBlock Text="Remote Address" />
+                <TextBox Text="{Binding DeviceAddress}" />
+
+                <TextBlock Text="Remote Address" />
+            </StackPanel>
+            <StackPanel Grid.Column="1" x:Name="RollPID">
+                <TextBlock Text="Roll" FontSize="40" />
+                <Controls:ByteSetting SettingValue="{Binding P, Mode=TwoWay}"  IncrementSize="2" CaptionValue="P" />
+                <Controls:ByteSetting SettingValue="{Binding I, Mode=TwoWay}"  IncrementSize="1" CaptionValue="I" />
+                <Controls:ByteSetting SettingValue="{Binding D, Mode=TwoWay}"  IncrementSize="1" CaptionValue="D" />
+            </StackPanel>
+            <StackPanel Grid.Column="2" x:Name="PitchPID">
+                <TextBlock Text="Pitch" FontSize="40" />
+                <Controls:ByteSetting SettingValue="{Binding P, Mode=TwoWay}" IncrementSize="1" CaptionValue="P" />
+                <Controls:ByteSetting SettingValue="{Binding I, Mode=TwoWay}" IncrementSize="1" CaptionValue="I"  />
+                <Controls:ByteSetting SettingValue="{Binding D, Mode=TwoWay}" IncrementSize="1" CaptionValue="D" />
+            </StackPanel>
+            <StackPanel Grid.Column="3" x:Name="YawPID">
+                <TextBlock Text="Yaw" FontSize="40" />
+                <Controls:ByteSetting SettingValue="{Binding P, Mode=TwoWay}" IncrementSize="1" CaptionValue="P" />
+                <Controls:ByteSetting SettingValue="{Binding I, Mode=TwoWay}" IncrementSize="1" CaptionValue="I"  />
+                <Controls:ByteSetting SettingValue="{Binding D, Mode=TwoWay}" IncrementSize="1" CaptionValue="D" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="4" x:Name="AltitudePID">
+                <TextBlock Text="Altitude" FontSize="40" />
+                <Controls:ByteSetting SettingValue="{Binding P, Mode=TwoWay}" IncrementSize="1" CaptionValue="P" />
+                <Controls:ByteSetting SettingValue="{Binding I, Mode=TwoWay}" IncrementSize="1" CaptionValue="I"  />
+                <Controls:ByteSetting SettingValue="{Binding D, Mode=TwoWay}" IncrementSize="1" CaptionValue="D" />
+            </StackPanel>
+
+
+            <StackPanel Grid.Column="5" x:Name="StablePID">
+                <TextBlock Text="Stability" FontSize="40" />
+                <Controls:ByteSetting SettingValue="{Binding P, Mode=TwoWay}" IncrementSize="1" CaptionValue="P" />
+                <Controls:ByteSetting SettingValue="{Binding I, Mode=TwoWay}" IncrementSize="1" CaptionValue="I"  />
+                <Controls:ByteSetting SettingValue="{Binding D, Mode=TwoWay}" IncrementSize="1" CaptionValue="D" />
+            </StackPanel>
+        </Grid>
+    </Grid>
+</nk:NiVekPage>

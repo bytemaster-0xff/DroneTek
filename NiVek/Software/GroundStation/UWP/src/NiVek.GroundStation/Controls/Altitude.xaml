@@ -1,0 +1,40 @@
+﻿<UserControl
+    x:Class="NiVek.FlightControls.Controls.Altitude"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NiVek.FlightControls.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="240"
+    d:DesignWidth="60">
+
+    <Canvas Height="240" Width="60" >
+        <Canvas.Clip>
+            <RectangleGeometry Rect="0,0,60,240" />
+        </Canvas.Clip>        
+        
+        <Rectangle Stroke="White" StrokeThickness="1" Fill="#888" Opacity="0.6" Width="35" Height="240" Margin="25,0,0,0" />
+        <Grid Height="900" x:Name="AltitudeScale"  Width="35" Canvas.Top="-780" HorizontalAlignment="Right" Margin="25,0,0,0"  >
+            <Grid.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="TextAlignment" Value="Right" />
+                    <Setter Property="Foreground" Value="White" />
+                    <Setter Property="FontSize" Value="12" />
+                    <Setter Property="Margin" Value="0,0,5,0" />
+                    <Setter Property="Width" Value="25" />
+                    <Setter Property="HorizontalAlignment" Value="Right" />
+                </Style>
+                <Style TargetType="Line">
+                    <Setter Property="StrokeThickness" Value="1" />
+                    <Setter Property="Stroke"  Value="#FFF"/>
+                </Style>
+            </Grid.Resources>
+        </Grid>
+        <Grid Height="35" Background="Black" Canvas.Top="105" Width="60" >
+            <Rectangle Stroke="White" StrokeThickness="1" />
+            <TextBlock x:Name="AltitudeText" Text="300" HorizontalAlignment="Right" TextAlignment="Right" Foreground="White" FontSize="20"  Width="60" Margin="0,7,5,0" />
+        </Grid>
+
+    </Canvas>
+</UserControl>

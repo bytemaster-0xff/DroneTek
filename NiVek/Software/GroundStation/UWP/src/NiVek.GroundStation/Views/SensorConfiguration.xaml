@@ -1,0 +1,317 @@
+﻿<nk:NiVekPage  xmlns:nk="using:NiVek.FlightControls.Views"           
+    x:Name="pageRoot"
+    xmlns:Controls="using:NiVek.FlightControls.Controls"                              
+    x:Class="NiVek.FlightControls.Views.SensorConfiguration"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NiVek.FlightControls.Views"
+    xmlns:common="using:NiVek.FlightControls.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d" >
+
+    <!--
+        This grid acts as a root panel for the page that defines two rows:
+        * Row 0 contains the back button and page title
+        * Row 1 contains the rest of the page layout
+    -->
+    <Grid Style="{StaticResource LayoutRootStyle}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="120"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Controls:NiVekHeader Grid.ColumnSpan="2" x:Name="Header" />
+
+        <Grid Grid.Column="1" Grid.Row="1" x:Name="ChartGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*"/>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Controls:Chart x:Name="RawXChart"  Caption="X" Tag="0" >
+                <Controls:Chart.ChartAxis >
+                    <Controls:Axis Label="Value" Color="Red" Scale="0.1" FormatString="0" />
+                </Controls:Chart.ChartAxis>
+            </Controls:Chart>
+            <Controls:Chart x:Name="XChart" Grid.Row="1"  Caption="X" Tag="1" >
+                <Controls:Chart.ChartAxis >
+                    <Controls:Axis Label="Value" Color="Red" Scale="0.1" FormatString="0.0"/>
+                </Controls:Chart.ChartAxis>
+            </Controls:Chart>
+            <Controls:Chart x:Name="RawYChart" Grid.Row="2" Caption="Y" Tag="2" >
+                <Controls:Chart.ChartAxis >
+                    <Controls:Axis Label="Value" Color="Green" Scale="0.1"  FormatString="0"/>
+                </Controls:Chart.ChartAxis>
+            </Controls:Chart>
+            <Controls:Chart x:Name="YChart" Grid.Row="3"  Caption="Y" Tag="3" >
+                <Controls:Chart.ChartAxis >
+                    <Controls:Axis Label="Value" Color="Green" Scale="0.1" FormatString="0.0"/>
+                </Controls:Chart.ChartAxis>
+            </Controls:Chart>
+
+            <Controls:Chart x:Name="RawZChart"  Grid.Row="4"  Caption="Z" Tag="4" >
+                <Controls:Chart.ChartAxis >
+                    <Controls:Axis Label="Value" Color="Blue" Scale="0.1"  FormatString="0"/>
+                </Controls:Chart.ChartAxis>
+            </Controls:Chart>
+            <Controls:Chart x:Name="ZChart"  Grid.Row="5"  Caption="Z" Tag="5" >
+                <Controls:Chart.ChartAxis >
+                    <Controls:Axis Label="Value" Color="Blue" Scale="0.1" FormatString="0.0"/>
+                </Controls:Chart.ChartAxis>
+            </Controls:Chart>
+        </Grid>
+
+        <StackPanel Grid.Row="1">
+            <TextBlock Text="Sensor" FontSize="32" />
+            <ComboBox x:Name="SensorSelection" SelectionChanged="SensorSelection_SelectionChanged_1" SelectedIndex="0">
+                <ComboBox.Items>
+                    <ComboBoxItem>Select</ComboBoxItem>
+                    <ComboBoxItem>ADXL345</ComboBoxItem>
+                    <ComboBoxItem>BMP085</ComboBoxItem>
+                    <ComboBoxItem>GPS</ComboBoxItem>
+                    <ComboBoxItem>HCSR04</ComboBoxItem>                    
+                    <ComboBoxItem>HMS5883</ComboBoxItem>
+                    <ComboBoxItem>ITG3200</ComboBoxItem>
+                    <ComboBoxItem>L3GD20</ComboBoxItem>
+                    <ComboBoxItem>LIPOADC</ComboBoxItem>
+                    <ComboBoxItem>LSM303ACC</ComboBoxItem>
+                    <ComboBoxItem>LSM303MAG</ComboBoxItem>
+                    <ComboBoxItem>MPU60x0ACC</ComboBoxItem>
+                    <ComboBoxItem>MPU60x0GYRO</ComboBoxItem>
+                    <ComboBoxItem>MS5611</ComboBoxItem>
+                </ComboBox.Items>
+            </ComboBox>
+            <StackPanel x:Name="ConfigSettings">
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="FontSize" Value="14" />                        
+                    </Style>
+                    <Style TargetType="ComboBox">
+                        <Setter Property="FontSize" Value="14" />
+                        
+                        <Setter Property="Width" Value="250" />
+                    </Style>
+                </StackPanel.Resources>
+
+
+                <StackPanel x:Name="ITG3200Sensor"  Visibility="Collapsed">
+                    <TextBlock Text="ITG3200 Gyroscope" FontSize="32" Width="400" />
+                    <TextBlock Text="Enabled" />
+                    <ToggleSwitch IsOn="{Binding ITG3200Enabled, Mode=TwoWay}" />
+                    <TextBlock Text="Sample Rate Divider" />
+                    <ComboBox ItemsSource="{Binding ITGSampleRateCollection, Mode=OneWay}" SelectedValue="{Binding ITG3200SmplRtDiv, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Low Pass Filter" />
+                    <ComboBox ItemsSource="{Binding ITG3200LPFCollection, Mode=OneWay}" SelectedValue="{Binding ITG3200DlpFs, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Median Filter" />
+                    <ComboBox ItemsSource="{Binding MedianFilterCollection, Mode=OneWay}" SelectedValue="{Binding ITG3200MedianFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Moving Average Filter" />
+                    <ComboBox ItemsSource="{Binding MovingAverageCollection, Mode=OneWay}" SelectedValue="{Binding ITG3200MovingAverageFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Sample Rate" />
+                    <ComboBox ItemsSource="{Binding SampleRateCollection, Mode=OneWay}" SelectedValue="{Binding ITG3200SampleRate, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                </StackPanel>
+
+                <StackPanel x:Name="L3GD20Sensor"  Visibility="Collapsed">
+                    <TextBlock Text="L3GD20 Gyroscope" FontSize="32" Width="400" />
+                    <TextBlock Text="Enabled" />
+                    <ToggleSwitch IsOn="{Binding L3GD20Enabled, Mode=TwoWay}" />
+                    <TextBlock Text="Date Rate/Cutoff" />
+                    <ComboBox ItemsSource="{Binding L3GD20DataRateCuttoffCollection, Mode=OneWay}" SelectedValue="{Binding L3GD20DataRateCuttoff, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="FIFO Enabled" />
+                    <ToggleSwitch IsOn="{Binding L3GD20FifoEnable, Mode=TwoWay}" />                    
+                    <TextBlock Text="HPF Cutoff" />
+                    <ComboBox ItemsSource="{Binding L3G20HighPassFilterCuttoffCollection, Mode=OneWay}" SelectedValue="{Binding L3GD20HPFCutoff, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Median Filter" />
+                    <ComboBox ItemsSource="{Binding MedianFilterCollection, Mode=OneWay}" SelectedValue="{Binding L3GD20MedianFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Moving Average Filter" />
+                    <ComboBox ItemsSource="{Binding MovingAverageCollection, Mode=OneWay}" SelectedValue="{Binding L3GD20MovingAverageFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Sample Rate" />
+                    <ComboBox ItemsSource="{Binding SampleRateCollection, Mode=OneWay}" SelectedValue="{Binding L3GD20SampleRate, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                </StackPanel>
+
+                <StackPanel x:Name="LSM303ACCSensor"  Visibility="Collapsed">
+                    <TextBlock Text="LSM303 Accelerometer" FontSize="32" Width="400" />
+                    <TextBlock Text="Enabled" />
+                    <ToggleSwitch IsOn="{Binding LSM303AccEnabled, Mode=TwoWay}" />
+                    <TextBlock Text="Power Mode" />
+                    <ComboBox ItemsSource="{Binding LSMAccPowerModeCollection, Mode=OneWay}" SelectedValue="{Binding LSM303PowerMode, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="FIFO Enabled" />
+                    <ToggleSwitch IsOn="{Binding LSM303FiFoEnable, Mode=TwoWay}" />
+                    <TextBlock Text="Data Rate" />
+                    <ComboBox ItemsSource="{Binding LSM303AccDataRateCollection, Mode=OneWay}" SelectedValue="{Binding LSM303AccDataRate, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Full Scale" />
+                    <ComboBox ItemsSource="{Binding LSM303AccFullScaleCollection, Mode=OneWay}" SelectedValue="{Binding LSM303AccFullScale, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="High Pass Filter" />
+                    <ComboBox ItemsSource="{Binding LSM303AccHighPassFilterCollection, Mode=OneWay}" SelectedValue="{Binding LSM303AccHighPassFilter, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Median Filter" />
+                    <ComboBox ItemsSource="{Binding MedianFilterCollection, Mode=OneWay}" SelectedValue="{Binding LSM303AccMedianFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Moving Average Filter" />
+                    <ComboBox ItemsSource="{Binding MovingAverageCollection, Mode=OneWay}" SelectedValue="{Binding LSM303AccMovingAverageFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Sample Rate" />
+                    <ComboBox ItemsSource="{Binding SampleRateCollection, Mode=OneWay}" SelectedValue="{Binding LSM303AccSampleRate, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                </StackPanel>
+
+                <StackPanel x:Name="ADXL345Sensor" Visibility="Collapsed">
+                    <TextBlock Text="ADXL345 Accelerometer" FontSize="32" Width="400" />
+                    <TextBlock Text="Enabled" />
+                    <ToggleSwitch IsOn="{Binding ADXL345Enabled, Mode=TwoWay}" />
+                    <TextBlock Text="Date Rate" />
+                    <ComboBox ItemsSource="{Binding ADXL345DataRateCollection, Mode=OneWay}" SelectedValue="{Binding ADXL345BWRate, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Gain" />
+                    <ComboBox ItemsSource="{Binding ADXL345GainCollection, Mode=OneWay}" SelectedValue="{Binding ADXLRange, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Resolution" />
+                    <ComboBox ItemsSource="{Binding ADXLResolutionCollection, Mode=OneWay}" SelectedValue="{Binding ADXLResolution, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="FIFO Enabled" />
+                    <ToggleSwitch IsOn="{Binding ADXL345FiFoEnabled, Mode=TwoWay}" />
+                    <TextBlock Text="Median Filter" />
+                    <ComboBox ItemsSource="{Binding MedianFilterCollection, Mode=OneWay}" SelectedValue="{Binding ADXL345MedianFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Moving Average Filter" />
+                    <ComboBox ItemsSource="{Binding MovingAverageCollection, Mode=OneWay}" SelectedValue="{Binding ADXL345MovingAverageFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Sample Rate" />
+                    <ComboBox ItemsSource="{Binding SampleRateCollection, Mode=OneWay}" SelectedValue="{Binding ADXL345SampleRate, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                </StackPanel>
+
+                <StackPanel x:Name="LSM303MagSensor"  Visibility="Collapsed">
+                    <TextBlock Text="LSM303 Magnometer" FontSize="32" Width="400" />
+                    <TextBlock Text="Enabled" />
+                    <ToggleSwitch IsOn="{Binding LSM303MagEnabled, Mode=TwoWay}" />
+                    <TextBlock Text="Data Rate" />
+                    <ComboBox  ItemsSource="{Binding LSM303MagDataRateCollection, Mode=OneWay}" SelectedValue="{Binding LSM303MagDataRate, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Gain" />
+                    <ComboBox  ItemsSource="{Binding LSM303MagGainCollection, Mode=OneWay}" SelectedValue="{Binding LSM303MagGain, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Median Filter" />
+                    <ComboBox ItemsSource="{Binding MedianFilterCollection, Mode=OneWay}" SelectedValue="{Binding LSM303MagMedianFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Moving Average Filter" />
+                    <ComboBox ItemsSource="{Binding MovingAverageCollection, Mode=OneWay}" SelectedValue="{Binding LSM303MagMovingAverageFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Sample Rate" />
+                    <ComboBox ItemsSource="{Binding SampleRateCollection, Mode=OneWay}" SelectedValue="{Binding LSM303MagSampleRate, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Calibration" />
+                    <Button x:Name="BeginCalibration" Visibility="Visible" Content="Begin" Click="BeginCalibration_Click_1"/>
+                    <StackPanel Orientation="Horizontal">
+                        <Button x:Name="EndCalibration"  Visibility="Collapsed" Content="Done" Click="EndCalibration_Click_1" />
+                        <Button x:Name="CancelCalibration" Visibility="Collapsed" Content="Cancel" Click="CancelCalibration_Click_1" />
+                    </StackPanel>
+                </StackPanel>
+
+                <StackPanel x:Name="BMP085Sensor" Visibility="Collapsed">
+                    <TextBlock Text="BMP085" FontSize="32" Width="400" />
+                    <TextBlock Text="Enabled" />
+                    <ToggleSwitch IsOn="{Binding BMP085Enabled, Mode=TwoWay}" />
+                    <TextBlock Text="Median Filter" />
+                    <ComboBox ItemsSource="{Binding MedianFilterCollection, Mode=OneWay}" SelectedValue="{Binding BMP085MedianFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Moving Average Filter" />
+                    <ComboBox ItemsSource="{Binding MovingAverageCollection, Mode=OneWay}" SelectedValue="{Binding BMP085MovingAverageFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Sample Rate" />
+                    <ComboBox ItemsSource="{Binding SampleRateCollection, Mode=OneWay}" SelectedValue="{Binding BMP085SampleRate, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                </StackPanel>
+
+                <StackPanel x:Name="MS5611Sensor" Visibility="Collapsed">
+                    <TextBlock Text="MS5611" FontSize="32" Width="400" />
+                    <TextBlock Text="Enabled" />
+                    <ToggleSwitch IsOn="{Binding MS5611Enabled, Mode=TwoWay}" />
+                    <TextBlock Text="Median Filter" />
+                    <ComboBox ItemsSource="{Binding MedianFilterCollection, Mode=OneWay}" SelectedValue="{Binding MS5611MedianFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Moving Average Filter" />
+                    <ComboBox ItemsSource="{Binding MovingAverageCollection, Mode=OneWay}" SelectedValue="{Binding MS5611MovingAverageFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Sample Rate" />
+                    <ComboBox ItemsSource="{Binding SampleRateCollection, Mode=OneWay}" SelectedValue="{Binding MS5611SampleRate, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                </StackPanel>
+
+
+                <StackPanel x:Name="HCSR04Sensor" Visibility="Collapsed">
+                    <TextBlock Text="HCSR04 Sonar" FontSize="32" Width="400" />
+                    <TextBlock Text="Enabled" />
+                    <ToggleSwitch IsOn="{Binding HCSR04Enabled, Mode=TwoWay}" />
+                    <TextBlock Text="Median Filter" />
+                    <ComboBox ItemsSource="{Binding MedianFilterCollection, Mode=OneWay}" SelectedValue="{Binding HCSR04MedianFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Moving Average Filter" />
+                    <ComboBox ItemsSource="{Binding MovingAverageCollection, Mode=OneWay}" SelectedValue="{Binding HCSR04MovingAverageFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Sample Rate" />
+                    <ComboBox ItemsSource="{Binding SampleRateCollection, Mode=OneWay}" SelectedValue="{Binding HCSR04SampleRate, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                </StackPanel>
+
+                <StackPanel x:Name="LIPOAdcSensor" Visibility="Collapsed">
+                    <TextBlock Text="LIPO A/D Converter" FontSize="32" Width="400" />
+                    <TextBlock Text="Enabled" />
+                    <ToggleSwitch IsOn="{Binding LipoAdcEnabled, Mode=TwoWay}" />
+                    <TextBlock Text="Median Filter" />
+                    <ComboBox ItemsSource="{Binding MedianFilterCollection, Mode=OneWay}" SelectedValue="{Binding LipoADCMedianFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Moving Average Filter" />
+                    <ComboBox ItemsSource="{Binding MovingAverageCollection, Mode=OneWay}" SelectedValue="{Binding LipoADCMovingAverageFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Sample Rate" />
+                    <ComboBox ItemsSource="{Binding SampleRateCollection, Mode=OneWay}" SelectedValue="{Binding LipoADCSampleRate, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                </StackPanel>
+
+
+                <StackPanel x:Name="MPU60x0AccSensor"  Visibility="Collapsed">
+                    <TextBlock Text="MPU60x0 Acc" FontSize="32" Width="400" />
+                    <TextBlock Text="Enabled" />
+                    <ToggleSwitch IsOn="{Binding MPU60x0AccEnabled, Mode=TwoWay}" />
+                    <TextBlock Text="Sample Rate Divider" />
+                    <TextBlock Text="Fixed to 1KHz" />
+                    <TextBlock Text="Gain" />
+                    <ComboBox  ItemsSource="{Binding MPU60x0AccFSGainCollection, Mode=OneWay}" SelectedValue="{Binding MPU60x0AccFS, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="DLPF" />
+                    <ComboBox  ItemsSource="{Binding MPU60x0DLPFCollection, Mode=OneWay}" SelectedValue="{Binding MPU60x0Dlpf, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="FIFO Enabled" />
+                    <ToggleSwitch IsOn="{Binding MPU60x0FifoEnabled, Mode=TwoWay}" />
+                    <TextBlock Text="Median Filter" />
+                    <ComboBox ItemsSource="{Binding MedianFilterCollection, Mode=OneWay}" SelectedValue="{Binding MPU60x0AccMedianFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Moving Average Filter" />
+                    <ComboBox ItemsSource="{Binding MovingAverageCollection, Mode=OneWay}" SelectedValue="{Binding MPU60x0AccMovingAverageFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Sample Rate" />
+                    <ComboBox ItemsSource="{Binding SampleRateCollection, Mode=OneWay}" SelectedValue="{Binding MPU60x0AccSmplRt, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                </StackPanel>
+
+                <StackPanel x:Name="MPU60x0GyroSensor"  Visibility="Collapsed">
+                    <TextBlock Text="MPU60x0 Gyro" FontSize="32" Width="400" />
+                    <TextBlock Text="Enabled" />
+                    <ToggleSwitch IsOn="{Binding MPU60x0GryoEnabled, Mode=TwoWay}" />
+                    <TextBlock Text="Sample Rate Divider" />
+                    <ComboBox  ItemsSource="{Binding MPU60x0SampleRateCollection, Mode=OneWay}" SelectedValue="{Binding MPU60x0SmpRtDiv, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Gyro Full Scale" />
+                    <ComboBox  ItemsSource="{Binding MPU60x0GyroFSCollection, Mode=OneWay}" SelectedValue="{Binding MPU60x0GyroFS, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="DLPF" />
+                    <ComboBox  ItemsSource="{Binding MPU60x0DLPFCollection, Mode=OneWay}" SelectedValue="{Binding MPU60x0Dlpf, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="FIFO Enabled" />
+                    <ToggleSwitch IsOn="{Binding MPU60x0FifoEnabled, Mode=TwoWay}" />
+                    <TextBlock Text="Median Filter" />
+                    <ComboBox ItemsSource="{Binding MedianFilterCollection, Mode=OneWay}" SelectedValue="{Binding MPU60x0GyroMedianFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Moving Average Filter" />
+                    <ComboBox ItemsSource="{Binding MovingAverageCollection, Mode=OneWay}" SelectedValue="{Binding MPU60x0GyroMovingAverageFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Sample Rate" />
+                    <ComboBox ItemsSource="{Binding SampleRateCollection, Mode=OneWay}" SelectedValue="{Binding MPU60x0GyroSmplRt, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                </StackPanel>
+
+                <StackPanel x:Name="HMC5883Sensor"  Visibility="Collapsed">
+                    <TextBlock Text="HMC5883 Magnometer" FontSize="32" Width="400" />
+                    <TextBlock Text="Date Rate" />
+                    <ComboBox ItemsSource="{Binding HMC5883DataRateCollection, Mode=OneWay}" SelectedValue="{Binding HMC5883DataRate, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Gain" />
+                    <ComboBox ItemsSource="{Binding HMC5883GainCollection, Mode=OneWay}" SelectedValue="{Binding HMC5883Gain, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Samples Averaged" />
+                    <ComboBox ItemsSource="{Binding HMC5883SamplesAveragedCollection, Mode=OneWay}" SelectedValue="{Binding HMC5883AverageSamples, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Median Filter" />
+                    <ComboBox ItemsSource="{Binding MedianFilterCollection, Mode=OneWay}" SelectedValue="{Binding HMC5883MedianFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Moving Average Filter" />
+                    <ComboBox ItemsSource="{Binding MovingAverageCollection, Mode=OneWay}" SelectedValue="{Binding HMC5883MovingAverageFilterOption, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                    <TextBlock Text="Sample Rate" />
+                    <ComboBox ItemsSource="{Binding SampleRateCollection, Mode=OneWay}" SelectedValue="{Binding HMC5883SampleRate, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                </StackPanel>
+                <StackPanel x:Name="GPSSensor"  Visibility="Collapsed">
+                    <TextBlock Text="HMC5883 Magnometer" FontSize="32" Width="400" />
+                    <TextBlock Text="DGPS Type" />
+                    <ComboBox ItemsSource="{Binding GPSDGPSTypes, Mode=OneWay}" SelectedValue="{Binding GPSDGPSType, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Value" />
+                </StackPanel>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</nk:NiVekPage>

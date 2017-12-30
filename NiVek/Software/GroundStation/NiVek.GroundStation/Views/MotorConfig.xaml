@@ -1,0 +1,190 @@
+﻿<nk:NiVekPage xmlns:nk="using:NiVek.FlightControls.Views"           
+    xmlns:Controls="using:NiVek.FlightControls.Controls"                              
+    x:Name="pageRoot"
+    x:Class="NiVek.FlightControls.Views.MotorConfig"
+
+              
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NiVek.FlightControls.Views"
+    xmlns:common="using:NiVek.FlightControls.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Style="{StaticResource LayoutRootStyle}" Margin="0,1,0,-1">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/PageBackground.jpg" />
+        </Grid.Background>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"/>
+            <ColumnDefinition Width="210" />
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="160"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <!-- Back button and page title -->
+        <Controls:NiVekHeader Grid.ColumnSpan="3" x:Name="Header" />
+
+        <StackPanel Grid.Row="1" Margin="10" >
+            <TextBlock Text="Frame Config" FontSize="24" />
+            <ComboBox x:Name="FrameConfiguration" ItemsSource="{Binding Config.FrameConfigCollection, Mode=OneWay}" SelectedValue="{Binding Config.FrameConfig, Mode=TwoWay}" DisplayMemberPath="Display" SelectedValuePath="Key" Margin="0,0,0,30"/>
+
+            <TextBlock Text="ESC Update Rate"  FontSize="24" />
+            <ComboBox ItemsSource="{Binding Config.ESCUpdateRateCollection, Mode=OneWay}" SelectedValue="{Binding Config.ESCUpdateRate, Mode=TwoWay}" DisplayMemberPath="Display" SelectedValuePath="Key" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="1" Grid.Column="1" Margin="10">
+            <StackPanel.Resources>
+                <Style TargetType="TextBlock">
+                    <Setter Property="FontSize" Value="16" />
+                </Style>
+                <Style TargetType="TextBox">
+                    <Setter Property="Width" Value="100" />
+                    <Setter Property="TextAlignment" Value="Right" />
+                    <Setter Property="FontSize" Value="16" />
+                </Style>
+                <Style TargetType="StackPanel">
+                    <Setter Property="Margin" Value="4" />
+                </Style>
+            </StackPanel.Resources>
+
+            <TextBlock Text="Motor Trim" FontSize="24" />
+            <TextBlock Text="Starboard Front/Front" />
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="LessStarboardFrontMotor" Content="-" Click="LessStarboardFrontMotor_Click"/>
+                <TextBox Text="{Binding Config.EscStarboardFront, Mode=TwoWay}" />
+                <Button x:Name="MoreStarboardFrontMotor" Content="+" Click="MoreStarboardFrontMotor_Click" />
+            </StackPanel>
+            <TextBlock Text="Starboard Rear/Port"  />
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="LessStarboardRearMotor" Content="-" Click="LessStarboardRearMotor_Click" />
+                <TextBox Text="{Binding Config.EscStarboardRear, Mode=TwoWay}" />
+                <Button x:Name="MoreStarboardRearMotor" Content="+" Click="MoreStarboardRearMotor_Click" />
+            </StackPanel>
+            <TextBlock Text="Port Front/Starboard" />
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="LessPortFrontMotor" Content="-" Click="LessPortFrontMotor_Click" />
+                <TextBox Text="{Binding Config.EscPortFront, Mode=TwoWay}" />
+                <Button x:Name="MorePortFrontMotor" Content="+" Click="MorePortFrontMotor_Click" />
+            </StackPanel>
+            <TextBlock Text="Port rear/Rear" />
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="LessPortRearMotor" Content="-" Click="LessPortRearMotor_Click" />
+                <TextBox Text="{Binding Config.EscPortRear, Mode=TwoWay}" />
+                <Button x:Name="MorePortRearMotor" Content="+" Click="MorePortRearMotor_Click" />
+            </StackPanel>
+        </StackPanel>
+
+        <Grid Grid.Row="1" Grid.Column="2" x:Name="CrossMotorPower"  Visibility="{Binding IsCrossFrame, Converter={StaticResource VisibilityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+            <StackPanel Width="200" Grid.Row="0" Grid.Column="1" VerticalAlignment="Center">
+                <TextBlock Text="Front" FontSize="28"/>
+                <ComboBox ItemsSource="{Binding Config.MotorPowerCollection, Mode=OneWay}"  x:Name="PwrFront" DisplayMemberPath="Display" SelectedValuePath="Key" SelectionChanged="MotorPower_Changed" Tag="1" SelectedValue="Off"/>
+            </StackPanel>
+
+            <StackPanel Width="200" Grid.Row="1" Grid.Column="0" VerticalAlignment="Center">
+                <TextBlock Text="Port" FontSize="28"/>
+                <ComboBox ItemsSource="{Binding Config.MotorPowerCollection, Mode=OneWay}"  x:Name="PwrPort" DisplayMemberPath="Display" SelectedValuePath="Key" SelectionChanged="MotorPower_Changed" Tag="2" SelectedValue="Off"/>
+            </StackPanel>
+
+            <StackPanel Width="200" Grid.Row="1" Grid.Column="2" VerticalAlignment="Center">
+                <TextBlock Text="Starboard" FontSize="28"/>
+                <ComboBox ItemsSource="{Binding Config.MotorPowerCollection, Mode=OneWay}"  x:Name="PwrStarboard" DisplayMemberPath="Display" SelectedValuePath="Key" SelectionChanged="MotorPower_Changed" Tag="3" SelectedValue="Off"/>
+            </StackPanel>
+
+            <StackPanel Width="200" Grid.Row="2" Grid.Column="1" VerticalAlignment="Center">
+                <TextBlock Text="Rear" FontSize="28"/>
+                <ComboBox ItemsSource="{Binding Config.MotorPowerCollection, Mode=OneWay}"  x:Name="PwrRear" DisplayMemberPath="Display" SelectedValuePath="Key" SelectionChanged="MotorPower_Changed" Tag="4" SelectedValue="Off"/>
+            </StackPanel>
+
+            <StackPanel Width="200" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                <TextBlock Text="All" FontSize="28"/>
+                <ComboBox ItemsSource="{Binding Config.MotorPowerCollection, Mode=OneWay}" x:Name="PwrAll1"  DisplayMemberPath="Display" SelectedValuePath="Key" SelectionChanged="MotorPower_Changed" Tag="255" SelectedValue="Off" />
+            </StackPanel>
+        </Grid>
+
+        <Grid Grid.Row="1" Grid.Column="2" x:Name="XMotorPower" Visibility="{Binding IsXFrame, Converter={StaticResource VisibilityConverter}}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Width="200" Grid.Row="0" Grid.Column="0" VerticalAlignment="Center">
+                <TextBlock Text="Port Front" FontSize="28"/>
+                <ComboBox ItemsSource="{Binding Config.MotorPowerCollection, Mode=OneWay}" DisplayMemberPath="Display" SelectedValuePath="Key"  x:Name="PwrPortFront" SelectionChanged="MotorPower_Changed" Tag="1" SelectedValue="Off"/>
+            </StackPanel>
+
+            <StackPanel Width="200" Grid.Row="0" Grid.Column="2" VerticalAlignment="Center">
+                <TextBlock Text="Starboard Front" FontSize="28"/>
+                <ComboBox ItemsSource="{Binding Config.MotorPowerCollection, Mode=OneWay}" DisplayMemberPath="Display" SelectedValuePath="Key"  x:Name="PwrStarboardFront" SelectionChanged="MotorPower_Changed" Tag="3" SelectedValue="Off"/>
+            </StackPanel>
+
+            <StackPanel Width="200" Grid.Row="1" Grid.Column="1" VerticalAlignment="Center">
+                <TextBlock Text="All" FontSize="28"/>
+                <ComboBox ItemsSource="{Binding Config.MotorPowerCollection, Mode=OneWay}"  x:Name="PwrAll2"  DisplayMemberPath="Display" SelectedValuePath="Key" SelectionChanged="MotorPower_Changed" Tag="255" SelectedValue="Off"/>
+            </StackPanel>
+
+            <StackPanel Width="200" Grid.Row="2" Grid.Column="0" VerticalAlignment="Center">
+                <TextBlock Text="Port Rear" FontSize="28"/>
+                <ComboBox ItemsSource="{Binding Config.MotorPowerCollection, Mode=OneWay}" DisplayMemberPath="Display" SelectedValuePath="Key" x:Name="PwrPortRear" SelectionChanged="MotorPower_Changed" Tag="2" SelectedValue="Off"/>
+            </StackPanel>
+
+            <StackPanel Width="200" Grid.Row="2" Grid.Column="2" VerticalAlignment="Center">
+                <TextBlock Text="Starboard Rear" FontSize="28"/>
+                <ComboBox ItemsSource="{Binding Config.MotorPowerCollection, Mode=OneWay}"  DisplayMemberPath="Display" SelectedValuePath="Key"  x:Name="PwrStarboardRear" SelectionChanged="MotorPower_Changed" Tag="4" SelectedValue="Off"/>
+            </StackPanel>
+        </Grid>
+
+
+        <VisualStateManager.VisualStateGroups>
+
+            <!-- Visual states reflect the application's view state -->
+            <VisualStateGroup x:Name="ApplicationViewStates">
+                <VisualState x:Name="FullScreenLandscape"/>
+                <VisualState x:Name="Filled"/>
+
+                <!-- The entire page respects the narrower 100-pixel margin convention for portrait -->
+                <VisualState x:Name="FullScreenPortrait">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PortraitBackButtonStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+
+                <!-- The back button and title have different styles when snapped -->
+                <VisualState x:Name="Snapped">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedBackButtonStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedPageHeaderTextStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</nk:NiVekPage>

@@ -1,0 +1,171 @@
+﻿<nk:NiVekPage xmlns:nk="using:NiVek.FlightControls.Views"           
+    xmlns:Controls="using:NiVek.FlightControls.Controls"                              
+    x:Name="pageRoot"
+    x:Class="NiVek.FlightControls.Views.PIDSettings"
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NiVek.FlightControls.Views"
+    xmlns:common="using:NiVek.FlightControls.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+    
+    <Grid Style="{StaticResource LayoutRootStyle}">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/PageBackground.jpg" />
+        </Grid.Background>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="160"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="auto" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+
+        <Controls:NiVekHeader  x:Name="Header" />
+        <StackPanel Grid.Column="1" Margin="4" >
+            <TextBox x:Name="SetingsName" />
+            <Button x:Name="Save" Content="Save" HorizontalAlignment="Right" Click="Save_Click"/>
+        </StackPanel>
+
+
+        <Grid Grid.Row="1" x:Name="Settings" Grid.ColumnSpan="2" Margin="0,20,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            
+            <StackPanel Grid.Column="1"  Width="200" HorizontalAlignment="Center">
+                <TextBlock Text="Pitch" FontSize="24" />
+                <TextBlock Text="Copy from Roll PID" />
+                <ComboBox ItemsSource="{Binding PitchFollowsRollCollection, Mode=OneWay}" SelectedValue="{Binding PitchFollowsRoll, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Key" />
+
+                <TextBlock Text="Error" Width="150" FontSize="20"/>
+                <Controls:Setting SettingValue="{Binding PitchSteadyP, Mode=TwoWay}" CaptionValue="P" IncrementSize="{StaticResource SteadyPIncrementSize}" NumberDecimal="{StaticResource SteadyPNumbDec}" Min="{StaticResource RatePMin}" Max="{StaticResource SteadyPMax}" />
+                <Controls:Setting SettingValue="{Binding PitchSteadyI, Mode=TwoWay}" CaptionValue="I" IncrementSize="{StaticResource SteadyIIncrementSize}" NumberDecimal="{StaticResource SteadyINumbDec}" Min="{StaticResource RateDMin}" Max="{StaticResource SteadyIMax}" />
+                <Controls:Setting SettingValue="{Binding PitchSteadyIMax, Mode=TwoWay}" CaptionValue="I Max Windup" IncrementSize="{StaticResource SteadyIMaxIncrementSize}" NumberDecimal="{StaticResource SteadyIMaxNumbDec}" Min="{StaticResource SteadyIMaxMin}" Max="{StaticResource SteadyIMaxMax}" />
+                <Controls:Setting SettingValue="{Binding PitchSteadyIDecayFactor, Mode=TwoWay}" CaptionValue="I Decay" IncrementSize="{StaticResource SteadyIDecayIncrementSize}" NumberDecimal="{StaticResource SteadyIDecayNumbDec}" Min="{StaticResource SteadyIDecayMin}" Max="{StaticResource SteadyIDecayMax}" />
+
+                <TextBlock Text="Rate" Width="150" FontSize="20"/>
+                <Controls:Setting SettingValue="{Binding PitchRateP, Mode=TwoWay}" CaptionValue="P" IncrementSize="{StaticResource RatePIncrementSize}" NumberDecimal="{StaticResource RatePNumbDec}" Min="{StaticResource RatePMin}" Max="{StaticResource RatePMax}" />
+                <Controls:Setting SettingValue="{Binding PitchRateI, Mode=TwoWay}" CaptionValue="I" IncrementSize="{StaticResource RateIIncrementSize}" NumberDecimal="{StaticResource RateINumbDec}" Min="{StaticResource RateDMin}" Max="{StaticResource RateIMax}" />
+                <Controls:Setting SettingValue="{Binding PitchRateD, Mode=TwoWay}" CaptionValue="D" IncrementSize="{StaticResource RateDIncrementSize}" NumberDecimal="{StaticResource RateDNumbDec}" Min="{StaticResource RateDMin}" Max="{StaticResource RateDMax}" />
+                <Controls:Setting SettingValue="{Binding PitchRateIMax, Mode=TwoWay}" CaptionValue="I Max Windup" IncrementSize="{StaticResource RateIMaxIncrementSize}" NumberDecimal="{StaticResource RateIMaxNumbDec}" Min="{StaticResource RateIMaxMin}" Max="{StaticResource RateIMaxMax}" />
+                <Controls:Setting SettingValue="{Binding PitchRateIDecayFactor, Mode=TwoWay}" CaptionValue="I Decay" IncrementSize="{StaticResource RateIDecayIncrementSize}" NumberDecimal="{StaticResource RateIDecayNumbDec}" Min="{StaticResource RateIDecayMin}" Max="{StaticResource RateIDecayMax}" />
+
+                <TextBlock Text="D-Filter" />
+                <ComboBox ItemsSource="{Binding DFilterCollection, Mode=OneWay}" SelectedValue="{Binding PitchDFilter, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Key" />
+
+                <Controls:Setting SettingValue="{Binding PitchSteadyBand, Mode=TwoWay}" CaptionValue="Steady Band" IncrementSize="{StaticResource SteadyBandIncrementSize}" NumberDecimal="{StaticResource SteadyBandNumbDec}" Min="{StaticResource SteadyBandMin}" Max="{StaticResource SteadyBandMax}" />
+                <Controls:Setting SettingValue="{Binding PitchSensitivity, Mode=TwoWay}" CaptionValue="Gain" IncrementSize="{StaticResource GainIncrementSize}" NumberDecimal="{StaticResource GainNumbDec}" Min="{StaticResource GainMin}" Max="{StaticResource GainMax}" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="0"  Width="200" HorizontalAlignment="Center">
+                <TextBlock Text="Roll" Width="150" FontSize="24"/>
+
+                <TextBlock Text="Error" Width="150" FontSize="20"/>
+                <Controls:Setting SettingValue="{Binding RollSteadyP, Mode=TwoWay}" CaptionValue="P" IncrementSize="{StaticResource SteadyPIncrementSize}" NumberDecimal="{StaticResource SteadyPNumbDec}" Min="{StaticResource RatePMin}" Max="{StaticResource SteadyPMax}" />
+                <Controls:Setting SettingValue="{Binding RollSteadyI, Mode=TwoWay}" CaptionValue="I" IncrementSize="{StaticResource SteadyIIncrementSize}" NumberDecimal="{StaticResource SteadyINumbDec}" Min="{StaticResource RateDMin}" Max="{StaticResource SteadyIMax}" />
+                <Controls:Setting SettingValue="{Binding RollSteadyIMax, Mode=TwoWay}" CaptionValue="I Max Windup" IncrementSize="{StaticResource SteadyIMaxIncrementSize}" NumberDecimal="{StaticResource SteadyIMaxNumbDec}" Min="{StaticResource SteadyIMaxMin}" Max="{StaticResource SteadyIMaxMax}" />
+                <Controls:Setting SettingValue="{Binding RollSteadyIDecayFactor, Mode=TwoWay}" CaptionValue="I Decay" IncrementSize="{StaticResource SteadyIMaxIncrementSize}" NumberDecimal="{StaticResource SteadyIMaxNumbDec}" Min="{StaticResource SteadyIMaxMin}" Max="{StaticResource SteadyIMaxMax}" />
+
+                <TextBlock Text="Rate" Width="150" FontSize="20"/>
+                <Controls:Setting SettingValue="{Binding RollRateP, Mode=TwoWay}" CaptionValue="P" IncrementSize="{StaticResource RatePIncrementSize}" NumberDecimal="{StaticResource RatePNumbDec}" Min="{StaticResource RatePMin}" Max="{StaticResource RatePMax}" />
+                <Controls:Setting SettingValue="{Binding RollRateI, Mode=TwoWay}" CaptionValue="I" IncrementSize="{StaticResource RateIIncrementSize}" NumberDecimal="{StaticResource RateINumbDec}" Min="{StaticResource RateDMin}" Max="{StaticResource RateIMax}" />
+                <Controls:Setting SettingValue="{Binding RollRateD, Mode=TwoWay}" CaptionValue="D" IncrementSize="{StaticResource RateDIncrementSize}" NumberDecimal="{StaticResource RateDNumbDec}" Min="{StaticResource RateDMin}" Max="{StaticResource RateDMax}" />
+                <Controls:Setting SettingValue="{Binding RollRateIMax, Mode=TwoWay}" CaptionValue="I Max Windup" IncrementSize="{StaticResource RateIMaxIncrementSize}" NumberDecimal="{StaticResource RateIMaxNumbDec}" Min="{StaticResource RateIMaxMin}" Max="{StaticResource RateIMaxMax}" />
+                <Controls:Setting SettingValue="{Binding RollRateIDecayFactor, Mode=TwoWay}" CaptionValue="I Decay" IncrementSize="{StaticResource SteadyIDecayIncrementSize}" NumberDecimal="{StaticResource SteadyIDecayNumbDec}" Min="{StaticResource SteadyIDecayMin}" Max="{StaticResource SteadyIDecayMax}" />
+
+                <TextBlock Text="D-Filter" />
+                <ComboBox ItemsSource="{Binding DFilterCollection, Mode=OneWay}" SelectedValue="{Binding RollDFilter, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Key" />
+
+                <Controls:Setting SettingValue="{Binding RollSteadyBand, Mode=TwoWay}" CaptionValue="Steady Band" IncrementSize="{StaticResource SteadyBandIncrementSize}" NumberDecimal="{StaticResource SteadyBandNumbDec}" Min="{StaticResource SteadyBandMin}" Max="{StaticResource SteadyBandMax}" />
+                <Controls:Setting SettingValue="{Binding RollSensitivity, Mode=TwoWay}" CaptionValue="Gain" IncrementSize="{StaticResource GainIncrementSize}" NumberDecimal="{StaticResource GainNumbDec}" Min="{StaticResource GainMin}" Max="{StaticResource GainMax}" />
+            </StackPanel>
+
+            <StackPanel Grid.Column="2"  Width="200" HorizontalAlignment="Center">
+                <TextBlock Text="Altitude" FontSize="24" />
+
+                <TextBlock Text="Error" Width="150" FontSize="20"/>
+                <Controls:Setting SettingValue="{Binding AltitudeSteadyP, Mode=TwoWay}" CaptionValue="P" IncrementSize="{StaticResource SteadyPIncrementSize}" NumberDecimal="{StaticResource SteadyPNumbDec}" Min="{StaticResource RatePMin}" Max="{StaticResource SteadyPMax}" />
+                <Controls:Setting SettingValue="{Binding AltitudeSteadyI, Mode=TwoWay}" CaptionValue="I" IncrementSize="{StaticResource SteadyIIncrementSize}" NumberDecimal="{StaticResource SteadyINumbDec}" Min="{StaticResource RateDMin}" Max="{StaticResource SteadyIMax}" />
+                <Controls:Setting SettingValue="{Binding AltitudeSteadyIMax, Mode=TwoWay}" CaptionValue="I Max Windup" IncrementSize="{StaticResource SteadyIMaxIncrementSize}" NumberDecimal="{StaticResource SteadyIMaxNumbDec}" Min="{StaticResource SteadyIMaxMin}" Max="{StaticResource SteadyIMaxMax}" />
+                <Controls:Setting SettingValue="{Binding AltitudeSteadyIDecayFactor, Mode=TwoWay}" CaptionValue="I Decay" IncrementSize="{StaticResource SteadyIDecayIncrementSize}" NumberDecimal="{StaticResource SteadyIDecayNumbDec}" Min="{StaticResource SteadyIDecayMin}" Max="{StaticResource SteadyIDecayMax}" />
+
+                <TextBlock Text="Rate" Width="150" FontSize="20"/>
+                <Controls:Setting SettingValue="{Binding AltitudeRateP, Mode=TwoWay}" CaptionValue="P" IncrementSize="{StaticResource RatePIncrementSize}" NumberDecimal="{StaticResource RatePNumbDec}" Min="{StaticResource RatePMin}" Max="{StaticResource RatePMax}" />
+                <Controls:Setting SettingValue="{Binding AltitudeRateI, Mode=TwoWay}" CaptionValue="I" IncrementSize="{StaticResource RateIIncrementSize}" NumberDecimal="{StaticResource RateINumbDec}" Min="{StaticResource RateDMin}" Max="{StaticResource RateIMax}" />
+                <Controls:Setting SettingValue="{Binding AltitudeRateD, Mode=TwoWay}" CaptionValue="D" IncrementSize="{StaticResource RateDIncrementSize}" NumberDecimal="{StaticResource RateDNumbDec}" Min="{StaticResource RateDMin}" Max="{StaticResource RateDMax}" />
+                <Controls:Setting SettingValue="{Binding AltitudeRateIMax, Mode=TwoWay}" CaptionValue="I Max Windup" IncrementSize="{StaticResource RateIMaxIncrementSize}" NumberDecimal="{StaticResource RateIMaxNumbDec}" Min="{StaticResource RateIMaxMin}" Max="{StaticResource RateIMaxMax}" />
+                <Controls:Setting SettingValue="{Binding AltitudeRateIDecayFactor, Mode=TwoWay}" CaptionValue="I Decay" IncrementSize="{StaticResource RateIDecayIncrementSize}" NumberDecimal="{StaticResource RateIDecayNumbDec}" Min="{StaticResource RateIDecayMin}" Max="{StaticResource RateIDecayMax}" />
+
+                <TextBlock Text="D-Filter"  />
+                <ComboBox ItemsSource="{Binding DFilterCollection, Mode=OneWay}" SelectedValue="{Binding AltitudeDFilter, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Key" />
+
+                <Controls:Setting SettingValue="{Binding AltitudeSteadyBand, Mode=TwoWay}" CaptionValue="Steady Band" IncrementSize="{StaticResource SteadyBandIncrementSize}" NumberDecimal="{StaticResource SteadyBandNumbDec}" Min="{StaticResource SteadyBandMin}" Max="{StaticResource SteadyBandMax}" />
+
+                <TextBlock Text="Initial Throttle" />
+                <TextBox Text="{Binding InitialThrottle, Mode=TwoWay}" HorizontalAlignment="Left" />
+                <TextBlock Text="Initial Altitude" />
+                <TextBox Text="{Binding InitialAltitude, Mode=TwoWay}" HorizontalAlignment="Left" />
+                <Controls:Setting SettingValue="{Binding ThrottleSensitivity, Mode=TwoWay}" CaptionValue="Throttle Gain" IncrementSize="0.1" NumberDecimal="1" Min="0.0" Max="1.0" />
+            </StackPanel>
+
+            <StackPanel Width="200" HorizontalAlignment="Center" Grid.Column="3">
+                <TextBlock Text="Yaw" FontSize="24" />
+                <TextBlock Text="Error" Width="150" FontSize="20"/>
+                <Controls:Setting SettingValue="{Binding YawSteadyP, Mode=TwoWay}" CaptionValue="P" IncrementSize="{StaticResource SteadyPIncrementSize}" NumberDecimal="{StaticResource SteadyPNumbDec}" Min="{StaticResource RatePMin}" Max="{StaticResource SteadyPMax}" />
+                <Controls:Setting SettingValue="{Binding YawSteadyI, Mode=TwoWay}" CaptionValue="I" IncrementSize="{StaticResource SteadyIIncrementSize}" NumberDecimal="{StaticResource SteadyINumbDec}" Min="{StaticResource RateDMin}" Max="{StaticResource SteadyIMax}" />
+                <Controls:Setting SettingValue="{Binding YawSteadyIMax, Mode=TwoWay}" CaptionValue="I Max Windup" IncrementSize="{StaticResource SteadyIMaxIncrementSize}" NumberDecimal="{StaticResource SteadyIMaxNumbDec}" Min="{StaticResource SteadyIMaxMin}" Max="{StaticResource SteadyIMaxMax}" />
+                <Controls:Setting SettingValue="{Binding YawSteadyIDecayFactor, Mode=TwoWay}" CaptionValue="I Decay" IncrementSize="{StaticResource SteadyIDecayIncrementSize}" NumberDecimal="{StaticResource SteadyIDecayNumbDec}" Min="{StaticResource SteadyIDecayMin}" Max="{StaticResource SteadyIDecayMax}" />
+
+                <TextBlock Text="Rate" Width="150" FontSize="20"/>
+                <Controls:Setting SettingValue="{Binding YawRateP, Mode=TwoWay}" CaptionValue="P" IncrementSize="{StaticResource RatePIncrementSize}" NumberDecimal="{StaticResource RatePNumbDec}" Min="{StaticResource RatePMin}" Max="{StaticResource RatePMax}" />
+                <Controls:Setting SettingValue="{Binding YawRateI, Mode=TwoWay}" CaptionValue="I" IncrementSize="{StaticResource RateIIncrementSize}" NumberDecimal="{StaticResource RateINumbDec}" Min="{StaticResource RateDMin}" Max="{StaticResource RateIMax}" />
+                <Controls:Setting SettingValue="{Binding YawRateD, Mode=TwoWay}" CaptionValue="D" IncrementSize="{StaticResource RateDIncrementSize}" NumberDecimal="{StaticResource RateDNumbDec}" Min="{StaticResource RateDMin}" Max="{StaticResource RateDMax}" />
+                <Controls:Setting SettingValue="{Binding YawRateIMax, Mode=TwoWay}" CaptionValue="I Max Windup" IncrementSize="{StaticResource RateIMaxIncrementSize}" NumberDecimal="{StaticResource RateIMaxNumbDec}" Min="{StaticResource RateIMaxMin}" Max="{StaticResource RateIMaxMax}" />
+                <Controls:Setting SettingValue="{Binding YawRateIDecayFactor, Mode=TwoWay}" CaptionValue="I Decay" IncrementSize="{StaticResource RateIDecayIncrementSize}" NumberDecimal="{StaticResource RateIDecayNumbDec}" Min="{StaticResource RateIDecayMin}" Max="{StaticResource RateIDecayMax}" />
+
+                <TextBlock Text="D-Filter" />
+                <ComboBox ItemsSource="{Binding DFilterCollection, Mode=OneWay}" SelectedValue="{Binding YawDFilter, Mode=TwoWay}"  DisplayMemberPath="Display" SelectedValuePath="Key" />
+
+                <Controls:Setting SettingValue="{Binding HeadingSteadyBand, Mode=TwoWay}" CaptionValue="Steady Band" IncrementSize="{StaticResource SteadyBandIncrementSize}" NumberDecimal="{StaticResource SteadyBandNumbDec}" Min="{StaticResource SteadyBandMin}" Max="{StaticResource SteadyBandMax}" />
+                <Controls:Setting SettingValue="{Binding YawSensitivity, Mode=TwoWay}" CaptionValue="Gain" IncrementSize="{StaticResource GainIncrementSize}" NumberDecimal="{StaticResource GainNumbDec}" Min="{StaticResource GainMin}" Max="{StaticResource GainMax}" />
+            </StackPanel>
+        </Grid>
+
+        <VisualStateManager.VisualStateGroups>
+
+            <!-- Visual states reflect the application's view state -->
+            <VisualStateGroup x:Name="ApplicationViewStates">
+                <VisualState x:Name="FullScreenLandscape"/>
+                <VisualState x:Name="Filled"/>
+
+                <!-- The entire page respects the narrower 100-pixel margin convention for portrait -->
+                <VisualState x:Name="FullScreenPortrait">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PortraitBackButtonStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+
+                <!-- The back button and title have different styles when snapped -->
+                <VisualState x:Name="Snapped">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedBackButtonStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedPageHeaderTextStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</nk:NiVekPage>

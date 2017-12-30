@@ -1,0 +1,24 @@
+﻿<UserControl
+    x:Class="NiVek.FlightControls.Controls.LeftStick"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NiVek.FlightControls.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="200"
+    d:DesignWidth="200">
+    
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="170"/>
+            <RowDefinition Height="30"/>
+        </Grid.RowDefinitions>
+        <Canvas Height="170" x:Name="LeftStickArea" ManipulationMode="All" Background="Silver" 
+                ManipulationDelta="LeftStickArea_ManipulationDelta_1"  
+                ManipulationCompleted="LeftStickArea_ManipulationCompleted_1">
+            <Ellipse Width="30" Height="30" Fill="Black" HorizontalAlignment="Center" VerticalAlignment="Center" x:Name="LeftStickThumb" Canvas.Top="140" Canvas.Left="85" />
+        </Canvas>
+        <ComboBox x:Name="MotorPower" Height="30" SelectionChanged="MotorPower_SelectionChanged_1" DisplayMemberPath="Display" SelectedValuePath="Key" Grid.Row="1" />
+    </Grid>
+</UserControl>

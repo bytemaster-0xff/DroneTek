@@ -1,0 +1,25 @@
+﻿<UserControl xmlns:Gauge="using:C1.Xaml.Gauge" 
+    x:Class="NiVek.FlightControls.Controls.ConfigValue"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NiVek.FlightControls.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="90"
+    d:DesignWidth="250">
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition />
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions >
+            <RowDefinition Height="30" />
+            <RowDefinition Height="60" />            
+        </Grid.RowDefinitions>
+        <TextBlock Text="{Binding Caption}" />
+        <TextBox Text="{Binding Value}" Grid.Column="1" />
+        <Slider Grid.ColumnSpan="2" Grid.Row="1" Height="30" />        
+    </Grid>
+</UserControl>

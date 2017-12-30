@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tga;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Shaders">
+      <UniqueIdentifier>{e882ae45-0d93-4118-b3f1-78de145e127f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Common">
+      <UniqueIdentifier>{52b84e28-ea2a-4d92-83aa-dfee5c45ccd0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Animation">
+      <UniqueIdentifier>{3a7e829e-592f-4e09-95ef-cd1e7a63b103}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\..\NiVek.D3D\targetver.h" />
+    <ClInclude Include="..\..\..\NiVek.D3D\D2DPanel.h" />
+    <ClInclude Include="..\..\..\NiVek.D3D\D3dPanel.h" />
+    <ClInclude Include="..\..\..\NiVek.D3D\DirectXPanelBase.h" />
+    <ClInclude Include="..\..\..\NiVek.D3D\DrawingPanel.h" />
+    <ClInclude Include="..\..\..\NiVek.D3D\GamePad.h" />
+    <ClInclude Include="..\..\..\NiVek.D3D\pch.h" />
+    <ClInclude Include="..\..\..\NiVek.D3D\DXHelper.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\NiVek.D3D\ShaderStructures.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\NiVek.D3D\StepTimer.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\NiVek.D3D\V3DHeader.h">
+      <Filter>Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\NiVek.D3D\Animation.h">
+      <Filter>Animation</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="..\..\..\NiVek.D3D\SimplePixelShader.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\..\NiVek.D3D\SimpleVertexShader.hlsl">
+      <Filter>Shaders</Filter>
+    </FxCompile>
+    <FxCompile Include="..\..\..\NiVek.D3D\SkinningVertexShader.hlsl">
+      <Filter>Animation</Filter>
+    </FxCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="..\..\..\NiVek.D3D\D2DPanel.cpp" />
+    <ClCompile Include="..\..\..\NiVek.D3D\D3dPanel.cpp" />
+    <ClCompile Include="..\..\..\NiVek.D3D\DirectXPanelBase.cpp" />
+    <ClCompile Include="..\..\..\NiVek.D3D\dllmain.cpp" />
+    <ClCompile Include="..\..\..\NiVek.D3D\DrawingPanel.cpp" />
+    <ClCompile Include="..\..\..\NiVek.D3D\GamePad.cpp" />
+    <ClCompile Include="..\..\..\NiVek.D3D\pch.cpp" />
+  </ItemGroup>
+</Project>

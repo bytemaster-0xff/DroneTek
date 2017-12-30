@@ -1,0 +1,35 @@
+﻿<UserControl
+    x:Class="NiVek.FlightControls.Controls.Battery"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NiVek.FlightControls.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="120"
+    d:DesignWidth="90">
+    
+    <StackPanel Width="90" Height="120" Margin="5,0,0,0">
+        <StackPanel.Resources>
+            <Style TargetType="TextBlock">
+                <Setter Property="FontSize" Value="16" />
+            </Style>
+        </StackPanel.Resources>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Cell1:" Width="40" HorizontalAlignment="Left"/>
+            <TextBlock Width="40" Text="{Binding Battery.Cell1BatteryDisplay}" TextAlignment="Right" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Cell2:" Width="40"  HorizontalAlignment="Left"/>
+            <TextBlock Width="40" Text="{Binding Battery.Cell2BatteryDisplay}" TextAlignment="Right" />
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="Cell3:" Width="40" HorizontalAlignment="Left" />
+            <TextBlock Width="40" Text="{Binding Battery.Cell3BatteryDisplay}" TextAlignment="Right"/>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal">
+            <TextBlock Text="All" Width="40" HorizontalAlignment="Left"/>
+            <TextBlock Width="40" Text="{Binding Battery.TotalBatteryDisplay}" TextAlignment="Right"/>
+        </StackPanel>
+    </StackPanel>
+</UserControl>

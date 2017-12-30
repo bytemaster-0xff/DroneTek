@@ -1,0 +1,149 @@
+﻿<nk:NiVekPage xmlns:nk="using:NiVek.FlightControls.Views"
+    x:Name="pageRoot"
+    x:Class="NiVek.FlightControls.Views.Calibration"
+    xmlns:Controls="using:NiVek.FlightControls.Controls"                              
+              
+    DataContext="{Binding DefaultViewModel, RelativeSource={RelativeSource Self}}"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NiVek.FlightControls.Models"
+    xmlns:common="using:NiVek.FlightControls.Common"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <!--
+        This grid acts as a root panel for the page that defines two rows:
+        * Row 0 contains the back button and page title
+        * Row 1 contains the rest of the page layout
+    -->
+    <Grid Style="{StaticResource LayoutRootStyle}">
+        <Grid.Background>
+            <ImageBrush ImageSource="/Assets/PageBackground.jpg" />
+        </Grid.Background>        
+        <Grid.Resources>
+
+            <!-- TODO: Delete this line if the key AppName is declared in App.xaml -->
+            <Style TargetType="TextBlock" x:Key="SectionTitle" >
+                <Setter Property="FontSize" Value="24" />
+            </Style>
+        </Grid.Resources>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="160"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Controls:NiVekHeader Grid.ColumnSpan="2" x:Name="Header" />
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="250"/>
+                <ColumnDefinition Width="720"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <TextBlock Style="{StaticResource SectionTitle}" Text="Stick Calibration" />
+                <TextBlock  x:Name="CalibrateStickInstructions" FontSize="20" Text="Click Start to Begin" />
+                <Button x:Name="BeginCalibration" Content="Begin" Click="BeginCalibration_Click_1" Width="120" Height="120" HorizontalAlignment="Center"/>
+                <Button x:Name="CaptureChannel" Content="Capture" Click="CaptureChannel_Click_1" Visibility="Collapsed" Width="120" Height="120"  HorizontalAlignment="Center"/>
+                <Button x:Name="CancelCalibration" Content="Cancel" Click="CancelCalibration_Click_1"  Visibility="Collapsed" Width="120" Height="120"  HorizontalAlignment="Center"/>
+                <Button x:Name="FinalizeCalibration" Content="Done" Click="FinalizeCalibration_Click_1" Visibility="Collapsed"  Width="120" Height="120"  HorizontalAlignment="Center"/>                
+            </StackPanel>
+
+
+            <StackPanel Grid.Column="1" Grid.Row="0" x:Name="RCSummary">
+                <StackPanel.Resources>
+                    <Style TargetType="TextBlock">
+                        <Setter Property="FontSize" Value="16" />
+                        <Setter Property="Width" Value="120" />
+                    </Style>
+                </StackPanel.Resources>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Channel"  />
+                    <TextBlock Text="Raw"  />
+                    <TextBlock Text="Processed"   />
+                    <TextBlock Text="Min Cal."/>
+                    <TextBlock Text="Idle Cal." />
+                    <TextBlock Text="MaxCal" />
+                </StackPanel>                
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Pitch" />
+                    <TextBlock Text="{Binding Radio1Raw}" HorizontalAlignment="Right"/>
+                    <TextBlock Text="{Binding Pitch}" HorizontalAlignment="Right"/>
+                    <TextBlock Text="{Binding CalMinPitch}" HorizontalAlignment="Right"/>
+                    <TextBlock Text="{Binding CalIdlePitch}" HorizontalAlignment="Right"/>
+                    <TextBlock Text="{Binding CalMaxPitch}"  HorizontalAlignment="Right"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Roll" />
+                    <TextBlock Text="{Binding Radio2Raw}" HorizontalAlignment="Right"/>
+                    <TextBlock Text="{Binding Roll}"  HorizontalAlignment="Right"/>
+                    <TextBlock Text="{Binding CalMinRoll}" HorizontalAlignment="Right"/>
+                    <TextBlock Text="{Binding CalIdleRoll}" HorizontalAlignment="Right"/>
+                    <TextBlock Text="{Binding CalMaxRoll}"  HorizontalAlignment="Right"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Yaw" />
+                    <TextBlock Text="{Binding Radio3Raw}" HorizontalAlignment="Right"/>
+                    <TextBlock Text="{Binding Yaw}"  HorizontalAlignment="Right"/>
+                    <TextBlock Text="{Binding CalMinYaw}" HorizontalAlignment="Right" />
+                    <TextBlock Text="{Binding CalIdleYaw}" HorizontalAlignment="Right" />
+                    <TextBlock Text="{Binding CalMaxYaw}" HorizontalAlignment="Right" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Throttle" />
+                    <TextBlock Text="{Binding Radio4Raw}" HorizontalAlignment="Right" />
+                    <TextBlock Text="{Binding Throttle}" HorizontalAlignment="Right" />
+                    <TextBlock Text="{Binding CalMinThrottle}" HorizontalAlignment="Right" />
+                    <TextBlock Text="-" HorizontalAlignment="Right" />
+                    <TextBlock Text="{Binding CalMaxThrottle}" HorizontalAlignment="Right" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Aux1" />
+                    <TextBlock Text="{Binding Radio5Raw}" HorizontalAlignment="Right" />
+                    <TextBlock Text="{Binding Aux1}" HorizontalAlignment="Right" />
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="Aux2" />
+                    <TextBlock Text="{Binding Radio6Raw}" HorizontalAlignment="Right" />
+                    <TextBlock Text="{Binding Aux2}" HorizontalAlignment="Right" />
+                </StackPanel>                
+            </StackPanel>
+            
+            <ListBox x:Name="CalibrationStep" Grid.Column="2">
+                
+            </ListBox>
+     </Grid>
+
+        <VisualStateManager.VisualStateGroups>
+
+            <!-- Visual states reflect the application's view state -->
+            <VisualStateGroup x:Name="ApplicationViewStates">
+                <VisualState x:Name="FullScreenLandscape"/>
+                <VisualState x:Name="Filled"/>
+
+                <!-- The entire page respects the narrower 100-pixel margin convention for portrait -->
+                <VisualState x:Name="FullScreenPortrait">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource PortraitBackButtonStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+
+                <!-- The back button and title have different styles when snapped -->
+                <VisualState x:Name="Snapped">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="backButton" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedBackButtonStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetName="pageTitle" Storyboard.TargetProperty="Style">
+                            <DiscreteObjectKeyFrame KeyTime="0" Value="{StaticResource SnappedPageHeaderTextStyle}"/>
+                        </ObjectAnimationUsingKeyFrames>
+                    </Storyboard>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+    </Grid>
+</nk:NiVekPage>

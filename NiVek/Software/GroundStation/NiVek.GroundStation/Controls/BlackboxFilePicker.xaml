@@ -1,0 +1,31 @@
+﻿<UserControl
+    x:Class="NiVek.GroundStation.Controls.BlackboxFilePicker"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:NiVek.GroundStation.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="500" 
+    d:DesignWidth="400" Visibility="Collapsed">
+
+    <Grid Width="400" Height="500" Background="Black">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="auto" />
+        </Grid.RowDefinitions>
+        <TextBlock Text="Black Box File Picker" Margin="5" FontSize="20" HorizontalAlignment="Center" />
+        <ListBox x:Name="BBDataFiles" SelectionChanged="BBDataFiles_SelectionChanged_1" HorizontalContentAlignment="Stretch" Grid.Row="1" Background="Black" >
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal" Background="Black">
+                        <TextBlock Foreground="White" Text="{Binding DisplayName}" FontSize="16" Width="300"  />
+                        <Button Content="Delete" Click="Button_Click_1" HorizontalAlignment="Right" />
+                    </StackPanel>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+        <Button x:Name="Cancel" Content="Cancel" Click="Cancel_Click_1" Grid.Row="2" HorizontalAlignment="Right" Margin="10"/>
+    </Grid>
+</UserControl>

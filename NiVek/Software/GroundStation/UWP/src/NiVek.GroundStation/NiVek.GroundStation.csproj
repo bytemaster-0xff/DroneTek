@@ -1,0 +1,467 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{1CC68DB1-B9A9-4B73-B6A0-78A52D639311}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>NiVek.GroundStation</RootNamespace>
+    <AssemblyName>NiVek.GroundStation</AssemblyName>
+    <DefaultLanguage>en</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.14393.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>NiVek.GroundStation_TemporaryKey.pfx</PackageCertificateKeyFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <None Include="BuildCrew.cmo" />
+    <None Include="gamelevel.cmo" />
+    <None Include="GlowEffect.cso" />
+    <None Include="project.json" />
+    <None Include="quad.cmo" />
+    <None Include="SimplePixelShader.cso" />
+    <None Include="SimpleVertexShader.cso" />
+    <None Include="SkinningVertexShader.cso" />
+    <None Include="_PROGRAM FILES %28X86%29_MICROSOFT VISUAL STUDIO 11.0_COMMON7_IDE_EXTENSIONS_MICROSOFT_VSGRAPHICS_ASSETS_EFFECTS_LAMBERT.DGSL.CSO" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\BindableBase.cs" />
+    <Compile Include="Converters\BooleanNegationConverter.cs" />
+    <Compile Include="Common\RichTextColumns.cs" />
+    <Compile Include="Common\SuspensionManager.cs" />
+    <Compile Include="Common\UIThread.cs" />
+    <Compile Include="Commo\TCPChannel.cs" />
+    <Compile Include="Commo\UDPChannel.cs" />
+    <Compile Include="Controls\Altitude.xaml.cs">
+      <DependentUpon>Altitude.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Attitude.xaml.cs">
+      <DependentUpon>Attitude.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Battery.xaml.cs">
+      <DependentUpon>Battery.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\BlackboxFilePicker.xaml.cs">
+      <DependentUpon>BlackboxFilePicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ByteSetting.xaml.cs">
+      <DependentUpon>ByteSetting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Chart.xaml.cs">
+      <DependentUpon>Chart.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Compass.xaml.cs">
+      <DependentUpon>Compass.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\CompassHeader.xaml.cs">
+      <DependentUpon>CompassHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ConfigValue.xaml.cs">
+      <DependentUpon>ConfigValue.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Copter.xaml.cs">
+      <DependentUpon>Copter.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Inputs.xaml.cs">
+      <DependentUpon>Inputs.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LeftStick.xaml.cs">
+      <DependentUpon>LeftStick.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Motors.xaml.cs">
+      <DependentUpon>Motors.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MotorsCross.xaml.cs">
+      <DependentUpon>MotorsCross.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NiVekHeader.xaml.cs">
+      <DependentUpon>NiVekHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\RightStick.xaml.cs">
+      <DependentUpon>RightStick.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Setting.xaml.cs">
+      <DependentUpon>Setting.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\BooleanToVisibilityConverter.cs" />
+    <Compile Include="Converters\ColorConverter.cs" />
+    <Compile Include="Converters\IsBusyConverter.cs" />
+    <Compile Include="FlightRecorder\BlackBox.cs" />
+    <Compile Include="GamePad.cs" />
+    <Compile Include="Inputs\FlightController.cs" />
+    <Compile Include="Launcher.xaml.cs">
+      <DependentUpon>Launcher.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MainPage.xaml.cs" />
+    <Compile Include="NiVekMath\StandardDeviation.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\DroneHub.cs" />
+    <Compile Include="Services\IStorageContext.cs" />
+    <Compile Include="Services\Timer.cs" />
+    <Compile Include="Services\UIThread.cs" />
+    <Compile Include="ViewModels\DroneSettings.cs" />
+    <Compile Include="Views\About.xaml.cs">
+      <DependentUpon>About.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\AltutidePID.xaml.cs">
+      <DependentUpon>AltutidePID.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BlackBoxDetailView.xaml.cs">
+      <DependentUpon>BlackBoxDetailView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\BlackBoxPlayback.xaml.cs">
+      <DependentUpon>BlackBoxPlayback.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Calibration.xaml.cs">
+      <DependentUpon>Calibration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CompassConfig.xaml.cs">
+      <DependentUpon>CompassConfig.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ConfigSettings.cs" />
+    <Compile Include="Views\Console.xaml.cs">
+      <DependentUpon>Console.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DroneSettings.xaml.cs">
+      <DependentUpon>DroneSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\FlightTuning.xaml.cs">
+      <DependentUpon>FlightTuning.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\GPS.xaml.cs">
+      <DependentUpon>GPS.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HeadingPID.xaml.cs">
+      <DependentUpon>HeadingPID.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MicroConfig.xaml.cs">
+      <DependentUpon>MicroConfig.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MicroSensorFusion.xaml.cs">
+      <DependentUpon>MicroSensorFusion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MotorConfig.xaml.cs">
+      <DependentUpon>MotorConfig.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NiVekPage.cs" />
+    <Compile Include="Views\PIDCalibration.xaml.cs">
+      <DependentUpon>PIDCalibration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PIDSettings.xaml.cs">
+      <DependentUpon>PIDSettings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SensorConfiguration.xaml.cs">
+      <DependentUpon>SensorConfiguration.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SensorFusion.xaml.cs">
+      <DependentUpon>SensorFusion.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Settings.xaml.cs">
+      <DependentUpon>Settings.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VibrationAnalysis.xaml.cs">
+      <DependentUpon>VibrationAnalysis.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="NiVek.GroundStation_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Airplane.png" />
+    <Content Include="appicon.png" />
+    <Content Include="Assets\AddIcon.png" />
+    <Content Include="Assets\Logo.png" />
+    <Content Include="Assets\PageBackground.jpg">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Assets\SmallLogo.png" />
+    <Content Include="Assets\SplashScreen.png" />
+    <Content Include="Images\Airplane.png" />
+    <Content Include="Images\AOA.png" />
+    <Content Include="Images\QCBottom.png" />
+    <Content Include="Images\QCTop.png" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="_DeleteMe_D3DDemo_Assets_AoATexture.png.dds" />
+    <Content Include="_DELETEME_D3DDEMO_ASSETS_BUILDFOLKS.PNG.DDS" />
+    <Content Include="_DELETEME_D3DDEMO_UVIMAGE.PNG.DDS" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\LocalResources.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Resources\StandardStyles.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Controls\Altitude.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Attitude.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Battery.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\BlackboxFilePicker.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ByteSetting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Chart.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Compass.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\CompassHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ConfigValue.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Copter.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Inputs.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LeftStick.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Motors.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MotorsCross.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NiVekHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\RightStick.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Setting.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Launcher.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\About.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\AltutidePID.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\BlackBoxDetailView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\BlackBoxPlayback.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Calibration.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CompassConfig.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Console.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\DroneSettings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\FlightTuning.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\GPS.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\HeadingPID.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MicroConfig.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MicroSensorFusion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MotorConfig.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PIDCalibration.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\PIDSettings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SensorConfiguration.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\SensorFusion.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Settings.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\VibrationAnalysis.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\..\NiVek.D3D\NiVek.D3D.vcxproj">
+      <Project>{0be8a463-92d1-4f46-b13b-4c20fd4705b9}</Project>
+      <Name>NiVek</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NiVek.Common\NiVek.Common.csproj">
+      <Project>{215eae5f-cbd6-4b12-9a10-ba1592ebe06b}</Project>
+      <Name>NiVek.Common</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
