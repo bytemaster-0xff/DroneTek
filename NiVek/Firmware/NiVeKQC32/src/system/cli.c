@@ -17,6 +17,7 @@
 #include "commo/wifi.h"
 #include "nivek_system.h"
 #include "commo/usb/usbd_cdc_core.h"
+#include "system/cli.h"
 
 #define CLI_BUFFER_SIZE 255
 #define CLI_COMMAND_QUEUE_SIZE 4

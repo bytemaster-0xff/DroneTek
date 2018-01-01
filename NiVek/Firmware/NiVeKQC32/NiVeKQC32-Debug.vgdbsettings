@@ -8,6 +8,7 @@
     </CustomSourceDirectories>
     <MainSourceDirectory>$(ProjectDir)</MainSourceDirectory>
     <EmbeddedProfileFile>stm32.xml</EmbeddedProfileFile>
+    <ExcludeToolDirsFromMakeFiles>false</ExcludeToolDirsFromMakeFiles>
   </Project>
   <Build xsi:type="com.visualgdb.build.embedded">
     <MakeFilePathRelativeToSourceDir>Makefile</MakeFilePathRelativeToSourceDir>
@@ -31,6 +32,7 @@
         </Records>
       </Environment>
     </MakeCommandTemplate>
+    <ShowMemoryUtilizationSummary>true</ShowMemoryUtilizationSummary>
   </Build>
   <Debug xsi:type="com.visualgdb.debug.embedded">
     <AdditionalStartupCommands />
@@ -59,6 +61,10 @@
       <ExamineMemoryWithXCommand>false</ExamineMemoryWithXCommand>
       <StepIntoNewInstanceEntry>main</StepIntoNewInstanceEntry>
       <ExamineRegistersInRawFormat>true</ExamineRegistersInRawFormat>
+      <EnableSmartStepping>false</EnableSmartStepping>
+      <DisableSignals>false</DisableSignals>
+      <EnableAsyncExecutionMode>false</EnableAsyncExecutionMode>
+      <EnableNonStopMode>false</EnableNonStopMode>
     </AdditionalGDBSettings>
     <DebugMethodID>com.sysprogs.arm.openocd</DebugMethodID>
     <DebugMethodProperties>
@@ -81,15 +87,15 @@
         </KeyValue>
         <KeyValue>
           <Key>com.sysprogs.arm.openocd.target</Key>
-          <Value>target/stm32f4x_stlink.cfg</Value>
+          <Value>target/stm32f4x.cfg</Value>
         </KeyValue>
         <KeyValue>
           <Key>com.sysprogs.arm.openocd.extraargs</Key>
-          <Value>-c init -c "reset init"</Value>
+          <Value>-c init -c "reset init" -c "gdb_port 40575" -c "telnet_port 40574"  </Value>
         </KeyValue>
         <KeyValue>
           <Key>com.sysprogs.arm.openocd.initargs</Key>
-          <Value>-c "adapter_khz 1000"</Value>
+          <Value />
         </KeyValue>
         <KeyValue>
           <Key>com.sysprogs.arm.openocd.commands.halt</Key>
@@ -107,8 +113,23 @@
           <Key>com.sysprogs.arm.openocd.commands.resetafter</Key>
           <Value />
         </KeyValue>
+        <KeyValue>
+          <Key>com.sysprogs.arm.openocd.quicksetup.enabled</Key>
+          <Value>0</Value>
+        </KeyValue>
+        <KeyValue>
+          <Key>com.sysprogs.arm.openocd.delay</Key>
+          <Value>0</Value>
+        </KeyValue>
+        <KeyValue>
+          <Key>com.sysprogs.arm.openocd.transport</Key>
+          <Value />
+        </KeyValue>
       </Entries>
     </DebugMethodProperties>
+    <SemihostingSupport>Auto</SemihostingSupport>
+    <StepIntoEntryPoint>false</StepIntoEntryPoint>
+    <ReloadFirmwareOnReset>false</ReloadFirmwareOnReset>
   </Debug>
   <CustomBuild>
     <PreBuildActions />

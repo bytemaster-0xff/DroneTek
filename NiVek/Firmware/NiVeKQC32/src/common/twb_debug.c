@@ -91,7 +91,7 @@ iOpResult_e __debug_SendOverUSB(const char *strBuffer){
 	/*char ch;
 	while((ch = *strBuffer++) != '\0'){
 		 USB_Debug_Buffer->Buffer[USB_Debug_Buffer->PtrIn++] = ch;
-
+		 */
 		 /* To avoid buffer overflow */
 		/* if (USB_Debug_Buffer->PtrIn == USB_BUFFER_SIZE)
 			 USB_Debug_Buffer->PtrIn = 0;

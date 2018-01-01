@@ -5,6 +5,7 @@
  *      Author: Kevin
  */
 
+#include "common/twb_debug.h"
 #include "commo/usb/twb_usb.h"
 #include "commo/usb/usbd_core.h"
 #include "commo/usb/usbd_cdc_core.h"

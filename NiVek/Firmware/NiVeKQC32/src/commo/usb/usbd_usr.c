@@ -21,6 +21,7 @@
 
 #include "commo/usb/usbd_usr.h"
 #include "commo/usb/usbd_ioreq.h"
+#include "common/twb_debug.h"
 
 USBD_Usr_cb_TypeDef USR_cb = {
   USBD_USR_Init,

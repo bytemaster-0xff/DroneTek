@@ -144,12 +144,12 @@ namespace NiVek.FlightControls.Views
 
         protected override void MessageArrived(NiVek.Common.Comms.IncomingMessage msg)
         {
-            throw new NotImplementedException();
+         
         }
 
         protected override void SetConnectionStatus(NiVek.Common.Comms.Common.ConnectionStates status)
         {
-            throw new NotImplementedException();
+         
         }
     }
 }

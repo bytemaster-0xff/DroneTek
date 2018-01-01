@@ -1,6 +1,7 @@
 #include "commo/usb/usb_regs.h"
 #include "commo/usb/usb_dcd_int.h"
 #include "core_cm4.h"
+#include "common/twb_debug.h"
 
 static uint32_t DCD_ReadDevInEP (USB_OTG_CORE_HANDLE *pdev, uint8_t epnum);
 

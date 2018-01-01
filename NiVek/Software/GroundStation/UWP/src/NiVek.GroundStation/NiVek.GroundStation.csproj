@@ -94,9 +94,9 @@
     <None Include="gamelevel.cmo" />
     <None Include="GlowEffect.cso" />
     <None Include="quad.cmo" />
-    <None Include="SimplePixelShader.cso" />
-    <None Include="SimpleVertexShader.cso" />
-    <None Include="SkinningVertexShader.cso" />
+    <Content Include="SimplePixelShader.cso" />
+    <Content Include="SimpleVertexShader.cso" />
+    <Content Include="SkinningVertexShader.cso" />
     <None Include="_PROGRAM FILES %28X86%29_MICROSOFT VISUAL STUDIO 11.0_COMMON7_IDE_EXTENSIONS_MICROSOFT_VSGRAPHICS_ASSETS_EFFECTS_LAMBERT.DGSL.CSO" />
   </ItemGroup>
   <ItemGroup>

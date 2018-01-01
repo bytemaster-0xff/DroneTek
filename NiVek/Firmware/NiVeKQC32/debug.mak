@@ -6,17 +6,17 @@ BINARYDIR := Debug
 
 #Additional flags
 PREPROCESSOR_MACROS := DEBUG
-INCLUDE_DIRS :=D:/NiVek/Firmware/NiVeKQC32/inc D:/NiVek/Firmware/NiVeKQC32/stm32f4periph/inc
-LIBRARY_DIRS :=
-LIBRARY_NAMES :=
-ADDITIONAL_LINKER_INPUTS :=
-MACOS_FRAMEWORKS :=
+INCLUDE_DIRS := D:/nivke/NiVek/Firmware/NiVeKQC32/inc D:/nivke/NiVek/Firmware/NiVeKQC32/stm32f4periph/inc
+LIBRARY_DIRS := 
+LIBRARY_NAMES := 
+ADDITIONAL_LINKER_INPUTS := 
+MACOS_FRAMEWORKS := 
 
 CFLAGS := -ggdb -ffunction-sections -O0 -std=gnu99 -gdwarf-2 -mthumb -fomit-frame-pointer -Wall -Wstrict-prototypes -fverbose-asm
 CXXFLAGS := -ggdb -ffunction-sections -fno-exceptions -O0
-ASFLAGS :=
+ASFLAGS := 
 LDFLAGS := -mthumb -nostartfiles -Wl,-gc-sections,-Map,output.map,--cref,--no-warn-mismatch
-COMMONFLAGS :=
+COMMONFLAGS := 
 
 START_GROUP := -Wl,--start-group
 END_GROUP := -Wl,--end-group
