@@ -3,7 +3,7 @@
 #include <concrt.h>
 
 namespace NiVek
-{
+{	
 	[Windows::Foundation::Metadata::WebHostHidden]
 	public ref class DirectXPanelBase : public Windows::UI::Xaml::Controls::SwapChainPanel
 	{

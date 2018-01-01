@@ -17,12 +17,12 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="dllmain.cpp" />
-    <ClCompile Include="GamePad.cpp" />
     <ClCompile Include="pch.cpp" />
     <ClCompile Include="DirectXPanelBase.cpp" />
     <ClCompile Include="D3dPanel.cpp" />
     <ClCompile Include="D2DPanel.cpp" />
     <ClCompile Include="DrawingPanel.cpp" />
+    <ClCompile Include="GamePad.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h" />
@@ -33,7 +33,6 @@
     <ClInclude Include="DXHelper.h">
       <Filter>Common</Filter>
     </ClInclude>
-    <ClInclude Include="GamePad.h" />
     <ClInclude Include="Animation.h">
       <Filter>Animation</Filter>
     </ClInclude>
@@ -47,6 +46,7 @@
     </ClInclude>
     <ClInclude Include="D2DPanel.h" />
     <ClInclude Include="DrawingPanel.h" />
+    <ClInclude Include="GamePad.h" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="SimplePixelShader.hlsl">
@@ -80,6 +80,10 @@
     <FxCompile Include="SimpleVertexShader.hlsl" />
     <FxCompile Include="SimplePixelShader.hlsl" />
     <FxCompile Include="SimpleVertexShader.hlsl" />
+    <FxCompile Include="SimpleVertexShader.hlsl" />
+    <FxCompile Include="SimplePixelShader.hlsl" />
+    <FxCompile Include="SimpleVertexShader.hlsl" />
+    <FxCompile Include="SimplePixelShader.hlsl" />
     <FxCompile Include="SimpleVertexShader.hlsl" />
     <FxCompile Include="SimplePixelShader.hlsl" />
     <FxCompile Include="SimpleVertexShader.hlsl" />

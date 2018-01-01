@@ -312,13 +312,13 @@ namespace NiVek.Common.Comms
         [JsonIgnore]
         public bool IsCrossFrame
         {
-            get { return _config.FrameConfig == (byte)GPIOConfig.FrameConfigTypes.Cross; }
+            get { return _config != null && _config.FrameConfig == (byte)GPIOConfig.FrameConfigTypes.Cross; }
         }
 
         [JsonIgnore]
         public bool IsXFrame
         {
-            get { return _config.FrameConfig == (byte)GPIOConfig.FrameConfigTypes.X; }
+            get { return _config != null &&  _config.FrameConfig == (byte)GPIOConfig.FrameConfigTypes.X; }
         }
         #endregion
 
