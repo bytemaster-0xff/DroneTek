@@ -73,9 +73,6 @@
     <FxCompile Include="SimpleVertexShader.hlsl" />
     <FxCompile Include="SimplePixelShader.hlsl" />
     <FxCompile Include="SimpleVertexShader.hlsl" />
-    <FxCompile Include="SkinningVertexShader.hlsl">
-      <Filter>Animation</Filter>
-    </FxCompile>
     <FxCompile Include="SimplePixelShader.hlsl" />
     <FxCompile Include="SimpleVertexShader.hlsl" />
     <FxCompile Include="SimplePixelShader.hlsl" />

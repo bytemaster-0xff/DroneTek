@@ -328,6 +328,8 @@ namespace NiVek.FlightControls.Controls
 
             for (var idx = 0; idx < args.Length; ++idx)
             {
+                Debug.WriteLine($"VALUE => {args[idx]} - {SegmentWidth}");
+
                 _valueTextBoxes[idx].Text = String.Format(_formatStrings[idx], args[idx]);
                 ChartAxis[idx].AddPoint(args[idx]);
                 ChartAxis[idx].UpdateChart(SegmentWidth);

@@ -44,7 +44,7 @@ namespace NiVek.FlightControls.Views
 
         void NiVekPage_Loaded(object sender, Windows.UI.Xaml.RoutedEventArgs e)
         {
-            if (Drone != null)
+            if (Drone != null && Drone.Channel != null)
             {
                 switch (Drone.Channel.ConnectionState)
                 {
@@ -77,7 +77,7 @@ namespace NiVek.FlightControls.Views
         {
             base.OnNavigatedTo(e);
 
-            if (Drone != null)
+            if (Drone != null && Drone.Channel != null)
             {
                 Drone.Channel.OnConnect += _commo_Connected;
                 Drone.Channel.OnDisconnect += _commo_Disconnected;
@@ -94,7 +94,7 @@ namespace NiVek.FlightControls.Views
         {
             base.OnNavigatedFrom(e);
 
-            if (Drone != null)
+            if (Drone != null && Drone.Channel != null)
             {
                 Drone.Channel.OnConnect -= _commo_Connected;
                 Drone.Channel.OnDisconnect -= _commo_Disconnected;

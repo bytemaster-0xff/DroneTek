@@ -104,17 +104,19 @@ namespace NiVek.Common.Comms
             set
             {
                 _channel = value;
-                _channel.MessageReady += _channel_MessageReady;
-                _channel.OnConnect += _channel_OnConnect;
-                _channel.OnDisconnect += _channel_OnDisconnect;
-                _channel.OnDisconnecting +=_channel_OnDisconnecting;
+                if (_channel != null)
+                {
+                    _channel.MessageReady += _channel_MessageReady;
+                    _channel.OnConnect += _channel_OnConnect;
+                    _channel.OnDisconnect += _channel_OnDisconnect;
+                    _channel.OnDisconnecting += _channel_OnDisconnecting;
+                }
             }
         }
 
         void _channel_OnDisconnect(object sender, String reason)
         {
-            if (OnDisconnect != null)
-                OnDisconnect(sender, reason);
+            OnDisconnect?.Invoke(sender, reason);
 
             AppServices.UIThread.Invoke(() =>
             {

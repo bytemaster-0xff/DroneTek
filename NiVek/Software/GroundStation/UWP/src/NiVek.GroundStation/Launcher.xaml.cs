@@ -138,6 +138,12 @@ namespace NiVek.FlightControls
 
         private async void Connect_Click(object sender, RoutedEventArgs e)
         {
+            if (DroneHub.Instance.Active.Channel != null)
+            {
+                DroneHub.Instance.Active.Channel.Disconnect("reopen");
+                DroneHub.Instance.Active.Channel = null;
+            }
+
             if (DroneHub.Instance.Active.CurrentComms.ProtocolType == (Byte)DroneComms.ProtocolTypes.UDP)
             {
                 var udpChannel = new UDPChannel();

@@ -135,7 +135,7 @@
                         <TextBlock Text="Calibration" HorizontalAlignment="Center"  />
                     </StackPanel>
                 </Button>
-                <Button x:Name="Console" Grid.Column="5" Grid.Row="1" Click="Console_Click" Visibility="{Binding IsDroneConnected, Converter={StaticResource VisibilityConverter}}">
+                <Button x:Name="Console" Grid.Column="5" Grid.Row="1" Click="Console_Click" Visibility="{Binding HasActiveDrone, Converter={StaticResource VisibilityConverter}}">
                     <StackPanel>
                         <TextBlock Text="Console" HorizontalAlignment="Center" />
                     </StackPanel>
